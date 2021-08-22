@@ -1,7 +1,8 @@
-## Develop
+## Develop with the shadergradient package
 
 To develop with the shadergradient package, follow below instructions.
 
+1. yarn remove shadergradient
 1. yarn install
 1. yarn link shadergradient (Link shadergradient package)
 1. npm link ../path/to/your/project/node_modules/react (Use shadergradient package's react)
