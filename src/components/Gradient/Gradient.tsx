@@ -23,7 +23,7 @@ export const Gradient: React.FC<GradientPropsT> = ({
   // scene.background = new THREE.Color(0x000000)
   camera.position.set(2, 4, 1)
 
-  usePostProcessing({ on: postProcessing === "threejs" })
+  // usePostProcessing({ on: postProcessing === "threejs" })
 
   return (
     <Suspense fallback={"Loading..."}>
@@ -31,9 +31,9 @@ export const Gradient: React.FC<GradientPropsT> = ({
       {lights}
       <GradientMesh />
 
-      {/* <EffectComposer>
+      <EffectComposer>
         <Noise opacity={0.3} />
-      </EffectComposer> */}
+      </EffectComposer>
     </Suspense>
   )
 }
