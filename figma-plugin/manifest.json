@@ -1,0 +1,7 @@
+{
+  "name": "Shader Gradient",
+  "id": "1011334619128373819",
+  "api": "1.0.0",
+  "main": "dist/code.js",
+  "ui": "dist/ui.html"
+}
