@@ -1,4 +1,4 @@
-import { OrbitControls } from "@react-three/drei"
+import { Environment, OrbitControls } from "@react-three/drei"
 import { Canvas } from "@react-three/fiber"
 import * as React from "react"
 import * as ReactDOM from "react-dom"
@@ -27,7 +27,7 @@ function App() {
         id="3d-canvas"
       >
         <OrbitControls />
-        <Gradient />
+        <Gradient environment={<Environment preset="city" />} />
       </Canvas>
     </div>
   )
