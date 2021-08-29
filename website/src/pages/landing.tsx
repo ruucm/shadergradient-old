@@ -32,9 +32,9 @@ const MyItem = ({ onClick, children, visible }) => (
   <div
     style={{
       width: 'fit-content',
-      fontSize: 70,
+      fontSize: 60,
       opacity: visible ? 1 : 0.3,
-      borderBottom: visible ? '6px solid black' : '0px solid black',
+      borderBottom: visible ? '4px solid black' : '0px solid black',
       cursor: visible ? 'default' : 'pointer',
     }}
     onClick={onClick}
@@ -123,18 +123,58 @@ const Page = () => {
                 </MyItem>
               </SnapItem>
               <SnapItem
-                margin={{ left: itemGap, right: '30vw' }}
+                margin={{ left: itemGap, right: itemGap }}
                 snapAlign='start'
               >
                 <MyItem onClick={() => goToSnapItem(4)} visible={visible === 4}>
-                  05 Summer
+                  05 Hazy night
+                </MyItem>
+              </SnapItem>
+              <SnapItem
+                margin={{ left: itemGap, right: itemGap }}
+                snapAlign='start'
+              >
+                <MyItem onClick={() => goToSnapItem(5)} visible={visible === 5}>
+                  06 Daydream
+                </MyItem>
+              </SnapItem>
+              <SnapItem
+                margin={{ left: itemGap, right: '30vw' }}
+                snapAlign='start'
+              >
+                <MyItem onClick={() => goToSnapItem(6)} visible={visible === 6}>
+                  07 Summer
                 </MyItem>
               </SnapItem>
             </SnapList>
           </div>
+          <div className={styles.footer}>
+            Made as side project from <a href=''>Ruucm</a> and{' '}
+            <a href='https://seungmee-lee.com'>stone.skipper</a>
+            <br />
+            Any inquiry? <a href=''>contact here</a>
+          </div>
         </div>
 
         <div className={styles.rightWrapper}>
+          <div className={styles.links}>
+            <div className={styles.iconWrapper}>
+              <p>Figma</p>
+              <div className={styles.icon}></div>
+            </div>
+            <div className={styles.iconWrapper}>
+              <p>Framer</p>
+              <div className={styles.icon}></div>
+            </div>
+            <div className={styles.iconWrapper}>
+              <p>Github</p>
+              <div className={styles.icon}></div>
+            </div>
+            <div className={styles.iconWrapper}>
+              <p>More info</p>
+              <div className={styles.icon}></div>
+            </div>
+          </div>
           <svg
             xmlns='http://www.w3.org/2000/svg'
             width='720'
@@ -153,21 +193,22 @@ const Page = () => {
             ></path>
           </svg>
           <div className={styles.mobileContent}>
-            <svg xmlns='http://www.w3.org/2000/svg' width='49' height='49'>
+            <svg xmlns='http://www.w3.org/2000/svg' width='28' height='24'>
               <path
-                d='M 8 38 L 42 38 L 42 41 L 8 41 Z'
+                d='M 2.5 20.313 L 25.5 20.313 L 25.5 22 L 2.5 22 Z'
                 fill='hsl(0, 0%, 0%)'
               ></path>
               <path
-                d='M 8 9 L 42 9 L 42 12 L 8 12 Z'
+                d='M 2.5 2 L 25.5 2 L 25.5 3.688 L 2.5 3.688 Z'
                 fill='hsl(0, 0%, 0%)'
               ></path>
               <path
-                d='M 8 23 L 42 23 L 42 26 L 8 26 Z'
+                d='M 2.5 10.875 L 25.5 10.875 L 25.5 12.563 L 2.5 12.563 Z'
                 fill='hsl(0, 0%, 0%)'
               ></path>
             </svg>
             <p>
+              <br />
               *<br />
               Hello, we are
               <br />
@@ -178,6 +219,7 @@ const Page = () => {
               <br />
               with vivid color <br />
               and movement.
+              <br /> current slide - {visible}
             </p>
           </div>
         </div>
