@@ -40,9 +40,9 @@ function Scene({ r3f }) {
   const ctx: any = useContext(FormContext)
   const { postProcessing, env } = ctx?.watch()
 
-  const { camera } = useThree()
-  // scene.background = new THREE.Color(0x000000)
-  camera.position.set(2, 4, 1)
+  // const { camera } = useThree()
+  // // scene.background = new THREE.Color(0x000000)
+  // camera.position.set(2, 4, 1)
   // camera.fov = 100
 
   usePostProcessing({ on: postProcessing === 'threejs' })
@@ -51,9 +51,9 @@ function Scene({ r3f }) {
     <Suspense fallback={'Loading...'}>
       {env === 'env' ? (
         <Environment
-          files={'cayley_interior_2k.hdr'}
-          path={'/hdr/'}
-          preset={null}
+          // files={'cayley_interior_2k.hdr'}
+          // path={'/hdr/'}
+          preset='city'
           background={false}
         />
       ) : (
