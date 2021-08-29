@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { useContext } from 'react'
 import { FormContext } from '../../helpers/form-provider'
+import styles from './GUI.module.scss'
 
 export function GUIGradient() {
   const ctx: any = useContext(FormContext) // States from Form
@@ -19,11 +20,7 @@ export function GUIGradient() {
     >
       GUI
       <div>
-        <div
-          style={{
-            display: 'flex',
-          }}
-        >
+        <div className={styles.wrap}>
           <div>
             <input {...ctx.register('type')} type='radio' value='plane' />
             <label>Plane</label>
@@ -38,11 +35,7 @@ export function GUIGradient() {
           </div>
         </div>
 
-        <div
-          style={{
-            display: 'flex',
-          }}
-        >
+        <div className={styles.wrap}>
           <div>
             <input {...ctx.register('env')} type='radio' value='env' />
             <label>Lighting</label>
@@ -72,11 +65,7 @@ export function GUIGradient() {
           />
           <label>Speed</label>
         </div>
-        <div
-          style={{
-            display: 'flex',
-          }}
-        >
+        <div className={styles.wrap}>
           <div>
             <input
               {...ctx.register('postProcessing')}
