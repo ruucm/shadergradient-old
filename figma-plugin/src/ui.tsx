@@ -40,6 +40,7 @@ function App() {
         gl={{ preserveDrawingBuffer: true }} // to capture the canvas
         id="3d-canvas"
       >
+        {/* @ts-ignore */}
         <OrbitControls />
         <Gradient environment={<Environment preset="city" />} />
       </Canvas>
