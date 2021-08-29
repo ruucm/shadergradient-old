@@ -10,7 +10,9 @@ export function CustomEnvironment({ background = false }) {
   const { env } = ctx?.watch()
   console.log('env', env)
 
+  // @ts-ignore
   const [cubeMap] = useLoader(
+    // @ts-ignore
     HDRCubeTextureLoader,
     // 'cayley_interior_2k.hdr',
     [
