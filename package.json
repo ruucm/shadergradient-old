@@ -1,6 +1,6 @@
 {
   "name": "shadergradient",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -12,12 +12,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "three": "^0.131.3",
     "@react-three/drei": "^7.2.1",
     "@react-three/fiber": "^7.0.6",
-    "@react-three/postprocessing": "^2.0.5"
+    "@react-three/postprocessing": "^2.0.5",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "three": "^0.131.3"
   },
   "devDependencies": {
     "@types/react": "^17.0.19",
@@ -32,12 +32,12 @@
     "typescript": "^4.3.5"
   },
   "peerDependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "three": "^0.131.3",
     "@react-three/drei": "^7.2.1",
     "@react-three/fiber": "^7.0.6",
-    "@react-three/postprocessing": "^2.0.5"
+    "@react-three/postprocessing": "^2.0.5",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "three": "^0.131.3"
   },
   "files": [
     "dist"

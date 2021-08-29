@@ -8,6 +8,7 @@ import { EffectComposer, Noise } from "@react-three/postprocessing"
 
 export type GradientPropsT = {
   r3f?: boolean
+  type?: "plane" | "sphere" | "waterPlane"
   postProcessing?: "threejs" | "r3f"
   environment?: any
   lights?: any
@@ -15,6 +16,7 @@ export type GradientPropsT = {
 
 export const Gradient: React.FC<GradientPropsT> = ({
   r3f,
+  type = "plane",
   postProcessing = "threejs",
   environment = <Environment preset="lobby" background={true} />,
   lights = <ambientLight intensity={0.3} />,
@@ -29,11 +31,13 @@ export const Gradient: React.FC<GradientPropsT> = ({
     <Suspense fallback={"Loading..."}>
       {environment}
       {lights}
-      <GradientMesh />
+      <GradientMesh type={type} />
 
-      {/* <EffectComposer>
-        <Noise opacity={0.3} />
-      </EffectComposer> */}
+      {postProcessing === "r3f" && (
+        <EffectComposer>
+          <Noise opacity={0.3} />
+        </EffectComposer>
+      )}
     </Suspense>
   )
 }
