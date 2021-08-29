@@ -33,9 +33,11 @@ export const Gradient: React.FC<GradientPropsT> = ({
       {lights}
       <GradientMesh type={type} />
 
-      {/* <EffectComposer>
-        <Noise opacity={0.3} />
-      </EffectComposer> */}
+      {postProcessing === "r3f" && (
+        <EffectComposer>
+          <Noise opacity={0.3} />
+        </EffectComposer>
+      )}
     </Suspense>
   )
 }

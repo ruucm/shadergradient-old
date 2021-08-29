@@ -7,7 +7,7 @@ import { FormContext } from "../helpers/form-provider"
 
 export function GradientScene() {
   const ctx: any = useContext(FormContext)
-  const { type, env, postProcessing } = ctx?.watch()
+  const { type, postProcessing } = ctx?.watch()
 
   return (
     <Canvas
@@ -21,7 +21,11 @@ export function GradientScene() {
     >
       {/* @ts-ignore */}
       <OrbitControls />
-      <Gradient environment={<Environment preset="city" />} type={type} />
+      <Gradient
+        environment={<Environment preset="city" />}
+        type={type}
+        postProcessing={postProcessing}
+      />
     </Canvas>
   )
 }

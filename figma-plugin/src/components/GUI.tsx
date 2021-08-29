@@ -44,21 +44,6 @@ export function GUI() {
           }}
         >
           <div>
-            <input {...ctx.register("env")} type="radio" value="env" />
-            <label>Env</label>
-          </div>
-          <div>
-            <input {...ctx.register("env")} type="radio" value="light" />
-            <label>Light</label>
-          </div>
-        </div>
-
-        <div
-          style={{
-            display: "flex",
-          }}
-        >
-          <div>
             <input
               {...ctx.register("postProcessing")}
               type="radio"
