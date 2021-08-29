@@ -3,25 +3,39 @@ import { Canvas } from "@react-three/fiber"
 import * as React from "react"
 import * as ReactDOM from "react-dom"
 import { Gradient } from "shadergradient"
+import { GUI } from "./components/GUI"
+import { FormContext } from "./helpers/form-provider"
+import { useForm } from "react-hook-form"
 import "./ui.scss"
 
 function App() {
+  const formProps = useForm({
+    defaultValues: {
+      noiseStrength: 0.1,
+      // for gradient-scene
+      type: "plane",
+      env: "env",
+      postProcessing: "threejs",
+    },
+  })
+
   return (
-    <div>
-      <button
-        onClick={insertCanvasAsImage}
+    <FormContext.Provider value={formProps}>
+      <div
         style={{
           position: "absolute",
           zIndex: 1,
         }}
       >
-        Insert
-      </button>
+        <button onClick={insertCanvasAsImage}>Insert</button>
+        <GUI />
+      </div>
+
       <Canvas
         style={{
           position: "absolute",
           top: 0,
-          background: "green",
+          background: "blue",
         }}
         gl={{ preserveDrawingBuffer: true }} // to capture the canvas
         id="3d-canvas"
@@ -29,7 +43,7 @@ function App() {
         <OrbitControls />
         <Gradient environment={<Environment preset="city" />} />
       </Canvas>
-    </div>
+    </FormContext.Provider>
   )
 }
 
