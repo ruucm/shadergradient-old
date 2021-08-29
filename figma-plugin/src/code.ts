@@ -21,8 +21,15 @@ async function invertPaint(paint, bytes) {
     const newPaint = JSON.parse(JSON.stringify(paint))
     newPaint.imageHash = figma.createImage(bytes).hash
     return newPaint
+  } else {
+    // overwrite other types of paint (eg. SOLID)
+    const newPaint: ImagePaint = {
+      type: "IMAGE",
+      scaleMode: "FILL",
+      imageHash: figma.createImage(bytes).hash,
+    }
+    return newPaint
   }
-  return paint
 }
 
 async function replaceToNewImage(node, bytes) {
