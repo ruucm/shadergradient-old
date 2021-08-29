@@ -1,6 +1,7 @@
 import * as React from "react"
 import { useContext } from "react"
-import { FormContext } from "../helpers/form-provider"
+import { FormContext } from "../../helpers/form-provider"
+import styles from "./GUI.module.scss"
 
 export function GUI() {
   const ctx: any = useContext(FormContext) // States from Form
@@ -19,11 +20,7 @@ export function GUI() {
     >
       GUI
       <div>
-        <div
-          style={{
-            display: "flex",
-          }}
-        >
+        <div className={styles.wrap}>
           <div>
             <input {...ctx.register("type")} type="radio" value="plane" />
             <label>Plane</label>
@@ -38,11 +35,7 @@ export function GUI() {
           </div>
         </div>
 
-        <div
-          style={{
-            display: "flex",
-          }}
-        >
+        <div className={styles.wrap}>
           <div>
             <input
               {...ctx.register("postProcessing")}
