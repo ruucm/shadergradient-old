@@ -1,12 +1,10 @@
-import { Environment, OrbitControls } from "@react-three/drei"
-import { Canvas } from "@react-three/fiber"
 import * as React from "react"
 import * as ReactDOM from "react-dom"
-import { Gradient } from "shadergradient"
 import { GUI } from "./components/GUI"
 import { FormContext } from "./helpers/form-provider"
 import { useForm } from "react-hook-form"
 import "./ui.scss"
+import { GradientScene } from "./components/GradientScene"
 
 function App() {
   const formProps = useForm({
@@ -30,20 +28,7 @@ function App() {
         <button onClick={insertCanvasAsImage}>Insert</button>
         <GUI />
       </div>
-
-      <Canvas
-        style={{
-          position: "absolute",
-          top: 0,
-          background: "blue",
-        }}
-        gl={{ preserveDrawingBuffer: true }} // to capture the canvas
-        id="3d-canvas"
-      >
-        {/* @ts-ignore */}
-        <OrbitControls />
-        <Gradient environment={<Environment preset="city" />} />
-      </Canvas>
+      <GradientScene />
     </FormContext.Provider>
   )
 }
