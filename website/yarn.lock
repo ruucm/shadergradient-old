@@ -1151,7 +1151,7 @@
     utility-types "^3.10.0"
     zustand "^3.2.0"
 
-"@react-three/drei@^7.4.0":
+"@react-three/drei@^7.2.1", "@react-three/drei@^7.4.0":
   version "7.5.0"
   resolved "https://registry.yarnpkg.com/@react-three/drei/-/drei-7.5.0.tgz#89eddc2a500e02fcf7a024a091efa42b4fffd3a4"
   integrity sha512-GNDSAUgEsOncWsmp68kdiP0hjt15lDN8xnY4xrORnXCtNoTvoaIzZNtLVz2E8NZrrC1rQ5dvmaGHvDg4u506Hw==
@@ -5500,10 +5500,10 @@ react-use-measure@^2.0.4:
   dependencies:
     debounce "^1.2.0"
 
-react@^18.0.0-alpha-dbe3363cc:
-  version "18.0.0-alpha-dbe3363cc"
-  resolved "https://registry.yarnpkg.com/react/-/react-18.0.0-alpha-dbe3363cc.tgz#a0f6ac2f597f98d906ff021da5df6115c343c88a"
-  integrity sha512-cD3kqqDXB6iMtD8oYjz5J42FLzt31bm8Ygv4cwbtNsfOfX2Bcr6/0LiYRPNOl1d+1HeSACFdAJY2fMMqkhjSwg==
+react@^17.0.2:
+  version "17.0.2"
+  resolved "https://registry.yarnpkg.com/react/-/react-17.0.2.tgz#d0b5cc516d29eb3eee383f75b62864cfb6800037"
+  integrity sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
@@ -5893,6 +5893,18 @@ sha.js@^2.4.0, sha.js@^2.4.8:
   dependencies:
     inherits "^2.0.1"
     safe-buffer "^5.0.1"
+
+shadergradient@latest:
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/shadergradient/-/shadergradient-0.0.9.tgz#7608780ecfec734d00476bf348fbf564d0b7627e"
+  integrity sha512-k6o5xirzPNBy1dIA1eseUdGILYXwnj6B2ccq0Eo/bLovYFFemhIv9pPan6B52EJcSI8V3PZpXhuwVO0j48E6fw==
+  dependencies:
+    "@react-three/drei" "^7.2.1"
+    "@react-three/fiber" "^7.0.6"
+    "@react-three/postprocessing" "^2.0.5"
+    react "^17.0.2"
+    react-dom "^17.0.2"
+    three "^0.131.3"
 
 shallow-copy@0.0.1:
   version "0.0.1"

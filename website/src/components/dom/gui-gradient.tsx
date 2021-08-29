@@ -45,14 +45,33 @@ export function GUIGradient() {
         >
           <div>
             <input {...ctx.register('env')} type='radio' value='env' />
-            <label>Env</label>
+            <label>Lighting</label>
           </div>
           <div>
             <input {...ctx.register('env')} type='radio' value='light' />
-            <label>Light</label>
+            <label>True Color</label>
           </div>
         </div>
-
+        <div>
+          <input
+            type='range'
+            min='-1'
+            max='1'
+            step='0.1'
+            {...ctx.register('lightStrength')}
+          />
+          <label>Brightness</label>
+        </div>
+        <div>
+          <input
+            type='range'
+            min='0'
+            max='3'
+            step='0.1'
+            {...ctx.register('speed')}
+          />
+          <label>Speed</label>
+        </div>
         <div
           style={{
             display: 'flex',
