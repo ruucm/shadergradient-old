@@ -20,6 +20,7 @@ const Dom = ({ children }) => {
           width: '100%',
           opacity: 0.5,
           background: '#fff',
+          display: 'none',
         }}
       >
         <Link href='/'>Home</Link>

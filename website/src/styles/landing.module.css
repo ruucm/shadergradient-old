@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+.bodyWrapper {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 50vw 50vw;
+  grid-column-gap: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.leftWrapper {
+  width: 50vw;
+  height: 100vh;
+  color: black;
+}
+
+.title {
+  position: absolute;
+  left: 2vw;
+  top: 1vw;
+}
+
+.rightWrapper {
+  width: 50vw;
+  height: 100vh;
+  /* background-color: black; */
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mobileClip {
+  width: 100%;
+}
+
+.mobileContent {
+  width: 250px;
+  height: 500px;
+  position: absolute;
+  color: black;
+  text-align: right;
+}
+
+.slider {
+  position: absolute;
+  bottom: 12vh;
+  left: 2vw;
+  width: 48vw;
+  height: 20vh;
+  /* background: rgba(255, 255, 255, 0.2); */
+}
+
+.sliderHeader {
+  display: grid;
+  grid-template-columns: 15vw 15vw;
+}
+
+.sliderHeader a:hover {
+  margin-left: 20px;
+  transition: 0.6s;
+}

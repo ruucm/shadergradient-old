@@ -25,7 +25,7 @@ export default function GradientMesh() {
   )
 
   return (
-    <mesh ref={mesh} rotation={[Math.PI / 2, 0, 0]}>
+    <mesh ref={mesh} rotation={[(Math.PI / 3) * 2, 0, 0]}>
       {type === 'plane' && <planeGeometry args={[5, 5, 1, meshCount]} />}
       {type === 'sphere' && <icosahedronBufferGeometry args={[1, meshCount]} />}
       {type === 'waterPlane' && (
