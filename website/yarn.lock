@@ -1109,7 +1109,7 @@
     utility-types "^3.10.0"
     zustand "^3.2.0"
 
-"@react-three/drei@^7.2.1", "@react-three/drei@^7.4.0":
+"@react-three/drei@^7.4.0":
   version "7.5.0"
   resolved "https://registry.yarnpkg.com/@react-three/drei/-/drei-7.5.0.tgz#89eddc2a500e02fcf7a024a091efa42b4fffd3a4"
   integrity sha512-GNDSAUgEsOncWsmp68kdiP0hjt15lDN8xnY4xrORnXCtNoTvoaIzZNtLVz2E8NZrrC1rQ5dvmaGHvDg4u506Hw==
@@ -5866,18 +5866,6 @@ sha.js@^2.4.0, sha.js@^2.4.8:
   dependencies:
     inherits "^2.0.1"
     safe-buffer "^5.0.1"
-
-shadergradient@latest:
-  version "0.0.10"
-  resolved "https://registry.yarnpkg.com/shadergradient/-/shadergradient-0.0.10.tgz#e9fc67ecf6e0076d2333d6b182cc93c370086872"
-  integrity sha512-eWWQYOgSWOuE/CFvZwvYECQ7h/1MJls3/iP4HEzDu88L8dt9ZIlyTSI6UMrZDveLU6EWsrWAXdmi3enIN6kNqg==
-  dependencies:
-    "@react-three/drei" "^7.2.1"
-    "@react-three/fiber" "^7.0.6"
-    "@react-three/postprocessing" "^2.0.5"
-    react "^17.0.2"
-    react-dom "^17.0.2"
-    three "^0.131.3"
 
 shallow-copy@0.0.1:
   version "0.0.1"

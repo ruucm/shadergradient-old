@@ -1,17 +1,15 @@
 import { GUIGradient } from '@/components/dom/gui-gradient'
-import { usePostProcessing } from '@/hooks/use-post-processing'
-import { Environment } from '@react-three/drei'
-import { useThree } from '@react-three/fiber'
-import dynamic from 'next/dynamic'
-import { Suspense, useContext } from 'react'
-import { EffectComposer, Noise } from '@react-three/postprocessing'
 import { FormContext } from '@/helpers/form-provider'
-import { Box, Gradient } from 'shadergradient'
+import { useContext } from 'react'
+import { Gradient } from 'shadergradient'
 
 const Page = () => {
+  const ctx: any = useContext(FormContext)
+  const { type, postProcessing } = ctx?.watch()
+
   return (
     <>
-      <Gradient r3f type='waterPlane' />
+      <Gradient r3f type={type} postProcessing={postProcessing} />
       <GUIGradient />
     </>
   )

@@ -8,7 +8,7 @@ import { EffectComposer, Noise } from "@react-three/postprocessing"
 
 export type GradientPropsT = {
   r3f?: boolean
-  type: "plane" | "sphere" | "waterPlane"
+  type?: "plane" | "sphere" | "waterPlane"
   postProcessing?: "threejs" | "r3f"
   environment?: any
   lights?: any
