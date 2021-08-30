@@ -1,6 +1,7 @@
 import * as React from "react"
 import { useContext } from "react"
 import { FormContext } from "../../helpers/form-provider"
+import { Button } from "../Button"
 import styles from "./PropertyControls.module.scss"
 
 export function PropertyControls({ onSubmit }) {
@@ -33,7 +34,7 @@ export function PropertyControls({ onSubmit }) {
           <label>@react-three/postprocessing</label>
         </div>
       </div>
-      <button type="submit">Insert</button>
+      <Button type="submit">Insert</Button>
     </form>
   )
 }
