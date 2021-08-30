@@ -12,9 +12,7 @@ export function GradientScene() {
   return (
     <Canvas
       style={{
-        position: "absolute",
-        top: 0,
-        background: "blue",
+        height: 500,
       }}
       gl={{ preserveDrawingBuffer: true }} // to capture the canvas
       id="r3f-canvas"

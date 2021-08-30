@@ -3,7 +3,7 @@ import * as ReactDOM from "react-dom"
 import { GUI } from "./components/GUI"
 import { FormContext } from "./helpers/form-provider"
 import { useForm } from "react-hook-form"
-import "./ui.scss"
+import "./global.css"
 import { GradientScene } from "./components/GradientScene"
 
 function App() {
@@ -19,16 +19,11 @@ function App() {
 
   return (
     <FormContext.Provider value={formProps}>
-      <div
-        style={{
-          position: "absolute",
-          zIndex: 1,
-        }}
-      >
+      <GradientScene />
+      <div>
         <button onClick={insertCanvasAsImage}>Insert</button>
         <GUI />
       </div>
-      <GradientScene />
     </FormContext.Provider>
   )
 }
