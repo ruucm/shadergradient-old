@@ -20,10 +20,7 @@ function App() {
   return (
     <FormContext.Provider value={formProps}>
       <GradientScene />
-      <div>
-        <button onClick={insertCanvasAsImage}>Insert</button>
-        <PropertyControls />
-      </div>
+      <PropertyControls onSubmit={insertCanvasAsImage} />
     </FormContext.Provider>
   )
 }
