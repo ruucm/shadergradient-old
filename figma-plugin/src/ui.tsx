@@ -5,16 +5,11 @@ import { FormContext } from "./helpers/form-provider"
 import { useForm } from "react-hook-form"
 import "./global.css"
 import { GradientScene } from "./components/GradientScene"
+import { defaultProperties } from "./consts"
 
 function App() {
   const formProps = useForm({
-    defaultValues: {
-      noiseStrength: 0.1,
-      // for gradient-scene
-      type: "plane",
-      env: "env",
-      postProcessing: "threejs",
-    },
+    defaultValues: defaultProperties,
   })
 
   return (

@@ -11,7 +11,7 @@ type RadioPropsT = {
 >
 
 export const Radio = React.forwardRef<HTMLInputElement, RadioPropsT>(
-  ({ label = "label", ...inputProps }: RadioPropsT, ref) => {
+  ({ label, ...inputProps }: RadioPropsT, ref) => {
     return (
       <label
         className={classNames(
@@ -25,7 +25,7 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioPropsT>(
           id={inputProps.value} // for htmlFor focusing
           {...inputProps}
         />
-        <span>{label}</span>
+        <span>{label || inputProps.value}</span>
       </label>
     )
   }

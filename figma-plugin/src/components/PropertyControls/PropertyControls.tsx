@@ -5,35 +5,61 @@ import { UI } from "shadergradient"
 import styles from "./PropertyControls.module.scss"
 
 export function PropertyControls({ onSubmit }) {
-  const { register, handleSubmit }: any = useContext(FormContext) // States from Form
+  const { register, handleSubmit, watch }: any = useContext(FormContext) // States from Form
+  const fruitsValue = watch("Fruits")
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className={styles.wrap}>
-        <div>
-          <input {...register("type")} type="radio" value="plane" />
-          <label>Plane</label>
-        </div>
-        <div>
-          <input {...register("type")} type="radio" value="sphere" />
-          <label>Sphere</label>
-        </div>
-        <div>
-          <input {...register("type")} type="radio" value="waterPlane" />
-          <label>Water Plane</label>
-        </div>
-      </div>
+      <UI.RadioGroup>
+        <UI.Radio
+          value="Apple"
+          checked={fruitsValue === "Apple"}
+          {...register("Fruits")}
+        />
+        <UI.Radio
+          value="Banana"
+          checked={fruitsValue === "Banana"}
+          {...register("Fruits")}
+        />
+      </UI.RadioGroup>
 
-      <div className={styles.wrap}>
-        <div>
-          <input {...register("postProcessing")} type="radio" value="threejs" />
-          <label>threejs</label>
-        </div>
-        <div>
-          <input {...register("postProcessing")} type="radio" value="r3f" />
-          <label>@react-three/postprocessing</label>
-        </div>
-      </div>
+      <UI.Spacing height="20px" />
+
+      <UI.RadioGroup>
+        <UI.Radio
+          value="plane"
+          checked={watch("type") === "plane"}
+          {...register("type")}
+        />
+        <UI.Radio
+          value="sphere"
+          checked={watch("type") === "sphere"}
+          {...register("type")}
+        />
+        <UI.Radio
+          value="waterPlane"
+          checked={watch("type") === "waterPlane"}
+          {...register("type")}
+        />
+      </UI.RadioGroup>
+
+      <UI.Spacing height="20px" />
+
+      <UI.RadioGroup>
+        <UI.Radio
+          value="threejs"
+          checked={watch("postProcessing") === "threejs"}
+          {...register("postProcessing")}
+        />
+        <UI.Radio
+          value="r3f"
+          checked={watch("postProcessing") === "r3f"}
+          {...register("postProcessing")}
+        />
+      </UI.RadioGroup>
+
+      <UI.Spacing height="20px" />
+
       <UI.Button type="submit">Insert</UI.Button>
     </form>
   )
