@@ -17,7 +17,7 @@ export function GradientScene() {
         background: "blue",
       }}
       gl={{ preserveDrawingBuffer: true }} // to capture the canvas
-      id="3d-canvas"
+      id="r3f-canvas"
     >
       {/* @ts-ignore */}
       <OrbitControls />

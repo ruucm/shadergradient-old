@@ -41,42 +41,33 @@ async function insertCanvasAsImage() {
 }
 
 async function captureCanvas() {
-  const image = new Image()
-
-  const canvas = document.getElementById("3d-canvas")
-    .children[0] as HTMLCanvasElement
-  console.log("canvas", canvas)
-
-  var dataURL = canvas.toDataURL("image/jpeg", 1.0) // full quality
-  image.src = dataURL
-
-  const canvas2 = document.createElement("canvas")
-  const context2 = canvas2.getContext("2d")
-
-  const res = await addImageProcess(image.src)
-
-  if (res > 0) {
-    const view: any = await imageToUint8Array(image, context2)
-    return view
-  }
-}
-
-function addImageProcess(src) {
   return new Promise((resolve, reject) => {
-    let img = new Image()
-    img.onload = () => resolve(img.height)
-    img.onerror = reject
-    img.src = src
+    const image = new Image()
+
+    const r3fCanvas = document.getElementById("r3f-canvas")
+      .children[0] as HTMLCanvasElement
+
+    const dataURL = r3fCanvas.toDataURL("image/jpeg", 1.0) // full quality
+    image.src = dataURL
+
+    image.onload = async () => {
+      const view: any = await imageToUint8Array(image)
+      console.log(`${view.length} bytes`)
+      resolve(view)
+    }
   })
 }
 
-async function imageToUint8Array(image, context) {
+async function imageToUint8Array(image) {
   return new Promise((resolve, reject) => {
-    // context.width = image.width;
-    // context.height = image.height;
-    context.width = 1000
-    context.height = 1000
+    // create a canvas for converto image to uint8array
+    const canvas = document.createElement("canvas")
+    const context = canvas.getContext("2d")
+
+    context.canvas.width = image.width
+    context.canvas.height = image.height
     context.drawImage(image, 0, 0)
+
     context.canvas.toBlob((blob) =>
       blob
         .arrayBuffer()

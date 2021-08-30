@@ -25,7 +25,7 @@ async function invertPaint(paint, bytes) {
     // overwrite other types of paint (eg. SOLID)
     const newPaint: ImagePaint = {
       type: "IMAGE",
-      scaleMode: "FILL",
+      scaleMode: "FIT",
       imageHash: figma.createImage(bytes).hash,
     }
     return newPaint
