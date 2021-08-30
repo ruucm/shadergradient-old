@@ -1,6 +1,6 @@
-import sass from "rollup-plugin-sass"
 import typescript from "rollup-plugin-typescript2"
 import glslify from "rollup-plugin-glslify"
+import postcss from "rollup-plugin-postcss"
 
 import pkg from "./package.json"
 
@@ -16,9 +16,11 @@ export default {
     },
   ],
   plugins: [
-    sass({ insert: true }),
     typescript({ objectHashIgnoreUnknownHack: true }),
     glslify(),
+    postcss({
+      modules: true,
+    }),
   ],
   external: [
     "react",

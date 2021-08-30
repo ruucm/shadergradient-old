@@ -1,7 +1,7 @@
 import * as React from "react"
 import { useContext } from "react"
 import { FormContext } from "../../helpers/form-provider"
-import { Button } from "../Button"
+import { UI } from "shadergradient"
 import styles from "./PropertyControls.module.scss"
 
 export function PropertyControls({ onSubmit }) {
@@ -34,7 +34,7 @@ export function PropertyControls({ onSubmit }) {
           <label>@react-three/postprocessing</label>
         </div>
       </div>
-      <Button type="submit">Insert</Button>
+      <UI.Button type="submit">Insert</UI.Button>
     </form>
   )
 }
