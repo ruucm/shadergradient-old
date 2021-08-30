@@ -2,29 +2,12 @@ import * as React from "react"
 import { useContext } from "react"
 import { FormContext } from "../../helpers/form-provider"
 import { UI } from "shadergradient"
-import styles from "./PropertyControls.module.scss"
 
 export function PropertyControls({ onSubmit }) {
   const { register, handleSubmit, watch }: any = useContext(FormContext) // States from Form
-  const fruitsValue = watch("Fruits")
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <UI.RadioGroup>
-        <UI.Radio
-          value="Apple"
-          checked={fruitsValue === "Apple"}
-          {...register("Fruits")}
-        />
-        <UI.Radio
-          value="Banana"
-          checked={fruitsValue === "Banana"}
-          {...register("Fruits")}
-        />
-      </UI.RadioGroup>
-
-      <UI.Spacing height="20px" />
-
       <UI.RadioGroup>
         <UI.Radio
           value="plane"
