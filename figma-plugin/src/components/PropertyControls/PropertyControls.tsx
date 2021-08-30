@@ -12,16 +12,19 @@ export function PropertyControls({ onSubmit }) {
         <UI.Radio
           value="plane"
           checked={watch("type") === "plane"}
+          label="Plane"
           {...register("type")}
         />
         <UI.Radio
           value="sphere"
           checked={watch("type") === "sphere"}
+          label="Sphere"
           {...register("type")}
         />
         <UI.Radio
           value="waterPlane"
           checked={watch("type") === "waterPlane"}
+          label="Water"
           {...register("type")}
         />
       </UI.RadioGroup>
