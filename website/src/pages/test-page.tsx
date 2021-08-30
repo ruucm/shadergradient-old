@@ -22,23 +22,24 @@ const Page = () => {
 
   return (
     <>
-      {/* <Box r3f route='/box' /> */}
-
       <div style={{ height: 300 }} />
 
       <form onSubmit={handleSubmit(onSubmit)}>
-        <UI.Radio
-          label='Apple'
-          value='Apple'
-          checked={fruitsValue === 'Apple'}
-          {...register('Fruits', { required: true })}
-        />
-        <UI.Radio
-          label='Banana'
-          value='Banana'
-          checked={fruitsValue === 'Banana'}
-          {...register('Fruits', { required: true })}
-        />
+        <UI.RadioGroup>
+          <UI.Radio
+            label='Apple'
+            value='Apple'
+            checked={fruitsValue === 'Apple'}
+            {...register('Fruits', { required: true })}
+          />
+          <UI.Radio
+            label='Banana'
+            value='Banana'
+            checked={fruitsValue === 'Banana'}
+            {...register('Fruits', { required: true })}
+          />
+        </UI.RadioGroup>
+
         <input type='submit' />
       </form>
     </>
