@@ -1,6 +1,6 @@
 import * as React from "react"
 import * as ReactDOM from "react-dom"
-import { GUI } from "./components/GUI"
+import { PropertyControls } from "./components/PropertyControls"
 import { FormContext } from "./helpers/form-provider"
 import { useForm } from "react-hook-form"
 import "./global.css"
@@ -22,7 +22,7 @@ function App() {
       <GradientScene />
       <div>
         <button onClick={insertCanvasAsImage}>Insert</button>
-        <GUI />
+        <PropertyControls />
       </div>
     </FormContext.Provider>
   )

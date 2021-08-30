@@ -1,11 +1,10 @@
 import * as React from "react"
 import { useContext } from "react"
 import { FormContext } from "../../helpers/form-provider"
-import styles from "./GUI.module.scss"
+import styles from "./PropertyControls.module.scss"
 
-export function GUI() {
+export function PropertyControls() {
   const ctx: any = useContext(FormContext) // States from Form
-  console.log("ctx - GUIGradient", ctx)
 
   return (
     <div
@@ -18,7 +17,7 @@ export function GUI() {
         zIndex: 999,
       }}
     >
-      GUI
+      PropertyControls
       <div>
         <div className={styles.wrap}>
           <div>
