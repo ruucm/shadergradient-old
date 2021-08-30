@@ -7,7 +7,7 @@ import { FormContext } from "../helpers/form-provider"
 
 export function GradientScene() {
   const ctx: any = useContext(FormContext)
-  const { type, postProcessing } = ctx?.watch()
+  const { type, postProcessing }: any = ctx?.watch()
 
   return (
     <Canvas
@@ -17,7 +17,6 @@ export function GradientScene() {
       gl={{ preserveDrawingBuffer: true }} // to capture the canvas
       id="r3f-canvas"
     >
-      {/* @ts-ignore */}
       <OrbitControls />
       <Gradient
         environment={<Environment preset="city" />}
