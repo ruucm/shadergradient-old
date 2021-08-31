@@ -22,7 +22,10 @@ export function GradientMesh({ type, r3f }: any) {
   )
 
   return (
-    <mesh ref={mesh} rotation={[Math.PI / 2, 0, 0]}>
+    <mesh
+      ref={mesh}
+      rotation={[Math.PI / 2, 0, 0]} // rotate mesh to get more lights
+    >
       {type === "plane" && <planeGeometry args={[5, 5, 1, meshCount]} />}
       {type === "sphere" && <icosahedronBufferGeometry args={[1, meshCount]} />}
       {type === "waterPlane" && (

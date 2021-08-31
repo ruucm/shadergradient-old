@@ -23,7 +23,7 @@ export const Gradient: React.FC<GradientPropsT> = ({
 }) => {
   const { camera } = useThree()
   // scene.background = new THREE.Color(0x000000)
-  camera.position.set(2, 4, 1)
+  camera.position.set(0, 2, 0)
 
   usePostProcessing({ on: postProcessing === "threejs" })
 
