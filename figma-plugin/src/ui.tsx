@@ -36,7 +36,7 @@ async function captureCanvas() {
     const r3fCanvas = document.getElementById("r3f-canvas")
       .children[0] as HTMLCanvasElement
 
-    const dataURL = r3fCanvas.toDataURL("image/jpeg", 1.0) // full quality
+    const dataURL = r3fCanvas.toDataURL("image/png", 1.0) // full quality
     image.src = dataURL
 
     image.onload = async () => {
