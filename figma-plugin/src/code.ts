@@ -30,6 +30,7 @@ async function invertPaint(paint, bytes) {
     }
     return newPaint
   }
+  return paint
 }
 
 async function replaceToNewImage(node, bytes) {

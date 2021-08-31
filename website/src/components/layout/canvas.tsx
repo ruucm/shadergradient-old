@@ -45,7 +45,7 @@ const LCanvas = ({ children }) => {
         console.log(state.camera)
       }}
     >
-      <LControl />
+      {/* <LControl /> */}
       <A11yUserPreferences>
         <Preload all />
         <ContextBridge>{children}</ContextBridge>

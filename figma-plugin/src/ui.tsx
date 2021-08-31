@@ -1,3 +1,5 @@
+import { Environment, OrbitControls } from "@react-three/drei"
+import { Canvas } from "@react-three/fiber"
 import * as React from "react"
 import * as ReactDOM from "react-dom"
 import { PropertyControls } from "./components/PropertyControls"

@@ -20,6 +20,7 @@ const Dom = ({ children }) => {
           width: '100%',
           opacity: 0.5,
           background: '#fff',
+          display: 'none',
         }}
       >
         <Link href='/'>Home</Link>
@@ -27,6 +28,10 @@ const Dom = ({ children }) => {
         <Link href='/scene-1'>scene-1 (moving-gradient)</Link>
         <br />
         <Link href='/gradient-scene'>gradient-scene</Link>
+        <br />
+        <Link href='/package-test'>package-test</Link>
+        <br />
+        <Link href='/landing'>landing page</Link>
       </ul>
       {children}
     </div>

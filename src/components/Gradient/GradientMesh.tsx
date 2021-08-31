@@ -8,7 +8,7 @@ const clock = new THREE.Clock()
 
 const meshCount = 50
 
-export function GradientMesh({ type, r3f }: any) {
+export function GradientMesh({ type = "plane", r3f }: any) {
   const mesh = useRef()
   const material: any = useRef()
   // Subscribe this component to the render-loop, rotate the mesh every frame
