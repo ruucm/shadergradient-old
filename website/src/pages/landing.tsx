@@ -43,6 +43,10 @@ const MyItem = ({ onClick, children, visible }) => (
   </div>
 )
 
+const presets = [{title:"Halo", text:"black"}, {title:"Breeze", text:"black"},{title:"Dawn", text:"black"}, {title:"Aurora", text:"black"},{title:"Tropical", text:"black"}]
+
+ 
+
 const Page = () => {
   const snapList = useRef(null)
 
@@ -90,62 +94,18 @@ const Page = () => {
               <a href=''>→ Customize</a>
             </div>
             <SnapList ref={snapList} direction='horizontal'>
-              <SnapItem
-                margin={{ left: '20vw', right: itemGap }}
-                snapAlign='start'
-              >
-                <MyItem onClick={() => goToSnapItem(0)} visible={visible === 0}>
-                  01 Halo
+              {presets.map((item, index)=>{
+                return (
+<SnapItem key={index} margin={{left:itemGap, right:itemGap}} snapAlign='start'>
+<MyItem onClick={() => goToSnapItem(index)} visible={visible === index}>
+                 {index<10?"0"+index.toString():index.toString()}{" "}{item.title}
                 </MyItem>
-              </SnapItem>
-              <SnapItem
-                margin={{ left: itemGap, right: itemGap }}
-                snapAlign='start'
-              >
-                <MyItem onClick={() => goToSnapItem(1)} visible={visible === 1}>
-                  02 Breeze
-                </MyItem>
-              </SnapItem>
-              <SnapItem
-                margin={{ left: itemGap, right: itemGap }}
-                snapAlign='start'
-              >
-                <MyItem onClick={() => goToSnapItem(2)} visible={visible === 2}>
-                  03 Dawn
-                </MyItem>
-              </SnapItem>
-              <SnapItem
-                margin={{ left: itemGap, right: itemGap }}
-                snapAlign='start'
-              >
-                <MyItem onClick={() => goToSnapItem(3)} visible={visible === 3}>
-                  04 Aurora
-                </MyItem>
-              </SnapItem>
-              <SnapItem
-                margin={{ left: itemGap, right: itemGap }}
-                snapAlign='start'
-              >
-                <MyItem onClick={() => goToSnapItem(4)} visible={visible === 4}>
-                  05 Hazy night
-                </MyItem>
-              </SnapItem>
-              <SnapItem
-                margin={{ left: itemGap, right: itemGap }}
-                snapAlign='start'
-              >
-                <MyItem onClick={() => goToSnapItem(5)} visible={visible === 5}>
-                  06 Daydream
-                </MyItem>
-              </SnapItem>
-              <SnapItem
-                margin={{ left: itemGap, right: '30vw' }}
-                snapAlign='start'
-              >
-                <MyItem onClick={() => goToSnapItem(6)} visible={visible === 6}>
-                  07 Summer
-                </MyItem>
-              </SnapItem>
+</SnapItem>
+                )
+              })}
+              <SnapItem margin={{left:itemGap, right:"30vw"}} snapAlign='start'>       
+              <button onClick={()=>{goToSnapItem(0)}}>←</button>
+</SnapItem>
             </SnapList>
           </div>
           <div className={styles.footer}>
@@ -157,25 +117,36 @@ const Page = () => {
         </div>
 
         <div className={styles.rightWrapper}>
+          <div className={styles.mobileBorderWrapper}>
+            <div ></div>
+            <div ></div>
+          </div>
           <div className={styles.links}>
             <div className={styles.iconWrapper}>
+              <a href="">
               <p>Figma</p>
-              <div className={styles.icon}></div>
+              <div className={styles.icon}></div></a>
             </div>
             <div className={styles.iconWrapper}>
+            <a href="">
+
               <p>Framer</p>
-              <div className={styles.icon}></div>
+              <div className={styles.icon}></div></a>
             </div>
             <div className={styles.iconWrapper}>
+            <a href="https://www.npmjs.com/package/shadergradient">
+
               <p>Github</p>
-              <div className={styles.icon}></div>
+              <div className={styles.icon}></div></a>
             </div>
             <div className={styles.iconWrapper}>
+            <a href="">
+
               <p>More info</p>
-              <div className={styles.icon}></div>
+              <div className={styles.icon}></div></a>
             </div>
           </div>
-          <svg
+          <div className={styles.svgWrapper}>   <svg
             xmlns='http://www.w3.org/2000/svg'
             width='720'
             height='1335'
@@ -191,7 +162,9 @@ const Page = () => {
               strokeWidth='2'
               stroke='hsl(0, 0%, 22%)'
             ></path>
-          </svg>
+          </svg></div>
+
+
           <div className={styles.mobileContent}>
             <svg xmlns='http://www.w3.org/2000/svg' width='28' height='24'>
               <path
