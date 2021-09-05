@@ -27,6 +27,7 @@
     "babel-core": "^6.26.3",
     "babel-runtime": "^6.26.0",
     "postcss": "^8.3.6",
+    "prettier": "2.3.2",
     "rollup": "^2.56.2",
     "rollup-plugin-glslify": "^1.2.0",
     "rollup-plugin-postcss": "^4.0.1",
