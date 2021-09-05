@@ -31,7 +31,7 @@ const LCanvas = ({ children }) => {
       }}
       camera={{
         fov: 45,
-        zoom: 0.5,
+        zoom: 1.5,
       }}
       dpr={2} //device pixel ratio - 1 default and fast, 2 detailed and slow
       linear={true} //sRGBEncoding
