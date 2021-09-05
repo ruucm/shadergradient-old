@@ -11,25 +11,10 @@ import {
 } from 'react-snaplist-carousel'
 import { Gradient } from 'shadergradient'
 import styles from './Home.module.scss'
+import { MyItem } from './my-item'
 
 //gap between theme items
 const itemGap = '50px'
-
-// eslint-disable-next-line react/display-name
-const MyItem = ({ onClick, children, visible }) => (
-  <div
-    style={{
-      width: 'fit-content',
-      fontSize: 60,
-      opacity: visible ? 1 : 0.3,
-      borderBottom: visible ? '4px solid black' : '0px solid black',
-      cursor: visible ? 'default' : 'pointer',
-    }}
-    onClick={onClick}
-  >
-    {children}
-  </div>
-)
 
 const presets = [
   { title: 'Halo', text: 'black' },
