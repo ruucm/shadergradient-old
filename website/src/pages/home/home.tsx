@@ -8,7 +8,7 @@ import { Suspense, useContext } from 'react'
 import { EffectComposer, Noise } from '@react-three/postprocessing'
 import { FormContext } from '@/helpers/form-provider'
 import { motion } from 'framer-motion'
-import styles from '../styles/landing.module.css'
+import styles from './Home.module.scss'
 import {
   SnapList,
   SnapItem,
@@ -43,9 +43,13 @@ const MyItem = ({ onClick, children, visible }) => (
   </div>
 )
 
-const presets = [{title:"Halo", text:"black"}, {title:"Breeze", text:"black"},{title:"Dawn", text:"black"}, {title:"Aurora", text:"black"},{title:"Tropical", text:"black"}]
-
- 
+const presets = [
+  { title: 'Halo', text: 'black' },
+  { title: 'Breeze', text: 'black' },
+  { title: 'Dawn', text: 'black' },
+  { title: 'Aurora', text: 'black' },
+  { title: 'Tropical', text: 'black' },
+]
 
 const Page = () => {
   const snapList = useRef(null)
@@ -94,18 +98,35 @@ const Page = () => {
               <a href=''>→ Customize</a>
             </div>
             <SnapList ref={snapList} direction='horizontal'>
-              {presets.map((item, index)=>{
+              {presets.map((item, index) => {
                 return (
-<SnapItem key={index} margin={{left:itemGap, right:itemGap}} snapAlign='start'>
-<MyItem onClick={() => goToSnapItem(index)} visible={visible === index}>
-                 {index<10?"0"+index.toString():index.toString()}{" "}{item.title}
-                </MyItem>
-</SnapItem>
+                  <SnapItem
+                    key={index}
+                    margin={{ left: itemGap, right: itemGap }}
+                    snapAlign='start'
+                  >
+                    <MyItem
+                      onClick={() => goToSnapItem(index)}
+                      visible={visible === index}
+                    >
+                      {index < 10 ? '0' + index.toString() : index.toString()}{' '}
+                      {item.title}
+                    </MyItem>
+                  </SnapItem>
                 )
               })}
-              <SnapItem margin={{left:itemGap, right:"30vw"}} snapAlign='start'>       
-              <button onClick={()=>{goToSnapItem(0)}}>←</button>
-</SnapItem>
+              <SnapItem
+                margin={{ left: itemGap, right: '30vw' }}
+                snapAlign='start'
+              >
+                <button
+                  onClick={() => {
+                    goToSnapItem(0)
+                  }}
+                >
+                  ←
+                </button>
+              </SnapItem>
             </SnapList>
           </div>
           <div className={styles.footer}>
@@ -118,52 +139,55 @@ const Page = () => {
 
         <div className={styles.rightWrapper}>
           <div className={styles.mobileBorderWrapper}>
-            <div ></div>
-            <div ></div>
+            <div></div>
+            <div></div>
           </div>
           <div className={styles.links}>
             <div className={styles.iconWrapper}>
-              <a href="">
-              <p>Figma</p>
-              <div className={styles.icon}></div></a>
+              <a href=''>
+                <p>Figma</p>
+                <div className={styles.icon}></div>
+              </a>
             </div>
             <div className={styles.iconWrapper}>
-            <a href="">
-
-              <p>Framer</p>
-              <div className={styles.icon}></div></a>
+              <a href=''>
+                <p>Framer</p>
+                <div className={styles.icon}></div>
+              </a>
             </div>
             <div className={styles.iconWrapper}>
-            <a href="https://www.npmjs.com/package/shadergradient">
-
-              <p>Github</p>
-              <div className={styles.icon}></div></a>
+              <a href='https://www.npmjs.com/package/shadergradient'>
+                <p>Github</p>
+                <div className={styles.icon}></div>
+              </a>
             </div>
             <div className={styles.iconWrapper}>
-            <a href="">
-
-              <p>More info</p>
-              <div className={styles.icon}></div></a>
+              <a href=''>
+                <p>More info</p>
+                <div className={styles.icon}></div>
+              </a>
             </div>
           </div>
-          <div className={styles.svgWrapper}>   <svg
-            xmlns='http://www.w3.org/2000/svg'
-            width='720'
-            height='1335'
-            className={styles.mobileClip}
-          >
-            <path
-              d='M 0 0 L 720 0 L 720 1335 L 0 1335 Z M 222 936 C 222 944.837 229.163 952 238 952 L 487 952 C 495.837 952 503 944.837 503 936 L 503 376 C 503 367.163 495.837 360 487 360 L 238 360 C 229.163 360 222 367.163 222 376 Z'
-              fill='hsl(0, 0%, 0%)'
-            ></path>
-            <path
-              d='M 216 374 C 216 362.954 224.954 354 236 354 L 489 354 C 500.046 354 509 362.954 509 374 L 509 938 C 509 949.046 500.046 958 489 958 L 236 958 C 224.954 958 216 949.046 216 938 Z'
-              fill='transparent'
-              strokeWidth='2'
-              stroke='hsl(0, 0%, 22%)'
-            ></path>
-          </svg></div>
-
+          <div className={styles.svgWrapper}>
+            {' '}
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              width='720'
+              height='1335'
+              className={styles.mobileClip}
+            >
+              <path
+                d='M 0 0 L 720 0 L 720 1335 L 0 1335 Z M 222 936 C 222 944.837 229.163 952 238 952 L 487 952 C 495.837 952 503 944.837 503 936 L 503 376 C 503 367.163 495.837 360 487 360 L 238 360 C 229.163 360 222 367.163 222 376 Z'
+                fill='hsl(0, 0%, 0%)'
+              ></path>
+              <path
+                d='M 216 374 C 216 362.954 224.954 354 236 354 L 489 354 C 500.046 354 509 362.954 509 374 L 509 938 C 509 949.046 500.046 958 489 958 L 236 958 C 224.954 958 216 949.046 216 938 Z'
+                fill='transparent'
+                strokeWidth='2'
+                stroke='hsl(0, 0%, 22%)'
+              ></path>
+            </svg>
+          </div>
 
           <div className={styles.mobileContent}>
             <svg xmlns='http://www.w3.org/2000/svg' width='28' height='24'>
@@ -209,7 +233,7 @@ export default Page
 export async function getStaticProps() {
   return {
     props: {
-      title: 'Landing',
+      title: 'Shader Gradient',
     },
   }
 }

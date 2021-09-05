@@ -44,6 +44,7 @@ const nextConfig = {
 
     return config
   },
+  pageExtensions: ['page.ts', 'page.tsx', 'api.ts', 'api.tsx'],
 }
 
 // manage i18n

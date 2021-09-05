@@ -2,8 +2,11 @@
 import { motion } from 'https://framer.com/m/framer/framer-motion.js'
 // @ts-ignore
 import confetti from 'https://framer.com/m/framer/confetti.js'
+// @ts-ignore
+// import { Render } from 'https://framer.com/m/Render-iv35.js@6Z6W3WMpN4iOXkV8T0Ix'
 
 const Page = () => {
+  // console.log('Render', Render)
   return (
     <>
       <motion.div
