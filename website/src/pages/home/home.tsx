@@ -18,10 +18,7 @@ import {
   isTouchDevice,
 } from 'react-snaplist-carousel'
 import Link from 'next/link'
-
-const GradientMesh = dynamic(() => import('@/components/canvas/GradientMesh'), {
-  ssr: false,
-})
+import { Gradient } from 'shadergradient'
 
 //gap between theme items
 const itemGap = '50px'
@@ -223,7 +220,12 @@ const Page = () => {
         </div>
       </div>
 
-      <Scene r3f />
+      <Gradient
+        environment={<Environment preset='city' background={false} />}
+        lights={null}
+        rotation={[(Math.PI / 3) * 2, 0, 0]}
+        r3f
+      />
       {/* <GUIGradient /> */}
     </>
   )
@@ -237,39 +239,4 @@ export async function getStaticProps() {
       title: 'Shader Gradient',
     },
   }
-}
-
-function Scene({ r3f }) {
-  const ctx: any = useContext(FormContext)
-  const { postProcessing, env } = ctx?.watch()
-
-  // const { camera } = useThree()
-  // // scene.background = new THREE.Color(0x000000)
-  // camera.position.set(2, 4, 1)
-  // camera.fov = 100
-
-  usePostProcessing({ on: postProcessing === 'threejs' })
-
-  return (
-    <Suspense fallback={'Loading...'}>
-      {env === 'env' ? (
-        <Environment
-          // files={'cayley_interior_2k.hdr'}
-          // path={'/hdr/'}
-          preset='city'
-          background={false}
-        />
-      ) : (
-        <ambientLight intensity={1} />
-      )}
-
-      {postProcessing === 'r3f' && (
-        <EffectComposer>
-          <Noise opacity={0.2} />
-        </EffectComposer>
-      )}
-
-      <GradientMesh />
-    </Suspense>
-  )
 }

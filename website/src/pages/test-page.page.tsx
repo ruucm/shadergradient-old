@@ -2,10 +2,6 @@ import dynamic from 'next/dynamic'
 import { useForm } from 'react-hook-form'
 import { UI } from 'shadergradient'
 
-const Box = dynamic(() => import('@/components/canvas/Box'), {
-  ssr: false,
-})
-
 const Page = () => {
   const {
     register,
