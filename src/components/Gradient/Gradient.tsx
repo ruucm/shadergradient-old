@@ -8,6 +8,7 @@ import * as THREE from "three"
 
 export type GradientPropsT = {
   r3f?: boolean
+  type?: "plane" | "sphere" | "waterPlane"
   postProcessing?: "threejs" | "r3f"
   environment?: any
   lights?: any
@@ -19,6 +20,7 @@ export type GradientPropsT = {
 
 export const Gradient: React.FC<GradientPropsT> = ({
   r3f,
+  type = "plane",
   postProcessing = "threejs",
   environment = <Environment preset="lobby" background={true} />,
   lights = <ambientLight intensity={0.3} />,
@@ -38,7 +40,7 @@ export const Gradient: React.FC<GradientPropsT> = ({
     <Suspense fallback={"Loading..."}>
       {environment}
       {lights}
-        <GradientMesh rotation={rotation} />
+      <GradientMesh type={type} rotation={rotation} />
 
       {/* <EffectComposer>
         <Noise opacity={0.3} />
