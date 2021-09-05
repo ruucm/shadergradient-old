@@ -60,6 +60,12 @@ function App({ Component, pageProps = { title: 'index' } }) {
       type: 'plane',
       env: 'env',
       postProcessing: 'threejs',
+      cameraPositionX: 0,
+      cameraPositionY: 0,
+      cameraPositionZ: 0,
+      cameraQuaternionX: 0,
+      cameraQuaternionY: 0,
+      cameraQuaternionZ: 0,
     },
   })
   return (
