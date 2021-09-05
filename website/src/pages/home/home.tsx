@@ -17,8 +17,7 @@ import {
   useDragToScroll,
   isTouchDevice,
 } from 'react-snaplist-carousel'
-
-import styled from 'styled-components'
+import Link from 'next/link'
 
 const GradientMesh = dynamic(() => import('@/components/canvas/GradientMesh'), {
   ssr: false,
@@ -95,7 +94,9 @@ const Page = () => {
           >
             <div className={styles.sliderHeader}>
               <p>Select from themes</p>
-              <a href=''>→ Customize</a>
+              <Link href='/customize'>
+                <a>→ Customize</a>
+              </Link>
             </div>
             <SnapList ref={snapList} direction='horizontal'>
               {presets.map((item, index) => {
