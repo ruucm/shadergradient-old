@@ -203,6 +203,8 @@ const Page = () => {
         lights={null}
         rotation={[(Math.PI / 3) * 2, 0, 0]}
         cameraPosition={{ x: 0, y: 2, z: 4 }}
+        cameraRotation={{ x: 0, y: 0, z: 0 }}
+        cameraQuaternion={{ x: -Math.PI / 6, y: 0, z: 0 }}
       />
       {/* <GUIGradient /> */}
     </>
