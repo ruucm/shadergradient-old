@@ -1,24 +1,16 @@
-import React, { useRef, forwardRef } from 'react'
-import { GUIGradient } from '@/components/dom/gui-gradient'
-import { usePostProcessing } from '@/hooks/use-post-processing'
 import { Environment } from '@react-three/drei'
-import { useThree } from '@react-three/fiber'
-import dynamic from 'next/dynamic'
-import { Suspense, useContext } from 'react'
-import { EffectComposer, Noise } from '@react-three/postprocessing'
-import { FormContext } from '@/helpers/form-provider'
 import { motion } from 'framer-motion'
-import styles from './Home.module.scss'
-import {
-  SnapList,
-  SnapItem,
-  useVisibleElements,
-  useScroll,
-  useDragToScroll,
-  isTouchDevice,
-} from 'react-snaplist-carousel'
 import Link from 'next/link'
+import React, { useRef } from 'react'
+import {
+  SnapItem,
+  SnapList,
+  useDragToScroll,
+  useScroll,
+  useVisibleElements,
+} from 'react-snaplist-carousel'
 import { Gradient } from 'shadergradient'
+import styles from './Home.module.scss'
 
 //gap between theme items
 const itemGap = '50px'

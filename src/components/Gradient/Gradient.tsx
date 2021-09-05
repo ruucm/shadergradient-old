@@ -4,7 +4,6 @@ import * as React from "react"
 import { Suspense } from "react"
 import { usePostProcessing } from "../../hooks/use-post-processing"
 import { GradientMesh } from "./GradientMesh"
-import { EffectComposer, Noise } from "@react-three/postprocessing"
 
 export type GradientPropsT = {
   r3f?: boolean
@@ -24,7 +23,6 @@ export const Gradient: React.FC<GradientPropsT> = ({
   cameraPosition = { x: 1, y: 1, z: 1 }
 }) => {
   const { camera } = useThree()
-  // scene.background = new THREE.Color(0x000000)
   camera.position.set(cameraPosition.x, cameraPosition.y, cameraPosition.z)
 
   usePostProcessing({ on: postProcessing === "threejs" })
