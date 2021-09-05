@@ -205,6 +205,7 @@ const Page = () => {
         cameraPosition={{ x: 0, y: 2, z: 4 }}
         cameraRotation={{ x: 0, y: 0, z: 0 }}
         cameraQuaternion={{ x: -Math.PI / 6, y: 0, z: 0 }}
+        cameraZoom={1.5}
       />
       {/* <GUIGradient /> */}
     </>

@@ -66,6 +66,7 @@ function App({ Component, pageProps = { title: 'index' } }) {
       cameraQuaternionX: 0,
       cameraQuaternionY: 0,
       cameraQuaternionZ: 0,
+      cameraZoom: 0.5,
     },
   })
   return (

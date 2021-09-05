@@ -12,6 +12,7 @@ const Page = () => {
     cameraQuaternionX,
     cameraQuaternionY,
     cameraQuaternionZ,
+    cameraZoom,
   }: any = ctx?.watch()
 
   console.log('type', type)
@@ -33,6 +34,7 @@ const Page = () => {
           z: cameraQuaternionZ,
         }}
         type={type}
+        cameraZoom={cameraZoom}
       />
       <Controls />
     </>
@@ -59,6 +61,7 @@ function Controls() {
     cameraQuaternionX,
     cameraQuaternionY,
     cameraQuaternionZ,
+    cameraZoom,
   }: any = watch()
 
   return (
@@ -144,6 +147,17 @@ function Controls() {
           {...register('cameraQuaternionZ')}
         />
         <label>cameraQuaternionZ ({cameraQuaternionZ})</label>
+      </div>
+      cameraZoom
+      <div>
+        <input
+          type='range'
+          min='0'
+          max='5'
+          step='0.1'
+          {...register('cameraZoom')}
+        />
+        <label>cameraZoom ({cameraZoom})</label>
       </div>
     </div>
   )

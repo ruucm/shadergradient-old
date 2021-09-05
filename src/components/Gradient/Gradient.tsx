@@ -16,6 +16,7 @@ export type GradientPropsT = {
   cameraPosition?: { x: number; y: number; z: number }
   cameraRotation?: { x: number; y: number; z: number }
   cameraQuaternion?: { x: number; y: number; z: number }
+  cameraZoom?: number
 }
 
 export const Gradient: React.FC<GradientPropsT> = ({
@@ -28,11 +29,14 @@ export const Gradient: React.FC<GradientPropsT> = ({
   cameraPosition = { x: 0, y: 0, z: 0 },
   cameraRotation = { x: 0, y: 0, z: 0 },
   cameraQuaternion = { x: 0, y: 0, z: 0 },
+  cameraZoom = 1,
 }) => {
   const { camera }: { camera: Camera } = useThree()
   camera.position.set(cameraPosition.x, cameraPosition.y, cameraPosition.z)
   camera.rotation.set(cameraRotation.x, cameraRotation.y, cameraRotation.z)
   camera.quaternion.setFromEuler(new THREE.Euler(cameraQuaternion.x, cameraQuaternion.y, cameraQuaternion.z))
+  camera.zoom = cameraZoom
+  camera.updateProjectionMatrix(); // need to update camera's zoom
 
   usePostProcessing({ on: postProcessing === "threejs" })
 
