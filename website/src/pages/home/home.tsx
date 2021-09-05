@@ -221,10 +221,11 @@ const Page = () => {
       </div>
 
       <Gradient
+        r3f
         environment={<Environment preset='city' background={false} />}
         lights={null}
         rotation={[(Math.PI / 3) * 2, 0, 0]}
-        r3f
+        cameraPosition={{ x: 0, y: 2, z: 4 }}
       />
       {/* <GUIGradient /> */}
     </>

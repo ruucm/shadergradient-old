@@ -8,7 +8,7 @@ const clock = new THREE.Clock()
 
 const meshCount = 50
 
-export function GradientMesh({ type = "plane", r3f }: any) {
+export function GradientMesh({ type = "plane", r3f, rotation }: any) {
   const mesh = useRef()
   const material: any = useRef()
   // Subscribe this component to the render-loop, rotate the mesh every frame
@@ -24,7 +24,7 @@ export function GradientMesh({ type = "plane", r3f }: any) {
   return (
     <mesh
       ref={mesh}
-      rotation={[Math.PI / 2, 0, 0]} // rotate mesh to get more lights
+      rotation={rotation} // rotate mesh to get more lights
     >
       {type === "plane" && <planeGeometry args={[5, 5, 1, meshCount]} />}
       {type === "sphere" && <icosahedronBufferGeometry args={[1, meshCount]} />}
