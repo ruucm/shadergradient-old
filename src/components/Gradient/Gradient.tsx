@@ -33,7 +33,7 @@ export const Gradient: React.FC<GradientPropsT> = ({
 }) => {
   const { camera }: { camera: Camera } = useThree()
   camera.position.set(cameraPosition.x, cameraPosition.y, cameraPosition.z)
-  camera.rotation.set(cameraRotation.x, cameraRotation.y, cameraRotation.z)
+  camera.rotation.set(cameraRotation.x, cameraRotation.y, cameraRotation.z) // this one weirldy not works.
   camera.quaternion.setFromEuler(new THREE.Euler(cameraQuaternion.x, cameraQuaternion.y, cameraQuaternion.z))
   camera.zoom = cameraZoom
   camera.updateProjectionMatrix(); // need to update camera's zoom
