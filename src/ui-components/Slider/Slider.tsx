@@ -8,13 +8,14 @@ import { useEffect, useState } from "react"
 type SliderPropsT = {
   defaultValue: number
   setValue: any
+  step: number
 } & React.DetailedHTMLProps<
   React.InputHTMLAttributes<HTMLInputElement>,
   HTMLInputElement
 >
 
 export const Slider = React.forwardRef<HTMLInputElement, SliderPropsT>(
-  ({ defaultValue, setValue }: SliderPropsT, ref) => {
+  ({ defaultValue, setValue, step }: SliderPropsT, ref) => {
     const [sharedValue, setSharedValue] = useState<any>(defaultValue)
     useEffect(() => {
       setValue("uTime", sharedValue)
@@ -26,12 +27,12 @@ export const Slider = React.forwardRef<HTMLInputElement, SliderPropsT>(
           type="number"
           value={sharedValue}
           onChange={(e: any) => setSharedValue(e.target.value)}
+          step={step}
         />
 
         <ReactSlider
           value={Number(sharedValue)}
-          marks
-          step={1}
+          step={step}
           min={0}
           max={9}
           onChange={(value, index) => setSharedValue(value)}

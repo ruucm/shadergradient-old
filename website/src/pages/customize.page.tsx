@@ -71,6 +71,7 @@ function Controls() {
       <UI.Slider
         defaultValue={0.2}
         setValue={setValue}
+        step={0.1}
         {...register('uTime')}
       />
       <UI.RadioGroup>
