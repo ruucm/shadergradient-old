@@ -17,6 +17,8 @@ export type GradientPropsT = {
   cameraRotation?: { x: number; y: number; z: number }
   cameraQuaternion?: { x: number; y: number; z: number }
   cameraZoom?: number
+  uTime?: number
+  animate?: boolean
 }
 
 export const Gradient: React.FC<GradientPropsT> = ({
@@ -25,18 +27,22 @@ export const Gradient: React.FC<GradientPropsT> = ({
   postProcessing = "threejs",
   environment = <Environment preset="lobby" background={true} />,
   lights = <ambientLight intensity={0.3} />,
-  rotation = [Math.PI * 2, 0, 0] ,
+  rotation = [Math.PI * 2, 0, 0],
   cameraPosition = { x: 0, y: 0, z: 0 },
   cameraRotation = { x: 0, y: 0, z: 0 },
   cameraQuaternion = { x: 0, y: 0, z: 0 },
   cameraZoom = 1,
+  uTime = 0.2,
+  animate = false,
 }) => {
   const { camera }: { camera: Camera } = useThree()
   camera.position.set(cameraPosition.x, cameraPosition.y, cameraPosition.z)
   camera.rotation.set(cameraRotation.x, cameraRotation.y, cameraRotation.z) // this one weirldy not works.
-  camera.quaternion.setFromEuler(new THREE.Euler(cameraQuaternion.x, cameraQuaternion.y, cameraQuaternion.z))
+  camera.quaternion.setFromEuler(
+    new THREE.Euler(cameraQuaternion.x, cameraQuaternion.y, cameraQuaternion.z)
+  )
   camera.zoom = cameraZoom
-  camera.updateProjectionMatrix(); // need to update camera's zoom
+  camera.updateProjectionMatrix() // need to update camera's zoom
 
   usePostProcessing({ on: postProcessing === "threejs" })
 
@@ -44,7 +50,12 @@ export const Gradient: React.FC<GradientPropsT> = ({
     <Suspense fallback={"Loading..."}>
       {environment}
       {lights}
-      <GradientMesh type={type} rotation={rotation} />
+      <GradientMesh
+        type={type}
+        rotation={rotation}
+        animate={animate}
+        uTime={uTime}
+      />
 
       {/* <EffectComposer>
         <Noise opacity={0.3} />

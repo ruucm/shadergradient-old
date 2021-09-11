@@ -13,13 +13,14 @@ const Page = () => {
     cameraQuaternionY,
     cameraQuaternionZ,
     cameraZoom,
+    uTime,
   }: any = ctx?.watch()
 
   console.log('type', type)
 
   return (
     <>
-      {/* <Gradient
+      <Gradient
         r3f
         rotation={[Math.PI / 2, 0, 0]}
         cameraPosition={{
@@ -35,7 +36,8 @@ const Page = () => {
         }}
         type={type}
         cameraZoom={cameraZoom}
-      /> */}
+        uTime={uTime}
+      />
       <Controls />
     </>
   )
@@ -67,13 +69,6 @@ function Controls() {
 
   return (
     <div style={{ background: 'white' }}>
-      uTime: {uTime}
-      <UI.Slider
-        defaultValue={0.2}
-        setValue={setValue}
-        step={0.1}
-        {...register('uTime')}
-      />
       <UI.RadioGroup>
         <UI.Radio
           value='plane'
@@ -167,6 +162,13 @@ function Controls() {
         />
         <label>cameraZoom ({cameraZoom})</label>
       </div>
+      uTime
+      <UI.Slider
+        defaultValue={0.2}
+        setValue={setValue}
+        step={0.1}
+        {...register('uTime')}
+      />
     </div>
   )
 }
