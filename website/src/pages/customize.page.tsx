@@ -19,7 +19,7 @@ const Page = () => {
 
   return (
     <>
-      <Gradient
+      {/* <Gradient
         r3f
         rotation={[Math.PI / 2, 0, 0]}
         cameraPosition={{
@@ -35,7 +35,7 @@ const Page = () => {
         }}
         type={type}
         cameraZoom={cameraZoom}
-      />
+      /> */}
       <Controls />
     </>
   )
@@ -52,7 +52,7 @@ export async function getStaticProps() {
 }
 
 function Controls() {
-  const { register, handleSubmit, watch }: any = useContext(FormContext) // States from Form
+  const { register, handleSubmit, watch, setValue } = useContext(FormContext) // States from Form
   const {
     type,
     cameraPositionX,
@@ -62,10 +62,17 @@ function Controls() {
     cameraQuaternionY,
     cameraQuaternionZ,
     cameraZoom,
+    uTime,
   }: any = watch()
 
   return (
     <div style={{ background: 'white' }}>
+      uTime: {uTime}
+      <UI.Slider
+        defaultValue={0.2}
+        setValue={setValue}
+        {...register('uTime')}
+      />
       <UI.RadioGroup>
         <UI.Radio
           value='plane'

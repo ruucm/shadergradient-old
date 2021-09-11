@@ -1,6 +1,6 @@
 import * as React from "react"
 import styles from "./Radio.module.scss"
-import classNames from "classnames"
+import cx from "classnames"
 
 type RadioPropsT = {
   value: string
@@ -14,10 +14,7 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioPropsT>(
   ({ label, ...inputProps }: RadioPropsT, ref) => {
     return (
       <label
-        className={classNames(
-          styles.label,
-          inputProps.checked && styles.checked
-        )}
+        className={cx(styles.label, inputProps.checked && styles.checked)}
         htmlFor={inputProps.value}
       >
         <input
