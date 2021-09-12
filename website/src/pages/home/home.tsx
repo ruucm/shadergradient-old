@@ -1,6 +1,7 @@
 import { Environment } from '@react-three/drei'
-import { motion } from 'framer-motion'
+import { motion, useAnimation, useMotionValue } from 'framer-motion'
 import Link from 'next/link'
+
 import React, { useRef } from 'react'
 import {
   SnapItem,
@@ -14,41 +15,107 @@ import styles from './Home.module.scss'
 import { MyItem } from './my-item'
 
 //gap between theme items
-const itemGap = '50px'
+const itemGap = '40px'
 
 const presets = [
-  { title: 'Halo', text: 'black' },
-  { title: 'Breeze', text: 'black' },
-  { title: 'Dawn', text: 'black' },
-  { title: 'Aurora', text: 'black' },
-  { title: 'Tropical', text: 'black' },
+  { title: 'Halo', color: 'white' },
+  { title: 'Breeze', color: 'white' },
+  { title: 'Dawn', color: 'black' },
+  { title: 'Aurora', color: 'black' },
+  { title: 'Tropical', color: 'black' },
+  { title: 'Halo', color: 'white' },
+  { title: 'Halo', color: 'white' },
+  { title: 'Halo', color: 'white' },
 ]
 
 const Page = () => {
   const snapList = useRef(null)
 
-  const visible = useVisibleElements(
+  const current = useVisibleElements(
     { debounce: 10, ref: snapList },
     ([element]) => element
   )
   const goToSnapItem = useScroll({ ref: snapList })
   const { isDragging } = useDragToScroll({ ref: snapList })
 
+  const [mode, setMode] = React.useState('full')
+
+  const previewAnim = useAnimation()
+
+  React.useEffect(() => {
+    // console.log(current)
+  }, [current])
+
+  React.useEffect(() => {
+    console.log(mode)
+    if (mode === 'mobile') {
+      previewAnim.start({
+        width: '20vw',
+        height: '70vh',
+        background: 'none',
+        boxShadow: '0 0 0 1000px white',
+        borderRadius: 15,
+        top: '15vh',
+        left: '40vw',
+      })
+    } else if (mode === 'full') {
+      previewAnim.start({
+        width: '100vw',
+        height: '100vh',
+        boxShadow: '0 0 0 0 white',
+        borderRadius: 0,
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        background: 'none',
+        zIndex: 0,
+      })
+    } else if (mode === 'about') {
+    }
+  }, [mode])
+
   return (
     <>
-      <div className={styles.bodyWrapper}>
+      <motion.div
+        className={styles.aboutModal}
+        style={{ color: 'white', display: mode === 'about' ? 'block' : 'none' }}
+      >
+        <div className={styles.title}>
+          <motion.h1>
+            ShaderGradient allows creators to bring liveliness to their digital
+            spaces with customizable, moving gradients. Our custom shader
+            calculates and draws colors and movements in 3d to enable natural
+            expressions. You can control shape, color(shader), lightings and
+            perspectives blah bah. A shader is a set of instructions that
+            calculates and draws every single pixel on the screen. Our custom
+            shaders generate a moving 3d object and colors on it.
+          </motion.h1>
+        </div>
+        <a
+          style={{ cursor: 'pointer' }}
+          onClick={() => {
+            setMode('full')
+          }}
+        >
+          ← back to main
+        </a>
+      </motion.div>
+      <motion.div
+        className={styles.bodyWrapper}
+        // animate={{ opacity: 1 }}
+        // transition={{ duration: 0.5 }}
+        // initial={{ opacity: 0 }}
+        style={{
+          color: presets[current].color,
+          display: mode !== 'about' ? 'block' : 'none',
+        }}
+      >
         <div className={styles.leftWrapper}>
           <div className={styles.title}>
-            <motion.h1
-              style={{
-                fontSize: 70,
-                fontWeight: 'bold',
-              }}
-            >
-              ShaderGradients
-            </motion.h1>
-            <motion.h2 style={{ fontSize: 25, width: '30vw' }}>
-              Make your products alive with vivid gradients and movement
+            <motion.h1>ShaderGradient</motion.h1>
+            <motion.h2 style={{ fontSize: 20, width: '30vw' }}>
+              Make your products alive <br />
+              with vivid gradients and movement
             </motion.h2>
             <motion.p
               style={{ fontSize: 12, width: '15vw', marginTop: '50px' }}
@@ -58,156 +125,169 @@ const Page = () => {
             </motion.p>
           </div>
 
-          <div
-            className={styles.slider}
-            style={
-              {
-                // cursor: isDragging ? 'grabbing' : 'grab',
-              }
-            }
-          >
+          <div className={styles.slider} style={{}}>
             <div className={styles.sliderHeader}>
-              <p>Select from themes</p>
+              <p>Current Theme</p>
               <Link href='/customize'>
-                <a>→ Customize</a>
+                <a>Customize →</a>
               </Link>
             </div>
-            <SnapList ref={snapList} direction='horizontal'>
-              {presets.map((item, index) => {
-                return (
-                  <SnapItem
-                    key={index}
-                    margin={{ left: itemGap, right: itemGap }}
-                    snapAlign='start'
-                  >
-                    <MyItem
-                      onClick={() => goToSnapItem(index)}
-                      visible={visible === index}
+            <div className={styles.sliderWrapper}>
+              <SnapList ref={snapList} direction='horizontal'>
+                {presets.map((item, index) => {
+                  return (
+                    <SnapItem
+                      key={index}
+                      margin={{ left: itemGap, right: itemGap }}
+                      snapAlign='start'
                     >
-                      {index < 10 ? '0' + index.toString() : index.toString()}{' '}
-                      {item.title}
-                    </MyItem>
-                  </SnapItem>
-                )
-              })}
-              <SnapItem
-                margin={{ left: itemGap, right: '30vw' }}
-                snapAlign='start'
-              >
-                <button
-                  onClick={() => {
-                    goToSnapItem(0)
-                  }}
+                      <MyItem
+                        onClick={() => goToSnapItem(index)}
+                        visible={current === index}
+                        color={presets[current].color}
+                      >
+                        {index < 10 ? '0' + index.toString() : index.toString()}{' '}
+                        {item.title}
+                      </MyItem>
+                    </SnapItem>
+                  )
+                })}
+                <SnapItem
+                  margin={{ left: itemGap, right: '30vw' }}
+                  snapAlign='start'
                 >
-                  ←
-                </button>
-              </SnapItem>
-            </SnapList>
+                  <button
+                    onClick={() => {
+                      goToSnapItem(0)
+                    }}
+                  >
+                    ←
+                  </button>
+                </SnapItem>
+              </SnapList>
+            </div>
+          </div>
+          <div className={styles.menu}>
+            <div className={styles.menuItems}>
+              <motion.a
+                initial={{ paddingLeft: 0 }}
+                whileHover={{
+                  paddingLeft: 10,
+                  transition: { duration: 0.3 },
+                }}
+                onClick={() => {
+                  setMode('about')
+                }}
+              >
+                About →
+              </motion.a>
+              <motion.a
+                initial={{ paddingLeft: 0 }}
+                whileHover={{
+                  paddingLeft: 10,
+                  transition: { duration: 0.3 },
+                }}
+                href=''
+              >
+                Figma →
+              </motion.a>
+              <motion.a
+                initial={{ paddingLeft: 0 }}
+                whileHover={{
+                  paddingLeft: 10,
+                  transition: { duration: 0.3 },
+                }}
+                href=''
+              >
+                Git →
+              </motion.a>
+              <motion.a
+                initial={{ paddingLeft: 0 }}
+                whileHover={{
+                  paddingLeft: 10,
+                  transition: { duration: 0.3 },
+                }}
+                href=''
+              >
+                Framer →
+              </motion.a>
+            </div>
+            <div className={styles.preview}>
+              <p>preview</p>
+              <div className={styles.previewWrapper}>
+                <motion.div
+                  style={{
+                    width: '17px',
+                    height: '31px',
+                    borderRadius: '4px',
+                    background: '#ff430a',
+                    cursor: 'pointer',
+                    opacity: mode === 'mobile' ? 1 : 0.17,
+                  }}
+                  whileHover={{
+                    opacity: 1,
+                    transition: { duration: 0.3 },
+                  }}
+                  onClick={() => {
+                    setMode('mobile')
+                  }}
+                ></motion.div>
+                <motion.div
+                  style={{
+                    width: '47px',
+                    height: '31px',
+                    borderRadius: '4px',
+                    background: '#ff430a',
+                    cursor: 'pointer',
+                    opacity: mode === 'web' ? 1 : 0.17,
+                  }}
+                  whileHover={{
+                    opacity: 1,
+                    transition: { duration: 0.3 },
+                  }}
+                  onClick={() => {
+                    setMode('web')
+                  }}
+                ></motion.div>
+              </div>
+            </div>
           </div>
           <div className={styles.footer}>
-            Made as side project from <a href=''>Ruucm</a> and{' '}
-            <a href='https://seungmee-lee.com'>stone.skipper</a>
+            Made as side project from <a href=''>→ Ruucm</a> and{' '}
+            <a href='https://seungmee-lee.com'>→ stone.skipper</a>
             <br />
-            Any inquiry? <a href=''>contact here</a>
+            Any inquiry? <a href=''>→ contact here</a>
           </div>
         </div>
-
-        <div className={styles.rightWrapper}>
-          <div className={styles.mobileBorderWrapper}>
-            <div></div>
-            <div></div>
-          </div>
-          <div className={styles.links}>
-            <div className={styles.iconWrapper}>
-              <a href=''>
-                <p>Figma</p>
-                <div className={styles.icon}></div>
-              </a>
-            </div>
-            <div className={styles.iconWrapper}>
-              <a href=''>
-                <p>Framer</p>
-                <div className={styles.icon}></div>
-              </a>
-            </div>
-            <div className={styles.iconWrapper}>
-              <a href='https://www.npmjs.com/package/shadergradient'>
-                <p>Github</p>
-                <div className={styles.icon}></div>
-              </a>
-            </div>
-            <div className={styles.iconWrapper}>
-              <a href=''>
-                <p>More info</p>
-                <div className={styles.icon}></div>
-              </a>
-            </div>
-          </div>
-          <div className={styles.svgWrapper}>
-            {' '}
-            <svg
-              xmlns='http://www.w3.org/2000/svg'
-              width='720'
-              height='1335'
-              className={styles.mobileClip}
-            >
-              <path
-                d='M 0 0 L 720 0 L 720 1335 L 0 1335 Z M 222 936 C 222 944.837 229.163 952 238 952 L 487 952 C 495.837 952 503 944.837 503 936 L 503 376 C 503 367.163 495.837 360 487 360 L 238 360 C 229.163 360 222 367.163 222 376 Z'
-                fill='hsl(0, 0%, 0%)'
-              ></path>
-              <path
-                d='M 216 374 C 216 362.954 224.954 354 236 354 L 489 354 C 500.046 354 509 362.954 509 374 L 509 938 C 509 949.046 500.046 958 489 958 L 236 958 C 224.954 958 216 949.046 216 938 Z'
-                fill='transparent'
-                strokeWidth='2'
-                stroke='hsl(0, 0%, 22%)'
-              ></path>
-            </svg>
-          </div>
-
-          <div className={styles.mobileContent}>
-            <svg xmlns='http://www.w3.org/2000/svg' width='28' height='24'>
-              <path
-                d='M 2.5 20.313 L 25.5 20.313 L 25.5 22 L 2.5 22 Z'
-                fill='hsl(0, 0%, 0%)'
-              ></path>
-              <path
-                d='M 2.5 2 L 25.5 2 L 25.5 3.688 L 2.5 3.688 Z'
-                fill='hsl(0, 0%, 0%)'
-              ></path>
-              <path
-                d='M 2.5 10.875 L 25.5 10.875 L 25.5 12.563 L 2.5 12.563 Z'
-                fill='hsl(0, 0%, 0%)'
-              ></path>
-            </svg>
-            <p>
-              <br />
-              *<br />
-              Hello, we are
-              <br />
-              Shader Gradient.
-              <br />
-              <br />
-              Imagine your products
-              <br />
-              with vivid color <br />
-              and movement.
-              <br /> current slide - {visible}
-            </p>
-          </div>
-        </div>
-      </div>
+      </motion.div>
+      <motion.div
+        initial={{
+          width: '100vw',
+          height: '100vh',
+          boxShadow: '0 0 0 0 white',
+          borderRadius: 0,
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          background: 'transparent',
+          zIndex: 0,
+        }}
+        animate={previewAnim}
+        transition={{
+          duration: 0.5,
+        }}
+      ></motion.div>
 
       <Gradient
         r3f
         environment={<Environment preset='city' background={false} />}
         lights={null}
-        rotation={[(Math.PI / 3) * 2, 0, 0]}
+        rotation={[(Math.PI / 3) * 2, 0, (Math.PI / 7) * 12]}
         cameraPosition={{ x: 0, y: 2, z: 4 }}
-        cameraRotation={{ x: 0, y: 0, z: 0 }}
+        // cameraRotation={{ x: 0, y: 0, z: 0 }}
         cameraQuaternion={{ x: -Math.PI / 6, y: 0, z: 0 }}
-        cameraZoom={1.5}
+        cameraZoom={mode !== 'about' ? 2.2 : 0.4}
       />
-      {/* <GUIGradient /> */}
     </>
   )
 }

@@ -2213,6 +2213,11 @@ classnames@2.2.6:
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
   integrity sha512-JR/iSQOSt+LQIWwrwEzJ9uk0xfN3mTVYMwt1Ir5mUcSN6pU+V4zQFFaJsclJbPuAUQH+yfWef6tm7l1quW3C8Q==
 
+classnames@^2.3.1:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.3.1.tgz#dfcfa3891e306ec1dad105d0e88f4417b8535e8e"
+  integrity sha512-OlQdbZ7gLfGarSqxesMesDa5uz7KFbID8Kpq/SxIoNGDqY8lSYs0D+hhtBXhcdB3rcbXArFr7vlHheLk1voeNA==
+
 cli-cursor@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/cli-cursor/-/cli-cursor-2.1.0.tgz#b35dac376479facc3e94747d41d0d0f5238ffcb5"
@@ -5906,14 +5911,15 @@ sha.js@^2.4.0, sha.js@^2.4.8:
     inherits "^2.0.1"
     safe-buffer "^5.0.1"
 
-shadergradient@latest:
-  version "0.0.9"
-  resolved "https://registry.yarnpkg.com/shadergradient/-/shadergradient-0.0.9.tgz#7608780ecfec734d00476bf348fbf564d0b7627e"
-  integrity sha512-k6o5xirzPNBy1dIA1eseUdGILYXwnj6B2ccq0Eo/bLovYFFemhIv9pPan6B52EJcSI8V3PZpXhuwVO0j48E6fw==
+shadergradient@^0.0.14:
+  version "0.0.14"
+  resolved "https://registry.yarnpkg.com/shadergradient/-/shadergradient-0.0.14.tgz#471d1e8298e326c56604682d977acaacc014c15b"
+  integrity sha512-1kYDi+lOFLSWmAuUZIOIEbLnLcNi7oNPcl7x1asZRdj5uTTsELjrcW/kccmTlLjeylh/LYjqwNUxASZj0hBdxg==
   dependencies:
     "@react-three/drei" "^7.2.1"
     "@react-three/fiber" "^7.0.6"
     "@react-three/postprocessing" "^2.0.5"
+    classnames "^2.3.1"
     react "^17.0.2"
     react-dom "^17.0.2"
     three "^0.131.3"
