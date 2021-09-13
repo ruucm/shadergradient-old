@@ -20,10 +20,20 @@
   top: 0;
   left: 0;
   z-index: 5;
-  width: 100vw;
+  width: 90vw;
+  padding: 2vw;
+  .title {
+    display: grid;
+    grid-template-columns: 60vw 20vw;
+    grid-gap: 5vw;
+  }
   h1 {
-    font-size: 80px;
-    font-weight: 500;
+    width: 100%;
+  }
+  a {
+    text-decoration: none;
+    text-decoration: underline;
+    color: #ff430a;
   }
 }
 
@@ -32,7 +42,7 @@
   height: 100vh;
 }
 
-.title {
+.leftWrapper .title {
   position: absolute;
   left: 2vw;
   top: 1vw;
