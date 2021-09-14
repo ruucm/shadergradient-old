@@ -13,20 +13,10 @@ import {
 import { Gradient } from 'shadergradient'
 import styles from './Home.module.scss'
 import { MyItem } from './my-item'
+import PRESETS from '../presets.json'
 
 //gap between theme items
 const itemGap = '40px'
-
-const presets = [
-  { title: 'Halo', color: 'white' },
-  { title: 'Breeze', color: 'white' },
-  { title: 'Dawn', color: 'black' },
-  { title: 'Aurora', color: 'black' },
-  { title: 'Tropical', color: 'black' },
-  { title: 'Halo', color: 'white' },
-  { title: 'Halo', color: 'white' },
-  { title: 'Halo', color: 'white' },
-]
 
 const Page = () => {
   const snapList = useRef(null)
@@ -156,52 +146,52 @@ const Page = () => {
           >
             Framer →
           </motion.a>
-        </div>
-        <div className={styles.preview}>
-          <p>preview</p>
-          <div className={styles.previewWrapper}>
-            <motion.div
-              style={{
-                width: '17px',
-                height: '31px',
-                borderRadius: '4px',
-                background: '#ff430a',
-                cursor: 'pointer',
-                opacity: mode === 'mobile' ? 1 : 0.17,
-              }}
-              whileHover={{
-                opacity: 1,
-                transition: { duration: 0.3 },
-              }}
-              onClick={() => {
-                if (mode !== 'mobile') {
-                  setMode('mobile')
-                } else {
-                  setMode('full')
-                }
-              }}
-            ></motion.div>
-            <motion.div
-              style={{
-                width: '47px',
-                height: '31px',
-                borderRadius: '4px',
-                background: '#ff430a',
-                cursor: 'pointer',
-                opacity: mode === 'web' ? 1 : 0.17,
-              }}
-              whileHover={{
-                opacity: 1,
-                transition: { duration: 0.3 },
-              }}
-              onClick={() => {
-                if (mode !== 'web') {
-                  setMode('web')
-                } else {
-                  setMode('full')
-                }
-              }}
-            ></motion.div>
+          <div className={styles.preview}>
+            <p>preview</p>
+            <div className={styles.previewWrapper}>
+              <motion.div
+                style={{
+                  width: '17px',
+                  height: '31px',
+                  borderRadius: '4px',
+                  background: '#ff430a',
+                  cursor: 'pointer',
+                  opacity: mode === 'mobile' ? 1 : 0.17,
+                }}
+                whileHover={{
+                  opacity: 1,
+                  transition: { duration: 0.3 },
+                }}
+                onClick={() => {
+                  if (mode !== 'mobile') {
+                    setMode('mobile')
+                  } else {
+                    setMode('full')
+                  }
+                }}
+              ></motion.div>
+              <motion.div
+                style={{
+                  width: '47px',
+                  height: '31px',
+                  borderRadius: '4px',
+                  background: '#ff430a',
+                  cursor: 'pointer',
+                  opacity: mode === 'web' ? 1 : 0.17,
+                }}
+                whileHover={{
+                  opacity: 1,
+                  transition: { duration: 0.3 },
+                }}
+                onClick={() => {
+                  if (mode !== 'web') {
+                    setMode('web')
+                  } else {
+                    setMode('full')
+                  }
+                }}
+              ></motion.div>
+            </div>
           </div>
         </div>
       </div>
@@ -240,7 +230,7 @@ const Page = () => {
       <motion.div
         className={styles.bodyWrapper}
         style={{
-          color: mode === 'full' ? presets[current].color : '#FF430A',
+          color: mode === 'full' ? PRESETS[current].color : '#FF430A',
           display: mode !== 'about' ? 'block' : 'none',
         }}
       >
@@ -265,13 +255,13 @@ const Page = () => {
           <div className={styles.slider} style={{}}>
             <div className={styles.sliderHeader}>
               <p>Current Theme</p>
-              <Link href='/customize'>
+              <Link href='/custom'>
                 <a>Customize →</a>
               </Link>
             </div>
             <div className={styles.sliderWrapper}>
               <SnapList ref={snapList} direction='horizontal'>
-                {presets.map((item, index) => {
+                {PRESETS.map((item, index) => {
                   return (
                     <SnapItem
                       key={index}
@@ -282,7 +272,7 @@ const Page = () => {
                         onClick={() => goToSnapItem(index)}
                         visible={current === index}
                         color={
-                          mode === 'full' ? presets[current].color : '#FF430A'
+                          mode === 'full' ? PRESETS[current].color : '#FF430A'
                         }
                       >
                         {index < 10 ? '0' + index.toString() : index.toString()}{' '}
