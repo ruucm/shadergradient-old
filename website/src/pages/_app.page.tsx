@@ -58,6 +58,13 @@ function App({ Component, pageProps = { title: 'index' } }) {
       noiseStrength: 0.1,
       // for gradient-scene
       type: 'plane',
+      animate: 'off',
+      movements: 0.2,
+      speed: 1.8,
+      bumpScale: 1.3,
+      rotationX: 0,
+      rotationY: 90,
+      rotationZ: 180,
       env: 'env',
       postProcessing: 'threejs',
       cameraPositionX: 0,

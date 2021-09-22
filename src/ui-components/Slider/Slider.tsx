@@ -5,6 +5,7 @@ import { useEffect, useState } from "react"
 
 type SliderPropsT = {
   defaultValue: number
+  name: string
   setValue: any
   step: number
   min: number
@@ -15,10 +16,10 @@ type SliderPropsT = {
 >
 
 export const Slider = React.forwardRef<HTMLInputElement, SliderPropsT>(
-  ({ defaultValue, setValue, step, min, max }: SliderPropsT, ref) => {
+  ({ defaultValue, name, setValue, step, min, max }: SliderPropsT, ref) => {
     const [sharedValue, setSharedValue] = useState<any>(defaultValue)
     useEffect(() => {
-      setValue("uTime", sharedValue)
+      setValue(name, sharedValue)
     }, [sharedValue])
 
     return (
