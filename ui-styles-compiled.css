@@ -6864,6 +6864,10 @@ html,
   width: max-content;
 }
 
+.w-control-types {
+  width: 168px;
+}
+
 .w-control {
   width: 408px;
 }
@@ -12554,7 +12558,7 @@ html,
 }
 
 .rounded-md {
-  border-radius: 0.375rem;
+  border-radius: 11px;
 }
 
 .rounded-lg {
@@ -12593,8 +12597,8 @@ html,
 }
 
 .rounded-t-md {
-  border-top-left-radius: 0.375rem;
-  border-top-right-radius: 0.375rem;
+  border-top-left-radius: 11px;
+  border-top-right-radius: 11px;
 }
 
 .rounded-t-lg {
@@ -12638,8 +12642,8 @@ html,
 }
 
 .rounded-r-md {
-  border-top-right-radius: 0.375rem;
-  border-bottom-right-radius: 0.375rem;
+  border-top-right-radius: 11px;
+  border-bottom-right-radius: 11px;
 }
 
 .rounded-r-lg {
@@ -12683,8 +12687,8 @@ html,
 }
 
 .rounded-b-md {
-  border-bottom-right-radius: 0.375rem;
-  border-bottom-left-radius: 0.375rem;
+  border-bottom-right-radius: 11px;
+  border-bottom-left-radius: 11px;
 }
 
 .rounded-b-lg {
@@ -12728,8 +12732,8 @@ html,
 }
 
 .rounded-l-md {
-  border-top-left-radius: 0.375rem;
-  border-bottom-left-radius: 0.375rem;
+  border-top-left-radius: 11px;
+  border-bottom-left-radius: 11px;
 }
 
 .rounded-l-lg {
@@ -12770,7 +12774,7 @@ html,
 }
 
 .rounded-tl-md {
-  border-top-left-radius: 0.375rem;
+  border-top-left-radius: 11px;
 }
 
 .rounded-tl-lg {
@@ -12806,7 +12810,7 @@ html,
 }
 
 .rounded-tr-md {
-  border-top-right-radius: 0.375rem;
+  border-top-right-radius: 11px;
 }
 
 .rounded-tr-lg {
@@ -12842,7 +12846,7 @@ html,
 }
 
 .rounded-br-md {
-  border-bottom-right-radius: 0.375rem;
+  border-bottom-right-radius: 11px;
 }
 
 .rounded-br-lg {
@@ -12878,7 +12882,7 @@ html,
 }
 
 .rounded-bl-md {
-  border-bottom-left-radius: 0.375rem;
+  border-bottom-left-radius: 11px;
 }
 
 .rounded-bl-lg {
@@ -22631,7 +22635,7 @@ html,
 }
 
 .text-3xl {
-  font-size: 1.875rem;
+  font-size: 1.714rem;
 }
 
 .text-4xl {
@@ -38591,6 +38595,10 @@ input[type="number"] {
     width: max-content;
   }
 
+  .sm\:w-control-types {
+    width: 168px;
+  }
+
   .sm\:w-control {
     width: 408px;
   }
@@ -44215,7 +44223,7 @@ input[type="number"] {
   }
 
   .sm\:rounded-md {
-    border-radius: 0.375rem;
+    border-radius: 11px;
   }
 
   .sm\:rounded-lg {
@@ -44254,8 +44262,8 @@ input[type="number"] {
   }
 
   .sm\:rounded-t-md {
-    border-top-left-radius: 0.375rem;
-    border-top-right-radius: 0.375rem;
+    border-top-left-radius: 11px;
+    border-top-right-radius: 11px;
   }
 
   .sm\:rounded-t-lg {
@@ -44299,8 +44307,8 @@ input[type="number"] {
   }
 
   .sm\:rounded-r-md {
-    border-top-right-radius: 0.375rem;
-    border-bottom-right-radius: 0.375rem;
+    border-top-right-radius: 11px;
+    border-bottom-right-radius: 11px;
   }
 
   .sm\:rounded-r-lg {
@@ -44344,8 +44352,8 @@ input[type="number"] {
   }
 
   .sm\:rounded-b-md {
-    border-bottom-right-radius: 0.375rem;
-    border-bottom-left-radius: 0.375rem;
+    border-bottom-right-radius: 11px;
+    border-bottom-left-radius: 11px;
   }
 
   .sm\:rounded-b-lg {
@@ -44389,8 +44397,8 @@ input[type="number"] {
   }
 
   .sm\:rounded-l-md {
-    border-top-left-radius: 0.375rem;
-    border-bottom-left-radius: 0.375rem;
+    border-top-left-radius: 11px;
+    border-bottom-left-radius: 11px;
   }
 
   .sm\:rounded-l-lg {
@@ -44431,7 +44439,7 @@ input[type="number"] {
   }
 
   .sm\:rounded-tl-md {
-    border-top-left-radius: 0.375rem;
+    border-top-left-radius: 11px;
   }
 
   .sm\:rounded-tl-lg {
@@ -44467,7 +44475,7 @@ input[type="number"] {
   }
 
   .sm\:rounded-tr-md {
-    border-top-right-radius: 0.375rem;
+    border-top-right-radius: 11px;
   }
 
   .sm\:rounded-tr-lg {
@@ -44503,7 +44511,7 @@ input[type="number"] {
   }
 
   .sm\:rounded-br-md {
-    border-bottom-right-radius: 0.375rem;
+    border-bottom-right-radius: 11px;
   }
 
   .sm\:rounded-br-lg {
@@ -44539,7 +44547,7 @@ input[type="number"] {
   }
 
   .sm\:rounded-bl-md {
-    border-bottom-left-radius: 0.375rem;
+    border-bottom-left-radius: 11px;
   }
 
   .sm\:rounded-bl-lg {
@@ -54292,7 +54300,7 @@ input[type="number"] {
   }
 
   .sm\:text-3xl {
-    font-size: 1.875rem;
+    font-size: 1.714rem;
   }
 
   .sm\:text-4xl {
@@ -70204,6 +70212,10 @@ input[type="number"] {
     width: max-content;
   }
 
+  .md\:w-control-types {
+    width: 168px;
+  }
+
   .md\:w-control {
     width: 408px;
   }
@@ -75828,7 +75840,7 @@ input[type="number"] {
   }
 
   .md\:rounded-md {
-    border-radius: 0.375rem;
+    border-radius: 11px;
   }
 
   .md\:rounded-lg {
@@ -75867,8 +75879,8 @@ input[type="number"] {
   }
 
   .md\:rounded-t-md {
-    border-top-left-radius: 0.375rem;
-    border-top-right-radius: 0.375rem;
+    border-top-left-radius: 11px;
+    border-top-right-radius: 11px;
   }
 
   .md\:rounded-t-lg {
@@ -75912,8 +75924,8 @@ input[type="number"] {
   }
 
   .md\:rounded-r-md {
-    border-top-right-radius: 0.375rem;
-    border-bottom-right-radius: 0.375rem;
+    border-top-right-radius: 11px;
+    border-bottom-right-radius: 11px;
   }
 
   .md\:rounded-r-lg {
@@ -75957,8 +75969,8 @@ input[type="number"] {
   }
 
   .md\:rounded-b-md {
-    border-bottom-right-radius: 0.375rem;
-    border-bottom-left-radius: 0.375rem;
+    border-bottom-right-radius: 11px;
+    border-bottom-left-radius: 11px;
   }
 
   .md\:rounded-b-lg {
@@ -76002,8 +76014,8 @@ input[type="number"] {
   }
 
   .md\:rounded-l-md {
-    border-top-left-radius: 0.375rem;
-    border-bottom-left-radius: 0.375rem;
+    border-top-left-radius: 11px;
+    border-bottom-left-radius: 11px;
   }
 
   .md\:rounded-l-lg {
@@ -76044,7 +76056,7 @@ input[type="number"] {
   }
 
   .md\:rounded-tl-md {
-    border-top-left-radius: 0.375rem;
+    border-top-left-radius: 11px;
   }
 
   .md\:rounded-tl-lg {
@@ -76080,7 +76092,7 @@ input[type="number"] {
   }
 
   .md\:rounded-tr-md {
-    border-top-right-radius: 0.375rem;
+    border-top-right-radius: 11px;
   }
 
   .md\:rounded-tr-lg {
@@ -76116,7 +76128,7 @@ input[type="number"] {
   }
 
   .md\:rounded-br-md {
-    border-bottom-right-radius: 0.375rem;
+    border-bottom-right-radius: 11px;
   }
 
   .md\:rounded-br-lg {
@@ -76152,7 +76164,7 @@ input[type="number"] {
   }
 
   .md\:rounded-bl-md {
-    border-bottom-left-radius: 0.375rem;
+    border-bottom-left-radius: 11px;
   }
 
   .md\:rounded-bl-lg {
@@ -85905,7 +85917,7 @@ input[type="number"] {
   }
 
   .md\:text-3xl {
-    font-size: 1.875rem;
+    font-size: 1.714rem;
   }
 
   .md\:text-4xl {
@@ -101817,6 +101829,10 @@ input[type="number"] {
     width: max-content;
   }
 
+  .lg\:w-control-types {
+    width: 168px;
+  }
+
   .lg\:w-control {
     width: 408px;
   }
@@ -107441,7 +107457,7 @@ input[type="number"] {
   }
 
   .lg\:rounded-md {
-    border-radius: 0.375rem;
+    border-radius: 11px;
   }
 
   .lg\:rounded-lg {
@@ -107480,8 +107496,8 @@ input[type="number"] {
   }
 
   .lg\:rounded-t-md {
-    border-top-left-radius: 0.375rem;
-    border-top-right-radius: 0.375rem;
+    border-top-left-radius: 11px;
+    border-top-right-radius: 11px;
   }
 
   .lg\:rounded-t-lg {
@@ -107525,8 +107541,8 @@ input[type="number"] {
   }
 
   .lg\:rounded-r-md {
-    border-top-right-radius: 0.375rem;
-    border-bottom-right-radius: 0.375rem;
+    border-top-right-radius: 11px;
+    border-bottom-right-radius: 11px;
   }
 
   .lg\:rounded-r-lg {
@@ -107570,8 +107586,8 @@ input[type="number"] {
   }
 
   .lg\:rounded-b-md {
-    border-bottom-right-radius: 0.375rem;
-    border-bottom-left-radius: 0.375rem;
+    border-bottom-right-radius: 11px;
+    border-bottom-left-radius: 11px;
   }
 
   .lg\:rounded-b-lg {
@@ -107615,8 +107631,8 @@ input[type="number"] {
   }
 
   .lg\:rounded-l-md {
-    border-top-left-radius: 0.375rem;
-    border-bottom-left-radius: 0.375rem;
+    border-top-left-radius: 11px;
+    border-bottom-left-radius: 11px;
   }
 
   .lg\:rounded-l-lg {
@@ -107657,7 +107673,7 @@ input[type="number"] {
   }
 
   .lg\:rounded-tl-md {
-    border-top-left-radius: 0.375rem;
+    border-top-left-radius: 11px;
   }
 
   .lg\:rounded-tl-lg {
@@ -107693,7 +107709,7 @@ input[type="number"] {
   }
 
   .lg\:rounded-tr-md {
-    border-top-right-radius: 0.375rem;
+    border-top-right-radius: 11px;
   }
 
   .lg\:rounded-tr-lg {
@@ -107729,7 +107745,7 @@ input[type="number"] {
   }
 
   .lg\:rounded-br-md {
-    border-bottom-right-radius: 0.375rem;
+    border-bottom-right-radius: 11px;
   }
 
   .lg\:rounded-br-lg {
@@ -107765,7 +107781,7 @@ input[type="number"] {
   }
 
   .lg\:rounded-bl-md {
-    border-bottom-left-radius: 0.375rem;
+    border-bottom-left-radius: 11px;
   }
 
   .lg\:rounded-bl-lg {
@@ -117518,7 +117534,7 @@ input[type="number"] {
   }
 
   .lg\:text-3xl {
-    font-size: 1.875rem;
+    font-size: 1.714rem;
   }
 
   .lg\:text-4xl {
@@ -133430,6 +133446,10 @@ input[type="number"] {
     width: max-content;
   }
 
+  .xl\:w-control-types {
+    width: 168px;
+  }
+
   .xl\:w-control {
     width: 408px;
   }
@@ -139054,7 +139074,7 @@ input[type="number"] {
   }
 
   .xl\:rounded-md {
-    border-radius: 0.375rem;
+    border-radius: 11px;
   }
 
   .xl\:rounded-lg {
@@ -139093,8 +139113,8 @@ input[type="number"] {
   }
 
   .xl\:rounded-t-md {
-    border-top-left-radius: 0.375rem;
-    border-top-right-radius: 0.375rem;
+    border-top-left-radius: 11px;
+    border-top-right-radius: 11px;
   }
 
   .xl\:rounded-t-lg {
@@ -139138,8 +139158,8 @@ input[type="number"] {
   }
 
   .xl\:rounded-r-md {
-    border-top-right-radius: 0.375rem;
-    border-bottom-right-radius: 0.375rem;
+    border-top-right-radius: 11px;
+    border-bottom-right-radius: 11px;
   }
 
   .xl\:rounded-r-lg {
@@ -139183,8 +139203,8 @@ input[type="number"] {
   }
 
   .xl\:rounded-b-md {
-    border-bottom-right-radius: 0.375rem;
-    border-bottom-left-radius: 0.375rem;
+    border-bottom-right-radius: 11px;
+    border-bottom-left-radius: 11px;
   }
 
   .xl\:rounded-b-lg {
@@ -139228,8 +139248,8 @@ input[type="number"] {
   }
 
   .xl\:rounded-l-md {
-    border-top-left-radius: 0.375rem;
-    border-bottom-left-radius: 0.375rem;
+    border-top-left-radius: 11px;
+    border-bottom-left-radius: 11px;
   }
 
   .xl\:rounded-l-lg {
@@ -139270,7 +139290,7 @@ input[type="number"] {
   }
 
   .xl\:rounded-tl-md {
-    border-top-left-radius: 0.375rem;
+    border-top-left-radius: 11px;
   }
 
   .xl\:rounded-tl-lg {
@@ -139306,7 +139326,7 @@ input[type="number"] {
   }
 
   .xl\:rounded-tr-md {
-    border-top-right-radius: 0.375rem;
+    border-top-right-radius: 11px;
   }
 
   .xl\:rounded-tr-lg {
@@ -139342,7 +139362,7 @@ input[type="number"] {
   }
 
   .xl\:rounded-br-md {
-    border-bottom-right-radius: 0.375rem;
+    border-bottom-right-radius: 11px;
   }
 
   .xl\:rounded-br-lg {
@@ -139378,7 +139398,7 @@ input[type="number"] {
   }
 
   .xl\:rounded-bl-md {
-    border-bottom-left-radius: 0.375rem;
+    border-bottom-left-radius: 11px;
   }
 
   .xl\:rounded-bl-lg {
@@ -149131,7 +149151,7 @@ input[type="number"] {
   }
 
   .xl\:text-3xl {
-    font-size: 1.875rem;
+    font-size: 1.714rem;
   }
 
   .xl\:text-4xl {
@@ -165043,6 +165063,10 @@ input[type="number"] {
     width: max-content;
   }
 
+  .\32xl\:w-control-types {
+    width: 168px;
+  }
+
   .\32xl\:w-control {
     width: 408px;
   }
@@ -170667,7 +170691,7 @@ input[type="number"] {
   }
 
   .\32xl\:rounded-md {
-    border-radius: 0.375rem;
+    border-radius: 11px;
   }
 
   .\32xl\:rounded-lg {
@@ -170706,8 +170730,8 @@ input[type="number"] {
   }
 
   .\32xl\:rounded-t-md {
-    border-top-left-radius: 0.375rem;
-    border-top-right-radius: 0.375rem;
+    border-top-left-radius: 11px;
+    border-top-right-radius: 11px;
   }
 
   .\32xl\:rounded-t-lg {
@@ -170751,8 +170775,8 @@ input[type="number"] {
   }
 
   .\32xl\:rounded-r-md {
-    border-top-right-radius: 0.375rem;
-    border-bottom-right-radius: 0.375rem;
+    border-top-right-radius: 11px;
+    border-bottom-right-radius: 11px;
   }
 
   .\32xl\:rounded-r-lg {
@@ -170796,8 +170820,8 @@ input[type="number"] {
   }
 
   .\32xl\:rounded-b-md {
-    border-bottom-right-radius: 0.375rem;
-    border-bottom-left-radius: 0.375rem;
+    border-bottom-right-radius: 11px;
+    border-bottom-left-radius: 11px;
   }
 
   .\32xl\:rounded-b-lg {
@@ -170841,8 +170865,8 @@ input[type="number"] {
   }
 
   .\32xl\:rounded-l-md {
-    border-top-left-radius: 0.375rem;
-    border-bottom-left-radius: 0.375rem;
+    border-top-left-radius: 11px;
+    border-bottom-left-radius: 11px;
   }
 
   .\32xl\:rounded-l-lg {
@@ -170883,7 +170907,7 @@ input[type="number"] {
   }
 
   .\32xl\:rounded-tl-md {
-    border-top-left-radius: 0.375rem;
+    border-top-left-radius: 11px;
   }
 
   .\32xl\:rounded-tl-lg {
@@ -170919,7 +170943,7 @@ input[type="number"] {
   }
 
   .\32xl\:rounded-tr-md {
-    border-top-right-radius: 0.375rem;
+    border-top-right-radius: 11px;
   }
 
   .\32xl\:rounded-tr-lg {
@@ -170955,7 +170979,7 @@ input[type="number"] {
   }
 
   .\32xl\:rounded-br-md {
-    border-bottom-right-radius: 0.375rem;
+    border-bottom-right-radius: 11px;
   }
 
   .\32xl\:rounded-br-lg {
@@ -170991,7 +171015,7 @@ input[type="number"] {
   }
 
   .\32xl\:rounded-bl-md {
-    border-bottom-left-radius: 0.375rem;
+    border-bottom-left-radius: 11px;
   }
 
   .\32xl\:rounded-bl-lg {
@@ -180744,7 +180768,7 @@ input[type="number"] {
   }
 
   .\32xl\:text-3xl {
-    font-size: 1.875rem;
+    font-size: 1.714rem;
   }
 
   .\32xl\:text-4xl {

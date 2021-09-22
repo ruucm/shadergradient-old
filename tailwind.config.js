@@ -19,7 +19,7 @@ module.exports = {
         none: "0",
         sm: "0.125rem",
         DEFAULT: "9px",
-        md: "0.375rem",
+        md: "11px",
         lg: "0.5rem",
         full: "9999px",
       },
@@ -30,12 +30,13 @@ module.exports = {
         lg: "1.125rem",
         xl: "1.25rem",
         "2xl": "1.5rem",
-        "3xl": "1.875rem",
+        "3xl": "1.714rem", // modified from 1.875rem
         "4xl": "2.25rem",
         "5xl": "3rem",
         "6xl": "4rem",
       },
       width: {
+        "control-types": "168px",
         control: "408px",
         "control-title": "93px",
         "control-inputs": "283px",
