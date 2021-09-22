@@ -5,9 +5,9 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "rm -rf dist && rollup -c",
-    "start": "rollup -c -w",
+    "start": "concurrently --kill-others \"npm run package:start\" \"npm run ui:start\"",
     "package:start": "rollup -c -w",
-    "tw:start": "postcss ui-styles.css -o ui-styles-compiled.css --watch",
+    "ui:start": "postcss ui-styles.css -o ui-styles-compiled.css --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
