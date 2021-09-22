@@ -12,7 +12,7 @@ module.exports = {
         2: "12px",
         3: "16px",
         4: "26px", // modified form  24px
-        5: "34px", // modified form  32px
+        5: "32px",
         6: "48px",
       },
       borderRadius: {
@@ -39,9 +39,16 @@ module.exports = {
         control: "408px",
         "control-title": "93px",
         "control-inputs": "283px",
+        "control-number-input": "53px",
+        thumb: "16px",
+        mark: "2px",
       },
       height: {
+        input: "34px",
         button: "55px",
+        slider: "2px",
+        thumb: "16px",
+        mark: "16px",
       },
     },
   },

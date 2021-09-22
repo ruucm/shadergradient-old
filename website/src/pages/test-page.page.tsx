@@ -9,9 +9,15 @@ const Page = () => {
     watch,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm({
     // mode: "onChange"
-    defaultValues: { type: 'plane', postProcessing: 'threejs', animate: 'on' },
+    defaultValues: {
+      type: 'plane',
+      postProcessing: 'threejs',
+      animate: 'on',
+      currentTime: 0.2,
+    },
   })
   const onSubmit = (data) => console.log(data)
 
@@ -62,15 +68,11 @@ const Page = () => {
         <UI.Spacing className='h-3' />
 
         <UI.RadioGroup title='Current Time'>
-          <UI.Radio
-            value='threejs'
-            check={watch('postProcessing') === 'threejs'}
-            {...register('postProcessing')}
-          />
-          <UI.Radio
-            value='r3f'
-            check={watch('postProcessing') === 'r3f'}
-            {...register('postProcessing')}
+          <UI.Slider
+            defaultValue={0.2}
+            setValue={setValue}
+            step={0.1}
+            {...register('currentTime')}
           />
         </UI.RadioGroup>
 

@@ -1,8 +1,6 @@
 import * as React from "react"
 import ReactSlider from "react-slider"
-import styles from "./Slider.module.scss"
-import { TextInput } from ".."
-import cx from "classnames"
+import { Spacing, NumberInput } from ".."
 import { useEffect, useState } from "react"
 
 type SliderPropsT = {
@@ -22,13 +20,15 @@ export const Slider = React.forwardRef<HTMLInputElement, SliderPropsT>(
     }, [sharedValue])
 
     return (
-      <div className={styles.wrap}>
-        <TextInput
+      <div className="flex items-center w-full">
+        <NumberInput
           type="number"
           value={sharedValue}
           onChange={(e: any) => setSharedValue(e.target.value)}
           step={step}
         />
+
+        <Spacing className="w-4" />
 
         <ReactSlider
           value={Number(sharedValue)}
@@ -36,13 +36,13 @@ export const Slider = React.forwardRef<HTMLInputElement, SliderPropsT>(
           min={0}
           max={9}
           onChange={(value, index) => setSharedValue(value)}
-          renderThumb={(props, state) => <div {...props}>{state.valueNow}</div>}
           // styles
-          className={styles.hslider}
-          markClassName={styles.mark}
-          thumbClassName={styles.thumb}
-          thumbActiveClassName={cx(styles.thumb, styles.active)}
-          trackClassName={styles.track}
+          className="bg-primary h-slider w-full"
+          marks={[4.5]}
+          markClassName="w-mark h-mark bg-primary top-1/2 transform -translate-y-1/2 slider-mark-center-x"
+          thumbClassName="bg-primary w-thumb h-thumb rounded-full top-1/2 transform -translate-y-1/2 outline-none"
+          thumbActiveClassName="bg-opacity-80"
+          // trackClassName={styles.track}
         />
       </div>
     )
