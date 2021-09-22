@@ -96,6 +96,7 @@ const Page = () => {
               paddingLeft: 7,
               transition: { duration: 0.3 },
             }}
+            style={{ color: mode === 'about' ? 'white' : '#ff430a' }}
             onClick={() => {
               if (mode !== 'about') {
                 setMode('about')
@@ -104,7 +105,7 @@ const Page = () => {
               }
             }}
           >
-            {mode === 'about' ? '← main' : 'About →'}
+            {mode === 'about' ? '← Main' : 'About →'}
           </motion.a>
           <motion.a
             initial={{ paddingLeft: 0 }}
@@ -215,7 +216,7 @@ const Page = () => {
             camera. The three colors you pick are connected to the very top
             left, very top right, and the very bottom of the fluctuating plane.
             Explore more about each property by experimenting on{' '}
-            <a href='/custom'>Customize</a> page.
+            <a href='/custom'>→ customize</a> page.
           </motion.h1>
           <motion.h1
             animate={{ opacity: 1 }}
@@ -241,25 +242,25 @@ const Page = () => {
           >
             <motion.h1>ShaderGradient</motion.h1>
             <motion.h2 style={{ fontSize: 20, width: '30vw' }}>
-              Make your products alive <br />
-              with vivid colors and movements
+              No more static gradients
+              <br />
+              Add liveliness in your products
             </motion.h2>
             <motion.p
               style={{ fontSize: 12, width: '15vw', marginTop: '50px' }}
             >
-              Customizable gradients inspired by the natural lights and
+              Customizable gradient tool inspired by natural lights and
               atmospheres. Made with WebGL shaders.
               <br />
-              <br /> Fully working on Chrome.
+              <br /> Fully supported on Chrome.
+              <br /> Sorry Safari.
             </motion.p>
           </div>
 
           <div className={styles.slider} style={{}}>
             <div className={styles.sliderHeader}>
               <p>Current Theme</p>
-              <Link href='/custom'>
-                <a>Customize →</a>
-              </Link>
+              <a href='/custom'>Customize →</a>
             </div>
             <div
               className={styles.sliderWrapper}

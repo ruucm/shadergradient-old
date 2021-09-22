@@ -131,10 +131,10 @@ const Page = () => {
           </div> */}
           <motion.a
             style={{ opacity: setting === 'shape' ? 1 : 0.3 }}
-            // whileHover={{
-            //   opacity: 1,
-            //   transition: { duration: 0.3 },
-            // }}
+            whileHover={{
+              opacity: 1,
+              transition: { duration: 0.3 },
+            }}
             onClick={() => {
               if (setting !== 'shape') {
                 setSetting('shape')
@@ -147,10 +147,10 @@ const Page = () => {
           </motion.a>
           <motion.a
             style={{ opacity: setting === 'shader' ? 1 : 0.3 }}
-            // whileHover={{
-            //   opacity: 1,
-            //   transition: { duration: 0.3 },
-            // }}
+            whileHover={{
+              opacity: 1,
+              transition: { duration: 0.3 },
+            }}
             onClick={() => {
               if (setting !== 'shader') {
                 setSetting('shader')
@@ -179,10 +179,10 @@ const Page = () => {
           </motion.a>
           <motion.a
             style={{ opacity: setting === 'camera' ? 1 : 0.3 }}
-            // whileHover={{
-            //   opacity: 1,
-            //   transition: { duration: 0.3 },
-            // }}
+            whileHover={{
+              opacity: 1,
+              transition: { duration: 0.3 },
+            }}
             onClick={() => {
               if (setting !== 'camera') {
                 setSetting('camera')
@@ -205,10 +205,10 @@ const Page = () => {
                   cursor: 'pointer',
                   opacity: mode === 'mobile' ? 1 : 0.17,
                 }}
-                // whileHover={{
-                //   opacity: 1,
-                //   transition: { duration: 0.3 },
-                // }}
+                whileHover={{
+                  opacity: 1,
+                  transition: { duration: 0.3 },
+                }}
                 onClick={() => {
                   if (mode !== 'mobile') {
                     setMode('mobile')
