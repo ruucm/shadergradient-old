@@ -1,17 +1,12 @@
 import * as React from "react"
 
-export const Spacing = ({
-  guide = false,
-  width = "100%",
-  height = "20px",
-  ...props
-}) => (
+export const Spacing = ({ guide = false, className = "w-3 h-3", ...props }) => (
   <div
     {...props}
+    className={className}
     style={{
       position: "relative",
-      width,
-      height,
+
       background: "hsl(100, 37%, 79%)",
       opacity: "var(--guide-opacity)",
     }}
@@ -26,16 +21,7 @@ export const Spacing = ({
         fontSize: "8px",
       }}
     >
-      {guide && (
-        <>
-          {/* @ts-ignore */}
-          {props?.width !== "100%" && `${props.width}`}
-          {/* @ts-ignore */}
-          {props?.width !== "100%" && props?.height !== "100%" && ` / `}
-          {/* @ts-ignore */}
-          {props?.height !== "100%" && `${props.height}`}
-        </>
-      )}
+      {guide && className}
     </div>
   </div>
 )

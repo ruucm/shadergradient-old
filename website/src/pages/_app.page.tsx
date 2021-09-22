@@ -7,7 +7,6 @@ import Dom from '@/components/layout/dom'
 import { FormContext } from '@/helpers/form-provider'
 import { useForm } from 'react-hook-form'
 
-import '@/styles/index.css'
 import '../../../ui-styles-compiled.css'
 
 let LCanvas = null

@@ -6,12 +6,16 @@ type RadioGroupPropsT = React.DetailedHTMLProps<
 >
 
 export const RadioGroup: React.FC<RadioGroupPropsT> = ({
+  title,
   children,
   ...rest
 }) => {
   return (
-    <div className="flex w-controls" {...rest}>
-      {children}
+    <div className="flex justify-between items-center w-control" {...rest}>
+      <span className="font-semibold text-primary w-control-title">
+        {title}
+      </span>
+      <div className="flex w-control-inputs">{children}</div>
     </div>
   )
 }

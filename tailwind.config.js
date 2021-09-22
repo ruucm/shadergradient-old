@@ -11,7 +11,7 @@ module.exports = {
         1: "8px",
         2: "12px",
         3: "16px",
-        4: "24px",
+        4: "26px", // modified form  24px
         5: "34px", // modified form  32px
         6: "48px",
       },
@@ -36,7 +36,9 @@ module.exports = {
         "6xl": "4rem",
       },
       width: {
-        controls: "283px",
+        control: "408px",
+        "control-title": "93px",
+        "control-inputs": "283px",
       },
       height: {
         button: "55px",
