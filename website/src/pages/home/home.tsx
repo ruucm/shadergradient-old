@@ -75,23 +75,13 @@ const Page = () => {
     }
   }, [mode])
 
-  var zoom = 2.2
-
-  var setZoom = function () {
-    var zoomOut = setInterval(function () {
-      zoom -= 0.05
-      console.log(zoom)
-      if (zoom < 0.5) {
-        clearInterval(zoomOut)
-      }
-    }, 100)
-  }
-
   return (
     <>
       <div
         className={styles.menu}
         style={{
+          top: '34px',
+          right: '-470px',
           boxShadow:
             mode === 'mobile' || mode === 'web'
               ? '-4px 4px 62px 0px rgba(0, 0, 0, 0.05)'
@@ -114,7 +104,7 @@ const Page = () => {
               }
             }}
           >
-            {mode === 'about' ? '← to main' : 'About →'}
+            {mode === 'about' ? '← main' : 'About →'}
           </motion.a>
           <motion.a
             initial={{ paddingLeft: 0 }}
@@ -200,7 +190,7 @@ const Page = () => {
         style={{
           color: '#FF430A',
           display: mode === 'about' ? 'block' : 'none',
-          fontSize: 30,
+          fontSize: 20,
         }}
       >
         <div className={styles.title}>
@@ -209,14 +199,24 @@ const Page = () => {
             transition={{ duration: 1 }}
             initial={{ opacity: 0 }}
           >
-            Blah Blah this is a place holder for about page. Our custom shader
-            calculates and draws colors and movements in 3d to enable natural
-            expressions. You can control shape, color(shader), lightings and
-            perspectives blah bah. A shader is a set of instructions that
-            calculates and draws every single pixel on the screen. Our custom
-            shaders generate a moving 3d object and colors on it.
+            A shader is a set of instructions that calculates and draws every
+            single pixel on the screen. We've made shaders that constantly
+            animate the shape, color, and light of the 3d object. The shaders
+            create a natural movement and expression of the gradient that can
+            make your digital products vibrant and lively. <br />
           </motion.h1>
 
+          <motion.h1
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+            initial={{ opacity: 0 }}
+          >
+            You can control properties related to shape, color, light, and
+            camera. The three colors you pick are connected to the very top
+            left, very top right, and the very bottom of the fluctuating plane.
+            Explore more about each property by experimenting on{' '}
+            <a href='/custom'>Customize</a> page.
+          </motion.h1>
           <motion.h1
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
@@ -242,13 +242,15 @@ const Page = () => {
             <motion.h1>ShaderGradient</motion.h1>
             <motion.h2 style={{ fontSize: 20, width: '30vw' }}>
               Make your products alive <br />
-              with vivid gradients and movements
+              with vivid colors and movements
             </motion.h2>
             <motion.p
               style={{ fontSize: 12, width: '15vw', marginTop: '50px' }}
             >
-              ShaderGradient allows creators to bring liveliness to their
-              digital spaces with customizable, moving gradients.
+              Customizable gradients inspired by the natural lights and
+              atmospheres. Made with WebGL shaders.
+              <br />
+              <br /> Fully working on Chrome.
             </motion.p>
           </div>
 
@@ -259,7 +261,15 @@ const Page = () => {
                 <a>Customize →</a>
               </Link>
             </div>
-            <div className={styles.sliderWrapper}>
+            <div
+              className={styles.sliderWrapper}
+              style={{
+                borderBottom:
+                  mode === 'full'
+                    ? '2px solid ' + PRESETS[current].color
+                    : '2px solid #FF430A',
+              }}
+            >
               <SnapList ref={snapList} direction='horizontal'>
                 {PRESETS.map((item, index) => {
                   return (
@@ -282,7 +292,7 @@ const Page = () => {
                   )
                 })}
                 <SnapItem
-                  margin={{ left: itemGap, right: '30vw' }}
+                  margin={{ left: itemGap, right: '70vw' }}
                   snapAlign='start'
                 >
                   <button
@@ -328,7 +338,9 @@ const Page = () => {
         environment={<Environment preset='city' background={false} />}
         lights={null}
         rotation={[(Math.PI / 3) * 2, 0, (Math.PI / 7) * 12]}
-        cameraPosition={{ x: 0, y: 1.7, z: 4 }}
+        cameraPosition={
+          mode !== 'about' ? { x: 0, y: 1.7, z: 4 } : { x: 0, y: 0, z: 8 }
+        }
         // cameraRotation={{ x: 0, y: 0, z: 0 }}
         cameraQuaternion={{ x: -Math.PI / 6, y: 0, z: 0 }}
         cameraZoom={mode !== 'about' ? 2.2 : 0.4}
