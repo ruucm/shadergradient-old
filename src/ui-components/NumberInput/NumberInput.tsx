@@ -22,7 +22,7 @@ export const NumberInput = React.forwardRef<
       )}
       <input
         type="number"
-        className="font-medium text-primary bg-primary bg-opacity-10 rounded h-input w-control-number-input text-center"
+        className="font-medium text-primary bg-primary bg-opacity-10 rounded h-input w-control-number-input text-center outline-none"
         ref={ref}
         {...inputProps}
       />
