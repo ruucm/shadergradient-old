@@ -17,8 +17,19 @@ export function GradientScene() {
       gl={{ preserveDrawingBuffer: true }} // to capture the canvas
       id="r3f-canvas"
     >
-      <OrbitControls />
+      {/* <OrbitControls /> */}
       <Gradient
+        rotation={[Math.PI / 2, 0, 0]}
+        cameraPosition={{
+          x: 0,
+          y: 2.2,
+          z: 0,
+        }}
+        cameraQuaternion={{
+          x: -1.2,
+          y: 0,
+          z: 0,
+        }}
         environment={<Environment preset="city" />}
         type={type}
         postProcessing={postProcessing}
