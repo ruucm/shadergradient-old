@@ -69,7 +69,7 @@ function Controls() {
 
   return (
     <div style={{ background: 'white' }}>
-      <UI.RadioGroup>
+      <UI.InputPanel>
         <UI.Radio
           value='plane'
           check={watch('type') === 'plane'}
@@ -88,7 +88,7 @@ function Controls() {
           label='Water'
           {...register('type')}
         />
-      </UI.RadioGroup>
+      </UI.InputPanel>
       cameraPosition
       <div>
         <input

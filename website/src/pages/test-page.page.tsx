@@ -17,6 +17,11 @@ const Page = () => {
       postProcessing: 'threejs',
       animate: 'on',
       currentTime: 0.2,
+      speed: 1.8,
+      bumpScale: 1.3,
+      rotationX: 0,
+      rotationY: 90,
+      rotationZ: 180,
     },
   })
   const onSubmit = (data) => console.log(data)
@@ -27,7 +32,7 @@ const Page = () => {
         onSubmit={handleSubmit(onSubmit)}
         className='inline-block p-4 bg-controls-panel'
       >
-        <UI.RadioGroup title='Type'>
+        <UI.InputPanel title='Type'>
           <UI.Radio
             value='plane'
             check={watch('type') === 'plane'}
@@ -46,11 +51,11 @@ const Page = () => {
             label='Water'
             {...register('type')}
           />
-        </UI.RadioGroup>
+        </UI.InputPanel>
 
         <UI.Spacing className='h-3' />
 
-        <UI.RadioGroup title='Animate'>
+        <UI.InputPanel title='Animate'>
           <UI.Radio
             value='on'
             check={watch('animate') === 'on'}
@@ -63,63 +68,54 @@ const Page = () => {
             label='Off'
             {...register('animate')}
           />
-        </UI.RadioGroup>
+        </UI.InputPanel>
 
         <UI.Spacing className='h-3' />
 
-        <UI.RadioGroup title='Current Time'>
+        <UI.InputPanel title='Current Time'>
           <UI.Slider
             defaultValue={0.2}
             setValue={setValue}
             step={0.1}
+            min={0}
+            max={9}
             {...register('currentTime')}
           />
-        </UI.RadioGroup>
+        </UI.InputPanel>
 
         <UI.Spacing className='h-3' />
 
-        <UI.RadioGroup title='Speed'>
-          <UI.Radio
-            value='threejs'
-            check={watch('postProcessing') === 'threejs'}
-            {...register('postProcessing')}
+        <UI.InputPanel title='Speed'>
+          <UI.Slider
+            defaultValue={1.8}
+            setValue={setValue}
+            step={0.1}
+            min={0}
+            max={2}
+            {...register('speed')}
           />
-          <UI.Radio
-            value='r3f'
-            check={watch('postProcessing') === 'r3f'}
-            {...register('postProcessing')}
-          />
-        </UI.RadioGroup>
+        </UI.InputPanel>
 
         <UI.Spacing className='h-3' />
 
-        <UI.RadioGroup title='Bump Scale'>
-          <UI.Radio
-            value='threejs'
-            check={watch('postProcessing') === 'threejs'}
-            {...register('postProcessing')}
+        <UI.InputPanel title='Bump Scale'>
+          <UI.Slider
+            defaultValue={1.3}
+            setValue={setValue}
+            step={0.1}
+            min={0}
+            max={2}
+            {...register('bumpScale')}
           />
-          <UI.Radio
-            value='r3f'
-            check={watch('postProcessing') === 'r3f'}
-            {...register('postProcessing')}
-          />
-        </UI.RadioGroup>
+        </UI.InputPanel>
 
         <UI.Spacing className='h-3' />
 
-        <UI.RadioGroup title='Rotation'>
-          <UI.Radio
-            value='threejs'
-            check={watch('postProcessing') === 'threejs'}
-            {...register('postProcessing')}
-          />
-          <UI.Radio
-            value='r3f'
-            check={watch('postProcessing') === 'r3f'}
-            {...register('postProcessing')}
-          />
-        </UI.RadioGroup>
+        <UI.InputPanel title='Rotation'>
+          <UI.NumberInput label='x' {...register('rotationX')} />
+          <UI.NumberInput label='y' {...register('rotationY')} />
+          <UI.NumberInput label='z' {...register('rotationZ')} />
+        </UI.InputPanel>
       </form>
     </>
   )

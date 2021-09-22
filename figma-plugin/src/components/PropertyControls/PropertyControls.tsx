@@ -8,7 +8,7 @@ export function PropertyControls({ onSubmit }) {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <UI.RadioGroup>
+      <UI.InputPanel>
         <UI.Radio
           value="plane"
           check={watch("type") === "plane"}
@@ -27,11 +27,11 @@ export function PropertyControls({ onSubmit }) {
           label="Water"
           {...register("type")}
         />
-      </UI.RadioGroup>
+      </UI.InputPanel>
 
       <UI.Spacing height="20px" />
 
-      <UI.RadioGroup>
+      <UI.InputPanel>
         <UI.Radio
           value="threejs"
           check={watch("postProcessing") === "threejs"}
@@ -42,7 +42,7 @@ export function PropertyControls({ onSubmit }) {
           check={watch("postProcessing") === "r3f"}
           {...register("postProcessing")}
         />
-      </UI.RadioGroup>
+      </UI.InputPanel>
 
       <UI.Spacing height="20px" />
 

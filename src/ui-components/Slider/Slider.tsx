@@ -7,13 +7,15 @@ type SliderPropsT = {
   defaultValue: number
   setValue: any
   step: number
+  min: number
+  max: number
 } & React.DetailedHTMLProps<
   React.InputHTMLAttributes<HTMLInputElement>,
   HTMLInputElement
 >
 
 export const Slider = React.forwardRef<HTMLInputElement, SliderPropsT>(
-  ({ defaultValue, setValue, step }: SliderPropsT, ref) => {
+  ({ defaultValue, setValue, step, min, max }: SliderPropsT, ref) => {
     const [sharedValue, setSharedValue] = useState<any>(defaultValue)
     useEffect(() => {
       setValue("uTime", sharedValue)
@@ -22,7 +24,6 @@ export const Slider = React.forwardRef<HTMLInputElement, SliderPropsT>(
     return (
       <div className="flex items-center w-full">
         <NumberInput
-          type="number"
           value={sharedValue}
           onChange={(e: any) => setSharedValue(e.target.value)}
           step={step}
@@ -33,14 +34,14 @@ export const Slider = React.forwardRef<HTMLInputElement, SliderPropsT>(
         <ReactSlider
           value={Number(sharedValue)}
           step={step}
-          min={0}
-          max={9}
+          min={min}
+          max={max}
           onChange={(value, index) => setSharedValue(value)}
           // styles
           className="bg-primary h-slider w-full"
-          marks={[4.5]}
+          marks={[(min + max) / 2]}
           markClassName="w-mark h-mark bg-primary top-1/2 transform -translate-y-1/2 slider-mark-center-x"
-          thumbClassName="bg-primary w-thumb h-thumb rounded-full top-1/2 transform -translate-y-1/2 outline-none"
+          thumbClassName="bg-primary w-thumb h-thumb rounded-full top-1/2 transform -translate-y-1/2 outline-none cursor-pointer"
           thumbActiveClassName="bg-opacity-80"
           // trackClassName={styles.track}
         />

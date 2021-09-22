@@ -1,11 +1,11 @@
 import * as React from "react"
 
-type RadioGroupPropsT = React.DetailedHTMLProps<
+type InputPanelPropsT = React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLDivElement>,
   HTMLDivElement
 >
 
-export const RadioGroup: React.FC<RadioGroupPropsT> = ({
+export const InputPanel: React.FC<InputPanelPropsT> = ({
   title,
   children,
   ...rest
@@ -15,7 +15,7 @@ export const RadioGroup: React.FC<RadioGroupPropsT> = ({
       <span className="font-semibold text-primary w-control-title">
         {title}
       </span>
-      <div className="flex w-control-inputs">{children}</div>
+      <div className="flex justify-between w-control-inputs">{children}</div>
     </div>
   )
 }
