@@ -18,6 +18,8 @@ const Page = () => {
 
   return (
     <>
+      <div className='bg-primary'>hey</div>
+
       <div style={{ height: 300 }} />
 
       <form onSubmit={handleSubmit(onSubmit)}>

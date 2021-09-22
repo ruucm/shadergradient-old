@@ -6,6 +6,7 @@ import { PropertyControls } from "./components/PropertyControls"
 import { FormContext } from "./helpers/form-provider"
 import { useForm } from "react-hook-form"
 import "./global.css"
+import "../../ui-styles-compiled.css"
 import { GradientScene } from "./components/GradientScene"
 import { defaultProperties } from "./consts"
 

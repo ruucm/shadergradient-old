@@ -8,6 +8,7 @@ export function PropertyControls({ onSubmit }) {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
+      <div className="bg-primary">heyey</div>
       <UI.RadioGroup>
         <UI.Radio
           value="plane"
