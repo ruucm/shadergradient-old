@@ -201,7 +201,7 @@ const Page = () => {
             initial={{ opacity: 0 }}
           >
             A shader is a set of instructions that calculates and draws every
-            single pixel on the screen. We've made shaders that constantly
+            single pixel on the screen. We{"'"}ve made shaders that constantly
             animate the shape, color, and light of the 3d object. The shaders
             create a natural movement and expression of the gradient that can
             make your digital products vibrant and lively. <br />
