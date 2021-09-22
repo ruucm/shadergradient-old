@@ -106,9 +106,9 @@ export function ShapeControls() {
       <UI.Spacing className='h-3' />
 
       <UI.InputPanel title='Rotation'>
-        <UI.NumberInput label='x' {...register('rotationX')} />
-        <UI.NumberInput label='y' {...register('rotationY')} />
-        <UI.NumberInput label='z' {...register('rotationZ')} />
+        <UI.NumberInput label='x' step={10} {...register('rotationX')} />
+        <UI.NumberInput label='y' step={10} {...register('rotationY')} />
+        <UI.NumberInput label='z' step={10} {...register('rotationZ')} />
       </UI.InputPanel>
     </>
   )

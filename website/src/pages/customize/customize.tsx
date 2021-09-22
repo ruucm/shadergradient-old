@@ -29,7 +29,11 @@ const Page = () => {
     <>
       <Gradient
         r3f
-        rotation={[Math.PI / 2, 0, 0]}
+        rotation={[
+          (rotationX / 360) * Math.PI,
+          (rotationY / 360) * Math.PI,
+          (rotationZ / 360) * Math.PI,
+        ]}
         cameraPosition={{
           x: cameraPositionX,
           y: cameraPositionY,
