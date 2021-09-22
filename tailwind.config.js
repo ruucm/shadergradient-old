@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       colors: {
         primary: "#FF430A",
+        "controls-panel": "#F6F8F8",
       },
       spacing: {
         1: "8px",
@@ -36,6 +37,9 @@ module.exports = {
       },
       width: {
         controls: "283px",
+      },
+      height: {
+        button: "55px",
       },
     },
   },

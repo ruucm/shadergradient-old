@@ -6,9 +6,19 @@ type ButtonPropsT = React.DetailedHTMLProps<
   HTMLButtonElement
 >
 
+const ButtonType = {
+  primary: "bg-blue-500 hover:bg-blue-700 text-white font-bold rounded",
+  secondary: "bg-blue-500 hover:bg-blue-700 text-white font-bold rounded",
+}
+
 export const Button: React.FC<ButtonPropsT> = ({ children, ...rest }) => {
   return (
-    <button className={styles.wrap} {...rest}>
+    <button
+      // className={styles.wrap}
+
+      className="bg-primary h-button font-medium text-white rounded"
+      {...rest}
+    >
       {children}
     </button>
   )

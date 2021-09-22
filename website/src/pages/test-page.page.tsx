@@ -1,4 +1,3 @@
-import dynamic from 'next/dynamic'
 import { useForm } from 'react-hook-form'
 import { UI } from 'shadergradient'
 
@@ -10,35 +9,49 @@ const Page = () => {
     formState: { errors },
   } = useForm({
     // mode: "onChange"
-    defaultValues: { Fruits: 'Banana' },
+    defaultValues: { type: 'plane', postProcessing: 'threejs' },
   })
   const onSubmit = (data) => console.log(data)
-  const fruitsValue = watch('Fruits')
-  console.log('fruitsValue', fruitsValue)
 
   return (
     <>
-      <div className='bg-primary'>hey</div>
-
-      <div style={{ height: 300 }} />
-
       <form onSubmit={handleSubmit(onSubmit)}>
+        <div className='flex items-center bg-controls-panel'>
+          <span className='font-semibold text-primary'>Type</span>
+          <UI.RadioGroup>
+            <UI.Radio
+              value='plane'
+              check={watch('type') === 'plane'}
+              label='Plane'
+              {...register('type')}
+            />
+            <UI.Radio
+              value='sphere'
+              check={watch('type') === 'sphere'}
+              label='Sphere'
+              {...register('type')}
+            />
+            <UI.Radio
+              value='waterPlane'
+              check={watch('type') === 'waterPlane'}
+              label='Water'
+              {...register('type')}
+            />
+          </UI.RadioGroup>
+        </div>
+        <UI.Spacing height='20px' />
         <UI.RadioGroup>
           <UI.Radio
-            label='Apple'
-            value='Apple'
-            checked={fruitsValue === 'Apple'}
-            {...register('Fruits', { required: true })}
+            value='threejs'
+            check={watch('postProcessing') === 'threejs'}
+            {...register('postProcessing')}
           />
           <UI.Radio
-            label='Banana'
-            value='Banana'
-            checked={fruitsValue === 'Banana'}
-            {...register('Fruits', { required: true })}
+            value='r3f'
+            check={watch('postProcessing') === 'r3f'}
+            {...register('postProcessing')}
           />
         </UI.RadioGroup>
-
-        <input type='submit' />
       </form>
     </>
   )
