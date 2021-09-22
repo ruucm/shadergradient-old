@@ -32,7 +32,7 @@ const Page = () => {
         onSubmit={handleSubmit(onSubmit)}
         className='inline-block p-4 bg-controls-panel'
       >
-        <UI.InputPanel title='Type'>
+        <UI.InputPanel title='Type' gap='w-2'>
           <UI.Radio
             value='plane'
             check={watch('type') === 'plane'}
@@ -55,7 +55,7 @@ const Page = () => {
 
         <UI.Spacing className='h-3' />
 
-        <UI.InputPanel title='Animate'>
+        <UI.InputPanel title='Animate' gap='w-2'>
           <UI.Radio
             value='on'
             check={watch('animate') === 'on'}
