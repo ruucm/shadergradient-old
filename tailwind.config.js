@@ -1,5 +1,10 @@
 module.exports = {
-  purge: [],
+  mode: "jit",
+  purge: [
+    "./src/**/*.{js,jsx,ts,tsx,vue}",
+    "./website/src/**/*.{js,jsx,ts,tsx,vue}",
+    "./figma-plugin/src/**/*.{js,jsx,ts,tsx,vue}",
+  ],
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {

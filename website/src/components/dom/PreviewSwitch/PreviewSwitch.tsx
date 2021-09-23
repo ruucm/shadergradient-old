@@ -9,13 +9,9 @@ export function PreviewSwitch({ mode = 'mobile', setMode }) {
       <div className='flex gap-1.5'>
         <motion.div
           className={cx(
-            'rounded-sm cursor-pointer bg-primary',
+            'rounded-sm cursor-pointer bg-primary w-[17px] h-[31px]',
             mode !== 'mobile' && 'opacity-preview-btn'
           )}
-          style={{
-            width: '17px',
-            height: '31px',
-          }}
           whileHover={{
             opacity: 1,
             transition: { duration: 0.3 },
@@ -30,13 +26,9 @@ export function PreviewSwitch({ mode = 'mobile', setMode }) {
         ></motion.div>
         <motion.div
           className={cx(
-            'rounded-sm cursor-pointer bg-primary',
+            'rounded-sm cursor-pointer bg-primary w-[47px] h-[31px]',
             mode !== 'web' && 'opacity-preview-btn'
           )}
-          style={{
-            width: '47px',
-            height: '31px',
-          }}
           whileHover={{
             opacity: 1,
             transition: { duration: 0.3 },
