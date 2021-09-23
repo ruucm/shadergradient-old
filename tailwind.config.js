@@ -9,6 +9,7 @@ module.exports = {
       },
       spacing: {
         1: "8px",
+        1.5: "10px",
         2: "12px",
         3: "16px",
         4: "26px", // modified form  24px
@@ -17,7 +18,7 @@ module.exports = {
       },
       borderRadius: {
         none: "0",
-        sm: "0.125rem",
+        sm: "4px",
         DEFAULT: "9px",
         md: "11px",
         lg: "0.5rem",
@@ -50,6 +51,9 @@ module.exports = {
         slider: "2px",
         thumb: "16px",
         mark: "16px",
+      },
+      opacity: {
+        "preview-btn": ".17",
       },
     },
   },

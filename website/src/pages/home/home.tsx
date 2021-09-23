@@ -14,6 +14,7 @@ import { Gradient } from 'shadergradient'
 import styles from './Home.module.scss'
 import { MyItem } from './my-item'
 import PRESETS from '../presets.json'
+import { PreviewSwitch } from '@/components/dom/PreviewSwitch'
 
 //gap between theme items
 const itemGap = '40px'
@@ -137,53 +138,7 @@ const Page = () => {
           >
             Framer →
           </motion.a>
-          <div className={styles.preview}>
-            <p>preview</p>
-            <div className={styles.previewWrapper}>
-              <motion.div
-                style={{
-                  width: '17px',
-                  height: '31px',
-                  borderRadius: '4px',
-                  background: '#ff430a',
-                  cursor: 'pointer',
-                  opacity: mode === 'mobile' ? 1 : 0.17,
-                }}
-                whileHover={{
-                  opacity: 1,
-                  transition: { duration: 0.3 },
-                }}
-                onClick={() => {
-                  if (mode !== 'mobile') {
-                    setMode('mobile')
-                  } else {
-                    setMode('full')
-                  }
-                }}
-              ></motion.div>
-              <motion.div
-                style={{
-                  width: '47px',
-                  height: '31px',
-                  borderRadius: '4px',
-                  background: '#ff430a',
-                  cursor: 'pointer',
-                  opacity: mode === 'web' ? 1 : 0.17,
-                }}
-                whileHover={{
-                  opacity: 1,
-                  transition: { duration: 0.3 },
-                }}
-                onClick={() => {
-                  if (mode !== 'web') {
-                    setMode('web')
-                  } else {
-                    setMode('full')
-                  }
-                }}
-              ></motion.div>
-            </div>
-          </div>
+          <PreviewSwitch mode={mode} setMode={setMode} />
         </div>
       </div>
       <motion.div

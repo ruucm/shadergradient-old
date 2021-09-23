@@ -4,6 +4,7 @@ import { Gradient, UI } from 'shadergradient'
 import { ShapeControls } from './shape-controls'
 import cx from 'classnames'
 import { CameraControls } from './camera-controls'
+import { PreviewSwitch } from '@/components/dom/PreviewSwitch'
 
 const Page = () => {
   const ctx: any = useContext(FormContext)
@@ -112,6 +113,8 @@ function Controls() {
           active={activeTab === 'camera'}
           onClick={() => setActiveTab('camera')}
         />
+
+        <PreviewSwitch />
       </div>
       {/* Controls */}
       <div className='inline-block p-4 bg-controls-panel'>
