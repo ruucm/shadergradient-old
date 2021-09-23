@@ -2,7 +2,7 @@ import * as React from 'react'
 import { motion } from 'framer-motion'
 import cx from 'classnames'
 
-export function PreviewSwitch({ mode = 'mobile', setMode }) {
+export function PreviewSwitch({ mode = 'mobile', setMode = void 0 }) {
   return (
     <div>
       <p className='mt-4 mb-1.5'>preview</p>
