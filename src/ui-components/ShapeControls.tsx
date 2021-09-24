@@ -1,9 +1,18 @@
 import * as React from "react"
 import { useContext } from "react"
-import { UI } from "shadergradient"
-import { FormContext } from "../../helpers/form-provider"
+import * as UI from "../ui-components"
 
-export function ShapeControls() {
+type ShapeControlsPropsT = {
+  FormContext: React.Context<any>
+} & React.DetailedHTMLProps<
+  React.HTMLAttributes<HTMLDivElement>,
+  HTMLDivElement
+>
+
+export const ShapeControls: React.FC<ShapeControlsPropsT> = ({
+  FormContext,
+  ...rest
+}) => {
   const { register, watch, setValue } = useContext(FormContext)
 
   const {

@@ -2,8 +2,6 @@ import * as React from "react"
 import { useContext, useState } from "react"
 import { FormContext } from "../../helpers/form-provider"
 import { UI } from "shadergradient"
-import { CameraControls } from "./camera-controls"
-import { ShapeControls } from "./shape-controls"
 
 export function PropertyControls() {
   const [activeTab, setActiveTab] = useState("shape")
@@ -36,8 +34,12 @@ export function PropertyControls() {
         />
       </div>
       <div className="inline-block p-4 bg-controls-panel h-[340px] overflow-y-scroll">
-        {activeTab === "shape" && <ShapeControls />}
-        {activeTab === "camera" && <CameraControls />}
+        {activeTab === "shape" && (
+          <UI.ShapeControls FormContext={FormContext} />
+        )}
+        {activeTab === "camera" && (
+          <UI.CameraControls FormContext={FormContext} />
+        )}
       </div>
     </>
   )

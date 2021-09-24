@@ -1,8 +1,18 @@
-import { FormContext } from '@/helpers/form-provider'
-import { useContext } from 'react'
-import { UI } from 'shadergradient'
+import * as React from "react"
+import { useContext } from "react"
+import * as UI from "../ui-components"
 
-export function CameraControls() {
+type CameraControlsPropsT = {
+  FormContext: React.Context<any>
+} & React.DetailedHTMLProps<
+  React.HTMLAttributes<HTMLDivElement>,
+  HTMLDivElement
+>
+
+export const CameraControls: React.FC<CameraControlsPropsT> = ({
+  FormContext,
+  ...rest
+}) => {
   const { register, watch, setValue } = useContext(FormContext)
 
   const {
@@ -19,54 +29,54 @@ export function CameraControls() {
   return (
     <>
       {/* Positions */}
-      <UI.InputPanel title='Camera Position X'>
+      <UI.InputPanel title="Camera Position X">
         <UI.Slider
           defaultValue={cameraPositionX}
           setValue={setValue}
           step={0.1}
           min={-5}
           max={5}
-          {...register('cameraPositionX')}
+          {...register("cameraPositionX")}
         />
       </UI.InputPanel>
-      <UI.Spacing className='h-3' />
+      <UI.Spacing className="h-3" />
 
-      <UI.InputPanel title='Camera Position Y'>
+      <UI.InputPanel title="Camera Position Y">
         <UI.Slider
           defaultValue={cameraPositionY}
           setValue={setValue}
           step={0.1}
           min={-5}
           max={5}
-          {...register('cameraPositionY')}
+          {...register("cameraPositionY")}
         />
       </UI.InputPanel>
-      <UI.Spacing className='h-3' />
+      <UI.Spacing className="h-3" />
 
-      <UI.InputPanel title='Camera Position Z'>
+      <UI.InputPanel title="Camera Position Z">
         <UI.Slider
           defaultValue={cameraPositionZ}
           setValue={setValue}
           step={0.1}
           min={-5}
           max={5}
-          {...register('cameraPositionZ')}
+          {...register("cameraPositionZ")}
         />
       </UI.InputPanel>
-      <UI.Spacing className='h-3' />
+      <UI.Spacing className="h-3" />
 
       {/* Zoom */}
-      <UI.InputPanel title='Camera Zoom'>
+      <UI.InputPanel title="Camera Zoom">
         <UI.Slider
           defaultValue={cameraZoom}
           setValue={setValue}
           step={0.1}
           min={0}
           max={3}
-          {...register('cameraZoom')}
+          {...register("cameraZoom")}
         />
       </UI.InputPanel>
-      <UI.Spacing className='h-3' />
+      <UI.Spacing className="h-3" />
     </>
   )
 }

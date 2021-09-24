@@ -1,9 +1,7 @@
 import { FormContext } from '@/helpers/form-provider'
 import { useContext, useState } from 'react'
 import { Gradient, UI } from 'shadergradient'
-import { ShapeControls } from './shape-controls'
 import cx from 'classnames'
-import { CameraControls } from './camera-controls'
 import { PreviewSwitch } from '@/components/dom/PreviewSwitch'
 
 const Page = () => {
@@ -102,8 +100,12 @@ function Controls() {
       </div>
       {/* Controls */}
       <div className='inline-block p-4 bg-controls-panel'>
-        {activeTab === 'shape' && <ShapeControls />}
-        {activeTab === 'camera' && <CameraControls />}
+        {activeTab === 'shape' && (
+          <UI.ShapeControls FormContext={FormContext} />
+        )}
+        {activeTab === 'camera' && (
+          <UI.CameraControls FormContext={FormContext} />
+        )}
       </div>
     </div>
   )
