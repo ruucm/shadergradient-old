@@ -5,7 +5,7 @@ import cx from 'classnames'
 export function PreviewSwitch({ mode = 'mobile', setMode = void 0 }) {
   return (
     <div>
-      <p className='mt-4 mb-1.5'>preview</p>
+      <p className='mt-4 mb-1.5 text-primary'>preview</p>
       <div className='flex gap-1.5'>
         <motion.div
           className={cx(
