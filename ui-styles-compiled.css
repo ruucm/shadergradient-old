@@ -695,6 +695,9 @@ video {
 .h-\[31px\] {
 	height: 31px;
 }
+.h-\[66px\] {
+	height: 66px;
+}
 .w-control {
 	width: 408px;
 }
@@ -750,6 +753,12 @@ video {
 .cursor-pointer {
 	cursor: pointer;
 }
+.flex-col {
+	flex-direction: column;
+}
+.content-around {
+	align-content: space-around;
+}
 .items-center {
 	align-items: center;
 }
@@ -759,11 +768,17 @@ video {
 .justify-between {
 	justify-content: space-between;
 }
+.justify-around {
+	justify-content: space-around;
+}
 .gap-1\.5 {
 	gap: 10px;
 }
 .gap-1 {
 	gap: 8px;
+}
+.gap-2 {
+	gap: 12px;
 }
 .overflow-hidden {
 	overflow: hidden;

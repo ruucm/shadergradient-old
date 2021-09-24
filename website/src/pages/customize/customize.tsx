@@ -66,20 +66,6 @@ export async function getStaticProps() {
   }
 }
 
-function ControlTypeTitle({ title, active, onClick }) {
-  return (
-    <div
-      className={cx(
-        'text-3xl font-medium text-primary text-opacity-20 cursor-pointer',
-        active && 'text-opacity-100'
-      )}
-      onClick={onClick}
-    >
-      {title}
-    </div>
-  )
-}
-
 function Controls() {
   const [activeTab, setActiveTab] = useState('shape')
 
@@ -87,33 +73,31 @@ function Controls() {
     <div className='inline-flex overflow-hidden rounded-md'>
       {/* Control Types */}
       <div className='p-4 bg-white w-control-types'>
-        <ControlTypeTitle
-          title='Shape'
-          active={activeTab === 'shape'}
-          onClick={() => setActiveTab('shape')}
-        />
-        <UI.Spacing className='h-2' />
+        <div className='flex flex-col gap-2'>
+          <UI.ControlTypeTitle
+            title='Shape'
+            active={activeTab === 'shape'}
+            onClick={() => setActiveTab('shape')}
+          />
 
-        <ControlTypeTitle
-          title='Colors'
-          active={activeTab === 'colors'}
-          onClick={() => setActiveTab('colors')}
-        />
-        <UI.Spacing className='h-2' />
+          <UI.ControlTypeTitle
+            title='Colors'
+            active={activeTab === 'colors'}
+            onClick={() => setActiveTab('colors')}
+          />
 
-        <ControlTypeTitle
-          title='Light'
-          active={activeTab === 'light'}
-          onClick={() => setActiveTab('light')}
-        />
-        <UI.Spacing className='h-2' />
+          <UI.ControlTypeTitle
+            title='Light'
+            active={activeTab === 'light'}
+            onClick={() => setActiveTab('light')}
+          />
 
-        <ControlTypeTitle
-          title='Camera'
-          active={activeTab === 'camera'}
-          onClick={() => setActiveTab('camera')}
-        />
-
+          <UI.ControlTypeTitle
+            title='Camera'
+            active={activeTab === 'camera'}
+            onClick={() => setActiveTab('camera')}
+          />
+        </div>
         <PreviewSwitch />
       </div>
       {/* Controls */}

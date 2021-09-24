@@ -9,9 +9,36 @@ export function PropertyControls({ onSubmit }) {
   const [activeTab, setActiveTab] = useState("shape")
 
   return (
-    <div className="inline-block p-4 bg-controls-panel">
-      {activeTab === "shape" && <ShapeControls />}
-      {activeTab === "camera" && <CameraControls />}
-    </div>
+    <>
+      <div className="h-[66px] flex justify-around items-center">
+        <UI.ControlTypeTitle
+          title="Shape"
+          active={activeTab === "shape"}
+          onClick={() => setActiveTab("shape")}
+        />
+
+        <UI.ControlTypeTitle
+          title="Colors"
+          active={activeTab === "colors"}
+          onClick={() => setActiveTab("colors")}
+        />
+
+        <UI.ControlTypeTitle
+          title="Light"
+          active={activeTab === "light"}
+          onClick={() => setActiveTab("light")}
+        />
+
+        <UI.ControlTypeTitle
+          title="Camera"
+          active={activeTab === "camera"}
+          onClick={() => setActiveTab("camera")}
+        />
+      </div>
+      <div className="inline-block p-4 bg-controls-panel">
+        {activeTab === "shape" && <ShapeControls />}
+        {activeTab === "camera" && <CameraControls />}
+      </div>
+    </>
   )
 }
