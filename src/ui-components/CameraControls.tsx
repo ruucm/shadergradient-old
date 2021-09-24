@@ -27,44 +27,7 @@ export const CameraControls: React.FC<CameraControlsPropsT> = ({
   }: any = watch()
 
   return (
-    <>
-      {/* Positions */}
-      <UI.InputPanel title="Camera Position X">
-        <UI.Slider
-          defaultValue={cameraPositionX}
-          setValue={setValue}
-          step={0.1}
-          min={-5}
-          max={5}
-          {...register("cameraPositionX")}
-        />
-      </UI.InputPanel>
-      <UI.Spacing className="h-3" />
-
-      <UI.InputPanel title="Camera Position Y">
-        <UI.Slider
-          defaultValue={cameraPositionY}
-          setValue={setValue}
-          step={0.1}
-          min={-5}
-          max={5}
-          {...register("cameraPositionY")}
-        />
-      </UI.InputPanel>
-      <UI.Spacing className="h-3" />
-
-      <UI.InputPanel title="Camera Position Z">
-        <UI.Slider
-          defaultValue={cameraPositionZ}
-          setValue={setValue}
-          step={0.1}
-          min={-5}
-          max={5}
-          {...register("cameraPositionZ")}
-        />
-      </UI.InputPanel>
-      <UI.Spacing className="h-3" />
-
+    <div className="flex flex-col gap-3">
       {/* Zoom */}
       <UI.InputPanel title="Camera Zoom">
         <UI.Slider
@@ -76,7 +39,40 @@ export const CameraControls: React.FC<CameraControlsPropsT> = ({
           {...register("cameraZoom")}
         />
       </UI.InputPanel>
-      <UI.Spacing className="h-3" />
-    </>
+
+      {/* Positions */}
+      <UI.InputPanel title="Camera Position X">
+        <UI.Slider
+          defaultValue={cameraPositionX}
+          setValue={setValue}
+          step={0.1}
+          min={-5}
+          max={5}
+          {...register("cameraPositionX")}
+        />
+      </UI.InputPanel>
+
+      <UI.InputPanel title="Camera Position Y">
+        <UI.Slider
+          defaultValue={cameraPositionY}
+          setValue={setValue}
+          step={0.1}
+          min={-5}
+          max={5}
+          {...register("cameraPositionY")}
+        />
+      </UI.InputPanel>
+
+      <UI.InputPanel title="Camera Position Z">
+        <UI.Slider
+          defaultValue={cameraPositionZ}
+          setValue={setValue}
+          step={0.1}
+          min={-5}
+          max={5}
+          {...register("cameraPositionZ")}
+        />
+      </UI.InputPanel>
+    </div>
   )
 }

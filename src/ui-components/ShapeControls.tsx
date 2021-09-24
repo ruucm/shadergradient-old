@@ -35,7 +35,7 @@ export const ShapeControls: React.FC<ShapeControlsPropsT> = ({
   }: any = watch()
 
   return (
-    <>
+    <div className="flex flex-col gap-3">
       <UI.InputPanel title="Type" gap="w-2">
         <UI.Radio
           value="plane"
@@ -57,8 +57,6 @@ export const ShapeControls: React.FC<ShapeControlsPropsT> = ({
         />
       </UI.InputPanel>
 
-      <UI.Spacing className="h-3" />
-
       <UI.InputPanel title="Animate" gap="w-2">
         <UI.Radio
           value="on"
@@ -74,8 +72,6 @@ export const ShapeControls: React.FC<ShapeControlsPropsT> = ({
         />
       </UI.InputPanel>
 
-      <UI.Spacing className="h-3" />
-
       <UI.InputPanel title="Movements">
         <UI.Slider
           defaultValue={movements}
@@ -86,8 +82,6 @@ export const ShapeControls: React.FC<ShapeControlsPropsT> = ({
           {...register("movements")}
         />
       </UI.InputPanel>
-
-      <UI.Spacing className="h-3" />
 
       <UI.InputPanel title="Speed">
         <UI.Slider
@@ -100,8 +94,6 @@ export const ShapeControls: React.FC<ShapeControlsPropsT> = ({
         />
       </UI.InputPanel>
 
-      <UI.Spacing className="h-3" />
-
       <UI.InputPanel title="Bump Scale">
         <UI.Slider
           defaultValue={bumpScale}
@@ -113,13 +105,11 @@ export const ShapeControls: React.FC<ShapeControlsPropsT> = ({
         />
       </UI.InputPanel>
 
-      <UI.Spacing className="h-3" />
-
       <UI.InputPanel title="Rotation">
         <UI.NumberInput label="x" step={10} {...register("rotationX")} />
         <UI.NumberInput label="y" step={10} {...register("rotationY")} />
         <UI.NumberInput label="z" step={10} {...register("rotationZ")} />
       </UI.InputPanel>
-    </>
+    </div>
   )
 }
