@@ -13,6 +13,7 @@ module.exports = {
         "controls-panel": "#F6F8F8",
       },
       spacing: {
+        0.5: "6px",
         1: "8px",
         1.5: "10px",
         2: "12px",

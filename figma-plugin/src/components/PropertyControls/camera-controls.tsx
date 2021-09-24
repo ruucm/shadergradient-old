@@ -67,7 +67,6 @@ export function CameraControls() {
           {...register("cameraZoom")}
         />
       </UI.InputPanel>
-      <UI.Spacing className="h-3" />
     </>
   )
 }

@@ -9,6 +9,7 @@ import "./global.css"
 import "../../ui-styles-compiled.css"
 import { GradientScene } from "./components/GradientScene"
 import { defaultProperties } from "./consts"
+import { UI } from "shadergradient"
 
 function App() {
   const formProps = useForm({
@@ -18,7 +19,13 @@ function App() {
   return (
     <FormContext.Provider value={formProps}>
       <GradientScene />
-      <PropertyControls onSubmit={insertCanvasAsImage} />
+      <PropertyControls />
+      <div className="flex gap-0.5 p-3 absolute w-full bottom-0">
+        <UI.Button>Extract GIF</UI.Button>
+        <UI.Button kind="secondary" onClick={insertCanvasAsImage}>
+          Snapshot
+        </UI.Button>
+      </div>
     </FormContext.Provider>
   )
 }

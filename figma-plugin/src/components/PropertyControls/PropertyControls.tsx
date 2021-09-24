@@ -5,7 +5,7 @@ import { UI } from "shadergradient"
 import { CameraControls } from "./camera-controls"
 import { ShapeControls } from "./shape-controls"
 
-export function PropertyControls({ onSubmit }) {
+export function PropertyControls() {
   const [activeTab, setActiveTab] = useState("shape")
 
   return (
@@ -35,7 +35,7 @@ export function PropertyControls({ onSubmit }) {
           onClick={() => setActiveTab("camera")}
         />
       </div>
-      <div className="inline-block p-4 bg-controls-panel">
+      <div className="inline-block p-4 bg-controls-panel h-[340px] overflow-y-scroll">
         {activeTab === "shape" && <ShapeControls />}
         {activeTab === "camera" && <CameraControls />}
       </div>

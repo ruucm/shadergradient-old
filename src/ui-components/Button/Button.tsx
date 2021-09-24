@@ -1,22 +1,26 @@
 import * as React from "react"
-import styles from "./Button.module.scss"
+import cx from "classnames"
 
-type ButtonPropsT = React.DetailedHTMLProps<
+type ButtonPropsT = {
+  kind?: "primary" | "secondary"
+} & React.DetailedHTMLProps<
   React.ButtonHTMLAttributes<HTMLButtonElement>,
   HTMLButtonElement
 >
 
-const ButtonType = {
-  primary: "bg-blue-500 hover:bg-blue-700 text-white font-bold rounded",
-  secondary: "bg-blue-500 hover:bg-blue-700 text-white font-bold rounded",
+const ButtonKind = {
+  primary: "bg-primary text-white",
+  secondary: "ring-1 ring-primary text-primary",
 }
 
-export const Button: React.FC<ButtonPropsT> = ({ children, ...rest }) => {
+export const Button: React.FC<ButtonPropsT> = ({
+  kind = "primary",
+  children,
+  ...rest
+}) => {
   return (
     <button
-      // className={styles.wrap}
-
-      className="bg-primary h-button font-medium text-white rounded"
+      className={cx("h-button font-medium rounded w-full", ButtonKind[kind])}
       {...rest}
     >
       {children}

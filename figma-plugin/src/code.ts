@@ -1,6 +1,6 @@
 /// <reference path="../node_modules/@figma/plugin-typings/index.d.ts" />
 
-figma.showUI(__html__, { width: 453, height: 856 })
+figma.showUI(__html__, { width: 453, height: 793 })
 
 figma.ui.onmessage = (msg) => {
   const { type } = msg
