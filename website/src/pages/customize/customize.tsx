@@ -66,7 +66,7 @@ export async function getStaticProps() {
   }
 }
 
-function ControlTypeTile({ title, active, onClick }) {
+function ControlTypeTitle({ title, active, onClick }) {
   return (
     <div
       className={cx(
@@ -87,28 +87,28 @@ function Controls() {
     <div className='inline-flex overflow-hidden rounded-md'>
       {/* Control Types */}
       <div className='p-4 bg-white w-control-types'>
-        <ControlTypeTile
+        <ControlTypeTitle
           title='Shape'
           active={activeTab === 'shape'}
           onClick={() => setActiveTab('shape')}
         />
         <UI.Spacing className='h-2' />
 
-        <ControlTypeTile
+        <ControlTypeTitle
           title='Colors'
           active={activeTab === 'colors'}
           onClick={() => setActiveTab('colors')}
         />
         <UI.Spacing className='h-2' />
 
-        <ControlTypeTile
+        <ControlTypeTitle
           title='Light'
           active={activeTab === 'light'}
           onClick={() => setActiveTab('light')}
         />
         <UI.Spacing className='h-2' />
 
-        <ControlTypeTile
+        <ControlTypeTitle
           title='Camera'
           active={activeTab === 'camera'}
           onClick={() => setActiveTab('camera')}
