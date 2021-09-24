@@ -55,43 +55,6 @@ export function CameraControls() {
       </UI.InputPanel>
       <UI.Spacing className='h-3' />
 
-      {/* Quaternions */}
-      <UI.InputPanel title='Camera Quaternion X'>
-        <UI.Slider
-          defaultValue={cameraQuaternionX}
-          setValue={setValue}
-          step={0.1}
-          min={-5}
-          max={5}
-          {...register('cameraQuaternionX')}
-        />
-      </UI.InputPanel>
-      <UI.Spacing className='h-3' />
-
-      <UI.InputPanel title='Camera Quaternion Y'>
-        <UI.Slider
-          defaultValue={cameraQuaternionY}
-          setValue={setValue}
-          step={0.1}
-          min={-5}
-          max={5}
-          {...register('cameraQuaternionY')}
-        />
-      </UI.InputPanel>
-      <UI.Spacing className='h-3' />
-
-      <UI.InputPanel title='Camera Quaternion Z'>
-        <UI.Slider
-          defaultValue={cameraQuaternionZ}
-          setValue={setValue}
-          step={0.1}
-          min={-5}
-          max={5}
-          {...register('cameraQuaternionZ')}
-        />
-      </UI.InputPanel>
-      <UI.Spacing className='h-3' />
-
       {/* Zoom */}
       <UI.InputPanel title='Camera Zoom'>
         <UI.Slider
