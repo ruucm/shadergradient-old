@@ -15,8 +15,8 @@ const LControl = () => {
       dom.current.style['touch-action'] = 'none'
     }
   }, [dom, control])
-  // @ts-ignore
   return (
+    // @ts-ignore
     <OrbitControls
       ref={control}
       domElement={dom.current}
