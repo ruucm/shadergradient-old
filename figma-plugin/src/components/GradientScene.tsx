@@ -7,12 +7,28 @@ import { FormContext } from "../helpers/form-provider"
 
 export function GradientScene() {
   const ctx: any = useContext(FormContext)
-  const { type, postProcessing }: any = ctx?.watch()
+  const {
+    type,
+    animate,
+    movements,
+    speed,
+    bumpScale,
+    rotationX,
+    rotationY,
+    rotationZ,
+    cameraPositionX,
+    cameraPositionY,
+    cameraPositionZ,
+    cameraQuaternionX,
+    cameraQuaternionY,
+    cameraQuaternionZ,
+    cameraZoom,
+  }: any = ctx?.watch()
 
   return (
     <Canvas
       style={{
-        height: 500,
+        height: 304,
       }}
       gl={{ preserveDrawingBuffer: true }} // to capture the canvas
       id="r3f-canvas"
@@ -23,20 +39,28 @@ export function GradientScene() {
         enableRotate={false}
       />
       <Gradient
-        rotation={[Math.PI / 2, 0, 0]}
-        cameraPosition={{
-          x: 0,
-          y: 2.2,
-          z: 0,
-        }}
-        cameraQuaternion={{
-          x: -1.2,
-          y: 0,
-          z: 0,
-        }}
         environment={<Environment preset="city" />}
+        rotation={[
+          (rotationX / 360) * Math.PI,
+          (rotationY / 360) * Math.PI,
+          (rotationZ / 360) * Math.PI,
+        ]}
+        cameraPosition={{
+          x: cameraPositionX,
+          y: cameraPositionY,
+          z: cameraPositionZ,
+        }}
+        cameraRotation={{ x: 0, y: 0, z: 0 }}
+        cameraQuaternion={{
+          x: cameraQuaternionX,
+          y: cameraQuaternionY,
+          z: cameraQuaternionZ,
+        }}
         type={type}
-        postProcessing={postProcessing}
+        animate={animate === "on"}
+        cameraZoom={cameraZoom}
+        uTime={movements}
+        // postProcessing={postProcessing}
       />
     </Canvas>
   )
