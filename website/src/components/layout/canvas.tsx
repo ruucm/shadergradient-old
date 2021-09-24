@@ -16,7 +16,15 @@ const LControl = () => {
     }
   }, [dom, control])
   // @ts-ignore
-  return <OrbitControls ref={control} domElement={dom.current} />
+  return (
+    <OrbitControls
+      ref={control}
+      domElement={dom.current}
+      enablePan={false}
+      enableZoom={false}
+      enableRotate={false}
+    />
+  )
 }
 const LCanvas = ({ children }) => {
   const dom = useStore((state) => state.dom)
@@ -40,7 +48,7 @@ const LCanvas = ({ children }) => {
         console.log('state.camera', state.camera)
       }}
     >
-      {/* <LControl /> */}
+      <LControl />
       <A11yUserPreferences>
         <Preload all />
         <ContextBridge>{children}</ContextBridge>
