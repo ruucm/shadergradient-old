@@ -15,8 +15,8 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioPropsT>(
     return (
       <label
         className={cx(
-          "flex justify-center items-center w-full h-input text-primary rounded cursor-pointer bg-primary bg-opacity-0 hover:bg-opacity-10",
-          check && "bg-opacity-10"
+          "flex justify-center items-center w-full h-input text-primary rounded cursor-pointer bg-primary hover:bg-opacity-10",
+          check ? "bg-opacity-10" : "bg-opacity-0"
         )}
         htmlFor={inputProps.value}
       >
