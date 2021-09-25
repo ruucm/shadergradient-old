@@ -5493,6 +5493,11 @@ react-refresh@0.8.3:
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.8.3.tgz#721d4657672d400c5e3c75d063c4a85fb2d5d68f"
   integrity sha512-X8jZHc7nCMjaCqoU+V2I0cOhNW+QMBwSUkeXnTi8IPe6zaRWfn60ZzvFDZqWPfmSJfjub7dDW1SP0jaHWLu/hg==
 
+react-slider@^1.3.1:
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/react-slider/-/react-slider-1.3.1.tgz#41dd88f7c67520811a4114d6f8f49d186268d9da"
+  integrity sha512-bD8hHJJUgAHI8g1F6PY6432l+Dmcs2fqzUwDhd+0HWDdvfjwNoXRNC2cL9OWyGTjYlJM92A8nF/w1X4pyHfytQ==
+
 react-snaplist-carousel@^4.3.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/react-snaplist-carousel/-/react-snaplist-carousel-4.3.0.tgz#0ad47c24f35ffecd411939c5cb9ab5351eb4a0a3"
@@ -5911,17 +5916,19 @@ sha.js@^2.4.0, sha.js@^2.4.8:
     inherits "^2.0.1"
     safe-buffer "^5.0.1"
 
-shadergradient@^0.0.14:
-  version "0.0.14"
-  resolved "https://registry.yarnpkg.com/shadergradient/-/shadergradient-0.0.14.tgz#471d1e8298e326c56604682d977acaacc014c15b"
-  integrity sha512-1kYDi+lOFLSWmAuUZIOIEbLnLcNi7oNPcl7x1asZRdj5uTTsELjrcW/kccmTlLjeylh/LYjqwNUxASZj0hBdxg==
+shadergradient@0.0.20:
+  version "0.0.20"
+  resolved "https://registry.yarnpkg.com/shadergradient/-/shadergradient-0.0.20.tgz#224a58a4cc61930917455de0d6b2b2a2a5590969"
+  integrity sha512-R0wdCNqA0galdt7bhJwBLEklmNZ+WdgXm9X/70gNG5kAMXAk856MACoc3YK336nfz7ZScijgfcN73TmKdxy8jw==
   dependencies:
     "@react-three/drei" "^7.2.1"
     "@react-three/fiber" "^7.0.6"
     "@react-three/postprocessing" "^2.0.5"
     classnames "^2.3.1"
+    prop-types "^15.7.2"
     react "^17.0.2"
     react-dom "^17.0.2"
+    react-slider "^1.3.1"
     three "^0.131.3"
 
 shallow-copy@0.0.1:

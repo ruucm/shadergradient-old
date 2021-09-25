@@ -1,8 +1,6 @@
 .bodyWrapper {
   width: 100vw;
   height: 100vh;
-  display: grid;
-  grid-template-columns: 50vw 50vw;
   grid-column-gap: 0;
   font-family: 'Inter', sans-serif;
   font-weight: 400;
@@ -45,6 +43,7 @@
   position: absolute;
   left: 2vw;
   top: 1vw;
+  font-weight: 500;
   h1 {
     font-size: 80px;
     font-weight: 500;
@@ -61,8 +60,9 @@
 
 .sliderHeader {
   display: grid;
-  grid-template-columns: 13vw 13vw;
+  grid-template-columns: 10vw 10vw;
   margin-bottom: 10px;
+  font-weight: 500;
 }
 
 .sliderHeader a {
@@ -80,9 +80,15 @@
   font-size: 12px;
   position: absolute;
   bottom: 2vw;
-  left: 2vw;
-  opacity: 0.6;
-  display: none;
+  right: 2vw;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: right;
+  z-index: 5;
+  // display: none;
+}
+
+.footer a:hover {
+  color: rgba(255, 255, 255, 1);
 }
 
 .gradWrapper {
@@ -98,18 +104,6 @@
   margin-bottom: 26px;
 }
 
-.menu {
-  color: #ff430a;
-  background: white;
-  border-radius: 11px;
-  position: absolute;
-  height: fit-content;
-  display: grid;
-  grid-template-columns: 130px 370px;
-  overflow: hidden;
-  width: 600px;
-  z-index: 10;
-}
 .menuItems {
   width: fit-content;
   height: fit-content;
@@ -118,11 +112,7 @@
   grid-template-rows: repeat(1.2em, 4);
   cursor: pointer;
 }
-.menuItems a {
-  color: #ff430a;
-  font-size: 18px;
-  line-height: 1.7em;
-}
+
 .preview p {
   margin-top: 26px;
   margin-bottom: 10px;
@@ -140,6 +130,8 @@
   width: 470px;
   height: 100%;
   color: #ff430a;
+  padding: 25px;
+  margin: 0 auto;
 }
 
 .controlItems {
@@ -169,10 +161,10 @@
   left: 0;
   padding: 2vw;
   z-index: 5;
+  font-weight: 500;
 }
 
 .slideBtns {
-  // position: absolute;
   display: flex;
   font-size: 30px;
   z-index: 5;

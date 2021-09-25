@@ -1,10 +1,20 @@
 [
-  { "title": "Halo", "color": "white" },
-  { "title": "Breeze", "color": "white" },
-  { "title": "Dawn", "color": "black" },
-  { "title": "Aurora", "color": "black" },
-  { "title": "Tropical", "color": "black" },
-  { "title": "Halo", "color": "white" },
-  { "title": "Halo", "color": "white" },
-  { "title": "Halo", "color": "white" }
+  {
+    "title": "Halo",
+    "color": "white",
+    "type": "plane",
+    "zoom": 3
+  },
+  {
+    "title": "Breeze",
+    "color": "white",
+    "type": "sphere",
+    "zoom": 2
+  },
+  { "title": "Dawn", "color": "black", "type": "waterPlane", "zoom": 2 },
+  { "title": "Aurora", "color": "white", "type": "plane", "zoom": 3 },
+  { "title": "Tropical", "color": "white", "type": "sphere", "zoom": 2 },
+  { "title": "Halo", "color": "white", "type": "waterPlane", "zoom": 3 },
+  { "title": "Halo", "color": "white", "type": "plane", "zoom": 2 },
+  { "title": "Halo", "color": "white", "type": "sphere", "zoom": 3 }
 ]

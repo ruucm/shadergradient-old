@@ -713,11 +713,11 @@ video {
 .w-full {
 	width: 100%;
 }
-.w-3 {
-	width: 16px;
-}
 .w-2 {
 	width: 12px;
+}
+.w-3 {
+	width: 16px;
 }
 .w-control-number-input {
 	width: 53px;
@@ -771,6 +771,9 @@ video {
 .justify-around {
 	justify-content: space-around;
 }
+.gap-3 {
+	gap: 16px;
+}
 .gap-2 {
 	gap: 12px;
 }
@@ -785,9 +788,6 @@ video {
 }
 .gap-0 {
 	gap: 0px;
-}
-.gap-3 {
-	gap: 16px;
 }
 .overflow-hidden {
 	overflow: hidden;
@@ -851,11 +851,20 @@ video {
 .text-base {
 	font-size: 1rem;
 }
+.text-xl {
+	font-size: 1.25rem;
+}
+.text-2xl {
+	font-size: 1.5rem;
+}
 .font-medium {
 	font-weight: 500;
 }
 .font-semibold {
 	font-weight: 600;
+}
+.capitalize {
+	text-transform: capitalize;
 }
 .text-primary {
 	--tw-text-opacity: 1;
@@ -917,6 +926,7 @@ video {
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 	transition-duration: 150ms;
 }
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap");
 
 html,
 body {
@@ -925,7 +935,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap");
 
 /**
  * Tokens

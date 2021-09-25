@@ -1,5 +1,7 @@
+import { motion } from 'framer-motion'
+
 export const MyItem = ({ onClick, children, visible, color }) => (
-  <div
+  <motion.div
     style={{
       width: 'fit-content',
       fontSize: 60,
@@ -7,8 +9,11 @@ export const MyItem = ({ onClick, children, visible, color }) => (
       borderBottom: visible ? '4px solid ' + color : '0px solid black',
       cursor: visible ? 'default' : 'pointer',
     }}
+    whileHover={{
+      opacity: 0.6,
+    }}
     onClick={onClick}
   >
     {children}
-  </div>
+  </motion.div>
 )
