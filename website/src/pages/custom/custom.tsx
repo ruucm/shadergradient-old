@@ -205,12 +205,12 @@ function Controls({ mode, setMode, activeTab, setActiveTab }) {
       </div>
 
       <div className={styles.controlWrapper}>
-        {activeTab === 'shape' && (
+        {/* {activeTab === 'shape' && (
           <UI.ShapeControls FormContext={FormContext} />
         )}
         {activeTab === 'camera' && (
           <UI.CameraControls FormContext={FormContext} />
-        )}
+        )} */}
       </div>
     </MenuWrapper>
   )
