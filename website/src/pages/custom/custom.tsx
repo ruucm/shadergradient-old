@@ -137,6 +137,7 @@ const Page = () => {
           y: cameraQuaternionY,
           z: cameraQuaternionZ,
         }}
+        // @ts-ignore
         type={PRESETS[current].type}
         animate={animate === 'on'}
         cameraZoom={PRESETS[current].zoom}

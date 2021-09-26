@@ -215,6 +215,7 @@ const Page = () => {
         cameraQuaternion={{ x: -Math.PI / 6, y: 0, z: 0 }}
         cameraZoom={mode !== 'about' ? 2.2 : 0.4}
         animate={true}
+        // @ts-ignore
         type={PRESETS[current].type}
       />
     </>
