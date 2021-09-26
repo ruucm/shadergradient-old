@@ -1,92 +1,99 @@
 import * as React from "react"
-import { useContext } from "react"
 import * as UI from ".."
 
 type EffectControlsPropsT = {
-  FormContext: React.Context<any>
+  useQueryState: any
 } & React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLDivElement>,
   HTMLDivElement
 >
 
 export const EffectControls: React.FC<EffectControlsPropsT> = ({
-  FormContext,
+  useQueryState,
 }) => {
-  const { register, watch, setValue } = useContext(FormContext)
-  const { grain, lightType, envPreset, reflection, brightness }: any = watch()
+  const [grain, setGrain] = useQueryState("grain")
+  const [lightType, setLightType] = useQueryState("lightType")
+  const [envPreset, setEnvPreset] = useQueryState("envPreset")
+  const [reflection, setReflection] = useQueryState("reflection")
+  const [brightness, setBrightness] = useQueryState("brightness")
 
   return (
     <div className="flex flex-col gap-3">
       <UI.InputPanel title="Grain">
         <UI.Radio
+          name="grain"
           value="on"
+          setValue={setGrain}
           check={grain === "on"}
           label="On"
-          {...register("grain")}
         />
         <UI.Radio
+          name="grain"
           value="off"
+          setValue={setGrain}
           check={grain === "off"}
           label="Off"
-          {...register("grain")}
         />
       </UI.InputPanel>
 
       <UI.InputPanel title="Light Type">
         <UI.Radio
+          name="lightType"
           value="env"
+          setValue={setLightType}
           check={lightType === "env"}
           label="Environment"
-          {...register("lightType")}
         />
         <UI.Radio
+          name="lightType"
           value="3d"
+          setValue={setLightType}
           check={lightType === "3d"}
           label="3d lighting"
-          {...register("lightType")}
         />
       </UI.InputPanel>
 
       <UI.InputPanel title="Env Preset">
         <UI.Radio
+          name="envPreset"
           value="city"
+          setValue={setEnvPreset}
           check={envPreset === "city"}
           label="City"
-          {...register("envPreset")}
         />
         <UI.Radio
+          name="envPreset"
           value="dawn"
+          setValue={setEnvPreset}
           check={envPreset === "dawn"}
           label="Dawn"
-          {...register("envPreset")}
         />
         <UI.Radio
+          name="envPreset"
           value="library"
+          setValue={setEnvPreset}
           check={envPreset === "library"}
           label="Library"
-          {...register("envPreset")}
         />
       </UI.InputPanel>
 
       <UI.InputPanel title="Reflection">
         <UI.Slider
           defaultValue={reflection}
-          setValue={setValue}
+          setValue={setReflection}
           step={0.1}
           min={0}
           max={3}
-          {...register("reflection")}
         />
       </UI.InputPanel>
 
       <UI.InputPanel title="Brightness">
         <UI.Slider
           defaultValue={brightness}
-          setValue={setValue}
+          setValue={setBrightness}
           step={0.1}
           min={0}
           max={3}
-          {...register("brightness")}
         />
       </UI.InputPanel>
     </div>

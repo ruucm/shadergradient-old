@@ -130,7 +130,7 @@ function Controls() {
           <UI.ColorControls FormContext={FormContext} />
         )}
         {activeTab === 'effects' && (
-          <UI.EffectControls FormContext={FormContext} />
+          <UI.EffectControls useQueryState={useQueryState} />
         )}
         {activeTab === 'camera' && (
           <UI.CameraControls useQueryState={useQueryState} />
