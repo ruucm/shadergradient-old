@@ -85,9 +85,9 @@ function Controls() {
           />
 
           <UI.ControlTypeTitle
-            title='Light'
-            active={activeTab === 'light'}
-            onClick={() => setActiveTab('light')}
+            title='Effects'
+            active={activeTab === 'effect'}
+            onClick={() => setActiveTab('effect')}
           />
 
           <UI.ControlTypeTitle
