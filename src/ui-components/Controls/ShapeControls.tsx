@@ -11,28 +11,10 @@ type ShapeControlsPropsT = {
 
 export const ShapeControls: React.FC<ShapeControlsPropsT> = ({
   FormContext,
-  ...rest
 }) => {
   const { register, watch, setValue } = useContext(FormContext)
 
-  const {
-    type,
-    animate,
-    movements,
-    speed,
-    bumpScale,
-    rotationX,
-    rotationY,
-    rotationZ,
-    cameraPositionX,
-    cameraPositionY,
-    cameraPositionZ,
-    cameraQuaternionX,
-    cameraQuaternionY,
-    cameraQuaternionZ,
-    cameraZoom,
-    uTime,
-  }: any = watch()
+  const { type, animate, movements, speed, bumpScale }: any = watch()
 
   return (
     <div className="flex flex-col gap-3">
@@ -100,7 +82,7 @@ export const ShapeControls: React.FC<ShapeControlsPropsT> = ({
           setValue={setValue}
           step={0.1}
           min={0}
-          max={5}
+          max={10}
           {...register("bumpScale")}
         />
       </UI.InputPanel>
