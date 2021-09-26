@@ -9,13 +9,9 @@ const Page = () => {
   const ctx: any = useContext(FormContext)
   const {
     // camera
-    cameraPositionX,
-    cameraPositionY,
-    cameraPositionZ,
     cameraQuaternionX,
     cameraQuaternionY,
     cameraQuaternionZ,
-    cameraZoom,
     color1,
     color2,
     color3,
@@ -30,6 +26,7 @@ const Page = () => {
     }
   }, [])
 
+  // shape
   const [type] = useQueryState('type')
   const [animate] = useQueryState('animate')
   const [uTime] = useQueryState('uTime')
@@ -38,6 +35,14 @@ const Page = () => {
   const [rotationX] = useQueryState('rotationX')
   const [rotationY] = useQueryState('rotationY')
   const [rotationZ] = useQueryState('rotationZ')
+
+  // camera
+  const [cameraZoom] = useQueryState('cameraZoom')
+  const [cameraPositionX] = useQueryState('cameraPositionX')
+  const [cameraPositionY] = useQueryState('cameraPositionY')
+  const [cameraPositionZ] = useQueryState('cameraPositionZ')
+
+  // colors
 
   return (
     <>
@@ -128,7 +133,7 @@ function Controls() {
           <UI.EffectControls FormContext={FormContext} />
         )}
         {activeTab === 'camera' && (
-          <UI.CameraControls FormContext={FormContext} />
+          <UI.CameraControls useQueryState={useQueryState} />
         )}
       </div>
     </div>
