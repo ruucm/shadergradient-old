@@ -7,6 +7,7 @@ type SliderPropsT = {
   defaultValue: number
   name: string
   setValue: any
+  setUStrength: any
   step: number
   min: number
   max: number
@@ -16,10 +17,22 @@ type SliderPropsT = {
 >
 
 export const Slider = React.forwardRef<HTMLInputElement, SliderPropsT>(
-  ({ defaultValue, name, setValue, step, min, max }: SliderPropsT, ref) => {
+  (
+    {
+      defaultValue,
+      name,
+      setValue,
+      setUStrength,
+      step,
+      min,
+      max,
+    }: SliderPropsT,
+    ref
+  ) => {
     const [sharedValue, setSharedValue] = useState<any>(defaultValue)
     useEffect(() => {
       setValue(name, sharedValue)
+      if (setUStrength) setUStrength(sharedValue)
     }, [sharedValue])
 
     return (

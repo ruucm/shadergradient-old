@@ -1,8 +1,9 @@
 import { FormContext } from '@/helpers/form-provider'
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { Gradient, UI } from 'shadergradient'
-import cx from 'classnames'
 import { PreviewSwitch } from '@/components/dom/PreviewSwitch'
+import { updateGradientState } from '@/helpers/store'
+import useQueryState from '@/hooks/useQueryState'
 
 const Page = () => {
   const ctx: any = useContext(FormContext)
@@ -28,6 +29,15 @@ const Page = () => {
     color2,
     color3,
   }: any = ctx?.watch()
+
+  useEffect(() => {
+    // update Gradient if there are query params (history nav)
+    window.location.search && updateGradientState(window.location.search)
+    document.documentElement.classList.add('remix')
+    return () => {
+      document.documentElement.classList.remove('remix')
+    }
+  }, [])
 
   return (
     <>
@@ -109,7 +119,7 @@ function Controls() {
       {/* Controls */}
       <div className='inline-block p-4 bg-controls-panel'>
         {activeTab === 'shape' && (
-          <UI.ShapeControls FormContext={FormContext} />
+          <UI.ShapeControls useQueryState={useQueryState} />
         )}
         {activeTab === 'colors' && (
           <UI.ColorControls FormContext={FormContext} />
