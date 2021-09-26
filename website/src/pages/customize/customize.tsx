@@ -52,6 +52,7 @@ const Page = () => {
         uTime={uTime}
         uStrength={uStrength}
         uSpeed={uSpeed}
+        colors={[]}
       />
       <Controls />
     </>
