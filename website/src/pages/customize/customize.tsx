@@ -8,10 +8,6 @@ import useQueryState from '@/hooks/useQueryState'
 const Page = () => {
   const ctx: any = useContext(FormContext)
   const {
-    // shape
-    rotationX,
-    rotationY,
-    rotationZ,
     // camera
     cameraPositionX,
     cameraPositionY,
@@ -39,6 +35,9 @@ const Page = () => {
   const [uTime] = useQueryState('uTime')
   const [uSpeed] = useQueryState('uSpeed')
   const [uStrength] = useQueryState('uStrength')
+  const [rotationX] = useQueryState('rotationX')
+  const [rotationY] = useQueryState('rotationY')
+  const [rotationZ] = useQueryState('rotationZ')
 
   return (
     <>
