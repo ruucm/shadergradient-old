@@ -680,6 +680,9 @@ video {
 .h-input {
 	height: 34px;
 }
+.h-full {
+	height: 100%;
+}
 .h-slider {
 	height: 2px;
 }
@@ -701,8 +704,8 @@ video {
 .h-\[340px\] {
 	height: 340px;
 }
-.h-full {
-	height: 100%;
+.w-2 {
+	width: 12px;
 }
 .w-control {
 	width: 408px;
@@ -719,8 +722,8 @@ video {
 .w-3 {
 	width: 16px;
 }
-.w-2 {
-	width: 12px;
+.w-\[90px\] {
+	width: 90px;
 }
 .w-control-number-input {
 	width: 53px;
@@ -745,9 +748,6 @@ video {
 }
 .w-\[47px\] {
 	width: 47px;
-}
-.w-\[90px\] {
-	width: 90px;
 }
 .flex-shrink-0 {
 	flex-shrink: 0;
@@ -777,11 +777,11 @@ video {
 .justify-around {
 	justify-content: space-around;
 }
-.gap-3 {
-	gap: 16px;
-}
 .gap-2 {
 	gap: 12px;
+}
+.gap-3 {
+	gap: 16px;
 }
 .gap-1\.5 {
 	gap: 10px;
@@ -888,9 +888,6 @@ video {
 }
 .opacity-preview-btn {
 	opacity: .17;
-}
-.opacity-10 {
-	opacity: 0.1;
 }
 .outline-none {
 	outline: 2px solid transparent;

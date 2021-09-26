@@ -24,6 +24,9 @@ const Page = () => {
     cameraQuaternionY,
     cameraQuaternionZ,
     cameraZoom,
+    color1,
+    color2,
+    color3,
   }: any = ctx?.watch()
 
   return (
@@ -52,7 +55,7 @@ const Page = () => {
         uTime={uTime}
         uStrength={uStrength}
         uSpeed={uSpeed}
-        colors={[]}
+        colors={[color1, color2, color3]}
       />
       <Controls />
     </>

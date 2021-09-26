@@ -1,5 +1,6 @@
 import * as THREE from "three"
 import { extend } from "@react-three/fiber"
+import { formatColor, hexToRgb } from "@/utils"
 
 const settings = {
   speed: 0.2,
@@ -47,6 +48,7 @@ var uniforms = {
   metalness: { value: settings.metalness },
   normalScale: { value: settings.normalScale },
   rotation: { value: settings.rotation },
+  colors: { value: undefined },
 }
 
 export class GradientMaterial extends THREE.MeshPhysicalMaterial {
@@ -67,21 +69,26 @@ export class GradientMaterial extends THREE.MeshPhysicalMaterial {
       userData: uniforms,
       // @ts-ignore
       onBeforeCompile: (shader) => {
+        const colors = this.userData.colors.value
+        const uC1 = hexToRgb(colors[0])
+        const uC2 = hexToRgb(colors[1])
+        const uC3 = hexToRgb(colors[2])
+
         shader.uniforms.uTime = uniforms.uTime
         shader.uniforms.uSpeed = uniforms.uSpeed
         shader.uniforms.uNoiseDensity = uniforms.uNoiseDensity
         shader.uniforms.uNoiseStrength = uniforms.uNoiseStrength
         shader.uniforms.uIntensity = uniforms.uIntensity
         shader.uniforms.uFrequency = uniforms.uFrequency
-        shader.uniforms.uC1r = uniforms.uC1r
-        shader.uniforms.uC1g = uniforms.uC1g
-        shader.uniforms.uC1b = uniforms.uC1b
-        shader.uniforms.uC2r = uniforms.uC2r
-        shader.uniforms.uC2g = uniforms.uC2g
-        shader.uniforms.uC2b = uniforms.uC2b
-        shader.uniforms.uC3r = uniforms.uC3r
-        shader.uniforms.uC3g = uniforms.uC3g
-        shader.uniforms.uC3b = uniforms.uC3b
+        shader.uniforms.uC1r = { value: formatColor(uC1?.r) }
+        shader.uniforms.uC1g = { value: formatColor(uC1?.g) }
+        shader.uniforms.uC1b = { value: formatColor(uC1?.b) }
+        shader.uniforms.uC2r = { value: formatColor(uC2?.r) }
+        shader.uniforms.uC2g = { value: formatColor(uC2?.g) }
+        shader.uniforms.uC2b = { value: formatColor(uC2?.b) }
+        shader.uniforms.uC3r = { value: formatColor(uC3?.r) }
+        shader.uniforms.uC3g = { value: formatColor(uC3?.g) }
+        shader.uniforms.uC3b = { value: formatColor(uC3?.b) }
         shader.uniforms.rotation = uniforms.rotation
         shader.uniforms.meshCount = uniforms.meshCount
         // material.roughness = settings.roughness
@@ -536,6 +543,15 @@ ReflectedLight reflectedLight = ReflectedLight( vec3( 0.0 ), vec3( 0.0 ), vec3( 
   set uSpeed(v) {
     // @ts-ignore
     return (this.userData.uSpeed.value = v)
+  }
+
+  get colors() {
+    // @ts-ignore
+    return this.userData.colors.value
+  }
+  set colors(v) {
+    // @ts-ignore
+    return (this.userData.colors.value = v)
   }
 }
 

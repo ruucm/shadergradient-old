@@ -82,9 +82,9 @@ function App({ Component, pageProps = { title: 'index' } }) {
       reflection: 0.2,
       brightness: 0.2,
       // colors
-      color1: '#FD4912',
-      color2: '#FFCB05',
-      color3: '#708DFF',
+      color1: '#CC4C6E',
+      color2: '#1980FF',
+      color3: '#99B58F',
     },
   })
   return (
