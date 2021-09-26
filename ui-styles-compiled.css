@@ -713,11 +713,11 @@ video {
 .w-full {
 	width: 100%;
 }
-.w-2 {
-	width: 12px;
-}
 .w-3 {
 	width: 16px;
+}
+.w-2 {
+	width: 12px;
 }
 .w-control-number-input {
 	width: 53px;

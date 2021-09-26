@@ -86,8 +86,8 @@ function Controls() {
 
           <UI.ControlTypeTitle
             title='Effects'
-            active={activeTab === 'effect'}
-            onClick={() => setActiveTab('effect')}
+            active={activeTab === 'effects'}
+            onClick={() => setActiveTab('effects')}
           />
 
           <UI.ControlTypeTitle
@@ -102,6 +102,12 @@ function Controls() {
       <div className='inline-block p-4 bg-controls-panel'>
         {activeTab === 'shape' && (
           <UI.ShapeControls FormContext={FormContext} />
+        )}
+        {activeTab === 'colors' && (
+          <UI.ColorControls FormContext={FormContext} />
+        )}
+        {activeTab === 'effects' && (
+          <UI.EffectControls FormContext={FormContext} />
         )}
         {activeTab === 'camera' && (
           <UI.CameraControls FormContext={FormContext} />

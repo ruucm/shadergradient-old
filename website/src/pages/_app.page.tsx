@@ -74,6 +74,12 @@ function App({ Component, pageProps = { title: 'index' } }) {
       cameraQuaternionY: 0,
       cameraQuaternionZ: 0,
       cameraZoom: 0.5,
+      // effects
+      grain: 'on',
+      lightType: 'env',
+      envPreset: 'city',
+      reflection: 0.2,
+      brightness: 0.2,
     },
   })
   return (

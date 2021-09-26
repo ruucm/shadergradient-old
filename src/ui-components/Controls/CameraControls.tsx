@@ -1,6 +1,6 @@
 import * as React from "react"
 import { useContext } from "react"
-import * as UI from "../ui-components"
+import * as UI from ".."
 
 type CameraControlsPropsT = {
   FormContext: React.Context<any>

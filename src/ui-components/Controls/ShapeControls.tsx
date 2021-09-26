@@ -1,6 +1,6 @@
 import * as React from "react"
 import { useContext } from "react"
-import * as UI from "../ui-components"
+import * as UI from ".."
 
 type ShapeControlsPropsT = {
   FormContext: React.Context<any>
@@ -36,7 +36,7 @@ export const ShapeControls: React.FC<ShapeControlsPropsT> = ({
 
   return (
     <div className="flex flex-col gap-3">
-      <UI.InputPanel title="Type" gap="w-2">
+      <UI.InputPanel title="Type">
         <UI.Radio
           value="plane"
           check={type === "plane"}
@@ -57,7 +57,7 @@ export const ShapeControls: React.FC<ShapeControlsPropsT> = ({
         />
       </UI.InputPanel>
 
-      <UI.InputPanel title="Animate" gap="w-2">
+      <UI.InputPanel title="Animate">
         <UI.Radio
           value="on"
           check={animate === "on"}

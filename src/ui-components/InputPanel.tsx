@@ -13,7 +13,7 @@ type InputPanelPropsT = {
 export const InputPanel: React.FC<InputPanelPropsT> = ({
   title,
   children,
-  gap,
+  gap = "w-2",
   ...rest
 }) => {
   return (
