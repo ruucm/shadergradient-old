@@ -100,7 +100,7 @@ export const ShapeControls: React.FC<ShapeControlsPropsT> = ({
           setValue={setValue}
           step={0.1}
           min={0}
-          max={2}
+          max={5}
           {...register("bumpScale")}
         />
       </UI.InputPanel>

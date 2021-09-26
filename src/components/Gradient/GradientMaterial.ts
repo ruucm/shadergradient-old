@@ -519,6 +519,15 @@ ReflectedLight reflectedLight = ReflectedLight( vec3( 0.0 ), vec3( 0.0 ), vec3( 
     // @ts-ignore
     return (this.uniforms.texture1.value = v)
   }
+
+  get uStrength() {
+    // @ts-ignore
+    return this.userData.uNoiseStrength.value
+  }
+  set uStrength(v) {
+    // @ts-ignore
+    return (this.userData.uNoiseStrength.value = v)
+  }
 }
 
 extend({ GradientMaterial })

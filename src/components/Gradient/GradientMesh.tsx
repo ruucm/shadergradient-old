@@ -14,6 +14,7 @@ export function GradientMesh({
   rotation,
   animate,
   uTime,
+  uStrength,
 }: any) {
   const mesh = useRef()
   const material: any = useRef()
@@ -44,7 +45,7 @@ export function GradientMesh({
       )}
 
       {/* @ts-ignore */}
-      <gradientMaterial ref={material} />
+      <gradientMaterial ref={material} uStrength={uStrength} />
     </mesh>
   )
 }

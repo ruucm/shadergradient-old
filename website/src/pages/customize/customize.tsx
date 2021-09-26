@@ -7,6 +7,7 @@ import { PreviewSwitch } from '@/components/dom/PreviewSwitch'
 const Page = () => {
   const ctx: any = useContext(FormContext)
   const {
+    // shape
     type,
     animate,
     movements,
@@ -15,6 +16,7 @@ const Page = () => {
     rotationX,
     rotationY,
     rotationZ,
+    // camera
     cameraPositionX,
     cameraPositionY,
     cameraPositionZ,
@@ -48,6 +50,7 @@ const Page = () => {
         animate={animate === 'on'}
         cameraZoom={cameraZoom}
         uTime={movements}
+        uStrength={bumpScale}
       />
       <Controls />
     </>
