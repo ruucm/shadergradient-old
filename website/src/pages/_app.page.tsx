@@ -56,17 +56,18 @@ function App({ Component, pageProps = { title: 'index' } }) {
   const formProps = useForm({
     defaultValues: {
       noiseStrength: 0.1,
-      // for gradient-scene
+      // shape
       type: 'plane',
       animate: 'off',
       movements: 0.2,
-      speed: 1.8,
+      uSpeed: 0.3,
       bumpScale: 1.3,
       rotationX: 180,
       rotationY: 0,
       rotationZ: 0,
       env: 'env',
       postProcessing: 'threejs',
+      // camera
       cameraPositionX: 0,
       cameraPositionY: 3.2,
       cameraPositionZ: 0,

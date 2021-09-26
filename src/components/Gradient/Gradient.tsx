@@ -20,6 +20,7 @@ export type GradientPropsT = {
   uTime?: number
   animate?: boolean
   uStrength?: number
+  uSpeed?: number
 }
 
 export const Gradient: React.FC<GradientPropsT> = ({
@@ -36,6 +37,7 @@ export const Gradient: React.FC<GradientPropsT> = ({
   uTime = 0.2,
   animate = false,
   uStrength = 1.3,
+  uSpeed = 0.3,
 }) => {
   const { camera }: { camera: Camera } = useThree()
   camera.position.set(cameraPosition.x, cameraPosition.y, cameraPosition.z)
@@ -58,6 +60,7 @@ export const Gradient: React.FC<GradientPropsT> = ({
         animate={animate}
         uTime={uTime}
         uStrength={uStrength}
+        uSpeed={uSpeed}
       />
 
       {/* <EffectComposer>

@@ -14,7 +14,7 @@ export const ShapeControls: React.FC<ShapeControlsPropsT> = ({
 }) => {
   const { register, watch, setValue } = useContext(FormContext)
 
-  const { type, animate, movements, speed, bumpScale }: any = watch()
+  const { type, animate, movements, uSpeed, bumpScale }: any = watch()
 
   return (
     <div className="flex flex-col gap-3">
@@ -67,12 +67,12 @@ export const ShapeControls: React.FC<ShapeControlsPropsT> = ({
 
       <UI.InputPanel title="Speed">
         <UI.Slider
-          defaultValue={speed}
+          defaultValue={uSpeed}
           setValue={setValue}
           step={0.1}
           min={0}
           max={2}
-          {...register("speed")}
+          {...register("uSpeed")}
         />
       </UI.InputPanel>
 

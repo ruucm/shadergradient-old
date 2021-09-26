@@ -11,7 +11,7 @@ const Page = () => {
     type,
     animate,
     movements,
-    speed,
+    uSpeed,
     bumpScale,
     rotationX,
     rotationY,
@@ -51,6 +51,7 @@ const Page = () => {
         cameraZoom={cameraZoom}
         uTime={movements}
         uStrength={bumpScale}
+        uSpeed={uSpeed}
       />
       <Controls />
     </>

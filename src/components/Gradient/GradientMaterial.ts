@@ -528,6 +528,15 @@ ReflectedLight reflectedLight = ReflectedLight( vec3( 0.0 ), vec3( 0.0 ), vec3( 
     // @ts-ignore
     return (this.userData.uNoiseStrength.value = v)
   }
+
+  get uSpeed() {
+    // @ts-ignore
+    return this.userData.uSpeed.value
+  }
+  set uSpeed(v) {
+    // @ts-ignore
+    return (this.userData.uSpeed.value = v)
+  }
 }
 
 extend({ GradientMaterial })
