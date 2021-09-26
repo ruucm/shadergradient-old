@@ -14,6 +14,8 @@ export const ShapeControls: React.FC<ShapeControlsPropsT> = ({
   const [type, setType] = useQueryState("type", "plane")
   const [animate, setAnimate] = useQueryState("animate", "on")
 
+  console.log("animate", animate)
+
   return (
     <div className="flex flex-col gap-3">
       <UI.InputPanel title="Type">

@@ -1,5 +1,6 @@
 import create from 'zustand'
 import qs from 'query-string'
+import { defaultGradient } from '@/consts'
 
 const useStore = create(() => {
   return {
@@ -7,8 +8,6 @@ const useStore = create(() => {
     dom: null,
   }
 })
-
-export default useStore
 
 export const useGradientStore = create((set) => ({
   ...parseState(),
@@ -19,10 +18,12 @@ export const updateGradientState = (querystate) => {
   useGradientStore.setState(state, true)
 }
 
-function parseState(search = process.browser && window.location.search) {
+function parseState(search = defaultGradient) {
   return qs.parse(search, {
     parseNumbers: true,
     parseBooleans: true,
     arrayFormat: 'index',
   })
 }
+
+export default useStore
