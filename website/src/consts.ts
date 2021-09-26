@@ -1,2 +1,2 @@
 export const defaultGradient =
-  '?animate=off&type=plane&uSpeed=0.3&uStrength=1.3&uTime=0.2'
+  '?animate=off&rotationX=170&rotationY=0&rotationZ=0&type=plane&uSpeed=0.3&uStrength=1.6&uTime=0.2'

@@ -16,6 +16,9 @@ export const ShapeControls: React.FC<ShapeControlsPropsT> = ({
   const [uTime, setUTime] = useQueryState("uTime")
   const [uSpeed, setUSpeed] = useQueryState("uSpeed")
   const [uStrength, setUStrength] = useQueryState("uStrength")
+  const [rotationX, setRotationX] = useQueryState("rotationX")
+  const [rotationY, setRotationY] = useQueryState("rotationY")
+  const [rotationZ, setRotationZ] = useQueryState("rotationZ")
 
   return (
     <div className="flex flex-col gap-3">
@@ -90,12 +93,26 @@ export const ShapeControls: React.FC<ShapeControlsPropsT> = ({
         />
       </UI.InputPanel>
 
-      {/* 
       <UI.InputPanel title="Rotation">
-        <UI.NumberInput label="x" step={10} {...register("rotationX")} />
-        <UI.NumberInput label="y" step={10} {...register("rotationY")} />
-        <UI.NumberInput label="z" step={10} {...register("rotationZ")} />
-      </UI.InputPanel> */}
+        <UI.NumberInput
+          label="x"
+          step={10}
+          value={rotationX}
+          setValue={setRotationX}
+        />
+        <UI.NumberInput
+          label="y"
+          step={10}
+          value={rotationY}
+          setValue={setRotationY}
+        />
+        <UI.NumberInput
+          label="z"
+          step={10}
+          value={rotationZ}
+          setValue={setRotationZ}
+        />
+      </UI.InputPanel>
     </div>
   )
 }
