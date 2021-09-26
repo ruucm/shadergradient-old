@@ -59,9 +59,9 @@ function App({ Component, pageProps = { title: 'index' } }) {
       // shape
       type: 'plane',
       animate: 'off',
-      movements: 0.2,
+      uTime: 0.2,
       uSpeed: 0.3,
-      bumpScale: 1.3,
+      uStrength: 1.3,
       rotationX: 180,
       rotationY: 0,
       rotationZ: 0,
