@@ -1,22 +1,10 @@
-import { FormContext } from '@/helpers/form-provider'
-import { useContext, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Gradient, UI } from 'shadergradient'
 import { PreviewSwitch } from '@/components/dom/PreviewSwitch'
 import { updateGradientState } from '@/helpers/store'
 import useQueryState from '@/hooks/useQueryState'
 
 const Page = () => {
-  const ctx: any = useContext(FormContext)
-  const {
-    // camera
-    cameraQuaternionX,
-    cameraQuaternionY,
-    cameraQuaternionZ,
-    color1,
-    color2,
-    color3,
-  }: any = ctx?.watch()
-
   useEffect(() => {
     // update Gradient if there are query params (history nav)
     window.location.search && updateGradientState(window.location.search)
@@ -43,6 +31,9 @@ const Page = () => {
   const [cameraPositionZ] = useQueryState('cameraPositionZ')
 
   // colors
+  const [color1] = useQueryState('color1')
+  const [color2] = useQueryState('color2')
+  const [color3] = useQueryState('color3')
 
   return (
     <>
@@ -59,11 +50,6 @@ const Page = () => {
           z: cameraPositionZ,
         }}
         cameraRotation={{ x: 0, y: 0, z: 0 }}
-        cameraQuaternion={{
-          x: cameraQuaternionX,
-          y: cameraQuaternionY,
-          z: cameraQuaternionZ,
-        }}
         type={type}
         animate={animate === 'on'}
         cameraZoom={cameraZoom}
@@ -127,7 +113,7 @@ function Controls() {
           <UI.ShapeControls useQueryState={useQueryState} />
         )}
         {activeTab === 'colors' && (
-          <UI.ColorControls FormContext={FormContext} />
+          <UI.ColorControls useQueryState={useQueryState} />
         )}
         {activeTab === 'effects' && (
           <UI.EffectControls useQueryState={useQueryState} />

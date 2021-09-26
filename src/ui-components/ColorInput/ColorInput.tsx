@@ -1,5 +1,6 @@
 import * as React from "react"
 import { Spacing } from "../Spacing"
+import { useEffect, useState } from "react"
 
 type ColorInputPropsT = {
   label?: string
@@ -11,10 +12,14 @@ type ColorInputPropsT = {
 >
 
 export const ColorInput = React.forwardRef<HTMLInputElement, ColorInputPropsT>(
-  ({ label = "", defaultValue, setValue, name }: ColorInputPropsT, ref) => {
-    const [sharedValue, setSharedValue] = React.useState<any>(defaultValue)
-    React.useEffect(() => {
-      setValue(name, sharedValue)
+  ({ label = "", defaultValue, setValue }: ColorInputPropsT, ref) => {
+    const [sharedValue, setSharedValue] = useState<any>(defaultValue)
+
+    useEffect(() => {
+      setSharedValue(defaultValue)
+    }, [defaultValue])
+    useEffect(() => {
+      setValue(sharedValue)
     }, [sharedValue])
 
     return (
