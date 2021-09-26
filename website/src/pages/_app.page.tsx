@@ -80,6 +80,10 @@ function App({ Component, pageProps = { title: 'index' } }) {
       envPreset: 'city',
       reflection: 0.2,
       brightness: 0.2,
+      // colors
+      color1: '#FD4912',
+      color2: '#FFCB05',
+      color3: '#708DFF',
     },
   })
   return (
