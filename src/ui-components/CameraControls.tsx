@@ -29,7 +29,7 @@ export const CameraControls: React.FC<CameraControlsPropsT> = ({
   return (
     <div className="flex flex-col gap-3">
       {/* Zoom */}
-      <UI.InputPanel title="Camera Zoom">
+      <UI.InputPanel title="Zoom">
         <UI.Slider
           defaultValue={cameraZoom}
           setValue={setValue}
@@ -41,7 +41,7 @@ export const CameraControls: React.FC<CameraControlsPropsT> = ({
       </UI.InputPanel>
 
       {/* Positions */}
-      <UI.InputPanel title="Camera Position X">
+      <UI.InputPanel title="Position X">
         <UI.Slider
           defaultValue={cameraPositionX}
           setValue={setValue}
@@ -52,7 +52,7 @@ export const CameraControls: React.FC<CameraControlsPropsT> = ({
         />
       </UI.InputPanel>
 
-      <UI.InputPanel title="Camera Position Y">
+      <UI.InputPanel title="Position Y">
         <UI.Slider
           defaultValue={cameraPositionY}
           setValue={setValue}
@@ -63,7 +63,7 @@ export const CameraControls: React.FC<CameraControlsPropsT> = ({
         />
       </UI.InputPanel>
 
-      <UI.InputPanel title="Camera Position Z">
+      <UI.InputPanel title="Position Z">
         <UI.Slider
           defaultValue={cameraPositionZ}
           setValue={setValue}
