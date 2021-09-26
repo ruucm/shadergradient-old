@@ -11,7 +11,7 @@ type ColorInputPropsT = {
 >
 
 export const ColorInput = React.forwardRef<HTMLInputElement, ColorInputPropsT>(
-  ({ label = "", defaultValue, setValue }: ColorInputPropsT, ref) => {
+  ({ label = "", defaultValue, setValue, name }: ColorInputPropsT, ref) => {
     const [sharedValue, setSharedValue] = React.useState<any>(defaultValue)
     React.useEffect(() => {
       setValue(name, sharedValue)
