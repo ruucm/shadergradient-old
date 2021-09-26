@@ -11,7 +11,7 @@ type ColorInputPropsT = {
 >
 
 export const ColorInput = React.forwardRef<HTMLInputElement, ColorInputPropsT>(
-  ({ label = "", defaultValue, setValue }: ColorInputPropsT) => {
+  ({ label = "", defaultValue, setValue }: ColorInputPropsT, ref) => {
     const [sharedValue, setSharedValue] = React.useState<any>(defaultValue)
     React.useEffect(() => {
       setValue(name, sharedValue)
@@ -35,6 +35,7 @@ export const ColorInput = React.forwardRef<HTMLInputElement, ColorInputPropsT>(
               value={sharedValue}
               onChange={(e) => setSharedValue(e.target.value)}
               className="w-full h-full opacity-0 cursor-pointer"
+              ref={ref}
             />
           </div>
 
