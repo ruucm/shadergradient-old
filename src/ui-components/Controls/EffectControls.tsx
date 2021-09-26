@@ -13,7 +13,6 @@ export const EffectControls: React.FC<EffectControlsPropsT> = ({
   FormContext,
 }) => {
   const { register, watch, setValue } = useContext(FormContext)
-
   const { grain, lightType, envPreset, reflection, brightness }: any = watch()
 
   return (
