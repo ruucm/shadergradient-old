@@ -11,10 +11,7 @@ type ColorInputPropsT = {
 >
 
 export const ColorInput = React.forwardRef<HTMLInputElement, ColorInputPropsT>(
-  (
-    { label = "", defaultValue, setValue, ...inputProps }: ColorInputPropsT,
-    ref
-  ) => {
+  ({ label = "", defaultValue, setValue }: ColorInputPropsT) => {
     const [sharedValue, setSharedValue] = React.useState<any>(defaultValue)
     React.useEffect(() => {
       setValue(name, sharedValue)
@@ -28,17 +25,26 @@ export const ColorInput = React.forwardRef<HTMLInputElement, ColorInputPropsT>(
             <Spacing className="w-2" />
           </>
         )}
-        <input
-          type="text"
-          value={sharedValue}
-          onChange={(e) => setSharedValue(e.target.value)}
-          className="font-medium text-primary bg-primary bg-opacity-10 rounded h-input w-control-number-input text-center outline-none"
-        />
-        <input
-          type="color"
-          value={sharedValue}
-          onChange={(e) => setSharedValue(e.target.value)}
-        />
+        <div className="flex items-center gap-2 w-full">
+          <div
+            className="w-full h-input rounded"
+            style={{ background: sharedValue }}
+          >
+            <input
+              type="color"
+              value={sharedValue}
+              onChange={(e) => setSharedValue(e.target.value)}
+              className="w-full h-full opacity-0 cursor-pointer"
+            />
+          </div>
+
+          <input
+            type="text"
+            value={sharedValue}
+            onChange={(e) => setSharedValue(e.target.value)}
+            className="font-medium text-primary bg-primary bg-opacity-10 rounded h-input w-[90px] text-center outline-none"
+          />
+        </div>
       </div>
     )
   }

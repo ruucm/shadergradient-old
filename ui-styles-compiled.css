@@ -701,6 +701,9 @@ video {
 .h-\[340px\] {
 	height: 340px;
 }
+.h-full {
+	height: 100%;
+}
 .w-control {
 	width: 408px;
 }
@@ -742,6 +745,9 @@ video {
 }
 .w-\[47px\] {
 	width: 47px;
+}
+.w-\[90px\] {
+	width: 90px;
 }
 .flex-shrink-0 {
 	flex-shrink: 0;
@@ -882,6 +888,9 @@ video {
 }
 .opacity-preview-btn {
 	opacity: .17;
+}
+.opacity-10 {
+	opacity: 0.1;
 }
 .outline-none {
 	outline: 2px solid transparent;
