@@ -29,7 +29,7 @@ export const Slider = React.forwardRef<HTMLInputElement, SliderPropsT>(
       <div className="flex items-center w-full">
         <NumberInput
           value={sharedValue}
-          onChange={setSharedValue}
+          setValue={setSharedValue}
           step={step}
         />
 
