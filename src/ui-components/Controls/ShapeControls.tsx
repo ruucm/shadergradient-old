@@ -11,10 +11,11 @@ type ShapeControlsPropsT = {
 export const ShapeControls: React.FC<ShapeControlsPropsT> = ({
   useQueryState,
 }) => {
-  const [type, setType] = useQueryState("type", "plane")
-  const [animate, setAnimate] = useQueryState("animate", "on")
-
-  console.log("animate", animate)
+  const [type, setType] = useQueryState("type")
+  const [animate, setAnimate] = useQueryState("animate")
+  const [uTime, setUTime] = useQueryState("uTime")
+  const [uSpeed, setUSpeed] = useQueryState("uSpeed")
+  const [uStrength, setUStrength] = useQueryState("uStrength")
 
   return (
     <div className="flex flex-col gap-3">
@@ -59,43 +60,37 @@ export const ShapeControls: React.FC<ShapeControlsPropsT> = ({
         />
       </UI.InputPanel>
 
-      {/* 
-  
-
       <UI.InputPanel title="Movements">
         <UI.Slider
           defaultValue={uTime}
-          setValue={setValue}
+          setValue={setUTime}
           step={0.1}
           min={0}
           max={9}
-          {...register("uTime")}
         />
       </UI.InputPanel>
 
       <UI.InputPanel title="Speed">
         <UI.Slider
           defaultValue={uSpeed}
-          setValue={setValue}
+          setValue={setUSpeed}
           step={0.1}
           min={0}
           max={2}
-          {...register("uSpeed")}
         />
       </UI.InputPanel>
 
       <UI.InputPanel title="Bump Scale">
         <UI.Slider
           defaultValue={uStrength}
-          setValue={setValue}
-          setUStrength={setUStrength}
+          setValue={setUStrength}
           step={0.1}
           min={0}
           max={10}
-          {...register("uStrength")}
         />
       </UI.InputPanel>
 
+      {/* 
       <UI.InputPanel title="Rotation">
         <UI.NumberInput label="x" step={10} {...register("rotationX")} />
         <UI.NumberInput label="y" step={10} {...register("rotationY")} />

@@ -18,6 +18,7 @@ export const updateGradientState = (querystate) => {
   useGradientStore.setState(state, true)
 }
 
+// defaultGradient could be replaced by window.location.search
 function parseState(search = defaultGradient) {
   return qs.parse(search, {
     parseNumbers: true,

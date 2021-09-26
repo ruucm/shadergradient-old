@@ -9,11 +9,6 @@ const Page = () => {
   const ctx: any = useContext(FormContext)
   const {
     // shape
-    type,
-    animate,
-    uTime,
-    uSpeed,
-    uStrength,
     rotationX,
     rotationY,
     rotationZ,
@@ -38,6 +33,12 @@ const Page = () => {
       document.documentElement.classList.remove('remix')
     }
   }, [])
+
+  const [type] = useQueryState('type')
+  const [animate] = useQueryState('animate')
+  const [uTime] = useQueryState('uTime')
+  const [uSpeed] = useQueryState('uSpeed')
+  const [uStrength] = useQueryState('uStrength')
 
   return (
     <>
