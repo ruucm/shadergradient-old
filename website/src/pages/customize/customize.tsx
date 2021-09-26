@@ -35,6 +35,9 @@ const Page = () => {
   const [color2] = useQueryState('color2')
   const [color3] = useQueryState('color3')
 
+  // misc
+  const [controls] = useQueryState('controls')
+
   return (
     <>
       <Gradient
@@ -58,7 +61,7 @@ const Page = () => {
         uSpeed={uSpeed}
         colors={[color1, color2, color3]}
       />
-      <Controls />
+      {controls === 'show' && <Controls />}
     </>
   )
 }
