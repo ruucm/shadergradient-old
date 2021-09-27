@@ -1,13 +1,15 @@
 import { motion } from 'framer-motion'
 
-export const MyItem = ({ onClick, children, visible, color }) => (
+export const MyItem = ({ onClick, children, visible, color, isMobile }) => (
   <motion.div
     style={{
-      width: 'fit-content',
-      fontSize: 60,
+      width: isMobile ? '100vw' : 'fit-content',
+      fontSize: isMobile ? 35 : 60,
       opacity: visible ? 1 : 0.3,
-      borderBottom: visible ? '4px solid ' + color : '0px solid black',
+      borderBottom:
+        visible && !isMobile ? '4px solid ' + color : '0px solid black',
       cursor: visible ? 'default' : 'pointer',
+      textAlign: 'center',
     }}
     whileHover={{
       opacity: 0.6,

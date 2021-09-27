@@ -1,5 +1,5 @@
 import { Environment } from '@react-three/drei'
-import { motion, useAnimation } from 'framer-motion'
+import { motion, useAnimation, animate } from 'framer-motion'
 import Link from 'next/link'
 
 import React, { useRef } from 'react'
@@ -37,93 +37,74 @@ const Page = () => {
 
   const [mode, setMode] = React.useState('full')
 
+  const [isMobile, setIsMobile] = React.useState(false)
+
+  //choose the screen size
+  const handleResize = () => {
+    if (window.innerWidth < 641) {
+      setIsMobile(true)
+    } else {
+      setIsMobile(false)
+    }
+  }
+
+  // create an event listener
+  React.useEffect(() => {
+    handleResize()
+    window.addEventListener('resize', handleResize)
+  }, [])
+
   return (
     <>
       {/* Menu */}
-      <MenuWrapper mode={mode}>
-        <div className={styles.menuItems}>
-          <motion.a
-            className='font-medium text-primary text-xl'
-            initial={{ paddingLeft: 0 }}
-            whileHover={{
-              paddingLeft: 7,
-              transition: { duration: 0.3 },
-            }}
-            style={{
-              color: mode === 'about' ? 'white' : '#ff430a',
-              lineHeight: '1.7em',
-              fontWeight: 500,
-            }}
-            onClick={() => {
-              if (mode !== 'about') {
-                setMode('about')
-              } else {
-                setMode('full')
-              }
-            }}
-          >
-            {mode === 'about' ? '← Main' : 'About →'}
-          </motion.a>
-          <MenuItem title='Figma →' link='' />
-          <MenuItem
-            title='Git →'
-            link='https://www.npmjs.com/package/shadergradient'
-          />
-          <MenuItem title='Framer →' link='' />
-          <PreviewSwitch mode={mode} setMode={setMode} />
+      {isMobile === true ? (
+        <div className={styles.mobileOnly}>
+          <Link href='/about'>→ about</Link>
+          <Link href='/custom'>→ customize</Link>
         </div>
-      </MenuWrapper>
-
-      {/* About page */}
-      <motion.div
-        className={styles.aboutModal}
-        style={{
-          color: '#FF430A',
-          display: mode === 'about' ? 'block' : 'none',
-          fontSize: 20,
-        }}
-      >
-        <div className={styles.title}>
-          <motion.h1
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1 }}
-            initial={{ opacity: 0 }}
-          >
-            A shader is a set of instructions that calculates and draws every
-            single pixel on the screen. We{"'"}ve made shaders that constantly
-            animate the shape, color, and light of the 3d object. The shaders
-            create a natural movement and expression of the gradient that can
-            make your digital products vibrant and lively. <br />
-          </motion.h1>
-
-          <motion.h1
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1 }}
-            initial={{ opacity: 0 }}
-          >
-            You can control properties related to shape, color, light, and
-            camera. The three colors you pick are connected to the very top
-            left, very top right, and the very bottom of the fluctuating plane.
-            Explore more about each property by experimenting on{' '}
-            <a href='/custom'>→ customize</a> page.
-          </motion.h1>
-          <motion.h1
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1 }}
-            initial={{ opacity: 0 }}
-          >
-            Made by two creatives, <a href=''>Ruucm</a> &{' '}
-            <a href=''>stone.skipper</a> with 17 Sunday afternoons.
-          </motion.h1>
-        </div>
-      </motion.div>
+      ) : (
+        <MenuWrapper mode={mode}>
+          <div className={styles.menuItems}>
+            <motion.div
+              className='font-medium text-primary text-xl'
+              initial={{ paddingLeft: 0 }}
+              whileHover={{
+                paddingLeft: 7,
+                transition: { duration: 0.3 },
+              }}
+              style={{
+                color: '#ff430a',
+                lineHeight: '1.7em',
+                fontWeight: 500,
+              }}
+              // onClick={() => {
+              //   if (mode !== 'about') {
+              //     setMode('about')
+              //   } else {
+              //     setMode('full')
+              //   }
+              // }}
+            >
+              <Link href='/about'>About →</Link>
+            </motion.div>
+            <MenuItem title='Figma →' link='' />
+            <MenuItem
+              title='Git →'
+              link='https://www.npmjs.com/package/shadergradient'
+            />
+            <MenuItem title='Framer →' link='' />
+            <PreviewSwitch mode={mode} setMode={setMode} />
+          </div>
+        </MenuWrapper>
+      )}
 
       {/* Home */}
       <motion.div
         className={styles.bodyWrapper}
         style={{
           color: mode === 'full' ? PRESETS[current].color : '#FF430A',
-          display: mode !== 'about' ? 'block' : 'none',
+          // display: mode !== 'about' ? 'block' : 'none',
+          display: 'block',
         }}
       >
         <div className={styles.leftWrapper}>
@@ -132,7 +113,7 @@ const Page = () => {
             style={{ display: mode !== 'full' ? 'none' : 'block' }}
           >
             <motion.h1>ShaderGradient</motion.h1>
-            <motion.h2 style={{ fontSize: 20, width: '30vw' }}>
+            <motion.h2>
               No more static gradients.
               <br />
               Add liveliness in your products.
@@ -151,7 +132,8 @@ const Page = () => {
           <div className={styles.slider} style={{}}>
             <div className={styles.sliderHeader}>
               <p>Current Theme</p>
-              <a href='/custom'>Customize →</a>
+              <Link href='/custom'>→ Customize </Link>
+              <Link href='customize'>→ TestLink </Link>
             </div>
             <div
               className={styles.sliderWrapper}
@@ -162,13 +144,19 @@ const Page = () => {
                     : '2px solid #FF430A',
               }}
             >
-              <SnapList ref={snapList} direction='horizontal'>
+              <SnapList
+                ref={snapList}
+                direction={isMobile ? 'vertical' : 'horizontal'}
+              >
                 {PRESETS.map((item, index) => {
                   return (
                     <SnapItem
                       key={index}
-                      margin={{ left: itemGap, right: itemGap }}
-                      snapAlign='start'
+                      margin={{
+                        left: isMobile ? '0px' : itemGap,
+                        right: isMobile ? '0px' : itemGap,
+                      }}
+                      snapAlign={isMobile ? 'end' : 'start'}
                     >
                       <MyItem
                         onClick={() => goToSnapItem(index)}
@@ -176,6 +164,7 @@ const Page = () => {
                         color={
                           mode === 'full' ? PRESETS[current].color : '#FF430A'
                         }
+                        isMobile={isMobile}
                       >
                         {index < 10 ? '0' + index.toString() : index.toString()}{' '}
                         {item.title}
@@ -188,6 +177,7 @@ const Page = () => {
                   snapAlign='start'
                 >
                   <button
+                    style={{ display: isMobile ? 'none' : 'block' }}
                     onClick={() => {
                       goToSnapItem(0)
                     }}

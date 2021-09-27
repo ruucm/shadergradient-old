@@ -5936,10 +5936,10 @@ sha.js@^2.4.0, sha.js@^2.4.8:
     inherits "^2.0.1"
     safe-buffer "^5.0.1"
 
-shadergradient@0.0.21:
-  version "0.0.21"
-  resolved "https://registry.yarnpkg.com/shadergradient/-/shadergradient-0.0.21.tgz#2a44ad393bfe9dc996d4a2f30f541797451a086c"
-  integrity sha512-drqvMy7tRkftebidZYRK1h9ojzqOK6dkdwgqJ4abkwy5XsOsq/uOE0H8IfC8+gp3UH0DxgRWTyrO/QbKVfi6TA==
+shadergradient@0.0.22:
+  version "0.0.22"
+  resolved "https://registry.yarnpkg.com/shadergradient/-/shadergradient-0.0.22.tgz#77925c327b802ddfac82aa08a254c145b1d8cf88"
+  integrity sha512-EoYAQ5ioosWgV494jDBFvtGaKAa2RYq6eIDKzhthJIYZw1tV5XfSq43dWxOBqX4ti+AJAtTimxfW9qGrccz98g==
   dependencies:
     "@react-three/drei" "^7.2.1"
     "@react-three/fiber" "^7.0.6"

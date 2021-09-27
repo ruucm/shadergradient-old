@@ -4,6 +4,8 @@ import { FormContext } from '@/helpers/form-provider'
 
 import { Gradient, UI } from 'shadergradient'
 import React, { useState, useContext } from 'react'
+import { updateGradientState } from '@/helpers/store'
+import useQueryState from '@/hooks/useQueryState'
 
 import styles from '../home/Home.module.scss'
 import PRESETS from '../presets.json'
@@ -78,7 +80,7 @@ const Page = () => {
         >
           <MyItem
             color={mode === 'full' ? PRESETS[current].color : '#FF430A'}
-            onClick={{}}
+            onClick={() => {}}
             visible={{}}
           >
             {current < 10 ? '0' + current.toString() : current.toString()}{' '}
