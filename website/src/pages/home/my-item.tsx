@@ -1,6 +1,12 @@
 import { motion } from 'framer-motion'
 
-export const MyItem = ({ onClick, children, visible, color, isMobile }) => (
+export const MyItem = ({
+  onClick,
+  children,
+  visible,
+  color,
+  isMobile = false,
+}) => (
   <motion.div
     style={{
       width: isMobile ? '100vw' : 'fit-content',
