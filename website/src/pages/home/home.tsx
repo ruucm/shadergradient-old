@@ -2,7 +2,7 @@ import { Environment } from '@react-three/drei'
 import { motion, useAnimation, animate } from 'framer-motion'
 import Link from 'next/link'
 
-import React, { useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import {
   SnapItem,
   SnapList,
@@ -20,24 +20,30 @@ import { PreviewSwitch } from '@/components/dom/PreviewSwitch'
 import { PreviewWrapper } from '@/components/dom/PreviewWrapper'
 import { MenuWrapper } from '@/components/dom/MenuWrapper'
 import { Footer } from '@/components/dom/Footer'
+import { useUIStore } from '@/helpers/store'
 
-//gap between theme items
+const DOM = () => {
+  const mode = useUIStore((state: any) => state.mode)
+  const setMode = useUIStore((state: any) => state.setMode)
+  const setCurrent = useUIStore((state: any) => state.setCurrent)
 
-const Page = () => {
   const snapList = useRef(null)
 
   const current = useVisibleElements(
     { debounce: 10, ref: snapList },
     ([element]) => element
   )
+  // sync current state with the store
+  useEffect(() => {
+    setCurrent(current)
+  }, [current])
+
+  const [isMobile, setIsMobile] = React.useState(false)
+
   const goToSnapItem = useScroll({ ref: snapList })
   const itemGap = '40px'
 
   const { isDragging } = useDragToScroll({ ref: snapList })
-
-  const [mode, setMode] = React.useState('full')
-
-  const [isMobile, setIsMobile] = React.useState(false)
 
   //choose the screen size
   const handleResize = () => {
@@ -133,7 +139,7 @@ const Page = () => {
             <div className={styles.sliderHeader}>
               <p>Current Theme</p>
               <Link href='/custom'>→ Customize </Link>
-              <Link href='customize'>→ TestLink </Link>
+              <Link href='/customize'>→ TestLink </Link>
             </div>
             <div
               className={styles.sliderWrapper}
@@ -193,8 +199,17 @@ const Page = () => {
       <Footer />
 
       <PreviewWrapper mode={mode} setMode={setMode} />
+    </>
+  )
+}
+
+// canvas components goes here
+const R3F = ({ r3f }) => {
+  const mode = useUIStore((state: any) => state.mode)
+  const current = useUIStore((state: any) => state.current)
+  return (
+    <>
       <Gradient
-        r3f
         environment={<Environment preset='city' background={false} />}
         lights={null}
         rotation={[(Math.PI / 3) * 2, 0, (Math.PI / 7) * 12]}
@@ -208,6 +223,16 @@ const Page = () => {
         // @ts-ignore
         type={PRESETS[current].type}
       />
+    </>
+  )
+}
+
+//gap between theme items
+const Page = () => {
+  return (
+    <>
+      <DOM />
+      <R3F r3f />
     </>
   )
 }
