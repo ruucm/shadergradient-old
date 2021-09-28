@@ -11,7 +11,7 @@ export const MyItem = ({
     style={{
       width: isMobile ? '100vw' : 'fit-content',
       fontSize: isMobile ? 35 : 60,
-      opacity: visible ? 1 : 0.3,
+      // opacity: ,
       borderBottom:
         visible && !isMobile ? '4px solid ' + color : '0px solid black',
       cursor: visible ? 'default' : 'pointer',
@@ -21,6 +21,8 @@ export const MyItem = ({
       opacity: 0.6,
     }}
     onClick={onClick}
+    initial={{ opacity: 0 }}
+    animate={{ opacity: visible ? 1 : 0.3, transition: { duration: 0.5 } }}
   >
     {children}
   </motion.div>

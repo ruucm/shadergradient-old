@@ -11,6 +11,8 @@ import {
   useVisibleElements,
 } from 'react-snaplist-carousel'
 import { Gradient } from 'shadergradient'
+import { useUIStore } from '@/helpers/store'
+
 import styles from './Home.module.scss'
 import PRESETS from '../presets.json'
 
@@ -20,23 +22,23 @@ import { PreviewSwitch } from '@/components/dom/PreviewSwitch'
 import { PreviewWrapper } from '@/components/dom/PreviewWrapper'
 import { MenuWrapper } from '@/components/dom/MenuWrapper'
 import { Footer } from '@/components/dom/Footer'
-import { useUIStore } from '@/helpers/store'
 
 const DOM = () => {
   const mode = useUIStore((state: any) => state.mode)
   const setMode = useUIStore((state: any) => state.setMode)
+  const current = useUIStore((state: any) => state.current)
   const setCurrent = useUIStore((state: any) => state.setCurrent)
 
   const snapList = useRef(null)
 
-  const current = useVisibleElements(
-    { debounce: 10, ref: snapList },
-    ([element]) => element
-  )
-  // sync current state with the store
-  useEffect(() => {
-    setCurrent(current)
-  }, [current])
+  // const current = useVisibleElements(
+  //   { debounce: 10, ref: snapList },
+  //   ([element]) => element
+  // )
+  // // sync current state with the store
+  // useEffect(() => {
+  //   setCurrent(current)
+  // }, [current])
 
   const [isMobile, setIsMobile] = React.useState(false)
 
@@ -63,12 +65,7 @@ const DOM = () => {
   return (
     <>
       {/* Menu */}
-      {isMobile === true ? (
-        <div className={styles.mobileOnly}>
-          <Link href='/about'>→ about</Link>
-          <Link href='/custom'>→ customize</Link>
-        </div>
-      ) : (
+      {isMobile === true ? null : (
         <MenuWrapper mode={mode}>
           <div className={styles.menuItems}>
             <motion.div
@@ -83,13 +80,13 @@ const DOM = () => {
                 lineHeight: '1.7em',
                 fontWeight: 500,
               }}
-              // onClick={() => {
-              //   if (mode !== 'about') {
-              //     setMode('about')
-              //   } else {
-              //     setMode('full')
-              //   }
-              // }}
+              onClick={() => {
+                if (mode !== 'about') {
+                  setMode('about')
+                } else {
+                  setMode('full')
+                }
+              }}
             >
               <Link href='/about'>About →</Link>
             </motion.div>
@@ -132,6 +129,16 @@ const DOM = () => {
               <br />
               <br /> Fully supported on Chrome. Sorry Safari.
             </motion.p>
+
+            {isMobile === true ? (
+              <div
+                className={styles.mobileOnly}
+                style={{ color: PRESETS[current].color }}
+              >
+                <Link href='/about'>→ about</Link>
+                <Link href='/custom'>→ customize</Link>
+              </div>
+            ) : null}
           </div>
 
           {/* Preset Slider */}
@@ -139,7 +146,6 @@ const DOM = () => {
             <div className={styles.sliderHeader}>
               <p>Current Theme</p>
               <Link href='/custom'>→ Customize </Link>
-              <Link href='/customize'>→ TestLink </Link>
             </div>
             <div
               className={styles.sliderWrapper}
@@ -165,7 +171,11 @@ const DOM = () => {
                       snapAlign={isMobile ? 'end' : 'start'}
                     >
                       <MyItem
-                        onClick={() => goToSnapItem(index)}
+                        onClick={() => {
+                          goToSnapItem(index)
+                          setCurrent(index)
+                          console.log(index, current)
+                        }}
                         visible={current === index}
                         color={
                           mode === 'full' ? PRESETS[current].color : '#FF430A'
@@ -213,12 +223,10 @@ const R3F = ({ r3f }) => {
         environment={<Environment preset='city' background={false} />}
         lights={null}
         rotation={[(Math.PI / 3) * 2, 0, (Math.PI / 7) * 12]}
-        cameraPosition={
-          mode !== 'about' ? { x: 0, y: 1.7, z: 4 } : { x: 0, y: 0, z: 8 }
-        }
+        cameraPosition={{ x: 0, y: 1.7, z: 4 }}
         // cameraRotation={{ x: 0, y: 0, z: 0 }}
         cameraQuaternion={{ x: -Math.PI / 6, y: 0, z: 0 }}
-        cameraZoom={mode !== 'about' ? 2.2 : 0.4}
+        cameraZoom={2.2}
         animate={true}
         // @ts-ignore
         type={PRESETS[current].type}
@@ -227,7 +235,6 @@ const R3F = ({ r3f }) => {
   )
 }
 
-//gap between theme items
 const Page = () => {
   return (
     <>

@@ -2,9 +2,13 @@ import * as React from 'react'
 import { motion } from 'framer-motion'
 import cx from 'classnames'
 
-export function PreviewSwitch({ mode = 'mobile', setMode = void 0 }) {
+export function PreviewSwitch({
+  mode = 'mobile',
+  setMode = void 0,
+  display = true,
+}) {
   return (
-    <div>
+    <div style={{ display: display ? 'block' : 'none' }}>
       <p className='mt-4 font-medium mb-1.5 text-primary'>preview</p>
       <div className='flex gap-1.5'>
         <motion.div

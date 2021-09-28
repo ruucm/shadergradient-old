@@ -26,6 +26,20 @@ export function MenuWrapper({
     }
   }, [activeTab])
 
+  React.useEffect(() => {
+    if (mode === 'about') {
+      menuAnim.start({
+        background: '#141414',
+        transition: { duration: 0.5 },
+      })
+    } else {
+      menuAnim.start({
+        background: '#ffffff',
+        transition: { duration: 0.5 },
+      })
+    }
+  }, [mode])
+
   return (
     <motion.div
       className='absolute z-10 overflow-hidden bg-white rounded-md grid'

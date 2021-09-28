@@ -1,6 +1,7 @@
 import { Environment } from '@react-three/drei'
 import { motion, useAnimation, useMotionValue, animate } from 'framer-motion'
 import Link from 'next/link'
+import { useUIStore } from '@/helpers/store'
 
 import { Gradient, UI } from 'shadergradient'
 import * as React from 'react'
@@ -14,34 +15,95 @@ import { PreviewWrapper } from '@/components/dom/PreviewWrapper'
 import { MenuWrapper } from '@/components/dom/MenuWrapper'
 import { MenuItem } from '../home/menu-item'
 
-var zoom, setZoom
-// zoom = 2.2
+// var zoom = 2.2
 
-const Page = () => {
-  const zoomInterval = setInterval(() => {
-    if (zoom > 0.3) {
-      setZoom(zoom - 0.1)
+const DOM = () => {
+  const mode = useUIStore((state: any) => state.mode)
+  const setMode = useUIStore((state: any) => state.setMode)
+  const [isMobile, setIsMobile] = React.useState(false)
+
+  //choose the screen size
+  const handleResize = () => {
+    if (window.innerWidth < 641) {
+      setIsMobile(true)
+    } else {
+      setIsMobile(false)
     }
-    // console.log(zoom)
-  }, 500)
-  // const zoomControl = () => {
-  //   animate(zoom, 0.4)
-  // }
-  // React.useEffect(() => {
-  //   console.log('??')
-  // }, [])
+  }
 
-  // zoomControl()
+  // create an event listener
+  React.useEffect(() => {
+    handleResize()
+    window.addEventListener('resize', handleResize)
+
+    setMode('about')
+    // const zoomMotion = () => animate(zoom, 0.4, { duration: 1 })
+    // zoomMotion()
+    // console.log(zoom)
+  }, [])
+
+  // React.useEffect(() => {
+  //   const controls = animate(zoom, 0.4, {
+  //     type: 'spring',
+  //     stiffness: 2000,
+  //     // onComplete: {(v) => {
+  //     //   console.log(v)
+  //     // }},
+  //   })
+
+  //   return controls.stop
+  // })
+
   return (
     <>
-      <Menu />
-      <motion.div
-        className={styles.aboutModal}
-        style={{
-          color: '#FF430A',
-          fontSize: 20,
-        }}
-      >
+      {isMobile === true ? (
+        <div
+          className={styles.mobileOnly}
+          style={{ color: '#ff430a', paddingLeft: '2em' }}
+          onClick={() => {
+            setMode('full')
+          }}
+        >
+          <Link href='/'>← Main</Link>
+        </div>
+      ) : (
+        <MenuWrapper mode={mode} setMode={setMode}>
+          <div className={styles.menuItems}>
+            <motion.div
+              className='font-medium text-primary text-xl'
+              initial={{ paddingLeft: 0 }}
+              whileHover={{
+                paddingLeft: 7,
+                transition: { duration: 0.3 },
+              }}
+              style={{
+                color: 'white',
+                lineHeight: '1.7em',
+                fontWeight: 500,
+              }}
+              onClick={() => {
+                if (mode !== 'about') {
+                  setMode('about')
+                } else {
+                  setMode('full')
+                }
+              }}
+            >
+              <Link href='/'>← Main</Link>
+            </motion.div>
+            <MenuItem title='Figma →' link='' />
+            <MenuItem
+              title='Git →'
+              link='https://www.npmjs.com/package/shadergradient'
+            />
+            <MenuItem title='Framer →' link='' />
+            <div style={{ opacity: 0.2 }}>
+              <PreviewSwitch mode={mode} />
+            </div>
+          </div>
+        </MenuWrapper>
+      )}
+      <motion.div className={styles.aboutModal}>
         <div className={styles.title}>
           <motion.h1
             animate={{ opacity: 1 }}
@@ -71,23 +133,56 @@ const Page = () => {
             transition={{ duration: 1 }}
             initial={{ opacity: 0 }}
           >
-            Made by two creatives, <a href=''>Ruucm</a> &{' '}
-            <a href=''>stone.skipper</a> with 17 Sunday afternoons.
+            Made by two creatives, <a href=''>→ Ruucm</a> &{' '}
+            <a href=''>→ stone.skipper</a> with 17 Sunday afternoons.
           </motion.h1>
         </div>
       </motion.div>
-      <Gradient
-        r3f
-        environment={<Environment preset='city' background={false} />}
-        lights={null}
-        rotation={[(Math.PI / 3) * 2, 0, (Math.PI / 7) * 12]}
-        cameraPosition={{ x: 0, y: 0, z: 8 }}
-        cameraQuaternion={{ x: -Math.PI / 6, y: 0, z: 0 }}
-        cameraZoom={zoom}
-        // cameraZoom={0.4}
-        animate={true}
-        // type={PRESETS[current].type}
-      />
+    </>
+  )
+}
+
+const R3F = ({ r3f }) => {
+  const current = useUIStore((state: any) => state.current)
+  const [zoom, setZoom] = React.useState(0.5)
+
+  React.useEffect(() => {
+    // function zoomMotion() {
+    //   if (zoom > 0.5) {
+    //     setZoom((z) => z - 0.02)
+    //   } else {
+    //     clearInterval(interval)
+    //     console.log('stop')
+    //   }
+    // }
+    // let interval = setInterval(zoomMotion, 50)
+  }, [])
+
+  React.useEffect(() => {
+    console.log(zoom)
+  }, [zoom])
+
+  return (
+    <Gradient
+      r3f
+      environment={<Environment preset='city' background={false} />}
+      lights={null}
+      rotation={[(Math.PI / 3) * 2, 0, (Math.PI / 7) * 12]}
+      cameraPosition={{ x: 0, y: 2, z: 8 }}
+      cameraZoom={zoom}
+      // cameraZoom={0.4}
+      animate={true}
+      // @ts-ignore
+      type={PRESETS[current].type}
+    />
+  )
+}
+
+const Page = () => {
+  return (
+    <>
+      <DOM />
+      <R3F r3f />
     </>
   )
 }
@@ -100,42 +195,4 @@ export async function getStaticProps() {
       title: 'Shader Gradient',
     },
   }
-}
-function Menu() {
-  const [mode, setMode] = React.useState('about')
-  ;[zoom, setZoom] = React.useState(2.2)
-
-  React.useEffect(() => {
-    console.log(zoom)
-  }, [zoom])
-  return (
-    <MenuWrapper mode={mode} setMode={setMode}>
-      <div className={styles.menuItems}>
-        <motion.div
-          className='font-medium text-primary text-xl'
-          initial={{ paddingLeft: 0 }}
-          whileHover={{
-            paddingLeft: 7,
-            transition: { duration: 0.3 },
-          }}
-          style={{
-            color: 'white',
-            lineHeight: '1.7em',
-            fontWeight: 500,
-          }}
-        >
-          <Link href='/'>← Main</Link>
-        </motion.div>
-        <MenuItem title='Figma →' link='' />
-        <MenuItem
-          title='Git →'
-          link='https://www.npmjs.com/package/shadergradient'
-        />
-        <MenuItem title='Framer →' link='' />
-        <div style={{ opacity: 0.2 }}>
-          <PreviewSwitch mode={mode} />
-        </div>
-      </div>
-    </MenuWrapper>
-  )
 }
