@@ -217,6 +217,28 @@
     width: 100vw;
   }
 }
+
+.loading {
+  background: #ff430a;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 4;
+  color: white;
+  // div {
+  //   display: flex;
+  //   justify-content: center;
+  //   vertical-align: middle;
+  //   font-size: 4em;
+  //   height: 100vh;
+  // }
+  // p {
+  //   margin-top: 80vh;
+  // }
+}
+
 // @media (min-width:641px)  { /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ }
 @media (max-width: 640px) {
   .footer {

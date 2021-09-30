@@ -1,8 +1,8 @@
-import { Environment } from '@react-three/drei'
 import { motion, useAnimation, animate } from 'framer-motion'
 import Link from 'next/link'
+import { Environment } from '@react-three/drei'
 
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, Suspense, lazy } from 'react'
 import {
   SnapItem,
   SnapList,
@@ -22,8 +22,9 @@ import { PreviewSwitch } from '@/components/dom/PreviewSwitch'
 import { PreviewWrapper } from '@/components/dom/PreviewWrapper'
 import { MenuWrapper } from '@/components/dom/MenuWrapper'
 import { Footer } from '@/components/dom/Footer'
-
-const DOM = () => {
+import { Loading } from '@/components/dom/Loading'
+import { LazyGradient } from '@/components/dom/LazyGradient/LazyGradient'
+const DOM = (load, delayed) => {
   const mode = useUIStore((state: any) => state.mode)
   const setMode = useUIStore((state: any) => state.setMode)
   const current = useUIStore((state: any) => state.current)
@@ -111,17 +112,35 @@ const DOM = () => {
         }}
       >
         <div className={styles.leftWrapper}>
-          <div
+          <motion.div
             className={styles.title}
             style={{ display: mode !== 'full' ? 'none' : 'block' }}
           >
-            <motion.h1>ShaderGradient</motion.h1>
-            <motion.h2>
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0, transition: { duration: 1 } }}
+            >
+              ShaderGradient
+            </motion.h1>
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                transition: { delay: 1, duration: 1 },
+              }}
+            >
               No more static gradients.
               <br />
               Add liveliness in your products.
             </motion.h2>
             <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                transition: { delay: 1.5, duration: 1 },
+              }}
               style={{ fontSize: 12, width: '25vw', marginTop: '50px' }}
             >
               Customizable gradient tool inspired by natural lights and
@@ -139,10 +158,21 @@ const DOM = () => {
                 <Link href='/custom'>→ customize</Link>
               </div>
             ) : null}
-          </div>
+          </motion.div>
 
           {/* Preset Slider */}
-          <div className={styles.slider} style={{}}>
+          <motion.div
+            className={styles.slider}
+            // style={{
+            //   display: load === true && delayed == true ? 'block' : 'none',
+            // }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{
+              opacity: 1,
+              y: 0,
+              transition: { delay: 2, transition: 2 },
+            }}
+          >
             <div className={styles.sliderHeader}>
               <p>Current Theme</p>
               <Link href='/custom'>→ Customize </Link>
@@ -203,7 +233,7 @@ const DOM = () => {
                 </SnapItem>
               </SnapList>
             </div>
-          </div>
+          </motion.div>
         </div>
       </motion.div>
       <Footer />
@@ -213,33 +243,28 @@ const DOM = () => {
   )
 }
 
-// canvas components goes here
-const R3F = ({ r3f }) => {
-  const mode = useUIStore((state: any) => state.mode)
-  const current = useUIStore((state: any) => state.current)
-  return (
-    <>
-      <Gradient
-        environment={<Environment preset='city' background={false} />}
-        lights={null}
-        rotation={[(Math.PI / 3) * 2, 0, (Math.PI / 7) * 12]}
-        cameraPosition={{ x: 0, y: 1.7, z: 4 }}
-        // cameraRotation={{ x: 0, y: 0, z: 0 }}
-        cameraQuaternion={{ x: -Math.PI / 6, y: 0, z: 0 }}
-        cameraZoom={2.2}
-        animate={true}
-        // @ts-ignore
-        type={PRESETS[current].type}
-      />
-    </>
-  )
-}
-
 const Page = () => {
+  const [load, setLoad] = React.useState(false)
+  const [delayed, setDelayed] = React.useState(false)
+
+  const delayRender = async (delay) => {
+    setTimeout(() => {
+      setDelayed(true)
+      console.log(delayed)
+    }, delay)
+
+    const loadGradient = await import('../../components/dom/LazyGradient')
+    setLoad(true)
+  }
+  React.useEffect(() => {
+    delayRender(6000)
+  }, [])
   return (
     <>
-      <DOM />
-      <R3F r3f />
+      <DOM load={load} delayed={delayed} />
+      {/* <R3F r3f /> */}
+      <Loading over={load === true && delayed == true} />
+      {load === true && delayed == true ? <LazyGradient r3f /> : null}
     </>
   )
 }
