@@ -49,6 +49,7 @@ export function MenuWrapper({
         gridTemplateColumns: '130px 370px',
         top: '34px',
         right: '-470px',
+
         boxShadow:
           mode === 'mobile' || mode === 'web'
             ? '-4px 4px 62px 0px rgba(0, 0, 0, 0.05)'

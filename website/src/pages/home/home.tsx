@@ -10,8 +10,10 @@ import {
   useScroll,
   useVisibleElements,
 } from 'react-snaplist-carousel'
-import { Gradient } from 'shadergradient'
+// import { Gradient } from 'shadergradient'
 import { useUIStore } from '@/helpers/store'
+import Lottie from 'react-lottie'
+import * as animationData from '@/media/motionlogo-lottie.json'
 
 import styles from './Home.module.scss'
 import PRESETS from '../presets.json'
@@ -24,7 +26,15 @@ import { MenuWrapper } from '@/components/dom/MenuWrapper'
 import { Footer } from '@/components/dom/Footer'
 import { Loading } from '@/components/dom/Loading'
 import { LazyGradient } from '@/components/dom/LazyGradient/LazyGradient'
-const DOM = (load, delayed) => {
+const DOM = () => {
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice',
+    },
+  }
   const mode = useUIStore((state: any) => state.mode)
   const setMode = useUIStore((state: any) => state.setMode)
   const current = useUIStore((state: any) => state.current)
@@ -107,11 +117,13 @@ const DOM = (load, delayed) => {
         className={styles.bodyWrapper}
         style={{
           color: mode === 'full' ? PRESETS[current].color : '#FF430A',
-          // display: mode !== 'about' ? 'block' : 'none',
           display: 'block',
         }}
       >
         <div className={styles.leftWrapper}>
+          <motion.div className={styles.logoWrapper}>
+            <Lottie options={defaultOptions} height={80} width={80} />
+          </motion.div>
           <motion.div
             className={styles.title}
             style={{ display: mode !== 'full' ? 'none' : 'block' }}
@@ -163,9 +175,6 @@ const DOM = (load, delayed) => {
           {/* Preset Slider */}
           <motion.div
             className={styles.slider}
-            // style={{
-            //   display: load === true && delayed == true ? 'block' : 'none',
-            // }}
             initial={{ opacity: 0, y: 30 }}
             animate={{
               opacity: 1,
@@ -257,14 +266,16 @@ const Page = () => {
     setLoad(true)
   }
   React.useEffect(() => {
-    delayRender(6000)
+    delayRender(10000)
   }, [])
+
   return (
     <>
-      <DOM load={load} delayed={delayed} />
+      <DOM />
       {/* <R3F r3f /> */}
       <Loading over={load === true && delayed == true} />
-      {load === true && delayed == true ? <LazyGradient r3f /> : null}
+
+      {load === true && delayed === true ? <LazyGradient r3f /> : null}
     </>
   )
 }

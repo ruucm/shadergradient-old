@@ -2,7 +2,6 @@ import * as React from 'react'
 import { Environment } from '@react-three/drei'
 
 import cx from 'classnames'
-import styles from '../../../pages/home/Home.module.scss'
 import { Gradient } from 'shadergradient'
 import { useUIStore } from '@/helpers/store'
 
