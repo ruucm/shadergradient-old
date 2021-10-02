@@ -38,8 +38,10 @@ const nextConfig = {
       use: ['raw-loader', 'glslify-loader'],
     })
 
+    // for framer modules
     config.experiments = {
       buildHttp: true,
+      layers: true,
     }
 
     return config

@@ -27,7 +27,7 @@ export const NumberInput = React.forwardRef<
         ref={ref}
         value={value}
         onChange={(e) => setValue(e.target.value)}
-        {...inputProps}
+        {...inputProps} // step.. etc
       />
     </div>
   )
