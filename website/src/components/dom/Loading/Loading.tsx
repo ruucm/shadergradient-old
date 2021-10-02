@@ -2,7 +2,6 @@ import * as React from 'react'
 import { motion, useAnimation } from 'framer-motion'
 import styles from '../../../pages/home/Home.module.scss'
 import Lottie from 'react-lottie'
-import * as animationData from '../../../media/motionlogo-lottie.json'
 import * as animationData_colored from '../../../media/colored-motionlogo.json'
 
 export function Loading({ loadStatus }) {

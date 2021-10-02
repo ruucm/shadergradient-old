@@ -9,7 +9,6 @@ import styles from '../home/Home.module.scss'
 import { PreviewSwitch } from '@/components/dom/PreviewSwitch'
 import { MenuWrapper } from '@/components/dom/MenuWrapper'
 import { MenuItem } from '../home/menu-item'
-import * as animationData_colored from '@/media/colored-motionlogo.json'
 import { LazyGradient } from '@/components/dom/LazyGradient'
 
 const DOM = () => {

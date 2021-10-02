@@ -3,7 +3,6 @@ import useQueryState from '@/hooks/useQueryState'
 import { updateGradientState } from '@/helpers/store'
 import PRESETS from '../../../pages/presets.json'
 import { useUIStore } from '@/helpers/store'
-import { Environment } from '@react-three/drei'
 
 import { Gradient } from 'shadergradient'
 

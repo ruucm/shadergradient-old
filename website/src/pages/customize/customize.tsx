@@ -1,8 +1,7 @@
-import { Environment } from '@react-three/drei'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 
-import { Gradient, UI } from 'shadergradient'
+import { UI } from 'shadergradient'
 import { useUIStore } from '@/helpers/store'
 
 import React, { useState, useEffect } from 'react'

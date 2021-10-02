@@ -1,4 +1,4 @@
-import { motion, useAnimation, animate } from 'framer-motion'
+import { motion } from 'framer-motion'
 import Link from 'next/link'
 
 import React, { useEffect, useRef, useState } from 'react'
@@ -7,12 +7,10 @@ import {
   SnapList,
   useDragToScroll,
   useScroll,
-  useVisibleElements,
 } from 'react-snaplist-carousel'
 import { useUIStore } from '@/helpers/store'
 import Lottie from 'react-lottie'
 import * as animationData from '@/media/motionlogo-lottie.json'
-import { Gradient } from 'shadergradient'
 import styles from './Home.module.scss'
 import PRESETS from '../presets.json'
 
@@ -24,7 +22,6 @@ import { MenuWrapper } from '@/components/dom/MenuWrapper'
 import { Footer } from '@/components/dom/Footer'
 import { Loading } from '@/components/dom/Loading'
 import { LazyGradient } from '@/components/dom/LazyGradient'
-import { MotionLogo } from '@/components/dom/MotionLogo'
 
 const DOM = () => {
   // for logo animation
