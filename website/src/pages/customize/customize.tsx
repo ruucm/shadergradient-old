@@ -63,6 +63,7 @@ const Page = () => {
         uStrength={uStrength}
         uSpeed={uSpeed}
         colors={[color1, color2, color3]}
+        grain={grain}
       />
       {controls === 'show' && <Controls />}
     </>
