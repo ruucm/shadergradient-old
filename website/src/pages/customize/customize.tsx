@@ -31,6 +31,8 @@ const Page = () => {
 
   // effects
   const [grain] = useQueryState('grain')
+  const [lightType] = useQueryState('lightType')
+  const [envPreset] = useQueryState('envPreset')
 
   // camera
   const [cameraZoom] = useQueryState('cameraZoom')
@@ -64,6 +66,8 @@ const Page = () => {
         uSpeed={uSpeed}
         colors={[color1, color2, color3]}
         grain={grain}
+        lightType={lightType}
+        envPreset={envPreset}
       />
       {controls === 'show' && <Controls />}
     </>

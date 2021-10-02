@@ -23,6 +23,8 @@ export type GradientPropsT = {
   uSpeed?: number
   colors?: string[]
   grain?: "on" | "off"
+  lightType?: "env" | "3d"
+  envPreset?: "city" | "lobby" | "dawn"
 }
 
 export const Gradient: React.FC<GradientPropsT> = ({
@@ -30,7 +32,7 @@ export const Gradient: React.FC<GradientPropsT> = ({
   type = "plane",
   postProcessing = "threejs",
   environment = <Environment preset="lobby" background={true} />,
-  lights = <ambientLight intensity={0.3} />,
+  lights = <ambientLight intensity={1} />,
   rotation = [Math.PI * 2, 0, 0],
   cameraPosition = { x: 0, y: 0, z: 0 },
   cameraRotation = { x: 0, y: 0, z: 0 },
@@ -42,6 +44,8 @@ export const Gradient: React.FC<GradientPropsT> = ({
   uSpeed = 0.3,
   colors = ["#CC4C6E", "#1980FF", "#99B58F"],
   grain,
+  lightType,
+  envPreset,
 }) => {
   const { camera }: { camera: Camera } = useThree()
   camera.position.set(cameraPosition.x, cameraPosition.y, cameraPosition.z)
@@ -54,10 +58,15 @@ export const Gradient: React.FC<GradientPropsT> = ({
 
   usePostProcessing({ on: postProcessing === "threejs", grain: grain === "on" })
 
+  let overridableEnvironment = environment
+  if (envPreset)
+    overridableEnvironment = (
+      <Environment preset={envPreset} background={true} />
+    )
+
   return (
     <Suspense fallback={"Loading..."}>
-      {environment}
-      {lights}
+      {lightType === "env" ? overridableEnvironment : lights}
       <GradientMesh
         key={colors.toString()}
         type={type}
