@@ -72,6 +72,7 @@ const Page = () => {
         envPreset={envPreset}
         reflection={reflection}
         brightness={brightness}
+        postProcessing={'threejs'} // turn on postpocessing
       />
       {controls === 'show' && <Controls />}
     </>

@@ -34,7 +34,7 @@ export function usePostProcessing({ on = false, grain = false }) {
     effectComposer.addPass(halftonePass)
 
     return effectComposer
-  }, [gl, scene, camera, size])
+  }, [gl, scene, camera, size, grain])
 
   useEffect(() => composer?.setSize(size.width, size.height), [composer, size])
   useFrame(
