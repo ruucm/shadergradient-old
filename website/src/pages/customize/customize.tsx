@@ -24,16 +24,19 @@ const Page = () => {
   const [rotationY] = useQueryState('rotationY')
   const [rotationZ] = useQueryState('rotationZ')
 
+  // colors
+  const [color1] = useQueryState('color1')
+  const [color2] = useQueryState('color2')
+  const [color3] = useQueryState('color3')
+
+  // effects
+  const [grain] = useQueryState('grain')
+
   // camera
   const [cameraZoom] = useQueryState('cameraZoom')
   const [cameraPositionX] = useQueryState('cameraPositionX')
   const [cameraPositionY] = useQueryState('cameraPositionY')
   const [cameraPositionZ] = useQueryState('cameraPositionZ')
-
-  // colors
-  const [color1] = useQueryState('color1')
-  const [color2] = useQueryState('color2')
-  const [color3] = useQueryState('color3')
 
   // misc
   const [controls] = useQueryState('controls')

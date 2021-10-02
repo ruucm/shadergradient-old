@@ -22,6 +22,7 @@ export type GradientPropsT = {
   uStrength?: number
   uSpeed?: number
   colors?: string[]
+  grain?: "on" | "off"
 }
 
 export const Gradient: React.FC<GradientPropsT> = ({
@@ -40,6 +41,7 @@ export const Gradient: React.FC<GradientPropsT> = ({
   uStrength = 1.3,
   uSpeed = 0.3,
   colors = ["#CC4C6E", "#1980FF", "#99B58F"],
+  grain,
 }) => {
   const { camera }: { camera: Camera } = useThree()
   camera.position.set(cameraPosition.x, cameraPosition.y, cameraPosition.z)
@@ -50,7 +52,7 @@ export const Gradient: React.FC<GradientPropsT> = ({
   camera.zoom = cameraZoom
   camera.updateProjectionMatrix() // need to update camera's zoom
 
-  usePostProcessing({ on: postProcessing === "threejs" })
+  usePostProcessing({ on: postProcessing === "threejs", grain: grain === "on" })
 
   return (
     <Suspense fallback={"Loading..."}>
