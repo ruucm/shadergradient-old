@@ -30,12 +30,12 @@ export function MenuWrapper({
     if (mode === 'about') {
       menuAnim.start({
         background: '#141414',
-        transition: { duration: 0.5 },
+        transition: { duration: 0 },
       })
     } else {
       menuAnim.start({
         background: '#ffffff',
-        transition: { duration: 0.5 },
+        transition: { duration: 0 },
       })
     }
   }, [mode])

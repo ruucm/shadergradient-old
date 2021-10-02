@@ -5,7 +5,7 @@ import Lottie from 'react-lottie'
 import * as animationData from '../../../media/motionlogo-lottie.json'
 import * as animationData_colored from '../../../media/colored-motionlogo.json'
 
-export function Loading({ over }) {
+export function Loading({ loadStatus }) {
   const loadingAnim = useAnimation()
 
   const defaultOptions = {
@@ -18,37 +18,27 @@ export function Loading({ over }) {
   }
 
   const loadingSequence = async () => {
-    // await controls.start({ x: 0 })
-    // return await controls.start({ opacity: 1 })
-
-    if (over === true) {
-      await loadingAnim.start({
+    if (loadStatus === 'firstLoad') {
+      loadingAnim.start({
         opacity: 0,
-        // y: '100vh',
+        transition: { duration: 0.5 },
       })
       loadingAnim.start({
         display: 'none',
-        transition: { duration: 0 },
+        transition: { duration: 0, delay: 0.5 },
       })
     }
-    // else
-    //   await loadingAnim.start({
-    //     display: 'block',
-    //     transition: { duration: 0 },
-    //   })
-    // loadingAnim.start({
-    //   opacity: 1,
-    // })
   }
 
   React.useEffect(() => {
     loadingSequence()
-  }, [over])
+  }, [loadStatus])
   return (
     <motion.div
       className={styles.loading}
       animate={loadingAnim}
       initial={{ opacity: 1 }}
+      style={{ display: loadStatus === 'firstLoadDone' ? 'none' : 'flex' }}
     >
       <motion.div className={styles.logoWrapper}>
         <Lottie options={defaultOptions} height={80} width={80} />
@@ -286,7 +276,7 @@ export function Loading({ over }) {
           }}
           transition={{
             duration: 0.7,
-            delay: 5.5,
+            delay: 5,
             ease: 'easeInOut',
           }}
         >
@@ -304,31 +294,6 @@ export function Loading({ over }) {
           And it's loading.
         </motion.p> */}
       </motion.div>
-      {/* <div
-        style={{
-          display: 'flex',
-          width: '100vw',
-          height: '100vh',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        <div
-          style={{
-            width: '30vh',
-            height: '30vh',
-            borderRadius: '15vh',
-            backgroundColor: 'rgba(255,255,255,0.05)',
-            textAlign: 'center',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            flexDirection: 'column',
-          }}
-        >
-          <Lottie options={defaultOptions} height={100} width={100} />
-        </div>
-      </div> */}
     </motion.div>
   )
 }

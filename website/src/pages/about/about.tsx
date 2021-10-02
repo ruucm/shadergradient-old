@@ -5,15 +5,16 @@ import { useUIStore } from '@/helpers/store'
 
 import { Gradient, UI } from 'shadergradient'
 import * as React from 'react'
-// import React, { useState, useContext } from 'react'
+import Lottie from 'react-lottie'
 
 import styles from '../home/Home.module.scss'
 import PRESETS from '../presets.json'
 
 import { PreviewSwitch } from '@/components/dom/PreviewSwitch'
-import { PreviewWrapper } from '@/components/dom/PreviewWrapper'
 import { MenuWrapper } from '@/components/dom/MenuWrapper'
 import { MenuItem } from '../home/menu-item'
+import * as animationData_colored from '@/media/colored-motionlogo.json'
+import { LazyGradient } from '@/components/dom/LazyGradient'
 
 // var zoom = 2.2
 
@@ -21,6 +22,15 @@ const DOM = () => {
   const mode = useUIStore((state: any) => state.mode)
   const setMode = useUIStore((state: any) => state.setMode)
   const [isMobile, setIsMobile] = React.useState(false)
+
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData_colored,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice',
+    },
+  }
 
   //choose the screen size
   const handleResize = () => {
@@ -142,47 +152,54 @@ const DOM = () => {
   )
 }
 
-const R3F = ({ r3f }) => {
-  const current = useUIStore((state: any) => state.current)
-  const [zoom, setZoom] = React.useState(0.5)
+// const R3F = ({ r3f }) => {
+//   const current = useUIStore((state: any) => state.current)
+//   const [zoom, setZoom] = React.useState(0.5)
+//   const [mount, setMount] = React.useState(false)
 
-  React.useEffect(() => {
-    // function zoomMotion() {
-    //   if (zoom > 0.5) {
-    //     setZoom((z) => z - 0.02)
-    //   } else {
-    //     clearInterval(interval)
-    //     console.log('stop')
-    //   }
-    // }
-    // let interval = setInterval(zoomMotion, 50)
-  }, [])
+//   React.useEffect(() => {
+//     // function zoomMotion() {
+//     //   if (zoom > 0.5) {
+//     //     setZoom((z) => z - 0.02)
+//     //   } else {
+//     //     clearInterval(interval)
+//     //     console.log('stop')
+//     //   }
+//     // }
+//     // let interval = setInterval(zoomMotion, 50)
+//   }, [])
 
-  React.useEffect(() => {
-    console.log(zoom)
-  }, [zoom])
+//   React.useEffect(() => {
+//     console.log(zoom)
+//   }, [zoom])
 
-  return (
-    <Gradient
-      r3f
-      environment={<Environment preset='city' background={false} />}
-      lights={null}
-      rotation={[(Math.PI / 3) * 2, 0, (Math.PI / 7) * 12]}
-      cameraPosition={{ x: 0, y: 2, z: 8 }}
-      cameraZoom={zoom}
-      // cameraZoom={0.4}
-      animate={true}
-      // @ts-ignore
-      type={PRESETS[current].type}
-    />
-  )
-}
+//   return (
+//     <Gradient
+//       r3f
+//       environment={<Environment preset='city' background={false} />}
+//       lights={null}
+//       rotation={[(Math.PI / 3) * 2, 0, (Math.PI / 7) * 12]}
+//       cameraPosition={{ x: 0, y: 2, z: 8 }}
+//       cameraZoom={zoom}
+//       // cameraZoom={0.4}
+//       animate={true}
+//       // @ts-ignore
+//       type={PRESETS[current].type}
+//     />
+//   )
+// }
 
 const Page = () => {
   return (
     <>
       <DOM />
-      <R3F r3f />
+      {/* <R3F r3f /> */}
+      <LazyGradient
+        r3f
+        cameraZoom={0.5}
+        cameraPosition={{ x: 0, y: 2, z: 8 }}
+        rotation={[(Math.PI / 3) * 2, 0, (Math.PI / 7) * 12]}
+      />
     </>
   )
 }

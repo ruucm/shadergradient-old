@@ -12,14 +12,12 @@ import styles from '../home/Home.module.scss'
 import PRESETS from '../presets.json'
 
 import { MyItem } from '../home/my-item'
-import { ControlsTab } from './controlsTab'
 import { PreviewSwitch } from '@/components/dom/PreviewSwitch'
 import { PreviewWrapper } from '@/components/dom/PreviewWrapper'
 import { MenuWrapper } from '@/components/dom/MenuWrapper'
 import { Footer } from '@/components/dom/Footer'
+import { LazyGradient } from '@/components/dom/LazyGradient'
 
-import { act } from '@react-three/fiber'
-var hideBtnAnim
 const DOM = () => {
   const mode = useUIStore((state: any) => state.mode)
   const setMode = useUIStore((state: any) => state.setMode)
@@ -276,21 +274,9 @@ const R3F = ({ r3f }) => {
 
   return (
     <>
-      {/* <Gradient
-        environment={<Environment preset='city' background={false} />}
-        lights={null}
-        rotation={[(Math.PI / 3) * 2, 0, (Math.PI / 7) * 12]}
-        cameraPosition={{ x: 0, y: 1.7, z: 4 }}
-        // cameraRotation={{ x: 0, y: 0, z: 0 }}
-        cameraQuaternion={{ x: -Math.PI / 6, y: 0, z: 0 }}
-        cameraZoom={2.2}
-        animate={true}
-        // @ts-ignore
-        type={PRESETS[current].type}
-      /> */}
-      <Gradient
+      <LazyGradient
         r3f
-        // environment={<Environment preset='city' background={false} />}
+        environment={<Environment preset='city' background={false} />}
         rotation={[
           (rotationX / 360) * Math.PI,
           (rotationY / 360) * Math.PI,

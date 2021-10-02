@@ -1,8 +1,7 @@
 import { motion, useAnimation, animate } from 'framer-motion'
 import Link from 'next/link'
-import { Environment } from '@react-three/drei'
 
-import React, { useEffect, useRef, Suspense, lazy } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import {
   SnapItem,
   SnapList,
@@ -10,11 +9,10 @@ import {
   useScroll,
   useVisibleElements,
 } from 'react-snaplist-carousel'
-// import { Gradient } from 'shadergradient'
 import { useUIStore } from '@/helpers/store'
 import Lottie from 'react-lottie'
 import * as animationData from '@/media/motionlogo-lottie.json'
-
+import { Gradient } from 'shadergradient'
 import styles from './Home.module.scss'
 import PRESETS from '../presets.json'
 
@@ -25,8 +23,11 @@ import { PreviewWrapper } from '@/components/dom/PreviewWrapper'
 import { MenuWrapper } from '@/components/dom/MenuWrapper'
 import { Footer } from '@/components/dom/Footer'
 import { Loading } from '@/components/dom/Loading'
-import { LazyGradient } from '@/components/dom/LazyGradient/LazyGradient'
+import { LazyGradient } from '@/components/dom/LazyGradient'
+import { MotionLogo } from '@/components/dom/MotionLogo'
+
 const DOM = () => {
+  // for logo animation
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -42,16 +43,7 @@ const DOM = () => {
 
   const snapList = useRef(null)
 
-  // const current = useVisibleElements(
-  //   { debounce: 10, ref: snapList },
-  //   ([element]) => element
-  // )
-  // // sync current state with the store
-  // useEffect(() => {
-  //   setCurrent(current)
-  // }, [current])
-
-  const [isMobile, setIsMobile] = React.useState(false)
+  const [isMobile, setIsMobile] = useState(false)
 
   const goToSnapItem = useScroll({ ref: snapList })
   const itemGap = '40px'
@@ -68,7 +60,7 @@ const DOM = () => {
   }
 
   // create an event listener
-  React.useEffect(() => {
+  useEffect(() => {
     handleResize()
     window.addEventListener('resize', handleResize)
   }, [])
@@ -155,26 +147,36 @@ const DOM = () => {
               }}
               style={{ fontSize: 12, width: '25vw', marginTop: '50px' }}
             >
-              Customizable gradient tool inspired by natural lights and
-              atmospheres. Made with WebGL shaders.
+              Beautiful, customizable, and moving gradient component, available
+              as React component, Figma plugin, and Framer package (beta). Made
+              with WebGL shaders.
               <br />
-              <br /> Fully supported on Chrome. Sorry Safari.
+              <br /> Fully supported on Chrome.
             </motion.p>
 
             {isMobile === true ? (
-              <div
+              <motion.div
                 className={styles.mobileOnly}
                 style={{ color: PRESETS[current].color }}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                  transition: { delay: 1.5, transition: 2 },
+                }}
               >
                 <Link href='/about'>→ about</Link>
                 <Link href='/custom'>→ customize</Link>
-              </div>
+              </motion.div>
             ) : null}
           </motion.div>
 
           {/* Preset Slider */}
           <motion.div
             className={styles.slider}
+            style={{
+              display: mode === 'about' ? 'none' : 'block',
+            }}
             initial={{ opacity: 0, y: 30 }}
             animate={{
               opacity: 1,
@@ -253,8 +255,11 @@ const DOM = () => {
 }
 
 const Page = () => {
-  const [load, setLoad] = React.useState(false)
-  const [delayed, setDelayed] = React.useState(false)
+  const [load, setLoad] = useState(false)
+  const [delayed, setDelayed] = useState(false)
+  const current = useUIStore((state: any) => state.current)
+  const firstLoad = useUIStore((state: any) => state.firstLoad)
+  const setFirstLoad = useUIStore((state: any) => state.setFirstLoad)
 
   const delayRender = async (delay) => {
     setTimeout(() => {
@@ -263,19 +268,42 @@ const Page = () => {
     }, delay)
 
     const loadGradient = await import('../../components/dom/LazyGradient')
+
     setLoad(true)
   }
-  React.useEffect(() => {
-    delayRender(10000)
+
+  const firstLoadingChecker = async () => {
+    if (load === true && delayed === true && firstLoad === 'never') {
+      await setFirstLoad('firstLoad')
+      console.log(firstLoad)
+      setTimeout(() => {
+        setFirstLoad('firstLoadDone')
+        console.log(firstLoad)
+      }, 500)
+    }
+  }
+
+  useEffect(() => {
+    if (delayed === false) {
+      delayRender(9000)
+    }
   }, [])
+
+  useEffect(() => {
+    firstLoadingChecker()
+  }, [load, delayed])
 
   return (
     <>
       <DOM />
       {/* <R3F r3f /> */}
-      <Loading over={load === true && delayed == true} />
-
-      {load === true && delayed === true ? <LazyGradient r3f /> : null}
+      <Loading loadStatus={firstLoad} />
+      <LazyGradient
+        r3f
+        loaded={firstLoad !== 'never'}
+        type={PRESETS[current].type}
+      />
+      <MotionLogo />
     </>
   )
 }
