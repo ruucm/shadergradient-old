@@ -16,7 +16,9 @@
   left: 0;
   z-index: 5;
   width: 70vw;
-  padding: 2vw;
+  padding: 2em;
+  color: #ff430a;
+  font-size: 20px;
   .title {
     display: grid;
     grid-template-columns: 30vw 30vw 20vw;
@@ -41,26 +43,32 @@
 
 .leftWrapper .title {
   position: absolute;
-  left: 2vw;
-  top: 1vw;
+  left: 2em;
+  top: 0.8em;
   font-weight: 500;
   h1 {
-    font-size: 80px;
+    font-size: 60px;
     font-weight: 500;
+    margin-left: 1.2em;
+  }
+  h2 {
+    font-size: 20px;
   }
 }
 
 .slider {
   position: absolute;
   bottom: 8vh;
-  left: 2vw;
+  left: 2em;
   width: 98vw;
   height: 20vh;
 }
 
 .sliderHeader {
-  display: grid;
-  grid-template-columns: 10vw 10vw;
+  display: flex;
+  justify-content: flex-start;
+  gap: 35px;
+  // grid-template-columns: 100px 100px;
   margin-bottom: 10px;
   font-weight: 500;
 }
@@ -79,8 +87,8 @@
 .footer {
   font-size: 12px;
   position: absolute;
-  bottom: 2vw;
-  right: 2vw;
+  bottom: 2em;
+  right: 2em;
   color: rgba(255, 255, 255, 0.6);
   text-align: right;
   z-index: 5;
@@ -89,15 +97,6 @@
 
 .footer a:hover {
   color: rgba(255, 255, 255, 1);
-}
-
-.gradWrapper {
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
 }
 
 .icon {
@@ -155,11 +154,10 @@
 
 .content {
   width: 50vw;
-  height: 100vh;
   position: absolute;
   top: 0;
   left: 0;
-  padding: 2vw;
+  padding: 2em;
   z-index: 5;
   font-weight: 500;
 }
@@ -167,10 +165,161 @@
 .slideBtns {
   display: flex;
   font-size: 30px;
-  z-index: 5;
-  margin-left: 20px;
-  margin-top: 30px;
+  z-index: 10;
+  margin-top: 6px;
   div {
     cursor: pointer;
   }
+}
+
+.mobileOnly {
+  color: white;
+  margin-top: 2em;
+  display: flex;
+  gap: 20px;
+  font-weight: 500;
+}
+
+.controlMobile {
+  width: 100vw;
+  height: fit-content;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  background: white;
+  .hideBtn {
+    width: 100vw;
+    color: #ff430a;
+    position: absolute;
+    margin-top: -35px;
+
+    div {
+      margin: 0 auto;
+      display: flex;
+      height: 2em;
+      width: 2em;
+      border-radius: 100%;
+      background-color: white;
+    }
+    p {
+      line-height: 2em;
+      width: 100%;
+      text-align: center;
+    }
+  }
+  .menuItems {
+    display: flex;
+    width: 100vw;
+    justify-content: space-between;
+    height: fit-content;
+  }
+  .controlWrapper {
+    width: 100vw;
+  }
+}
+
+.loading {
+  background: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+  color: #ff430a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logoWrapper {
+  width: fit-content;
+  height: fit-content;
+  position: absolute;
+  top: 1em;
+  left: 1em;
+}
+
+.loadingTextWrapper {
+  font-size: 6.5em;
+  font-weight: 600;
+  color: #ff430a;
+  width: 80vw;
+  height: fit-content;
+  // background: blue;
+}
+
+.loadingText {
+  display: inline-block;
+  margin-right: 0.3em;
+  line-height: 0.8em;
+  // background-color: blue;
+}
+
+.loadingTextMotion {
+  display: inline-block;
+  line-height: 0.8em;
+}
+
+@media (max-width: 640px) {
+  .footer {
+    display: none;
+  }
+  .leftWrapper {
+    .title {
+      top: 3em;
+      h1 {
+        font-size: 40px;
+      }
+      h2 {
+        font-size: 15px;
+        width: 50vw;
+      }
+    }
+  }
+  .slider {
+    width: 100vw;
+    top: 35vh;
+    left: 0;
+    height: 50vh;
+  }
+  .title p {
+    display: none;
+  }
+  .sliderHeader {
+    display: none;
+  }
+  .sliderWrapper {
+    border-bottom: 0px solid white !important;
+    width: 100vw;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    flex-flow: wrap;
+  }
+
+  .aboutModal {
+    width: 100vw;
+    top: 20vh;
+    font-size: 15px;
+    .title {
+      display: grid;
+      grid-template-columns: none;
+    }
+    h1 {
+      border-top: 1px solid #ff430a;
+      margin-bottom: 2em;
+    }
+  }
+
+  .slideBtns {
+    margin: 0 auto;
+    width: fit-content;
+    font-size: 20px;
+  }
+  .logoWrapper {
+    display: none;
+  }
+  /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
 }

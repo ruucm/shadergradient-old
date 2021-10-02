@@ -9,6 +9,13 @@ const useStore = create(() => {
   }
 })
 
+export const useUIStore = create((set) => ({
+  current: 0,
+  mode: 'full',
+  setMode: (data) => set((state: any) => ({ ...state, mode: data })),
+  setCurrent: (data) => set((state: any) => ({ ...state, current: data })),
+}))
+
 export const useGradientStore = create((set) => ({
   ...parseState(),
 }))
