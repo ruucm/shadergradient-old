@@ -25,6 +25,8 @@ export type GradientPropsT = {
   grain?: "on" | "off"
   lightType?: "env" | "3d"
   envPreset?: "city" | "lobby" | "dawn"
+  reflection?: number
+  brightness?: number
 }
 
 export const Gradient: React.FC<GradientPropsT> = ({
@@ -46,6 +48,8 @@ export const Gradient: React.FC<GradientPropsT> = ({
   grain,
   lightType,
   envPreset,
+  reflection,
+  brightness,
 }) => {
   const { camera }: { camera: Camera } = useThree()
   camera.position.set(cameraPosition.x, cameraPosition.y, cameraPosition.z)
@@ -58,15 +62,16 @@ export const Gradient: React.FC<GradientPropsT> = ({
 
   usePostProcessing({ on: postProcessing === "threejs", grain: grain === "on" })
 
-  let overridableEnvironment = environment
+  let controlledEnvironment = environment
   if (envPreset)
-    overridableEnvironment = (
-      <Environment preset={envPreset} background={true} />
-    )
+    controlledEnvironment = <Environment preset={envPreset} background={true} />
+
+  let controlledLights = lights
+  if (brightness) controlledLights = <ambientLight intensity={brightness} />
 
   return (
     <Suspense fallback={"Loading..."}>
-      {lightType === "env" ? overridableEnvironment : lights}
+      {lightType === "env" ? controlledEnvironment : controlledLights}
       <GradientMesh
         key={colors.toString()}
         type={type}
@@ -76,6 +81,7 @@ export const Gradient: React.FC<GradientPropsT> = ({
         uStrength={uStrength}
         uSpeed={uSpeed}
         colors={colors}
+        reflection={reflection}
       />
 
       {/* <EffectComposer>

@@ -33,6 +33,8 @@ const Page = () => {
   const [grain] = useQueryState('grain')
   const [lightType] = useQueryState('lightType')
   const [envPreset] = useQueryState('envPreset')
+  const [reflection] = useQueryState('reflection')
+  const [brightness] = useQueryState('brightness')
 
   // camera
   const [cameraZoom] = useQueryState('cameraZoom')
@@ -68,6 +70,8 @@ const Page = () => {
         grain={grain}
         lightType={lightType}
         envPreset={envPreset}
+        reflection={reflection}
+        brightness={brightness}
       />
       {controls === 'show' && <Controls />}
     </>
