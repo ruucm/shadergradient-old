@@ -2,19 +2,41 @@
   {
     "title": "Halo",
     "color": "white",
-    "type": "plane",
-    "zoom": 3
+    "url": "?animate=on&brightness=1.2&cameraPositionX=0.4&cameraPositionY=-0.2&cameraPositionZ=-5&cameraZoom=2.4&color1=#CC4C6E&color2=#1980FF&color3=#99B58F&controls=show&envPreset=city&grain=on&lightType=env&reflection=0.9&rotationX=90&rotationY=0&rotationZ=230&type=plane&uSpeed=0.3&uStrength=1.6&uTime=0.2"
   },
   {
     "title": "Breeze",
     "color": "white",
-    "type": "sphere",
-    "zoom": 2
+    "url": "?animate=off&cameraPositionX=0&cameraPositionY=3.2&cameraPositionZ=0&cameraZoom=3&rotationX=180&rotationY=0&rotationZ=0&type=sphere&uSpeed=0.3&uStrength=1.6&uTime=0.2&color1=#CC4C6E&color2=#1980FF&color3=#99B58F"
   },
-  { "title": "Dawn", "color": "black", "type": "waterPlane", "zoom": 2 },
-  { "title": "Aurora", "color": "white", "type": "plane", "zoom": 3 },
-  { "title": "Tropical", "color": "white", "type": "sphere", "zoom": 2 },
-  { "title": "Halo", "color": "white", "type": "waterPlane", "zoom": 3 },
-  { "title": "Halo", "color": "white", "type": "plane", "zoom": 2 },
-  { "title": "Halo", "color": "white", "type": "sphere", "zoom": 3 }
+  {
+    "title": "Dawn",
+    "color": "black",
+    "url": "?animate=off&cameraPositionX=0&cameraPositionY=3.2&cameraPositionZ=0&cameraZoom=2&rotationX=180&rotationY=0&rotationZ=0&type=waterPlane&uSpeed=0.3&uStrength=1.6&uTime=0.2&color1=#CC4C6E&color2=#1980FF&color3=#99B58F"
+  },
+  {
+    "title": "Aurora",
+    "color": "white",
+    "url": "?animate=off&cameraPositionX=0&cameraPositionY=3.2&cameraPositionZ=0&cameraZoom=3&rotationX=180&rotationY=0&rotationZ=0&type=plane&uSpeed=0.3&uStrength=1.6&uTime=0.2&color1=#CC4C6E&color2=#1980FF&color3=#99B58F"
+  },
+  {
+    "title": "Tropical",
+    "color": "white",
+    "url": "?animate=off&cameraPositionX=0&cameraPositionY=3.2&cameraPositionZ=0&cameraZoom=2&rotationX=180&rotationY=0&rotationZ=0&type=sphere&uSpeed=0.3&uStrength=1.6&uTime=0.2&color1=#CC4C6E&color2=#1980FF&color3=#99B58F"
+  },
+  {
+    "title": "Halo",
+    "color": "white",
+    "url": "?animate=off&cameraPositionX=0&cameraPositionY=3.2&cameraPositionZ=0&cameraZoom=3&rotationX=180&rotationY=0&rotationZ=0&type=waterPlane&uSpeed=0.3&uStrength=1.6&uTime=0.2&color1=#CC4C6E&color2=#1980FF&color3=#99B58F"
+  },
+  {
+    "title": "Halo",
+    "color": "white",
+    "url": "?animate=off&cameraPositionX=0&cameraPositionY=3.2&cameraPositionZ=0&cameraZoom=2&rotationX=180&rotationY=0&rotationZ=0&type=plane&uSpeed=0.3&uStrength=1.6&uTime=0.2&color1=#CC4C6E&color2=#1980FF&color3=#99B58F"
+  },
+  {
+    "title": "Halo",
+    "color": "white",
+    "url": "?animate=off&cameraPositionX=0&cameraPositionY=3.2&cameraPositionZ=0&cameraZoom=0.5&rotationX=180&rotationY=0&rotationZ=0&type=sphere&uSpeed=0.3&uStrength=1.6&uTime=0.2&color1=#CC4C6E&color2=#1980FF&color3=#99B58F"
+  }
 ]

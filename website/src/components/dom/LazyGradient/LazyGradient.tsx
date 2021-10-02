@@ -1,54 +1,99 @@
 import * as React from 'react'
+import useQueryState from '@/hooks/useQueryState'
+import { updateGradientState } from '@/helpers/store'
+import PRESETS from '../../../pages/presets.json'
+import { useUIStore } from '@/helpers/store'
 import { Environment } from '@react-three/drei'
 
 import { Gradient } from 'shadergradient'
-import * as animationData_colored from '@/media/colored-motionlogo.json'
 
 export function LazyGradient({
   r3f,
   loaded = true,
-  environment = <Environment preset='city' background={false} />,
-  lights = null,
-  cameraQuaternion = { x: -Math.PI / 6, y: 0, z: 0 },
-  cameraPosition = { x: 0, y: 1.7, z: 4 },
-  cameraRotation = { x: 0, y: 0, z: 0 },
-  animate = true,
-  cameraZoom = 2.2,
-  rotation = [(Math.PI / 3) * 2, 0, (Math.PI / 7) * 12],
-  type = 'plane',
-  uTime = 0.2,
-  uStrength = 1.6,
-  uSpeed = 0.4,
-  colors = ['#ff430a', '#FFD600', '#0029FF'],
+  forceZoom = null,
+  forceCamPos = null,
+  forceRot = null,
 }) {
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: animationData_colored,
-    rendererSettings: {
-      preserveAspectRatio: 'xMidYMid slice',
-    },
-  }
+  const current = useUIStore((state: any) => state.current)
+
+  React.useEffect(() => {
+    // update Gradient if there are query params (history nav)
+    window.location.search && updateGradientState(window.location.search)
+    document.documentElement.classList.add('remix')
+    return () => {
+      document.documentElement.classList.remove('remix')
+    }
+  }, [])
+
+  React.useEffect(() => {
+    updateGradientState(PRESETS[current].url)
+  }, [current])
+
+  // shape
+  const [type] = useQueryState('type')
+  const [animate] = useQueryState('animate')
+  const [uTime] = useQueryState('uTime')
+  const [uSpeed] = useQueryState('uSpeed')
+  const [uStrength] = useQueryState('uStrength')
+  const [rotationX] = useQueryState('rotationX')
+  const [rotationY] = useQueryState('rotationY')
+  const [rotationZ] = useQueryState('rotationZ')
+
+  // colors
+  const [color1] = useQueryState('color1')
+  const [color2] = useQueryState('color2')
+  const [color3] = useQueryState('color3')
+
+  // effects
+  const [grain] = useQueryState('grain')
+  const [lightType] = useQueryState('lightType')
+  const [envPreset] = useQueryState('envPreset')
+  const [reflection] = useQueryState('reflection')
+  const [brightness] = useQueryState('brightness')
+
+  // camera
+  const [cameraZoom] = useQueryState('cameraZoom')
+  const [cameraPositionX] = useQueryState('cameraPositionX')
+  const [cameraPositionY] = useQueryState('cameraPositionY')
+  const [cameraPositionZ] = useQueryState('cameraPositionZ')
 
   return (
     <>
       {loaded && (
         <Gradient
           r3f
-          environment={environment}
-          lights={lights}
-          rotation={[rotation[0], rotation[1], rotation[2]]}
-          cameraPosition={cameraPosition}
-          cameraRotation={cameraRotation}
-          cameraQuaternion={cameraQuaternion}
-          cameraZoom={cameraZoom}
-          animate={animate}
+          rotation={
+            forceRot !== null
+              ? forceRot
+              : [
+                  (rotationX / 360) * Math.PI,
+                  (rotationY / 360) * Math.PI,
+                  (rotationZ / 360) * Math.PI,
+                ]
+          }
+          cameraPosition={
+            forceCamPos !== null
+              ? forceCamPos
+              : {
+                  x: cameraPositionX,
+                  y: cameraPositionY,
+                  z: cameraPositionZ,
+                }
+          }
+          cameraRotation={{ x: 0, y: 0, z: 0 }}
+          type={type}
+          animate={animate === 'on'}
+          cameraZoom={forceZoom !== null ? forceZoom : cameraZoom}
           uTime={uTime}
           uStrength={uStrength}
           uSpeed={uSpeed}
-          colors={colors}
-          // @ts-ignore
-          type={type}
+          colors={[color1, color2, color3]}
+          grain={grain}
+          lightType={lightType}
+          envPreset={envPreset}
+          reflection={reflection}
+          brightness={brightness}
+          postProcessing={'threejs'} // turn on postpocessing
         />
       )}
     </>

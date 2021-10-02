@@ -4,7 +4,7 @@ import { useEffect, useMemo } from "react"
 import { EffectComposer as EffectComposerImpl } from "../lib/pp/from-threejs/postprocessing/EffectComposer"
 import { RenderPass } from "../lib/pp/from-threejs/postprocessing/RenderPass"
 
-export function usePostProcessing({ on = false }) {
+export function usePostProcessing({ on = false, grain = false }) {
   const { gl, scene, camera, size } = useThree()
 
   const composer = useMemo(() => {
@@ -24,7 +24,7 @@ export function usePostProcessing({ on = false }) {
       blending: 1,
       blendingMode: 1,
       greyscale: false,
-      disable: false,
+      disable: !grain,
     }
     const halftonePass = new HalftonePass(
       size.width,
@@ -34,7 +34,7 @@ export function usePostProcessing({ on = false }) {
     effectComposer.addPass(halftonePass)
 
     return effectComposer
-  }, [gl, scene, camera, size])
+  }, [gl, scene, camera, size, grain])
 
   useEffect(() => composer?.setSize(size.width, size.height), [composer, size])
   useFrame(

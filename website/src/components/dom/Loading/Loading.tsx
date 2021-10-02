@@ -276,23 +276,12 @@ export function Loading({ loadStatus }) {
           }}
           transition={{
             duration: 0.7,
-            delay: 5,
+            delay: 4,
             ease: 'easeInOut',
           }}
         >
           gradients.{' '}
         </motion.p>
-        {/* <motion.p
-          className={styles.smallLoadingText}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{
-            opacity: 1,
-            y: 0,
-            transition: { duration: 0.7, delay: 4 },
-          }}
-        >
-          And it's loading.
-        </motion.p> */}
       </motion.div>
     </motion.div>
   )

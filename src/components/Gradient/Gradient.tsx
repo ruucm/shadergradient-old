@@ -22,6 +22,11 @@ export type GradientPropsT = {
   uStrength?: number
   uSpeed?: number
   colors?: string[]
+  grain?: "on" | "off"
+  lightType?: "env" | "3d"
+  envPreset?: "city" | "lobby" | "dawn"
+  reflection?: number
+  brightness?: number
 }
 
 export const Gradient: React.FC<GradientPropsT> = ({
@@ -29,7 +34,7 @@ export const Gradient: React.FC<GradientPropsT> = ({
   type = "plane",
   postProcessing = "threejs",
   environment = <Environment preset="lobby" background={true} />,
-  lights = <ambientLight intensity={0.3} />,
+  lights = <ambientLight intensity={1} />,
   rotation = [Math.PI * 2, 0, 0],
   cameraPosition = { x: 0, y: 0, z: 0 },
   cameraRotation = { x: 0, y: 0, z: 0 },
@@ -40,6 +45,11 @@ export const Gradient: React.FC<GradientPropsT> = ({
   uStrength = 1.3,
   uSpeed = 0.3,
   colors = ["#CC4C6E", "#1980FF", "#99B58F"],
+  grain,
+  lightType,
+  envPreset,
+  reflection,
+  brightness,
 }) => {
   const { camera }: { camera: Camera } = useThree()
   camera.position.set(cameraPosition.x, cameraPosition.y, cameraPosition.z)
@@ -50,12 +60,18 @@ export const Gradient: React.FC<GradientPropsT> = ({
   camera.zoom = cameraZoom
   camera.updateProjectionMatrix() // need to update camera's zoom
 
-  usePostProcessing({ on: postProcessing === "threejs" })
+  usePostProcessing({ on: postProcessing === "threejs", grain: grain === "on" })
+
+  let controlledEnvironment = environment
+  if (envPreset)
+    controlledEnvironment = <Environment preset={envPreset} background={true} />
+
+  let controlledLights = lights
+  if (brightness) controlledLights = <ambientLight intensity={brightness} />
 
   return (
     <Suspense fallback={"Loading..."}>
-      {environment}
-      {lights}
+      {lightType === "env" ? controlledEnvironment : controlledLights}
       <GradientMesh
         key={colors.toString()}
         type={type}
@@ -65,6 +81,7 @@ export const Gradient: React.FC<GradientPropsT> = ({
         uStrength={uStrength}
         uSpeed={uSpeed}
         colors={colors}
+        reflection={reflection}
       />
 
       {/* <EffectComposer>

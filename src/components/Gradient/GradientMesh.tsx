@@ -17,6 +17,7 @@ export function GradientMesh({
   uStrength,
   uSpeed,
   colors,
+  reflection,
 }: any) {
   const mesh = useRef()
   const material: any = useRef()
@@ -33,7 +34,8 @@ export function GradientMesh({
 
   useEffect(() => {
     material.current.userData.uTime.value = uTime
-  }, [uTime])
+    material.current.roughness = reflection
+  }, [uTime, reflection])
 
   return (
     <mesh

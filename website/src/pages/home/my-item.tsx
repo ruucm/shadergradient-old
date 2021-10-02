@@ -10,7 +10,7 @@ export const MyItem = ({
   <motion.div
     style={{
       width: isMobile ? '100vw' : 'fit-content',
-      fontSize: isMobile ? 35 : 60,
+      fontSize: isMobile ? 30 : 60,
       // opacity: ,
       borderBottom:
         visible && !isMobile ? '4px solid ' + color : '0px solid black',

@@ -1,6 +1,7 @@
 import create from 'zustand'
 import qs from 'query-string'
-import { defaultGradient } from '@/consts'
+// import { defaultGradient } from '@/consts'
+import PRESETS from '../pages/presets.json'
 
 const useStore = create(() => {
   return {
@@ -28,7 +29,7 @@ export const updateGradientState = (querystate) => {
 }
 
 // defaultGradient could be replaced by window.location.search
-function parseState(search = defaultGradient) {
+function parseState(search = PRESETS[0].url) {
   return qs.parse(search, {
     parseNumbers: true,
     parseBooleans: true,

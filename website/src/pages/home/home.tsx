@@ -63,6 +63,10 @@ const DOM = () => {
   useEffect(() => {
     handleResize()
     window.addEventListener('resize', handleResize)
+    var body = document.getElementById('__next')
+    body.style.background = 'black'
+    var canvasElement = body.getElementsByTagName('canvas')
+    canvasElement[0].style.position = 'static'
   }, [])
 
   return (
@@ -166,7 +170,7 @@ const DOM = () => {
                 }}
               >
                 <Link href='/about'>→ about</Link>
-                <Link href='/custom'>→ customize</Link>
+                <Link href='/customize'>→ customize</Link>
               </motion.div>
             ) : null}
           </motion.div>
@@ -186,7 +190,7 @@ const DOM = () => {
           >
             <div className={styles.sliderHeader}>
               <p>Current Theme</p>
-              <Link href='/custom'>→ Customize </Link>
+              <Link href='/customize'>→ Customize </Link>
             </div>
             <div
               className={styles.sliderWrapper}
@@ -275,10 +279,8 @@ const Page = () => {
   const firstLoadingChecker = async () => {
     if (load === true && delayed === true && firstLoad === 'never') {
       await setFirstLoad('firstLoad')
-      console.log(firstLoad)
-      setTimeout(() => {
+      setTimeout(async () => {
         setFirstLoad('firstLoadDone')
-        console.log(firstLoad)
       }, 500)
     }
   }
@@ -293,17 +295,15 @@ const Page = () => {
     firstLoadingChecker()
   }, [load, delayed])
 
+  useEffect(() => {
+    console.log(firstLoad)
+  }, [firstLoad])
+
   return (
     <>
       <DOM />
-      {/* <R3F r3f /> */}
       <Loading loadStatus={firstLoad} />
-      <LazyGradient
-        r3f
-        loaded={firstLoad !== 'never'}
-        type={PRESETS[current].type}
-      />
-      <MotionLogo />
+      <LazyGradient r3f loaded={firstLoad !== 'never'} />
     </>
   )
 }

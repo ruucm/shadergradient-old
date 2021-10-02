@@ -70,10 +70,10 @@ export const EffectControls: React.FC<EffectControlsPropsT> = ({
         />
         <UI.Radio
           name="envPreset"
-          value="library"
+          value="lobby"
           setValue={setEnvPreset}
-          check={envPreset === "library"}
-          label="Library"
+          check={envPreset === "lobby"}
+          label="Lobby"
         />
       </UI.InputPanel>
 
