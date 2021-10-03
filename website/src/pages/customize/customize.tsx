@@ -68,7 +68,10 @@ const DOM = () => {
           activeTab={activeTab}
           setActiveTab={setActiveTab}
         >
-          <div className={styles.menuItems}>
+          <div
+            className={styles.menuItems}
+            onClick={() => setActiveTab('shape')}
+          >
             <UI.ControlTypeTitle
               title='Shape'
               active={activeTab === 'shape'}
@@ -209,7 +212,7 @@ const Controls = ({ isMobile, children, activeTab, setActiveTab }) => {
   useOnClickOutside(ref, () => setActiveTab('none'))
 
   return (
-    <div ref={ref} onClick={() => setActiveTab('shape')}>
+    <div ref={ref}>
       {isMobile === true ? (
         <div className={styles.controlMobile}>
           <motion.div
