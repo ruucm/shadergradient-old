@@ -17,9 +17,10 @@ export function LazyGradient({
 
   useEffect(() => {
     // update Gradient if there are query params (history nav)
-    const gradientURL = window.location.search
-      ? window.location.search
-      : PRESETS[current].url
+    const gradientURL =
+      current === 0 && window.location.search
+        ? window.location.search
+        : PRESETS[current].url
     updateGradientState(gradientURL)
 
     document.documentElement.classList.add('cutomize')
