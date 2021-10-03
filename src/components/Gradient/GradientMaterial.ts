@@ -1,6 +1,6 @@
-import * as THREE from "three"
-import { extend } from "@react-three/fiber"
 import { formatColor, hexToRgb } from "@/utils"
+import { extend } from "@react-three/fiber"
+import * as THREE from "three"
 
 const settings = {
   speed: 0.2,

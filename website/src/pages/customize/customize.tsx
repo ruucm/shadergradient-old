@@ -1,22 +1,17 @@
-import { motion } from 'framer-motion'
-import Link from 'next/link'
-
-import { UI } from 'shadergradient'
-import { useUIStore } from '@/helpers/store'
-
-import React, { useState, useEffect } from 'react'
-import { updateGradientState } from '@/helpers/store'
-import useQueryState from '@/hooks/useQueryState'
-
-import styles from '../home/Home.module.scss'
-import PRESETS from '../presets.json'
-
-import { MyItem } from '../home/my-item'
-import { PreviewSwitch } from '@/components/dom/PreviewSwitch'
-import { PreviewWrapper } from '@/components/dom/PreviewWrapper'
-import { MenuWrapper } from '@/components/dom/MenuWrapper'
 import { Footer } from '@/components/dom/Footer'
 import { LazyGradient } from '@/components/dom/LazyGradient'
+import { MenuWrapper } from '@/components/dom/MenuWrapper'
+import { PreviewSwitch } from '@/components/dom/PreviewSwitch'
+import { PreviewWrapper } from '@/components/dom/PreviewWrapper'
+import { useUIStore } from '@/helpers/store'
+import useQueryState from '@/hooks/useQueryState'
+import { motion } from 'framer-motion'
+import Link from 'next/link'
+import React, { useState } from 'react'
+import { UI } from 'shadergradient'
+import styles from '../home/Home.module.scss'
+import { MyItem } from '../home/my-item'
+import PRESETS from '../presets.json'
 
 const DOM = () => {
   const mode = useUIStore((state: any) => state.mode)
@@ -52,8 +47,6 @@ const DOM = () => {
   React.useEffect(() => {
     PRESETS[current].title.substring(1, 2)
   }, [current])
-
-  console.log('embedMode', embedMode)
 
   if (embedMode === 'off')
     return (

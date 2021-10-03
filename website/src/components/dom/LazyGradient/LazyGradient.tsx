@@ -1,10 +1,8 @@
+import { updateGradientState, useUIStore } from '@/helpers/store'
 import useQueryState from '@/hooks/useQueryState'
-import { updateGradientState } from '@/helpers/store'
-import PRESETS from '../../../pages/presets.json'
-import { useUIStore } from '@/helpers/store'
-
-import { Gradient } from 'shadergradient'
 import { useEffect } from 'react'
+import { Gradient } from 'shadergradient'
+import PRESETS from '../../../pages/presets.json'
 
 export function LazyGradient({
   r3f,

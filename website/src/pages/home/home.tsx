@@ -1,27 +1,25 @@
+import { Footer } from '@/components/dom/Footer'
+import { LazyGradient } from '@/components/dom/LazyGradient'
+import { Loading } from '@/components/dom/Loading'
+import { MenuWrapper } from '@/components/dom/MenuWrapper'
+import { PreviewSwitch } from '@/components/dom/PreviewSwitch'
+import { PreviewWrapper } from '@/components/dom/PreviewWrapper'
+import { useUIStore } from '@/helpers/store'
+import * as animationData from '@/media/motionlogo-lottie.json'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-
 import React, { useEffect, useRef, useState } from 'react'
+import Lottie from 'react-lottie'
 import {
   SnapItem,
   SnapList,
   useDragToScroll,
   useScroll,
 } from 'react-snaplist-carousel'
-import { useUIStore } from '@/helpers/store'
-import Lottie from 'react-lottie'
-import * as animationData from '@/media/motionlogo-lottie.json'
-import styles from './Home.module.scss'
 import PRESETS from '../presets.json'
-
-import { MyItem } from './my-item'
+import styles from './Home.module.scss'
 import { MenuItem } from './menu-item'
-import { PreviewSwitch } from '@/components/dom/PreviewSwitch'
-import { PreviewWrapper } from '@/components/dom/PreviewWrapper'
-import { MenuWrapper } from '@/components/dom/MenuWrapper'
-import { Footer } from '@/components/dom/Footer'
-import { Loading } from '@/components/dom/Loading'
-import { LazyGradient } from '@/components/dom/LazyGradient'
+import { MyItem } from './my-item'
 
 const DOM = () => {
   // for logo animation

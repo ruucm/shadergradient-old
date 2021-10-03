@@ -1,15 +1,13 @@
-import { Environment, OrbitControls } from "@react-three/drei"
-import { Canvas } from "@react-three/fiber"
 import * as React from "react"
 import * as ReactDOM from "react-dom"
-import { PropertyControls } from "./components/PropertyControls"
-import { FormContext } from "./helpers/form-provider"
 import { useForm } from "react-hook-form"
-import "./global.css"
+import { UI } from "shadergradient"
 import "../../ui-styles-compiled.css"
 import { GradientScene } from "./components/GradientScene"
+import { PropertyControls } from "./components/PropertyControls"
 import { defaultProperties } from "./consts"
-import { UI } from "shadergradient"
+import "./global.css"
+import { FormContext } from "./helpers/form-provider"
 
 function App() {
   const formProps = useForm({
