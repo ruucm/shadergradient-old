@@ -248,9 +248,11 @@ const R3F = ({ r3f }) => {
 }
 
 const Page = () => {
+  // for embeds
+  const [embedMode] = useQueryState('embedMode')
   return (
     <>
-      <DOM />
+      {embedMode !== 'on' && <DOM />}
       <R3F r3f />
     </>
   )
