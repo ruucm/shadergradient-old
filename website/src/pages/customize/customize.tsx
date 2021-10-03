@@ -4,11 +4,10 @@ import { MenuWrapper } from '@/components/dom/MenuWrapper'
 import { PreviewSwitch } from '@/components/dom/PreviewSwitch'
 import { PreviewWrapper } from '@/components/dom/PreviewWrapper'
 import { useUIStore } from '@/helpers/store'
-import useQueryState from '@/hooks/useQueryState'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import React, { useRef, useState } from 'react'
-import { UI } from 'shadergradient'
+import { UI, useQueryState } from 'shadergradient'
 import styles from '../home/Home.module.scss'
 import { MyItem } from '../home/my-item'
 import PRESETS from '../presets.json'
@@ -122,18 +121,10 @@ const DOM = () => {
             className={cx(styles.controlWrapper, 'p-3.5 md:p-4')}
             style={{ padding: activeTab === 'none' ? 0 : null }}
           >
-            {activeTab === 'shape' && (
-              <UI.ShapeControls useQueryState={useQueryState} />
-            )}
-            {activeTab === 'colors' && (
-              <UI.ColorControls useQueryState={useQueryState} />
-            )}
-            {activeTab === 'effects' && (
-              <UI.EffectControls useQueryState={useQueryState} />
-            )}
-            {activeTab === 'camera' && (
-              <UI.CameraControls useQueryState={useQueryState} />
-            )}
+            {activeTab === 'shape' && <UI.ShapeControls />}
+            {activeTab === 'colors' && <UI.ColorControls />}
+            {activeTab === 'effects' && <UI.EffectControls />}
+            {activeTab === 'camera' && <UI.CameraControls />}
           </div>
         </Controls>
         <PreviewWrapper mode={mode} setMode={setMode} />

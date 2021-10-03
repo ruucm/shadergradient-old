@@ -1,16 +1,13 @@
+import { useQueryState } from "@/hooks/useQueryState"
 import * as React from "react"
 import * as UI from ".."
 
-type ShapeControlsPropsT = {
-  useQueryState: any
-} & React.DetailedHTMLProps<
+type ShapeControlsPropsT = React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLDivElement>,
   HTMLDivElement
 >
 
-export const ShapeControls: React.FC<ShapeControlsPropsT> = ({
-  useQueryState,
-}) => {
+export const ShapeControls: React.FC<ShapeControlsPropsT> = () => {
   const [type, setType] = useQueryState("type")
   const [animate, setAnimate] = useQueryState("animate")
   const [uTime, setUTime] = useQueryState("uTime")

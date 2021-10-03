@@ -1,10 +1,10 @@
-import useStore from '@/helpers/store'
-import useQueryState from '@/hooks/useQueryState'
+import { useStore } from '@/helpers/store'
 import { A11yUserPreferences } from '@react-three/a11y'
 import { OrbitControls, Preload, useContextBridge } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 import { useEffect, useRef } from 'react'
 import { FormContext } from '../../helpers/form-provider'
+import { useQueryState } from 'shadergradient'
 
 const LControl = () => {
   const dom = useStore((state) => state.dom)

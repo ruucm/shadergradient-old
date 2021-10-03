@@ -1,15 +1,15 @@
-import { useCallback } from 'react'
-import qs from 'query-string'
-import { useGradientStore } from '@/helpers/store'
+import { useCallback } from "react"
+import * as qs from "query-string"
+import { useGradientStore } from "../store"
 
-function updateHistory(path) {
+function updateHistory(path: string) {
   window.history.pushState(null, document.title, path)
 }
 
-export const useQueryState = (propName, defaultValue = null) => {
+export const useQueryState = (propName: any, defaultValue = null) => {
   const selector = useCallback(
     (state) =>
-      typeof state[propName] !== 'undefined' ? state[propName] : defaultValue,
+      typeof state[propName] !== "undefined" ? state[propName] : defaultValue,
     [propName, defaultValue]
   )
   const globalValue = useGradientStore(selector)
@@ -23,8 +23,8 @@ export const useQueryState = (propName, defaultValue = null) => {
 
   const setQueryValue = useCallback(
     (newVal) => {
-      _setGlobalValue((currentState) => {
-        if (typeof newVal === 'function') {
+      _setGlobalValue((currentState: any) => {
+        if (typeof newVal === "function") {
           newVal = newVal(currentState || defaultValue)
         }
         if (Number.isFinite(newVal)) {
@@ -38,7 +38,7 @@ export const useQueryState = (propName, defaultValue = null) => {
             qs.stringifyUrl(
               // @ts-ignore
               { url: window.location.pathname, query },
-              { skipNull: true, arrayFormat: 'index' }
+              { skipNull: true, arrayFormat: "index" }
             )
           )
         }, 0)

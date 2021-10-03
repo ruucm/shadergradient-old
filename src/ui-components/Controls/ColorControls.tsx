@@ -1,16 +1,13 @@
 import * as React from "react"
 import * as UI from ".."
+import { useQueryState } from "@/hooks/useQueryState"
 
-type ColorControlsPropsT = {
-  useQueryState: any
-} & React.DetailedHTMLProps<
+type ColorControlsPropsT = React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLDivElement>,
   HTMLDivElement
 >
 
-export const ColorControls: React.FC<ColorControlsPropsT> = ({
-  useQueryState,
-}) => {
+export const ColorControls: React.FC<ColorControlsPropsT> = () => {
   const [color1, setColor1] = useQueryState("color1")
   const [color2, setColor2] = useQueryState("color2")
   const [color3, setColor3] = useQueryState("color3")

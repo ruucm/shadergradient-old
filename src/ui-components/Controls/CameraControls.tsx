@@ -1,17 +1,13 @@
 import * as React from "react"
-import { useContext } from "react"
 import * as UI from ".."
+import { useQueryState } from "@/hooks/useQueryState"
 
-type CameraControlsPropsT = {
-  useQueryState: any
-} & React.DetailedHTMLProps<
+type CameraControlsPropsT = React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLDivElement>,
   HTMLDivElement
 >
 
-export const CameraControls: React.FC<CameraControlsPropsT> = ({
-  useQueryState,
-}) => {
+export const CameraControls: React.FC<CameraControlsPropsT> = () => {
   const [cameraZoom, setCameraZoom] = useQueryState("cameraZoom")
   const [cameraPositionX, setCameraPositionX] = useQueryState("cameraPositionX")
   const [cameraPositionY, setCameraPositionY] = useQueryState("cameraPositionY")
