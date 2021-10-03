@@ -32,11 +32,13 @@ const DOM = () => {
 
     setMode('about')
     var body = document.getElementById('__next')
-    body.style.background = 'black'
-    var canvasElement = body.getElementsByTagName('canvas')
+    var canvasElement = body?.getElementsByTagName('canvas')
 
-    canvasElement[0].style.position = 'absolute'
-    canvasElement[0].style.top = '-27vh'
+    if (body?.style && canvasElement[0]?.style) {
+      body.style.background = 'black'
+      canvasElement[0].style.position = 'absolute'
+      canvasElement[0].style.top = '-27vh'
+    }
   }, [])
 
   return (

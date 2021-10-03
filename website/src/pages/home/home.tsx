@@ -59,9 +59,12 @@ const DOM = () => {
     handleResize()
     window.addEventListener('resize', handleResize)
     var body = document.getElementById('__next')
-    body.style.background = 'black'
-    var canvasElement = body.getElementsByTagName('canvas')
-    canvasElement[0].style.position = 'static'
+    var canvasElement = body?.getElementsByTagName('canvas')
+
+    if (body?.style && canvasElement[0]?.style) {
+      body.style.background = 'black'
+      canvasElement[0].style.position = 'static'
+    }
   }, [])
 
   return (
