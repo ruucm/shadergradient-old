@@ -9,7 +9,7 @@ import { useQueryState } from 'shadergradient'
 import styles from '../home/Home.module.scss'
 import { MyItem } from '../home/my-item'
 import PRESETS from '../presets.json'
-import { PropertyControls } from './comps/propert-controls'
+import { Controls } from './comps/controls'
 
 const DOM = () => {
   const mode = useUIStore((state: any) => state.mode)
@@ -60,7 +60,7 @@ const DOM = () => {
         </div>
 
         {/* Property menu */}
-        <PropertyControls
+        <Controls
           isMobile={isMobile}
           activeTab={activeTab}
           setActiveTab={setActiveTab}

@@ -11,6 +11,7 @@ module.exports = {
       colors: {
         primary: "#FF430A",
         "controls-panel": "#F6F8F8",
+        "controls-panel-mobile": "rgba(245, 245, 245, 0.2)",
       },
       spacing: {
         0.5: "6px",
