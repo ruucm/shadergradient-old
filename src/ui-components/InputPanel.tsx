@@ -17,11 +17,9 @@ export const InputPanel: React.FC<InputPanelPropsT> = ({
   ...rest
 }) => {
   return (
-    <div className="flex justify-between items-center w-control" {...rest}>
-      <span className="font-semibold text-primary w-control-title">
-        {title}
-      </span>
-      <div className="flex justify-between w-control-inputs">
+    <div className="flex justify-between items-center gap-3.5" {...rest}>
+      <span className="font-semibold text-primary w-[28%]">{title}</span>
+      <div className="flex justify-between w-full">
         {React.Children.map(children, (child, id) => {
           return (
             <>

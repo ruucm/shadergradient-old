@@ -44,10 +44,6 @@ module.exports = {
         "6xl": "4rem",
       },
       width: {
-        "control-types": "168px",
-        control: "408px",
-        "control-title": "93px",
-        "control-inputs": "283px",
         "control-number-input": "53px",
         thumb: "16px",
         mark: "2px",
