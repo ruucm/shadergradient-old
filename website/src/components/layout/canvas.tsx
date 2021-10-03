@@ -5,6 +5,7 @@ import useStore from '@/helpers/store'
 import { useEffect, useRef } from 'react'
 import { FormContext } from '../../helpers/form-provider'
 import { useContextBridge } from '@react-three/drei'
+import useQueryState from '@/hooks/useQueryState'
 
 const LControl = () => {
   const dom = useStore((state) => state.dom)
@@ -30,6 +31,9 @@ const LCanvas = ({ children }) => {
   const dom = useStore((state) => state.dom)
   const ContextBridge = useContextBridge(FormContext)
 
+  // performance
+  const [pixelDensity] = useQueryState('pixelDensity')
+
   return (
     <Canvas
       mode='concurrent'
@@ -40,7 +44,7 @@ const LCanvas = ({ children }) => {
       camera={{
         fov: 45,
       }}
-      dpr={2} //device pixel ratio - 1 default and fast, 2 detailed and slow
+      dpr={pixelDensity} //device pixel ratio - 1 default and fast, 2 detailed and slow
       linear={true} //sRGBEncoding
       flat={true} //ACESFilmicToneMapping
       onCreated={(state) => {
