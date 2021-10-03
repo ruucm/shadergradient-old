@@ -11,6 +11,7 @@ const meshCount = 50
 export function GradientMesh({
   type = "plane",
   r3f,
+  position,
   rotation,
   animate,
   uTime,
@@ -40,6 +41,7 @@ export function GradientMesh({
   return (
     <mesh
       ref={mesh}
+      position={position}
       rotation={rotation} // rotate mesh to get more lights
     >
       {type === "plane" && <planeGeometry args={[5, 5, 1, meshCount]} />}

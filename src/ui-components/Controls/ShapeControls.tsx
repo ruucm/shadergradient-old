@@ -16,6 +16,9 @@ export const ShapeControls: React.FC<ShapeControlsPropsT> = ({
   const [uTime, setUTime] = useQueryState("uTime")
   const [uSpeed, setUSpeed] = useQueryState("uSpeed")
   const [uStrength, setUStrength] = useQueryState("uStrength")
+  const [positionX, setPositionX] = useQueryState("positionX")
+  const [positionY, setPositionY] = useQueryState("positionY")
+  const [positionZ, setPositionZ] = useQueryState("positionZ")
   const [rotationX, setRotationX] = useQueryState("rotationX")
   const [rotationY, setRotationY] = useQueryState("rotationY")
   const [rotationZ, setRotationZ] = useQueryState("rotationZ")
@@ -90,6 +93,27 @@ export const ShapeControls: React.FC<ShapeControlsPropsT> = ({
           step={0.1}
           min={0}
           max={10}
+        />
+      </UI.InputPanel>
+
+      <UI.InputPanel title="Position">
+        <UI.NumberInput
+          label="x"
+          step={0.1}
+          value={positionX}
+          setValue={setPositionX}
+        />
+        <UI.NumberInput
+          label="y"
+          step={0.1}
+          value={positionY}
+          setValue={setPositionY}
+        />
+        <UI.NumberInput
+          label="z"
+          step={0.1}
+          value={positionZ}
+          setValue={setPositionZ}
         />
       </UI.InputPanel>
 

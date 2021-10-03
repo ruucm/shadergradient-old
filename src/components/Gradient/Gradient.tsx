@@ -12,6 +12,7 @@ export type GradientPropsT = {
   postProcessing?: "threejs" | "r3f"
   environment?: any
   lights?: any
+  position?: Euler | undefined
   rotation?: Euler | undefined
   cameraPosition?: { x: number; y: number; z: number }
   cameraRotation?: { x: number; y: number; z: number }
@@ -35,6 +36,7 @@ export const Gradient: React.FC<GradientPropsT> = ({
   postProcessing = "threejs",
   environment = <Environment preset="lobby" background={true} />,
   lights = <ambientLight intensity={1} />,
+  position = [0, 0, 0],
   rotation = [Math.PI * 2, 0, 0],
   cameraPosition = { x: 0, y: 0, z: 0 },
   cameraRotation = { x: 0, y: 0, z: 0 },
@@ -75,6 +77,7 @@ export const Gradient: React.FC<GradientPropsT> = ({
       <GradientMesh
         key={colors.toString()}
         type={type}
+        position={position}
         rotation={rotation}
         animate={animate}
         uTime={uTime}

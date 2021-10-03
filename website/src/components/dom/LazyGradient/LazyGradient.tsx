@@ -33,6 +33,9 @@ export function LazyGradient({
   const [uTime] = useQueryState('uTime')
   const [uSpeed] = useQueryState('uSpeed')
   const [uStrength] = useQueryState('uStrength')
+  const [positionX] = useQueryState('positionX')
+  const [positionY] = useQueryState('positionY')
+  const [positionZ] = useQueryState('positionZ')
   const [rotationX] = useQueryState('rotationX')
   const [rotationY] = useQueryState('rotationY')
   const [rotationZ] = useQueryState('rotationZ')
@@ -71,6 +74,7 @@ export function LazyGradient({
                   (rotationZ / 360) * Math.PI,
                 ]
           }
+          position={[positionX, positionY, positionZ]}
           cameraPosition={
             forceCamPos !== null
               ? forceCamPos
