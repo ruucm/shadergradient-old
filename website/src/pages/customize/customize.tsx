@@ -7,12 +7,13 @@ import { useUIStore } from '@/helpers/store'
 import useQueryState from '@/hooks/useQueryState'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { UI } from 'shadergradient'
 import styles from '../home/Home.module.scss'
 import { MyItem } from '../home/my-item'
 import PRESETS from '../presets.json'
 import cx from 'classnames'
+import { useOnClickOutside } from '@/hooks/use-onclick-outside'
 
 const DOM = () => {
   const mode = useUIStore((state: any) => state.mode)
@@ -82,7 +83,9 @@ const DOM = () => {
             <UI.ControlTypeTitle
               title='Colors'
               active={activeTab === 'colors'}
-              onClick={() => {
+              onClick={(e) => {
+                e.stopPropagation() // ignore parent click
+
                 activeTab === 'colors'
                   ? setActiveTab('none')
                   : setActiveTab('colors')
@@ -92,7 +95,9 @@ const DOM = () => {
             <UI.ControlTypeTitle
               title='Effects'
               active={activeTab === 'effects'}
-              onClick={() => {
+              onClick={(e) => {
+                e.stopPropagation() // ignore parent click
+
                 activeTab === 'effects'
                   ? setActiveTab('none')
                   : setActiveTab('effects')
@@ -102,7 +107,9 @@ const DOM = () => {
             <UI.ControlTypeTitle
               title='Camera'
               active={activeTab === 'camera'}
-              onClick={() => {
+              onClick={(e) => {
+                e.stopPropagation() // ignore parent click
+
                 activeTab === 'camera'
                   ? setActiveTab('none')
                   : setActiveTab('camera')
@@ -207,8 +214,11 @@ const Controls = ({ isMobile, children, activeTab, setActiveTab }) => {
   const mode = useUIStore((state: any) => state.mode)
   const setMode = useUIStore((state: any) => state.setMode)
 
+  const ref = useRef(null)
+  useOnClickOutside(ref, () => setActiveTab('none'))
+
   return (
-    <>
+    <div ref={ref} onClick={() => setActiveTab('shape')}>
       {isMobile === true ? (
         <div className={styles.controlMobile}>
           <motion.div
@@ -238,7 +248,7 @@ const Controls = ({ isMobile, children, activeTab, setActiveTab }) => {
           {children}
         </MenuWrapper>
       )}
-    </>
+    </div>
   )
 }
 
