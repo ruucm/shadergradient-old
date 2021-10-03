@@ -58,6 +58,10 @@ export function LazyGradient({
   const [cameraPositionY] = useQueryState('cameraPositionY')
   const [cameraPositionZ] = useQueryState('cameraPositionZ')
 
+  const [embedMode] = useQueryState('embedMode')
+  const responsiveCameraZoom =
+    embedMode === 'on' ? cameraZoom : cameraZoom * (window.innerWidth / 1440)
+
   return (
     <>
       {loaded && (
@@ -85,7 +89,7 @@ export function LazyGradient({
           cameraRotation={{ x: 0, y: 0, z: 0 }}
           type={type}
           animate={animate === 'on'}
-          cameraZoom={forceZoom !== null ? forceZoom : cameraZoom}
+          cameraZoom={forceZoom !== null ? forceZoom : responsiveCameraZoom}
           uTime={uTime}
           uStrength={uStrength}
           uSpeed={uSpeed}
