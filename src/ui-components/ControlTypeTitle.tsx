@@ -18,7 +18,7 @@ export const ControlTypeTitle: React.FC<ControlTypeTitlePropsT> = ({
   return (
     <div
       className={cx(
-        "text-3xl font-medium text-primary text-opacity-20 cursor-pointer",
+        "text-xl font-medium text-primary text-opacity-20 cursor-pointer",
         active && "text-opacity-100"
       )}
       onClick={onClick}

@@ -83,7 +83,7 @@ export const EffectControls: React.FC<EffectControlsPropsT> = ({
           setValue={setReflection}
           step={0.1}
           min={0}
-          max={3}
+          max={1}
         />
       </UI.InputPanel>
 

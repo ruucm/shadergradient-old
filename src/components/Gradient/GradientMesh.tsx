@@ -34,7 +34,7 @@ export function GradientMesh({
 
   useEffect(() => {
     material.current.userData.uTime.value = uTime
-    material.current.roughness = reflection
+    material.current.roughness = 1 - reflection
   }, [uTime, reflection])
 
   return (

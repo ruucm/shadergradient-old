@@ -64,7 +64,7 @@ export const Gradient: React.FC<GradientPropsT> = ({
 
   let controlledEnvironment = environment
   if (envPreset)
-    controlledEnvironment = <Environment preset={envPreset} background={true} />
+    controlledEnvironment = <Environment preset={envPreset} background={false} />
 
   let controlledLights = lights
   if (brightness) controlledLights = <ambientLight intensity={brightness} />
