@@ -66,25 +66,29 @@ export const ShapeControls: React.FC<ShapeControlsPropsT> = ({
         />
       </UI.InputPanel>
 
-      <UI.InputPanel title="Movements">
-        <UI.Slider
-          defaultValue={uTime}
-          setValue={setUTime}
-          step={0.1}
-          min={0}
-          max={9}
-        />
-      </UI.InputPanel>
+      {animate === "off" && (
+        <UI.InputPanel title="Movements">
+          <UI.Slider
+            defaultValue={uTime}
+            setValue={setUTime}
+            step={0.1}
+            min={0}
+            max={9}
+          />
+        </UI.InputPanel>
+      )}
 
-      <UI.InputPanel title="Speed">
-        <UI.Slider
-          defaultValue={uSpeed}
-          setValue={setUSpeed}
-          step={0.1}
-          min={0}
-          max={2}
-        />
-      </UI.InputPanel>
+      {animate === "on" && (
+        <UI.InputPanel title="Speed">
+          <UI.Slider
+            defaultValue={uSpeed}
+            setValue={setUSpeed}
+            step={0.1}
+            min={0}
+            max={2}
+          />
+        </UI.InputPanel>
+      )}
 
       <UI.InputPanel title="Bump Scale">
         <UI.Slider

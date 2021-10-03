@@ -53,49 +53,55 @@ export const EffectControls: React.FC<EffectControlsPropsT> = ({
         />
       </UI.InputPanel>
 
-      <UI.InputPanel title="Env Preset">
-        <UI.Radio
-          name="envPreset"
-          value="city"
-          setValue={setEnvPreset}
-          check={envPreset === "city"}
-          label="City"
-        />
-        <UI.Radio
-          name="envPreset"
-          value="dawn"
-          setValue={setEnvPreset}
-          check={envPreset === "dawn"}
-          label="Dawn"
-        />
-        <UI.Radio
-          name="envPreset"
-          value="lobby"
-          setValue={setEnvPreset}
-          check={envPreset === "lobby"}
-          label="Lobby"
-        />
-      </UI.InputPanel>
+      {lightType === "env" && (
+        <UI.InputPanel title="Env Preset">
+          <UI.Radio
+            name="envPreset"
+            value="city"
+            setValue={setEnvPreset}
+            check={envPreset === "city"}
+            label="City"
+          />
+          <UI.Radio
+            name="envPreset"
+            value="dawn"
+            setValue={setEnvPreset}
+            check={envPreset === "dawn"}
+            label="Dawn"
+          />
+          <UI.Radio
+            name="envPreset"
+            value="lobby"
+            setValue={setEnvPreset}
+            check={envPreset === "lobby"}
+            label="Lobby"
+          />
+        </UI.InputPanel>
+      )}
 
-      <UI.InputPanel title="Reflection">
-        <UI.Slider
-          defaultValue={reflection}
-          setValue={setReflection}
-          step={0.1}
-          min={0}
-          max={1}
-        />
-      </UI.InputPanel>
+      {lightType === "env" && (
+        <UI.InputPanel title="Reflection">
+          <UI.Slider
+            defaultValue={reflection}
+            setValue={setReflection}
+            step={0.1}
+            min={0}
+            max={1}
+          />
+        </UI.InputPanel>
+      )}
 
-      <UI.InputPanel title="Brightness">
-        <UI.Slider
-          defaultValue={brightness}
-          setValue={setBrightness}
-          step={0.1}
-          min={0}
-          max={3}
-        />
-      </UI.InputPanel>
+      {lightType === "3d" && (
+        <UI.InputPanel title="Brightness">
+          <UI.Slider
+            defaultValue={brightness}
+            setValue={setBrightness}
+            step={0.1}
+            min={0}
+            max={3}
+          />
+        </UI.InputPanel>
+      )}
     </div>
   )
 }
