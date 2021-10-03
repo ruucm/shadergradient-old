@@ -58,8 +58,6 @@ export function LazyGradient({
   const [cameraPositionY] = useQueryState('cameraPositionY')
   const [cameraPositionZ] = useQueryState('cameraPositionZ')
 
-  console.log('grain', grain)
-
   return (
     <>
       {loaded && (
