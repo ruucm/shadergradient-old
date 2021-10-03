@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form"
 import { UI } from "shadergradient"
 import "../../ui-styles-compiled.css"
 import { GradientScene } from "./components/GradientScene"
-import { PropertyControls } from "./components/PropertyControls"
+import { Controls } from "./components/Controls"
 import { defaultProperties } from "./consts"
 import "./global.css"
 import { FormContext } from "./helpers/form-provider"
@@ -17,7 +17,7 @@ function App() {
   return (
     <FormContext.Provider value={formProps}>
       <GradientScene />
-      <PropertyControls />
+      <Controls />
       <div className="flex gap-0.5 p-3 absolute w-full bottom-0">
         <UI.Button>Extract GIF</UI.Button>
         <UI.Button kind="secondary" onClick={insertCanvasAsImage}>

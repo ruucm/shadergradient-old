@@ -6,7 +6,10 @@ const Page = () => {
     <>
       Hey
       <Hey />
-      <UI.ShapeControls />
+      {/* <UI.ShapeControls /> */}
+      <div className='h-[66px] flex justify-around items-center'>
+        <UI.PropertyControls />
+      </div>
     </>
   )
 }

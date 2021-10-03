@@ -1,6 +1,5 @@
-import { UI } from "../../"
 import * as React from "react"
-import cx from "classnames"
+import { UI } from "../../"
 
 type Props = {
   // All other props
