@@ -12,6 +12,7 @@ import { UI } from 'shadergradient'
 import styles from '../home/Home.module.scss'
 import { MyItem } from '../home/my-item'
 import PRESETS from '../presets.json'
+import cx from 'classnames'
 
 const DOM = () => {
   const mode = useUIStore((state: any) => state.mode)
@@ -111,7 +112,7 @@ const DOM = () => {
           </div>
 
           <div
-            className={styles.controlWrapper}
+            className={cx(styles.controlWrapper, 'p-3.5 md:p-4')}
             style={{ padding: activeTab === 'none' ? 0 : null }}
           >
             {activeTab === 'shape' && (

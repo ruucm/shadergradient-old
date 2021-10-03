@@ -18,6 +18,7 @@ module.exports = {
         1.5: "10px",
         2: "12px",
         3: "16px",
+        3.5: "20px",
         4: "26px", // modified form  24px
         5: "32px",
         6: "48px",

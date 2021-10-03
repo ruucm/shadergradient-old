@@ -839,6 +839,9 @@ video {
 .bg-opacity-80 {
 	--tw-bg-opacity: 0.8;
 }
+.p-3\.5 {
+	padding: 20px;
+}
 .p-3 {
 	padding: 16px;
 }
@@ -958,4 +961,10 @@ input[type="number"] {
 }
 .hover\:bg-opacity-10:hover {
 	--tw-bg-opacity: 0.1;
+}
+@media (min-width: 768px) {
+
+	.md\:p-4 {
+		padding: 26px;
+	}
 }
