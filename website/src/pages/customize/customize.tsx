@@ -252,7 +252,7 @@ const Page = () => {
   const [embedMode] = useQueryState('embedMode')
   return (
     <>
-      {embedMode !== 'on' && <DOM />}
+      {embedMode === 'off' && <DOM />}
       <R3F r3f />
     </>
   )
