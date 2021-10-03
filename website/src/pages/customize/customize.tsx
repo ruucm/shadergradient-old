@@ -26,6 +26,9 @@ const DOM = () => {
   const [isMobile, setIsMobile] = React.useState(false)
   const [activeTab, setActiveTab] = useState('none')
 
+  // for embeds
+  const [embedMode] = useQueryState('embedMode')
+
   //choose the screen size
   const handleResize = () => {
     if (window.innerWidth < 641) {
@@ -50,153 +53,157 @@ const DOM = () => {
     PRESETS[current].title.substring(1, 2)
   }, [current])
 
-  return (
-    <>
-      {/* Go Back */}
-      <div className={styles.content}>
-        <motion.div style={{ color: PRESETS[current].color }}>
-          <Link href='/'> ← ShaderGradient</Link>
-        </motion.div>
-      </div>
+  console.log('embedMode', embedMode)
 
-      {/* Property menu */}
-      <Controls
-        isMobile={isMobile}
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
-      >
-        <div className={styles.menuItems}>
-          <UI.ControlTypeTitle
-            title='Shape'
-            active={activeTab === 'shape'}
-            onClick={() => {
-              activeTab === 'shape'
-                ? setActiveTab('none')
-                : setActiveTab('shape')
-            }}
-          />
-
-          <UI.ControlTypeTitle
-            title='Colors'
-            active={activeTab === 'colors'}
-            onClick={() => {
-              activeTab === 'colors'
-                ? setActiveTab('none')
-                : setActiveTab('colors')
-            }}
-          />
-
-          <UI.ControlTypeTitle
-            title='Effects'
-            active={activeTab === 'effects'}
-            onClick={() => {
-              activeTab === 'effects'
-                ? setActiveTab('none')
-                : setActiveTab('effects')
-            }}
-          />
-
-          <UI.ControlTypeTitle
-            title='Camera'
-            active={activeTab === 'camera'}
-            onClick={() => {
-              activeTab === 'camera'
-                ? setActiveTab('none')
-                : setActiveTab('camera')
-            }}
-          />
-          <PreviewSwitch mode={mode} setMode={setMode} display={!isMobile} />
+  if (embedMode === 'off')
+    return (
+      <>
+        {/* Go Back */}
+        <div className={styles.content}>
+          <motion.div style={{ color: PRESETS[current].color }}>
+            <Link href='/'> ← ShaderGradient</Link>
+          </motion.div>
         </div>
 
-        <div
-          className={styles.controlWrapper}
-          style={{ padding: activeTab === 'none' ? 0 : null }}
+        {/* Property menu */}
+        <Controls
+          isMobile={isMobile}
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
         >
-          {activeTab === 'shape' && (
-            <UI.ShapeControls useQueryState={useQueryState} />
-          )}
-          {activeTab === 'colors' && (
-            <UI.ColorControls useQueryState={useQueryState} />
-          )}
-          {activeTab === 'effects' && (
-            <UI.EffectControls useQueryState={useQueryState} />
-          )}
-          {activeTab === 'camera' && (
-            <UI.CameraControls useQueryState={useQueryState} />
-          )}
-        </div>
-      </Controls>
-      <PreviewWrapper mode={mode} setMode={setMode} />
+          <div className={styles.menuItems}>
+            <UI.ControlTypeTitle
+              title='Shape'
+              active={activeTab === 'shape'}
+              onClick={() => {
+                activeTab === 'shape'
+                  ? setActiveTab('none')
+                  : setActiveTab('shape')
+              }}
+            />
 
-      {/* Current Preset */}
-      <div
-        className={styles.slider}
-        style={{
-          color: mode === 'full' ? PRESETS[current].color : '#FF430A',
-          top: isMobile ? '10vh' : null,
-        }}
-      >
-        <div className={styles.sliderHeader}>
-          <p>Current Theme</p>
-        </div>
+            <UI.ControlTypeTitle
+              title='Colors'
+              active={activeTab === 'colors'}
+              onClick={() => {
+                activeTab === 'colors'
+                  ? setActiveTab('none')
+                  : setActiveTab('colors')
+              }}
+            />
+
+            <UI.ControlTypeTitle
+              title='Effects'
+              active={activeTab === 'effects'}
+              onClick={() => {
+                activeTab === 'effects'
+                  ? setActiveTab('none')
+                  : setActiveTab('effects')
+              }}
+            />
+
+            <UI.ControlTypeTitle
+              title='Camera'
+              active={activeTab === 'camera'}
+              onClick={() => {
+                activeTab === 'camera'
+                  ? setActiveTab('none')
+                  : setActiveTab('camera')
+              }}
+            />
+            <PreviewSwitch mode={mode} setMode={setMode} display={!isMobile} />
+          </div>
+
+          <div
+            className={styles.controlWrapper}
+            style={{ padding: activeTab === 'none' ? 0 : null }}
+          >
+            {activeTab === 'shape' && (
+              <UI.ShapeControls useQueryState={useQueryState} />
+            )}
+            {activeTab === 'colors' && (
+              <UI.ColorControls useQueryState={useQueryState} />
+            )}
+            {activeTab === 'effects' && (
+              <UI.EffectControls useQueryState={useQueryState} />
+            )}
+            {activeTab === 'camera' && (
+              <UI.CameraControls useQueryState={useQueryState} />
+            )}
+          </div>
+        </Controls>
+        <PreviewWrapper mode={mode} setMode={setMode} />
+
+        {/* Current Preset */}
         <div
-          className={styles.sliderWrapper}
+          className={styles.slider}
           style={{
-            width: 'fit-content',
+            color: mode === 'full' ? PRESETS[current].color : '#FF430A',
+            top: isMobile ? '10vh' : null,
           }}
         >
-          {PRESETS.map((item, index) => {
-            return (
-              <div
-                key={index}
-                style={{ display: current === index ? 'block' : 'none' }}
-              >
-                <MyItem
-                  color={PRESETS[current].color}
-                  onClick={() => {}}
-                  visible={current === index}
-                  isMobile={isMobile}
+          <div className={styles.sliderHeader}>
+            <p>Current Theme</p>
+          </div>
+          <div
+            className={styles.sliderWrapper}
+            style={{
+              width: 'fit-content',
+            }}
+          >
+            {PRESETS.map((item, index) => {
+              return (
+                <div
+                  key={index}
+                  style={{ display: current === index ? 'block' : 'none' }}
                 >
-                  {index < 10 ? '0' + index.toString() : index.toString()}{' '}
-                  {PRESETS[index].title}
-                </MyItem>
-              </div>
-            )
-          })}
-          <div className={styles.slideBtns}>
-            <motion.div
-              className={styles.slideDown}
-              onClick={() => {
-                if (current !== 0) {
-                  setCurrent(current - 1)
-                } else {
-                  setCurrent(PRESETS.length - 1)
-                }
-                console.log(current)
-              }}
-            >
-              ↓
-            </motion.div>
-            <motion.div
-              className={styles.slideUp}
-              onClick={() => {
-                if (current !== PRESETS.length - 1) {
-                  setCurrent(current + 1)
-                } else {
-                  setCurrent(0)
-                }
-                console.log(current)
-              }}
-            >
-              ↑
-            </motion.div>
+                  <MyItem
+                    color={PRESETS[current].color}
+                    onClick={() => {}}
+                    visible={current === index}
+                    isMobile={isMobile}
+                  >
+                    {index < 10 ? '0' + index.toString() : index.toString()}{' '}
+                    {PRESETS[index].title}
+                  </MyItem>
+                </div>
+              )
+            })}
+            <div className={styles.slideBtns}>
+              <motion.div
+                className={styles.slideDown}
+                onClick={() => {
+                  if (current !== 0) {
+                    setCurrent(current - 1)
+                  } else {
+                    setCurrent(PRESETS.length - 1)
+                  }
+                  console.log(current)
+                }}
+              >
+                ↓
+              </motion.div>
+              <motion.div
+                className={styles.slideUp}
+                onClick={() => {
+                  if (current !== PRESETS.length - 1) {
+                    setCurrent(current + 1)
+                  } else {
+                    setCurrent(0)
+                  }
+                  console.log(current)
+                }}
+              >
+                ↑
+              </motion.div>
+            </div>
           </div>
         </div>
-      </div>
 
-      <Footer />
-    </>
-  )
+        <Footer />
+      </>
+    )
+  else return <></>
 }
 
 const Controls = ({ isMobile, children, activeTab, setActiveTab }) => {
@@ -248,11 +255,9 @@ const R3F = ({ r3f }) => {
 }
 
 const Page = () => {
-  // for embeds
-  const [embedMode] = useQueryState('embedMode')
   return (
     <>
-      {embedMode === 'off' && <DOM />}
+      <DOM />
       <R3F r3f />
     </>
   )
