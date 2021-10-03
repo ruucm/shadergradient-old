@@ -1,10 +1,10 @@
-import * as React from 'react'
 import useQueryState from '@/hooks/useQueryState'
 import { updateGradientState } from '@/helpers/store'
 import PRESETS from '../../../pages/presets.json'
 import { useUIStore } from '@/helpers/store'
 
 import { Gradient } from 'shadergradient'
+import { useEffect } from 'react'
 
 export function LazyGradient({
   r3f,
@@ -15,17 +15,17 @@ export function LazyGradient({
 }) {
   const current = useUIStore((state: any) => state.current)
 
-  React.useEffect(() => {
+  useEffect(() => {
     // update Gradient if there are query params (history nav)
-    window.location.search && updateGradientState(window.location.search)
-    document.documentElement.classList.add('remix')
-    return () => {
-      document.documentElement.classList.remove('remix')
-    }
-  }, [])
+    const gradientURL = window.location.search
+      ? window.location.search
+      : PRESETS[current].url
+    updateGradientState(gradientURL)
 
-  React.useEffect(() => {
-    updateGradientState(PRESETS[current].url)
+    document.documentElement.classList.add('cutomize')
+    return () => {
+      document.documentElement.classList.remove('cutomize')
+    }
   }, [current])
 
   // shape
@@ -55,6 +55,8 @@ export function LazyGradient({
   const [cameraPositionX] = useQueryState('cameraPositionX')
   const [cameraPositionY] = useQueryState('cameraPositionY')
   const [cameraPositionZ] = useQueryState('cameraPositionZ')
+
+  console.log('grain', grain)
 
   return (
     <>
