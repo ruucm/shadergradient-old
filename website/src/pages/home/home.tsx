@@ -98,7 +98,7 @@ const DOM = () => {
             <MenuItem title='Figma →' link='' />
             <MenuItem
               title='Git →'
-              link='https://www.npmjs.com/package/shadergradient'
+              link='https://github.com/ruucm/shadergradient'
             />
             <MenuItem title='Framer →' link='' />
             <PreviewSwitch mode={mode} setMode={setMode} />
