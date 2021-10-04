@@ -1,6 +1,6 @@
 import Head from 'next/head'
 
-const titleDefault = 'Shader Gradient Home'
+const titleDefault = 'Shader Gradient'
 const url = 'https://www.shadergradient.com'
 const description =
   'The easiest and fastest way to create a 3D website using React Three Fiber and NextJS'

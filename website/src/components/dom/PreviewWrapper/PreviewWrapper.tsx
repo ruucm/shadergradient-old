@@ -1,6 +1,5 @@
-import * as React from 'react'
 import { motion, useAnimation } from 'framer-motion'
-import cx from 'classnames'
+import * as React from 'react'
 
 export function PreviewWrapper({ mode = 'mobile', setMode = void 0 }) {
   const previewAnim = useAnimation()

@@ -1,6 +1,6 @@
-import * as THREE from "three"
-import { extend } from "@react-three/fiber"
-import { formatColor, hexToRgb } from "@/utils"
+import { formatColor, hexToRgb } from '@/utils'
+import { extend } from '@react-three/fiber'
+import * as THREE from 'three'
 
 const settings = {
   speed: 0.2,
@@ -9,7 +9,7 @@ const settings = {
   frequency: 2.0,
   amplitude: 6.0,
   meshCount: 50,
-  type: "plane",
+  type: 'plane',
   color1r: 0.8,
   color1g: 0.3,
   color1b: 0.43,

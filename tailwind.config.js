@@ -11,6 +11,7 @@ module.exports = {
       colors: {
         primary: "#FF430A",
         "controls-panel": "#F6F8F8",
+        "controls-panel-mobile": "rgba(245, 245, 245, 0.2)",
       },
       spacing: {
         0.5: "6px",
@@ -18,6 +19,7 @@ module.exports = {
         1.5: "10px",
         2: "12px",
         3: "16px",
+        3.5: "20px",
         4: "26px", // modified form  24px
         5: "32px",
         6: "48px",
@@ -43,10 +45,6 @@ module.exports = {
         "6xl": "4rem",
       },
       width: {
-        "control-types": "168px",
-        control: "408px",
-        "control-title": "93px",
-        "control-inputs": "283px",
         "control-number-input": "53px",
         thumb: "16px",
         mark: "2px",

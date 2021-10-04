@@ -1,29 +1,46 @@
-import { Environment, OrbitControls } from "@react-three/drei"
-import { Canvas } from "@react-three/fiber"
-import * as React from "react"
-import { useContext } from "react"
-import { Gradient } from "shadergradient"
-import { FormContext } from "../helpers/form-provider"
+import * as React from 'react'
+import { Environment, OrbitControls } from '@react-three/drei'
+import { Canvas } from '@react-three/fiber'
+import { Gradient, updateGradientState, useQueryState } from 'shadergradient'
 
 export function GradientScene() {
-  const ctx: any = useContext(FormContext)
-  const {
-    type,
-    animate,
-    movements,
-    speed,
-    bumpScale,
-    rotationX,
-    rotationY,
-    rotationZ,
-    cameraPositionX,
-    cameraPositionY,
-    cameraPositionZ,
-    cameraQuaternionX,
-    cameraQuaternionY,
-    cameraQuaternionZ,
-    cameraZoom,
-  }: any = ctx?.watch()
+  React.useEffect(() => {
+    // const gradientURL = PRESETS[0].url
+    const gradientURL =
+      '?animate=on&brightness=1&cameraPositionX=0.4&cameraPositionY=3.2&cameraPositionZ=0&cameraZoom=1.3&color1=%235ce7ff&color2=%235ac5d3&color3=%23b9dcac&envPreset=city&grain=off&lightType=3d&reflection=0&rotationX=180&rotationY=50&rotationZ=0&type=waterPlane&uSpeed=0.2&uStrength=2&uTime=0.2&pixelDensity=1&embedMode=off&positionX=0&positionY=0&positionZ=0'
+    updateGradientState(gradientURL)
+  }, [])
+
+  // shape
+  const [type] = useQueryState('type')
+  const [animate] = useQueryState('animate')
+  const [uTime] = useQueryState('uTime')
+  const [uSpeed] = useQueryState('uSpeed')
+  const [uStrength] = useQueryState('uStrength')
+  const [positionX] = useQueryState('positionX')
+  const [positionY] = useQueryState('positionY')
+  const [positionZ] = useQueryState('positionZ')
+  const [rotationX] = useQueryState('rotationX')
+  const [rotationY] = useQueryState('rotationY')
+  const [rotationZ] = useQueryState('rotationZ')
+
+  // colors
+  const [color1] = useQueryState('color1')
+  const [color2] = useQueryState('color2')
+  const [color3] = useQueryState('color3')
+
+  // effects
+  const [grain] = useQueryState('grain')
+  const [lightType] = useQueryState('lightType')
+  const [envPreset] = useQueryState('envPreset')
+  const [reflection] = useQueryState('reflection')
+  const [brightness] = useQueryState('brightness')
+
+  // camera
+  const [cameraZoom] = useQueryState('cameraZoom')
+  const [cameraPositionX] = useQueryState('cameraPositionX')
+  const [cameraPositionY] = useQueryState('cameraPositionY')
+  const [cameraPositionZ] = useQueryState('cameraPositionZ')
 
   return (
     <Canvas
@@ -31,7 +48,7 @@ export function GradientScene() {
         height: 304,
       }}
       gl={{ preserveDrawingBuffer: true }} // to capture the canvas
-      id="r3f-canvas"
+      id='r3f-canvas'
     >
       <OrbitControls
         enablePan={false}
@@ -39,28 +56,32 @@ export function GradientScene() {
         enableRotate={false}
       />
       <Gradient
-        environment={<Environment preset="city" />}
         rotation={[
           (rotationX / 360) * Math.PI,
           (rotationY / 360) * Math.PI,
           (rotationZ / 360) * Math.PI,
         ]}
+        position={[positionX, positionY, positionZ]}
         cameraPosition={{
           x: cameraPositionX,
           y: cameraPositionY,
           z: cameraPositionZ,
         }}
+        environment={<Environment preset='city' />}
         cameraRotation={{ x: 0, y: 0, z: 0 }}
-        cameraQuaternion={{
-          x: cameraQuaternionX,
-          y: cameraQuaternionY,
-          z: cameraQuaternionZ,
-        }}
         type={type}
-        animate={animate === "on"}
+        animate={animate === 'on'}
         cameraZoom={cameraZoom}
-        uTime={movements}
-        // postProcessing={postProcessing}
+        uTime={uTime}
+        uStrength={uStrength}
+        uSpeed={uSpeed}
+        colors={[color1, color2, color3]}
+        grain={grain}
+        lightType={lightType}
+        envPreset={envPreset}
+        reflection={reflection}
+        brightness={brightness}
+        postProcessing={'threejs'} // turn on postpocessing
       />
     </Canvas>
   )

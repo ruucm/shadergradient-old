@@ -6075,10 +6075,10 @@ sha.js@^2.4.0, sha.js@^2.4.8:
     inherits "^2.0.1"
     safe-buffer "^5.0.1"
 
-shadergradient@^0.0.24:
-  version "0.0.24"
-  resolved "https://registry.yarnpkg.com/shadergradient/-/shadergradient-0.0.24.tgz#1e2d89578699872261dcb9e3c5dd3eeab60f33af"
-  integrity sha512-v5zSAlUtuxUfjues+fzOlcsRPjfmkPoFjKv1hJYgfAuqni7m2su4AGXyT9qWiFo/ecs+HXEokVtGxiL9Mtqr0g==
+shadergradient@0.0.27:
+  version "0.0.27"
+  resolved "https://registry.yarnpkg.com/shadergradient/-/shadergradient-0.0.27.tgz#afed7418ce717d4b9bb90eebe1f9de35a7555bfb"
+  integrity sha512-gOV4bNeEFNLiM1LoIb5vYMdqZSy78oWKxLJFRVNVKCk9WWpD8IW6ydNVRE6v77KXIvhP8cM3kY/MQ7i0snCuPg==
   dependencies:
     "@react-three/drei" "^7.2.1"
     "@react-three/fiber" "^7.0.6"

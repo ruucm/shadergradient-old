@@ -1,89 +1,93 @@
-import * as React from "react"
-import * as UI from ".."
+import { useQueryState } from '@/hooks/useQueryState'
+import * as React from 'react'
+import * as UI from '..'
 
-type ShapeControlsPropsT = {
-  useQueryState: any
-} & React.DetailedHTMLProps<
+type ShapeControlsPropsT = React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLDivElement>,
   HTMLDivElement
 >
 
-export const ShapeControls: React.FC<ShapeControlsPropsT> = ({
-  useQueryState,
-}) => {
-  const [type, setType] = useQueryState("type")
-  const [animate, setAnimate] = useQueryState("animate")
-  const [uTime, setUTime] = useQueryState("uTime")
-  const [uSpeed, setUSpeed] = useQueryState("uSpeed")
-  const [uStrength, setUStrength] = useQueryState("uStrength")
-  const [rotationX, setRotationX] = useQueryState("rotationX")
-  const [rotationY, setRotationY] = useQueryState("rotationY")
-  const [rotationZ, setRotationZ] = useQueryState("rotationZ")
+export const ShapeControls: React.FC<ShapeControlsPropsT> = () => {
+  const [type, setType] = useQueryState('type')
+  const [animate, setAnimate] = useQueryState('animate')
+  const [uTime, setUTime] = useQueryState('uTime')
+  const [uSpeed, setUSpeed] = useQueryState('uSpeed')
+  const [uStrength, setUStrength] = useQueryState('uStrength')
+  const [positionX, setPositionX] = useQueryState('positionX')
+  const [positionY, setPositionY] = useQueryState('positionY')
+  const [positionZ, setPositionZ] = useQueryState('positionZ')
+  const [rotationX, setRotationX] = useQueryState('rotationX')
+  const [rotationY, setRotationY] = useQueryState('rotationY')
+  const [rotationZ, setRotationZ] = useQueryState('rotationZ')
 
   return (
-    <div className="flex flex-col gap-3">
-      <UI.InputPanel title="Type">
+    <div className='flex flex-col gap-3'>
+      <UI.InputPanel title='Type'>
         <UI.Radio
-          name="type"
-          value="plane"
+          name='type'
+          value='plane'
           setValue={setType}
-          check={type === "plane"}
-          label="Plane"
+          check={type === 'plane'}
+          label='Plane'
         />
         <UI.Radio
-          name="type"
-          value="sphere"
+          name='type'
+          value='sphere'
           setValue={setType}
-          check={type === "sphere"}
-          label="Sphere"
+          check={type === 'sphere'}
+          label='Sphere'
         />
         <UI.Radio
-          name="type"
-          value="waterPlane"
+          name='type'
+          value='waterPlane'
           setValue={setType}
-          check={type === "waterPlane"}
-          label="Water"
+          check={type === 'waterPlane'}
+          label='Water'
         />
       </UI.InputPanel>
 
-      <UI.InputPanel title="Animate">
+      <UI.InputPanel title='Animate'>
         <UI.Radio
-          name="animate"
-          value="on"
+          name='animate'
+          value='on'
           setValue={setAnimate}
-          check={animate === "on"}
-          label="On"
+          check={animate === 'on'}
+          label='On'
         />
         <UI.Radio
-          name="animate"
-          value="off"
+          name='animate'
+          value='off'
           setValue={setAnimate}
-          check={animate === "off"}
-          label="Off"
+          check={animate === 'off'}
+          label='Off'
         />
       </UI.InputPanel>
 
-      <UI.InputPanel title="Movements">
-        <UI.Slider
-          defaultValue={uTime}
-          setValue={setUTime}
-          step={0.1}
-          min={0}
-          max={9}
-        />
-      </UI.InputPanel>
+      {animate === 'off' && (
+        <UI.InputPanel title='Movements'>
+          <UI.Slider
+            defaultValue={uTime}
+            setValue={setUTime}
+            step={0.1}
+            min={0}
+            max={9}
+          />
+        </UI.InputPanel>
+      )}
 
-      <UI.InputPanel title="Speed">
-        <UI.Slider
-          defaultValue={uSpeed}
-          setValue={setUSpeed}
-          step={0.1}
-          min={0}
-          max={2}
-        />
-      </UI.InputPanel>
+      {animate === 'on' && (
+        <UI.InputPanel title='Speed'>
+          <UI.Slider
+            defaultValue={uSpeed}
+            setValue={setUSpeed}
+            step={0.1}
+            min={0}
+            max={2}
+          />
+        </UI.InputPanel>
+      )}
 
-      <UI.InputPanel title="Bump Scale">
+      <UI.InputPanel title='Bump Scale'>
         <UI.Slider
           defaultValue={uStrength}
           setValue={setUStrength}
@@ -93,21 +97,42 @@ export const ShapeControls: React.FC<ShapeControlsPropsT> = ({
         />
       </UI.InputPanel>
 
-      <UI.InputPanel title="Rotation">
+      <UI.InputPanel title='Position'>
         <UI.NumberInput
-          label="x"
+          label='x'
+          step={0.1}
+          value={positionX}
+          setValue={setPositionX}
+        />
+        <UI.NumberInput
+          label='y'
+          step={0.1}
+          value={positionY}
+          setValue={setPositionY}
+        />
+        <UI.NumberInput
+          label='z'
+          step={0.1}
+          value={positionZ}
+          setValue={setPositionZ}
+        />
+      </UI.InputPanel>
+
+      <UI.InputPanel title='Rotation'>
+        <UI.NumberInput
+          label='x'
           step={10}
           value={rotationX}
           setValue={setRotationX}
         />
         <UI.NumberInput
-          label="y"
+          label='y'
           step={10}
           value={rotationY}
           setValue={setRotationY}
         />
         <UI.NumberInput
-          label="z"
+          label='z'
           step={10}
           value={rotationZ}
           setValue={setRotationZ}

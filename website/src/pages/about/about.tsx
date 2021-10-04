@@ -135,7 +135,7 @@ export default Page
 export async function getStaticProps() {
   return {
     props: {
-      title: 'Shader Gradient',
+      title: 'Shader Gradient ─ About',
     },
   }
 }

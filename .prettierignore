@@ -1,7 +1,9 @@
 build/*
 dist/*
+dist
 public/*
 .next/*
+.next
 node_modules/*
 .log
 package.json

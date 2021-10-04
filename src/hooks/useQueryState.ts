@@ -1,12 +1,12 @@
 import { useCallback } from 'react'
-import qs from 'query-string'
-import { useGradientStore } from '@/helpers/store'
+import * as qs from 'query-string'
+import { useGradientStore } from '../store'
 
-function updateHistory(path) {
+function updateHistory(path: string) {
   window.history.pushState(null, document.title, path)
 }
 
-export const useQueryState = (propName, defaultValue = null) => {
+export const useQueryState = (propName: any, defaultValue = null) => {
   const selector = useCallback(
     (state) =>
       typeof state[propName] !== 'undefined' ? state[propName] : defaultValue,
@@ -23,7 +23,7 @@ export const useQueryState = (propName, defaultValue = null) => {
 
   const setQueryValue = useCallback(
     (newVal) => {
-      _setGlobalValue((currentState) => {
+      _setGlobalValue((currentState: any) => {
         if (typeof newVal === 'function') {
           newVal = newVal(currentState || defaultValue)
         }

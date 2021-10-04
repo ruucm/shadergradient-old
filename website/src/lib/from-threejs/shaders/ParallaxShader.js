@@ -4,24 +4,24 @@
 //   http://mmikkelsen3d.blogspot.sk/2012/02/parallaxpoc-mapping-and-no-tangent.html
 
 const ParallaxShader = {
-	// Ordered from fastest to best quality.
-	modes: {
-		none: 'NO_PARALLAX',
-		basic: 'USE_BASIC_PARALLAX',
-		steep: 'USE_STEEP_PARALLAX',
-		occlusion: 'USE_OCLUSION_PARALLAX', // a.k.a. POM
-		relief: 'USE_RELIEF_PARALLAX'
-	},
+  // Ordered from fastest to best quality.
+  modes: {
+    none: 'NO_PARALLAX',
+    basic: 'USE_BASIC_PARALLAX',
+    steep: 'USE_STEEP_PARALLAX',
+    occlusion: 'USE_OCLUSION_PARALLAX', // a.k.a. POM
+    relief: 'USE_RELIEF_PARALLAX',
+  },
 
-	uniforms: {
-		'bumpMap': { value: null },
-		'map': { value: null },
-		'parallaxScale': { value: null },
-		'parallaxMinLayers': { value: null },
-		'parallaxMaxLayers': { value: null }
-	},
+  uniforms: {
+    bumpMap: { value: null },
+    map: { value: null },
+    parallaxScale: { value: null },
+    parallaxMinLayers: { value: null },
+    parallaxMaxLayers: { value: null },
+  },
 
-	vertexShader: /* glsl */`
+  vertexShader: /* glsl */ `
 
 		varying vec2 vUv;
 		varying vec3 vViewPosition;
@@ -37,7 +37,7 @@ const ParallaxShader = {
 
 		}`,
 
-	fragmentShader: /* glsl */`
+  fragmentShader: /* glsl */ `
 
 		uniform sampler2D bumpMap;
 		uniform sampler2D map;
@@ -177,8 +177,7 @@ const ParallaxShader = {
 			vec2 mapUv = perturbUv( -vViewPosition, normalize( vNormal ), normalize( vViewPosition ) );
 			gl_FragColor = texture2D( map, mapUv );
 
-		}`
+		}`,
+}
 
-};
-
-export { ParallaxShader };
+export { ParallaxShader }

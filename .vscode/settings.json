@@ -1,5 +1,3 @@
 {
     "editor.formatOnSave": true,
-    "prettier.trailingComma": "es5",
-    "prettier.semi": false,
 }

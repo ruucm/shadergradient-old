@@ -5,7 +5,6 @@
   "scripts": {
     "lint": "yarn prettier && yarn eslint",
     "eslint": "next lint --fix --dir src",
-    "prettier": "prettier --list-different \"./src/**/*.{js,jsx,md}\"",
     "dev": "next dev",
     "build": "next build",
     "export": "EXPORT=true next build && EXPORT=true next export",
@@ -29,7 +28,7 @@
     "react-hook-form": "^7.13.0",
     "react-lottie": "^1.2.3",
     "react-snaplist-carousel": "^4.3.0",
-    "shadergradient": "^0.0.24",
+    "shadergradient": "0.0.30",
     "styled-components": "^5.3.0",
     "three": "^0.131.3",
     "three-stdlib": "^2.4.0"

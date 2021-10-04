@@ -1,4 +1,4 @@
-import useStore from '@/helpers/store'
+import { useStore } from '@/helpers/store'
 import { useEffect, useRef } from 'react'
 import Link from 'next/link'
 

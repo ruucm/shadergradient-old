@@ -1,10 +1,11 @@
-import * as React from 'react'
-import useQueryState from '@/hooks/useQueryState'
-import { updateGradientState } from '@/helpers/store'
+import { useEffect } from 'react'
+import {
+  Gradient,
+  useQueryState,
+  updateGradientState,
+  useUIStore,
+} from 'shadergradient'
 import PRESETS from '../../../pages/presets.json'
-import { useUIStore } from '@/helpers/store'
-
-import { Gradient } from 'shadergradient'
 
 export function LazyGradient({
   r3f,
@@ -16,17 +17,18 @@ export function LazyGradient({
 }) {
   const current = useUIStore((state: any) => state.current)
 
-  React.useEffect(() => {
+  useEffect(() => {
     // update Gradient if there are query params (history nav)
-    window.location.search && updateGradientState(window.location.search)
-    document.documentElement.classList.add('remix')
-    return () => {
-      document.documentElement.classList.remove('remix')
-    }
-  }, [])
+    const gradientURL =
+      current === 0 && window.location.search
+        ? window.location.search
+        : PRESETS[current].url
+    updateGradientState(gradientURL)
 
-  React.useEffect(() => {
-    updateGradientState(PRESETS[current].url)
+    document.documentElement.classList.add('cutomize')
+    return () => {
+      document.documentElement.classList.remove('cutomize')
+    }
   }, [current])
 
   // shape
@@ -35,6 +37,9 @@ export function LazyGradient({
   const [uTime] = useQueryState('uTime')
   const [uSpeed] = useQueryState('uSpeed')
   const [uStrength] = useQueryState('uStrength')
+  const [positionX] = useQueryState('positionX')
+  const [positionY] = useQueryState('positionY')
+  const [positionZ] = useQueryState('positionZ')
   const [rotationX] = useQueryState('rotationX')
   const [rotationY] = useQueryState('rotationY')
   const [rotationZ] = useQueryState('rotationZ')
@@ -57,6 +62,10 @@ export function LazyGradient({
   const [cameraPositionY] = useQueryState('cameraPositionY')
   const [cameraPositionZ] = useQueryState('cameraPositionZ')
 
+  const [embedMode] = useQueryState('embedMode')
+  const responsiveCameraZoom =
+    embedMode === 'on' ? cameraZoom : cameraZoom * (window.innerWidth / 1440)
+
   return (
     <>
       {loaded && (
@@ -71,6 +80,7 @@ export function LazyGradient({
                   (rotationZ / 360) * Math.PI,
                 ]
           }
+          position={[positionX, positionY, positionZ]}
           cameraPosition={
             forceCamPos !== null
               ? forceCamPos
@@ -83,7 +93,7 @@ export function LazyGradient({
           cameraRotation={{ x: 0, y: 0, z: 0 }}
           type={type}
           animate={animate === 'on'}
-          cameraZoom={forceZoom !== null ? forceZoom : cameraZoom}
+          cameraZoom={forceZoom !== null ? forceZoom : responsiveCameraZoom}
           uTime={uTime}
           uStrength={uStrength}
           uSpeed={uSpeed}
