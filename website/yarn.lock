@@ -6075,20 +6075,22 @@ sha.js@^2.4.0, sha.js@^2.4.8:
     inherits "^2.0.1"
     safe-buffer "^5.0.1"
 
-shadergradient@0.0.27:
-  version "0.0.27"
-  resolved "https://registry.yarnpkg.com/shadergradient/-/shadergradient-0.0.27.tgz#afed7418ce717d4b9bb90eebe1f9de35a7555bfb"
-  integrity sha512-gOV4bNeEFNLiM1LoIb5vYMdqZSy78oWKxLJFRVNVKCk9WWpD8IW6ydNVRE6v77KXIvhP8cM3kY/MQ7i0snCuPg==
+shadergradient@0.0.30:
+  version "0.0.30"
+  resolved "https://registry.yarnpkg.com/shadergradient/-/shadergradient-0.0.30.tgz#2de22b1628a1da14d4af220ff786b6f6ee5fe197"
+  integrity sha512-p9iqu4CbHcVuLlYN6SIq2FLflbA2VP+Ix64ZuCB26+i4YA9DaxBoCzXGO7zZBG6H5LuNMqI74J4T6yDJOpa7gA==
   dependencies:
     "@react-three/drei" "^7.2.1"
     "@react-three/fiber" "^7.0.6"
     "@react-three/postprocessing" "^2.0.5"
     classnames "^2.3.1"
     prop-types "^15.7.2"
+    query-string "^7.0.1"
     react "^17.0.2"
     react-dom "^17.0.2"
     react-slider "^1.3.1"
     three "^0.131.3"
+    zustand "^3.5.12"
 
 shallow-copy@0.0.1:
   version "0.0.1"
@@ -7453,7 +7455,7 @@ zustand@^3.2.0:
   resolved "https://registry.npmjs.org/zustand/-/zustand-3.5.2.tgz"
   integrity sha512-HUCQI9O77/D/zvoWPNv4dwLriiiY2xtEqnQ0TVY8uaPjmOHls04Okd0w3sWUE9Ex2LaYlSk11DbPPIOZ6shEWg==
 
-zustand@^3.5.1:
+zustand@^3.5.1, zustand@^3.5.12:
   version "3.5.12"
   resolved "https://registry.yarnpkg.com/zustand/-/zustand-3.5.12.tgz#407a8685eb286a32d7f560e74966993bbff1dae8"
   integrity sha512-Cv9fX/yM5HXYODkn3Q/HMmMofnmZw3yqM73VT/3rQEvI/04Yl0OFNO24qMofhN82xTPWcCffkGPFCMq8r67Whg==
