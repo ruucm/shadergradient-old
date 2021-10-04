@@ -36,6 +36,10 @@ const DOM = () => {
   React.useEffect(() => {
     handleResize()
     window.addEventListener('resize', handleResize)
+    var body = document.getElementById('__next')
+    body.style.background = 'black'
+    var canvasElement = body.getElementsByTagName('canvas')
+    canvasElement[0].style.position = 'static'
   }, [])
 
   React.useEffect(() => {

@@ -133,7 +133,7 @@ export function Loading({ loadStatus }) {
         >
           and{' '}
         </motion.p>
-        {/* <motion.p
+        <motion.p
           className={styles.loadingTextMotion}
           initial={{ opacity: 0, y: 20, scale: 0.95 }}
           animate={{
@@ -183,7 +183,7 @@ export function Loading({ loadStatus }) {
           animate={{
             opacity: 1,
             y: 0,
-            scale: 1.1,
+            scale: 1,
           }}
           transition={{
             duration: 0.7,
@@ -265,32 +265,10 @@ export function Loading({ loadStatus }) {
           }}
         >
           g
-        </motion.p> */}
-        <div
-          style={{
-            width: 'fit-content',
-            height: 'fit-content',
-            display: 'inline-block',
-            marginRight: '0.3em',
-          }}
-        >
-          <MovingLetters delay={4} letter='m' style={null} />
-          <MovingLetters delay={4.1} letter='o' style={null} />
-          <MovingLetters delay={4.2} letter='v' style={null} />
-          <MovingLetters delay={4.3} letter='i' style={null} />
-          <MovingLetters delay={4.4} letter='n' style={null} />
-          <MovingLetters delay={4.5} letter='g' />
-        </div>
+        </motion.p>
         <motion.p
           className={styles.loadingText}
           initial={{ opacity: 0, y: 20 }}
-          style={
-            {
-              // background: '-webkit-linear-gradient(#eee, #333)',
-              // backgroundClip: 'text',
-              // textFillColor: 'transparent',
-            }
-          }
           animate={{
             opacity: 1,
             y: 0,
@@ -309,31 +287,3 @@ export function Loading({ loadStatus }) {
 }
 
 Loading.defaultProps = {}
-
-const MovingLetters = ({ letter, delay, style = null }) => {
-  return (
-    <motion.p
-      className={styles.loadingTextMotion}
-      initial={{ opacity: 0, y: 20, scale: 0.95 }}
-      style={style}
-      animate={{
-        opacity: 1,
-        y: 0,
-        scale: 1.1,
-      }}
-      transition={{
-        duration: 0.7,
-        delay: 4,
-        ease: 'easeInOut',
-        scale: {
-          repeatType: 'reverse',
-          repeat: Infinity,
-          delay: delay,
-          duration: 0.7,
-        },
-      }}
-    >
-      {letter}
-    </motion.p>
-  )
-}

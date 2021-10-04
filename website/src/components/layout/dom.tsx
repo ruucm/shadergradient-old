@@ -19,7 +19,7 @@ const Dom = ({ children }) => {
           left: 0,
           width: '100%',
           opacity: 0.5,
-          background: 'black',
+          background: '#fff',
           display: 'none',
         }}
       >
