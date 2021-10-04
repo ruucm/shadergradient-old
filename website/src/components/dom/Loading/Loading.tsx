@@ -133,141 +133,16 @@ export function Loading({ loadStatus }) {
         >
           and{' '}
         </motion.p>
+        <div className={styles.loadingText}>
+          <MovingLetters letter='m' letterDelay={4} />
+          <MovingLetters letter='o' letterDelay={4.1} />
+          <MovingLetters letter='v' letterDelay={4.2} />
+          <MovingLetters letter='i' letterDelay={4.3} />
+          <MovingLetters letter='n' letterDelay={4.4} />
+          <MovingLetters letter='g' letterDelay={4.5} />
+        </div>
         <motion.p
-          className={styles.loadingTextMotion}
-          initial={{ opacity: 0, y: 20, scale: 0.95 }}
-          animate={{
-            opacity: 1,
-            y: 0,
-            scale: 1.1,
-          }}
-          transition={{
-            duration: 0.7,
-            delay: 4,
-            ease: 'easeInOut',
-            scale: {
-              repeatType: 'reverse',
-              repeat: Infinity,
-              delay: 4,
-              duration: 0.7,
-            },
-          }}
-        >
-          m
-        </motion.p>
-        <motion.p
-          className={styles.loadingTextMotion}
-          initial={{ opacity: 0, y: 20, scale: 0.95 }}
-          animate={{
-            opacity: 1,
-            y: 0,
-            scale: 1.1,
-          }}
-          transition={{
-            duration: 0.7,
-            delay: 4,
-            ease: 'easeInOut',
-            scale: {
-              repeatType: 'reverse',
-              repeat: Infinity,
-              delay: 4.1,
-              duration: 0.7,
-            },
-          }}
-        >
-          o
-        </motion.p>
-        <motion.p
-          className={styles.loadingTextMotion}
-          initial={{ opacity: 0, y: 20, scale: 0.95 }}
-          animate={{
-            opacity: 1,
-            y: 0,
-            scale: 1,
-          }}
-          transition={{
-            duration: 0.7,
-            delay: 4,
-            ease: 'easeInOut',
-            scale: {
-              repeatType: 'reverse',
-              repeat: Infinity,
-              delay: 4.2,
-              duration: 0.7,
-            },
-          }}
-        >
-          v
-        </motion.p>
-        <motion.p
-          className={styles.loadingTextMotion}
-          initial={{ opacity: 0, y: 20, scale: 0.95 }}
-          animate={{
-            opacity: 1,
-            y: 0,
-            scale: 1.1,
-          }}
-          transition={{
-            duration: 0.7,
-            delay: 4,
-            ease: 'easeInOut',
-            scale: {
-              repeatType: 'reverse',
-              repeat: Infinity,
-              delay: 4.3,
-              duration: 0.7,
-            },
-          }}
-        >
-          i
-        </motion.p>
-        <motion.p
-          className={styles.loadingTextMotion}
-          initial={{ opacity: 0, y: 20, scale: 0.95 }}
-          animate={{
-            opacity: 1,
-            y: 0,
-            scale: 1.1,
-          }}
-          transition={{
-            duration: 0.7,
-            delay: 4,
-            ease: 'easeInOut',
-            scale: {
-              repeatType: 'reverse',
-              repeat: Infinity,
-              delay: 4.4,
-              duration: 0.7,
-            },
-          }}
-        >
-          n
-        </motion.p>
-        <motion.p
-          className={styles.loadingTextMotion}
-          style={{ marginRight: '0.3em' }}
-          initial={{ opacity: 0, y: 20, scale: 0.95 }}
-          animate={{
-            opacity: 1,
-            y: 0,
-            scale: 1.1,
-          }}
-          transition={{
-            duration: 0.7,
-            delay: 4,
-            ease: 'easeInOut',
-            scale: {
-              repeatType: 'reverse',
-              repeat: Infinity,
-              delay: 4.5,
-              duration: 0.7,
-            },
-          }}
-        >
-          g
-        </motion.p>
-        <motion.p
-          className={styles.loadingText}
+          className={styles.loadingText && styles.gradientText}
           initial={{ opacity: 0, y: 20 }}
           animate={{
             opacity: 1,
@@ -287,3 +162,30 @@ export function Loading({ loadStatus }) {
 }
 
 Loading.defaultProps = {}
+
+const MovingLetters = ({ letterDelay, letter }) => {
+  return (
+    <motion.p
+      className={styles.loadingTextMotion}
+      initial={{ opacity: 0, y: 20, scale: 0.95 }}
+      animate={{
+        opacity: 1,
+        y: 0,
+        scale: 1.1,
+      }}
+      transition={{
+        duration: 0.7,
+        delay: 4,
+        ease: 'easeInOut',
+        scale: {
+          repeatType: 'reverse',
+          repeat: Infinity,
+          delay: letterDelay,
+          duration: 0.7,
+        },
+      }}
+    >
+      {letter}
+    </motion.p>
+  )
+}

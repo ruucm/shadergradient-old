@@ -31,12 +31,6 @@ const DOM = () => {
     window.addEventListener('resize', handleResize)
 
     setMode('about')
-    var body = document.getElementById('__next')
-    body.style.background = 'black'
-    var canvasElement = body.getElementsByTagName('canvas')
-
-    canvasElement[0].style.position = 'absolute'
-    canvasElement[0].style.top = '-27vh'
   }, [])
 
   return (
@@ -65,13 +59,6 @@ const DOM = () => {
                 color: 'white',
                 lineHeight: '1.7em',
                 fontWeight: 500,
-              }}
-              onClick={() => {
-                if (mode !== 'about') {
-                  setMode('about')
-                } else {
-                  setMode('full')
-                }
               }}
             >
               <Link href='/'>← Main</Link>
@@ -137,7 +124,8 @@ const Page = () => {
         r3f
         forceZoom={0.5}
         forceCamPos={{ x: 0, y: 2, z: 8 }}
-        forceRot={[(Math.PI / 3) * 2, 0, (Math.PI / 7) * 12]}
+        forceRot={[40, 0, 150]}
+        forcePos={[0, 3, 0]}
       />
     </>
   )

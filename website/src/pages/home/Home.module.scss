@@ -56,6 +56,9 @@
   }
 }
 
+.menuItems {
+  padding: 20px;
+}
 .slider {
   position: absolute;
   bottom: 8vh;
@@ -68,7 +71,6 @@
   display: flex;
   justify-content: flex-start;
   gap: 35px;
-  // grid-template-columns: 100px 100px;
   margin-bottom: 10px;
   font-weight: 500;
 }
@@ -92,7 +94,6 @@
   color: rgba(255, 255, 255, 0.6);
   text-align: right;
   z-index: 5;
-  // display: none;
 }
 
 .footer a:hover {
@@ -232,6 +233,12 @@
 .loadingTextMotion {
   display: inline-block;
   line-height: 0.8em;
+}
+.gradientText {
+  display: inline-block;
+  background: linear-gradient(to right, #fbcac9, #8ca6ce);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 @media (max-width: 640px) {

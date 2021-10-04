@@ -4,12 +4,8 @@ import { OrbitControls, Preload, useContextBridge } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 import { useEffect, useRef } from 'react'
 import { FormContext } from '../../helpers/form-provider'
-<<<<<<< HEAD
 import img from 'public/img/noise-test.png'
 import { useQueryState } from 'shadergradient'
-=======
-import { useContextBridge } from '@react-three/drei'
->>>>>>> parent of fd86525 (fix text anim, background)
 
 const LControl = () => {
   const dom = useStore((state) => state.dom)
@@ -48,11 +44,7 @@ const LCanvas = ({ children }) => {
       camera={{
         fov: 45,
       }}
-<<<<<<< HEAD
       dpr={pixelDensity} //device pixel ratio - 1 default and fast, 2 detailed and slow
-=======
-      dpr={2} //device pixel ratio - 1 default and fast, 2 detailed and slow
->>>>>>> parent of fd86525 (fix text anim, background)
       linear={true} //sRGBEncoding
       flat={true} //ACESFilmicToneMapping
       onCreated={(state) => {

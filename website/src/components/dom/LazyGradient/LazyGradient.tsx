@@ -13,6 +13,7 @@ export function LazyGradient({
   forceZoom = null,
   forceCamPos = null,
   forceRot = null,
+  forcePos = null,
 }) {
   const current = useUIStore((state: any) => state.current)
 
@@ -79,7 +80,9 @@ export function LazyGradient({
                   (rotationZ / 360) * Math.PI,
                 ]
           }
-          position={[positionX, positionY, positionZ]}
+          position={
+            forcePos !== null ? forcePos : [positionX, positionY, positionZ]
+          }
           cameraPosition={
             forceCamPos !== null
               ? forceCamPos

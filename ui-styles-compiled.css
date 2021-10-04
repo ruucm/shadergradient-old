@@ -604,7 +604,6 @@ html {
   font-size: 14px;
 }
 
-<<<<<<< HEAD
 html,
 body,
 #__next {
@@ -616,18 +615,6 @@ body,
   font-family: 'Inter', sans-serif;
   background: black;
 }
-=======
-  html,
-  body,
-  #__next {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    font-family: "Inter", sans-serif;
-  }
->>>>>>> parent of fd86525 (fix text anim, background)
 .visible {
   visibility: visible;
 }
@@ -684,7 +671,7 @@ body,
   display: flex;
 }
 .inline-flex {
-	display: inline-flex;
+  display: inline-flex;
 }
 .grid {
   display: grid;
@@ -758,7 +745,7 @@ body,
   width: 100vw;
 }
 .w-control-types {
-	width: 168px;
+  width: 168px;
 }
 .w-\[17px\] {
   width: 17px;
@@ -864,17 +851,14 @@ body,
 .p-3\.5 {
   padding: 20px;
 }
-<<<<<<< HEAD
 .p-3 {
   padding: 16px;
 }
-=======
->>>>>>> parent of fd86525 (fix text anim, background)
 .p-4 {
   padding: 26px;
 }
 .p-3 {
-	padding: 16px;
+  padding: 16px;
 }
 .text-center {
   text-align: center;
@@ -892,7 +876,7 @@ body,
   font-weight: 600;
 }
 .capitalize {
-	text-transform: capitalize;
+  text-transform: capitalize;
 }
 .text-primary {
   --tw-text-opacity: 1;
@@ -972,7 +956,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 
 /**
  * Tokens
