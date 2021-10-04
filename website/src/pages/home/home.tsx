@@ -4,12 +4,12 @@ import { Loading } from '@/components/dom/Loading'
 import { MenuWrapper } from '@/components/dom/MenuWrapper'
 import { PreviewSwitch } from '@/components/dom/PreviewSwitch'
 import { PreviewWrapper } from '@/components/dom/PreviewWrapper'
+import { MotionLogo } from '@/components/dom/MotionLogo'
+
 import { useUIStore } from '@/helpers/store'
-import * as animationData from '@/media/motionlogo-lottie.json'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import React, { useEffect, useRef, useState } from 'react'
-import Lottie from 'react-lottie'
 import {
   SnapItem,
   SnapList,
@@ -23,14 +23,7 @@ import { MyItem } from './my-item'
 
 const DOM = () => {
   // for logo animation
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: animationData,
-    rendererSettings: {
-      preserveAspectRatio: 'xMidYMid slice',
-    },
-  }
+
   const mode = useUIStore((state: any) => state.mode)
   const setMode = useUIStore((state: any) => state.setMode)
   const current = useUIStore((state: any) => state.current)
@@ -102,9 +95,7 @@ const DOM = () => {
         }}
       >
         <div className={styles.leftWrapper}>
-          <motion.div className={styles.logoWrapper}>
-            <Lottie options={defaultOptions} height={80} width={80} />
-          </motion.div>
+          <MotionLogo color={false} />
           <motion.div
             className={styles.title}
             style={{ display: mode !== 'full' ? 'none' : 'block' }}

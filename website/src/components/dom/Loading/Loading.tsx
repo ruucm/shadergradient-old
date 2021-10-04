@@ -1,20 +1,11 @@
 import * as React from 'react'
 import { motion, useAnimation } from 'framer-motion'
 import styles from '../../../pages/home/Home.module.scss'
-import Lottie from 'react-lottie'
 import * as animationData_colored from '../../../media/colored-motionlogo.json'
+import { MotionLogo } from '@/components/dom/MotionLogo'
 
 export function Loading({ loadStatus }) {
   const loadingAnim = useAnimation()
-
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: animationData_colored,
-    rendererSettings: {
-      preserveAspectRatio: 'xMidYMid slice',
-    },
-  }
 
   const loadingSequence = async () => {
     if (loadStatus === 'firstLoad') {
@@ -39,9 +30,8 @@ export function Loading({ loadStatus }) {
       initial={{ opacity: 1 }}
       style={{ display: loadStatus === 'firstLoadDone' ? 'none' : 'flex' }}
     >
-      <motion.div className={styles.logoWrapper}>
-        <Lottie options={defaultOptions} height={80} width={80} />
-      </motion.div>
+      <MotionLogo color={true} />
+
       <motion.div className={styles.loadingTextWrapper}>
         <motion.p
           className={styles.loadingText}
