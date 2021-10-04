@@ -12,6 +12,7 @@ export function LazyGradient({
   forceZoom = null,
   forceCamPos = null,
   forceRot = null,
+  forcePos = null,
 }) {
   const current = useUIStore((state: any) => state.current)
 

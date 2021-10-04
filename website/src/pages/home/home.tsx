@@ -23,6 +23,8 @@ import { Footer } from '@/components/dom/Footer'
 import { Loading } from '@/components/dom/Loading'
 import { LazyGradient } from '@/components/dom/LazyGradient'
 
+import noiseTest from '../../../public/img/noise-test.png'
+
 const DOM = () => {
   // for logo animation
   const defaultOptions = {
@@ -60,10 +62,7 @@ const DOM = () => {
   useEffect(() => {
     handleResize()
     window.addEventListener('resize', handleResize)
-    var body = document.getElementById('__next')
-    body.style.background = 'black'
-    var canvasElement = body.getElementsByTagName('canvas')
-    canvasElement[0].style.position = 'static'
+    setMode('full')
   }, [])
 
   return (
@@ -83,13 +82,6 @@ const DOM = () => {
                 color: '#ff430a',
                 lineHeight: '1.7em',
                 fontWeight: 500,
-              }}
-              onClick={() => {
-                if (mode !== 'about') {
-                  setMode('about')
-                } else {
-                  setMode('full')
-                }
               }}
             >
               <Link href='/about'>About →</Link>
@@ -299,7 +291,9 @@ const Page = () => {
   return (
     <>
       <DOM />
+
       <Loading loadStatus={firstLoad} />
+
       <LazyGradient r3f loaded={firstLoad !== 'never'} />
     </>
   )

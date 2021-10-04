@@ -31,12 +31,6 @@ const DOM = () => {
     window.addEventListener('resize', handleResize)
 
     setMode('about')
-    var body = document.getElementById('__next')
-    body.style.background = 'black'
-    var canvasElement = body.getElementsByTagName('canvas')
-
-    canvasElement[0].style.position = 'absolute'
-    canvasElement[0].style.top = '-27vh'
   }, [])
 
   return (
@@ -65,13 +59,6 @@ const DOM = () => {
                 color: 'white',
                 lineHeight: '1.7em',
                 fontWeight: 500,
-              }}
-              onClick={() => {
-                if (mode !== 'about') {
-                  setMode('about')
-                } else {
-                  setMode('full')
-                }
               }}
             >
               <Link href='/'>← Main</Link>

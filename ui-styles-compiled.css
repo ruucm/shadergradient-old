@@ -613,6 +613,7 @@ video {
     padding: 0;
     overflow: hidden;
     font-family: "Inter", sans-serif;
+    background: black;
   }
 .visible {
 	visibility: visible;
@@ -664,9 +665,6 @@ video {
 }
 .flex {
 	display: flex;
-}
-.inline-flex {
-	display: inline-flex;
 }
 .grid {
 	display: grid;
@@ -739,9 +737,6 @@ video {
 }
 .w-screen {
 	width: 100vw;
-}
-.w-control-types {
-	width: 168px;
 }
 .w-\[17px\] {
 	width: 17px;
@@ -845,11 +840,11 @@ video {
 .bg-opacity-80 {
 	--tw-bg-opacity: 0.8;
 }
-.p-4 {
-	padding: 26px;
-}
 .p-3 {
 	padding: 16px;
+}
+.p-4 {
+	padding: 26px;
 }
 .text-center {
 	text-align: center;
@@ -868,9 +863,6 @@ video {
 }
 .font-semibold {
 	font-weight: 600;
-}
-.capitalize {
-	text-transform: capitalize;
 }
 .text-primary {
 	--tw-text-opacity: 1;
@@ -940,7 +932,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 
 /**
  * Tokens
