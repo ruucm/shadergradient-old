@@ -1,13 +1,13 @@
-import * as React from "react"
-import * as ReactDOM from "react-dom"
-import { useForm } from "react-hook-form"
-import { UI } from "shadergradient"
-import "../../ui-styles-compiled.css"
-import { GradientScene } from "./components/GradientScene"
-import { Controls } from "./components/Controls"
-import { defaultProperties } from "./consts"
-import "./global.css"
-import { FormContext } from "./helpers/form-provider"
+import * as React from 'react'
+import * as ReactDOM from 'react-dom'
+import { useForm } from 'react-hook-form'
+import { UI } from 'shadergradient'
+import '../../ui-styles-compiled.css'
+import { GradientScene } from './components/GradientScene'
+import { Controls } from './components/Controls'
+import { defaultProperties } from './consts'
+import './global.css'
+import { FormContext } from './helpers/form-provider'
 
 function App() {
   const formProps = useForm({
@@ -18,9 +18,9 @@ function App() {
     <FormContext.Provider value={formProps}>
       <GradientScene />
       <Controls />
-      <div className="flex gap-0.5 p-3 absolute w-full bottom-0">
+      <div className='flex gap-0.5 p-3 absolute w-full bottom-0'>
         <UI.Button>Extract GIF</UI.Button>
-        <UI.Button kind="secondary" onClick={insertCanvasAsImage}>
+        <UI.Button kind='secondary' onClick={insertCanvasAsImage}>
           Snapshot
         </UI.Button>
       </div>
@@ -28,21 +28,21 @@ function App() {
   )
 }
 
-ReactDOM.render(<App />, document.getElementById("react-page"))
+ReactDOM.render(<App />, document.getElementById('react-page'))
 
 async function insertCanvasAsImage() {
   const bytes = await captureCanvas()
-  parent.postMessage({ pluginMessage: { type: "CANVAS_TO_IMAGE", bytes } }, "*")
+  parent.postMessage({ pluginMessage: { type: 'CANVAS_TO_IMAGE', bytes } }, '*')
 }
 
 async function captureCanvas() {
   return new Promise((resolve, reject) => {
     const image = new Image()
 
-    const r3fCanvas = document.getElementById("r3f-canvas")
+    const r3fCanvas = document.getElementById('r3f-canvas')
       .children[0] as HTMLCanvasElement
 
-    const dataURL = r3fCanvas.toDataURL("image/png", 1.0) // full quality
+    const dataURL = r3fCanvas.toDataURL('image/png', 1.0) // full quality
     image.src = dataURL
 
     image.onload = async () => {
@@ -56,8 +56,8 @@ async function captureCanvas() {
 async function imageToUint8Array(image) {
   return new Promise((resolve, reject) => {
     // create a canvas for converto image to uint8array
-    const canvas = document.createElement("canvas")
-    const context = canvas.getContext("2d")
+    const canvas = document.createElement('canvas')
+    const context = canvas.getContext('2d')
 
     context.canvas.width = image.width
     context.canvas.height = image.height

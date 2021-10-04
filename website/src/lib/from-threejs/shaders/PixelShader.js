@@ -3,16 +3,13 @@
  */
 
 const PixelShader = {
+  uniforms: {
+    tDiffuse: { value: null },
+    resolution: { value: null },
+    pixelSize: { value: 1 },
+  },
 
-	uniforms: {
-
-		'tDiffuse': { value: null },
-		'resolution': { value: null },
-		'pixelSize': { value: 1 },
-
-	},
-
-	vertexShader: /* glsl */`
+  vertexShader: /* glsl */ `
 
 		varying highp vec2 vUv;
 
@@ -23,7 +20,7 @@ const PixelShader = {
 
 		}`,
 
-	fragmentShader: /* glsl */`
+  fragmentShader: /* glsl */ `
 
 		uniform sampler2D tDiffuse;
 		uniform float pixelSize;
@@ -37,8 +34,7 @@ const PixelShader = {
 			vec2 coord = dxy * floor( vUv / dxy );
 			gl_FragColor = texture2D(tDiffuse, coord);
 
-		}`
+		}`,
+}
 
-};
-
-export { PixelShader };
+export { PixelShader }

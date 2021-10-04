@@ -3,15 +3,12 @@
  */
 
 var CopyShader = {
+  uniforms: {
+    tDiffuse: { value: null },
+    opacity: { value: 1.0 },
+  },
 
-	uniforms: {
-
-		'tDiffuse': { value: null },
-		'opacity': { value: 1.0 }
-
-	},
-
-	vertexShader: /* glsl */`
+  vertexShader: /* glsl */ `
 
 		varying vec2 vUv;
 
@@ -22,7 +19,7 @@ var CopyShader = {
 
 		}`,
 
-	fragmentShader: /* glsl */`
+  fragmentShader: /* glsl */ `
 
 		uniform float opacity;
 
@@ -35,8 +32,7 @@ var CopyShader = {
 			vec4 texel = texture2D( tDiffuse, vUv );
 			gl_FragColor = opacity * texel;
 
-		}`
+		}`,
+}
 
-};
-
-export { CopyShader };
+export { CopyShader }

@@ -5,7 +5,6 @@
   "scripts": {
     "lint": "yarn prettier && yarn eslint",
     "eslint": "next lint --fix --dir src",
-    "prettier": "prettier --list-different \"./src/**/*.{js,jsx,md}\"",
     "dev": "next dev",
     "build": "next build",
     "export": "EXPORT=true next build && EXPORT=true next export",

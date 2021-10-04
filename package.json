@@ -8,7 +8,8 @@
     "start": "concurrently --kill-others \"npm run package:start\" \"npm run ui:start\"",
     "package:start": "rollup -c -w",
     "ui:start": "TAILWIND_MODE=watch postcss ui-styles.css -o ui-styles-compiled.css --watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prettier": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,md}\" \"./website/**/*.{js,jsx,ts,tsx,md}\" \"./figma-plugin/**/*.{js,jsx,ts,tsx,md}\""
   },
   "keywords": [],
   "author": "",

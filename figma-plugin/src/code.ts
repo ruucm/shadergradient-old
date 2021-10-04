@@ -4,28 +4,28 @@ figma.showUI(__html__, { width: 453, height: 793 })
 
 figma.ui.onmessage = (msg) => {
   const { type } = msg
-  console.log("msg type", type)
-  if (type === "CANVAS_TO_IMAGE") {
+  console.log('msg type', type)
+  if (type === 'CANVAS_TO_IMAGE') {
     Promise.all(
       figma.currentPage.selection.map((selected) =>
         replaceToNewImage(selected, msg.bytes)
       )
     ).then(() => {
-      console.log("complete")
+      console.log('complete')
     })
   }
 }
 
 async function invertPaint(paint, bytes) {
-  if (paint.type === "IMAGE") {
+  if (paint.type === 'IMAGE') {
     const newPaint = JSON.parse(JSON.stringify(paint))
     newPaint.imageHash = figma.createImage(bytes).hash
     return newPaint
   } else {
     // overwrite other types of paint (eg. SOLID)
     const newPaint: ImagePaint = {
-      type: "IMAGE",
-      scaleMode: "FIT",
+      type: 'IMAGE',
+      scaleMode: 'FIT',
       imageHash: figma.createImage(bytes).hash,
     }
     return newPaint

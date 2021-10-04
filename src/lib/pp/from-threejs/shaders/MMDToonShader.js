@@ -13,7 +13,7 @@
  *  * Add mmd_toon_matcap_fragment.
  */
 
-import { UniformsUtils, ShaderLib } from '../../../build/three.module.js';
+import { UniformsUtils, ShaderLib } from '../../../build/three.module.js'
 
 const lights_mmd_toon_pars_fragment = `
 varying vec3 vViewPosition;
@@ -53,7 +53,7 @@ void RE_IndirectDiffuse_BlinnPhong( const in vec3 irradiance, const in Geometric
 #define RE_IndirectDiffuse		RE_IndirectDiffuse_BlinnPhong
 
 #define Material_LightProbeLOD( material )	(0)
-`;
+`
 
 const mmd_toon_matcap_fragment = `
 #ifdef USE_MATCAP
@@ -76,55 +76,52 @@ const mmd_toon_matcap_fragment = `
 	#endif
 
 #endif
-`;
+`
 
 const MMDToonShader = {
+  defines: {
+    TOON: true,
+    MATCAP: true,
+    MATCAP_BLENDING_ADD: true,
+  },
 
-	defines: {
-		TOON: true,
-		MATCAP: true,
-		MATCAP_BLENDING_ADD: true,
-	},
+  uniforms: UniformsUtils.merge([
+    ShaderLib.toon.uniforms,
+    ShaderLib.phong.uniforms,
+    ShaderLib.matcap.uniforms,
+  ]),
 
-	uniforms: UniformsUtils.merge( [
-		ShaderLib.toon.uniforms,
-		ShaderLib.phong.uniforms,
-		ShaderLib.matcap.uniforms,
-	] ),
+  vertexShader: ShaderLib.phong.vertexShader,
 
-	vertexShader: ShaderLib.phong.vertexShader,
-
-	fragmentShader:
-		ShaderLib.phong.fragmentShader
-			.replace(
-				'#include <common>',
-				`
+  fragmentShader: ShaderLib.phong.fragmentShader
+    .replace(
+      '#include <common>',
+      `
 					#ifdef USE_MATCAP
 						uniform sampler2D matcap;
 					#endif
 
 					#include <common>
 				`
-			)
-			.replace(
-				'#include <envmap_common_pars_fragment>',
-				`
+    )
+    .replace(
+      '#include <envmap_common_pars_fragment>',
+      `
 					#include <gradientmap_pars_fragment>
 					#include <envmap_common_pars_fragment>
 				`
-			)
-			.replace(
-				'#include <lights_phong_pars_fragment>',
-				lights_mmd_toon_pars_fragment
-			)
-			.replace(
-				'#include <envmap_fragment>',
-				`
+    )
+    .replace(
+      '#include <lights_phong_pars_fragment>',
+      lights_mmd_toon_pars_fragment
+    )
+    .replace(
+      '#include <envmap_fragment>',
+      `
 					#include <envmap_fragment>
 					${mmd_toon_matcap_fragment}
 				`
-			),
+    ),
+}
 
-};
-
-export { MMDToonShader };
+export { MMDToonShader }
