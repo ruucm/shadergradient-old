@@ -684,6 +684,11 @@ video {
 .h-full {
 	height: 100%;
 }
+.h-\[fit-content\] {
+	height: -webkit-fit-content;
+	height: -moz-fit-content;
+	height: fit-content;
+}
 .h-slider {
 	height: 2px;
 }
@@ -693,22 +698,14 @@ video {
 .h-thumb {
 	height: 16px;
 }
+.h-\[66px\] {
+	height: 66px;
+}
 .h-screen {
 	height: 100vh;
 }
 .h-\[31px\] {
 	height: 31px;
-}
-.h-\[66px\] {
-	height: 66px;
-}
-.h-\[340px\] {
-	height: 340px;
-}
-.h-\[fit-content\] {
-	height: -webkit-fit-content;
-	height: -moz-fit-content;
-	height: fit-content;
 }
 .w-2 {
 	width: 12px;
@@ -728,6 +725,9 @@ video {
 .w-control-number-input {
 	width: 53px;
 }
+.w-screen {
+	width: 100vw;
+}
 .w-4 {
 	width: 26px;
 }
@@ -737,22 +737,11 @@ video {
 .w-thumb {
 	width: 16px;
 }
-.w-screen {
-	width: 100vw;
-}
 .w-\[17px\] {
 	width: 17px;
 }
 .w-\[47px\] {
 	width: 47px;
-}
-.w-\[470px\] {
-	width: 470px;
-}
-.w-\[fit-content\] {
-	width: -webkit-fit-content;
-	width: -moz-fit-content;
-	width: fit-content;
 }
 .flex-shrink-0 {
 	flex-shrink: 0;
@@ -809,9 +798,6 @@ video {
 .overflow-hidden {
 	overflow: hidden;
 }
-.overflow-y-scroll {
-	overflow-y: scroll;
-}
 .truncate {
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -836,16 +822,12 @@ video {
 	--tw-bg-opacity: 1;
 	background-color: rgba(255, 67, 10, var(--tw-bg-opacity));
 }
+.bg-controls-panel-mobile {
+	background-color: rgba(245, 245, 245, 0.2);
+}
 .bg-white {
 	--tw-bg-opacity: 1;
 	background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
-}
-.bg-controls-panel {
-	--tw-bg-opacity: 1;
-	background-color: rgba(246, 248, 248, var(--tw-bg-opacity));
-}
-.bg-controls-panel-mobile {
-	background-color: rgba(245, 245, 245, 0.2);
 }
 .bg-opacity-10 {
 	--tw-bg-opacity: 0.1;
@@ -861,9 +843,6 @@ video {
 }
 .p-3 {
 	padding: 16px;
-}
-.p-4 {
-	padding: 26px;
 }
 .text-center {
 	text-align: center;
@@ -985,12 +964,6 @@ input[type="number"] {
 		display: grid;
 	}
 
-	.md\:h-\[fit-content\] {
-		height: -webkit-fit-content;
-		height: -moz-fit-content;
-		height: fit-content;
-	}
-
 	.md\:h-full {
 		height: 100%;
 	}
@@ -1020,13 +993,5 @@ input[type="number"] {
 
 	.md\:p-4 {
 		padding: 26px;
-	}
-
-	.md\:p-3\.5 {
-		padding: 20px;
-	}
-
-	.md\:p-3 {
-		padding: 16px;
 	}
 }

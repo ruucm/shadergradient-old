@@ -9,7 +9,7 @@ import { useQueryState } from 'shadergradient'
 import styles from '../home/Home.module.scss'
 import { MyItem } from '../home/my-item'
 import PRESETS from '../presets.json'
-import { Controls } from './comps/controls'
+import { Controls } from './comps/Controls'
 
 const DOM = () => {
   const mode = useUIStore((state: any) => state.mode)
