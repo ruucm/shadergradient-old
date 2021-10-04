@@ -4,7 +4,7 @@ import { useOnClickOutside } from '@/hooks/use-onclick-outside'
 import { motion } from 'framer-motion'
 import React, { useRef } from 'react'
 import { UI } from 'shadergradient'
-import styles from '../../home/Home.module.scss'
+import styles from '../../../home/Home.module.scss'
 
 type Props = {
   // All other props
