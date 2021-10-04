@@ -1,12 +1,10 @@
 import { MenuWrapper } from '@/components/dom/MenuWrapper'
-import { PreviewSwitch } from '@/components/dom/PreviewSwitch'
 import { useUIStore } from '@/helpers/store'
 import { useOnClickOutside } from '@/hooks/use-onclick-outside'
 import { motion } from 'framer-motion'
 import React, { useRef } from 'react'
 import { UI } from 'shadergradient'
 import styles from '../../home/Home.module.scss'
-import cx from 'classnames'
 
 type Props = {
   // All other props
