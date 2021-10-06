@@ -1,4 +1,5 @@
 import { MenuWrapper } from '@/components/dom/MenuWrapper'
+import { PreviewSwitch } from '@/components/dom/PreviewSwitch'
 import { useUIStore } from '@/helpers/store'
 import { useOnClickOutside } from '@/hooks/use-onclick-outside'
 import { motion } from 'framer-motion'
@@ -23,7 +24,10 @@ export const Controls: React.FC<Props> = ({
   useOnClickOutside(ref, () => setActiveTab('none'))
 
   const children = (
-    <UI.PropertyControls activeTab={activeTab} setActiveTab={setActiveTab} />
+    <>
+      <UI.PropertyControls activeTab={activeTab} setActiveTab={setActiveTab} />
+      <PreviewSwitch mode={mode} setMode={setMode} />
+    </>
   )
 
   return (

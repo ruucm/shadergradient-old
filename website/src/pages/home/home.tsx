@@ -279,6 +279,7 @@ const Page = () => {
     <>
       <DOM />
       <Loading loadStatus={firstLoad} />
+
       <LazyGradient r3f loaded={firstLoad !== 'never'} />
     </>
   )
