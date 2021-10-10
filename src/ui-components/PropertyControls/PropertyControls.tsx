@@ -15,9 +15,8 @@ export const PropertyControls: React.FC<Props> = ({
     <>
       <div
         className={
-          'flex w-screen justify-between h-[fit-content] p-3.5 md:w-[fit-content] md:grid md:grid-rows-2 md:cursor-pointer'
+          'flex w-screen justify-between h-[fit-content] p-3.5 md:w-[fit-content] md:grid md:grid-rows-2'
         }
-        onClick={() => setActiveTab('shape')}
       >
         <UI.ControlTypeTitle
           title='Shape'
