@@ -612,7 +612,8 @@ video {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    font-family: "Inter", sans-serif;
+    font-family: 'Inter', sans-serif;
+    background: black;
   }
 .visible {
 	visibility: visible;
@@ -919,7 +920,7 @@ video {
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 	transition-duration: 150ms;
 }
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap');
 
 html,
 body {
@@ -947,7 +948,7 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type="number"] {
+input[type='number'] {
   -moz-appearance: textfield;
 }
 

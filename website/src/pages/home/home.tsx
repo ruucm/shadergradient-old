@@ -193,7 +193,7 @@ const DOM = () => {
                         onClick={() => {
                           goToSnapItem(index)
                           setCurrent(index)
-                          console.log(index, current)
+                          // console.log(index, current)
                         }}
                         visible={current === index}
                         color={
@@ -277,7 +277,6 @@ const Page = () => {
     <>
       <DOM />
       <Loading loadStatus={firstLoad} />
-
       <LazyGradient r3f loaded={firstLoad !== 'never'} />
     </>
   )

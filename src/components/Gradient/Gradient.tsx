@@ -74,7 +74,24 @@ export const Gradient: React.FC<GradientPropsT> = ({
   if (brightness) controlledLights = <ambientLight intensity={brightness} />
 
   return (
-    <Suspense fallback={'Loading...'}>
+    <Suspense
+      fallback={
+        <div
+          style={{
+            background: 'red',
+            color: 'white',
+            fontSize: 60,
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100vw',
+            zIndex: 100,
+          }}
+        >
+          loading Suspense test
+        </div>
+      }
+    >
       {lightType === 'env' ? controlledEnvironment : controlledLights}
       <GradientMesh
         key={colors.toString()}
