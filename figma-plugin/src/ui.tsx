@@ -1,21 +1,14 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-import { useForm } from 'react-hook-form'
 import { UI } from 'shadergradient'
 import '../../ui-styles-compiled.css'
 import { GradientScene } from './components/GradientScene'
 import { Controls } from './components/Controls'
-import { defaultProperties } from './consts'
 import './global.css'
-import { FormContext } from './helpers/form-provider'
 
 function App() {
-  const formProps = useForm({
-    defaultValues: defaultProperties,
-  })
-
   return (
-    <FormContext.Provider value={formProps}>
+    <>
       <GradientScene />
       <Controls />
       <div className='flex gap-0.5 p-3 absolute w-full bottom-0'>
@@ -24,7 +17,7 @@ function App() {
           Snapshot
         </UI.Button>
       </div>
-    </FormContext.Provider>
+    </>
   )
 }
 
