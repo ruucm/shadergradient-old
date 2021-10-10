@@ -4,8 +4,8 @@ export const links = [
     link: 'https://www.figma.com/community/plugin/958202093377483021/Mesh-Gradient',
   },
   {
-    title: 'Github  →',
-    link: 'https://github.com/ruucm/shadergradient',
+    title: 'React  →',
+    link: 'https://codesandbox.io',
   },
   {
     title: 'Framer  →',
