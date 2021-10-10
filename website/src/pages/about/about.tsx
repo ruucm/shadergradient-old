@@ -11,6 +11,7 @@ import { MenuWrapper } from '@/components/dom/MenuWrapper'
 import { MenuItem } from '../home/menu-item'
 import { LazyGradient } from '@/components/dom/LazyGradient'
 import { MotionLogo } from '@/components/dom/MotionLogo'
+import { links } from '@/consts'
 
 const DOM = () => {
   const mode = useUIStore((state: any) => state.mode)
@@ -65,12 +66,9 @@ const DOM = () => {
             >
               <Link href='/'>← Main</Link>
             </motion.div>
-            <MenuItem title='Figma →' link='' />
-            <MenuItem
-              title='Git →'
-              link='https://www.npmjs.com/package/shadergradient'
-            />
-            <MenuItem title='Framer →' link='' />
+            {links.map((item, id) => (
+              <MenuItem key={id} title={item.title} link={item.link} />
+            ))}
             <div style={{ opacity: 0.2 }}>
               <PreviewSwitch mode={mode} />
             </div>

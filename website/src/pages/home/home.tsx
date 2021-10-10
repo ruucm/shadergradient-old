@@ -20,6 +20,7 @@ import PRESETS from '../presets.json'
 import styles from './Home.module.scss'
 import { MenuItem } from './menu-item'
 import { MyItem } from './my-item'
+import { links } from '@/consts'
 
 const DOM = () => {
   // for logo animation
@@ -75,12 +76,9 @@ const DOM = () => {
             >
               <Link href='/about'>About →</Link>
             </motion.div>
-            <MenuItem title='Figma →' link='' />
-            <MenuItem
-              title='Git →'
-              link='https://github.com/ruucm/shadergradient'
-            />
-            <MenuItem title='Framer →' link='' />
+            {links.map((item, id) => (
+              <MenuItem key={id} title={item.title} link={item.link} />
+            ))}
             <PreviewSwitch mode={mode} setMode={setMode} />
           </div>
         </MenuWrapper>
