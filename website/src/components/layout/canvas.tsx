@@ -46,8 +46,8 @@ const LCanvas = ({ children }) => {
     noise.style.zIndex = '4'
     noise.style.top = '0'
     noise.style.left = '0'
-    noise.style.mixBlendMode = 'overlay'
-    noise.innerHTML = 'Hello'
+    // noise.style.mixBlendMode = 'overlay'
+    // noise.innerHTML = 'Hello'
 
     document.getElementById('gradientCanvas').appendChild(noise)
   }, [])
