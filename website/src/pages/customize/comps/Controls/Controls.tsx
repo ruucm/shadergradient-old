@@ -5,7 +5,7 @@ import { useOnClickOutside } from '@/hooks/use-onclick-outside'
 import { motion } from 'framer-motion'
 import React, { useRef } from 'react'
 import { UI } from 'shadergradient'
-import styles from '../../../home/Home.module.scss'
+import styles from './Controls.module.scss'
 
 type Props = {
   // All other props
@@ -31,7 +31,11 @@ export const Controls: React.FC<Props> = ({
   )
 
   return (
-    <div ref={ref}>
+    <div
+      ref={ref}
+      onClick={() => setActiveTab('shape')}
+      className={styles.wrap}
+    >
       {isMobile === true ? (
         <div className={styles.controlMobile}>
           <motion.div
