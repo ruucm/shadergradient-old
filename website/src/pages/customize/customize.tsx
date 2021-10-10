@@ -87,7 +87,7 @@ const DOM = () => {
                   style={{ display: current === index ? 'block' : 'none' }}
                 >
                   <MyItem
-                    color={PRESETS[current].color}
+                    color={mode === 'full' ? PRESETS[current].color : '#FF430A'}
                     onClick={() => {}}
                     visible={current === index}
                     isMobile={isMobile}

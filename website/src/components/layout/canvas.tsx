@@ -34,23 +34,23 @@ const LCanvas = ({ children }) => {
   // performance
   const [pixelDensity] = useQueryState('pixelDensity')
 
-  useEffect(() => {
-    var noise = document.createElement('div')
-    noise.style.width = '100vw'
-    noise.style.height = '100vh'
-    noise.style.backgroundImage =
-      'url("https://smlweb-src.s3.ap-northeast-2.amazonaws.com/noise99.png")'
-    noise.style.backgroundRepeat = 'repeat'
-    noise.style.color = 'white'
-    noise.style.position = 'absolute'
-    noise.style.zIndex = '4'
-    noise.style.top = '0'
-    noise.style.left = '0'
-    // noise.style.mixBlendMode = 'overlay'
-    // noise.innerHTML = 'Hello'
+  // useEffect(() => {
+  //   var noise = document.createElement('div')
+  //   noise.style.width = '100vw'
+  //   noise.style.height = '100vh'
+  //   noise.style.backgroundImage =
+  //     'url("https://smlweb-src.s3.ap-northeast-2.amazonaws.com/noise99.png")'
+  //   noise.style.backgroundRepeat = 'repeat'
+  //   noise.style.color = 'white'
+  //   noise.style.position = 'absolute'
+  //   noise.style.zIndex = '4'
+  //   noise.style.top = '0'
+  //   noise.style.left = '0'
+  //   noise.style.mixBlendMode = 'overlay'
+  //   // noise.innerHTML = 'Hello'
 
-    document.getElementById('gradientCanvas').appendChild(noise)
-  }, [])
+  //   document.getElementById('gradientCanvas').appendChild(noise)
+  // }, [])
 
   return (
     <Canvas
