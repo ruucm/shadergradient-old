@@ -61,8 +61,7 @@ const DOM = () => {
           activeTab={activeTab}
           setActiveTab={setActiveTab}
         />
-
-        <PreviewWrapper mode={mode} setMode={setMode} />
+        {isMobile ? null : <PreviewWrapper mode={mode} setMode={setMode} />}
 
         {/* Current Preset */}
         <div

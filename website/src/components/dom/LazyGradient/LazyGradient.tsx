@@ -1,11 +1,7 @@
 import { useEffect } from 'react'
-import {
-  Gradient,
-  useQueryState,
-  updateGradientState,
-  useUIStore,
-} from 'shadergradient'
+import { Gradient, useQueryState, updateGradientState } from 'shadergradient'
 import PRESETS from '../../../pages/presets.json'
+import { useUIStore } from '@/helpers/store'
 
 export function LazyGradient({
   r3f,
@@ -24,6 +20,7 @@ export function LazyGradient({
         ? window.location.search
         : PRESETS[current].url
     updateGradientState(gradientURL)
+    console.log(PRESETS[current].url)
 
     document.documentElement.classList.add('cutomize')
     return () => {

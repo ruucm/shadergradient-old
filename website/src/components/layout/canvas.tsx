@@ -47,7 +47,11 @@ const LCanvas = ({ children }) => {
     noise.style.top = '0'
     noise.style.left = '0'
     noise.style.mixBlendMode = 'overlay'
+<<<<<<< Updated upstream
     noise.innerHTML = 'Hello'
+=======
+    // noise.innerHTML = 'Hello'
+>>>>>>> Stashed changes
 
     document.getElementById('gradientCanvas').appendChild(noise)
   }, [])

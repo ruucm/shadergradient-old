@@ -604,6 +604,7 @@ html {
   font-size: 14px;
 }
 
+<<<<<<< Updated upstream
 html,
 body,
 #__next {
@@ -615,6 +616,19 @@ body,
   font-family: 'Inter', sans-serif;
   background: black;
 }
+=======
+  html,
+  body,
+  #__next {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+    background: black;
+  }
+>>>>>>> Stashed changes
 .visible {
   visibility: visible;
 }
@@ -938,6 +952,7 @@ body,
   filter: var(--tw-filter);
 }
 .transition {
+<<<<<<< Updated upstream
   transition-property: background-color, border-color, color, fill, stroke,
     opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
   transition-property: background-color, border-color, color, fill, stroke,
@@ -947,6 +962,13 @@ body,
     -webkit-backdrop-filter;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
+=======
+	transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
+	transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+	transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	transition-duration: 150ms;
+>>>>>>> Stashed changes
 }
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap');
 
