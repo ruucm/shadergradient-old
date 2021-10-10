@@ -1,4 +1,4 @@
-import { Environment } from '@react-three/drei'
+import { Environment, PerspectiveCamera } from '@react-three/drei'
 import { Camera, Euler, useFrame, useThree } from '@react-three/fiber'
 import * as React from 'react'
 import { Suspense } from 'react'
@@ -67,54 +67,14 @@ export const Gradient: React.FC<GradientPropsT> = ({
   let controlledEnvironment = environment
   if (envPreset)
     controlledEnvironment = (
-      <Suspense
-        fallback={
-          <html>
-            <div
-              style={{
-                background: 'red',
-                color: 'white',
-                fontSize: 60,
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '100vw',
-                zIndex: 100,
-              }}
-            >
-              loading Suspense test
-            </div>
-          </html>
-        }
-      >
-        <Environment preset={envPreset} background={false} />
-      </Suspense>
+      <Environment preset={envPreset} background={false} />
     )
 
   let controlledLights = lights
   if (brightness) controlledLights = <ambientLight intensity={brightness} />
 
   return (
-    <Suspense
-      fallback={
-        <html>
-          <div
-            style={{
-              background: 'red',
-              color: 'white',
-              fontSize: 60,
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              width: '100vw',
-              zIndex: 100,
-            }}
-          >
-            loading Suspense test
-          </div>
-        </html>
-      }
-    >
+    <Suspense fallback={'Loading...'}>
       {lightType === 'env' ? controlledEnvironment : controlledLights}
       <GradientMesh
         key={colors.toString()}
