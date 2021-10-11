@@ -42,7 +42,7 @@ export function MenuWrapper({
 
   return (
     <motion.div
-      className='absolute z-10 overflow-hidden rounded-md grid'
+      className='absolute z-10 overflow-hidden rounded-md grid min-h-[336px]'
       style={{
         width: '600px',
         height: 'fit-content',
