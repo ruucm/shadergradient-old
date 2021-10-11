@@ -61,6 +61,7 @@ export const Controls: React.FC<Props> = ({
           setMode={setMode}
           activeTab={activeTab}
           setActiveTab={setActiveTab}
+          className='min-h-[336px]' // shape control's height
         >
           {children}
         </MenuWrapper>

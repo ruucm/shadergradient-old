@@ -8,6 +8,7 @@ export function MenuWrapper({
   children,
   activeTab = 'none',
   setActiveTab = void 0,
+  className = '',
 }) {
   const menuAnim = useAnimation()
 
@@ -42,7 +43,7 @@ export function MenuWrapper({
 
   return (
     <motion.div
-      className='absolute z-10 overflow-hidden rounded-md grid min-h-[336px]'
+      className={cx('absolute z-10 overflow-hidden rounded-md grid', className)}
       style={{
         width: '600px',
         height: 'fit-content',

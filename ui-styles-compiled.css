@@ -726,6 +726,12 @@ video {
 .min-h-\[336px\] {
 	min-height: 336px;
 }
+.min-h-\[200px\] {
+	min-height: 200px;
+}
+.min-h-\[250px\] {
+	min-height: 250px;
+}
 .w-2 {
 	width: 12px;
 }
