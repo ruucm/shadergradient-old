@@ -35,11 +35,7 @@ export const Controls: React.FC<Props> = ({
   )
 
   return (
-    <div
-      ref={ref}
-      onClick={() => setActiveTab('shape')}
-      className={styles.wrap}
-    >
+    <div ref={ref}>
       {isMobile === true ? (
         <div className={styles.controlMobile}>
           <motion.div
