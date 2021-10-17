@@ -885,6 +885,9 @@ video {
 .text-opacity-100 {
 	--tw-text-opacity: 1;
 }
+.underline {
+	text-decoration: underline;
+}
 .opacity-0 {
 	opacity: 0;
 }

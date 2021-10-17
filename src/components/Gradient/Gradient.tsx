@@ -1,7 +1,7 @@
 import { PerspectiveCamera } from '@react-three/drei'
 import { Camera, Euler, useFrame, useThree } from '@react-three/fiber'
 import * as React from 'react'
-import { Suspense, useState } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 import { usePostProcessing } from '../../hooks/use-post-processing'
 import { GradientMesh } from './GradientMesh'
 import * as THREE from 'three'
@@ -33,7 +33,7 @@ export type GradientPropsT = {
 
 function LoadingBox() {
   return (
-    <mesh>
+    <mesh rotation={[0, 1, 1]}>
       <boxBufferGeometry args={[1, 1, 1]} />
       <meshPhysicalMaterial color='orange' />
     </mesh>
@@ -81,36 +81,41 @@ export const Gradient: React.FC<GradientPropsT> = ({
       <Environment
         preset={envPreset}
         background={false}
-        loadingCallback={(percentage) => {
-          console.log('percentage!!', percentage)
-          setPercentage(percentage)
-        }}
+        loadingCallback={(percentage) => setPercentage(percentage)}
       />
     )
+  console.log('percentage', percentage)
+
+  useEffect(() => {
+    setPercentage(0)
+  }, [envPreset])
 
   let controlledLights = lights
   if (brightness) controlledLights = <ambientLight intensity={brightness} />
 
   return (
-    <Suspense fallback='Load Failed'>
-      {lightType === 'env' ? controlledEnvironment : controlledLights}
+    <>
       {percentage < 100 && <LoadingBox />}
-      <GradientMesh
-        key={colors.toString()}
-        type={type}
-        position={position}
-        rotation={rotation}
-        animate={animate}
-        uTime={uTime}
-        uStrength={uStrength}
-        uSpeed={uSpeed}
-        colors={colors}
-        reflection={reflection}
-      />
+      <Suspense fallback='Load Failed'>
+        {lightType === 'env' ? controlledEnvironment : controlledLights}
 
-      {/* <EffectComposer>
+        <GradientMesh
+          key={colors.toString()}
+          type={type}
+          position={position}
+          rotation={rotation}
+          animate={animate}
+          uTime={uTime}
+          uStrength={uStrength}
+          uSpeed={uSpeed}
+          colors={colors}
+          reflection={reflection}
+        />
+
+        {/* <EffectComposer>
         <Noise opacity={0.3} />
       </EffectComposer> */}
-    </Suspense>
+      </Suspense>
+    </>
   )
 }
