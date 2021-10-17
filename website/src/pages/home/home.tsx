@@ -60,18 +60,13 @@ const DOM = () => {
       {/* Menu */}
       {isMobile === true ? null : (
         <MenuWrapper mode={mode}>
-          <div className={styles.menuItems}>
+          <div className='flex flex-col gap-1 p-3.5 '>
             <motion.div
-              className='font-medium text-primary text-xl'
+              className='text-xl font-medium text-primary'
               initial={{ paddingLeft: 0 }}
               whileHover={{
                 paddingLeft: 7,
                 transition: { duration: 0.3 },
-              }}
-              style={{
-                color: '#ff430a',
-                lineHeight: '1.7em',
-                fontWeight: 500,
               }}
             >
               <Link href='/about'>About →</Link>
@@ -276,7 +271,9 @@ const Page = () => {
   return (
     <>
       <DOM />
-      <Loading loadStatus={firstLoad} />
+      {/* {process.env.NODE_ENV === 'production' && (
+        <Loading loadStatus={firstLoad} />
+      )} */}
       <LazyGradient r3f loaded={firstLoad !== 'never'} />
     </>
   )
