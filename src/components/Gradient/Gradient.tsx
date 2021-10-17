@@ -1,10 +1,11 @@
-import { Environment, PerspectiveCamera } from '@react-three/drei'
+import { PerspectiveCamera } from '@react-three/drei'
 import { Camera, Euler, useFrame, useThree } from '@react-three/fiber'
 import * as React from 'react'
-import { Suspense } from 'react'
+import { Suspense, useState } from 'react'
 import { usePostProcessing } from '../../hooks/use-post-processing'
 import { GradientMesh } from './GradientMesh'
 import * as THREE from 'three'
+import { Environment } from '@/lib/Environment'
 
 export type GradientPropsT = {
   r3f?: boolean
@@ -28,6 +29,15 @@ export type GradientPropsT = {
   envPreset?: 'city' | 'lobby' | 'dawn'
   reflection?: number
   brightness?: number
+}
+
+function LoadingBox() {
+  return (
+    <mesh>
+      <boxBufferGeometry args={[1, 1, 1]} />
+      <meshPhysicalMaterial color='orange' />
+    </mesh>
+  )
 }
 
 export const Gradient: React.FC<GradientPropsT> = ({
@@ -64,18 +74,27 @@ export const Gradient: React.FC<GradientPropsT> = ({
 
   usePostProcessing({ on: postProcessing === 'threejs', grain: grain === 'on' })
 
+  const [percentage, setPercentage] = useState(0)
   let controlledEnvironment = environment
   if (envPreset)
     controlledEnvironment = (
-      <Environment preset={envPreset} background={false} />
+      <Environment
+        preset={envPreset}
+        background={false}
+        loadingCallback={(percentage) => {
+          console.log('percentage!!', percentage)
+          setPercentage(percentage)
+        }}
+      />
     )
 
   let controlledLights = lights
   if (brightness) controlledLights = <ambientLight intensity={brightness} />
 
   return (
-    <Suspense fallback={'Loading...'}>
+    <Suspense fallback='Load Failed'>
       {lightType === 'env' ? controlledEnvironment : controlledLights}
+      {percentage < 100 && <LoadingBox />}
       <GradientMesh
         key={colors.toString()}
         type={type}

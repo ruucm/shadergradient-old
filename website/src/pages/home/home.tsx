@@ -234,47 +234,13 @@ const Page = () => {
   const firstLoad = useUIStore((state: any) => state.firstLoad)
   const setFirstLoad = useUIStore((state: any) => state.setFirstLoad)
 
-  const delayRender = async (delay) => {
-    setTimeout(() => {
-      setDelayed(true)
-      console.log(delayed)
-    }, delay)
-
-    const loadGradient = await import('../../components/dom/LazyGradient')
-
-    setLoad(true)
-  }
-
-  const firstLoadingChecker = async () => {
-    if (load === true && delayed === true && firstLoad === 'never') {
-      await setFirstLoad('firstLoad')
-      setTimeout(async () => {
-        setFirstLoad('firstLoadDone')
-      }, 500)
-    }
-  }
-
-  useEffect(() => {
-    if (delayed === false) {
-      delayRender(9000)
-    }
-  }, [])
-
-  useEffect(() => {
-    firstLoadingChecker()
-  }, [load, delayed])
-
-  useEffect(() => {
-    console.log(firstLoad)
-  }, [firstLoad])
-
   return (
     <>
       <DOM />
       {/* {process.env.NODE_ENV === 'production' && (
         <Loading loadStatus={firstLoad} />
       )} */}
-      <LazyGradient r3f loaded={firstLoad !== 'never'} />
+      <LazyGradient r3f />
     </>
   )
 }
