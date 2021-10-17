@@ -87,7 +87,7 @@ export const Gradient: React.FC<GradientPropsT> = ({
   console.log('percentage', percentage)
 
   useEffect(() => {
-    setPercentage(0)
+    setPercentage(-1)
   }, [envPreset])
 
   let controlledLights = lights
@@ -95,7 +95,7 @@ export const Gradient: React.FC<GradientPropsT> = ({
 
   return (
     <>
-      {percentage < 100 && <LoadingBox />}
+      {percentage < 100 && percentage !== -1 && <LoadingBox />}
       <Suspense fallback='Load Failed'>
         {lightType === 'env' ? controlledEnvironment : controlledLights}
 
