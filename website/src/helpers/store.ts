@@ -8,7 +8,7 @@ export const useStore = create(() => {
 })
 
 export const useUIStore = create((set) => ({
-  current: 0,
+  current: 1,
   mode: 'full',
   firstLoad: 'never',
   setMode: (data) => set((state: any) => ({ ...state, mode: data })),
