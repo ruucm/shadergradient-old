@@ -15,7 +15,7 @@ export const PropertyControls: React.FC<Props> = ({
     <>
       <div
         className={
-          'flex justify-between w-screen h-[fit-content] p-3.5 cursor-pointer md:w-full md:h-full md:flex-col md:justify-start'
+          'flex justify-between gap-1 w-screen h-[fit-content] p-3.5 cursor-pointer md:w-full md:h-full md:flex-col md:justify-start'
         }
         onClick={() => setActiveTab('shape')}
       >
