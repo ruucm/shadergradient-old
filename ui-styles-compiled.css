@@ -599,8 +599,12 @@ video {
   * {
     box-sizing: border-box;
   }
-
+  body {
+    min-height: 100vh; /* mobile viewport bug fix */
+    min-height: -webkit-fill-available;
+  }
   html {
+    height: -webkit-fill-available;
     font-size: 14px;
   }
 
@@ -720,9 +724,6 @@ video {
 .h-screen {
 	height: 100vh;
 }
-.h-\[300px\] {
-	height: 300px;
-}
 .h-\[31px\] {
 	height: 31px;
 }
@@ -758,9 +759,6 @@ video {
 }
 .w-thumb {
 	width: 16px;
-}
-.w-\[300px\] {
-	width: 300px;
 }
 .w-\[17px\] {
 	width: 17px;
@@ -856,10 +854,6 @@ video {
 }
 .bg-controls-panel-mobile {
 	background-color: rgba(245, 245, 245, 0.2);
-}
-.bg-red-500 {
-	--tw-bg-opacity: 1;
-	background-color: rgba(239, 68, 68, var(--tw-bg-opacity));
 }
 .bg-opacity-10 {
 	--tw-bg-opacity: 0.1;
