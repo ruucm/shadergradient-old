@@ -60,7 +60,7 @@ const DOM = () => {
       {/* Menu */}
       {isMobile === true ? null : (
         <MenuWrapper mode={mode}>
-          <div className='flex flex-col gap-1 p-3.5 '>
+          <div className='flex flex-col gap-0.2 p-3.5 '>
             <motion.div
               className='text-xl font-medium text-primary'
               initial={{ paddingLeft: 0 }}
