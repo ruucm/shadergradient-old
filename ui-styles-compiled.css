@@ -642,6 +642,9 @@ video {
 .left-0 {
 	left: 0px;
 }
+.left-1\/2 {
+	left: 50%;
+}
 .left-3\.5 {
 	left: 20px;
 }
@@ -656,9 +659,6 @@ video {
 }
 .bottom-0 {
 	bottom: 0px;
-}
-.left-1\/2 {
-	left: 50%;
 }
 .z-10 {
 	z-index: 10;
@@ -812,20 +812,20 @@ video {
 .gap-2 {
 	gap: 12px;
 }
-.gap-1 {
-	gap: 8px;
-}
-.gap-1\.5 {
-	gap: 10px;
-}
-.gap-0\.5 {
-	gap: 6px;
+.gap-0\.2 {
+	gap: 3.5px;
 }
 .gap-0 {
 	gap: 0px;
 }
-.gap-0\.2 {
-	gap: 3.5px;
+.gap-1\.5 {
+	gap: 10px;
+}
+.gap-1 {
+	gap: 8px;
+}
+.gap-0\.5 {
+	gap: 6px;
 }
 .overflow-hidden {
 	overflow: hidden;

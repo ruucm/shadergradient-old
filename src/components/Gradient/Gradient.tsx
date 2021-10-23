@@ -29,7 +29,7 @@ export type GradientPropsT = {
   envPreset?: 'city' | 'lobby' | 'dawn'
   reflection?: number
   brightness?: number
-  loadingCallback: (percentage: number) => void
+  loadingCallback?: (percentage: number) => void
 }
 
 function LoadingBox() {
