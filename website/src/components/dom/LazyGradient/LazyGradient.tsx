@@ -65,12 +65,6 @@ export function LazyGradient({
   const responsiveCameraZoom =
     embedMode === 'on' ? cameraZoom : cameraZoom * (window.innerWidth / 1440)
 
-  console.log('grain', grain)
-  console.log('lightType', lightType)
-  console.log('envPreset', envPreset)
-  console.log('reflection', reflection)
-  console.log('brightness', brightness)
-
   return (
     <Gradient
       rotation={
