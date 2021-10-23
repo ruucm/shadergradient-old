@@ -11,7 +11,10 @@ export const useUIStore = create((set) => ({
   current: 1,
   mode: 'full',
   firstLoad: 'never',
+  loadingPercentage: 0,
   setMode: (data) => set((state: any) => ({ ...state, mode: data })),
   setCurrent: (data) => set((state: any) => ({ ...state, current: data })),
   setFirstLoad: (data) => set((state: any) => ({ ...state, firstLoad: data })),
+  setLoadingPercentage: (data) =>
+    set((state: any) => ({ ...state, loadingPercentage: data })),
 }))

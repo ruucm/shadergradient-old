@@ -76,29 +76,21 @@ export const Gradient: React.FC<GradientPropsT> = ({
 
   usePostProcessing({ on: postProcessing === 'threejs', grain: grain === 'on' })
 
-  const [percentage, setPercentage] = useState(0)
   let controlledEnvironment = environment
   if (envPreset)
     controlledEnvironment = (
       <Environment
         preset={envPreset}
         background={false}
-        // loadingCallback={(percentage) => setPercentage(percentage)}
         loadingCallback={loadingCallback}
       />
     )
-  // console.log('percentage', percentage)
-
-  useEffect(() => {
-    setPercentage(-1)
-  }, [envPreset])
 
   let controlledLights = lights
   if (brightness) controlledLights = <ambientLight intensity={brightness} />
 
   return (
     <>
-      {percentage < 100 && percentage !== -1 && <LoadingBox />}
       <Suspense fallback='Load Failed'>
         {lightType === 'env' ? controlledEnvironment : controlledLights}
 

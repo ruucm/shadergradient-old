@@ -12,6 +12,9 @@ export function LazyGradient({
   forcePos = null,
 }) {
   const current = useUIStore((state: any) => state.current)
+  const setLoadingPercentage = useUIStore(
+    (state: any) => state.setLoadingPercentage
+  )
 
   useEffect(() => {
     // update Gradient if there are query params (history nav)
@@ -63,17 +66,10 @@ export function LazyGradient({
   const responsiveCameraZoom =
     embedMode === 'on' ? cameraZoom : cameraZoom * (window.innerWidth / 1440)
 
-  const [percentage, setPercentage] = useState(0)
-  console.log('percentage', percentage)
-
   return (
     <>
-      {/* {percentage < 100 && (
-        <div className='w-[300px] h-[300px] bg-red-500'>Loading...</div>
-      )} */}
       {loaded && (
         <Gradient
-          r3f
           rotation={
             forceRot !== null
               ? forceRot
@@ -109,7 +105,7 @@ export function LazyGradient({
           reflection={reflection}
           brightness={brightness}
           postProcessing={'threejs'} // turn on postpocessing
-          loadingCallback={(percentage) => setPercentage(percentage)}
+          loadingCallback={setLoadingPercentage}
         />
       )}
     </>
