@@ -18,6 +18,13 @@ To develop with the shadergradient package, follow below instructions.
 1. `npm link ../path/to/your/project/node_modules/postprocessing` (Use shadergradient package's postprocessing)
 
 For example
+
 ```
 yarn link shadergradient && npm link '/Users/ruucm/MyDocuments/Carving/blocks/shadergradient/node_modules/react' && npm link '/Users/ruucm/MyDocuments/Carving/blocks/shadergradient/node_modules/@react-three/fiber' && npm link '/Users/ruucm/MyDocuments/Carving/blocks/shadergradient/node_modules/@react-three/drei' && npm link '/Users/ruucm/MyDocuments/Carving/blocks/shadergradient/node_modules/postprocessing' && yarn dev
 ```
+
+## Next.js Example Project
+
+[Codesandbox](https://codesandbox.io)
+
+This example project was bootstrapped with [`create-r3f-app`](https://github.com/RenaudROHLINGER/create-r3f-app)
