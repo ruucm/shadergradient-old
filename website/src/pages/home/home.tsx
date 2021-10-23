@@ -83,7 +83,7 @@ const DOM = () => {
       {/* Loading Spinner */}
       {loadingPercentage < 100 && (
         <div className='absolute bg-red-500 w-[300px] h-[300px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
-          Loading...
+          Loading... {loadingPercentage}%
         </div>
       )}
 
