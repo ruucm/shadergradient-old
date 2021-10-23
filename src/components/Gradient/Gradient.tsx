@@ -29,6 +29,7 @@ export type GradientPropsT = {
   envPreset?: 'city' | 'lobby' | 'dawn'
   reflection?: number
   brightness?: number
+  loadingCallback: (percentage: number) => void
 }
 
 function LoadingBox() {
@@ -62,6 +63,7 @@ export const Gradient: React.FC<GradientPropsT> = ({
   envPreset,
   reflection,
   brightness,
+  loadingCallback,
 }) => {
   const { camera }: { camera: Camera } = useThree()
   camera.position.set(cameraPosition.x, cameraPosition.y, cameraPosition.z)
@@ -81,10 +83,11 @@ export const Gradient: React.FC<GradientPropsT> = ({
       <Environment
         preset={envPreset}
         background={false}
-        loadingCallback={(percentage) => setPercentage(percentage)}
+        // loadingCallback={(percentage) => setPercentage(percentage)}
+        loadingCallback={loadingCallback}
       />
     )
-  console.log('percentage', percentage)
+  // console.log('percentage', percentage)
 
   useEffect(() => {
     setPercentage(-1)

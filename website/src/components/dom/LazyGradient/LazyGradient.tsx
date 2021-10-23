@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Gradient, useQueryState, updateGradientState } from 'shadergradient'
 import PRESETS from '../../../pages/presets.json'
 import { useUIStore } from '@/helpers/store'
@@ -63,8 +63,14 @@ export function LazyGradient({
   const responsiveCameraZoom =
     embedMode === 'on' ? cameraZoom : cameraZoom * (window.innerWidth / 1440)
 
+  const [percentage, setPercentage] = useState(0)
+  console.log('percentage', percentage)
+
   return (
     <>
+      {/* {percentage < 100 && (
+        <div className='w-[300px] h-[300px] bg-red-500'>Loading...</div>
+      )} */}
       {loaded && (
         <Gradient
           r3f
@@ -103,6 +109,7 @@ export function LazyGradient({
           reflection={reflection}
           brightness={brightness}
           postProcessing={'threejs'} // turn on postpocessing
+          loadingCallback={(percentage) => setPercentage(percentage)}
         />
       )}
     </>
