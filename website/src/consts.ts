@@ -5,7 +5,7 @@ export const links = [
   },
   {
     title: 'React  →',
-    link: 'https://codesandbox.io',
+    link: 'https://codesandbox.io/s/optimistic-benji-pw64i',
   },
   {
     title: 'Framer  →',

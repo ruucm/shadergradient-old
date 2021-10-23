@@ -25,6 +25,6 @@ yarn link shadergradient && npm link '/Users/ruucm/MyDocuments/Carving/blocks/sh
 
 ## Next.js Example Project
 
-[Codesandbox](https://codesandbox.io)
+[Codesandbox](https://codesandbox.io/s/optimistic-benji-pw64i)
 
 This example project was bootstrapped with [`create-r3f-app`](https://github.com/RenaudROHLINGER/create-r3f-app)
