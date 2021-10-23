@@ -5,7 +5,6 @@ import { useUIStore } from '@/helpers/store'
 
 export function LazyGradient({
   r3f,
-  loaded = true,
   forceZoom = null,
   forceCamPos = null,
   forceRot = null,
@@ -66,49 +65,51 @@ export function LazyGradient({
   const responsiveCameraZoom =
     embedMode === 'on' ? cameraZoom : cameraZoom * (window.innerWidth / 1440)
 
+  console.log('grain', grain)
+  console.log('lightType', lightType)
+  console.log('envPreset', envPreset)
+  console.log('reflection', reflection)
+  console.log('brightness', brightness)
+
   return (
-    <>
-      {loaded && (
-        <Gradient
-          rotation={
-            forceRot !== null
-              ? forceRot
-              : [
-                  (rotationX / 360) * Math.PI,
-                  (rotationY / 360) * Math.PI,
-                  (rotationZ / 360) * Math.PI,
-                ]
-          }
-          position={
-            forcePos !== null ? forcePos : [positionX, positionY, positionZ]
-          }
-          cameraPosition={
-            forceCamPos !== null
-              ? forceCamPos
-              : {
-                  x: cameraPositionX,
-                  y: cameraPositionY,
-                  z: cameraPositionZ,
-                }
-          }
-          cameraRotation={{ x: 0, y: 0, z: 0 }}
-          type={type}
-          animate={animate === 'on'}
-          cameraZoom={forceZoom !== null ? forceZoom : responsiveCameraZoom}
-          uTime={uTime}
-          uStrength={uStrength}
-          uSpeed={uSpeed}
-          colors={[color1, color2, color3]}
-          grain={grain}
-          lightType={lightType}
-          envPreset={envPreset}
-          reflection={reflection}
-          brightness={brightness}
-          postProcessing={'threejs'} // turn on postpocessing
-          loadingCallback={setLoadingPercentage}
-        />
-      )}
-    </>
+    <Gradient
+      rotation={
+        forceRot !== null
+          ? forceRot
+          : [
+              (rotationX / 360) * Math.PI,
+              (rotationY / 360) * Math.PI,
+              (rotationZ / 360) * Math.PI,
+            ]
+      }
+      position={
+        forcePos !== null ? forcePos : [positionX, positionY, positionZ]
+      }
+      cameraPosition={
+        forceCamPos !== null
+          ? forceCamPos
+          : {
+              x: cameraPositionX,
+              y: cameraPositionY,
+              z: cameraPositionZ,
+            }
+      }
+      cameraRotation={{ x: 0, y: 0, z: 0 }}
+      type={type}
+      animate={animate === 'on'}
+      cameraZoom={forceZoom !== null ? forceZoom : responsiveCameraZoom}
+      uTime={uTime}
+      uStrength={uStrength}
+      uSpeed={uSpeed}
+      colors={[color1, color2, color3]}
+      grain={grain}
+      lightType={lightType}
+      envPreset={envPreset}
+      reflection={reflection}
+      brightness={brightness}
+      postProcessing={'threejs'} // turn on postpocessing
+      loadingCallback={setLoadingPercentage}
+    />
   )
 }
 
