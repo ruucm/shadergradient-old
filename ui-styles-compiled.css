@@ -688,6 +688,11 @@ video {
 .grid {
 	display: grid;
 }
+.h-\[fit-content\] {
+	height: -webkit-fit-content;
+	height: -moz-fit-content;
+	height: fit-content;
+}
 .h-3 {
 	height: 16px;
 }
@@ -699,11 +704,6 @@ video {
 }
 .h-full {
 	height: 100%;
-}
-.h-\[fit-content\] {
-	height: -webkit-fit-content;
-	height: -moz-fit-content;
-	height: fit-content;
 }
 .h-slider {
 	height: 2px;
@@ -720,14 +720,14 @@ video {
 .h-screen {
 	height: 100vh;
 }
-.h-\[300px\] {
-	height: 300px;
-}
 .h-\[31px\] {
 	height: 31px;
 }
 .min-h-\[336px\] {
 	min-height: 336px;
+}
+.w-screen {
+	width: 100vw;
 }
 .w-2 {
 	width: 12px;
@@ -747,9 +747,6 @@ video {
 .w-control-number-input {
 	width: 53px;
 }
-.w-screen {
-	width: 100vw;
-}
 .w-4 {
 	width: 26px;
 }
@@ -758,9 +755,6 @@ video {
 }
 .w-thumb {
 	width: 16px;
-}
-.w-\[300px\] {
-	width: 300px;
 }
 .w-\[17px\] {
 	width: 17px;
@@ -803,6 +797,12 @@ video {
 .justify-around {
 	justify-content: space-around;
 }
+.gap-0\.2 {
+	gap: 3.5px;
+}
+.gap-0 {
+	gap: 0px;
+}
 .gap-3\.5 {
 	gap: 20px;
 }
@@ -811,12 +811,6 @@ video {
 }
 .gap-2 {
 	gap: 12px;
-}
-.gap-0\.2 {
-	gap: 3.5px;
-}
-.gap-0 {
-	gap: 0px;
 }
 .gap-1\.5 {
 	gap: 10px;
@@ -856,10 +850,6 @@ video {
 }
 .bg-controls-panel-mobile {
 	background-color: rgba(245, 245, 245, 0.2);
-}
-.bg-red-500 {
-	--tw-bg-opacity: 1;
-	background-color: rgba(239, 68, 68, var(--tw-bg-opacity));
 }
 .bg-opacity-10 {
 	--tw-bg-opacity: 0.1;
