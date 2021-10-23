@@ -2,10 +2,14 @@
   width: 100vw;
   height: fit-content;
   position: absolute;
-  bottom: 110px;
+  bottom: 0;
+  // bottom: 110px;
   left: 0;
   z-index: 10;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 1);
+  // > div:nth-of-type(3) {
+  //   background: rgb(246, 248, 248);
+  // }
   .hideBtn {
     width: 100vw;
     color: #ff430a;

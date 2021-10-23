@@ -118,7 +118,7 @@ const DOM = () => {
                 y: 0,
                 transition: { delay: 1.5, duration: 1 },
               }}
-              style={{ fontSize: 12, width: '25vw', marginTop: '50px' }}
+              style={{ fontSize: 13, width: '25vw', marginTop: '50px' }}
             >
               Beautiful, customizable, and moving gradient component, available
               as React component, Figma plugin, and Framer package (beta). Made
@@ -159,7 +159,7 @@ const DOM = () => {
           >
             <div className={styles.sliderHeader}>
               <p>Current Theme</p>
-              <Link href='/customize'>→ Customize </Link>
+              <Link href='/customize'>Customize →</Link>
             </div>
             <div
               className={styles.sliderWrapper}

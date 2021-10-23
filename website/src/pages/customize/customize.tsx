@@ -47,7 +47,7 @@ const DOM = () => {
 
   if (embedMode === 'off')
     return (
-      <>
+      <div className={styles.bodyWrapper}>
         {/* Go Back */}
         <div className={styles.content}>
           <motion.div style={{ color: PRESETS[current].color }}>
@@ -100,7 +100,10 @@ const DOM = () => {
             })}
             <div className={styles.slideBtns}>
               <motion.div
-                className={styles.slideDown}
+                className={styles.slideBtn}
+                whileHover={{
+                  backgroundColor: 'rgba(255,255,255,0.15)',
+                }}
                 onClick={() => {
                   if (current !== 0) {
                     setCurrent(current - 1)
@@ -113,7 +116,10 @@ const DOM = () => {
                 ↓
               </motion.div>
               <motion.div
-                className={styles.slideUp}
+                className={styles.slideBtn}
+                whileHover={{
+                  backgroundColor: 'rgba(255,255,255,0.15)',
+                }}
                 onClick={() => {
                   if (current !== PRESETS.length - 1) {
                     setCurrent(current + 1)
@@ -130,7 +136,7 @@ const DOM = () => {
         </div>
 
         <Footer />
-      </>
+      </div>
     )
   else return <></>
 }

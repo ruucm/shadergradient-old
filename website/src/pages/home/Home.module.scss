@@ -1,6 +1,8 @@
 .bodyWrapper {
   width: 100vw;
-  height: 100vh;
+  // height: 100vh;
+
+  min-height: 100vh;
   grid-column-gap: 0;
   font-family: 'Inter', sans-serif;
   font-weight: 400;
@@ -8,6 +10,10 @@
   top: 0;
   left: 0;
   z-index: 5;
+  height: -webkit-fill-available;
+  @supports (height: var(--)) {
+    height: var(--viewport-height);
+  }
 }
 
 .aboutModal {
@@ -58,7 +64,7 @@
 
 .slider {
   position: absolute;
-  bottom: 8vh;
+  bottom: 10vh;
   left: 2em;
   width: 98vw;
   height: 20vh;
@@ -67,9 +73,10 @@
 .sliderHeader {
   display: flex;
   justify-content: flex-start;
-  gap: 35px;
+  gap: 40px;
   margin-bottom: 10px;
   font-weight: 500;
+  font-size: 16px;
 }
 
 .sliderHeader a {
@@ -146,9 +153,14 @@
   display: flex;
   font-size: 30px;
   z-index: 10;
-  margin-top: 6px;
+  margin-top: 10px;
+  text-align: center;
   div {
     cursor: pointer;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    border-radius: 16px;
   }
 }
 
@@ -214,6 +226,7 @@
   position: absolute;
   top: 1em;
   left: 1em;
+  z-index: 10;
 }
 
 .loadingTextWrapper {
@@ -281,10 +294,19 @@
     flex-flow: wrap;
   }
 
+  .modalWrapper {
+    width: 100vw;
+    height: 70vh;
+    overflow: scroll;
+    position: absolute;
+    top: 20vh;
+  }
   .aboutModal {
     width: 100vw;
-    top: 20vh;
     font-size: 15px;
+    height: fit-content;
+    top: 0;
+
     .title {
       display: grid;
       grid-template-columns: none;
@@ -298,7 +320,7 @@
   .slideBtns {
     margin: 0 auto;
     width: fit-content;
-    font-size: 20px;
+    font-size: 25px;
   }
   .logoWrapper {
     display: none;

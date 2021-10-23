@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 import styles from '../../../pages/home/Home.module.scss'
 import animationData from '../../../media/motionlogo-lottie.json'
 import animationData_colored from '../../../media/colored-motionlogo.json'
@@ -24,13 +25,18 @@ export function MotionLogo({ color }) {
     },
   }
   return (
-    <motion.div className={styles.logoWrapper}>
-      <Lottie
-        options={color === true ? coloredLogoOption : whiteLogoOption}
-        height={80}
-        width={80}
-      />
-    </motion.div>
+    <>
+      <Link href='/' passHref>
+        <motion.div className={styles.logoWrapper}>
+          <Lottie
+            options={color === true ? coloredLogoOption : whiteLogoOption}
+            height={80}
+            width={80}
+            isClickToPauseDisabled={true}
+          />
+        </motion.div>
+      </Link>
+    </>
   )
 }
 
