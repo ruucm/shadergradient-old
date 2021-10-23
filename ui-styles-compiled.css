@@ -642,6 +642,9 @@ video {
 .left-0 {
 	left: 0px;
 }
+.left-1\/2 {
+	left: 50%;
+}
 .left-3\.5 {
 	left: 20px;
 }
@@ -717,6 +720,9 @@ video {
 .h-screen {
 	height: 100vh;
 }
+.h-\[300px\] {
+	height: 300px;
+}
 .h-\[31px\] {
 	height: 31px;
 }
@@ -753,6 +759,9 @@ video {
 .w-thumb {
 	width: 16px;
 }
+.w-\[300px\] {
+	width: 300px;
+}
 .w-\[17px\] {
 	width: 17px;
 }
@@ -764,6 +773,10 @@ video {
 }
 .-translate-y-1\/2 {
 	--tw-translate-y: -50%;
+	transform: var(--tw-transform);
+}
+.-translate-x-1\/2 {
+	--tw-translate-x: -50%;
 	transform: var(--tw-transform);
 }
 .transform {
@@ -799,17 +812,20 @@ video {
 .gap-2 {
 	gap: 12px;
 }
-.gap-1 {
-	gap: 8px;
+.gap-0\.2 {
+	gap: 3.5px;
+}
+.gap-0 {
+	gap: 0px;
 }
 .gap-1\.5 {
 	gap: 10px;
 }
+.gap-1 {
+	gap: 8px;
+}
 .gap-0\.5 {
 	gap: 6px;
-}
-.gap-0 {
-	gap: 0px;
 }
 .overflow-hidden {
 	overflow: hidden;
@@ -840,6 +856,10 @@ video {
 }
 .bg-controls-panel-mobile {
 	background-color: rgba(245, 245, 245, 0.2);
+}
+.bg-red-500 {
+	--tw-bg-opacity: 1;
+	background-color: rgba(239, 68, 68, var(--tw-bg-opacity));
 }
 .bg-opacity-10 {
 	--tw-bg-opacity: 0.1;

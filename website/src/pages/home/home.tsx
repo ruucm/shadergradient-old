@@ -28,6 +28,7 @@ const DOM = () => {
   const mode = useUIStore((state: any) => state.mode)
   const setMode = useUIStore((state: any) => state.setMode)
   const current = useUIStore((state: any) => state.current)
+  const loadingPercentage = useUIStore((state: any) => state.loadingPercentage)
   const setCurrent = useUIStore((state: any) => state.setCurrent)
 
   const snapList = useRef(null)
@@ -60,7 +61,7 @@ const DOM = () => {
       {/* Menu */}
       {isMobile === true ? null : (
         <MenuWrapper mode={mode}>
-          <div className='flex flex-col gap-1 p-3.5 '>
+          <div className='flex flex-col gap-0.2 p-3.5 '>
             <motion.div
               className='text-xl font-medium text-primary'
               initial={{ paddingLeft: 0 }}
@@ -77,6 +78,13 @@ const DOM = () => {
             <PreviewSwitch mode={mode} setMode={setMode} />
           </div>
         </MenuWrapper>
+      )}
+
+      {/* Loading Spinner */}
+      {loadingPercentage < 100 && (
+        <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
+          <MotionLogo color={false} />
+        </div>
       )}
 
       {/* Home */}
