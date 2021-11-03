@@ -7,9 +7,12 @@ export function GradientScene() {
   React.useEffect(() => {
     // const gradientURL = PRESETS[0].url
     const gradientURL =
-      '?animate=on&brightness=1.2&cameraPositionX=0.4&cameraPositionY=2&cameraPositionZ=-3.3&cameraZoom=2.6&color1=#CC4C6E&color2=#1980FF&color3=#99B58F&envPreset=city&grain=on&lightType=env&reflection=0.1&rotationX=90&rotationY=0&rotationZ=230&type=plane&uSpeed=0.3&uStrength=1.6&uTime=0.2&pixelDensity=1&embedMode=off&positionX=0&positionY=0&positionZ=0' // halo + cameraPositions
+      '?animate=on&brightness=1.2&cameraPositionX=0.4&cameraPositionY=2&cameraPositionZ=-3.3&cameraZoom=2.6&color1=#CC4C6E&color2=#1980FF&color3=#99B58F&envPreset=city&grain=on&lightType=env&reflection=0.1&rotationX=90&rotationY=0&rotationZ=230&type=plane&uSpeed=0.3&uStrength=1.6&uTime=0.2&pixelDensity=2&embedMode=off&positionX=0&positionY=0&positionZ=0' // halo + cameraPositions
     updateGradientState(gradientURL)
   }, [])
+
+  // performance
+  const [pixelDensity] = useQueryState('pixelDensity')
 
   // shape
   const [type] = useQueryState('type')
@@ -49,6 +52,7 @@ export function GradientScene() {
       }}
       gl={{ preserveDrawingBuffer: true }} // to capture the canvas
       id='r3f-canvas'
+      dpr={pixelDensity}
     >
       <OrbitControls
         enablePan={false}
