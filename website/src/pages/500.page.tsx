@@ -1,7 +1,7 @@
 // custom pages/404.jsx !! Do not remove please or it will break build
 import Link from 'next/link'
 import React from 'react'
-import { LazyGradient } from '@/components/dom/LazyGradient'
+import { LazyGradient } from '@/components/canvas/LazyGradient'
 import { MotionLogo } from '@/components/dom/MotionLogo'
 
 const DOM = () => {

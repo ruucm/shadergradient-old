@@ -1,5 +1,5 @@
 import { Footer } from '@/components/dom/Footer'
-import { LazyGradient } from '@/components/dom/LazyGradient'
+import { LazyGradient } from '@/components/canvas/LazyGradient'
 import { PreviewWrapper } from '@/components/dom/PreviewWrapper'
 import { PreviewSwitch } from '@/components/dom/PreviewSwitch'
 

@@ -9,7 +9,7 @@ import styles from '../home/Home.module.scss'
 import { PreviewSwitch } from '@/components/dom/PreviewSwitch'
 import { MenuWrapper } from '@/components/dom/MenuWrapper'
 import { MenuItem } from '../home/menu-item'
-import { LazyGradient } from '@/components/dom/LazyGradient'
+import { LazyGradient } from '@/components/canvas/LazyGradient'
 import { MotionLogo } from '@/components/dom/MotionLogo'
 import { links } from '@/consts'
 
