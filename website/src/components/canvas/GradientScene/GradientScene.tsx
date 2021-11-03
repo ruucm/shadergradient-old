@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Gradient, useQueryState, updateGradientState } from 'shadergradient'
 import PRESETS from '../../../pages/presets.json'
 import { useUIStore } from '@/helpers/store'
+import { useSpring } from '@react-spring/core'
 
 export function GradientScene({
   r3f,
@@ -9,6 +10,7 @@ export function GradientScene({
   forceCamPos = null,
   forceRot = null,
   forcePos = null,
+  scale = 1,
 }) {
   const current = useUIStore((state: any) => state.current)
   const setLoadingPercentage = useUIStore(
@@ -29,6 +31,8 @@ export function GradientScene({
       document.documentElement.classList.remove('cutomize')
     }
   }, [current])
+
+  const { animatedScale } = useSpring({ animatedScale: scale })
 
   // shape
   const [type] = useQueryState('type')
@@ -79,6 +83,7 @@ export function GradientScene({
       position={
         forcePos !== null ? forcePos : [positionX, positionY, positionZ]
       }
+      scale={animatedScale}
       cameraPosition={
         forceCamPos !== null
           ? forceCamPos

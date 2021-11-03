@@ -15,6 +15,7 @@ export type GradientPropsT = {
   lights?: any
   position?: Euler | undefined
   rotation?: Euler | undefined
+  scale?: any
   cameraPosition?: { x: number; y: number; z: number }
   cameraRotation?: { x: number; y: number; z: number }
   cameraQuaternion?: { x: number; y: number; z: number }
@@ -50,6 +51,7 @@ export const Gradient: React.FC<GradientPropsT> = ({
   lights = <ambientLight intensity={1} />,
   position = [0, 0, 0],
   rotation = [(Math.PI / 360) * 90, 0, (Math.PI / 360) * 230],
+  scale,
   cameraPosition = { x: 0.4, y: -0.2, z: -5 },
   cameraRotation = { x: 0, y: 0, z: 0 },
   cameraQuaternion = { x: 0, y: 0, z: 0 },
@@ -67,21 +69,11 @@ export const Gradient: React.FC<GradientPropsT> = ({
   loadingCallback,
 }) => {
   const { camera }: { camera: Camera } = useThree()
-  camera.rotation.set(cameraRotation.x, cameraRotation.y, cameraRotation.z) // this one weirldy not works.
-  camera.quaternion.setFromEuler(
-    new THREE.Euler(cameraQuaternion.x, cameraQuaternion.y, cameraQuaternion.z)
-  )
+  camera.position.set(cameraPosition.x, cameraPosition.y, cameraPosition.z)
   camera.zoom = cameraZoom
   camera.updateProjectionMatrix() // need to update camera's zoom
 
   usePostProcessing({ on: postProcessing === 'threejs', grain: grain === 'on' })
-
-  useFrame((state) => {
-    state.camera.position.lerp(
-      vec.set(cameraPosition.x, cameraPosition.y, cameraPosition.z),
-      0.01
-    )
-  })
 
   let controlledEnvironment = environment
   if (envPreset)
@@ -106,6 +98,7 @@ export const Gradient: React.FC<GradientPropsT> = ({
           type={type}
           position={position}
           rotation={rotation}
+          scale={scale}
           animate={animate}
           uTime={uTime}
           uStrength={uStrength}

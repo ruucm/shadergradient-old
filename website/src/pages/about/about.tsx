@@ -118,10 +118,10 @@ const Page = () => {
       <DOM />
       <GradientScene
         r3f
-        forceZoom={0.5}
         forceCamPos={{ x: 0, y: 2, z: 8 }}
         forceRot={[40, 0, 150]}
-        forcePos={[0, 3, 0]}
+        forcePos={[0, 1, 0]}
+        scale={0.2}
       />
     </>
   )
