@@ -771,9 +771,6 @@ video {
 .flex-shrink-0 {
 	flex-shrink: 0;
 }
-.flex-shrink {
-	flex-shrink: 1;
-}
 .-translate-y-1\/2 {
 	--tw-translate-y: -50%;
 	transform: var(--tw-transform);

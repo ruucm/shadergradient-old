@@ -50,7 +50,7 @@ const DOM = () => {
         </div>
       ) : (
         <MenuWrapper mode={mode} setMode={setMode}>
-          <div className={styles.menuItems}>
+          <div className='flex flex-col gap-0.2 p-3.5'>
             <motion.div
               className='font-medium text-primary text-xl'
               initial={{ paddingLeft: 0 }}
@@ -60,7 +60,6 @@ const DOM = () => {
               }}
               style={{
                 color: 'white',
-                lineHeight: '1.7em',
                 fontWeight: 500,
               }}
             >
