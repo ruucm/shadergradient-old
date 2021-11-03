@@ -40,6 +40,7 @@ function LoadingBox() {
     </mesh>
   )
 }
+const vec = new THREE.Vector3()
 
 export const Gradient: React.FC<GradientPropsT> = ({
   r3f,
@@ -66,7 +67,6 @@ export const Gradient: React.FC<GradientPropsT> = ({
   loadingCallback,
 }) => {
   const { camera }: { camera: Camera } = useThree()
-  camera.position.set(cameraPosition.x, cameraPosition.y, cameraPosition.z)
   camera.rotation.set(cameraRotation.x, cameraRotation.y, cameraRotation.z) // this one weirldy not works.
   camera.quaternion.setFromEuler(
     new THREE.Euler(cameraQuaternion.x, cameraQuaternion.y, cameraQuaternion.z)
@@ -75,6 +75,13 @@ export const Gradient: React.FC<GradientPropsT> = ({
   camera.updateProjectionMatrix() // need to update camera's zoom
 
   usePostProcessing({ on: postProcessing === 'threejs', grain: grain === 'on' })
+
+  useFrame((state) => {
+    state.camera.position.lerp(
+      vec.set(cameraPosition.x, cameraPosition.y, cameraPosition.z),
+      0.1
+    )
+  })
 
   let controlledEnvironment = environment
   if (envPreset)
