@@ -79,7 +79,7 @@ export const Gradient: React.FC<GradientPropsT> = ({
   useFrame((state) => {
     state.camera.position.lerp(
       vec.set(cameraPosition.x, cameraPosition.y, cameraPosition.z),
-      0.1
+      0.01
     )
   })
 
