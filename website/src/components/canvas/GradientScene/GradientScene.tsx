@@ -3,7 +3,7 @@ import { Gradient, useQueryState, updateGradientState } from 'shadergradient'
 import PRESETS from '../../../pages/presets.json'
 import { useUIStore } from '@/helpers/store'
 
-export function LazyGradient({
+export function GradientScene({
   r3f,
   forceZoom = null,
   forceCamPos = null,
@@ -107,4 +107,4 @@ export function LazyGradient({
   )
 }
 
-LazyGradient.defaultProps = {}
+GradientScene.defaultProps = {}

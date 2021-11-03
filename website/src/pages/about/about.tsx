@@ -9,7 +9,7 @@ import styles from '../home/Home.module.scss'
 import { PreviewSwitch } from '@/components/dom/PreviewSwitch'
 import { MenuWrapper } from '@/components/dom/MenuWrapper'
 import { MenuItem } from '../home/menu-item'
-import { LazyGradient } from '@/components/canvas/LazyGradient'
+import { GradientScene } from '@/components/canvas/GradientScene'
 import { MotionLogo } from '@/components/dom/MotionLogo'
 import { links } from '@/consts'
 
@@ -119,7 +119,7 @@ const Page = () => {
   return (
     <>
       <DOM />
-      <LazyGradient
+      <GradientScene
         r3f
         forceZoom={0.5}
         forceCamPos={{ x: 0, y: 2, z: 8 }}

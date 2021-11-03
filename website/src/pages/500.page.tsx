@@ -1,7 +1,7 @@
 // custom pages/404.jsx !! Do not remove please or it will break build
 import Link from 'next/link'
 import React from 'react'
-import { LazyGradient } from '@/components/canvas/LazyGradient'
+import { GradientScene } from '@/components/canvas/GradientScene'
 import { MotionLogo } from '@/components/dom/MotionLogo'
 
 const DOM = () => {
@@ -47,7 +47,7 @@ export default function Error() {
     <div>
       <MotionLogo color={true} />
 
-      <LazyGradient
+      <GradientScene
         r3f
         forceZoom={1}
         forceCamPos={{ x: -4, y: 1, z: 8 }}

@@ -1,5 +1,5 @@
 import { Footer } from '@/components/dom/Footer'
-import { LazyGradient } from '@/components/canvas/LazyGradient'
+import { GradientScene } from '@/components/canvas/GradientScene'
 import { Loading } from '@/components/dom/Loading'
 import { MenuWrapper } from '@/components/dom/MenuWrapper'
 import { PreviewSwitch } from '@/components/dom/PreviewSwitch'
@@ -248,7 +248,7 @@ const Page = () => {
       {/* {process.env.NODE_ENV === 'production' && (
         <Loading loadStatus={firstLoad} />
       )} */}
-      <LazyGradient r3f />
+      <GradientScene r3f />
     </>
   )
 }
