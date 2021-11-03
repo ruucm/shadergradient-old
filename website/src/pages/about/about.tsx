@@ -1,22 +1,19 @@
 import { motion, animate } from 'framer-motion'
 import Link from 'next/link'
 import { useUIStore } from '@/helpers/store'
-
-import * as React from 'react'
-
 import styles from '../home/Home.module.scss'
-
 import { PreviewSwitch } from '@/components/dom/PreviewSwitch'
 import { MenuWrapper } from '@/components/dom/MenuWrapper'
 import { MenuItem } from '../home/menu-item'
 import { GradientScene } from '@/components/canvas/GradientScene'
 import { MotionLogo } from '@/components/dom/MotionLogo'
 import { links } from '@/consts'
+import { useEffect, useState } from 'react'
 
 const DOM = () => {
   const mode = useUIStore((state: any) => state.mode)
   const setMode = useUIStore((state: any) => state.setMode)
-  const [isMobile, setIsMobile] = React.useState(false)
+  const [isMobile, setIsMobile] = useState(false)
 
   //choose the screen size
   const handleResize = () => {
@@ -28,7 +25,7 @@ const DOM = () => {
   }
 
   // create an event listener
-  React.useEffect(() => {
+  useEffect(() => {
     handleResize()
     window.addEventListener('resize', handleResize)
 
