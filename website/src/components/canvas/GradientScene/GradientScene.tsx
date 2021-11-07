@@ -3,6 +3,7 @@ import { Gradient, useQueryState, updateGradientState } from 'shadergradient'
 import PRESETS from '../../../pages/presets.json'
 import { useUIStore } from '@/helpers/store'
 import { useSpring } from '@react-spring/core'
+import { dToRArr } from '@/utils'
 
 export function GradientScene({
   r3f,
@@ -31,8 +32,6 @@ export function GradientScene({
       document.documentElement.classList.remove('cutomize')
     }
   }, [current])
-
-  const { animatedScale } = useSpring({ animatedScale: scale })
 
   // shape
   const [type] = useQueryState('type')
@@ -69,15 +68,15 @@ export function GradientScene({
   const responsiveCameraZoom =
     embedMode === 'on' ? cameraZoom : cameraZoom * (window.innerWidth / 1440)
 
+  // force props
+  const { animatedScale } = useSpring({ animatedScale: scale })
+  const { animatedRotation } = useSpring({
+    animatedRotation: dToRArr(forceRot || [rotationX, rotationY, rotationZ]),
+  })
+
   return (
     <Gradient
-      rotation={
-        forceRot || [
-          (rotationX / 360) * Math.PI,
-          (rotationY / 360) * Math.PI,
-          (rotationZ / 360) * Math.PI,
-        ]
-      }
+      rotation={animatedRotation}
       position={forcePos || [positionX, positionY, positionZ]}
       scale={animatedScale}
       cameraPosition={
@@ -105,5 +104,3 @@ export function GradientScene({
     />
   )
 }
-
-GradientScene.defaultProps = {}

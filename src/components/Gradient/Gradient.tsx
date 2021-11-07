@@ -6,6 +6,7 @@ import { usePostProcessing } from '../../hooks/use-post-processing'
 import { GradientMesh } from './GradientMesh'
 import * as THREE from 'three'
 import { Environment } from '@/lib/Environment'
+import { SpringValue } from '@react-spring/core'
 
 export type GradientPropsT = {
   r3f?: boolean
@@ -14,7 +15,7 @@ export type GradientPropsT = {
   environment?: any
   lights?: any
   position?: Euler | undefined
-  rotation?: Euler | undefined
+  rotation?: Euler | SpringValue<number[]> | undefined
   scale?: any
   cameraPosition?: { x: number; y: number; z: number }
   cameraRotation?: { x: number; y: number; z: number }
