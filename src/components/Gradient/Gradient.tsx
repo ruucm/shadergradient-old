@@ -70,9 +70,15 @@ export const Gradient: React.FC<GradientPropsT> = ({
   loadingCallback,
 }) => {
   const { camera }: { camera: Camera } = useThree()
-  camera.position.set(cameraPosition.x, cameraPosition.y, cameraPosition.z)
   camera.zoom = cameraZoom
   camera.updateProjectionMatrix() // need to update camera's zoom
+
+  useFrame((state) => {
+    state.camera.position.lerp(
+      vec.set(cameraPosition.x, cameraPosition.y, cameraPosition.z),
+      0.1
+    )
+  })
 
   usePostProcessing({ on: postProcessing === 'threejs', grain: grain === 'on' })
 

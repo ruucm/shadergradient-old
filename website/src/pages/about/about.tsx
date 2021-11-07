@@ -118,6 +118,7 @@ const Page = () => {
       <DOM />
       <GradientScene
         r3f
+        forceCamPos={{ x: 0.4, y: -0.2, z: -5 }} // default Halo's camPos
         forcePos={[0, 0.3, 0]}
         forceRot={[70, 0, 260]}
         forceScale={0.1}
