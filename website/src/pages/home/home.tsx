@@ -255,7 +255,6 @@ const Page = () => {
       <DOM />
       <Loading></Loading>
       {/* <LazyGradient r3f /> */}
-
       <GradientScene r3f />
     </>
   )
