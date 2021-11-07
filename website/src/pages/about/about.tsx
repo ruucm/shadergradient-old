@@ -10,7 +10,6 @@ import { PreviewSwitch } from '@/components/dom/PreviewSwitch'
 import { MenuWrapper } from '@/components/dom/MenuWrapper'
 import { MenuItem } from '../home/menu-item'
 import { LazyGradient } from '@/components/dom/LazyGradient'
-import { MotionLogo } from '@/components/dom/MotionLogo'
 import { links } from '@/consts'
 
 const DOM = () => {
@@ -37,7 +36,6 @@ const DOM = () => {
 
   return (
     <>
-      <MotionLogo color={true} />
       {isMobile === true ? (
         <div
           className={styles.mobileOnly}

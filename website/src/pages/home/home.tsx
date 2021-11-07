@@ -30,6 +30,7 @@ const DOM = () => {
   const current = useUIStore((state: any) => state.current)
   const loadingPercentage = useUIStore((state: any) => state.loadingPercentage)
   const setCurrent = useUIStore((state: any) => state.setCurrent)
+  const firstLoad = useUIStore((state: any) => state.firstLoad)
 
   const snapList = useRef(null)
 
@@ -58,34 +59,9 @@ const DOM = () => {
 
   return (
     <>
-      {/* Menu */}
-      {isMobile === true ? null : (
-        <MenuWrapper mode={mode}>
-          <div className='flex flex-col gap-0.2 p-3.5 '>
-            <motion.div
-              className='text-xl font-medium text-primary'
-              initial={{ paddingLeft: 0 }}
-              whileHover={{
-                paddingLeft: 7,
-                transition: { duration: 0.3 },
-              }}
-            >
-              <Link href='/about'>About →</Link>
-            </motion.div>
-            {links.map((item, id) => (
-              <MenuItem key={id} title={item.title} link={item.link} />
-            ))}
-            <PreviewSwitch mode={mode} setMode={setMode} />
-          </div>
-        </MenuWrapper>
-      )}
-
       {/* Loading Spinner */}
       {loadingPercentage < 100 && (
-        <div
-          className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'
-          style={{ background: 'blue' }}
-        >
+        <div className={styles.loadingSpinner}>
           <MotionLogo color={false} />
         </div>
       )}
@@ -99,8 +75,29 @@ const DOM = () => {
           opacity: loadingPercentage < 100 ? 0.1 : 1,
         }}
       >
+        {/* Menu */}
+        {isMobile === true ? null : (
+          <MenuWrapper mode={mode}>
+            <div className='flex flex-col gap-0.2 p-3.5 '>
+              <motion.div
+                className='text-xl font-medium text-primary'
+                initial={{ paddingLeft: 0 }}
+                whileHover={{
+                  paddingLeft: 7,
+                  transition: { duration: 0.3 },
+                }}
+              >
+                <Link href='/about'>About →</Link>
+              </motion.div>
+              {links.map((item, id) => (
+                <MenuItem key={id} title={item.title} link={item.link} />
+              ))}
+              <PreviewSwitch mode={mode} setMode={setMode} />
+            </div>
+          </MenuWrapper>
+        )}
+
         <div className={styles.leftWrapper}>
-          {/* <MotionLogo color={false} /> */}
           <motion.div
             className={styles.title}
             style={{ display: mode !== 'full' ? 'none' : 'block' }}
@@ -119,9 +116,11 @@ const DOM = () => {
                 transition: { delay: 1, duration: 1 },
               }}
             >
-              No more static gradients.
+              {/* No more static gradients.
               <br />
-              Add liveliness in your products.
+              Add liveliness in your products. */}
+              beautiful, customizable, and moving gradients <br />
+              for your digital products
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 30 }}
@@ -169,10 +168,6 @@ const DOM = () => {
               transition: { delay: 2, transition: 2 },
             }}
           >
-            {/* <div className={styles.sliderHeader}>
-              <p>Current Theme</p>
-              <Link href='/customize'>Customize →</Link>
-            </div> */}
             <div
               className={styles.sliderWrapper}
               style={{
@@ -180,12 +175,12 @@ const DOM = () => {
                   mode === 'full'
                     ? '2px solid ' + PRESETS[current].color
                     : '2px solid #FF430A',
+                height: 60 * 1.6,
               }}
             >
               <SnapList
                 ref={snapList}
                 direction={isMobile ? 'vertical' : 'horizontal'}
-                style={{ overflow: 'visible' }}
               >
                 {PRESETS.map((item, index) => {
                   return (
@@ -197,49 +192,22 @@ const DOM = () => {
                       }}
                       snapAlign={isMobile ? 'end' : 'start'}
                     >
-                      <div style={{ position: 'relative' }}>
-                        <MyItem
-                          onClick={() => {
-                            goToSnapItem(index)
-                            setCurrent(index)
-                            // console.log(index, current)
-                          }}
-                          visible={current === index}
-                          color={
-                            mode === 'full' ? PRESETS[current].color : '#FF430A'
-                          }
-                          isMobile={isMobile}
-                        >
-                          {index < 10
-                            ? '0' + index.toString()
-                            : index.toString()}{' '}
-                          {item.title}
-                        </MyItem>
-                        <motion.div
-                          initial={{ x: 0 }}
-                          animate={{ x: 5 }}
-                          transition={{
-                            repeatType: 'reverse',
-                            repeat: Infinity,
-                            duration: 1,
-                          }}
-                          style={{
-                            display:
-                              current === index && isMobile === false
-                                ? 'block'
-                                : 'none',
-                            position: 'absolute',
-                            left: 0,
-                            bottom: -33,
-                            overflow: 'visible',
-                            fontWeight: 500,
-                            fontSize: '1.15em',
-                          }}
-                          whileHover={{ x: 10 }}
-                        >
-                          <Link href='/customize'>Customize →</Link>
-                        </motion.div>
-                      </div>
+                      <MyItem
+                        onClick={() => {
+                          goToSnapItem(index)
+                          setCurrent(index)
+                          // console.log(index, current)
+                        }}
+                        visible={current === index}
+                        color={
+                          mode === 'full' ? PRESETS[current].color : '#FF430A'
+                        }
+                        isMobile={isMobile}
+                        btnOn={true}
+                      >
+                        {index < 10 ? '0' + index.toString() : index.toString()}{' '}
+                        {item.title}
+                      </MyItem>
                     </SnapItem>
                   )
                 })}
@@ -274,15 +242,14 @@ const Page = () => {
   const current = useUIStore((state: any) => state.current)
   const firstLoad = useUIStore((state: any) => state.firstLoad)
   const setFirstLoad = useUIStore((state: any) => state.setFirstLoad)
+  const loadingPercentage = useUIStore((state: any) => state.loadingPercentage)
 
   React.useEffect(() => {
-    // setTimeout(() => {
-    //   setDelayed(true)
-    // }, 5000)
     if (firstLoad === 'never') {
       setFirstLoad('firstLoad')
     }
   }, [])
+
   return (
     <>
       <DOM />

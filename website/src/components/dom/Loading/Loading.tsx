@@ -1,17 +1,29 @@
 import * as React from 'react'
 import { motion, useAnimation } from 'framer-motion'
 import styles from '../../../pages/home/Home.module.scss'
+import Lottie from 'react-lottie'
+import loadingAnimationData from '../../../media/whitelongloading.json'
 
 import { useUIStore } from '@/helpers/store'
 
 export function Loading() {
   const firstLoad = useUIStore((state: any) => state.firstLoad)
   const setFirstLoad = useUIStore((state: any) => state.setFirstLoad)
-  const loadingAnim = useAnimation()
+  const loadingPercentage = useUIStore((state: any) => state.loadingPercentage)
 
-  const delay = () => {
+  const loadingAnim = useAnimation()
+  const loadingOption = {
+    loop: true,
+    autoplay: true,
+    animationData: loadingAnimationData,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice',
+    },
+  }
+  const [delayed, setDelayed] = React.useState(false)
+  const delay = async () => {
     setTimeout(() => {
-      setFirstLoad('firstLoadDone')
+      setDelayed(true)
     }, 5000)
   }
 
@@ -19,13 +31,29 @@ export function Loading() {
     delay()
   }, [])
 
+  React.useEffect(() => {
+    console.log(loadingPercentage)
+    if (loadingPercentage === 100) {
+      setFirstLoad('firstLoadDone')
+    }
+  }, [loadingPercentage])
+
   return (
     <motion.div
       className={styles.loading}
       animate={loadingAnim}
-      style={{ display: firstLoad === 'firstLoadDone' ? 'none' : 'flex' }}
+      style={{
+        display:
+          firstLoad === 'firstLoadDone' && delayed === true ? 'none' : 'flex',
+      }}
     >
       <motion.div className={styles.loadingTextWrapper}>
+        <Lottie
+          options={loadingOption}
+          height={100}
+          width={550}
+          isClickToPauseDisabled={true}
+        />
         <motion.p
           className={styles.loadingText}
           initial={{ opacity: 0.3 }}
@@ -132,6 +160,12 @@ export function Loading() {
         >
           gradients.{' '}
         </motion.p>
+        <Lottie
+          options={loadingOption}
+          height={100}
+          width={550}
+          isClickToPauseDisabled={true}
+        />
       </motion.div>
     </motion.div>
   )

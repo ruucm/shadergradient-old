@@ -7,13 +7,13 @@ export const MyItem = ({
   visible,
   color,
   isMobile = false,
+  btnOn = false,
 }) => (
-  <div style={{ display: 'relative' }}>
+  <div style={{ position: 'relative', overflow: 'visible' }}>
     <motion.div
       style={{
         width: isMobile ? '100vw' : 'fit-content',
         fontSize: isMobile ? 30 : 60,
-        // opacity: ,
         borderBottom:
           visible && !isMobile ? '4px solid ' + color : '0px solid black',
         cursor: visible ? 'default' : 'pointer',
@@ -28,17 +28,26 @@ export const MyItem = ({
     >
       {children}
     </motion.div>
-    {/* {visible ? (
-      <span
-        style={{
-          background: 'red',
-          display: 'absolute',
-          height: '1em',
-          overflow: 'visible',
-        }}
-      >
-        <Link href='/customize'>Customize →</Link>
-      </span>
-    ) : null} */}
+    <motion.div
+      initial={{ x: 0 }}
+      animate={{ x: 5 }}
+      transition={{
+        repeatType: 'reverse',
+        repeat: Infinity,
+        duration: 1,
+      }}
+      style={{
+        display:
+          visible === true && isMobile === false && btnOn === true
+            ? 'block'
+            : 'none',
+        fontWeight: 500,
+        fontSize: '1.15em',
+        marginTop: 7,
+      }}
+      whileHover={{ x: 10 }}
+    >
+      <Link href='/customize'>Customize →</Link>
+    </motion.div>
   </div>
 )

@@ -64,7 +64,7 @@
 
 .slider {
   position: absolute;
-  bottom: 7vh;
+  bottom: 6vh;
   left: 2em;
   width: 98vw;
   height: 20vh;
@@ -95,13 +95,13 @@
   position: absolute;
   bottom: 2em;
   right: 2em;
-  color: rgba(255, 255, 255, 0.6);
+  opacity: 0.6;
   text-align: right;
   z-index: 5;
 }
 
 .footer a:hover {
-  color: rgba(255, 255, 255, 1);
+  opacity: 1;
 }
 
 .icon {
@@ -220,20 +220,11 @@
   align-items: center;
 }
 
-.logoWrapper {
-  width: fit-content;
-  height: fit-content;
-  position: absolute;
-  top: 1em;
-  left: 1em;
-  z-index: 10;
-}
-
 .loadingTextWrapper {
-  font-size: 6.5em;
+  font-size: 3em;
   font-weight: 600;
   color: white;
-  width: 80vw;
+  width: 38vw;
   height: fit-content;
   margin-bottom: -0.3em;
 }
@@ -255,6 +246,23 @@
   background: linear-gradient(to right, #fbcac9, #8ca6ce);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.loadingSpinner {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  text-align: center;
+  color: #ff430a;
+  font-size: 3em;
+  .logoWrapper {
+    width: fit-content;
+    height: fit-content;
+  }
 }
 
 @media (max-width: 640px) {
