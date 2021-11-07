@@ -72,26 +72,20 @@ export function GradientScene({
   return (
     <Gradient
       rotation={
-        forceRot !== null
-          ? forceRot
-          : [
-              (rotationX / 360) * Math.PI,
-              (rotationY / 360) * Math.PI,
-              (rotationZ / 360) * Math.PI,
-            ]
+        forceRot || [
+          (rotationX / 360) * Math.PI,
+          (rotationY / 360) * Math.PI,
+          (rotationZ / 360) * Math.PI,
+        ]
       }
-      position={
-        forcePos !== null ? forcePos : [positionX, positionY, positionZ]
-      }
+      position={forcePos || [positionX, positionY, positionZ]}
       scale={animatedScale}
       cameraPosition={
-        forceCamPos !== null
-          ? forceCamPos
-          : {
-              x: cameraPositionX,
-              y: cameraPositionY,
-              z: cameraPositionZ,
-            }
+        forceCamPos || {
+          x: cameraPositionX,
+          y: cameraPositionY,
+          z: cameraPositionZ,
+        }
       }
       cameraRotation={{ x: 0, y: 0, z: 0 }}
       type={type}
