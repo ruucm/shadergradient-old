@@ -73,11 +73,14 @@ export function GradientScene({
   const { animatedRotation } = useSpring({
     animatedRotation: dToRArr(forceRot || [rotationX, rotationY, rotationZ]),
   })
+  const { animatedPosition } = useSpring({
+    animatedPosition: forcePos || [positionX, positionY, positionZ],
+  })
 
   return (
     <Gradient
       rotation={animatedRotation}
-      position={forcePos || [positionX, positionY, positionZ]}
+      position={animatedPosition}
       scale={animatedScale}
       cameraPosition={
         forceCamPos || {
