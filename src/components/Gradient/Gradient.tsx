@@ -6,6 +6,7 @@ import { usePostProcessing } from '../../hooks/use-post-processing'
 import { GradientMesh } from './GradientMesh'
 import * as THREE from 'three'
 import { Environment } from '@/lib/Environment'
+import { SpringValue } from '@react-spring/core'
 
 export type GradientPropsT = {
   r3f?: boolean
@@ -14,7 +15,8 @@ export type GradientPropsT = {
   environment?: any
   lights?: any
   position?: Euler | undefined
-  rotation?: Euler | undefined
+  rotation?: Euler | SpringValue<number[]> | undefined
+  scale?: any
   cameraPosition?: { x: number; y: number; z: number }
   cameraRotation?: { x: number; y: number; z: number }
   cameraQuaternion?: { x: number; y: number; z: number }
@@ -40,6 +42,7 @@ function LoadingBox() {
     </mesh>
   )
 }
+const vec = new THREE.Vector3()
 
 export const Gradient: React.FC<GradientPropsT> = ({
   r3f,
@@ -48,31 +51,34 @@ export const Gradient: React.FC<GradientPropsT> = ({
   environment = <Environment preset='lobby' background={true} />,
   lights = <ambientLight intensity={1} />,
   position = [0, 0, 0],
-  rotation = [Math.PI * 2, 0, 0],
-  cameraPosition = { x: 0, y: 0, z: 0 },
+  rotation = [(Math.PI / 360) * 90, 0, (Math.PI / 360) * 230],
+  scale,
+  cameraPosition = { x: 0.4, y: -0.2, z: -5 },
   cameraRotation = { x: 0, y: 0, z: 0 },
   cameraQuaternion = { x: 0, y: 0, z: 0 },
-  cameraZoom = 1,
+  cameraZoom = 2.4,
   uTime = 0.2,
-  animate = false,
-  uStrength = 1.3,
+  animate = true,
+  uStrength = 1.6,
   uSpeed = 0.3,
   colors = ['#CC4C6E', '#1980FF', '#99B58F'],
-  grain,
-  lightType,
-  envPreset,
-  reflection,
-  brightness,
+  grain = 'on',
+  lightType = 'env',
+  envPreset = 'city',
+  reflection = 0.1,
+  brightness = 1.2,
   loadingCallback,
 }) => {
   const { camera }: { camera: Camera } = useThree()
-  camera.position.set(cameraPosition.x, cameraPosition.y, cameraPosition.z)
-  camera.rotation.set(cameraRotation.x, cameraRotation.y, cameraRotation.z) // this one weirldy not works.
-  camera.quaternion.setFromEuler(
-    new THREE.Euler(cameraQuaternion.x, cameraQuaternion.y, cameraQuaternion.z)
-  )
   camera.zoom = cameraZoom
   camera.updateProjectionMatrix() // need to update camera's zoom
+
+  useFrame((state) => {
+    state.camera.position.lerp(
+      vec.set(cameraPosition.x, cameraPosition.y, cameraPosition.z),
+      0.1
+    )
+  })
 
   usePostProcessing({ on: postProcessing === 'threejs', grain: grain === 'on' })
 
@@ -99,6 +105,7 @@ export const Gradient: React.FC<GradientPropsT> = ({
           type={type}
           position={position}
           rotation={rotation}
+          scale={scale}
           animate={animate}
           uTime={uTime}
           uStrength={uStrength}

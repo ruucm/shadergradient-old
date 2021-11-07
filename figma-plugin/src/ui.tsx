@@ -6,10 +6,34 @@ import { GradientScene } from './components/GradientScene'
 import { Controls } from './components/Controls'
 import './global.css'
 
+function Arrow() {
+  return (
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      focusable='false'
+      viewBox='0 0 24 24'
+      fill='currentColor'
+      className='block cursor-pointer h-[16px]'
+    >
+      <path d='M11.67 3.87L9.9 2.1 0 12l9.9 9.9 1.77-1.77L3.54 12z'></path>
+    </svg>
+  )
+}
+
 function App() {
   return (
-    <>
+    <div className='bg-white h-full'>
       <GradientScene />
+      <div className='bg-controls-sub-panel text-white font-semibold text-sm flex justify-center items-center gap-3 py-1'>
+        Theme
+        <div className='bg-controls-sub-panel-button w-[150px] flex justify-between items-center p-1 rounded'>
+          <Arrow />
+          Halo
+          <div className='rotate-180'>
+            <Arrow />
+          </div>
+        </div>
+      </div>
       <Controls />
       <div className='flex gap-0.5 p-3 absolute w-full bottom-0'>
         <UI.Button>Extract GIF</UI.Button>
@@ -17,7 +41,7 @@ function App() {
           Snapshot
         </UI.Button>
       </div>
-    </>
+    </div>
   )
 }
 

@@ -3,6 +3,7 @@ import * as React from 'react'
 import { useRef, useEffect } from 'react'
 import './GradientMaterial'
 import * as THREE from 'three'
+import { animated } from '@react-spring/three'
 
 const clock = new THREE.Clock()
 
@@ -19,6 +20,7 @@ export function GradientMesh({
   uSpeed,
   colors,
   reflection,
+  scale,
 }: any) {
   const mesh = useRef()
   const material: any = useRef()
@@ -39,10 +41,11 @@ export function GradientMesh({
   }, [uTime, reflection])
 
   return (
-    <mesh
+    <animated.mesh
       ref={mesh}
       position={position}
       rotation={rotation} // rotate mesh to get more lights
+      scale={scale}
     >
       {type === 'plane' && <planeGeometry args={[5, 5, 1, meshCount]} />}
       {type === 'sphere' && <icosahedronBufferGeometry args={[1, meshCount]} />}
@@ -57,6 +60,6 @@ export function GradientMesh({
         uStrength={uStrength}
         uSpeed={uSpeed}
       />
-    </mesh>
+    </animated.mesh>
   )
 }

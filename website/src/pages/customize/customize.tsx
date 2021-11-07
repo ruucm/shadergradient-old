@@ -1,5 +1,5 @@
 import { Footer } from '@/components/dom/Footer'
-import { LazyGradient } from '@/components/dom/LazyGradient'
+import { GradientScene } from '@/components/canvas/GradientScene'
 import { PreviewWrapper } from '@/components/dom/PreviewWrapper'
 import { PreviewSwitch } from '@/components/dom/PreviewSwitch'
 import { MotionLogo } from '@/components/dom/MotionLogo'
@@ -160,7 +160,7 @@ const DOM = () => {
 const R3F = ({ r3f }) => {
   return (
     <>
-      <LazyGradient r3f />
+      <GradientScene r3f />
     </>
   )
 }

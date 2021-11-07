@@ -25,11 +25,23 @@ export const Controls: React.FC<Props> = ({
 
   const children = (
     <>
+      {!isMobile && (
+        <UI.ControlTypeTitles
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+        />
+      )}
       <UI.PropertyControls activeTab={activeTab} setActiveTab={setActiveTab} />
       {!isMobile && (
         <div className='absolute left-3.5 bottom-3.5'>
           <PreviewSwitch mode={mode} setMode={setMode} />
         </div>
+      )}
+      {isMobile && (
+        <UI.ControlTypeTitles
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+        />
       )}
     </>
   )

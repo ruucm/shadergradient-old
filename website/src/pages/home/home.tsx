@@ -1,5 +1,5 @@
 import { Footer } from '@/components/dom/Footer'
-import { LazyGradient } from '@/components/dom/LazyGradient'
+import { GradientScene } from '@/components/canvas/GradientScene'
 import { Loading } from '@/components/dom/Loading'
 import { MenuWrapper } from '@/components/dom/MenuWrapper'
 import { PreviewSwitch } from '@/components/dom/PreviewSwitch'
@@ -254,7 +254,9 @@ const Page = () => {
     <>
       <DOM />
       <Loading></Loading>
-      <LazyGradient r3f />
+      {/* <LazyGradient r3f /> */}
+
+      <GradientScene r3f />
     </>
   )
 }

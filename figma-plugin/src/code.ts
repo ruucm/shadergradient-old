@@ -1,6 +1,6 @@
 /// <reference path="../node_modules/@figma/plugin-typings/index.d.ts" />
 
-figma.showUI(__html__, { width: 453, height: 793 })
+figma.showUI(__html__, { width: 453, height: 842 })
 
 figma.ui.onmessage = (msg) => {
   const { type } = msg
@@ -25,12 +25,11 @@ async function invertPaint(paint, bytes) {
     // overwrite other types of paint (eg. SOLID)
     const newPaint: ImagePaint = {
       type: 'IMAGE',
-      scaleMode: 'FIT',
+      scaleMode: 'FILL', // or FIT
       imageHash: figma.createImage(bytes).hash,
     }
     return newPaint
   }
-  return paint
 }
 
 async function replaceToNewImage(node, bytes) {

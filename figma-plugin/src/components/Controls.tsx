@@ -8,7 +8,16 @@ export function Controls() {
 
   if (embedMode === 'off')
     return (
-      <UI.PropertyControls activeTab={activeTab} setActiveTab={setActiveTab} />
+      <>
+        <UI.ControlTypeTitles
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+        />
+        <UI.PropertyControls
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+        />
+      </>
     )
   else return <></>
 }

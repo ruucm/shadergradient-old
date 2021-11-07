@@ -11,7 +11,9 @@ module.exports = {
       colors: {
         primary: '#FF430A',
         'controls-panel': '#F6F8F8',
-        'controls-panel-mobile': 'rgba(245, 245, 245, 0.2)',
+        'controls-panel-mobile': '#F6F8F8',
+        'controls-sub-panel': '#383838',
+        'controls-sub-panel-button': '#525252',
       },
       spacing: {
         0.2: '3.5px',

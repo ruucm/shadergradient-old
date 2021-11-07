@@ -1,21 +1,19 @@
 import { motion, animate } from 'framer-motion'
 import Link from 'next/link'
 import { useUIStore } from '@/helpers/store'
-
-import * as React from 'react'
-
 import styles from '../home/Home.module.scss'
-
 import { PreviewSwitch } from '@/components/dom/PreviewSwitch'
 import { MenuWrapper } from '@/components/dom/MenuWrapper'
 import { MenuItem } from '../home/menu-item'
-import { LazyGradient } from '@/components/dom/LazyGradient'
+import { GradientScene } from '@/components/canvas/GradientScene'
+import { MotionLogo } from '@/components/dom/MotionLogo'
 import { links } from '@/consts'
+import { useEffect, useState } from 'react'
 
 const DOM = () => {
   const mode = useUIStore((state: any) => state.mode)
   const setMode = useUIStore((state: any) => state.setMode)
-  const [isMobile, setIsMobile] = React.useState(false)
+  const [isMobile, setIsMobile] = useState(false)
 
   //choose the screen size
   const handleResize = () => {
@@ -27,7 +25,7 @@ const DOM = () => {
   }
 
   // create an event listener
-  React.useEffect(() => {
+  useEffect(() => {
     handleResize()
     window.addEventListener('resize', handleResize)
 
@@ -48,7 +46,7 @@ const DOM = () => {
         </div>
       ) : (
         <MenuWrapper mode={mode} setMode={setMode}>
-          <div className={styles.menuItems}>
+          <div className='flex flex-col gap-0.2 p-3.5'>
             <motion.div
               className='font-medium text-primary text-xl'
               initial={{ paddingLeft: 0 }}
@@ -58,7 +56,6 @@ const DOM = () => {
               }}
               style={{
                 color: 'white',
-                lineHeight: '1.7em',
                 fontWeight: 500,
               }}
             >
@@ -120,12 +117,12 @@ const Page = () => {
   return (
     <>
       <DOM />
-      <LazyGradient
+      <GradientScene
         r3f
-        forceZoom={0.5}
-        forceCamPos={{ x: 0, y: 2, z: 8 }}
-        forceRot={[40, 0, 150]}
-        forcePos={[0, 3, 0]}
+        forceCamPos={{ x: 0.4, y: -0.2, z: -5 }} // default Halo's camPos
+        forcePos={[0, 0.3, 0]}
+        forceRot={[70, 0, 260]}
+        forceScale={0.1}
       />
     </>
   )

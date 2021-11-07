@@ -2,13 +2,16 @@ import { useEffect, useState } from 'react'
 import { Gradient, useQueryState, updateGradientState } from 'shadergradient'
 import PRESETS from '../../../pages/presets.json'
 import { useUIStore } from '@/helpers/store'
+import { useSpring } from '@react-spring/core'
+import { dToRArr } from '@/utils'
 
-export function LazyGradient({
+export function GradientScene({
   r3f,
   forceZoom = null,
   forceCamPos = null,
   forceRot = null,
   forcePos = null,
+  forceScale = 1,
 }) {
   const current = useUIStore((state: any) => state.current)
   const setLoadingPercentage = useUIStore(
@@ -65,34 +68,26 @@ export function LazyGradient({
   const responsiveCameraZoom =
     embedMode === 'on' ? cameraZoom : cameraZoom * (window.innerWidth / 1440)
 
-  console.log('grain', grain)
-  console.log('lightType', lightType)
-  console.log('envPreset', envPreset)
-  console.log('reflection', reflection)
-  console.log('brightness', brightness)
+  // force props
+  const { animatedScale } = useSpring({ animatedScale: forceScale })
+  const { animatedRotation } = useSpring({
+    animatedRotation: dToRArr(forceRot || [rotationX, rotationY, rotationZ]),
+  })
+  const { animatedPosition } = useSpring({
+    animatedPosition: forcePos || [positionX, positionY, positionZ],
+  })
 
   return (
     <Gradient
-      rotation={
-        forceRot !== null
-          ? forceRot
-          : [
-              (rotationX / 360) * Math.PI,
-              (rotationY / 360) * Math.PI,
-              (rotationZ / 360) * Math.PI,
-            ]
-      }
-      position={
-        forcePos !== null ? forcePos : [positionX, positionY, positionZ]
-      }
+      rotation={animatedRotation}
+      position={animatedPosition}
+      scale={animatedScale}
       cameraPosition={
-        forceCamPos !== null
-          ? forceCamPos
-          : {
-              x: cameraPositionX,
-              y: cameraPositionY,
-              z: cameraPositionZ,
-            }
+        forceCamPos || {
+          x: cameraPositionX,
+          y: cameraPositionY,
+          z: cameraPositionZ,
+        }
       }
       cameraRotation={{ x: 0, y: 0, z: 0 }}
       type={type}
@@ -112,5 +107,3 @@ export function LazyGradient({
     />
   )
 }
-
-LazyGradient.defaultProps = {}
