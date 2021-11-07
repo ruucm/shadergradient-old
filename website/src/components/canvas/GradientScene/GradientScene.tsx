@@ -11,7 +11,7 @@ export function GradientScene({
   forceCamPos = null,
   forceRot = null,
   forcePos = null,
-  scale = 1,
+  forceScale = 1,
 }) {
   const current = useUIStore((state: any) => state.current)
   const setLoadingPercentage = useUIStore(
@@ -69,7 +69,7 @@ export function GradientScene({
     embedMode === 'on' ? cameraZoom : cameraZoom * (window.innerWidth / 1440)
 
   // force props
-  const { animatedScale } = useSpring({ animatedScale: scale })
+  const { animatedScale } = useSpring({ animatedScale: forceScale })
   const { animatedRotation } = useSpring({
     animatedRotation: dToRArr(forceRot || [rotationX, rotationY, rotationZ]),
   })
