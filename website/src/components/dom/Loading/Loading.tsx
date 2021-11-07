@@ -1,48 +1,40 @@
 import * as React from 'react'
 import { motion, useAnimation } from 'framer-motion'
 import styles from '../../../pages/home/Home.module.scss'
-import * as animationData_colored from '../../../media/colored-motionlogo.json'
-import { MotionLogo } from '@/components/dom/MotionLogo'
 
-export function Loading({ loadStatus }) {
+import { useUIStore } from '@/helpers/store'
+
+export function Loading() {
+  const firstLoad = useUIStore((state: any) => state.firstLoad)
+  const setFirstLoad = useUIStore((state: any) => state.setFirstLoad)
   const loadingAnim = useAnimation()
 
-  const loadingSequence = async () => {
-    if (loadStatus === 'firstLoad') {
-      loadingAnim.start({
-        opacity: 0,
-        transition: { duration: 0.5 },
-      })
-      loadingAnim.start({
-        display: 'none',
-        transition: { duration: 0, delay: 0.5 },
-      })
-    }
+  const delay = () => {
+    setTimeout(() => {
+      setFirstLoad('firstLoadDone')
+    }, 5000)
   }
 
   React.useEffect(() => {
-    loadingSequence()
-  }, [loadStatus])
+    delay()
+  }, [])
+
   return (
     <motion.div
       className={styles.loading}
       animate={loadingAnim}
-      initial={{ opacity: 1 }}
-      style={{ display: loadStatus === 'firstLoadDone' ? 'none' : 'flex' }}
+      style={{ display: firstLoad === 'firstLoadDone' ? 'none' : 'flex' }}
     >
-      <MotionLogo color={true} />
-
       <motion.div className={styles.loadingTextWrapper}>
         <motion.p
           className={styles.loadingText}
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0.3 }}
           animate={{
             opacity: 1,
-            y: 0,
           }}
           transition={{
             duration: 0.7,
-            delay: 0.5,
+            delay: 0,
             ease: 'easeInOut',
           }}
         >
@@ -50,14 +42,13 @@ export function Loading({ loadStatus }) {
         </motion.p>
         <motion.p
           className={styles.loadingText}
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0.3 }}
           animate={{
             opacity: 1,
-            y: 0,
           }}
           transition={{
             duration: 0.7,
-            delay: 1,
+            delay: 0.3,
             ease: 'easeInOut',
           }}
         >
@@ -65,14 +56,13 @@ export function Loading({ loadStatus }) {
         </motion.p>
         <motion.p
           className={styles.loadingText}
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0.3 }}
           animate={{
-            opacity: 1.5,
-            y: 0,
+            opacity: 1,
           }}
           transition={{
             duration: 0.7,
-            delay: 1.5,
+            delay: 0.6,
             ease: 'easeInOut',
           }}
         >
@@ -80,14 +70,13 @@ export function Loading({ loadStatus }) {
         </motion.p>
         <motion.p
           className={styles.loadingText}
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0.3 }}
           animate={{
             opacity: 1,
-            y: 0,
           }}
           transition={{
             duration: 0.7,
-            delay: 2.5,
+            delay: 0.9,
             ease: 'easeInOut',
           }}
         >
@@ -95,14 +84,13 @@ export function Loading({ loadStatus }) {
         </motion.p>
         <motion.p
           className={styles.loadingText}
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0.3 }}
           animate={{
             opacity: 1,
-            y: 0,
           }}
           transition={{
             duration: 0.7,
-            delay: 3,
+            delay: 1.2,
             ease: 'easeInOut',
           }}
         >
@@ -110,37 +98,35 @@ export function Loading({ loadStatus }) {
         </motion.p>
         <motion.p
           className={styles.loadingText}
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0.3 }}
           animate={{
             opacity: 1,
-            y: 0,
           }}
           transition={{
             duration: 0.7,
-            delay: 3.5,
+            delay: 1.5,
             ease: 'easeInOut',
           }}
         >
           and{' '}
         </motion.p>
         <div className={styles.loadingText}>
-          <MovingLetters letter='m' letterDelay={4} />
-          <MovingLetters letter='o' letterDelay={4.1} />
-          <MovingLetters letter='v' letterDelay={4.2} />
-          <MovingLetters letter='i' letterDelay={4.3} />
-          <MovingLetters letter='n' letterDelay={4.4} />
-          <MovingLetters letter='g' letterDelay={4.5} />
+          <MovingLetters letter='m' letterDelay={1.8} />
+          <MovingLetters letter='o' letterDelay={1.9} />
+          <MovingLetters letter='v' letterDelay={2.0} />
+          <MovingLetters letter='i' letterDelay={2.1} />
+          <MovingLetters letter='n' letterDelay={2.2} />
+          <MovingLetters letter='g' letterDelay={2.3} />
         </div>
         <motion.p
           className={styles.loadingText && styles.gradientText}
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0.3 }}
           animate={{
             opacity: 1,
-            y: 0,
           }}
           transition={{
             duration: 0.7,
-            delay: 4,
+            delay: 2.6,
             ease: 'easeInOut',
           }}
         >
@@ -157,15 +143,14 @@ const MovingLetters = ({ letterDelay, letter }) => {
   return (
     <motion.p
       className={styles.loadingTextMotion}
-      initial={{ opacity: 0, y: 20, scale: 0.95 }}
+      initial={{ opacity: 0.3, scale: 0.95 }}
       animate={{
         opacity: 1,
-        y: 0,
         scale: 1.1,
       }}
       transition={{
         duration: 0.7,
-        delay: 4,
+        delay: 1.8,
         ease: 'easeInOut',
         scale: {
           repeatType: 'reverse',

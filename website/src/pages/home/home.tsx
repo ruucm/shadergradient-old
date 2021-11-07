@@ -82,7 +82,10 @@ const DOM = () => {
 
       {/* Loading Spinner */}
       {loadingPercentage < 100 && (
-        <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
+        <div
+          className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'
+          style={{ background: 'blue' }}
+        >
           <MotionLogo color={false} />
         </div>
       )}
@@ -93,10 +96,11 @@ const DOM = () => {
         style={{
           color: mode === 'full' ? PRESETS[current].color : '#FF430A',
           display: 'block',
+          opacity: loadingPercentage < 100 ? 0.1 : 1,
         }}
       >
         <div className={styles.leftWrapper}>
-          <MotionLogo color={false} />
+          {/* <MotionLogo color={false} /> */}
           <motion.div
             className={styles.title}
             style={{ display: mode !== 'full' ? 'none' : 'block' }}
@@ -165,10 +169,10 @@ const DOM = () => {
               transition: { delay: 2, transition: 2 },
             }}
           >
-            <div className={styles.sliderHeader}>
+            {/* <div className={styles.sliderHeader}>
               <p>Current Theme</p>
               <Link href='/customize'>Customize →</Link>
-            </div>
+            </div> */}
             <div
               className={styles.sliderWrapper}
               style={{
@@ -181,6 +185,7 @@ const DOM = () => {
               <SnapList
                 ref={snapList}
                 direction={isMobile ? 'vertical' : 'horizontal'}
+                style={{ overflow: 'visible' }}
               >
                 {PRESETS.map((item, index) => {
                   return (
@@ -192,21 +197,49 @@ const DOM = () => {
                       }}
                       snapAlign={isMobile ? 'end' : 'start'}
                     >
-                      <MyItem
-                        onClick={() => {
-                          goToSnapItem(index)
-                          setCurrent(index)
-                          // console.log(index, current)
-                        }}
-                        visible={current === index}
-                        color={
-                          mode === 'full' ? PRESETS[current].color : '#FF430A'
-                        }
-                        isMobile={isMobile}
-                      >
-                        {index < 10 ? '0' + index.toString() : index.toString()}{' '}
-                        {item.title}
-                      </MyItem>
+                      <div style={{ position: 'relative' }}>
+                        <MyItem
+                          onClick={() => {
+                            goToSnapItem(index)
+                            setCurrent(index)
+                            // console.log(index, current)
+                          }}
+                          visible={current === index}
+                          color={
+                            mode === 'full' ? PRESETS[current].color : '#FF430A'
+                          }
+                          isMobile={isMobile}
+                        >
+                          {index < 10
+                            ? '0' + index.toString()
+                            : index.toString()}{' '}
+                          {item.title}
+                        </MyItem>
+                        <motion.div
+                          initial={{ x: 0 }}
+                          animate={{ x: 5 }}
+                          transition={{
+                            repeatType: 'reverse',
+                            repeat: Infinity,
+                            duration: 1,
+                          }}
+                          style={{
+                            display:
+                              current === index && isMobile === false
+                                ? 'block'
+                                : 'none',
+                            position: 'absolute',
+                            left: 0,
+                            bottom: -33,
+                            overflow: 'visible',
+                            fontWeight: 500,
+                            fontSize: '1.15em',
+                          }}
+                          whileHover={{ x: 10 }}
+                        >
+                          <Link href='/customize'>Customize →</Link>
+                        </motion.div>
+                      </div>
                     </SnapItem>
                   )
                 })}
@@ -228,7 +261,7 @@ const DOM = () => {
           </motion.div>
         </div>
       </motion.div>
-      <Footer />
+      {/* <Footer /> */}
 
       <PreviewWrapper mode={mode} setMode={setMode} />
     </>
@@ -242,12 +275,18 @@ const Page = () => {
   const firstLoad = useUIStore((state: any) => state.firstLoad)
   const setFirstLoad = useUIStore((state: any) => state.setFirstLoad)
 
+  React.useEffect(() => {
+    // setTimeout(() => {
+    //   setDelayed(true)
+    // }, 5000)
+    if (firstLoad === 'never') {
+      setFirstLoad('firstLoad')
+    }
+  }, [])
   return (
     <>
       <DOM />
-      {/* {process.env.NODE_ENV === 'production' && (
-        <Loading loadStatus={firstLoad} />
-      )} */}
+      <Loading></Loading>
       <LazyGradient r3f />
     </>
   )

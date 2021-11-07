@@ -3,6 +3,8 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import styles from '../../../pages/home/Home.module.scss'
 import animationData from '../../../media/motionlogo-lottie.json'
+import loadingAnimationData from '../../../media/loading.json'
+
 import animationData_colored from '../../../media/colored-motionlogo.json'
 import Lottie from 'react-lottie'
 
@@ -11,6 +13,15 @@ export function MotionLogo({ color }) {
     loop: true,
     autoplay: true,
     animationData: JSON.parse(JSON.stringify(animationData)),
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice',
+    },
+  }
+
+  const loadingOption = {
+    loop: true,
+    autoplay: true,
+    animationData: JSON.parse(JSON.stringify(loadingAnimationData)),
     rendererSettings: {
       preserveAspectRatio: 'xMidYMid slice',
     },
@@ -25,18 +36,15 @@ export function MotionLogo({ color }) {
     },
   }
   return (
-    <>
-      <Link href='/' passHref>
-        <motion.div className={styles.logoWrapper}>
-          <Lottie
-            options={color === true ? coloredLogoOption : whiteLogoOption}
-            height={80}
-            width={80}
-            isClickToPauseDisabled={true}
-          />
-        </motion.div>
-      </Link>
-    </>
+    <motion.div className={styles.logoWrapper}>
+      <Lottie
+        // options={color === true ? coloredLogoOption : whiteLogoOption}
+        options={loadingOption}
+        height={200}
+        width={200}
+        isClickToPauseDisabled={true}
+      />
+    </motion.div>
   )
 }
 
