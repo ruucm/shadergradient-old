@@ -1,48 +1,157 @@
 import * as React from 'react'
 import { motion, useAnimation } from 'framer-motion'
 import styles from '../../../pages/home/Home.module.scss'
-import * as animationData_colored from '../../../media/colored-motionlogo.json'
-import { MotionLogo } from '@/components/dom/MotionLogo'
+import Lottie from 'react-lottie'
+import loadingAnimationData from '../../../media/whitewave.json'
 
-export function Loading({ loadStatus }) {
+import { useUIStore } from '@/helpers/store'
+
+export function Loading() {
+  const firstLoad = useUIStore((state: any) => state.firstLoad)
+  const setFirstLoad = useUIStore((state: any) => state.setFirstLoad)
+  const loadingPercentage = useUIStore((state: any) => state.loadingPercentage)
+
   const loadingAnim = useAnimation()
-
-  const loadingSequence = async () => {
-    if (loadStatus === 'firstLoad') {
-      loadingAnim.start({
-        opacity: 0,
-        transition: { duration: 0.5 },
-      })
-      loadingAnim.start({
-        display: 'none',
-        transition: { duration: 0, delay: 0.5 },
-      })
-    }
+  const waveAnim = useAnimation()
+  const loadingOption = {
+    loop: true,
+    autoplay: true,
+    animationData: loadingAnimationData,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice',
+    },
+  }
+  const [delayed, setDelayed] = React.useState(false)
+  const delay = async () => {
+    setTimeout(() => {
+      setDelayed(true)
+    }, 5000)
   }
 
   React.useEffect(() => {
-    loadingSequence()
-  }, [loadStatus])
-  return (
-    <motion.div
-      className={styles.loading}
-      animate={loadingAnim}
-      initial={{ opacity: 1 }}
-      style={{ display: loadStatus === 'firstLoadDone' ? 'none' : 'flex' }}
-    >
-      <MotionLogo color={true} />
+    delay()
+  }, [])
 
-      <motion.div className={styles.loadingTextWrapper}>
+  React.useEffect(() => {
+    console.log(loadingPercentage)
+    // if (loadingPercentage === 100) {
+    //   setFirstLoad('firstLoadDone')
+    // }
+  }, [loadingPercentage])
+
+  const animationSequence = async () => {
+    if (loadingPercentage === 100 && delayed === true) {
+      waveAnim.start({
+        y: -1700,
+        scale: 2,
+        transition: { duration: 2 },
+      })
+      await loadingAnim.start({
+        opacity: 0,
+        transition: { duration: 0.5 },
+      })
+      await setFirstLoad('firstLoadDone')
+    }
+  }
+  React.useEffect(() => {
+    animationSequence()
+    if (firstLoad === 'firstLoad') {
+      loadingAnim.start({
+        display: 'flex',
+      })
+      waveAnim.start({
+        opacity: 1,
+        y: 0,
+        scale: 1,
+      })
+    } else if (firstLoad === 'firstLoadDone') {
+      loadingAnim.start({
+        display: 'none',
+      })
+    }
+  }, [firstLoad, delayed])
+
+  return (
+    <motion.div className={styles.loading} animate={loadingAnim}>
+      <div className={styles.leftWrapper}>
+        <motion.div className={styles.title}>
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{
+              opacity: 1,
+              y: 0,
+              transition: { type: 'spring', duration: 0.5 },
+            }}
+          >
+            ShaderGradient
+          </motion.h1>
+          <div style={{ lineHeight: 1.2 }}>
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                transition: { type: 'spring', duration: 0.5, delay: 0.5 },
+              }}
+              style={{ marginTop: 30 }}
+            >
+              beautiful,
+            </motion.h1>{' '}
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                transition: { type: 'spring', duration: 0.5, delay: 1 },
+              }}
+            >
+              customizable,
+            </motion.h1>{' '}
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                transition: { type: 'spring', duration: 0.5, delay: 1.5 },
+              }}
+            >
+              and moving gradients
+            </motion.h1>
+          </div>
+        </motion.div>
+      </div>
+      <motion.div
+        initial={{ opacity: 0, y: 30, scale: 1 }}
+        animate={waveAnim}
+        style={{
+          position: 'absolute',
+          left: 0,
+          top: '50vh',
+          zIndex: 100,
+        }}
+      >
+        <Lottie
+          options={loadingOption}
+          width='100vw'
+          isClickToPauseDisabled={true}
+        />
+      </motion.div>
+      {/* <motion.div className={styles.loadingTextWrapper}>
+        <Lottie
+          options={loadingOption}
+          height={100}
+          width={550}
+          isClickToPauseDisabled={true}
+        />
         <motion.p
           className={styles.loadingText}
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0.3 }}
           animate={{
             opacity: 1,
-            y: 0,
           }}
           transition={{
             duration: 0.7,
-            delay: 0.5,
+            delay: 0,
             ease: 'easeInOut',
           }}
         >
@@ -50,14 +159,13 @@ export function Loading({ loadStatus }) {
         </motion.p>
         <motion.p
           className={styles.loadingText}
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0.3 }}
           animate={{
             opacity: 1,
-            y: 0,
           }}
           transition={{
             duration: 0.7,
-            delay: 1,
+            delay: 0.3,
             ease: 'easeInOut',
           }}
         >
@@ -65,14 +173,13 @@ export function Loading({ loadStatus }) {
         </motion.p>
         <motion.p
           className={styles.loadingText}
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0.3 }}
           animate={{
-            opacity: 1.5,
-            y: 0,
+            opacity: 1,
           }}
           transition={{
             duration: 0.7,
-            delay: 1.5,
+            delay: 0.6,
             ease: 'easeInOut',
           }}
         >
@@ -80,14 +187,13 @@ export function Loading({ loadStatus }) {
         </motion.p>
         <motion.p
           className={styles.loadingText}
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0.3 }}
           animate={{
             opacity: 1,
-            y: 0,
           }}
           transition={{
             duration: 0.7,
-            delay: 2.5,
+            delay: 0.9,
             ease: 'easeInOut',
           }}
         >
@@ -95,14 +201,13 @@ export function Loading({ loadStatus }) {
         </motion.p>
         <motion.p
           className={styles.loadingText}
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0.3 }}
           animate={{
             opacity: 1,
-            y: 0,
           }}
           transition={{
             duration: 0.7,
-            delay: 3,
+            delay: 1.2,
             ease: 'easeInOut',
           }}
         >
@@ -110,43 +215,47 @@ export function Loading({ loadStatus }) {
         </motion.p>
         <motion.p
           className={styles.loadingText}
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0.3 }}
           animate={{
             opacity: 1,
-            y: 0,
           }}
           transition={{
             duration: 0.7,
-            delay: 3.5,
+            delay: 1.5,
             ease: 'easeInOut',
           }}
         >
           and{' '}
         </motion.p>
         <div className={styles.loadingText}>
-          <MovingLetters letter='m' letterDelay={4} />
-          <MovingLetters letter='o' letterDelay={4.1} />
-          <MovingLetters letter='v' letterDelay={4.2} />
-          <MovingLetters letter='i' letterDelay={4.3} />
-          <MovingLetters letter='n' letterDelay={4.4} />
-          <MovingLetters letter='g' letterDelay={4.5} />
+          <MovingLetters letter='m' letterDelay={1.8} />
+          <MovingLetters letter='o' letterDelay={1.9} />
+          <MovingLetters letter='v' letterDelay={2.0} />
+          <MovingLetters letter='i' letterDelay={2.1} />
+          <MovingLetters letter='n' letterDelay={2.2} />
+          <MovingLetters letter='g' letterDelay={2.3} />
         </div>
         <motion.p
           className={styles.loadingText && styles.gradientText}
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0.3 }}
           animate={{
             opacity: 1,
-            y: 0,
           }}
           transition={{
             duration: 0.7,
-            delay: 4,
+            delay: 2.6,
             ease: 'easeInOut',
           }}
         >
           gradients.{' '}
         </motion.p>
-      </motion.div>
+        <Lottie
+          options={loadingOption}
+          height={100}
+          width={550}
+          isClickToPauseDisabled={true}
+        />
+      </motion.div> */}
     </motion.div>
   )
 }
@@ -157,15 +266,14 @@ const MovingLetters = ({ letterDelay, letter }) => {
   return (
     <motion.p
       className={styles.loadingTextMotion}
-      initial={{ opacity: 0, y: 20, scale: 0.95 }}
+      initial={{ opacity: 0.3, scale: 0.95 }}
       animate={{
         opacity: 1,
-        y: 0,
         scale: 1.1,
       }}
       transition={{
         duration: 0.7,
-        delay: 4,
+        delay: 1.8,
         ease: 'easeInOut',
         scale: {
           repeatType: 'reverse',

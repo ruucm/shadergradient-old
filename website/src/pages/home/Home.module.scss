@@ -1,6 +1,8 @@
 .bodyWrapper {
   width: 100vw;
-  height: 100vh;
+  // height: 100vh;
+
+  min-height: 100vh;
   grid-column-gap: 0;
   font-family: 'Inter', sans-serif;
   font-weight: 400;
@@ -8,6 +10,10 @@
   top: 0;
   left: 0;
   z-index: 5;
+  height: -webkit-fill-available;
+  @supports (height: var(--)) {
+    height: var(--viewport-height);
+  }
 }
 
 .aboutModal {
@@ -49,7 +55,7 @@
   h1 {
     font-size: 60px;
     font-weight: 500;
-    margin-left: 1.2em;
+    // margin-left: 1.2em;
   }
   h2 {
     font-size: 20px;
@@ -58,7 +64,7 @@
 
 .slider {
   position: absolute;
-  bottom: 8vh;
+  bottom: 6vh;
   left: 2em;
   width: 98vw;
   height: 20vh;
@@ -67,9 +73,10 @@
 .sliderHeader {
   display: flex;
   justify-content: flex-start;
-  gap: 35px;
+  gap: 40px;
   margin-bottom: 10px;
   font-weight: 500;
+  font-size: 16px;
 }
 
 .sliderHeader a {
@@ -88,13 +95,13 @@
   position: absolute;
   bottom: 2em;
   right: 2em;
-  color: rgba(255, 255, 255, 0.6);
+  opacity: 0.6;
   text-align: right;
   z-index: 5;
 }
 
 .footer a:hover {
-  color: rgba(255, 255, 255, 1);
+  opacity: 1;
 }
 
 .icon {
@@ -146,9 +153,14 @@
   display: flex;
   font-size: 30px;
   z-index: 10;
-  margin-top: 6px;
+  margin-top: 10px;
+  text-align: center;
   div {
     cursor: pointer;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    border-radius: 16px;
   }
 }
 
@@ -195,32 +207,23 @@
 }
 
 .loading {
-  background: white;
+  color: #ff430a;
   position: absolute;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 10;
-  color: #ff430a;
+  z-index: 100;
+  background: #ededed;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.logoWrapper {
-  width: fit-content;
-  height: fit-content;
-  position: absolute;
-  top: 1em;
-  left: 1em;
-}
-
 .loadingTextWrapper {
-  font-size: 6.5em;
+  font-size: 3em;
   font-weight: 600;
-  color: #ff430a;
-  width: 80vw;
+  width: 38vw;
   height: fit-content;
   margin-bottom: -0.3em;
 }
@@ -234,12 +237,30 @@
 .loadingTextMotion {
   display: inline-block;
   line-height: 0.8em;
+  color: white;
 }
 .gradientText {
   display: inline-block;
   background: linear-gradient(to right, #fbcac9, #8ca6ce);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.loadingSpinner {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  text-align: center;
+  color: #ff430a;
+  font-size: 3em;
+  .logoWrapper {
+    width: fit-content;
+    height: fit-content;
+  }
 }
 
 @media (max-width: 640px) {
@@ -281,10 +302,19 @@
     flex-flow: wrap;
   }
 
+  .modalWrapper {
+    width: 100vw;
+    height: 70vh;
+    overflow: scroll;
+    position: absolute;
+    top: 20vh;
+  }
   .aboutModal {
     width: 100vw;
-    top: 20vh;
     font-size: 15px;
+    height: fit-content;
+    top: 0;
+
     .title {
       display: grid;
       grid-template-columns: none;
@@ -298,7 +328,7 @@
   .slideBtns {
     margin: 0 auto;
     width: fit-content;
-    font-size: 20px;
+    font-size: 25px;
   }
   .logoWrapper {
     display: none;
