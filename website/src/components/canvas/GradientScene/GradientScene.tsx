@@ -20,7 +20,8 @@ export function GradientScene({
 
   useEffect(() => {
     let gradientURL = PRESETS[current].url
-    if (current === 1) gradientURL = window.location.search // use search params at the first load.
+    if (current === 1 && window.location.search)
+      gradientURL = window.location.search // use search params at the first load.
 
     updateGradientState(gradientURL)
     console.log(PRESETS[current].url)
