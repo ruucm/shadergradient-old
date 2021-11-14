@@ -19,11 +19,9 @@ export function GradientScene({
   )
 
   useEffect(() => {
-    // update Gradient if there are query params (history nav)
-    const gradientURL =
-      current === 0 && window.location.search
-        ? window.location.search
-        : PRESETS[current].url
+    let gradientURL = PRESETS[current].url
+    if (current === 1) gradientURL = window.location.search // use search params at the first load.
+
     updateGradientState(gradientURL)
     console.log(PRESETS[current].url)
 
