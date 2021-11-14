@@ -3,35 +3,41 @@ import * as React from 'react'
 
 export function PreviewWrapper({ mode = 'mobile', setMode = void 0 }) {
   const previewAnim = useAnimation()
-  var wWidth, wHeight
-  React.useEffect(() => {
-    wWidth = window.innerWidth
-    wHeight = window.innerHeight
+  const [wWidth, setwWidth] = React.useState(0)
+  const [wHeight, setwHeight] = React.useState(0)
+
+  const handleResize = () => {
+    setwWidth(window.innerWidth)
+    setwHeight(window.innerHeight)
     console.log(wWidth, wHeight)
-  }, [])
+  }
+  React.useEffect(() => {
+    handleResize()
+    window.addEventListener('resize', handleResize)
+  }, [handleResize])
 
   React.useEffect(() => {
     console.log(mode)
 
     if (mode === 'mobile') {
       previewAnim.start({
-        width: '20vw',
-        height: '70vh',
+        width: wHeight * 0.65 * 0.55,
+        height: wHeight * 0.65,
         background: 'none',
         boxShadow: '0 0 0 1000px white',
         borderRadius: 15,
         top: '5vh',
-        left: '40vw',
+        left: (wWidth - wHeight * 0.65 * 0.55) / 2,
       })
     } else if (mode === 'web') {
       previewAnim.start({
-        width: '55vw',
-        height: '70vh',
+        width: wHeight * 0.65 * 1.5,
+        height: wHeight * 0.65,
         background: 'none',
         boxShadow: '0 0 0 1000px white',
         borderRadius: 15,
         top: '5vh',
-        left: '22.5vw',
+        left: (wWidth - wHeight * 0.65 * 1.5) / 2,
       })
     } else if (mode === 'full') {
       previewAnim.start({
@@ -48,7 +54,7 @@ export function PreviewWrapper({ mode = 'mobile', setMode = void 0 }) {
     } else if (mode === 'about') {
       // setZoom()
     }
-  }, [mode])
+  }, [mode, wWidth, wHeight])
 
   return (
     <motion.div

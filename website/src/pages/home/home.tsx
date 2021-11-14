@@ -128,7 +128,6 @@ const DOM = () => {
             >
               Available as React component, Figma plugin, and Framer package
               (beta). Made with WebGL shaders.
-              <br />
               <br /> Fully supported on Chrome.
             </motion.p>
 
