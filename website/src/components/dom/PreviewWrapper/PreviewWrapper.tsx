@@ -3,9 +3,16 @@ import * as React from 'react'
 
 export function PreviewWrapper({ mode = 'mobile', setMode = void 0 }) {
   const previewAnim = useAnimation()
+  var wWidth, wHeight
+  React.useEffect(() => {
+    wWidth = window.innerWidth
+    wHeight = window.innerHeight
+    console.log(wWidth, wHeight)
+  }, [])
 
   React.useEffect(() => {
     console.log(mode)
+
     if (mode === 'mobile') {
       previewAnim.start({
         width: '20vw',

@@ -27,6 +27,7 @@ export function PreviewSwitch({
               setMode('full')
             }
           }}
+          style={{ opacity: mode === 'mobile' ? 1 : 0.2 }}
         ></motion.div>
         <motion.div
           className={cx(
@@ -44,6 +45,7 @@ export function PreviewSwitch({
               setMode('full')
             }
           }}
+          style={{ opacity: mode === 'web' ? 1 : 0.2 }}
         ></motion.div>
       </div>
     </div>

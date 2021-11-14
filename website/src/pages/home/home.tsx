@@ -102,18 +102,13 @@ const DOM = () => {
             className={styles.title}
             style={{ display: mode !== 'full' ? 'none' : 'block' }}
           >
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0, transition: { duration: 1 } }}
-            >
-              ShaderGradient
-            </motion.h1>
+            <motion.h1 style={{ opacity: 1, y: 0 }}>ShaderGradient</motion.h1>
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
               animate={{
                 opacity: 1,
                 y: 0,
-                transition: { delay: 1, duration: 1 },
+                transition: { duration: 1 },
               }}
             >
               {/* No more static gradients.
@@ -127,13 +122,12 @@ const DOM = () => {
               animate={{
                 opacity: 1,
                 y: 0,
-                transition: { delay: 1.5, duration: 1 },
+                transition: { delay: 0.5, duration: 1 },
               }}
               style={{ fontSize: 13, width: '25vw', marginTop: '50px' }}
             >
-              Beautiful, customizable, and moving gradient component, available
-              as React component, Figma plugin, and Framer package (beta). Made
-              with WebGL shaders.
+              Available as React component, Figma plugin, and Framer package
+              (beta). Made with WebGL shaders.
               <br />
               <br /> Fully supported on Chrome.
             </motion.p>
@@ -165,7 +159,7 @@ const DOM = () => {
             animate={{
               opacity: 1,
               y: 0,
-              transition: { delay: 2, transition: 2 },
+              transition: { delay: 1, transition: 2 },
             }}
           >
             <div
@@ -252,9 +246,8 @@ const Page = () => {
 
   return (
     <>
-      <DOM />
+      {firstLoad === 'firstLoadDone' && <DOM />}
       <Loading></Loading>
-      {/* <LazyGradient r3f /> */}
       <GradientScene r3f />
     </>
   )

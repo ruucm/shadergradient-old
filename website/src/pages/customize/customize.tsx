@@ -83,9 +83,6 @@ const DOM = () => {
               top: isMobile ? '10vh' : null,
             }}
           >
-            {/* <div className={styles.sliderHeader}>
-            <p>Current Theme</p>
-          </div> */}
             <div
               className={styles.sliderWrapper}
               style={{

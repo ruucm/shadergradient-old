@@ -207,14 +207,14 @@
 }
 
 .loading {
-  color: white;
+  color: #ff430a;
   position: absolute;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
   z-index: 100;
-  background: #ff430a;
+  background: #ededed;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -223,7 +223,6 @@
 .loadingTextWrapper {
   font-size: 3em;
   font-weight: 600;
-  color: white;
   width: 38vw;
   height: fit-content;
   margin-bottom: -0.3em;
@@ -233,7 +232,6 @@
   display: inline-block;
   margin-right: 0.3em;
   line-height: 0.8em;
-  color: white;
 }
 
 .loadingTextMotion {

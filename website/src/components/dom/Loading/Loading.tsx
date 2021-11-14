@@ -2,7 +2,7 @@ import * as React from 'react'
 import { motion, useAnimation } from 'framer-motion'
 import styles from '../../../pages/home/Home.module.scss'
 import Lottie from 'react-lottie'
-import loadingAnimationData from '../../../media/whitelongloading.json'
+import loadingAnimationData from '../../../media/whitewave.json'
 
 import { useUIStore } from '@/helpers/store'
 
@@ -12,6 +12,7 @@ export function Loading() {
   const loadingPercentage = useUIStore((state: any) => state.loadingPercentage)
 
   const loadingAnim = useAnimation()
+  const waveAnim = useAnimation()
   const loadingOption = {
     loop: true,
     autoplay: true,
@@ -33,21 +34,109 @@ export function Loading() {
 
   React.useEffect(() => {
     console.log(loadingPercentage)
-    if (loadingPercentage === 100) {
-      setFirstLoad('firstLoadDone')
-    }
+    // if (loadingPercentage === 100) {
+    //   setFirstLoad('firstLoadDone')
+    // }
   }, [loadingPercentage])
 
+  const animationSequence = async () => {
+    if (loadingPercentage === 100 && delayed === true) {
+      waveAnim.start({
+        y: -1700,
+        scale: 2,
+        transition: { duration: 2 },
+      })
+      await loadingAnim.start({
+        opacity: 0,
+        transition: { duration: 0.5 },
+      })
+      await setFirstLoad('firstLoadDone')
+    }
+  }
+  React.useEffect(() => {
+    animationSequence()
+    if (firstLoad === 'firstLoad') {
+      loadingAnim.start({
+        display: 'flex',
+      })
+      waveAnim.start({
+        opacity: 1,
+        y: 0,
+        scale: 1,
+      })
+    } else if (firstLoad === 'firstLoadDone') {
+      loadingAnim.start({
+        display: 'none',
+      })
+    }
+  }, [firstLoad, delayed])
+
   return (
-    <motion.div
-      className={styles.loading}
-      animate={loadingAnim}
-      style={{
-        display:
-          firstLoad === 'firstLoadDone' && delayed === true ? 'none' : 'flex',
-      }}
-    >
-      <motion.div className={styles.loadingTextWrapper}>
+    <motion.div className={styles.loading} animate={loadingAnim}>
+      <div className={styles.leftWrapper}>
+        <motion.div className={styles.title}>
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{
+              opacity: 1,
+              y: 0,
+              transition: { type: 'spring', duration: 0.5 },
+            }}
+          >
+            ShaderGradient
+          </motion.h1>
+          <div style={{ lineHeight: 1.2 }}>
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                transition: { type: 'spring', duration: 0.5, delay: 0.5 },
+              }}
+              style={{ marginTop: 30 }}
+            >
+              beautiful,
+            </motion.h1>{' '}
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                transition: { type: 'spring', duration: 0.5, delay: 1 },
+              }}
+            >
+              customizable,
+            </motion.h1>{' '}
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                transition: { type: 'spring', duration: 0.5, delay: 1.5 },
+              }}
+            >
+              and moving gradients
+            </motion.h1>
+          </div>
+        </motion.div>
+      </div>
+      <motion.div
+        initial={{ opacity: 0, y: 30, scale: 1 }}
+        animate={waveAnim}
+        style={{
+          position: 'absolute',
+          left: 0,
+          top: '50vh',
+          zIndex: 100,
+        }}
+      >
+        <Lottie
+          options={loadingOption}
+          width='100vw'
+          isClickToPauseDisabled={true}
+        />
+      </motion.div>
+      {/* <motion.div className={styles.loadingTextWrapper}>
         <Lottie
           options={loadingOption}
           height={100}
@@ -166,7 +255,7 @@ export function Loading() {
           width={550}
           isClickToPauseDisabled={true}
         />
-      </motion.div>
+      </motion.div> */}
     </motion.div>
   )
 }
