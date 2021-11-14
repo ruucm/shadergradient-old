@@ -1,12 +1,13 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-import { UI } from 'shadergradient'
+import { UI, PRESETS } from 'shadergradient'
 import '../../ui-styles-compiled.css'
 import { GradientScene } from './components/GradientScene'
 import { Controls } from './components/Controls'
 import './global.css'
+import { useState } from 'react'
 
-function Arrow() {
+function Arrow(props) {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
@@ -14,6 +15,7 @@ function Arrow() {
       viewBox='0 0 24 24'
       fill='currentColor'
       className='block cursor-pointer h-[16px]'
+      {...props}
     >
       <path d='M11.67 3.87L9.9 2.1 0 12l9.9 9.9 1.77-1.77L3.54 12z'></path>
     </svg>
@@ -21,16 +23,29 @@ function Arrow() {
 }
 
 function App() {
+  const [currentTheme, setCurrentTheme] = useState(2)
+  console.log('currentTheme', currentTheme)
+
   return (
     <div className='bg-white h-full'>
-      <GradientScene />
+      <GradientScene currentTheme={currentTheme} />
       <div className='bg-controls-sub-panel text-white font-semibold text-sm flex justify-center items-center gap-3 py-1'>
         Theme
         <div className='bg-controls-sub-panel-button w-[150px] flex justify-between items-center p-1 rounded'>
-          <Arrow />
-          Halo
+          <Arrow
+            onClick={() => {
+              if (currentTheme === 0) setCurrentTheme(PRESETS.length - 1)
+              setCurrentTheme(currentTheme - 1)
+            }}
+          />
+          {PRESETS[currentTheme].title}
           <div className='rotate-180'>
-            <Arrow />
+            <Arrow
+              onClick={() => {
+                if (currentTheme === PRESETS.length - 1) setCurrentTheme(0)
+                setCurrentTheme(currentTheme + 1)
+              }}
+            />
           </div>
         </div>
       </div>

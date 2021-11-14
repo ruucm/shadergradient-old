@@ -16,11 +16,11 @@ import {
   useDragToScroll,
   useScroll,
 } from 'react-snaplist-carousel'
-import PRESETS from '../presets.json'
 import styles from './Home.module.scss'
 import { MenuItem } from './menu-item'
 import { MyItem } from './my-item'
 import { links } from '@/consts'
+import { PRESETS } from 'shadergradient'
 
 const DOM = () => {
   // for logo animation

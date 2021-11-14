@@ -7,10 +7,9 @@ import { useUIStore } from '@/helpers/store'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import React, { useState } from 'react'
-import { useQueryState } from 'shadergradient'
+import { useQueryState, PRESETS } from 'shadergradient'
 import styles from '../home/Home.module.scss'
 import { MyItem } from '../home/my-item'
-import PRESETS from '../presets.json'
 import { Controls } from './comps/Controls'
 
 const DOM = () => {

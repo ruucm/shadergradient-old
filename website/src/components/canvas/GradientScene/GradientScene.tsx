@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react'
-import { Gradient, useQueryState, updateGradientState } from 'shadergradient'
-import PRESETS from '../../../pages/presets.json'
+import {
+  Gradient,
+  useQueryState,
+  updateGradientState,
+  PRESETS,
+} from 'shadergradient'
 import { useUIStore } from '@/helpers/store'
 import { useSpring } from '@react-spring/core'
 import { dToRArr } from '@/utils'
