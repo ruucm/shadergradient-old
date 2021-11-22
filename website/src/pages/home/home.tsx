@@ -247,7 +247,7 @@ const Page = () => {
   return (
     <>
       {firstLoad === 'firstLoadDone' && <DOM />}
-      <Loading></Loading>
+      <Loading />
       <GradientScene r3f />
     </>
   )
