@@ -10,44 +10,40 @@ export function PreviewSwitch({
   const mobileIconAnim = useAnimation()
   const webIconAnim = useAnimation()
 
-  // React.useEffect(() => {
-  //   if (mode === 'mobile') {
-  //     mobileIconAnim.start({
-  //       opacity: 1,
-  //     })
-  //     webIconAnim.start({
-  //       opacity: 0.2,
-  //     })
-  //   } else if (mode === 'web') {
-  //     mobileIconAnim.start({
-  //       opacity: 0.2,
-  //     })
-  //     webIconAnim.start({
-  //       opacity: 1,
-  //     })
-  //   } else {
-  //     mobileIconAnim.start({
-  //       opacity: 0.2,
-  //     })
-  //     webIconAnim.start({
-  //       opacity: 0.2,
-  //     })
-  //   }
-  //   console.log(mode)
-  // }, [mode, mobileIconAnim, webIconAnim])
+  React.useEffect(() => {
+    if (mode === 'mobile') {
+      mobileIconAnim.start({
+        opacity: 1,
+      })
+      webIconAnim.start({
+        opacity: 0.2,
+      })
+    } else if (mode === 'web') {
+      mobileIconAnim.start({
+        opacity: 0.2,
+      })
+      webIconAnim.start({
+        opacity: 1,
+      })
+    } else {
+      mobileIconAnim.start({
+        opacity: 0.2,
+      })
+      webIconAnim.start({
+        opacity: 0.2,
+      })
+    }
+    console.log(mode)
+  }, [mode, mobileIconAnim, webIconAnim])
   return (
     <div style={{ display: display ? 'block' : 'none' }}>
       <p className='mt-4 font-medium mb-1.5 text-primary'>preview</p>
       <div className='flex gap-1.5'>
         <motion.div
           className={cx(
-            'rounded-sm cursor-pointer bg-primary w-[17px] h-[31px]',
-            mode !== 'mobile' && 'opacity-preview-btn'
+            'rounded-sm cursor-pointer bg-primary w-[17px] h-[31px]'
+            // mode !== 'mobile' && 'opacity-preview-btn'
           )}
-          // whileHover={{
-          //   opacity: 1,
-          //   transition: { duration: 0.3 },
-          // }}
           onClick={() => {
             if (mode !== 'mobile') {
               setMode('mobile')
@@ -55,18 +51,24 @@ export function PreviewSwitch({
               setMode('full')
             }
           }}
+          onHoverStart={() => {
+            mobileIconAnim.start({
+              opacity: 0.4,
+            })
+          }}
+          onHoverEnd={() => {
+            mobileIconAnim.start({
+              opacity: 0.4,
+            })
+          }}
           animate={mobileIconAnim}
           // style={{ opacity: mode === 'mobile' ? 1 : 0.2 }}
         ></motion.div>
         <motion.div
           className={cx(
-            'rounded-sm cursor-pointer bg-primary w-[47px] h-[31px]',
-            mode !== 'web' && 'opacity-preview-btn'
+            'rounded-sm cursor-pointer bg-primary w-[47px] h-[31px]'
+            // mode !== 'web' && 'opacity-preview-btn'
           )}
-          // whileHover={{
-          //   opacity: 1,
-          //   transition: { duration: 0.3 },
-          // }}
           onClick={() => {
             if (mode !== 'web') {
               setMode('web')
