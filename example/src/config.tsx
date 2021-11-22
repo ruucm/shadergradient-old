@@ -30,7 +30,7 @@ const Header = ({ title = titleDefault }) => {
         documentation: https://developers.facebook.com/docs/sharing/opengraph */}
         <meta name='og:title' content={title} />
         <meta name='og:type' content='site' />
-        <meta name='og:image' content={'/og.png'} />
+        <meta name='og:image' content='https://www.shadergradient.com/og.png' />
         <meta name='og:site_name' content={title} />
         <meta name='og:description' content={description} />
 
