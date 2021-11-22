@@ -1,41 +1,45 @@
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 
-const titleDefault = 'Shader Gradient'
-const url = 'https://www.shadergradient.com'
-const description =
-  'The easiest and fastest way to create a 3D website using React Three Fiber and NextJS'
-const author = 'Author'
+const Header = ({ title }) => {
+  const router = useRouter()
+  const meta = {
+    title: 'Shader Gradient',
+    description:
+      'The easiest and fastest way to create a 3D website using React Three Fiber and NextJS',
+    image: 'https://www.shadergradient.com/og.png',
+    type: 'website',
+  }
 
-const Header = ({ title = titleDefault }) => {
   return (
     <>
       <Head>
         {/* Recommended Meta Tags */}
-        <meta charSet='utf-8' />
-        <meta name='language' content='english' />
-        <meta httpEquiv='content-type' content='text/html' />
-        <meta name='author' content={author} />
-        <meta name='designer' content={author} />
-        <meta name='publisher' content={author} />
-
-        {/* Search Engine Optimization Meta Tags */}
-        <title>{title}</title>
-        <meta name='description' content={description} />
+        <title>{meta.title}</title>
+        <meta name='robots' content='follow, index' />
+        <meta content={meta.description} name='description' />
         <meta
-          name='keywords'
-          content='Software Engineer,Product Manager,Project Manager,Data Scientist,Computer Scientist'
+          property='og:url'
+          content={`https://www.shadergradient.com${router.asPath}`}
         />
-        <meta name='robots' content='index,follow' />
-        <meta name='distribution' content='web' />
+        <link
+          rel='canonical'
+          href={`https://www.shadergradient.com${router.asPath}`}
+        />
+        <meta property='og:type' content={meta.type} />
+        <meta property='og:site_name' content={meta.title} />
+        <meta property='og:description' content={meta.description} />
+        <meta property='og:title' content={meta.title} />
+        <meta property='og:image' content={meta.image} />
         {/* 
-      Facebook Open Graph meta tags
-        documentation: https://developers.facebook.com/docs/sharing/opengraph */}
-        <meta name='og:title' content={title} />
-        <meta name='og:type' content='site' />
-        <meta name='og:url' content={url} />
-        <meta name='og:image' content='https://www.shadergradient.com/og.png' />
-        <meta name='og:site_name' content={title} />
-        <meta name='og:description' content={description} />
+      Twitter Summary card
+        documentation: https://dev.twitter.com/cards/getting-started
+        Be sure validate your Twitter card markup on the documentation site. */}
+        <meta name='twitter:card' content='summary_large_image' />
+        <meta name='twitter:site' content='@ruucm' />
+        <meta name='twitter:title' content={meta.title} />
+        <meta name='twitter:description' content={meta.description} />
+        <meta name='twitter:image' content={meta.image} />
 
         <link rel='apple-touch-icon' href='/icons/apple-touch-icon.png' />
         <link
@@ -70,13 +74,6 @@ const Header = ({ title = titleDefault }) => {
         />
         <meta name='theme-color' content='#000' />
         <link rel='shortcut icon' href='/icons/favicon.ico' />
-
-        {/* 
-      Twitter Summary card
-        documentation: https://dev.twitter.com/cards/getting-started
-        Be sure validate your Twitter card markup on the documentation site. */}
-        <meta name='twitter:card' content='summary' />
-        <meta name='twitter:site' content='@onirenaud' />
       </Head>
     </>
   )
