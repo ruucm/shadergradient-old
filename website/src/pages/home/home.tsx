@@ -30,7 +30,6 @@ const DOM = () => {
   const current = useUIStore((state: any) => state.current)
   const loadingPercentage = useUIStore((state: any) => state.loadingPercentage)
   const setCurrent = useUIStore((state: any) => state.setCurrent)
-  const firstLoad = useUIStore((state: any) => state.firstLoad)
 
   const snapList = useRef(null)
 
