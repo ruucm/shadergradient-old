@@ -145,7 +145,7 @@ const DOM = () => {
             </div>
           </div>
 
-          <Footer style={{ color: PRESETS[current].color }} />
+          <Footer color={PRESETS[current].color} />
         </div>
       </>
     )

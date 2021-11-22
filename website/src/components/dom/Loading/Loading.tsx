@@ -3,6 +3,7 @@ import { motion, useAnimation } from 'framer-motion'
 import styles from '../../../pages/home/Home.module.scss'
 import Lottie from 'react-lottie'
 import loadingAnimationData from '../../../media/whitewave.json'
+import { MotionLogo } from '@/components/dom/MotionLogo'
 
 import { useUIStore } from '@/helpers/store'
 
@@ -25,7 +26,7 @@ export function Loading() {
   const delay = async () => {
     setTimeout(() => {
       setDelayed(true)
-    }, 5000)
+    }, 3000)
   }
 
   React.useEffect(() => {
@@ -41,11 +42,11 @@ export function Loading() {
 
   const animationSequence = async () => {
     if (loadingPercentage === 100 && delayed === true) {
-      waveAnim.start({
-        y: -1700,
-        scale: 2,
-        transition: { duration: 2 },
-      })
+      // waveAnim.start({
+      //   y: -1700,
+      //   scale: 2,
+      //   transition: { duration: 2 },
+      // })
       await loadingAnim.start({
         opacity: 0,
         transition: { duration: 0.5 },
@@ -59,11 +60,11 @@ export function Loading() {
       loadingAnim.start({
         display: 'flex',
       })
-      waveAnim.start({
-        opacity: 1,
-        y: 0,
-        scale: 1,
-      })
+      // waveAnim.start({
+      //   opacity: 1,
+      //   y: 0,
+      //   scale: 1,
+      // })
     } else if (firstLoad === 'firstLoadDone') {
       loadingAnim.start({
         display: 'none',
@@ -73,6 +74,31 @@ export function Loading() {
 
   return (
     <motion.div className={styles.loading} animate={loadingAnim}>
+      <div className={styles.loadingSpinner}>
+        {/* <MotionLogo color={false} /> */}
+        <motion.div
+          style={{ width: 40, height: 40, background: '#ff430a' }}
+          animate={{
+            rotate: 360,
+            scale: loadingPercentage === 100 && delayed === true ? 1400 : 1,
+          }}
+          transition={{ duration: 1.5, repeat: Infinity }}
+        ></motion.div>
+        <p
+          style={{
+            fontSize: 230,
+            color: '#ff430a',
+            position: 'absolute',
+            opacity: 0.06,
+          }}
+        >
+          ShaderGradient
+        </p>
+        {/* loading shadergradient */}
+      </div>
+      {/* <h2 style={{ position: 'absolute', color: 'blue' }}>
+        {loadingPercentage}
+      </h2>
       <div className={styles.leftWrapper}>
         <motion.div className={styles.title}>
           <motion.h1
@@ -135,7 +161,7 @@ export function Loading() {
           width='100vw'
           isClickToPauseDisabled={true}
         />
-      </motion.div>
+      </motion.div> */}
       {/* <motion.div className={styles.loadingTextWrapper}>
         <Lottie
           options={loadingOption}

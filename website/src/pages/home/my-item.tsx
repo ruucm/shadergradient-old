@@ -8,6 +8,7 @@ export const MyItem = ({
   color,
   isMobile = false,
   btnOn = false,
+  index,
 }) => (
   <div style={{ position: 'relative', overflow: 'visible' }}>
     <motion.div
@@ -24,7 +25,10 @@ export const MyItem = ({
       }}
       onClick={onClick}
       initial={{ opacity: 0 }}
-      animate={{ opacity: visible ? 1 : 0.3, transition: { duration: 0.5 } }}
+      animate={{
+        opacity: visible ? 1 : 0.3,
+        transition: { duration: 0.5, delay: 0.2 * index },
+      }}
     >
       {children}
     </motion.div>

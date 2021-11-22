@@ -6123,10 +6123,10 @@ sha.js@^2.4.0, sha.js@^2.4.8:
     inherits "^2.0.1"
     safe-buffer "^5.0.1"
 
-shadergradient@0.0.41:
-  version "0.0.41"
-  resolved "https://registry.yarnpkg.com/shadergradient/-/shadergradient-0.0.41.tgz#c0c2fadda8352ace69ba018bdb7ddaae3f19e7ce"
-  integrity sha512-qUIo+p2R6tgKG76EO0cBmUoyUSc2SOl18mpVYiv2tAcm3POmfPHMP4bHm3kwZLNkMuc6cQtn1RNMLuOVLgfqSA==
+shadergradient@0.0.43:
+  version "0.0.43"
+  resolved "https://registry.yarnpkg.com/shadergradient/-/shadergradient-0.0.43.tgz#66b626015ca7d15795515ab0c079ba4290e538d1"
+  integrity sha512-gQXNddztRVPHMrqE+A4FmRMga8a4eQLASz5QqbcVcCfBE1OiLgV57B51QlWyLk8DJVEMYSoCVXfWSVKL8ko75A==
   dependencies:
     "@react-spring/core" "^9.3.0"
     "@react-spring/three" "^9.3.0"

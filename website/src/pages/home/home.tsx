@@ -84,6 +84,7 @@ const DOM = () => {
                   paddingLeft: 7,
                   transition: { duration: 0.3 },
                 }}
+                style={{ opacity: loadingPercentage < 100 ? 0.1 : 1 }}
               >
                 <Link href='/about'>About →</Link>
               </motion.div>
@@ -98,7 +99,9 @@ const DOM = () => {
         <div className={styles.leftWrapper}>
           <motion.div
             className={styles.title}
-            style={{ display: mode !== 'full' ? 'none' : 'block' }}
+            animate={{ y: mode !== 'full' ? -290 : 0 }}
+            transition={{ duration: 0.5 }}
+            // style={{ display: mode !== 'full' ? 'none' : 'block' }}
           >
             <motion.h1 style={{ opacity: 1, y: 0 }}>ShaderGradient</motion.h1>
             <motion.h2
@@ -126,7 +129,6 @@ const DOM = () => {
             >
               Available as React component, Figma plugin, and Framer package
               (beta). Made with WebGL shaders.
-              <br />
               <br /> Fully supported on Chrome.
             </motion.p>
 
