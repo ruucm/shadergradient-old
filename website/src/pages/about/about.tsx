@@ -64,9 +64,6 @@ const DOM = () => {
             {links.map((item, id) => (
               <MenuItem key={id} title={item.title} link={item.link} />
             ))}
-            <div style={{ opacity: 0.2 }}>
-              <PreviewSwitch mode={mode} />
-            </div>
           </div>
         </MenuWrapper>
       )}
