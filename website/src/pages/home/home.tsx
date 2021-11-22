@@ -1,11 +1,8 @@
-import { Footer } from '@/components/dom/Footer'
 import { GradientScene } from '@/components/canvas/GradientScene'
-import { Loading } from '@/components/dom/Loading'
 import { MenuWrapper } from '@/components/dom/MenuWrapper'
 import { PreviewSwitch } from '@/components/dom/PreviewSwitch'
 import { PreviewWrapper } from '@/components/dom/PreviewWrapper'
-import { MotionLogo } from '@/components/dom/MotionLogo'
-
+import { links } from '@/consts'
 import { useUIStore } from '@/helpers/store'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
@@ -16,11 +13,10 @@ import {
   useDragToScroll,
   useScroll,
 } from 'react-snaplist-carousel'
+import { PRESETS } from 'shadergradient'
 import styles from './Home.module.scss'
 import { MenuItem } from './menu-item'
 import { MyItem } from './my-item'
-import { links } from '@/consts'
-import { PRESETS } from 'shadergradient'
 
 const DOM = () => {
   // for logo animation

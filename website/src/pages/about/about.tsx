@@ -1,14 +1,13 @@
-import { motion, animate } from 'framer-motion'
-import Link from 'next/link'
-import { useUIStore } from '@/helpers/store'
-import styles from '../home/Home.module.scss'
-import { PreviewSwitch } from '@/components/dom/PreviewSwitch'
-import { MenuWrapper } from '@/components/dom/MenuWrapper'
-import { MenuItem } from '../home/menu-item'
 import { GradientScene } from '@/components/canvas/GradientScene'
-import { MotionLogo } from '@/components/dom/MotionLogo'
+import { MenuWrapper } from '@/components/dom/MenuWrapper'
+import { PreviewSwitch } from '@/components/dom/PreviewSwitch'
 import { links } from '@/consts'
+import { useUIStore } from '@/helpers/store'
+import { motion } from 'framer-motion'
+import Link from 'next/link'
 import { useEffect, useState } from 'react'
+import styles from '../home/Home.module.scss'
+import { MenuItem } from '../home/menu-item'
 
 const DOM = () => {
   const mode = useUIStore((state: any) => state.mode)
@@ -64,7 +63,7 @@ const DOM = () => {
             {links.map((item, id) => (
               <MenuItem key={id} title={item.title} link={item.link} />
             ))}
-            <div style={{ opacity: 0.2 }}>
+            <div style={{ opacity: 0, pointerEvents: 'none' }}>
               <PreviewSwitch mode={mode} />
             </div>
           </div>
