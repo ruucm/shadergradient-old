@@ -1,9 +1,10 @@
 import { GradientScene } from '@/components/canvas/GradientScene'
 import { Loading } from '@/components/dom/Loading'
 import { MenuWrapper } from '@/components/dom/MenuWrapper'
+import { MotionLogo } from '@/components/dom/MotionLogo'
 import { PreviewSwitch } from '@/components/dom/PreviewSwitch'
 import { PreviewWrapper } from '@/components/dom/PreviewWrapper'
-import { links } from '@/consts'
+import { initialCurrent, links } from '@/consts'
 import { useUIStore } from '@/helpers/store'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
@@ -57,7 +58,13 @@ const DOM = () => {
 
   return (
     <>
-      {loadingPercentage < 100 && <Loading />}
+      {/* Loadings */}
+      {loadingPercentage < 100 && (
+        <>
+          {current === initialCurrent && <Loading />}
+          {current !== initialCurrent && <MotionLogo color={false} />}
+        </>
+      )}
       {/* Home */}
       <motion.div
         className={styles.bodyWrapper}

@@ -12,3 +12,5 @@ export const links = [
     link: 'https://framer.com/projects/ShaderGradient--7fmA9c0AApv3vyjCPpS3-emceg',
   },
 ]
+
+export const initialCurrent = 1
