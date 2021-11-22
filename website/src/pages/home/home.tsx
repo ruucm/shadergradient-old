@@ -59,20 +59,12 @@ const DOM = () => {
 
   return (
     <>
-      {/* Loading Spinner */}
-      {loadingPercentage < 100 && (
-        <div className={styles.loadingSpinner}>
-          <MotionLogo color={false} />
-        </div>
-      )}
-
       {/* Home */}
       <motion.div
         className={styles.bodyWrapper}
         style={{
           color: mode === 'full' ? PRESETS[current].color : '#FF430A',
           display: 'block',
-          opacity: loadingPercentage < 100 ? 0.1 : 1,
         }}
       >
         {/* Menu */}
@@ -86,7 +78,6 @@ const DOM = () => {
                   paddingLeft: 7,
                   transition: { duration: 0.3 },
                 }}
-                style={{ opacity: loadingPercentage < 100 ? 0.1 : 1 }}
               >
                 <Link href='/about'>About →</Link>
               </motion.div>
@@ -114,9 +105,6 @@ const DOM = () => {
                 transition: { duration: 1 },
               }}
             >
-              {/* No more static gradients.
-              <br />
-              Add liveliness in your products. */}
               beautiful, customizable, and moving gradients <br />
               for your digital products
             </motion.h2>
@@ -192,7 +180,6 @@ const DOM = () => {
                         onClick={() => {
                           goToSnapItem(index)
                           setCurrent(index)
-                          // console.log(index, current)
                         }}
                         visible={current === index}
                         color={
@@ -233,23 +220,9 @@ const DOM = () => {
 }
 
 const Page = () => {
-  const [load, setLoad] = useState(false)
-  const [delayed, setDelayed] = useState(false)
-  const current = useUIStore((state: any) => state.current)
-  const firstLoad = useUIStore((state: any) => state.firstLoad)
-  const setFirstLoad = useUIStore((state: any) => state.setFirstLoad)
-  const loadingPercentage = useUIStore((state: any) => state.loadingPercentage)
-
-  React.useEffect(() => {
-    if (firstLoad === 'never') {
-      setFirstLoad('firstLoad')
-    }
-  }, [])
-
   return (
     <>
-      {firstLoad === 'firstLoadDone' && <DOM />}
-      <Loading></Loading>
+      <DOM />
       <GradientScene r3f />
     </>
   )

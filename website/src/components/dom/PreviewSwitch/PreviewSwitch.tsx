@@ -14,7 +14,6 @@ export function PreviewSwitch({
         <motion.div
           className={cx(
             'rounded-sm cursor-pointer bg-primary w-[17px] h-[31px]'
-            // mode !== 'mobile' && 'opacity-preview-btn'
           )}
           onClick={() => {
             if (mode !== 'mobile') {
@@ -23,13 +22,12 @@ export function PreviewSwitch({
               setMode('full')
             }
           }}
-          whileHover={{ opacity: 0.4 }}
+          whileHover={{ opacity: 1 }}
           animate={{ opacity: mode === 'mobile' ? 1 : 0.2 }}
         ></motion.div>
         <motion.div
           className={cx(
             'rounded-sm cursor-pointer bg-primary w-[47px] h-[31px]'
-            // mode !== 'web' && 'opacity-preview-btn'
           )}
           onClick={() => {
             if (mode !== 'web') {
@@ -38,7 +36,7 @@ export function PreviewSwitch({
               setMode('full')
             }
           }}
-          whileHover={{ opacity: 0.4 }}
+          whileHover={{ opacity: 1 }}
           animate={{ opacity: mode === 'web' ? 1 : 0.2 }}
         ></motion.div>
       </div>

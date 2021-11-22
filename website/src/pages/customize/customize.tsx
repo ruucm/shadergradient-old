@@ -2,7 +2,6 @@ import { Footer } from '@/components/dom/Footer'
 import { GradientScene } from '@/components/canvas/GradientScene'
 import { PreviewWrapper } from '@/components/dom/PreviewWrapper'
 import { PreviewSwitch } from '@/components/dom/PreviewSwitch'
-import { MotionLogo } from '@/components/dom/MotionLogo'
 
 import { useUIStore } from '@/helpers/store'
 import { motion } from 'framer-motion'
@@ -50,15 +49,7 @@ const DOM = () => {
   if (embedMode === 'off')
     return (
       <>
-        {loadingPercentage < 100 && (
-          <div className={styles.loadingSpinner}>
-            <MotionLogo color={false} />
-          </div>
-        )}
-        <div
-          className={styles.bodyWrapper}
-          style={{ opacity: loadingPercentage < 100 ? 0.1 : 1 }}
-        >
+        <div className={styles.bodyWrapper}>
           {/* Go Back */}
           <div className={styles.content}>
             <motion.div style={{ color: PRESETS[current].color }}>
