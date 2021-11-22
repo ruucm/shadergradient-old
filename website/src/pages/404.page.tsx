@@ -45,8 +45,6 @@ const DOM = () => {
 export default function Error() {
   return (
     <div>
-      <MotionLogo color={true} />
-
       <GradientScene
         r3f
         forceZoom={1}
