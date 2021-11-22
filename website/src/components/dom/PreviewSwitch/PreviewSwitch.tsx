@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { motion, useAnimation } from 'framer-motion'
+import { motion } from 'framer-motion'
 import cx from 'classnames'
 
 export function PreviewSwitch({
@@ -7,34 +7,6 @@ export function PreviewSwitch({
   setMode = void 0,
   display = true,
 }) {
-  const mobileIconAnim = useAnimation()
-  const webIconAnim = useAnimation()
-
-  React.useEffect(() => {
-    if (mode === 'mobile') {
-      mobileIconAnim.start({
-        opacity: 1,
-      })
-      webIconAnim.start({
-        opacity: 0.2,
-      })
-    } else if (mode === 'web') {
-      mobileIconAnim.start({
-        opacity: 0.2,
-      })
-      webIconAnim.start({
-        opacity: 1,
-      })
-    } else {
-      mobileIconAnim.start({
-        opacity: 0.2,
-      })
-      webIconAnim.start({
-        opacity: 0.2,
-      })
-    }
-    console.log(mode)
-  }, [mode, mobileIconAnim, webIconAnim])
   return (
     <div style={{ display: display ? 'block' : 'none' }}>
       <p className='mt-4 font-medium mb-1.5 text-primary'>preview</p>
@@ -51,18 +23,8 @@ export function PreviewSwitch({
               setMode('full')
             }
           }}
-          onHoverStart={() => {
-            mobileIconAnim.start({
-              opacity: 0.4,
-            })
-          }}
-          onHoverEnd={() => {
-            mobileIconAnim.start({
-              opacity: 0.4,
-            })
-          }}
-          animate={mobileIconAnim}
-          // style={{ opacity: mode === 'mobile' ? 1 : 0.2 }}
+          whileHover={{ opacity: 0.4 }}
+          animate={{ opacity: mode === 'mobile' ? 1 : 0.2 }}
         ></motion.div>
         <motion.div
           className={cx(
@@ -76,8 +38,8 @@ export function PreviewSwitch({
               setMode('full')
             }
           }}
-          animate={webIconAnim}
-          // style={{ opacity: mode === 'web' ? 1 : 0.2 }}
+          whileHover={{ opacity: 0.4 }}
+          animate={{ opacity: mode === 'web' ? 1 : 0.2 }}
         ></motion.div>
       </div>
     </div>
