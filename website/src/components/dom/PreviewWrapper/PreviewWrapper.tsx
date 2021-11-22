@@ -9,7 +9,6 @@ export function PreviewWrapper({ mode = 'mobile', setMode = void 0 }) {
   const handleResize = () => {
     setwWidth(window.innerWidth)
     setwHeight(window.innerHeight)
-    console.log(wWidth, wHeight)
   }
   React.useEffect(() => {
     handleResize()

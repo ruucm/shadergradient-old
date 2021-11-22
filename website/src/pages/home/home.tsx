@@ -1,4 +1,5 @@
 import { GradientScene } from '@/components/canvas/GradientScene'
+import { Loading } from '@/components/dom/Loading'
 import { MenuWrapper } from '@/components/dom/MenuWrapper'
 import { PreviewSwitch } from '@/components/dom/PreviewSwitch'
 import { PreviewWrapper } from '@/components/dom/PreviewWrapper'
@@ -52,8 +53,11 @@ const DOM = () => {
     setMode('full')
   }, [])
 
+  console.log('loadingPercentage', loadingPercentage)
+
   return (
     <>
+      {loadingPercentage < 100 && <Loading />}
       {/* Home */}
       <motion.div
         className={styles.bodyWrapper}
