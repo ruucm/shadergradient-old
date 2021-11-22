@@ -17,8 +17,6 @@ export function PreviewWrapper({ mode = 'mobile', setMode = void 0 }) {
   }, [handleResize])
 
   React.useEffect(() => {
-    console.log(mode)
-
     if (mode === 'mobile') {
       previewAnim.start({
         width: wHeight * 0.65 * 0.55,
