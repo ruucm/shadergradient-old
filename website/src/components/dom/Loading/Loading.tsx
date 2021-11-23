@@ -4,7 +4,7 @@ import styles from './Loading.module.scss'
 import Lottie from 'react-lottie'
 import loadingAnimationData from '@/media/whitewave.json'
 import { useInterval } from '@/hooks/useInterval'
-import { initialCurrent } from '@/consts'
+import { initialCurrent, initialLoadingTime } from '@/consts'
 
 const variants = {
   container: {
@@ -31,15 +31,18 @@ export function Loading({ current, loadingPercentage }) {
     },
   }
 
-  const [count, setCount] = useState(0)
+  const [time, setTime] = useState(0)
   useInterval(() => {
-    setCount(count + 1)
+    setTime(time + 1)
   }, 1000)
 
-  if (current === initialCurrent && (loadingPercentage < 100 || count < 6))
+  if (
+    current === initialCurrent &&
+    (loadingPercentage < 100 || time < initialLoadingTime)
+  )
     return (
       <div className={styles.loading}>
-        {count > 1 && (
+        {time > 1 && (
           <div className={styles.leftWrapper}>
             <motion.div
               className={styles.title}
@@ -60,7 +63,7 @@ export function Loading({ current, loadingPercentage }) {
             </motion.div>
           </div>
         )}
-        {count > 0 && (
+        {time > 0 && (
           <motion.div
             animate={waveAnim}
             style={{

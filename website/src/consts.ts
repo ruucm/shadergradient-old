@@ -14,3 +14,5 @@ export const links = [
 ]
 
 export const initialCurrent = 1
+
+export const initialLoadingTime = 6
