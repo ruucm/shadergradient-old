@@ -4,6 +4,7 @@ import styles from './Loading.module.scss'
 import Lottie from 'react-lottie'
 import loadingAnimationData from '@/media/whitewave.json'
 import { useInterval } from '@/hooks/useInterval'
+import { initialCurrent } from '@/consts'
 
 const variants = {
   container: {
@@ -19,7 +20,7 @@ const variants = {
   },
 }
 
-export function Loading() {
+export function Loading({ current, loadingPercentage }) {
   const waveAnim = useAnimation()
   const loadingOption = {
     loop: true,
@@ -35,46 +36,49 @@ export function Loading() {
     setCount(count + 1)
   }, 1000)
 
-  return (
-    <div className={styles.loading}>
-      {count > 1 && (
-        <div className={styles.leftWrapper}>
+  if (current === initialCurrent && (loadingPercentage < 100 || count < 6))
+    return (
+      <div className={styles.loading}>
+        {count > 1 && (
+          <div className={styles.leftWrapper}>
+            <motion.div
+              className={styles.title}
+              variants={variants.container}
+              initial='hidden'
+              animate='show'
+            >
+              <motion.h1 variants={variants.item}>ShaderGradient</motion.h1>
+              <div style={{ lineHeight: 1.2 }}>
+                <motion.h1 variants={variants.item} style={{ marginTop: 30 }}>
+                  beautiful,
+                </motion.h1>{' '}
+                <motion.h1 variants={variants.item}>customizable,</motion.h1>{' '}
+                <motion.h1 variants={variants.item}>
+                  and moving gradients
+                </motion.h1>
+              </div>
+            </motion.div>
+          </div>
+        )}
+        {count > 0 && (
           <motion.div
-            className={styles.title}
-            variants={variants.container}
-            initial='hidden'
-            animate='show'
+            animate={waveAnim}
+            style={{
+              position: 'absolute',
+              left: 0,
+              top: '50vh',
+              zIndex: 100,
+            }}
           >
-            <motion.h1 variants={variants.item}>ShaderGradient</motion.h1>
-            <div style={{ lineHeight: 1.2 }}>
-              <motion.h1 variants={variants.item} style={{ marginTop: 30 }}>
-                beautiful,
-              </motion.h1>{' '}
-              <motion.h1 variants={variants.item}>customizable,</motion.h1>{' '}
-              <motion.h1 variants={variants.item}>
-                and moving gradients
-              </motion.h1>
-            </div>
+            <Lottie
+              options={loadingOption}
+              width='100vw'
+              isClickToPauseDisabled={true}
+            />
           </motion.div>
-        </div>
-      )}
-      {count > 0 && (
-        <motion.div
-          animate={waveAnim}
-          style={{
-            position: 'absolute',
-            left: 0,
-            top: '50vh',
-            zIndex: 100,
-          }}
-        >
-          <Lottie
-            options={loadingOption}
-            width='100vw'
-            isClickToPauseDisabled={true}
-          />
-        </motion.div>
-      )}
-    </div>
-  )
+        )}
+      </div>
+    )
+
+  return <></>
 }
