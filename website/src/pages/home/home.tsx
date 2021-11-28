@@ -4,7 +4,7 @@ import { MenuWrapper } from '@/components/dom/MenuWrapper'
 import { MotionLogo } from '@/components/dom/MotionLogo'
 import { PreviewSwitch } from '@/components/dom/PreviewSwitch'
 import { PreviewWrapper } from '@/components/dom/PreviewWrapper'
-import { initialCurrent, links } from '@/consts'
+import { links } from '@/consts'
 import { useUIStore } from '@/helpers/store'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
@@ -20,7 +20,7 @@ import styles from './Home.module.scss'
 import { MenuItem } from './menu-item'
 import { MyItem } from './my-item'
 
-const DOM = () => {
+const DOM = ({ referer }) => {
   // for logo animation
 
   const mode = useUIStore((state: any) => state.mode)
@@ -59,12 +59,16 @@ const DOM = () => {
   return (
     <>
       {/* Loadings */}
-      {loadingPercentage < 100 && (
-        <>
-          {current === initialCurrent && <Loading />}
-          {current !== initialCurrent && <MotionLogo color={false} />}
-        </>
-      )}
+      <Loading
+        current={current}
+        loadingPercentage={loadingPercentage}
+        referer={referer}
+      />
+      <MotionLogo
+        color={false}
+        current={current}
+        loadingPercentage={loadingPercentage}
+      />
       {/* Home */}
       <motion.div
         className={styles.bodyWrapper}
@@ -225,10 +229,10 @@ const DOM = () => {
   )
 }
 
-const Page = () => {
+const Page = ({ referer }) => {
   return (
     <>
-      <DOM />
+      <DOM referer={referer} />
       <GradientScene r3f />
     </>
   )
@@ -236,10 +240,11 @@ const Page = () => {
 
 export default Page
 
-export async function getStaticProps() {
+export async function getServerSideProps(context) {
   return {
     props: {
       title: 'Shader Gradient',
+      referer: context.req.headers.referer,
     },
   }
 }
