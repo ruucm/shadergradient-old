@@ -7,18 +7,13 @@
   * {
     box-sizing: border-box;
   }
-  body {
-    min-height: 100vh; /* mobile viewport bug fix */
-    min-height: -webkit-fill-available;
-  }
-  html {
-    height: -webkit-fill-available;
-  }
 
   html {
     font-size: 14px;
   }
-
+  :root {
+    --app-height: 100%;
+  }
   html,
   body,
   #__next {

@@ -1,8 +1,9 @@
 .bodyWrapper {
   width: 100vw;
-  // height: 100vh;
+  // height: 100%;
+  height: var(--app-height);
 
-  min-height: 100vh;
+  // min-height: 100vh;
   grid-column-gap: 0;
   font-family: 'Inter', sans-serif;
   font-weight: 400;
@@ -10,10 +11,6 @@
   top: 0;
   left: 0;
   z-index: 5;
-  height: -webkit-fill-available;
-  @supports (height: var(--)) {
-    height: var(--viewport-height);
-  }
 }
 
 .aboutModal {

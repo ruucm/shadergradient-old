@@ -34,11 +34,18 @@ const DOM = () => {
       setIsMobile(false)
     }
   }
+  const appHeight = () => {
+    const doc = document.documentElement
+    doc.style.setProperty('--app-height', `${window.innerHeight}px`)
+  }
 
   // create an event listener
   React.useEffect(() => {
     handleResize()
+    appHeight()
+
     window.addEventListener('resize', handleResize)
+    window.addEventListener('resize', appHeight)
     setMode('full')
   }, [])
 
