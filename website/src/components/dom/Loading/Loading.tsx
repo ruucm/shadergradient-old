@@ -36,7 +36,7 @@ export function Loading({ current, loadingPercentage, referer }) {
     setTime(time + 1)
   }, 1000)
 
-  const splitted = referer.split('/')
+  const splitted = referer?.split('/') || []
   const isFirstLoad = !splitted[splitted.length - 1]
 
   if (
