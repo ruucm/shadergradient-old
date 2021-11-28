@@ -41,59 +41,52 @@ export function Loading({ current, loadingPercentage, referer }) {
 
   return (
     <AnimatePresence>
-      {current === initialCurrent &&
-        (loadingPercentage < 100 || time < initialLoadingTime) &&
-        isFirstLoad && (
-          <motion.div
-            className={styles.loading}
-            exit={{ x: -3000, opacity: 0 }}
-            transition={{ duration: 1 }}
-          >
-            {time > 1 && (
-              <div className={styles.leftWrapper}>
-                <motion.div
-                  className={styles.title}
-                  variants={variants.container}
-                  initial='hidden'
-                  animate='show'
-                >
-                  <motion.h1 variants={variants.item}>ShaderGradient</motion.h1>
-                  <div style={{ lineHeight: 1.2 }}>
-                    <motion.h1
-                      variants={variants.item}
-                      style={{ marginTop: 30 }}
-                    >
-                      beautiful,
-                    </motion.h1>{' '}
-                    <motion.h1 variants={variants.item}>
-                      customizable,
-                    </motion.h1>{' '}
-                    <motion.h1 variants={variants.item}>
-                      and moving gradients
-                    </motion.h1>
-                  </div>
-                </motion.div>
-              </div>
-            )}
-            {time > 0 && (
+      {current === initialCurrent && time < initialLoadingTime && isFirstLoad && (
+        <motion.div
+          className={styles.loading}
+          exit={{ x: -3000, opacity: 0 }}
+          transition={{ duration: 1 }}
+        >
+          {time > 1 && (
+            <div className={styles.leftWrapper}>
               <motion.div
-                animate={waveAnim}
-                style={{
-                  position: 'absolute',
-                  left: 0,
-                  top: '50vh',
-                  zIndex: 100,
-                }}
+                className={styles.title}
+                variants={variants.container}
+                initial='hidden'
+                animate='show'
               >
-                <Lottie
-                  options={loadingOption}
-                  width='100vw'
-                  isClickToPauseDisabled={true}
-                />
+                <motion.h1 variants={variants.item}>ShaderGradient</motion.h1>
+                <div style={{ lineHeight: 1.2 }}>
+                  <motion.h1 variants={variants.item} style={{ marginTop: 30 }}>
+                    beautiful,
+                  </motion.h1>{' '}
+                  <motion.h1 variants={variants.item}>customizable,</motion.h1>{' '}
+                  <motion.h1 variants={variants.item}>
+                    and moving gradients
+                  </motion.h1>
+                </div>
               </motion.div>
-            )}
-          </motion.div>
-        )}
+            </div>
+          )}
+          {time > 0 && (
+            <motion.div
+              animate={waveAnim}
+              style={{
+                position: 'absolute',
+                left: 0,
+                top: '50vh',
+                zIndex: 100,
+              }}
+            >
+              <Lottie
+                options={loadingOption}
+                width='100vw'
+                isClickToPauseDisabled={true}
+              />
+            </motion.div>
+          )}
+        </motion.div>
+      )}
     </AnimatePresence>
   )
 }
