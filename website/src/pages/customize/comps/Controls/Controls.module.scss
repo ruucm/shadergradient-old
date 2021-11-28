@@ -3,7 +3,6 @@
   height: fit-content;
   position: absolute;
   bottom: 0;
-  // bottom: 110px;
   left: 0;
   z-index: 10;
   @apply bg-white;
@@ -29,3 +28,10 @@
     }
   }
 }
+
+// for safari ios14
+// @media screen and (max-width: 767px) {
+//   .controlMobile {
+//     padding-bottom: 57px; //resize
+//   }
+// }
