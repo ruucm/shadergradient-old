@@ -20,7 +20,7 @@ const variants = {
   },
 }
 
-export function Loading({ current, loadingPercentage }) {
+export function Loading({ current, loadingPercentage, referer }) {
   const waveAnim = useAnimation()
   const loadingOption = {
     loop: true,
@@ -36,9 +36,13 @@ export function Loading({ current, loadingPercentage }) {
     setTime(time + 1)
   }, 1000)
 
+  const splitted = referer.split('/')
+  const isFirstLoad = !splitted[splitted.length - 1]
+
   if (
     current === initialCurrent &&
-    (loadingPercentage < 100 || time < initialLoadingTime)
+    (loadingPercentage < 100 || time < initialLoadingTime) &&
+    isFirstLoad
   )
     return (
       <div className={styles.loading}>

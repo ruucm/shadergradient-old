@@ -20,7 +20,7 @@ import styles from './Home.module.scss'
 import { MenuItem } from './menu-item'
 import { MyItem } from './my-item'
 
-const DOM = () => {
+const DOM = ({ referer }) => {
   // for logo animation
 
   const mode = useUIStore((state: any) => state.mode)
@@ -59,7 +59,11 @@ const DOM = () => {
   return (
     <>
       {/* Loadings */}
-      <Loading current={current} loadingPercentage={loadingPercentage} />
+      <Loading
+        current={current}
+        loadingPercentage={loadingPercentage}
+        referer={referer}
+      />
       <MotionLogo
         color={false}
         current={current}
@@ -225,10 +229,10 @@ const DOM = () => {
   )
 }
 
-const Page = () => {
+const Page = ({ referer }) => {
   return (
     <>
-      <DOM />
+      <DOM referer={referer} />
       <GradientScene r3f />
     </>
   )
@@ -236,10 +240,11 @@ const Page = () => {
 
 export default Page
 
-export async function getStaticProps() {
+export async function getServerSideProps(context) {
   return {
     props: {
       title: 'Shader Gradient',
+      referer: context.req.headers.referer,
     },
   }
 }
