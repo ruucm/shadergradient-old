@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { motion, useAnimation, AnimatePresence } from 'framer-motion'
 import styles from './Loading.module.scss'
-import Lottie from 'react-lottie'
+// import Lottie from 'react-lottie'
 import loadingAnimationData from '@/media/whitewave.json'
 import { useInterval } from '@/hooks/useInterval'
 import { initialCurrent, initialLoadingTime } from '@/consts'
@@ -75,7 +75,7 @@ export function Loading({ current, loadingPercentage, referer }) {
                 </motion.div>
               </div>
             )}
-            {time > 0 && (
+            {/* {time > 0 && (
               <motion.div
                 animate={waveAnim}
                 style={{
@@ -91,7 +91,7 @@ export function Loading({ current, loadingPercentage, referer }) {
                   isClickToPauseDisabled={true}
                 />
               </motion.div>
-            )}
+            )} */}
           </motion.div>
         )}
     </AnimatePresence>
