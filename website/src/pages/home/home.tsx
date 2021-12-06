@@ -135,7 +135,7 @@ const DOM = ({ referer }) => {
             }}
             transition={{ duration: 0.5 }}
           >
-            <motion.h1 style={{ opacity: 1, y: 0 }}>
+            <motion.h1 style={{ opacity: 1, y: 0 }} variants={sentence}>
               {title.split('').map((char, index) => {
                 return (
                   <motion.span
@@ -151,6 +151,7 @@ const DOM = ({ referer }) => {
             </motion.h1>
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
+              variants={sentence}
               animate={{
                 opacity: 1,
                 y: 0,

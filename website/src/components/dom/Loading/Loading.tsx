@@ -3,8 +3,6 @@ import { motion, useAnimation, AnimatePresence } from 'framer-motion'
 import styles from './Loading.module.scss'
 import { useInterval } from '@/hooks/useInterval'
 import { initialCurrent, initialLoadingTime } from '@/consts'
-import logo from '@/media/android-icon-192x192.png'
-import Image from 'next/image'
 
 // const variants = {
 //   container: {
