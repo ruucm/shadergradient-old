@@ -177,9 +177,12 @@ const DOM = ({ referer }) => {
               <SnapList
                 ref={snapList}
                 direction={isMobile ? 'vertical' : 'horizontal'}
+<<<<<<< HEAD
+=======
                 onScroll={(info) => {
                   console.log(info)
                 }}
+>>>>>>> parent of 276ebe2 (scroll to navigate)
               >
                 {PRESETS.map((item, index) => {
                   return (
