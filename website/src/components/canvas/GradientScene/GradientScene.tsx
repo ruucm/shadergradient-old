@@ -68,8 +68,9 @@ export function GradientScene({
   const [cameraPositionZ] = useQueryState('cameraPositionZ')
 
   const [embedMode] = useQueryState('embedMode')
+
   const responsiveCameraZoom =
-    embedMode === 'on' ? cameraZoom : cameraZoom * (window.innerWidth / 1440)
+    embedMode === 'on' ? cameraZoom : getResponsiveZoom(cameraZoom)
 
   // force props
   const { animatedScale } = useSpring({ animatedScale: forceScale })
@@ -109,4 +110,11 @@ export function GradientScene({
       loadingCallback={setLoadingPercentage}
     />
   )
+}
+
+function getResponsiveZoom(cameraZoom: number) {
+  const type = window.innerWidth >= window.innerHeight ? 'width' : 'height'
+
+  if (type === 'width') return cameraZoom * (window.innerWidth / 1440)
+  else return cameraZoom * (window.innerHeight / 900)
 }
