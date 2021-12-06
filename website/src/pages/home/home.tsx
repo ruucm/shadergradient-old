@@ -60,29 +60,6 @@ const DOM = ({ referer }) => {
 
   console.log('loadingPercentage', loadingPercentage)
 
-  const sentence = {
-    hidden: { opacity: 1 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 2,
-        staggerChildren: 0.05,
-      },
-    },
-  }
-
-  const letters = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-    },
-  }
-
-  const title = 'ShaderGradient'
-  const descript1 =
-    'beautiful, customizable, and moving gradients for your digital products'
-
   return (
     <>
       {/* Loadings */}
@@ -135,51 +112,17 @@ const DOM = ({ referer }) => {
             }}
             transition={{ duration: 0.5 }}
           >
-            <motion.h1 style={{ opacity: 1, y: 0 }} variants={sentence}>
-              {title.split('').map((char, index) => {
-                return (
-                  <motion.span
-                    key={char + '-' + index}
-                    variants={letters}
-                    style={{ display: 'inline-block' }}
-                    transition={{ duration: 0.8 }}
-                  >
-                    {char}
-                  </motion.span>
-                )
-              })}
-            </motion.h1>
+            <motion.h1 style={{ opacity: 1, y: 0 }}>ShaderGradient</motion.h1>
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
-              variants={sentence}
               animate={{
                 opacity: 1,
                 y: 0,
                 transition: { duration: 1 },
               }}
             >
-              {descript1.split(' ').map((word, index) => (
-                <>
-                  <span
-                    key={word + '-' + index}
-                    style={{ display: 'inline-block' }}
-                  >
-                    {word.split('').map((char, index) => (
-                      <motion.span
-                        key={char + '-' + index}
-                        variants={letters}
-                        style={{
-                          display: 'inline-block',
-                        }}
-                        transition={{ duration: 0.8 }}
-                      >
-                        {char}
-                      </motion.span>
-                    ))}
-                  </span>
-                  <span> </span>
-                </>
-              ))}
+              beautiful, customizable, and moving gradients for your digital
+              products
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 30 }}
