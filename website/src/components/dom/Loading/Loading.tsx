@@ -3,6 +3,8 @@ import { motion, useAnimation, AnimatePresence } from 'framer-motion'
 import styles from './Loading.module.scss'
 import { useInterval } from '@/hooks/useInterval'
 import { initialCurrent, initialLoadingTime } from '@/consts'
+import logo from '@/media/android-icon-192x192.png'
+import Image from 'next/image'
 
 // const variants = {
 //   container: {
@@ -28,8 +30,8 @@ const sentence = {
   visible: {
     opacity: 1,
     transition: {
-      duration: 3,
-      staggerChildren: 0.05,
+      duration: 1,
+      staggerChildren: 0.04,
     },
   },
 }
@@ -56,8 +58,8 @@ export function Loading({ current, loadingPercentage, referer }) {
       {current === initialCurrent && time < initialLoadingTime && isFirstLoad && (
         <motion.div
           className={styles.loading}
-          exit={{ scale: 2, opacity: 0, filter: 'blur(30px)' }}
-          transition={{ duration: 1.5 }}
+          exit={{ scale: 4, opacity: 0, filter: 'blur(30px)' }}
+          transition={{ duration: 1 }}
         >
           {time > 0 && (
             <div className={styles.leftWrapper}>

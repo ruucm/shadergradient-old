@@ -60,6 +60,29 @@ const DOM = ({ referer }) => {
 
   console.log('loadingPercentage', loadingPercentage)
 
+  const sentence = {
+    hidden: { opacity: 1 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 2,
+        staggerChildren: 0.05,
+      },
+    },
+  }
+
+  const letters = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+    },
+  }
+
+  const title = 'ShaderGradient'
+  const descript1 =
+    'beautiful, customizable, and moving gradients for your digital products'
+
   return (
     <>
       {/* Loadings */}
@@ -106,11 +129,26 @@ const DOM = ({ referer }) => {
         <div className={styles.leftWrapper}>
           <motion.div
             className={styles.title}
-            animate={{ y: mode !== 'full' ? -290 : 0 }}
+            animate={{
+              y: mode !== 'full' ? -290 : 0,
+              opacity: mode !== 'full' ? 0 : 1,
+            }}
             transition={{ duration: 0.5 }}
-            // style={{ display: mode !== 'full' ? 'none' : 'block' }}
           >
-            <motion.h1 style={{ opacity: 1, y: 0 }}>ShaderGradient</motion.h1>
+            <motion.h1 style={{ opacity: 1, y: 0 }}>
+              {title.split('').map((char, index) => {
+                return (
+                  <motion.span
+                    key={char + '-' + index}
+                    variants={letters}
+                    style={{ display: 'inline-block' }}
+                    transition={{ duration: 0.8 }}
+                  >
+                    {char}
+                  </motion.span>
+                )
+              })}
+            </motion.h1>
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
               animate={{
@@ -119,8 +157,28 @@ const DOM = ({ referer }) => {
                 transition: { duration: 1 },
               }}
             >
-              beautiful, customizable, and moving gradients <br />
-              for your digital products
+              {descript1.split(' ').map((word, index) => (
+                <>
+                  <span
+                    key={word + '-' + index}
+                    style={{ display: 'inline-block' }}
+                  >
+                    {word.split('').map((char, index) => (
+                      <motion.span
+                        key={char + '-' + index}
+                        variants={letters}
+                        style={{
+                          display: 'inline-block',
+                        }}
+                        transition={{ duration: 0.8 }}
+                      >
+                        {char}
+                      </motion.span>
+                    ))}
+                  </span>
+                  <span> </span>
+                </>
+              ))}
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 30 }}
