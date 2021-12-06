@@ -10,7 +10,13 @@ import {
 
 export function GradientScene({ currentTheme }) {
   React.useEffect(() => {
-    const gradientURL = PRESETS[currentTheme].url
+    const searchParams = new URLSearchParams(PRESETS[currentTheme].url)
+    searchParams.set(
+      'cameraZoom',
+      (Number(searchParams.get('cameraZoom')) * 2).toString()
+    ) // x2 cameraZoom from the PRESET in figma plugin.
+    const gradientURL = searchParams.toString()
+
     updateGradientState(gradientURL)
   }, [currentTheme])
 
