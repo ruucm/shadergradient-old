@@ -6,6 +6,7 @@ import { GradientScene } from './components/GradientScene'
 import { Controls } from './components/Controls'
 import './global.css'
 import { useState } from 'react'
+import { initialCurrent } from './consts'
 
 function Arrow(props) {
   return (
@@ -23,7 +24,7 @@ function Arrow(props) {
 }
 
 function App() {
-  const [currentTheme, setCurrentTheme] = useState(2)
+  const [currentTheme, setCurrentTheme] = useState(initialCurrent)
   console.log('currentTheme', currentTheme)
 
   return (
