@@ -180,10 +180,10 @@ const DOM = ({ referer }) => {
                 ref={snapList}
                 tabIndex={0}
                 direction={isMobile ? 'vertical' : 'horizontal'}
-                onScroll={(info) => {
-                  console.log(info)
-                  setCurrent(visible)
-                }}
+                // onScroll={(info) => {
+                //   console.log(info)
+                //   setCurrent(visible)
+                // }}
               >
                 {PRESETS.map((item, index) => {
                   return (
@@ -200,7 +200,8 @@ const DOM = ({ referer }) => {
                           goToSnapItem(index)
                           setCurrent(index)
                         }}
-                        visible={current === index || visible === index}
+                        // visible={current === index || visible === index}
+                        visible={current === index}
                         color={
                           mode === 'full' ? PRESETS[current].color : '#FF430A'
                         }
