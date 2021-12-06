@@ -14,7 +14,6 @@ import {
   SnapList,
   useDragToScroll,
   useScroll,
-  useVisibleElements,
 } from 'react-snaplist-carousel'
 import { PRESETS } from 'shadergradient'
 import styles from './Home.module.scss'
@@ -33,10 +32,7 @@ const DOM = ({ referer }) => {
   const snapList = useRef(null)
 
   const [isMobile, setIsMobile] = useState(false)
-  const visible = useVisibleElements(
-    { debounce: 10, ref: snapList },
-    ([element]) => element
-  )
+
   const goToSnapItem = useScroll({ ref: snapList })
   const itemGap = '40px'
 
@@ -180,11 +176,9 @@ const DOM = ({ referer }) => {
             >
               <SnapList
                 ref={snapList}
-                tabIndex={0}
                 direction={isMobile ? 'vertical' : 'horizontal'}
                 onScroll={(info) => {
                   console.log(info)
-                  setCurrent(visible)
                 }}
               >
                 {PRESETS.map((item, index) => {
@@ -202,7 +196,7 @@ const DOM = ({ referer }) => {
                           goToSnapItem(index)
                           setCurrent(index)
                         }}
-                        visible={current === index || visible === index}
+                        visible={current === index}
                         color={
                           mode === 'full' ? PRESETS[current].color : '#FF430A'
                         }
