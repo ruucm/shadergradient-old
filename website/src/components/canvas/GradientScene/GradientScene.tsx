@@ -8,6 +8,7 @@ import {
 import { useUIStore } from '@/helpers/store'
 import { useSpring } from '@react-spring/core'
 import { dToRArr } from '@/utils'
+import { initialCurrent } from '@/consts'
 
 export function GradientScene({
   r3f,
@@ -24,7 +25,7 @@ export function GradientScene({
 
   useEffect(() => {
     let gradientURL = PRESETS[current].url
-    if (current === 1 && window.location.search)
+    if (current === initialCurrent && window.location.search)
       gradientURL = window.location.search // use search params at the first load.
 
     updateGradientState(gradientURL)
