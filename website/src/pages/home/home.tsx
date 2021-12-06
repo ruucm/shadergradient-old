@@ -177,9 +177,6 @@ const DOM = ({ referer }) => {
               <SnapList
                 ref={snapList}
                 direction={isMobile ? 'vertical' : 'horizontal'}
-                onScroll={(info) => {
-                  console.log(info)
-                }}
               >
                 {PRESETS.map((item, index) => {
                   return (

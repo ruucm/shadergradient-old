@@ -204,15 +204,14 @@
 }
 
 .loading {
-  // color: #ff430a;
+  color: #ff430a;
   position: absolute;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
   z-index: 100;
-  // background: #ededed;
-  background: white;
+  background: #ededed;
   display: flex;
   justify-content: center;
   align-items: center;
