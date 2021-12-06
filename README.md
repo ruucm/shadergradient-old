@@ -1,4 +1,12 @@
-Curated and customizable 3d gradient package for React.
+Curated and customizable 3d gradient package in modern design tools and React.
+
+## Figma Plugin
+
+[Link]()
+
+## Framer Package
+
+[Link](https://framer.com/projects/ShaderGradient--7fmA9c0AApv3vyjCPpS3-emceg)
 
 ## Installation
 
