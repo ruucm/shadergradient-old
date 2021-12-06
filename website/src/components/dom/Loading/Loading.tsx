@@ -61,7 +61,11 @@ export function Loading({ current, loadingPercentage, referer }) {
         >
           {time > 0 && (
             <div className={styles.leftWrapper}>
-              <motion.div className={styles.title}>
+              <motion.div
+                className={styles.title}
+                initial='hidden'
+                animate='show'
+              >
                 <motion.h1
                   variants={sentence}
                   initial='hidden'
