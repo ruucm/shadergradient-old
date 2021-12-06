@@ -50,7 +50,6 @@ export function Loading({ current, loadingPercentage, referer }) {
 
   const splitted = referer?.split('/') || []
   const isFirstLoad = !splitted[splitted.length - 1]
-  const logoAnim = useAnimation()
 
   return (
     <AnimatePresence>
@@ -72,10 +71,6 @@ export function Loading({ current, loadingPercentage, referer }) {
                   animate='visible'
                   onAnimationComplete={(definition) => {
                     console.log('Completed animating', definition)
-                    logoAnim.start({
-                      opacity: 1,
-                      y: 0,
-                    })
                   }}
                 >
                   <div style={{ textAlign: 'left' }}>

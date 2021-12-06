@@ -17,29 +17,7 @@
     }
   }
 }
-.highlight {
-  height: 100vh;
-  background: linear-gradient(
-    120deg,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(255, 255, 255, 0.5) 25%,
-    rgba(255, 255, 255, 1) 50%,
-    rgba(255, 255, 255, 0.5) 75%,
-    rgba(255, 255, 255, 1) 100%
-  );
-  position: absolute;
-}
 
-.logo {
-  width: 100vw;
-  height: 150px;
-  position: absolute;
-  bottom: 0;
-  text-align: center;
-  img {
-    width: 35px;
-  }
-}
 .loading {
   color: #ff430a;
   position: absolute;
