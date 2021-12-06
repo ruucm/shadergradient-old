@@ -36,7 +36,7 @@ function App() {
           <Arrow
             onClick={() => {
               if (currentTheme === 0) setCurrentTheme(PRESETS.length - 1)
-              setCurrentTheme(currentTheme - 1)
+              else setCurrentTheme(currentTheme - 1)
             }}
           />
           {PRESETS[currentTheme].title}
@@ -44,7 +44,7 @@ function App() {
             <Arrow
               onClick={() => {
                 if (currentTheme === PRESETS.length - 1) setCurrentTheme(0)
-                setCurrentTheme(currentTheme + 1)
+                else setCurrentTheme(currentTheme + 1)
               }}
             />
           </div>
