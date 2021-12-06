@@ -3,8 +3,6 @@ import { motion, useAnimation, AnimatePresence } from 'framer-motion'
 import styles from './Loading.module.scss'
 import { useInterval } from '@/hooks/useInterval'
 import { initialCurrent, initialLoadingTime } from '@/consts'
-import logo from '@/media/android-icon-192x192.png'
-import Image from 'next/image'
 
 // const variants = {
 //   container: {
@@ -122,7 +120,7 @@ export function Loading({ current, loadingPercentage, referer }) {
                   })}
                   <br />
                   {descript3.split(' ').map((word, index) => (
-                    <>
+                    <span key={word + '-' + index}>
                       <span
                         key={word + '-' + index}
                         style={{ display: 'inline-block' }}
@@ -141,16 +139,9 @@ export function Loading({ current, loadingPercentage, referer }) {
                         ))}
                       </span>
                       <span> </span>
-                    </>
+                    </span>
                   ))}
                 </motion.h1>
-              </motion.div>
-              <motion.div
-                className={styles.logo}
-                initial={{ opacity: 0, y: 30 }}
-                animate={logoAnim}
-              >
-                <Image src={logo} alt='shadergradient logo' />
               </motion.div>
             </div>
           )}
