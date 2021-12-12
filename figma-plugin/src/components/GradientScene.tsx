@@ -60,6 +60,8 @@ export function GradientScene({ currentTheme }) {
       gl={{ preserveDrawingBuffer: true }} // to capture the canvas
       id='r3f-canvas'
       dpr={pixelDensity}
+      linear={true} //sRGBEncoding
+      flat={true} //ACESFilmicToneMapping
     >
       <OrbitControls
         enablePan={false}
@@ -78,7 +80,7 @@ export function GradientScene({ currentTheme }) {
           y: cameraPositionY,
           z: cameraPositionZ,
         }}
-        environment={<Environment preset='city' />}
+        // same as the website.
         cameraRotation={{ x: 0, y: 0, z: 0 }}
         type={type}
         animate={animate === 'on'}
