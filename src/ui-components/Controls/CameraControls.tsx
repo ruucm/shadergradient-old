@@ -21,8 +21,8 @@ export const CameraControls: React.FC<CameraControlsPropsT> = () => {
           defaultValue={cameraZoom}
           setValue={setCameraZoom}
           step={0.1}
-          min={0}
-          max={3}
+          min={0.1}
+          max={5}
         />
       </UI.InputPanel>
 
