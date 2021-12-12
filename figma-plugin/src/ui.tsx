@@ -6,6 +6,7 @@ import { GradientScene } from './components/GradientScene'
 import { Controls } from './components/Controls'
 import './global.css'
 import { useState } from 'react'
+import { initialCurrent } from './consts'
 
 function Arrow(props) {
   return (
@@ -23,7 +24,7 @@ function Arrow(props) {
 }
 
 function App() {
-  const [currentTheme, setCurrentTheme] = useState(2)
+  const [currentTheme, setCurrentTheme] = useState(initialCurrent)
   console.log('currentTheme', currentTheme)
 
   return (
@@ -35,7 +36,7 @@ function App() {
           <Arrow
             onClick={() => {
               if (currentTheme === 0) setCurrentTheme(PRESETS.length - 1)
-              setCurrentTheme(currentTheme - 1)
+              else setCurrentTheme(currentTheme - 1)
             }}
           />
           {PRESETS[currentTheme].title}
@@ -43,7 +44,7 @@ function App() {
             <Arrow
               onClick={() => {
                 if (currentTheme === PRESETS.length - 1) setCurrentTheme(0)
-                setCurrentTheme(currentTheme + 1)
+                else setCurrentTheme(currentTheme + 1)
               }}
             />
           </div>

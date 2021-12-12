@@ -91,6 +91,7 @@ export const Gradient: React.FC<GradientPropsT> = ({
         loadingCallback={loadingCallback}
       />
     )
+  else loadingCallback?.(100)
 
   let controlledLights = lights
   if (brightness) controlledLights = <ambientLight intensity={brightness} />

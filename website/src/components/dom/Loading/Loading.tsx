@@ -4,19 +4,7 @@ import styles from './Loading.module.scss'
 import { useInterval } from '@/hooks/useInterval'
 import { initialCurrent, initialLoadingTime } from '@/consts'
 
-// const variants = {
-//   container: {
-//     show: {
-//       transition: {
-//         staggerChildren: 1,
-//       },
-//     },
-//   },
-//   item: {
-//     hidden: { opacity: 0, y: 30 },
-//     show: { opacity: 1, y: 0 },
-//   },
-// }
+
 
 const title = 'ShaderGradient '
 const descript1 = 'beautiful, '
@@ -53,8 +41,9 @@ export function Loading({ current, loadingPercentage, referer }) {
 
   return (
     <AnimatePresence>
-      {current === initialCurrent && time < initialLoadingTime && isFirstLoad && (
-        <motion.div
+{current === initialCurrent &&
+        (loadingPercentage < 100 || time < initialLoadingTime) &&
+        isFirstLoad && (        <motion.div
           className={styles.loading}
           exit={{ scale: 4, opacity: 0, filter: 'blur(30px)' }}
           transition={{ duration: 1 }}

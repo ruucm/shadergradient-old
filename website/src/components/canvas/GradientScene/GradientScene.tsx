@@ -8,6 +8,7 @@ import {
 import { useUIStore } from '@/helpers/store'
 import { useSpring } from '@react-spring/core'
 import { dToRArr } from '@/utils'
+import { initialCurrent } from '@/consts'
 
 export function GradientScene({
   r3f,
@@ -24,7 +25,7 @@ export function GradientScene({
 
   useEffect(() => {
     let gradientURL = PRESETS[current].url
-    if (current === 1 && window.location.search)
+    if (current === initialCurrent && window.location.search)
       gradientURL = window.location.search // use search params at the first load.
 
     updateGradientState(gradientURL)
@@ -68,8 +69,9 @@ export function GradientScene({
   const [cameraPositionZ] = useQueryState('cameraPositionZ')
 
   const [embedMode] = useQueryState('embedMode')
+
   const responsiveCameraZoom =
-    embedMode === 'on' ? cameraZoom : cameraZoom * (window.innerWidth / 1440)
+    embedMode === 'on' ? cameraZoom : getResponsiveZoom(cameraZoom)
 
   // force props
   const { animatedScale } = useSpring({ animatedScale: forceScale })
@@ -109,4 +111,11 @@ export function GradientScene({
       loadingCallback={setLoadingPercentage}
     />
   )
+}
+
+function getResponsiveZoom(cameraZoom: number) {
+  const type = window.innerWidth >= window.innerHeight ? 'width' : 'height'
+
+  if (type === 'width') return cameraZoom * (window.innerWidth / 1440)
+  else return cameraZoom * (window.innerHeight / 900)
 }
