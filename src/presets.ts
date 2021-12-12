@@ -1,13 +1,13 @@
 export const PRESETS = [
   {
-    title: 'Breeze',
-    color: 'white',
-    url: '?animate=on&brightness=1&cameraPositionX=0.4&cameraPositionY=3.2&cameraPositionZ=0&cameraZoom=2.4&color1=%235ce7ff&color2=%235ac5d3&color3=%23b9dcac&envPreset=city&grain=off&lightType=3d&reflection=0&rotationX=180&rotationY=50&rotationZ=0&type=waterPlane&uSpeed=0.2&uStrength=2&uTime=0.2&pixelDensity=1&embedMode=off&positionX=0&positionY=0&positionZ=0',
-  },
-  {
     title: 'New Halo',
     color: 'white',
     url: '?animate=on&brightness=1.2&cameraPositionX=-0.5&cameraPositionY=3.4&cameraPositionZ=-5&cameraZoom=2.4&color1=%23ff5005&color2=%23a177ca&color3=%23d9a83f&embedMode=off&envPreset=city&grain=on&lightType=env&pixelDensity=1&positionX=0&positionY=0.9&positionZ=-0.9&reflection=0.1&rotationX=90&rotationY=0&rotationZ=230&type=plane&uSpeed=0.3&uStrength=2.8&uTime=0.2',
+  },
+  {
+    title: 'Breeze',
+    color: 'white',
+    url: '?animate=on&brightness=1&cameraPositionX=0.4&cameraPositionY=3.2&cameraPositionZ=0&cameraZoom=2.4&color1=%235ce7ff&color2=%235ac5d3&color3=%23b9dcac&envPreset=city&grain=off&lightType=3d&reflection=0&rotationX=180&rotationY=50&rotationZ=0&type=waterPlane&uSpeed=0.2&uStrength=2&uTime=0.2&pixelDensity=1&embedMode=off&positionX=0&positionY=0&positionZ=0',
   },
   {
     title: 'Halo Origin',

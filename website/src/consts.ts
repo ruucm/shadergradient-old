@@ -13,6 +13,6 @@ export const links = [
   },
 ]
 
-export const initialCurrent = 5
+export const initialCurrent = 0
 
 export const initialLoadingTime = 6
