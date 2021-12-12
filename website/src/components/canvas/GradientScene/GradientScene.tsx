@@ -70,8 +70,7 @@ export function GradientScene({
 
   const [embedMode] = useQueryState('embedMode')
 
-  const responsiveCameraZoom =
-    embedMode === 'on' ? cameraZoom : getResponsiveZoom(cameraZoom)
+  const responsiveCameraZoom = getResponsiveZoom(cameraZoom)
 
   // force props
   const { animatedScale } = useSpring({ animatedScale: forceScale })
