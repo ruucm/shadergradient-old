@@ -7,7 +7,7 @@ import { animated } from '@react-spring/three'
 
 const clock = new THREE.Clock()
 
-const meshCount = 50
+const meshCount = 200
 
 export function GradientMesh({
   type = 'plane',
@@ -22,15 +22,17 @@ export function GradientMesh({
   reflection,
   scale,
 }: any) {
-  const mesh = useRef()
+  const mesh: any = useRef()
   const material: any = useRef()
   // Subscribe this component to the render-loop, rotate the mesh every frame
   useFrame((state, delta) =>
     mesh.current
       ? (() => {
-          if (animate)
+          if (animate) {
             material.current.userData.uTime.value = clock.getElapsedTime()
-          // material.current.uniforms.uNoiseStrength.value = noiseStrength
+            // material.current.uniforms.uNoiseStrength.value = noiseStrength
+            if (type === 'sphere') mesh.current.rotation.y += 0.003
+          }
         })()
       : null
   )
@@ -47,10 +49,10 @@ export function GradientMesh({
       rotation={rotation} // rotate mesh to get more lights
       scale={scale}
     >
-      {type === 'plane' && <planeGeometry args={[5, 5, 1, meshCount]} />}
+      {type === 'plane' && <planeGeometry args={[10, 10, 1, meshCount]} />}
       {type === 'sphere' && <icosahedronBufferGeometry args={[1, meshCount]} />}
       {type === 'waterPlane' && (
-        <planeGeometry args={[5, 5, meshCount, meshCount]} />
+        <planeGeometry args={[10, 10, meshCount, meshCount]} />
       )}
 
       {/* @ts-ignore */}
