@@ -4,8 +4,6 @@ import styles from './Loading.module.scss'
 import { useInterval } from '@/hooks/useInterval'
 import { initialCurrent, initialLoadingTime } from '@/consts'
 
-
-
 const title = 'ShaderGradient '
 const descript1 = 'beautiful, '
 const descript2 = 'customizable, '
@@ -41,30 +39,44 @@ export function Loading({ current, loadingPercentage, referer }) {
 
   return (
     <AnimatePresence>
-{current === initialCurrent &&
+      {current === initialCurrent &&
         (loadingPercentage < 100 || time < initialLoadingTime) &&
-        isFirstLoad && (        <motion.div
-          className={styles.loading}
-          exit={{ scale: 4, opacity: 0, filter: 'blur(30px)' }}
-          transition={{ duration: 1 }}
-        >
-          {time > 0 && (
-            <div className={styles.leftWrapper}>
-              <motion.div
-                className={styles.title}
-                initial='hidden'
-                animate='show'
-              >
-                <motion.h1
-                  variants={sentence}
+        isFirstLoad && (
+          <motion.div
+            className={styles.loading}
+            exit={{ scale: 4, opacity: 0, filter: 'blur(30px)' }}
+            transition={{ duration: 1 }}
+          >
+            {time > 0 && (
+              <div className={styles.leftWrapper}>
+                <motion.div
+                  className={styles.title}
                   initial='hidden'
-                  animate='visible'
-                  onAnimationComplete={(definition) => {
-                    console.log('Completed animating', definition)
-                  }}
+                  animate='show'
                 >
-                  <div style={{ textAlign: 'left' }}>
-                    {title.split('').map((char, index) => {
+                  <motion.h1
+                    variants={sentence}
+                    initial='hidden'
+                    animate='visible'
+                    onAnimationComplete={(definition) => {
+                      console.log('Completed animating', definition)
+                    }}
+                  >
+                    <div style={{ textAlign: 'left' }}>
+                      {title.split('').map((char, index) => {
+                        return (
+                          <motion.span
+                            key={char + '-' + index}
+                            variants={letters}
+                            style={{ display: 'inline-block' }}
+                            transition={{ duration: 0.8 }}
+                          >
+                            {char}
+                          </motion.span>
+                        )
+                      })}
+                    </div>
+                    {descript1.split('').map((char, index) => {
                       return (
                         <motion.span
                           key={char + '-' + index}
@@ -76,62 +88,49 @@ export function Loading({ current, loadingPercentage, referer }) {
                         </motion.span>
                       )
                     })}
-                  </div>
-                  {descript1.split('').map((char, index) => {
-                    return (
-                      <motion.span
-                        key={char + '-' + index}
-                        variants={letters}
-                        style={{ display: 'inline-block' }}
-                        transition={{ duration: 0.8 }}
-                      >
-                        {char}
-                      </motion.span>
-                    )
-                  })}
 
-                  <br />
-                  {descript2.split('').map((char, index) => {
-                    return (
-                      <motion.span
-                        key={char + '-' + index}
-                        variants={letters}
-                        style={{ display: 'inline-block' }}
-                        transition={{ duration: 0.8 }}
-                      >
-                        {char}
-                      </motion.span>
-                    )
-                  })}
-                  <br />
-                  {descript3.split(' ').map((word, index) => (
-                    <span key={word + '-' + index}>
-                      <span
-                        key={word + '-' + index}
-                        style={{ display: 'inline-block' }}
-                      >
-                        {word.split('').map((char, index) => (
-                          <motion.span
-                            key={char + '-' + index}
-                            variants={letters}
-                            style={{
-                              display: 'inline-block',
-                            }}
-                            transition={{ duration: 0.8 }}
-                          >
-                            {char}
-                          </motion.span>
-                        ))}
+                    <br />
+                    {descript2.split('').map((char, index) => {
+                      return (
+                        <motion.span
+                          key={char + '-' + index}
+                          variants={letters}
+                          style={{ display: 'inline-block' }}
+                          transition={{ duration: 0.8 }}
+                        >
+                          {char}
+                        </motion.span>
+                      )
+                    })}
+                    <br />
+                    {descript3.split(' ').map((word, index) => (
+                      <span key={word + '-' + index}>
+                        <span
+                          key={word + '-' + index}
+                          style={{ display: 'inline-block' }}
+                        >
+                          {word.split('').map((char, index) => (
+                            <motion.span
+                              key={char + '-' + index}
+                              variants={letters}
+                              style={{
+                                display: 'inline-block',
+                              }}
+                              transition={{ duration: 0.8 }}
+                            >
+                              {char}
+                            </motion.span>
+                          ))}
+                        </span>
+                        <span> </span>
                       </span>
-                      <span> </span>
-                    </span>
-                  ))}
-                </motion.h1>
-              </motion.div>
-            </div>
-          )}
-        </motion.div>
-      )}
+                    ))}
+                  </motion.h1>
+                </motion.div>
+              </div>
+            )}
+          </motion.div>
+        )}
     </AnimatePresence>
   )
 }

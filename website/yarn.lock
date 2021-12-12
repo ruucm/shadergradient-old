@@ -6141,7 +6141,7 @@ sha.js@^2.4.0, sha.js@^2.4.8:
     inherits "^2.0.1"
     safe-buffer "^5.0.1"
 
-shadergradient@^0.0.47:
+shadergradient@0.0.47:
   version "0.0.47"
   resolved "https://registry.yarnpkg.com/shadergradient/-/shadergradient-0.0.47.tgz#5fdc1b8742bbb95cbcbef8d039bfb286d3c4c21e"
   integrity sha512-6auu5gchrEZXszI6iepemCEfqwrkTl8P5JuNUNf3NesVXl//7W1NrGXszbLfyT6dwA/kNArk4WyzI5Mr+Bxgug==

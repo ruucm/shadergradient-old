@@ -14,6 +14,7 @@ import {
   SnapList,
   useDragToScroll,
   useScroll,
+  useVisibleElements,
 } from 'react-snaplist-carousel'
 import { PRESETS } from 'shadergradient'
 import styles from './Home.module.scss'
@@ -177,12 +178,9 @@ const DOM = ({ referer }) => {
               <SnapList
                 ref={snapList}
                 direction={isMobile ? 'vertical' : 'horizontal'}
-<<<<<<< HEAD
-=======
                 onScroll={(info) => {
                   console.log(info)
                 }}
->>>>>>> parent of 276ebe2 (scroll to navigate)
               >
                 {PRESETS.map((item, index) => {
                   return (
@@ -230,7 +228,6 @@ const DOM = ({ referer }) => {
           </motion.div>
         </div>
       </motion.div>
-      {/* <Footer /> */}
 
       <PreviewWrapper mode={mode} setMode={setMode} />
     </>
