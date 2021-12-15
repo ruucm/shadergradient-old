@@ -2,7 +2,6 @@
   width: 100vw;
   // height: 100%;
   height: var(--app-height);
-
   // min-height: 100vh;
   grid-column-gap: 0;
   font-family: 'Inter', sans-serif;
@@ -56,6 +55,7 @@
   }
   h2 {
     font-size: 20px;
+    width: 450px;
   }
 }
 
@@ -203,45 +203,39 @@
   background: white;
 }
 
-.loading {
-  color: #ff430a;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 100;
-  background: #ededed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+// .loading {
+//   color: #ff430a;
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   width: 100vw;
+//   height: 100vh;
+//   z-index: 100;
+//   background: #ededed;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// }
 
-.loadingTextWrapper {
-  font-size: 3em;
-  font-weight: 600;
-  width: 38vw;
-  height: fit-content;
-  margin-bottom: -0.3em;
-}
+// .loadingTextWrapper {
+//   font-size: 3em;
+//   font-weight: 600;
+//   width: 38vw;
+//   height: fit-content;
+//   margin-bottom: -0.3em;
+// }
 
-.loadingText {
-  display: inline-block;
-  margin-right: 0.3em;
-  line-height: 0.8em;
-}
+// .loadingText {
+//   display: inline-block;
+//   margin-right: 0.3em;
+//   line-height: 0.8em;
+// }
 
-.loadingTextMotion {
-  display: inline-block;
-  line-height: 0.8em;
-  color: white;
-}
-.gradientText {
-  display: inline-block;
-  background: linear-gradient(to right, #fbcac9, #8ca6ce);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
+// .loadingTextMotion {
+//   display: inline-block;
+//   line-height: 0.8em;
+//   color: white;
+// }
 
 .loadingSpinner {
   width: 100vw;

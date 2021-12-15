@@ -4,7 +4,6 @@ import { OrbitControls, Preload, useContextBridge } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 import { useEffect, useRef } from 'react'
 import { FormContext } from '../../helpers/form-provider'
-import img from 'public/img/noise-test.png'
 import { useQueryState } from 'shadergradient'
 
 const LControl = () => {

@@ -14,6 +14,7 @@ import {
   SnapList,
   useDragToScroll,
   useScroll,
+  useVisibleElements,
 } from 'react-snaplist-carousel'
 import { PRESETS } from 'shadergradient'
 import styles from './Home.module.scss'
@@ -102,9 +103,11 @@ const DOM = ({ referer }) => {
         <div className={styles.leftWrapper}>
           <motion.div
             className={styles.title}
-            animate={{ y: mode !== 'full' ? -290 : 0 }}
+            animate={{
+              y: mode !== 'full' ? -290 : 0,
+              opacity: mode !== 'full' ? 0 : 1,
+            }}
             transition={{ duration: 0.5 }}
-            // style={{ display: mode !== 'full' ? 'none' : 'block' }}
           >
             <motion.h1 style={{ opacity: 1, y: 0 }}>ShaderGradient</motion.h1>
             <motion.h2
@@ -115,8 +118,8 @@ const DOM = ({ referer }) => {
                 transition: { duration: 1 },
               }}
             >
-              beautiful, customizable, and moving gradients <br />
-              for your digital products
+              beautiful, customizable, and moving gradients for your digital
+              products
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 30 }}
@@ -175,6 +178,9 @@ const DOM = ({ referer }) => {
               <SnapList
                 ref={snapList}
                 direction={isMobile ? 'vertical' : 'horizontal'}
+                onScroll={(info) => {
+                  console.log(info)
+                }}
               >
                 {PRESETS.map((item, index) => {
                   return (
@@ -222,7 +228,6 @@ const DOM = ({ referer }) => {
           </motion.div>
         </div>
       </motion.div>
-      {/* <Footer /> */}
 
       <PreviewWrapper mode={mode} setMode={setMode} />
     </>
