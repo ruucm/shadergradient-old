@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { initialCurrent } from '@/consts'
 import create from 'zustand'
 
