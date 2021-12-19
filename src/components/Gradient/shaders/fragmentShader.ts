@@ -60,6 +60,8 @@ varying vec3 vViewPosition;
 #include <metalnessmap_pars_fragment>
 #include <logdepthbuf_pars_fragment>
 #include <clipping_planes_pars_fragment>
+// include를 통해 가져온 값은 대부분 환경, 빛 등을 계산하기 위해서 기본 fragment shader의 값들을 받아왔습니다. 일단은 무시하셔도 됩니다. 
+
 
 varying vec3 vNormal;
 varying float displacement;
@@ -93,13 +95,21 @@ float clearcoatRoughness = 0.5;
 
 #include <clipping_planes_fragment>
 
-// gl_FragColor = vec4(mix(mix(color1, color3, smoothstep(-3.0, 3.0,vPos.x)), color2, vNormal.z), 1.0);
-	vec4 diffuseColor = vec4(mix(mix(color1, color3, smoothstep(-3.0, 3.0,vPos.x)), color2, vPos.z), 1);
 
+	vec4 diffuseColor = vec4(mix(mix(color1, color3, smoothstep(-3.0, 3.0,vPos.x)), color2, vPos.z), 1);
+	//diffuseColor는 오브젝트의 베이스 색상 (환경이나 빛이 고려되지 않은 본연의 색)
+	
+	// mix(x, y, a): a를 축으로 했을 때 가장 낮은 값에서 x값의 영향력을 100%, 가장 높은 값에서 y값의 영향력을 100%로 만든다.
+	// smoothstep(x, y, a): a축을 기준으로 x를 최소값, y를 최대값으로 그 사이의 값을 쪼갠다. x와 y 사이를 0-100 사이의 그라디언트처럼 단계별로 표현하고, x 미만의 값은 0, y 이상의 값은 100으로 처리
+
+	//1. smoothstep(-3.0, 3.0,vPos.x)로 x축의 그라디언트가 표현 될 범위를 -3, 3으로 정한다.
+	//2. mix(color1, color3, smoothstep(-3.0, 3.0,vPos.x))로 color1과 color3을 위의 범위 안에서 그라디언트로 표현한다. 
+	// 예를 들어 color1이 노랑, color3이 파랑이라고 치면, x축 기준 -3부터 3까지 노랑과 파랑 사이의 그라디언트가 나타나고, -3보다 작은 값에서는 계속 노랑, 3보다 큰 값에서는 계속 파랑이 나타난다. 
+	//3. mix()를 한 번 더 사용해서 위의 그라디언트와 color2를 z축 기준으로 분배한다. 
 
   //-------- materiality ------------
 
-ReflectedLight reflectedLight = ReflectedLight( vec3( 0.0 ), vec3( 0.0 ), vec3( 0.0 ), vec3( 0.0 ) );
+	ReflectedLight reflectedLight = ReflectedLight( vec3( 0.0 ), vec3( 0.0 ), vec3( 0.0 ), vec3( 0.0 ) );
 	vec3 totalEmissiveRadiance = emissive;
 	#ifdef TRANSMISSION
 		float totalTransmission = transmission;
@@ -123,12 +133,19 @@ ReflectedLight reflectedLight = ReflectedLight( vec3( 0.0 ), vec3( 0.0 ), vec3( 
 	#include <lights_fragment_end>
 	#include <aomap_fragment>
 	vec3 outgoingLight = reflectedLight.directDiffuse + reflectedLight.indirectDiffuse + reflectedLight.directSpecular + reflectedLight.indirectSpecular ;
+	//위에서 정의한 diffuseColor에 환경이나 반사값들을 반영한 값.
+
 	#ifdef TRANSMISSION
 		diffuseColor.a *= mix( saturate( 1. - totalTransmission + linearToRelativeLuminance( reflectedLight.directSpecular + reflectedLight.indirectSpecular ) ), 1.0, metalness );
 	#endif
 
 
 	gl_FragColor = vec4( outgoingLight , diffuseColor.a );
+	// gl_FragColor가 fragment shader를 통해 나타나는 최종값으로, diffuseColor에서 정의한 그라디언트 색상 위에 반사나 빛을 계산한 값을 최종값으로 정의. 
+	// gl_FragColor = vec4(mix(mix(color1, color3, smoothstep(-3.0, 3.0,vPos.x)), color2, vNormal.z), 1.0);
+	// 위처럼 최종값을 그라디언트 값 자체를 넣으면 환경 영향없는 그라디언트만 표현됨. 
+
+	
 	#include <tonemapping_fragment>
 	#include <encodings_fragment>
 	#include <fog_fragment>
