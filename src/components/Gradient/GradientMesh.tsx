@@ -31,7 +31,7 @@ export function GradientMesh({
           if (animate) {
             material.current.userData.uTime.value = clock.getElapsedTime()
             // material.current.uniforms.uNoiseStrength.value = noiseStrength
-            if (type === 'sphere') mesh.current.rotation.y += 0.003
+            // if (type === 'sphere') mesh.current.rotation.y += 0.003
           }
         })()
       : null
@@ -50,7 +50,7 @@ export function GradientMesh({
       scale={scale}
     >
       {type === 'plane' && <planeGeometry args={[10, 10, 1, meshCount]} />}
-      {type === 'sphere' && <icosahedronBufferGeometry args={[1, meshCount]} />}
+      {type === 'sphere' && <icosahedronBufferGeometry args={[3, meshCount]} />}
       {type === 'waterPlane' && (
         <planeGeometry args={[10, 10, meshCount, meshCount]} />
       )}
