@@ -65,11 +65,6 @@ export const PRESETS = [
     url: '?animate=0ff&brightness=1.2&cameraPositionX=0.4&cameraPositionY=3.2&cameraPositionZ=0&cameraZoom=0.7&color1=ff9a9e&color2=%231f5c2a&color3=fad0c4&embedMode=off&envPreset=city&grain=off&lightType=3d&pixelDensity=1&positionX=1.7&positionY=0.5&positionZ=-1.4&reflection=0&rotationX=160&rotationY=0&rotationZ=30&type=plane&uSpeed=0.05&uStrength=2.6&uTime=0.2',
   },
   {
-    title: 'Sphere 1',
-    color: 'white',
-    url: '?animate=off&brightness=1.5&cameraPositionX=0&cameraPositionY=4&cameraPositionZ=0&cameraZoom=2.5&color1=%23ffbd38&color2=%23eedde4&color3=%23CE026A&embedMode=off&envPreset=city&grain=off&lightType=3d&pixelDensity=1&positionX=0&positionY=0&positionZ=0&reflection=0&rotationX=50&rotationY=90&rotationZ=480&type=sphere&uSpeed=0.25&uStrength=1.5&uTime=-0.8',
-  },
-  {
     title: 'Blazing',
     color: 'white',
     url: '?animate=on&brightness=1.4&cameraPositionX=-1.4&cameraPositionY=4.9&cameraPositionZ=-0.3&cameraZoom=1.9&color1=%23ec4d18&color2=%23b8e2e5&color3=%23d6e9f5&embedMode=off&envPreset=city&grain=on&lightType=3d&pixelDensity=1&positionX=0.1&positionY=0.7&positionZ=0&reflection=0.4&rotationX=180&rotationY=-20&rotationZ=-30&type=plane&uSpeed=0.9&uStrength=1.3&uTime=0.2',
