@@ -133,6 +133,10 @@ export const vertexShader = `
   uniform float uNoiseStrength;
   uniform float uFrequency;
   uniform float uAmplitude;
+
+  varying vec3 vPos;
+  varying float vDistort;
+  varying vec3 vViewPosition;
   
   ${noise}
   
@@ -146,6 +150,10 @@ export const vertexShader = `
     float angle = sin(uv.y * uFrequency + t) * uAmplitude;
     pos = rotateY(pos, angle);    
     
+    vPos = pos;
+    vDistort = distortion;
+
+
     vNormal = normal;
 
     gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.);
