@@ -5,11 +5,11 @@ import { fragmentShader } from './shaders/fragmentShader'
 import { vertexShader } from './shaders/vertexShader'
 
 const settings = {
-  speed: 0.2,
-  density: 1.5,
-  strength: 2.0,
-  frequency: 2.0,
-  amplitude: 6.0,
+  // speed: 0.2,
+  // density: 1.5,
+  // strength: 2.0,
+  // frequency: 2.0,
+  // amplitude: 6.0,
   meshCount: 50,
   type: 'plane',
   color1r: 0.8,
@@ -26,6 +26,13 @@ const settings = {
   normalScale: 0.01,
   rotation: 0,
   intensity: 0.3,
+
+  // default settings
+  speed: 0.2,
+  density: 1.5,
+  strength: 0.2,
+  frequency: 3.0,
+  amplitude: 6.0,
 }
 
 var uniforms = {
@@ -34,6 +41,7 @@ var uniforms = {
   uNoiseDensity: { value: settings.density },
   uNoiseStrength: { value: settings.strength },
   uFrequency: { value: settings.frequency },
+  uAmplitude: { value: 5 },
   uIntensity: { value: settings.intensity },
   type: { value: settings.type },
   uC1r: { value: settings.color1r },
@@ -82,6 +90,8 @@ export class GradientMaterial extends THREE.MeshPhysicalMaterial {
         shader.uniforms.uNoiseStrength = uniforms.uNoiseStrength
         shader.uniforms.uIntensity = uniforms.uIntensity
         shader.uniforms.uFrequency = uniforms.uFrequency
+        shader.uniforms.uAmplitude = uniforms.uAmplitude
+
         shader.uniforms.uC1r = { value: formatColor(uC1?.r) }
         shader.uniforms.uC1g = { value: formatColor(uC1?.g) }
         shader.uniforms.uC1b = { value: formatColor(uC1?.b) }
