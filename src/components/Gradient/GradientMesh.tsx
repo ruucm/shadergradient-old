@@ -31,9 +31,7 @@ export function GradientMesh({
           if (animate) {
             material.current.userData.uTime.value = clock.getElapsedTime()
             // material.current.uniforms.uNoiseStrength.value = noiseStrength
-            // if (type === 'sphere'){
-            // mesh.current.rotation.y += 0.003
-            // }
+            if (type === 'sphere') mesh.current.rotation.y += 0.003
           }
         })()
       : null
@@ -64,6 +62,7 @@ export function GradientMesh({
         colors={colors}
         uStrength={uStrength}
         uSpeed={uSpeed}
+        meshType={type}
         // wireframe
       />
     </animated.mesh>
