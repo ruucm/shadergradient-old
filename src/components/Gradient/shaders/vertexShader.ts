@@ -1,3 +1,5 @@
+// Source codes from https://codepen.io/marioecg/embed/gOwqZYW?default-tab=result&theme-id=dark
+
 const noise = `
   // GLSL textureless classic 3D noise "cnoise",
   // with an RSL-style periodic variant "pnoise".
