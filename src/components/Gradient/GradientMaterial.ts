@@ -1,7 +1,9 @@
 import { formatColor, hexToRgb } from '@/utils'
 import { extend } from '@react-three/fiber'
 import * as THREE from 'three'
-import vertexShader from './shaders/vertex.glsl'
+// import vertexShader from './shaders/vertex.glsl'
+// import vertexShader from './shaders/vertex2.glsl'
+import vertexShader from './shaders/vertex3.glsl'
 import { fragmentShader } from './shaders/fragmentShader'
 
 const settings = {
@@ -35,6 +37,8 @@ var uniforms = {
   uNoiseStrength: { value: settings.strength },
   uFrequency: { value: settings.frequency },
   uIntensity: { value: settings.intensity },
+  uAmp: { value: 0 },
+  uOffset: { value: 0 },
   type: { value: settings.type },
   uC1r: { value: settings.color1r },
   uC1g: { value: settings.color1g },
