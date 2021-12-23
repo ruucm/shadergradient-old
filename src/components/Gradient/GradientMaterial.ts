@@ -1,8 +1,8 @@
 import { formatColor, hexToRgb } from '@/utils'
 import { extend } from '@react-three/fiber'
 import * as THREE from 'three'
+import vertexShader from './shaders/vertex.glsl'
 import { fragmentShader } from './shaders/fragmentShader'
-import { vertexShader } from './shaders/vertexShader'
 
 const settings = {
   speed: 0.2,
@@ -99,7 +99,7 @@ export class GradientMaterial extends THREE.MeshPhysicalMaterial {
         // console.log(material);
 
         shader.vertexShader = vertexShader
-        shader.fragmentShader = fragmentShader
+        shader.fragmentShader = fragmentShader.replace('#define GLSLIFY 1', '')
       },
     })
   }
