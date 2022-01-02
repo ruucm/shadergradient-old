@@ -132,6 +132,14 @@ export class GradientMaterial extends THREE.MeshPhysicalMaterial {
     // @ts-ignore
     return (this.userData.uNoiseStrength.value = v)
   }
+  get uDensity() {
+    // @ts-ignore
+    return this.userData.uNoiseDensity.value
+  }
+  set uDensity(v) {
+    // @ts-ignore
+    return (this.userData.uNoiseDensity.value = v)
+  }
 
   get uSpeed() {
     // @ts-ignore

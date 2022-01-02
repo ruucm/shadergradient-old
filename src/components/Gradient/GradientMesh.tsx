@@ -17,6 +17,7 @@ export function GradientMesh({
   animate,
   uTime,
   uStrength,
+  uDensity,
   uSpeed,
   colors,
   reflection,
@@ -60,6 +61,7 @@ export function GradientMesh({
         ref={material}
         colors={colors}
         uStrength={uStrength}
+        uDensity={uDensity}
         uSpeed={uSpeed}
         meshType={type}
         vertexShader={vertexShader}
