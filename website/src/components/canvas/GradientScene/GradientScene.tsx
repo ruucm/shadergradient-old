@@ -13,8 +13,7 @@ import { initialCurrent } from '@/consts'
 import glsl from 'glslify'
 import vertexShaderGrad from './shaders/vertexShaderGrad.glsl'
 import fragmentShaderGrad from './shaders/fragmentShaderGrad.glsl'
-import vertexShaderT1 from './shaders/vertexT1.glsl'
-import fragmentShaderT1 from './shaders/fragmentT1.glsl'
+import { vertexShader, fragmentShader } from './shaders/velvet'
 
 const glslPragmas = `
 #pragma glslify: snoise2 = require(glsl-noise/simplex/2d)
@@ -132,8 +131,8 @@ export function GradientScene({
       brightness={brightness}
       postProcessing={'threejs'} // turn on postpocessing
       loadingCallback={setLoadingPercentage}
-      vertexShader={type === 'sphere' ? vertexShaderT1 : vertexShaderGrad}
-      fragmentShader={type === 'sphere' ? fragmentShaderT1 : fragmentShaderGrad}
+      vertexShader={type === 'sphere' ? vertexShader : vertexShaderGrad}
+      fragmentShader={type === 'sphere' ? fragmentShader : fragmentShaderGrad}
     />
   )
 }
