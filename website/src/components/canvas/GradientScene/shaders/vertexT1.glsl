@@ -16,6 +16,10 @@ varying vec3 vPos;
 varying float vDistort;
 varying vec3 vViewPosition;
 
+varying vec2 vUv;
+
+
+
 mat3 rotation3dY(float angle) {
   float s = sin(angle);
   float c = cos(angle);
@@ -37,6 +41,9 @@ void main() {
   vDistort = distortion;
 
   vNormal = normal;
+
+  vUv = uv;
+
 
   gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.);
 }
