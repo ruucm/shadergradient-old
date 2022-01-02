@@ -1,5 +1,3 @@
-#pragma glslify: halftone = require('glsl-halftone')
-
 uniform float uC1r;
 uniform float uC1g;
 uniform float uC1b;
