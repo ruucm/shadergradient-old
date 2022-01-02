@@ -12,10 +12,10 @@ import { initialCurrent } from '@/consts'
 import { vertexShader } from './shaders/vertexShader'
 import { fragmentShader } from './shaders/fragmentShader'
 
+import glsl from 'glslify'
 import vertexShaderT1 from './shaders/vertexShaderT1.glsl'
 import fragmentT1 from './shaders/fragmentT1.glsl'
 
-const glsl = require('glslify')
 const glslPragmas = `
 #pragma glslify: snoise2 = require(glsl-noise/simplex/2d)
 #pragma glslify: snoise3 = require(glsl-noise/simplex/3d)
