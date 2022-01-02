@@ -716,9 +716,6 @@ video {
 .h-thumb {
 	height: 16px;
 }
-.h-\[66px\] {
-	height: 66px;
-}
 .h-screen {
 	height: 100vh;
 }
@@ -801,9 +798,6 @@ video {
 }
 .justify-between {
 	justify-content: space-between;
-}
-.justify-around {
-	justify-content: space-around;
 }
 .gap-0\.2 {
 	gap: 3.5px;

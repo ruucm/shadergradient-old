@@ -107,8 +107,10 @@ export class GradientMaterial extends THREE.MeshPhysicalMaterial {
         // material.normalScale = uniforms.normalScale;
         // console.log(material);
 
-        shader.vertexShader = uniforms.vertexShader
-        shader.fragmentShader = uniforms.fragmentShader
+        shader.vertexShader = this.userData.vertexShader
+        shader.fragmentShader = this.userData.fragmentShader
+
+        console.log('shader', shader)
       },
     })
   }
