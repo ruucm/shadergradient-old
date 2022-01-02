@@ -6122,7 +6122,7 @@
 
 "shadergradient@0.0.52":
   "resolved" "file:.."
-  "version" "0.0.52"
+  "version" "0.0.53"
   dependencies:
     "@react-spring/core" "^9.3.0"
     "@react-spring/three" "^9.3.0"
