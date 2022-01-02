@@ -11,7 +11,17 @@ import { dToRArr } from '@/utils'
 import { initialCurrent } from '@/consts'
 import { vertexShader } from './shaders/vertexShader'
 import { fragmentShader } from './shaders/fragmentShader'
-import { vertexShaderSphere } from './shaders/vertexShaderSphere'
+// import { vertexShaderSphere } from './shaders/vertexShaderSphere'
+
+// console.log('vertexShaderSphere', vertexShaderSphere)
+
+import vertextFourGradient from './shaders/vertextFourGradient.glsl'
+import vertexShaderSphere from './shaders/vertexShaderSphere.glsl'
+import fragmentShaderSphere from './shaders/fragmentShaderSphere.glsl'
+import fragmentFourGrident from './shaders/fragmentFourGrident.glsl'
+// import hey from './shaders/vertextOld.glsl'
+
+// console.log('hey', hey)
 
 export function GradientScene({
   r3f,
@@ -111,8 +121,12 @@ export function GradientScene({
       brightness={brightness}
       postProcessing={'threejs'} // turn on postpocessing
       loadingCallback={setLoadingPercentage}
-      vertexShader={type === 'sphere' ? vertexShaderSphere : vertexShader}
-      fragmentShader={fragmentShader}
+      vertexShader={
+        type === 'sphere' ? vertextFourGradient : vertextFourGradient
+      }
+      fragmentShader={
+        type === 'sphere' ? fragmentFourGrident : fragmentFourGrident
+      }
     />
   )
 }
