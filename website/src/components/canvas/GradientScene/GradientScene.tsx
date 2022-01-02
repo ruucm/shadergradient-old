@@ -13,8 +13,11 @@ import { initialCurrent } from '@/consts'
 import glsl from 'glslify'
 import vertexShaderGrad from './shaders/vertexShaderGrad.glsl'
 import fragmentShaderGrad from './shaders/fragmentShaderGrad.glsl'
-import vertexShaderT1 from './shaders/vertexShaderT1.glsl'
-import fragmentT1 from './shaders/fragmentT1.glsl'
+// import vertexShaderT2 from './shaders/vertexShaderT2.glsl'
+// import fragmentT2 from './shaders/fragmentT2.glsl'
+
+import vertexShader from './shaders/velvet/vertex.glsl'
+import fragmentShader from './shaders/velvet/fragment.glsl'
 
 const glslPragmas = `
 #pragma glslify: snoise2 = require(glsl-noise/simplex/2d)
@@ -64,6 +67,7 @@ export function GradientScene({
   const [uTime] = useQueryState('uTime')
   const [uSpeed] = useQueryState('uSpeed')
   const [uStrength] = useQueryState('uStrength')
+  const [uDensity] = useQueryState('uDensity')
   const [positionX] = useQueryState('positionX')
   const [positionY] = useQueryState('positionY')
   const [positionZ] = useQueryState('positionZ')
@@ -121,6 +125,7 @@ export function GradientScene({
       cameraZoom={forceZoom !== null ? forceZoom : responsiveCameraZoom}
       uTime={uTime}
       uStrength={uStrength}
+      uDensity={uDensity}
       uSpeed={uSpeed}
       colors={[color1, color2, color3]}
       grain={grain}
@@ -130,8 +135,8 @@ export function GradientScene({
       brightness={brightness}
       postProcessing={'threejs'} // turn on postpocessing
       loadingCallback={setLoadingPercentage}
-      vertexShader={type === 'sphere' ? vertexShaderT1 : vertexShaderGrad}
-      fragmentShader={type === 'sphere' ? fragmentT1 : fragmentShaderGrad}
+      vertexShader={type === 'sphere' ? vertexShader : vertexShaderGrad}
+      fragmentShader={type === 'sphere' ? fragmentShader : fragmentShaderGrad}
     />
   )
 }
