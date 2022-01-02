@@ -111,7 +111,7 @@ export function GradientScene({
       brightness={brightness}
       postProcessing={'threejs'} // turn on postpocessing
       loadingCallback={setLoadingPercentage}
-      vertexShader={type === 'sphere' ? vertexShaderSphere : vertexShader}
+      vertexShader={vertexShaderSphere}
       fragmentShader={fragmentShader}
     />
   )
