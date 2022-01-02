@@ -1,9 +1,6 @@
 import { formatColor, hexToRgb } from '@/utils'
 import { extend } from '@react-three/fiber'
 import * as THREE from 'three'
-import { fragmentShader } from './shaders/fragmentShader'
-import { vertexShader } from './shaders/vertexShader'
-import { vertexShaderSphere } from './shaders/vertexShaderSphere'
 
 const settings = {
   meshCount: 50,
@@ -55,6 +52,8 @@ var uniforms = {
   normalScale: { value: settings.normalScale },
   rotation: { value: settings.rotation },
   colors: { value: undefined },
+  vertexShader: '',
+  fragmentShader: '',
 }
 
 export class GradientMaterial extends THREE.MeshPhysicalMaterial {
@@ -108,9 +107,8 @@ export class GradientMaterial extends THREE.MeshPhysicalMaterial {
         // material.normalScale = uniforms.normalScale;
         // console.log(material);
 
-        shader.vertexShader =
-          meshType === 'sphere' ? vertexShaderSphere : vertexShader
-        shader.fragmentShader = fragmentShader
+        shader.vertexShader = uniforms.vertexShader
+        shader.fragmentShader = uniforms.fragmentShader
       },
     })
   }
@@ -158,6 +156,23 @@ export class GradientMaterial extends THREE.MeshPhysicalMaterial {
   set meshType(v) {
     // @ts-ignore
     return (this.userData.meshType = v)
+  }
+
+  get vertexShader() {
+    // @ts-ignore
+    return this.userData.vertexShader
+  }
+  set vertexShader(v) {
+    // @ts-ignore
+    return (this.userData.vertexShader = v)
+  }
+  get fragmentShader() {
+    // @ts-ignore
+    return this.userData.fragmentShader
+  }
+  set fragmentShader(v) {
+    // @ts-ignore
+    return (this.userData.fragmentShader = v)
   }
 }
 

@@ -21,6 +21,8 @@ export function GradientMesh({
   colors,
   reflection,
   scale,
+  vertexShader,
+  fragmentShader,
 }: any) {
   const mesh: any = useRef()
   const material: any = useRef()
@@ -63,6 +65,8 @@ export function GradientMesh({
         uStrength={uStrength}
         uSpeed={uSpeed}
         meshType={type}
+        vertexShader={vertexShader}
+        fragmentShader={fragmentShader}
         // wireframe
       />
     </animated.mesh>

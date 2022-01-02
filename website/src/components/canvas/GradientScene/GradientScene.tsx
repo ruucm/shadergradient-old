@@ -9,6 +9,9 @@ import { useUIStore } from '@/helpers/store'
 import { useSpring } from '@react-spring/core'
 import { dToRArr } from '@/utils'
 import { initialCurrent } from '@/consts'
+import { vertexShader } from './shaders/vertexShader'
+import { fragmentShader } from './shaders/fragmentShader'
+import { vertexShaderSphere } from './shaders/vertexShaderSphere'
 
 export function GradientScene({
   r3f,
@@ -108,6 +111,8 @@ export function GradientScene({
       brightness={brightness}
       postProcessing={'threejs'} // turn on postpocessing
       loadingCallback={setLoadingPercentage}
+      vertexShader={type === 'sphere' ? vertexShaderSphere : vertexShader}
+      fragmentShader={fragmentShader}
     />
   )
 }

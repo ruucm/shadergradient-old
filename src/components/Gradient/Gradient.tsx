@@ -32,6 +32,8 @@ export type GradientPropsT = {
   reflection?: number
   brightness?: number
   loadingCallback?: (percentage: number) => void
+  vertexShader: string
+  fragmentShader: string
 }
 
 function LoadingBox() {
@@ -68,6 +70,8 @@ export const Gradient: React.FC<GradientPropsT> = ({
   reflection = 0.1,
   brightness = 1.2,
   loadingCallback,
+  vertexShader,
+  fragmentShader,
 }) => {
   const { camera }: { camera: Camera } = useThree()
   camera.zoom = cameraZoom
@@ -113,6 +117,8 @@ export const Gradient: React.FC<GradientPropsT> = ({
           uSpeed={uSpeed}
           colors={colors}
           reflection={reflection}
+          vertexShader={vertexShader}
+          fragmentShader={fragmentShader}
         />
 
         {/* <EffectComposer>
