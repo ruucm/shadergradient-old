@@ -11,17 +11,25 @@ import { dToRArr } from '@/utils'
 import { initialCurrent } from '@/consts'
 import { vertexShader } from './shaders/vertexShader'
 import { fragmentShader } from './shaders/fragmentShader'
-// import { vertexShaderSphere } from './shaders/vertexShaderSphere'
 
-// console.log('vertexShaderSphere', vertexShaderSphere)
+import vertexShaderT1 from './shaders/vertexShaderT1.glsl'
+import fragmentT1 from './shaders/fragmentT1.glsl'
 
-import vertextFourGradient from './shaders/vertextFourGradient.glsl'
-import vertexShaderSphere from './shaders/vertexShaderSphere.glsl'
-import fragmentShaderSphere from './shaders/fragmentShaderSphere.glsl'
-import fragmentFourGrident from './shaders/fragmentFourGrident.glsl'
-// import hey from './shaders/vertextOld.glsl'
-
-// console.log('hey', hey)
+const glsl = require('glslify')
+const glslPragmas = `
+#pragma glslify: snoise2 = require(glsl-noise/simplex/2d)
+#pragma glslify: snoise3 = require(glsl-noise/simplex/3d)
+#pragma glslify: snoise2 = require(glsl-noise/simplex/2d) 
+#pragma glslify: snoise3 = require(glsl-noise/simplex/3d) 
+#pragma glslify: snoise4 = require(glsl-noise/simplex/4d) 
+#pragma glslify: cnoise2 = require(glsl-noise/classic/2d) 
+#pragma glslify: cnoise3 = require(glsl-noise/classic/3d) 
+#pragma glslify: cnoise4 = require(glsl-noise/classic/4d) 
+#pragma glslify: pnoise2 = require(glsl-noise/periodic/2d) 
+#pragma glslify: pnoise3 = require(glsl-noise/periodic/3d) 
+#pragma glslify: pnoise4 = require(glsl-noise/periodic/4d) 
+`
+glsl`${glslPragmas}`
 
 export function GradientScene({
   r3f,
@@ -121,12 +129,8 @@ export function GradientScene({
       brightness={brightness}
       postProcessing={'threejs'} // turn on postpocessing
       loadingCallback={setLoadingPercentage}
-      vertexShader={
-        type === 'sphere' ? vertextFourGradient : vertextFourGradient
-      }
-      fragmentShader={
-        type === 'sphere' ? fragmentFourGrident : fragmentFourGrident
-      }
+      vertexShader={type === 'sphere' ? vertexShaderT1 : vertexShader}
+      fragmentShader={type === 'sphere' ? fragmentT1 : fragmentShader}
     />
   )
 }
