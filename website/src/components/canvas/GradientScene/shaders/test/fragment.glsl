@@ -20,5 +20,5 @@ void main() {
 
   vec2 st = vUv;
   gl_FragColor.rgb =
-      halftone(color1 * vNormal.x + color2 * vNormal.y + color3 * vNormal.z, st, 500.0);
+      halftone(color1 * vNormal.x + color2 * vNormal.y + color3 * vNormal.z, st, 900.0);
 }

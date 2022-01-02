@@ -13,7 +13,7 @@ import { initialCurrent } from '@/consts'
 import glsl from 'glslify'
 import vertexShaderGrad from './shaders/vertexShaderGrad.glsl'
 import fragmentShaderGrad from './shaders/fragmentShaderGrad.glsl'
-import { vertexShader, fragmentShader } from './shaders/test'
+import * as shaders from './shaders'
 
 const glslPragmas = `
 #pragma glslify: snoise2 = require(glsl-noise/simplex/2d)
@@ -95,6 +95,9 @@ export function GradientScene({
 
   const responsiveCameraZoom = getResponsiveZoom(cameraZoom)
 
+  // shader
+  const [shader] = useQueryState('shader')
+
   // force props
   const { animatedScale } = useSpring({ animatedScale: forceScale })
   const { animatedRotation } = useSpring({
@@ -133,8 +136,12 @@ export function GradientScene({
       brightness={brightness}
       postProcessing={'threejs'} // turn on postpocessing
       loadingCallback={setLoadingPercentage}
-      vertexShader={type === 'sphere' ? vertexShader : vertexShaderGrad}
-      fragmentShader={type === 'sphere' ? fragmentShader : fragmentShaderGrad}
+      vertexShader={
+        type === 'sphere' ? shaders[shader]?.vertexShader : vertexShaderGrad
+      }
+      fragmentShader={
+        type === 'sphere' ? shaders[shader]?.fragmentShader : fragmentShaderGrad
+      }
     />
   )
 }
