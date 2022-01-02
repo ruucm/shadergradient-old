@@ -13,7 +13,7 @@ import { initialCurrent } from '@/consts'
 import glsl from 'glslify'
 import vertexShaderGrad from './shaders/vertexShaderGrad.glsl'
 import fragmentShaderGrad from './shaders/fragmentShaderGrad.glsl'
-import { vertexShader, fragmentShader } from './shaders/velvet'
+import { vertexShader, fragmentShader } from './shaders/test'
 
 const glslPragmas = `
 #pragma glslify: snoise2 = require(glsl-noise/simplex/2d)
@@ -26,7 +26,9 @@ const glslPragmas = `
 #pragma glslify: cnoise4 = require(glsl-noise/classic/4d) 
 #pragma glslify: pnoise2 = require(glsl-noise/periodic/2d) 
 #pragma glslify: pnoise3 = require(glsl-noise/periodic/3d) 
-#pragma glslify: pnoise4 = require(glsl-noise/periodic/4d) 
+#pragma glslify: pnoise4 = require(glsl-noise/periodic/4d)
+
+#pragma glslify: halftone = require('glsl-halftone')
 `
 glsl`${glslPragmas}`
 
