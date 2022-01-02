@@ -104,6 +104,7 @@ export function GradientScene({
 
   return (
     <Gradient
+      // @ts-ignore
       rotation={animatedRotation}
       position={animatedPosition}
       scale={animatedScale}
