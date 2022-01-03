@@ -1280,6 +1280,21 @@ glsl-aastep@^1.0.0:
   resolved "https://registry.yarnpkg.com/glsl-aastep/-/glsl-aastep-1.0.1.tgz#eeaf16961e472c9b8b3d965d080ab8ec1d4c6bb8"
   integrity sha1-7q8Wlh5HLJuLPZZdCAq47B1Ma7g=
 
+glsl-diffuse-oren-nayar@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/glsl-diffuse-oren-nayar/-/glsl-diffuse-oren-nayar-1.0.2.tgz#f0b108244077dfc2c81aee8d78a3b5df7abad6e4"
+  integrity sha1-8LEIJEB338LIGu6NeKO133q61uQ=
+
+glsl-face-normal@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/glsl-face-normal/-/glsl-face-normal-1.0.2.tgz#7ee775d919a4f2ee92f57bb698e87cc75dbf1288"
+  integrity sha1-fud12Rmk8u6S9Xu2mOh8x12/Eog=
+
+glsl-gamma@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/glsl-gamma/-/glsl-gamma-2.0.0.tgz#c00a9401bd4a3567b0674cf695c30d1c00f692ca"
+  integrity sha1-wAqUAb1KNWewZ0z2lcMNHAD2kso=
+
 glsl-halftone@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/glsl-halftone/-/glsl-halftone-1.0.4.tgz#a60700d11852db3ebc0cc9ee78bf0ae9a2e7aff6"
@@ -1302,6 +1317,11 @@ glsl-noise@0.0.0, glsl-noise@^0.0.0:
   resolved "https://registry.yarnpkg.com/glsl-noise/-/glsl-noise-0.0.0.tgz#367745f3a33382c0eeec4cb54b7e99cfc1d7670b"
   integrity sha1-NndF86MzgsDu7Ey1S36Zz8HXZws=
 
+glsl-perturb-normal@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/glsl-perturb-normal/-/glsl-perturb-normal-1.0.3.tgz#aa24423a68c447094db7df4fc23e60c268d36255"
+  integrity sha512-Vb3wGIPqDso1QfHVhnHEUMhii4YWjTGoH9lYLghY5aw79/5eYgOzFB3jfkdKt9xCRjQfk1BKp5FNyE3OL+BmnQ==
+
 glsl-resolve@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/glsl-resolve/-/glsl-resolve-0.0.1.tgz#894bef73910d792c81b5143180035d0a78af76d3"
@@ -1309,6 +1329,23 @@ glsl-resolve@0.0.1:
   dependencies:
     resolve "^0.6.1"
     xtend "^2.1.2"
+
+glsl-specular-beckmann@^1.1.1:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/glsl-specular-beckmann/-/glsl-specular-beckmann-1.1.2.tgz#fce9056933ecdf2456278376a54d082893e775f1"
+  integrity sha1-/OkFaTPs3yRWJ4N2pU0IKJPndfE=
+
+glsl-specular-cook-torrance@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/glsl-specular-cook-torrance/-/glsl-specular-cook-torrance-2.0.1.tgz#a891cc06c8c7b4f4728702b4824fdacbb967d78f"
+  integrity sha1-qJHMBsjHtPRyhwK0gk/ay7ln148=
+  dependencies:
+    glsl-specular-beckmann "^1.1.1"
+
+glsl-specular-phong@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/glsl-specular-phong/-/glsl-specular-phong-1.0.0.tgz#a0450808e4629ee64ccb460b7ee0425a97bf6204"
+  integrity sha1-oEUICORinuZMy0YLfuBCWpe/YgQ=
 
 glsl-token-assignments@^2.0.0:
   version "2.0.2"
@@ -1453,6 +1490,11 @@ hex-color-regex@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/hex-color-regex/-/hex-color-regex-1.1.0.tgz#4c06fccb4602fe2602b3c93df82d7e7dbf1a8a8e"
   integrity sha512-l9sfDFsuqtOqKDsQdqrMRk0U85RZc0RtOR9yPI7mRVOa4FsR/BVnZ0shmQRM96Ji99kYZP/7hn1cedc1+ApsTQ==
+
+hex-rgb@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/hex-rgb/-/hex-rgb-5.0.0.tgz#e2c9eb6a37498d66c5a350a221ed4c2c7d1a92d6"
+  integrity sha512-NQO+lgVUCtHxZ792FodgW0zflK+ozS9X9dwGp9XvvmPlH7pyxd588cn24TD3rmPm/N0AIRXF10Otah8yKqGw4w==
 
 home-or-tmp@^2.0.0:
   version "2.0.0"

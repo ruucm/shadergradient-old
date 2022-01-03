@@ -29,6 +29,14 @@ const glslPragmas = `
 #pragma glslify: pnoise4 = require(glsl-noise/periodic/4d)
 
 #pragma glslify: halftone = require('glsl-halftone')
+#pragma glslify: cookTorranceSpec = require(glsl-specular-cook-torrance) 
+
+#pragma glslify: faceNormals = require('glsl-face-normal')
+#pragma glslify: perturb = require('glsl-perturb-normal')
+#pragma glslify: computeDiffuse = require('glsl-diffuse-oren-nayar')
+#pragma glslify: computeSpecular = require('glsl-specular-phong')
+#pragma glslify: toLinear = require('glsl-gamma/in')
+#pragma glslify: toGamma = require('glsl-gamma/out')
 `
 glsl`${glslPragmas}`
 
