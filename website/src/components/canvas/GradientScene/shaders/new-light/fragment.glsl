@@ -1,6 +1,3 @@
-// codes from http://stack.gl/packages/#stackgl/glsl-lighting-walkthrough
-
-
 #pragma glslify: faceNormals = require('glsl-face-normal')
 #pragma glslify: perturb = require('glsl-perturb-normal')
 #pragma glslify: computeDiffuse = require('glsl-diffuse-oren-nayar')
@@ -77,7 +74,8 @@ void main() {
   //determine surface to light direction
   vec4 lightPosition = view * vec4(light.position, 1.0);
   vec3 lightVector = lightPosition.xyz - vViewPosition;
-  vec3 color = vec3(0.0);
+  // vec3 color = vec3(0.0);
+  vec3 color = color1 * vNormal.x + color2 * vNormal.y + color3 * vNormal.z; // use color-normal-mix model
 
   //calculate attenuation
   float lightDistance = length(lightVector);
@@ -113,8 +111,4 @@ void main() {
   color = toGamma(color);
   gl_FragColor.rgb = color;
   gl_FragColor.a = 1.0;
-
-
-  // gl_FragColor.rgb =
-      // color1 * vNormal.x + color2 * vNormal.y + color3 * vNormal.z;
 }

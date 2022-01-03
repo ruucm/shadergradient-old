@@ -14,10 +14,12 @@ void main() {
   float distortion = cnoise3((normal + t) * uNoiseDensity) * uNoiseStrength;
 
   vec3 pos = position + (normal * distortion);
+  vec4 viewModelPosition = modelViewMatrix * vec4(pos, 1.);
 
   vUv = uv;
   vNormal = normal;
-  vViewPosition = -position.xyz;
+  vViewPosition = viewModelPosition.xyz;
+
 
   gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.);
 }

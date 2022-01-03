@@ -41,8 +41,7 @@ var light = {
   position: [0, 0, 2],
   // color: 'rgb(255, 200, 104)',
   // ambient: 'rgb(10, 4, 11)',
-
-  color: [1, 0.8, 0.5],
+  color: [1, 1, 1],
   ambient: [0.2, 0.1, 0.1],
 }
 
@@ -125,7 +124,7 @@ export class GradientMaterial extends THREE.MeshPhysicalMaterial {
         // material.normalScale = uniforms.normalScale;
         // console.log(material);
 
-        // console.log('light', light)
+        console.log('light', light)
         shader.uniforms.light = { value: light }
 
         shader.vertexShader = this.userData.vertexShader
