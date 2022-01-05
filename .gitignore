@@ -10,3 +10,6 @@ node_modules
 # website
 .next
 out
+
+# for vercel build
+website/yarn.lock

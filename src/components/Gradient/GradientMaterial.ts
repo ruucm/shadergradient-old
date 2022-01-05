@@ -1,6 +1,8 @@
 import { formatColor, hexToRgb } from '@/utils'
 import { extend } from '@react-three/fiber'
 import * as THREE from 'three'
+// var hex = require('hex-rgb')
+// import hex from 'hex-rgb'
 
 const settings = {
   meshCount: 50,
@@ -26,6 +28,21 @@ const settings = {
   strength: 0.2,
   frequency: 3.0,
   amplitude: 5.0,
+}
+
+var hex2rgb = (str: any) => {
+  // @ts-ignore
+  return hex(str).map((x: any) => x / 255)
+}
+
+var light = {
+  falloff: 0.15,
+  radius: 5,
+  position: [0, 0, 2],
+  // color: 'rgb(255, 200, 104)',
+  // ambient: 'rgb(10, 4, 11)',
+  color: [1, 1, 1],
+  ambient: [0.2, 0.1, 0.1],
 }
 
 var uniforms = {
@@ -107,8 +124,13 @@ export class GradientMaterial extends THREE.MeshPhysicalMaterial {
         // material.normalScale = uniforms.normalScale;
         // console.log(material);
 
-        shader.vertexShader = uniforms.vertexShader
-        shader.fragmentShader = uniforms.fragmentShader
+        console.log('light', light)
+        shader.uniforms.light = { value: light }
+
+        shader.vertexShader = this.userData.vertexShader
+        shader.fragmentShader = this.userData.fragmentShader
+
+        console.log('shader', shader)
       },
     })
   }
@@ -129,6 +151,14 @@ export class GradientMaterial extends THREE.MeshPhysicalMaterial {
   set uStrength(v) {
     // @ts-ignore
     return (this.userData.uNoiseStrength.value = v)
+  }
+  get uDensity() {
+    // @ts-ignore
+    return this.userData.uNoiseDensity.value
+  }
+  set uDensity(v) {
+    // @ts-ignore
+    return (this.userData.uNoiseDensity.value = v)
   }
 
   get uSpeed() {

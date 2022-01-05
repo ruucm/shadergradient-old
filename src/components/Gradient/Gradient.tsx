@@ -24,6 +24,7 @@ export type GradientPropsT = {
   uTime?: number
   animate?: boolean
   uStrength?: number
+  uDensity?: number
   uSpeed?: number
   colors?: string[]
   grain?: 'on' | 'off'
@@ -62,6 +63,7 @@ export const Gradient: React.FC<GradientPropsT> = ({
   uTime = 0.2,
   animate = true,
   uStrength = 1.6,
+  uDensity = 1.0,
   uSpeed = 0.3,
   colors = ['#CC4C6E', '#1980FF', '#99B58F'],
   grain = 'on',
@@ -114,6 +116,7 @@ export const Gradient: React.FC<GradientPropsT> = ({
           animate={animate}
           uTime={uTime}
           uStrength={uStrength}
+          uDensity={uDensity}
           uSpeed={uSpeed}
           colors={colors}
           reflection={reflection}

@@ -17,6 +17,7 @@ export function GradientMesh({
   animate,
   uTime,
   uStrength,
+  uDensity,
   uSpeed,
   colors,
   reflection,
@@ -30,11 +31,8 @@ export function GradientMesh({
   useFrame((state, delta) =>
     mesh.current
       ? (() => {
-          if (animate) {
+          if (animate)
             material.current.userData.uTime.value = clock.getElapsedTime()
-            // material.current.uniforms.uNoiseStrength.value = noiseStrength
-            if (type === 'sphere') mesh.current.rotation.y += 0.003
-          }
         })()
       : null
   )
@@ -63,6 +61,7 @@ export function GradientMesh({
         ref={material}
         colors={colors}
         uStrength={uStrength}
+        uDensity={uDensity}
         uSpeed={uSpeed}
         meshType={type}
         vertexShader={vertexShader}

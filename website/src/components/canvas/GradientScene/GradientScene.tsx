@@ -9,10 +9,36 @@ import { useUIStore } from '@/helpers/store'
 import { useSpring } from '@react-spring/core'
 import { dToRArr } from '@/utils'
 import { initialCurrent } from '@/consts'
-import { vertexShader } from './shaders/vertexShader'
-import { fragmentShader } from './shaders/fragmentShader'
-import { vertexShaderSphere } from './shaders/vertexShaderSphere'
-import { fragmentShaderSphere } from './shaders/fragmentShaderSphere'
+
+import glsl from 'glslify'
+import vertexShaderGrad from './shaders/vertexShaderGrad.glsl'
+import fragmentShaderGrad from './shaders/fragmentShaderGrad.glsl'
+import * as shaders from './shaders'
+
+const glslPragmas = `
+#pragma glslify: snoise2 = require(glsl-noise/simplex/2d)
+#pragma glslify: snoise3 = require(glsl-noise/simplex/3d)
+#pragma glslify: snoise2 = require(glsl-noise/simplex/2d) 
+#pragma glslify: snoise3 = require(glsl-noise/simplex/3d) 
+#pragma glslify: snoise4 = require(glsl-noise/simplex/4d) 
+#pragma glslify: cnoise2 = require(glsl-noise/classic/2d) 
+#pragma glslify: cnoise3 = require(glsl-noise/classic/3d) 
+#pragma glslify: cnoise4 = require(glsl-noise/classic/4d) 
+#pragma glslify: pnoise2 = require(glsl-noise/periodic/2d) 
+#pragma glslify: pnoise3 = require(glsl-noise/periodic/3d) 
+#pragma glslify: pnoise4 = require(glsl-noise/periodic/4d)
+
+#pragma glslify: halftone = require('glsl-halftone')
+#pragma glslify: cookTorranceSpec = require(glsl-specular-cook-torrance) 
+
+#pragma glslify: faceNormals = require('glsl-face-normal')
+#pragma glslify: perturb = require('glsl-perturb-normal')
+#pragma glslify: computeDiffuse = require('glsl-diffuse-oren-nayar')
+#pragma glslify: computeSpecular = require('glsl-specular-phong')
+#pragma glslify: toLinear = require('glsl-gamma/in')
+#pragma glslify: toGamma = require('glsl-gamma/out')
+`
+glsl`${glslPragmas}`
 
 export function GradientScene({
   r3f,
@@ -47,6 +73,7 @@ export function GradientScene({
   const [uTime] = useQueryState('uTime')
   const [uSpeed] = useQueryState('uSpeed')
   const [uStrength] = useQueryState('uStrength')
+  const [uDensity] = useQueryState('uDensity')
   const [positionX] = useQueryState('positionX')
   const [positionY] = useQueryState('positionY')
   const [positionZ] = useQueryState('positionZ')
@@ -76,6 +103,9 @@ export function GradientScene({
 
   const responsiveCameraZoom = getResponsiveZoom(cameraZoom)
 
+  // shader
+  const [shader] = useQueryState('shader')
+
   // force props
   const { animatedScale } = useSpring({ animatedScale: forceScale })
   const { animatedRotation } = useSpring({
@@ -104,6 +134,7 @@ export function GradientScene({
       cameraZoom={forceZoom !== null ? forceZoom : responsiveCameraZoom}
       uTime={uTime}
       uStrength={uStrength}
+      uDensity={uDensity}
       uSpeed={uSpeed}
       colors={[color1, color2, color3]}
       grain={grain}
@@ -113,8 +144,12 @@ export function GradientScene({
       brightness={brightness}
       postProcessing={'threejs'} // turn on postpocessing
       loadingCallback={setLoadingPercentage}
-      vertexShader={type === 'sphere' ? vertexShaderSphere : vertexShader}
-      fragmentShader={type === 'sphere' ? fragmentShaderSphere : fragmentShader}
+      vertexShader={
+        type === 'sphere' ? shaders[shader]?.vertexShader : vertexShaderGrad
+      }
+      fragmentShader={
+        type === 'sphere' ? shaders[shader]?.fragmentShader : fragmentShaderGrad
+      }
     />
   )
 }
