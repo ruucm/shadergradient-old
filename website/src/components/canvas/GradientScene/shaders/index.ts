@@ -1,6 +1,6 @@
 import * as test from './test' // testing color-normal-mix + halftone
 import * as colorNormalMix from './color-normal-mix'
-import * as newLight from './new-light'
+import * as newLight from './newLight'
 import * as spiral from './spiral'
 import * as stripe from './stripe'
 
