@@ -12,6 +12,7 @@ import { initialCurrent } from '@/consts'
 import { vertexShader } from './shaders/vertexShader'
 import { fragmentShader } from './shaders/fragmentShader'
 import { vertexShaderSphere } from './shaders/vertexShaderSphere'
+import { fragmentShaderSphere } from './shaders/fragmentShaderSphere'
 
 export function GradientScene({
   r3f,
@@ -111,8 +112,8 @@ export function GradientScene({
       brightness={brightness}
       postProcessing={'threejs'} // turn on postpocessing
       loadingCallback={setLoadingPercentage}
-      vertexShader={vertexShaderSphere}
-      fragmentShader={fragmentShader}
+      vertexShader={type === 'sphere' ? vertexShaderSphere : vertexShader}
+      fragmentShader={type === 'sphere' ? fragmentShaderSphere : fragmentShader}
     />
   )
 }
