@@ -87,7 +87,8 @@ export function GradientScene({
 
   return (
     <Gradient
-      rotation={animatedRotation}
+      // @ts-ignore
+      rotation={[rotationX, rotationY, rotationZ]}
       position={animatedPosition}
       scale={animatedScale}
       cameraPosition={
