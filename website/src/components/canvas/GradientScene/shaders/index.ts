@@ -1,7 +1,7 @@
 import * as test from './test' // testing color-normal-mix + halftone
 import * as colorNormalMix from './color-normal-mix'
 import * as newLight from './new-light'
-import * as rgbBall from './rgb-ball'
 import * as spiral from './spiral'
+import * as stripe from './stripe'
 
-export { test, colorNormalMix, newLight, rgbBall, spiral }
+export { test, colorNormalMix, newLight, spiral, stripe }
