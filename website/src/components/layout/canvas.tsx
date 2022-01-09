@@ -63,7 +63,7 @@ const LCanvas = ({ children }) => {
       }}
     >
       <LControl />
-      {embedMode === true ? null : (
+      {embedMode != 'on' && (
         <GizmoHelper
           alignment='bottom-right' // widget alignment within scene
           margin={[65, 110]} // widget margins (X, Y)
@@ -73,6 +73,7 @@ const LCanvas = ({ children }) => {
             axisColors={['white', 'white', 'white']}
             labelColor='grey'
             hideNegativeAxes
+            // @ts-ignore
             axisHeadScale={0.8}
           />
           {/* alternative: <GizmoViewcube /> */}
