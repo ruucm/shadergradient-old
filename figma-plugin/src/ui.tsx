@@ -11,14 +11,14 @@ import { initialCurrent } from './consts'
 function Arrow(props) {
   return (
     <svg
-      xmlns='http://www.w3.org/2000/svg'
-      focusable='false'
-      viewBox='0 0 24 24'
-      fill='currentColor'
-      className='block cursor-pointer h-[16px]'
+      xmlns="http://www.w3.org/2000/svg"
+      focusable="false"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className="block cursor-pointer h-[16px]"
       {...props}
     >
-      <path d='M11.67 3.87L9.9 2.1 0 12l9.9 9.9 1.77-1.77L3.54 12z'></path>
+      <path d="M11.67 3.87L9.9 2.1 0 12l9.9 9.9 1.77-1.77L3.54 12z"></path>
     </svg>
   )
 }
@@ -28,11 +28,11 @@ function App() {
   console.log('currentTheme', currentTheme)
 
   return (
-    <div className='bg-white h-full'>
+    <div className="bg-white h-full">
       <GradientScene currentTheme={currentTheme} />
-      <div className='bg-controls-sub-panel text-white font-semibold text-sm flex justify-center items-center gap-3 py-1'>
+      <div className="bg-controls-sub-panel text-white font-semibold text-sm flex justify-center items-center gap-3 py-1">
         Theme
-        <div className='bg-controls-sub-panel-button w-[150px] flex justify-between items-center p-1 rounded'>
+        <div className="bg-controls-sub-panel-button w-[150px] flex justify-between items-center p-1 rounded">
           <Arrow
             onClick={() => {
               if (currentTheme === 0) setCurrentTheme(PRESETS.length - 1)
@@ -40,7 +40,7 @@ function App() {
             }}
           />
           {PRESETS[currentTheme].title}
-          <div className='rotate-180'>
+          <div className="rotate-180">
             <Arrow
               onClick={() => {
                 if (currentTheme === PRESETS.length - 1) setCurrentTheme(0)
@@ -51,9 +51,9 @@ function App() {
         </div>
       </div>
       <Controls />
-      <div className='flex gap-0.5 p-3 absolute w-full bottom-0'>
+      <div className="flex gap-0.5 p-3 absolute w-full bottom-0">
         <UI.Button>Extract GIF</UI.Button>
-        <UI.Button kind='secondary' onClick={insertCanvasAsImage}>
+        <UI.Button kind="secondary" onClick={insertCanvasAsImage}>
           Snapshot
         </UI.Button>
       </div>

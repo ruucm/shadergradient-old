@@ -50,7 +50,7 @@ export const MyItem = ({
       }}
       whileHover={{ x: 10 }}
     >
-      <Link href='/customize'>Customize →</Link>
+      <Link href="/customize">Customize →</Link>
     </motion.div>
   </div>
 )

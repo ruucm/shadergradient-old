@@ -42,7 +42,7 @@ function LoadingBox() {
   return (
     <mesh rotation={[0, 1, 1]}>
       <boxBufferGeometry args={[1, 1, 1]} />
-      <meshPhysicalMaterial color='orange' />
+      <meshPhysicalMaterial color="orange" />
     </mesh>
   )
 }
@@ -52,7 +52,7 @@ export const Gradient: React.FC<GradientPropsT> = ({
   r3f,
   type = 'plane',
   postProcessing = 'threejs',
-  environment = <Environment preset='lobby' background={true} />,
+  environment = <Environment preset="lobby" background={true} />,
   lights = <ambientLight intensity={1} />,
   position = [0, 0, 0],
   rotation = [(Math.PI / 360) * 90, 0, (Math.PI / 360) * 230],
@@ -106,7 +106,7 @@ export const Gradient: React.FC<GradientPropsT> = ({
 
   return (
     <>
-      <Suspense fallback='Load Failed'>
+      <Suspense fallback="Load Failed">
         {lightType === 'env' ? controlledEnvironment : controlledLights}
 
         <GradientMesh

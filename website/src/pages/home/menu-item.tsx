@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 
 export const MenuItem = ({ title, link }) => (
   <motion.a
-    className='font-medium text-primary text-xl block'
+    className="font-medium text-primary text-xl block"
     initial={{ paddingLeft: 0 }}
     whileHover={{
       paddingLeft: 7,
@@ -10,7 +10,7 @@ export const MenuItem = ({ title, link }) => (
     }}
     style={{ lineHeight: '1.7em' }}
     href={link}
-    target='_blank'
+    target="_blank"
   >
     {title}
   </motion.a>

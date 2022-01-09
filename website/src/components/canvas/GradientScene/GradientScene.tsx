@@ -3,7 +3,7 @@ import {
   Gradient,
   useQueryState,
   updateGradientState,
-  PRESETS
+  PRESETS,
 } from 'shadergradient'
 import { useUIStore } from '@/helpers/store'
 import { useSpring } from '@react-spring/core'
@@ -46,7 +46,7 @@ export function GradientScene({
   forceCamPos = null,
   forceRot = null,
   forcePos = null,
-  forceScale = 1
+  forceScale = 1,
 }) {
   const current = useUIStore((state: any) => state.current)
   const setLoadingPercentage = useUIStore(
@@ -110,10 +110,10 @@ export function GradientScene({
   // force props
   const { animatedScale } = useSpring({ animatedScale: forceScale })
   const { animatedRotation } = useSpring({
-    animatedRotation: dToRArr(forceRot || [rotationX, rotationY, rotationZ])
+    animatedRotation: dToRArr(forceRot || [rotationX, rotationY, rotationZ]),
   })
   const { animatedPosition } = useSpring({
-    animatedPosition: forcePos || [positionX, positionY, positionZ]
+    animatedPosition: forcePos || [positionX, positionY, positionZ],
   })
 
   return (
@@ -127,7 +127,7 @@ export function GradientScene({
         forceCamPos || {
           x: cameraPositionX,
           y: cameraPositionY,
-          z: cameraPositionZ
+          z: cameraPositionZ,
         }
       }
       cameraRotation={{ x: 0, y: 0, z: 0 }}

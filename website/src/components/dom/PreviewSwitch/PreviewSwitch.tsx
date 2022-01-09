@@ -9,8 +9,8 @@ export function PreviewSwitch({
 }) {
   return (
     <div style={{ display: display ? 'block' : 'none' }}>
-      <p className='mt-4 font-medium mb-1.5 text-primary'>preview</p>
-      <div className='flex gap-1.5'>
+      <p className="mt-4 font-medium mb-1.5 text-primary">preview</p>
+      <div className="flex gap-1.5">
         <motion.div
           className={cx(
             'rounded-sm cursor-pointer bg-primary w-[17px] h-[31px]'

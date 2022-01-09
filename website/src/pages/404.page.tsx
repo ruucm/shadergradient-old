@@ -33,7 +33,7 @@ const DOM = () => {
         <h2 style={{ fontSize: '2em' }}>
           If you are here for something like this, please try again from{' '}
           <span style={{ textDecoration: 'underline' }}>
-            <Link href='/'>→ ShaderGradient</Link>
+            <Link href="/">→ ShaderGradient</Link>
           </span>
           .{' '}
         </h2>

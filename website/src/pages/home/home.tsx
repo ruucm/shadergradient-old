@@ -81,16 +81,16 @@ const DOM = ({ referer }) => {
         {/* Menu */}
         {isMobile === true ? null : (
           <MenuWrapper mode={mode}>
-            <div className='flex flex-col gap-0.2 p-3.5 '>
+            <div className="flex flex-col gap-0.2 p-3.5 ">
               <motion.div
-                className='text-xl font-medium text-primary'
+                className="text-xl font-medium text-primary"
                 initial={{ paddingLeft: 0 }}
                 whileHover={{
                   paddingLeft: 7,
                   transition: { duration: 0.3 },
                 }}
               >
-                <Link href='/about'>About →</Link>
+                <Link href="/about">About →</Link>
               </motion.div>
               {links.map((item, id) => (
                 <MenuItem key={id} title={item.title} link={item.link} />
@@ -146,8 +146,8 @@ const DOM = ({ referer }) => {
                   transition: { delay: 1.5, transition: 2 },
                 }}
               >
-                <Link href='/about'>→ about</Link>
-                <Link href='/customize'>→ customize</Link>
+                <Link href="/about">→ about</Link>
+                <Link href="/customize">→ customize</Link>
               </motion.div>
             ) : null}
           </motion.div>
@@ -212,7 +212,7 @@ const DOM = ({ referer }) => {
                 })}
                 <SnapItem
                   margin={{ left: itemGap, right: '70vw' }}
-                  snapAlign='start'
+                  snapAlign="start"
                 >
                   <button
                     style={{ display: isMobile ? 'none' : 'block' }}

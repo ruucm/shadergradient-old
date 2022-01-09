@@ -25,15 +25,15 @@ export function GUIGradient() {
           }}
         >
           <div>
-            <input {...ctx.register('type')} type='radio' value='plane' />
+            <input {...ctx.register('type')} type="radio" value="plane" />
             <label>Plane</label>
           </div>
           <div>
-            <input {...ctx.register('type')} type='radio' value='sphere' />
+            <input {...ctx.register('type')} type="radio" value="sphere" />
             <label>Sphere</label>
           </div>
           <div>
-            <input {...ctx.register('type')} type='radio' value='waterPlane' />
+            <input {...ctx.register('type')} type="radio" value="waterPlane" />
             <label>Water Plane</label>
           </div>
         </div>
@@ -44,30 +44,30 @@ export function GUIGradient() {
           }}
         >
           <div>
-            <input {...ctx.register('env')} type='radio' value='env' />
+            <input {...ctx.register('env')} type="radio" value="env" />
             <label>Lighting</label>
           </div>
           <div>
-            <input {...ctx.register('env')} type='radio' value='light' />
+            <input {...ctx.register('env')} type="radio" value="light" />
             <label>True Color</label>
           </div>
         </div>
         <div>
           <input
-            type='range'
-            min='-1'
-            max='1'
-            step='0.1'
+            type="range"
+            min="-1"
+            max="1"
+            step="0.1"
             {...ctx.register('lightStrength')}
           />
           <label>Brightness</label>
         </div>
         <div>
           <input
-            type='range'
-            min='0'
-            max='3'
-            step='0.1'
+            type="range"
+            min="0"
+            max="3"
+            step="0.1"
             {...ctx.register('speed')}
           />
           <label>Speed</label>
@@ -80,16 +80,16 @@ export function GUIGradient() {
           <div>
             <input
               {...ctx.register('postProcessing')}
-              type='radio'
-              value='threejs'
+              type="radio"
+              value="threejs"
             />
             <label>threejs</label>
           </div>
           <div>
             <input
               {...ctx.register('postProcessing')}
-              type='radio'
-              value='r3f'
+              type="radio"
+              value="r3f"
             />
             <label>@react-three/postprocessing</label>
           </div>

@@ -22,7 +22,7 @@ export const ControlTypeTitles: React.FC<ControlTypeTitlePropsT> = ({
       onClick={() => setActiveTab('shape')}
     >
       <UI.ControlTypeTitle
-        title='Shape'
+        title="Shape"
         active={activeTab === 'shape'}
         onClick={() => {
           activeTab === 'shape' ? setActiveTab('none') : setActiveTab('shape')
@@ -30,7 +30,7 @@ export const ControlTypeTitles: React.FC<ControlTypeTitlePropsT> = ({
       />
 
       <UI.ControlTypeTitle
-        title='Colors'
+        title="Colors"
         active={activeTab === 'colors'}
         onClick={(e) => {
           e.stopPropagation() // ignore parent click
@@ -40,7 +40,7 @@ export const ControlTypeTitles: React.FC<ControlTypeTitlePropsT> = ({
       />
 
       <UI.ControlTypeTitle
-        title='Effects'
+        title="Effects"
         active={activeTab === 'effects'}
         onClick={(e) => {
           e.stopPropagation() // ignore parent click
@@ -52,7 +52,7 @@ export const ControlTypeTitles: React.FC<ControlTypeTitlePropsT> = ({
       />
 
       <UI.ControlTypeTitle
-        title='Camera'
+        title="Camera"
         active={activeTab === 'camera'}
         onClick={(e) => {
           e.stopPropagation() // ignore parent click

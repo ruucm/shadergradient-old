@@ -14,9 +14,9 @@ export const CameraControls: React.FC<CameraControlsPropsT> = () => {
   const [cameraPositionZ, setCameraPositionZ] = useQueryState('cameraPositionZ')
 
   return (
-    <div className='flex flex-col gap-3'>
+    <div className="flex flex-col gap-3">
       {/* Zoom */}
-      <UI.InputPanel title='Zoom'>
+      <UI.InputPanel title="Zoom">
         <UI.Slider
           defaultValue={cameraZoom}
           setValue={setCameraZoom}
@@ -27,7 +27,7 @@ export const CameraControls: React.FC<CameraControlsPropsT> = () => {
       </UI.InputPanel>
 
       {/* Positions */}
-      <UI.InputPanel title='Position X'>
+      <UI.InputPanel title="Position X">
         <UI.Slider
           defaultValue={cameraPositionX}
           setValue={setCameraPositionX}
@@ -37,7 +37,7 @@ export const CameraControls: React.FC<CameraControlsPropsT> = () => {
         />
       </UI.InputPanel>
 
-      <UI.InputPanel title='Position Y'>
+      <UI.InputPanel title="Position Y">
         <UI.Slider
           defaultValue={cameraPositionY}
           setValue={setCameraPositionY}
@@ -47,7 +47,7 @@ export const CameraControls: React.FC<CameraControlsPropsT> = () => {
         />
       </UI.InputPanel>
 
-      <UI.InputPanel title='Position Z'>
+      <UI.InputPanel title="Position Z">
         <UI.Slider
           defaultValue={cameraPositionZ}
           setValue={setCameraPositionZ}

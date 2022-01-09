@@ -58,7 +58,7 @@ export function GradientScene({ currentTheme }) {
     <Canvas
       style={{ height: 304 }}
       gl={{ preserveDrawingBuffer: true }} // to capture the canvas
-      id='r3f-canvas'
+      id="r3f-canvas"
       dpr={pixelDensity}
       linear={true} //sRGBEncoding
       flat={true} //ACESFilmicToneMapping

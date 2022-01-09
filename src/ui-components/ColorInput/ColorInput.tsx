@@ -23,32 +23,32 @@ export const ColorInput = React.forwardRef<HTMLInputElement, ColorInputPropsT>(
     }, [sharedValue])
 
     return (
-      <div className='flex items-center'>
+      <div className="flex items-center">
         {label && (
           <>
-            <label className='font-semibold text-primary'>{label}</label>
-            <Spacing className='w-2' />
+            <label className="font-semibold text-primary">{label}</label>
+            <Spacing className="w-2" />
           </>
         )}
-        <div className='flex items-center gap-2 w-full'>
+        <div className="flex items-center gap-2 w-full">
           <div
-            className='w-full h-input rounded'
+            className="w-full h-input rounded"
             style={{ background: sharedValue }}
           >
             <input
-              type='color'
+              type="color"
               value={sharedValue}
               onChange={(e) => setSharedValue(e.target.value)}
-              className='w-full h-full opacity-0 cursor-pointer'
+              className="w-full h-full opacity-0 cursor-pointer"
               ref={ref}
             />
           </div>
 
           <input
-            type='text'
+            type="text"
             value={sharedValue}
             onChange={(e) => setSharedValue(e.target.value)}
-            className='font-medium text-primary bg-primary bg-opacity-10 rounded h-input w-[90px] text-center outline-none'
+            className="font-medium text-primary bg-primary bg-opacity-10 rounded h-input w-[90px] text-center outline-none"
           />
         </div>
       </div>

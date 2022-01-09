@@ -26,14 +26,14 @@ export const Slider = React.forwardRef<HTMLInputElement, SliderPropsT>(
     }, [sharedValue])
 
     return (
-      <div className='flex items-center w-full'>
+      <div className="flex items-center w-full">
         <NumberInput
           value={sharedValue}
           setValue={setSharedValue}
           step={step}
         />
 
-        <Spacing className='w-4' />
+        <Spacing className="w-4" />
 
         <ReactSlider
           value={Number(sharedValue)}
@@ -42,11 +42,11 @@ export const Slider = React.forwardRef<HTMLInputElement, SliderPropsT>(
           max={max}
           onChange={(value, index) => setSharedValue(value)}
           // styles
-          className='bg-primary h-slider w-full'
+          className="bg-primary h-slider w-full"
           marks={[(min + max) / 2]}
-          markClassName='w-mark h-mark bg-primary top-1/2 transform -translate-y-1/2 slider-mark-center-x'
-          thumbClassName='bg-primary w-thumb h-thumb rounded-full top-1/2 transform -translate-y-1/2 outline-none cursor-pointer'
-          thumbActiveClassName='bg-opacity-80'
+          markClassName="w-mark h-mark bg-primary top-1/2 transform -translate-y-1/2 slider-mark-center-x"
+          thumbClassName="bg-primary w-thumb h-thumb rounded-full top-1/2 transform -translate-y-1/2 outline-none cursor-pointer"
+          thumbActiveClassName="bg-opacity-80"
           // trackClassName={styles.track}
         />
       </div>

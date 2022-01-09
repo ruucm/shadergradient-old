@@ -45,8 +45,8 @@ const LCanvas = ({ children }) => {
 
   return (
     <Canvas
-      id='gradientCanvas'
-      mode='concurrent'
+      id="gradientCanvas"
+      mode="concurrent"
       style={{
         position: 'absolute',
         top: 0,
@@ -65,13 +65,13 @@ const LCanvas = ({ children }) => {
       <LControl />
       {embedMode != 'on' && (
         <GizmoHelper
-          alignment='bottom-right' // widget alignment within scene
+          alignment="bottom-right" // widget alignment within scene
           margin={[65, 110]} // widget margins (X, Y)
           renderPriority={2}
         >
           <GizmoViewport
             axisColors={['white', 'white', 'white']}
-            labelColor='grey'
+            labelColor="grey"
             hideNegativeAxes
             // @ts-ignore
             axisHeadScale={0.8}

@@ -22,50 +22,50 @@ export const ShapeControls: React.FC<ShapeControlsPropsT> = () => {
   const [rotationZ, setRotationZ] = useQueryState('rotationZ')
 
   return (
-    <div className='flex flex-col gap-3'>
-      <UI.InputPanel title='Type'>
+    <div className="flex flex-col gap-3">
+      <UI.InputPanel title="Type">
         <UI.Radio
-          name='type'
-          value='plane'
+          name="type"
+          value="plane"
           setValue={setType}
           check={type === 'plane'}
-          label='Plane'
+          label="Plane"
         />
         <UI.Radio
-          name='type'
-          value='sphere'
+          name="type"
+          value="sphere"
           setValue={setType}
           check={type === 'sphere'}
-          label='Sphere'
+          label="Sphere"
         />
         <UI.Radio
-          name='type'
-          value='waterPlane'
+          name="type"
+          value="waterPlane"
           setValue={setType}
           check={type === 'waterPlane'}
-          label='Water'
+          label="Water"
         />
       </UI.InputPanel>
 
-      <UI.InputPanel title='Animate'>
+      <UI.InputPanel title="Animate">
         <UI.Radio
-          name='animate'
-          value='on'
+          name="animate"
+          value="on"
           setValue={setAnimate}
           check={animate === 'on'}
-          label='On'
+          label="On"
         />
         <UI.Radio
-          name='animate'
-          value='off'
+          name="animate"
+          value="off"
           setValue={setAnimate}
           check={animate === 'off'}
-          label='Off'
+          label="Off"
         />
       </UI.InputPanel>
 
       {animate === 'off' && (
-        <UI.InputPanel title='Movements'>
+        <UI.InputPanel title="Movements">
           <UI.Slider
             defaultValue={uTime}
             setValue={setUTime}
@@ -77,7 +77,7 @@ export const ShapeControls: React.FC<ShapeControlsPropsT> = () => {
       )}
 
       {animate === 'on' && (
-        <UI.InputPanel title='Speed'>
+        <UI.InputPanel title="Speed">
           <UI.Slider
             defaultValue={uSpeed}
             setValue={setUSpeed}
@@ -88,7 +88,7 @@ export const ShapeControls: React.FC<ShapeControlsPropsT> = () => {
         </UI.InputPanel>
       )}
 
-      <UI.InputPanel title='Noise Strength'>
+      <UI.InputPanel title="Noise Strength">
         <UI.Slider
           defaultValue={uStrength}
           setValue={setUStrength}
@@ -98,7 +98,7 @@ export const ShapeControls: React.FC<ShapeControlsPropsT> = () => {
         />
       </UI.InputPanel>
 
-      <UI.InputPanel title='Noise Density'>
+      <UI.InputPanel title="Noise Density">
         <UI.Slider
           defaultValue={uDensity}
           setValue={setUDensity}
@@ -108,42 +108,42 @@ export const ShapeControls: React.FC<ShapeControlsPropsT> = () => {
         />
       </UI.InputPanel>
 
-      <UI.InputPanel title='Position'>
+      <UI.InputPanel title="Position">
         <UI.NumberInput
-          label='x'
+          label="x"
           step={0.1}
           value={positionX}
           setValue={setPositionX}
         />
         <UI.NumberInput
-          label='y'
+          label="y"
           step={0.1}
           value={positionY}
           setValue={setPositionY}
         />
         <UI.NumberInput
-          label='z'
+          label="z"
           step={0.1}
           value={positionZ}
           setValue={setPositionZ}
         />
       </UI.InputPanel>
 
-      <UI.InputPanel title='Rotation'>
+      <UI.InputPanel title="Rotation">
         <UI.NumberInput
-          label='x'
+          label="x"
           step={10}
           value={rotationX}
           setValue={setRotationX}
         />
         <UI.NumberInput
-          label='y'
+          label="y"
           step={10}
           value={rotationY}
           setValue={setRotationY}
         />
         <UI.NumberInput
-          label='z'
+          label="z"
           step={10}
           value={rotationZ}
           setValue={setRotationZ}

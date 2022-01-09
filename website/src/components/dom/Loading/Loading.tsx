@@ -51,13 +51,13 @@ export function Loading({ current, loadingPercentage, referer }) {
               <div className={styles.leftWrapper}>
                 <motion.div
                   className={styles.title}
-                  initial='hidden'
-                  animate='show'
+                  initial="hidden"
+                  animate="show"
                 >
                   <motion.h1
                     variants={sentence}
-                    initial='hidden'
-                    animate='visible'
+                    initial="hidden"
+                    animate="visible"
                     onAnimationComplete={(definition) => {
                       console.log('Completed animating', definition)
                     }}

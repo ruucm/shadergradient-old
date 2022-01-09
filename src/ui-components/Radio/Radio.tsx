@@ -22,13 +22,13 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioPropsT>(
         htmlFor={inputProps.value}
       >
         <input
-          type='radio'
+          type="radio"
           id={inputProps.value} // for htmlFor focusing
-          className='absolute inline-block opacity-0 cursor-pointer'
+          className="absolute inline-block opacity-0 cursor-pointer"
           onChange={(e) => setValue(e.target.value)}
           {...inputProps} // value, name
         />
-        <span className='text-base font-medium'>
+        <span className="text-base font-medium">
           {label || inputProps.value}
         </span>
       </label>

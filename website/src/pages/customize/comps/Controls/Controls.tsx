@@ -33,7 +33,7 @@ export const Controls: React.FC<Props> = ({
       )}
       <UI.PropertyControls activeTab={activeTab} setActiveTab={setActiveTab} />
       {!isMobile && (
-        <div className='absolute left-3.5 bottom-3.5'>
+        <div className="absolute left-3.5 bottom-3.5">
           <PreviewSwitch mode={mode} setMode={setMode} />
         </div>
       )}
@@ -73,7 +73,7 @@ export const Controls: React.FC<Props> = ({
           setMode={setMode}
           activeTab={activeTab}
           setActiveTab={setActiveTab}
-          className='min-h-[336px]' // shape control's height
+          className="min-h-[336px]" // shape control's height
         >
           {children}
         </MenuWrapper>

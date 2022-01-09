@@ -60,7 +60,7 @@ const DOM = () => {
           {/* Go Back */}
           <div className={styles.content}>
             <motion.div style={{ color: PRESETS[current].color }}>
-              <Link href='/'> ← ShaderGradient</Link>
+              <Link href="/"> ← ShaderGradient</Link>
             </motion.div>
           </div>
 

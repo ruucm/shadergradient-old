@@ -15,69 +15,69 @@ export const EffectControls: React.FC<EffectControlsPropsT> = () => {
   const [brightness, setBrightness] = useQueryState('brightness')
 
   return (
-    <div className='flex flex-col gap-3'>
-      <UI.InputPanel title='Grain'>
+    <div className="flex flex-col gap-3">
+      <UI.InputPanel title="Grain">
         <UI.Radio
-          name='grain'
-          value='on'
+          name="grain"
+          value="on"
           setValue={setGrain}
           check={grain === 'on'}
-          label='On'
+          label="On"
         />
         <UI.Radio
-          name='grain'
-          value='off'
+          name="grain"
+          value="off"
           setValue={setGrain}
           check={grain === 'off'}
-          label='Off'
+          label="Off"
         />
       </UI.InputPanel>
 
-      <UI.InputPanel title='Light Type'>
+      <UI.InputPanel title="Light Type">
         <UI.Radio
-          name='lightType'
-          value='env'
+          name="lightType"
+          value="env"
           setValue={setLightType}
           check={lightType === 'env'}
-          label='Environment'
+          label="Environment"
         />
         <UI.Radio
-          name='lightType'
-          value='3d'
+          name="lightType"
+          value="3d"
           setValue={setLightType}
           check={lightType === '3d'}
-          label='3d lighting'
+          label="3d lighting"
         />
       </UI.InputPanel>
 
       {lightType === 'env' && (
-        <UI.InputPanel title='Env Preset'>
+        <UI.InputPanel title="Env Preset">
           <UI.Radio
-            name='envPreset'
-            value='city'
+            name="envPreset"
+            value="city"
             setValue={setEnvPreset}
             check={envPreset === 'city'}
-            label='City'
+            label="City"
           />
           <UI.Radio
-            name='envPreset'
-            value='dawn'
+            name="envPreset"
+            value="dawn"
             setValue={setEnvPreset}
             check={envPreset === 'dawn'}
-            label='Dawn'
+            label="Dawn"
           />
           <UI.Radio
-            name='envPreset'
-            value='lobby'
+            name="envPreset"
+            value="lobby"
             setValue={setEnvPreset}
             check={envPreset === 'lobby'}
-            label='Lobby'
+            label="Lobby"
           />
         </UI.InputPanel>
       )}
 
       {lightType === 'env' && (
-        <UI.InputPanel title='Reflection'>
+        <UI.InputPanel title="Reflection">
           <UI.Slider
             defaultValue={reflection}
             setValue={setReflection}
@@ -89,7 +89,7 @@ export const EffectControls: React.FC<EffectControlsPropsT> = () => {
       )}
 
       {lightType === '3d' && (
-        <UI.InputPanel title='Brightness'>
+        <UI.InputPanel title="Brightness">
           <UI.Slider
             defaultValue={brightness}
             setValue={setBrightness}
