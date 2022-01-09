@@ -4,6 +4,7 @@ import { useRef, useEffect } from 'react'
 import './GradientMaterial'
 import * as THREE from 'three'
 import { animated } from '@react-spring/three'
+import { CubicBezierLine } from '@react-three/drei'
 
 const clock = new THREE.Clock()
 
@@ -24,6 +25,7 @@ export function GradientMesh({
   scale,
   vertexShader,
   fragmentShader,
+  coordinates,
 }: any) {
   const mesh: any = useRef()
   const material: any = useRef()
@@ -55,6 +57,33 @@ export function GradientMesh({
       {type === 'waterPlane' && (
         <planeGeometry args={[10, 10, meshCount, meshCount]} />
       )}
+
+      {coordinates && <>
+        <CubicBezierLine
+          start={[0, 0, 0]}               // Starting point
+          end={[10, 0, 0]}               // Ending point
+          midA={[0, 0, 0]}                // First control point
+          midB={[0, 0, 0]}                // Second control point
+          color="#5CA4A9"                   // Default
+          lineWidth={1}                   // In pixels (default)
+        />
+        <CubicBezierLine
+          start={[0, 0, 0]}               // Starting point
+          end={[0, 10, 0]}               // Ending point
+          midA={[0, 0, 0]}                // First control point
+          midB={[0, 0, 0]}                // Second control point
+          color="#5CA4A9"                   // Default
+          lineWidth={1}                   // In pixels (default)
+        />
+        <CubicBezierLine
+          start={[0, 0, 0]}               // Starting point
+          end={[0, 0, 10]}               // Ending point
+          midA={[0, 0, 0]}                // First control point
+          midB={[0, 0, 0]}                // Second control point
+          color="#5CA4A9"                   // Default
+          lineWidth={1}                   // In pixels (default)
+        />
+      </>}
 
       {/* @ts-ignore */}
       <gradientMaterial
