@@ -40,6 +40,9 @@ const LCanvas = ({ children }) => {
   // performance
   const [pixelDensity] = useQueryState('pixelDensity')
 
+  //hide gizmoHelper on Embedmode
+  const [embedMode] = useQueryState('embedMode')
+
   return (
     <Canvas
       id='gradientCanvas'
@@ -60,19 +63,22 @@ const LCanvas = ({ children }) => {
       }}
     >
       <LControl />
-      <GizmoHelper
-        alignment='bottom-right' // widget alignment within scene
-        margin={[65, 110]} // widget margins (X, Y)
-        renderPriority={2}
-      >
-        <GizmoViewport
-          axisColors={['white', 'white', 'white']}
-          labelColor='grey'
-          hideNegativeAxes
-          axisHeadScale={0.8}
-        />
-        {/* alternative: <GizmoViewcube /> */}
-      </GizmoHelper>
+      {embedMode === true ? null : (
+        <GizmoHelper
+          alignment='bottom-right' // widget alignment within scene
+          margin={[65, 110]} // widget margins (X, Y)
+          renderPriority={2}
+        >
+          <GizmoViewport
+            axisColors={['white', 'white', 'white']}
+            labelColor='grey'
+            hideNegativeAxes
+            axisHeadScale={0.8}
+          />
+          {/* alternative: <GizmoViewcube /> */}
+        </GizmoHelper>
+      )}
+
       <A11yUserPreferences>
         <Preload all />
         <ContextBridge>{children}</ContextBridge>
