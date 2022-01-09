@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion'
-import Link from 'next/link'
+import { motion } from "framer-motion"
+import Link from "next/link"
 
 export const MyItem = ({
   onClick,
@@ -9,15 +9,15 @@ export const MyItem = ({
   isMobile = false,
   btnOn = false,
 }) => (
-  <div style={{ position: 'relative', overflow: 'visible' }}>
+  <div style={{ position: "relative", overflow: "visible" }}>
     <motion.div
       style={{
-        width: isMobile ? '100vw' : 'fit-content',
+        width: isMobile ? "100vw" : "fit-content",
         fontSize: isMobile ? 30 : 60,
         borderBottom:
-          visible && !isMobile ? '4px solid ' + color : '0px solid black',
-        cursor: visible ? 'default' : 'pointer',
-        textAlign: 'center',
+          visible && !isMobile ? "4px solid " + color : "0px solid black",
+        cursor: visible ? "default" : "pointer",
+        textAlign: "center",
       }}
       whileHover={{
         opacity: 0.6,
@@ -35,17 +35,17 @@ export const MyItem = ({
       initial={{ x: 0 }}
       animate={{ x: 5 }}
       transition={{
-        repeatType: 'reverse',
+        repeatType: "reverse",
         repeat: Infinity,
         duration: 1,
       }}
       style={{
         display:
           visible === true && isMobile === false && btnOn === true
-            ? 'block'
-            : 'none',
+            ? "block"
+            : "none",
         fontWeight: 500,
-        fontSize: '1.15em',
+        fontSize: "1.15em",
         marginTop: 7,
       }}
       whileHover={{ x: 10 }}

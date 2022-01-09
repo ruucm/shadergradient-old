@@ -1,19 +1,19 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from "react"
 import {
   Gradient,
   useQueryState,
   updateGradientState,
   PRESETS,
-} from 'shadergradient'
-import { useUIStore } from '@/helpers/store'
-import { useSpring } from '@react-spring/core'
-import { dToRArr } from '@/utils'
-import { initialCurrent } from '@/consts'
+} from "shadergradient"
+import { useUIStore } from "@/helpers/store"
+import { useSpring } from "@react-spring/core"
+import { dToRArr } from "@/utils"
+import { initialCurrent } from "@/consts"
 
-import glsl from 'glslify'
-import vertexShaderGrad from './shaders/vertexShaderGrad.glsl'
-import fragmentShaderGrad from './shaders/fragmentShaderGrad.glsl'
-import * as shaders from './shaders'
+import glsl from "glslify"
+import vertexShaderGrad from "./shaders/vertexShaderGrad.glsl"
+import fragmentShaderGrad from "./shaders/fragmentShaderGrad.glsl"
+import * as shaders from "./shaders"
 
 const glslPragmas = `
 #pragma glslify: snoise2 = require(glsl-noise/simplex/2d)
@@ -61,51 +61,51 @@ export function GradientScene({
     updateGradientState(gradientURL)
     console.log(PRESETS[current].url)
 
-    document.documentElement.classList.add('cutomize')
+    document.documentElement.classList.add("cutomize")
     return () => {
-      document.documentElement.classList.remove('cutomize')
+      document.documentElement.classList.remove("cutomize")
     }
   }, [current])
 
   // shape
-  const [type] = useQueryState('type')
-  const [animate] = useQueryState('animate')
-  const [uTime] = useQueryState('uTime')
-  const [uSpeed] = useQueryState('uSpeed')
-  const [uStrength] = useQueryState('uStrength')
-  const [uDensity] = useQueryState('uDensity')
-  const [positionX] = useQueryState('positionX')
-  const [positionY] = useQueryState('positionY')
-  const [positionZ] = useQueryState('positionZ')
-  const [rotationX] = useQueryState('rotationX')
-  const [rotationY] = useQueryState('rotationY')
-  const [rotationZ] = useQueryState('rotationZ')
+  const [type] = useQueryState("type")
+  const [animate] = useQueryState("animate")
+  const [uTime] = useQueryState("uTime")
+  const [uSpeed] = useQueryState("uSpeed")
+  const [uStrength] = useQueryState("uStrength")
+  const [uDensity] = useQueryState("uDensity")
+  const [positionX] = useQueryState("positionX")
+  const [positionY] = useQueryState("positionY")
+  const [positionZ] = useQueryState("positionZ")
+  const [rotationX] = useQueryState("rotationX")
+  const [rotationY] = useQueryState("rotationY")
+  const [rotationZ] = useQueryState("rotationZ")
 
   // colors
-  const [color1] = useQueryState('color1')
-  const [color2] = useQueryState('color2')
-  const [color3] = useQueryState('color3')
+  const [color1] = useQueryState("color1")
+  const [color2] = useQueryState("color2")
+  const [color3] = useQueryState("color3")
 
   // effects
-  const [grain] = useQueryState('grain')
-  const [lightType] = useQueryState('lightType')
-  const [envPreset] = useQueryState('envPreset')
-  const [reflection] = useQueryState('reflection')
-  const [brightness] = useQueryState('brightness')
+  const [grain] = useQueryState("grain")
+  const [lightType] = useQueryState("lightType")
+  const [envPreset] = useQueryState("envPreset")
+  const [reflection] = useQueryState("reflection")
+  const [brightness] = useQueryState("brightness")
 
   // camera
-  const [cameraZoom] = useQueryState('cameraZoom')
-  const [cameraPositionX] = useQueryState('cameraPositionX')
-  const [cameraPositionY] = useQueryState('cameraPositionY')
-  const [cameraPositionZ] = useQueryState('cameraPositionZ')
+  const [cameraZoom] = useQueryState("cameraZoom")
+  const [cameraPositionX] = useQueryState("cameraPositionX")
+  const [cameraPositionY] = useQueryState("cameraPositionY")
+  const [cameraPositionZ] = useQueryState("cameraPositionZ")
 
-  const [embedMode] = useQueryState('embedMode')
-  const [coordinates] = useQueryState('coordinates')
+  const [embedMode] = useQueryState("embedMode")
+  const [coordinates] = useQueryState("coordinates")
 
   const responsiveCameraZoom = getResponsiveZoom(cameraZoom)
 
   // shader
-  const [shader] = useQueryState('shader')
+  const [shader] = useQueryState("shader")
 
   // force props
   const { animatedScale } = useSpring({ animatedScale: forceScale })
@@ -132,7 +132,7 @@ export function GradientScene({
       }
       cameraRotation={{ x: 0, y: 0, z: 0 }}
       type={type}
-      animate={animate === 'on'}
+      animate={animate === "on"}
       cameraZoom={forceZoom !== null ? forceZoom : responsiveCameraZoom}
       uTime={uTime}
       uStrength={uStrength}
@@ -144,22 +144,22 @@ export function GradientScene({
       envPreset={envPreset}
       reflection={reflection}
       brightness={brightness}
-      postProcessing={'threejs'} // turn on postpocessing
+      postProcessing={"threejs"} // turn on postpocessing
       loadingCallback={setLoadingPercentage}
       vertexShader={
-        type === 'sphere' ? shaders[shader]?.vertexShader : vertexShaderGrad
+        type === "sphere" ? shaders[shader]?.vertexShader : vertexShaderGrad
       }
       fragmentShader={
-        type === 'sphere' ? shaders[shader]?.fragmentShader : fragmentShaderGrad
+        type === "sphere" ? shaders[shader]?.fragmentShader : fragmentShaderGrad
       }
-      coordinates={coordinates === 'on'}
+      coordinates={coordinates === "on"}
     />
   )
 }
 
 function getResponsiveZoom(cameraZoom: number) {
-  const type = window.innerWidth >= window.innerHeight ? 'width' : 'height'
+  const type = window.innerWidth >= window.innerHeight ? "width" : "height"
 
-  if (type === 'width') return cameraZoom * (window.innerWidth / 1440)
+  if (type === "width") return cameraZoom * (window.innerWidth / 1440)
   else return cameraZoom * (window.innerHeight / 900)
 }

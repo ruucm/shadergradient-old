@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { UI } from '..'
+import * as React from "react"
+import { UI } from ".."
 
 type ControlTypeTitlePropsT = {
   activeTab: any
@@ -17,47 +17,47 @@ export const ControlTypeTitles: React.FC<ControlTypeTitlePropsT> = ({
   return (
     <div
       className={
-        'flex justify-between gap-0.2 w-screen h-[fit-content] p-3.5 cursor-pointer md:w-full md:h-full md:flex-col md:justify-start'
+        "flex justify-between gap-0.2 w-screen h-[fit-content] p-3.5 cursor-pointer md:w-full md:h-full md:flex-col md:justify-start"
       }
-      onClick={() => setActiveTab('shape')}
+      onClick={() => setActiveTab("shape")}
     >
       <UI.ControlTypeTitle
         title="Shape"
-        active={activeTab === 'shape'}
+        active={activeTab === "shape"}
         onClick={() => {
-          activeTab === 'shape' ? setActiveTab('none') : setActiveTab('shape')
+          activeTab === "shape" ? setActiveTab("none") : setActiveTab("shape")
         }}
       />
 
       <UI.ControlTypeTitle
         title="Colors"
-        active={activeTab === 'colors'}
+        active={activeTab === "colors"}
         onClick={(e) => {
           e.stopPropagation() // ignore parent click
 
-          activeTab === 'colors' ? setActiveTab('none') : setActiveTab('colors')
+          activeTab === "colors" ? setActiveTab("none") : setActiveTab("colors")
         }}
       />
 
       <UI.ControlTypeTitle
         title="Effects"
-        active={activeTab === 'effects'}
+        active={activeTab === "effects"}
         onClick={(e) => {
           e.stopPropagation() // ignore parent click
 
-          activeTab === 'effects'
-            ? setActiveTab('none')
-            : setActiveTab('effects')
+          activeTab === "effects"
+            ? setActiveTab("none")
+            : setActiveTab("effects")
         }}
       />
 
       <UI.ControlTypeTitle
         title="Camera"
-        active={activeTab === 'camera'}
+        active={activeTab === "camera"}
         onClick={(e) => {
           e.stopPropagation() // ignore parent click
 
-          activeTab === 'camera' ? setActiveTab('none') : setActiveTab('camera')
+          activeTab === "camera" ? setActiveTab("none") : setActiveTab("camera")
         }}
       />
       {/* <PreviewSwitch mode={mode} setMode={setMode} display={!isMobile} /> */}

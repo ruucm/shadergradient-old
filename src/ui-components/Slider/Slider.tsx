@@ -1,7 +1,7 @@
-import * as React from 'react'
-import ReactSlider from 'react-slider'
-import { Spacing, NumberInput } from '..'
-import { useEffect, useState } from 'react'
+import * as React from "react"
+import ReactSlider from "react-slider"
+import { Spacing, NumberInput } from ".."
+import { useEffect, useState } from "react"
 
 type SliderPropsT = {
   defaultValue: number

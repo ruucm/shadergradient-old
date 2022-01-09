@@ -1,13 +1,13 @@
-import { GradientScene } from '@/components/canvas/GradientScene'
-import { MenuWrapper } from '@/components/dom/MenuWrapper'
-import { PreviewSwitch } from '@/components/dom/PreviewSwitch'
-import { links } from '@/consts'
-import { useUIStore } from '@/helpers/store'
-import { motion } from 'framer-motion'
-import Link from 'next/link'
-import { useEffect, useState } from 'react'
-import styles from '../home/Home.module.scss'
-import { MenuItem } from '../home/menu-item'
+import { GradientScene } from "@/components/canvas/GradientScene"
+import { MenuWrapper } from "@/components/dom/MenuWrapper"
+import { PreviewSwitch } from "@/components/dom/PreviewSwitch"
+import { links } from "@/consts"
+import { useUIStore } from "@/helpers/store"
+import { motion } from "framer-motion"
+import Link from "next/link"
+import { useEffect, useState } from "react"
+import styles from "../home/Home.module.scss"
+import { MenuItem } from "../home/menu-item"
 
 const DOM = () => {
   const mode = useUIStore((state: any) => state.mode)
@@ -26,9 +26,9 @@ const DOM = () => {
   // create an event listener
   useEffect(() => {
     handleResize()
-    window.addEventListener('resize', handleResize)
+    window.addEventListener("resize", handleResize)
 
-    setMode('about')
+    setMode("about")
   }, [])
 
   return (
@@ -36,9 +36,9 @@ const DOM = () => {
       {isMobile === true ? (
         <div
           className={styles.mobileOnly}
-          style={{ color: '#ff430a', paddingLeft: '2em' }}
+          style={{ color: "#ff430a", paddingLeft: "2em" }}
           onClick={() => {
-            setMode('full')
+            setMode("full")
           }}
         >
           <Link href="/">← Main</Link>
@@ -54,7 +54,7 @@ const DOM = () => {
                 transition: { duration: 0.3 },
               }}
               style={{
-                color: 'white',
+                color: "white",
                 fontWeight: 500,
               }}
             >
@@ -63,7 +63,7 @@ const DOM = () => {
             {links.map((item, id) => (
               <MenuItem key={id} title={item.title} link={item.link} />
             ))}
-            <div style={{ opacity: 0, pointerEvents: 'none' }}>
+            <div style={{ opacity: 0, pointerEvents: "none" }}>
               <PreviewSwitch mode={mode} />
             </div>
           </div>
@@ -92,7 +92,7 @@ const DOM = () => {
               You can control properties related to shape, color, effects, and
               camera. The three colors you pick are connected to the very top
               left, very top right, and the very bottom of the fluctuating
-              plane. Explore more about properties by experimenting with them at{' '}
+              plane. Explore more about properties by experimenting with them at{" "}
               <Link href="/customize">→ customize</Link> page.
             </motion.h1>
             <motion.h1
@@ -101,7 +101,7 @@ const DOM = () => {
               initial={{ opacity: 0 }}
             >
               Made by two creatives,
-              <br /> <a href="">→ Ruucm</a> &{' '}
+              <br /> <a href="">→ Ruucm</a> &{" "}
               <a href="https://seungmee-lee.com">→ stone.skipper</a> with 17
               Sunday afternoons.
             </motion.h1>
@@ -132,7 +132,7 @@ export default Page
 export async function getStaticProps() {
   return {
     props: {
-      title: 'Shader Gradient ─ About',
+      title: "Shader Gradient ─ About",
     },
   }
 }

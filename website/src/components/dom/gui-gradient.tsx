@@ -1,17 +1,17 @@
-import * as React from 'react'
-import { useContext } from 'react'
-import { FormContext } from '../../helpers/form-provider'
+import * as React from "react"
+import { useContext } from "react"
+import { FormContext } from "../../helpers/form-provider"
 
 export function GUIGradient() {
   const ctx: any = useContext(FormContext) // States from Form
-  console.log('ctx - GUIGradient', ctx)
+  console.log("ctx - GUIGradient", ctx)
 
   return (
     <div
       style={{
-        background: 'black',
-        color: 'white',
-        position: 'fixed',
+        background: "black",
+        color: "white",
+        position: "fixed",
         right: 0,
         bottom: 0,
         zIndex: 999,
@@ -21,34 +21,34 @@ export function GUIGradient() {
       <div>
         <div
           style={{
-            display: 'flex',
+            display: "flex",
           }}
         >
           <div>
-            <input {...ctx.register('type')} type="radio" value="plane" />
+            <input {...ctx.register("type")} type="radio" value="plane" />
             <label>Plane</label>
           </div>
           <div>
-            <input {...ctx.register('type')} type="radio" value="sphere" />
+            <input {...ctx.register("type")} type="radio" value="sphere" />
             <label>Sphere</label>
           </div>
           <div>
-            <input {...ctx.register('type')} type="radio" value="waterPlane" />
+            <input {...ctx.register("type")} type="radio" value="waterPlane" />
             <label>Water Plane</label>
           </div>
         </div>
 
         <div
           style={{
-            display: 'flex',
+            display: "flex",
           }}
         >
           <div>
-            <input {...ctx.register('env')} type="radio" value="env" />
+            <input {...ctx.register("env")} type="radio" value="env" />
             <label>Lighting</label>
           </div>
           <div>
-            <input {...ctx.register('env')} type="radio" value="light" />
+            <input {...ctx.register("env")} type="radio" value="light" />
             <label>True Color</label>
           </div>
         </div>
@@ -58,7 +58,7 @@ export function GUIGradient() {
             min="-1"
             max="1"
             step="0.1"
-            {...ctx.register('lightStrength')}
+            {...ctx.register("lightStrength")}
           />
           <label>Brightness</label>
         </div>
@@ -68,18 +68,18 @@ export function GUIGradient() {
             min="0"
             max="3"
             step="0.1"
-            {...ctx.register('speed')}
+            {...ctx.register("speed")}
           />
           <label>Speed</label>
         </div>
         <div
           style={{
-            display: 'flex',
+            display: "flex",
           }}
         >
           <div>
             <input
-              {...ctx.register('postProcessing')}
+              {...ctx.register("postProcessing")}
               type="radio"
               value="threejs"
             />
@@ -87,7 +87,7 @@ export function GUIGradient() {
           </div>
           <div>
             <input
-              {...ctx.register('postProcessing')}
+              {...ctx.register("postProcessing")}
               type="radio"
               value="r3f"
             />

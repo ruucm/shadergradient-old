@@ -1,21 +1,21 @@
-import { useRouter } from 'next/router'
-import { useStore } from '@/helpers/store'
-import { useEffect, Children } from 'react'
-import Header from '@/config'
-import dynamic from 'next/dynamic'
-import Dom from '@/components/layout/dom'
-import { FormContext } from '@/helpers/form-provider'
-import { useForm } from 'react-hook-form'
+import { useRouter } from "next/router"
+import { useStore } from "@/helpers/store"
+import { useEffect, Children } from "react"
+import Header from "@/config"
+import dynamic from "next/dynamic"
+import Dom from "@/components/layout/dom"
+import { FormContext } from "@/helpers/form-provider"
+import { useForm } from "react-hook-form"
 
-import '../../../ui-styles-compiled.css'
+import "../../../ui-styles-compiled.css"
 
 let LCanvas = null
-if (process.env.NODE_ENV === 'production') {
-  LCanvas = dynamic(() => import('@/components/layout/canvas'), {
+if (process.env.NODE_ENV === "production") {
+  LCanvas = dynamic(() => import("@/components/layout/canvas"), {
     ssr: false,
   })
 } else {
-  LCanvas = require('@/components/layout/canvas').default
+  LCanvas = require("@/components/layout/canvas").default
 }
 
 function Layout({ dom }) {
@@ -48,7 +48,7 @@ const ForwardPropsToR3fComponent = ({ comp, pageProps }) => {
   }
 }
 
-function App({ Component, pageProps = { title: 'index' } }) {
+function App({ Component, pageProps = { title: "index" } }) {
   const router = useRouter()
   useEffect(() => {
     useStore.setState({ router })
@@ -57,16 +57,16 @@ function App({ Component, pageProps = { title: 'index' } }) {
     defaultValues: {
       noiseStrength: 0.1,
       // shape
-      type: 'plane',
-      animate: 'off',
+      type: "plane",
+      animate: "off",
       uTime: 0.2,
       uSpeed: 0.3,
       uStrength: 1.3,
       rotationX: 180,
       rotationY: 0,
       rotationZ: 0,
-      env: 'env',
-      postProcessing: 'threejs',
+      env: "env",
+      postProcessing: "threejs",
       // camera
       cameraPositionX: 0,
       cameraPositionY: 3.2,
@@ -76,15 +76,15 @@ function App({ Component, pageProps = { title: 'index' } }) {
       cameraQuaternionZ: 0,
       cameraZoom: 0.5,
       // effects
-      grain: 'on',
-      lightType: 'env',
-      envPreset: 'city',
+      grain: "on",
+      lightType: "env",
+      envPreset: "city",
       reflection: 0.2,
       brightness: 0.2,
       // colors
-      color1: '#CC4C6E',
-      color2: '#1980FF',
-      color3: '#99B58F',
+      color1: "#CC4C6E",
+      color2: "#1980FF",
+      color3: "#99B58F",
     },
   })
   return (

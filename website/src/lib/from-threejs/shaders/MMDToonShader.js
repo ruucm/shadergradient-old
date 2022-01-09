@@ -13,7 +13,7 @@
  *  * Add mmd_toon_matcap_fragment.
  */
 
-import { UniformsUtils, ShaderLib } from 'three'
+import { UniformsUtils, ShaderLib } from "three"
 
 const lights_mmd_toon_pars_fragment = `
 varying vec3 vViewPosition;
@@ -95,7 +95,7 @@ const MMDToonShader = {
 
   fragmentShader: ShaderLib.phong.fragmentShader
     .replace(
-      '#include <common>',
+      "#include <common>",
       `
 					#ifdef USE_MATCAP
 						uniform sampler2D matcap;
@@ -105,18 +105,18 @@ const MMDToonShader = {
 				`
     )
     .replace(
-      '#include <envmap_common_pars_fragment>',
+      "#include <envmap_common_pars_fragment>",
       `
 					#include <gradientmap_pars_fragment>
 					#include <envmap_common_pars_fragment>
 				`
     )
     .replace(
-      '#include <lights_phong_pars_fragment>',
+      "#include <lights_phong_pars_fragment>",
       lights_mmd_toon_pars_fragment
     )
     .replace(
-      '#include <envmap_fragment>',
+      "#include <envmap_fragment>",
       `
 					#include <envmap_fragment>
 					${mmd_toon_matcap_fragment}

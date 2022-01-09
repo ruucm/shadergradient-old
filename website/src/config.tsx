@@ -1,14 +1,14 @@
-import Head from 'next/head'
-import { useRouter } from 'next/router'
+import Head from "next/head"
+import { useRouter } from "next/router"
 
 const Header = ({ title }) => {
   const router = useRouter()
   const meta = {
-    title: 'Shader Gradient',
+    title: "Shader Gradient",
     description:
-      'The easiest and fastest way to create a 3D website using React Three Fiber and NextJS',
-    image: 'https://www.shadergradient.com/og.png',
-    type: 'website',
+      "The easiest and fastest way to create a 3D website using React Three Fiber and NextJS",
+    image: "https://www.shadergradient.com/og.png",
+    type: "website",
   }
 
   return (

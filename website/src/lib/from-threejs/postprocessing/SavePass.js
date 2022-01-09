@@ -4,20 +4,20 @@ import {
   ShaderMaterial,
   UniformsUtils,
   WebGLRenderTarget,
-} from 'three'
-import { Pass, FullScreenQuad } from '../postprocessing/Pass.js'
-import { CopyShader } from '../shaders/CopyShader.js'
+} from "three"
+import { Pass, FullScreenQuad } from "../postprocessing/Pass.js"
+import { CopyShader } from "../shaders/CopyShader.js"
 
 class SavePass extends Pass {
   constructor(renderTarget) {
     super()
 
     if (CopyShader === undefined)
-      console.error('THREE.SavePass relies on CopyShader')
+      console.error("THREE.SavePass relies on CopyShader")
 
     const shader = CopyShader
 
-    this.textureID = 'tDiffuse'
+    this.textureID = "tDiffuse"
 
     this.uniforms = UniformsUtils.clone(shader.uniforms)
 
@@ -35,7 +35,7 @@ class SavePass extends Pass {
         window.innerHeight,
         { minFilter: LinearFilter, magFilter: LinearFilter, format: RGBFormat }
       )
-      this.renderTarget.texture.name = 'SavePass.rt'
+      this.renderTarget.texture.name = "SavePass.rt"
     }
 
     this.needsSwap = false

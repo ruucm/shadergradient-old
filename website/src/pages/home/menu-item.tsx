@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion } from "framer-motion"
 
 export const MenuItem = ({ title, link }) => (
   <motion.a
@@ -8,7 +8,7 @@ export const MenuItem = ({ title, link }) => (
       paddingLeft: 7,
       transition: { duration: 0.3 },
     }}
-    style={{ lineHeight: '1.7em' }}
+    style={{ lineHeight: "1.7em" }}
     href={link}
     target="_blank"
   >

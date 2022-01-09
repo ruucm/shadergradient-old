@@ -1,1 +1,1 @@
-export { default, getStaticProps } from './about'
+export { default, getStaticProps } from "./about"

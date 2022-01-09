@@ -1,12 +1,12 @@
-import * as React from 'react'
-import * as ReactDOM from 'react-dom'
-import { UI, PRESETS } from 'shadergradient'
-import '../../ui-styles-compiled.css'
-import { GradientScene } from './components/GradientScene'
-import { Controls } from './components/Controls'
-import './global.css'
-import { useState } from 'react'
-import { initialCurrent } from './consts'
+import * as React from "react"
+import * as ReactDOM from "react-dom"
+import { UI, PRESETS } from "shadergradient"
+import "../../ui-styles-compiled.css"
+import { GradientScene } from "./components/GradientScene"
+import { Controls } from "./components/Controls"
+import "./global.css"
+import { useState } from "react"
+import { initialCurrent } from "./consts"
 
 function Arrow(props) {
   return (
@@ -25,7 +25,7 @@ function Arrow(props) {
 
 function App() {
   const [currentTheme, setCurrentTheme] = useState(initialCurrent)
-  console.log('currentTheme', currentTheme)
+  console.log("currentTheme", currentTheme)
 
   return (
     <div className="bg-white h-full">
@@ -61,21 +61,21 @@ function App() {
   )
 }
 
-ReactDOM.render(<App />, document.getElementById('react-page'))
+ReactDOM.render(<App />, document.getElementById("react-page"))
 
 async function insertCanvasAsImage() {
   const bytes = await captureCanvas()
-  parent.postMessage({ pluginMessage: { type: 'CANVAS_TO_IMAGE', bytes } }, '*')
+  parent.postMessage({ pluginMessage: { type: "CANVAS_TO_IMAGE", bytes } }, "*")
 }
 
 async function captureCanvas() {
   return new Promise((resolve, reject) => {
     const image = new Image()
 
-    const r3fCanvas = document.getElementById('r3f-canvas')
+    const r3fCanvas = document.getElementById("r3f-canvas")
       .children[0] as HTMLCanvasElement
 
-    const dataURL = r3fCanvas.toDataURL('image/png', 1.0) // full quality
+    const dataURL = r3fCanvas.toDataURL("image/png", 1.0) // full quality
     image.src = dataURL
 
     image.onload = async () => {
@@ -89,8 +89,8 @@ async function captureCanvas() {
 async function imageToUint8Array(image) {
   return new Promise((resolve, reject) => {
     // create a canvas for converto image to uint8array
-    const canvas = document.createElement('canvas')
-    const context = canvas.getContext('2d')
+    const canvas = document.createElement("canvas")
+    const context = canvas.getContext("2d")
 
     context.canvas.width = image.width
     context.canvas.height = image.height

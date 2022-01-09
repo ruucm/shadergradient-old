@@ -1,11 +1,11 @@
-import { MenuWrapper } from '@/components/dom/MenuWrapper'
-import { PreviewSwitch } from '@/components/dom/PreviewSwitch'
-import { useUIStore } from '@/helpers/store'
-import { useOnClickOutside } from '@/hooks/use-onclick-outside'
-import { motion } from 'framer-motion'
-import React, { useRef } from 'react'
-import { UI } from 'shadergradient'
-import styles from './Controls.module.scss'
+import { MenuWrapper } from "@/components/dom/MenuWrapper"
+import { PreviewSwitch } from "@/components/dom/PreviewSwitch"
+import { useUIStore } from "@/helpers/store"
+import { useOnClickOutside } from "@/hooks/use-onclick-outside"
+import { motion } from "framer-motion"
+import React, { useRef } from "react"
+import { UI } from "shadergradient"
+import styles from "./Controls.module.scss"
 
 type Props = {
   // All other props
@@ -21,7 +21,7 @@ export const Controls: React.FC<Props> = ({
   const setMode = useUIStore((state: any) => state.setMode)
 
   const ref = useRef(null)
-  useOnClickOutside(ref, () => setActiveTab('none'))
+  useOnClickOutside(ref, () => setActiveTab("none"))
 
   const children = (
     <>
@@ -53,11 +53,11 @@ export const Controls: React.FC<Props> = ({
           <motion.div
             className={styles.hideBtn}
             onClick={() => {
-              setActiveTab('none')
+              setActiveTab("none")
             }}
             animate={{
-              opacity: activeTab === 'none' ? 0 : 1,
-              marginTop: activeTab === 'none' ? '5px' : '-35px',
+              opacity: activeTab === "none" ? 0 : 1,
+              marginTop: activeTab === "none" ? "5px" : "-35px",
               transition: { duration: 0.5 },
             }}
           >

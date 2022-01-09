@@ -1,4 +1,4 @@
-import { Vector2 } from 'three'
+import { Vector2 } from "three"
 
 /**
  * Depth-of-field shader with bokeh

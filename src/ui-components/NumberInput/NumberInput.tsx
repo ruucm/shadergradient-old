@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Spacing } from '../Spacing'
+import * as React from "react"
+import { Spacing } from "../Spacing"
 
 type NumberInputPropsT = {
   label?: string
@@ -12,7 +12,7 @@ type NumberInputPropsT = {
 export const NumberInput = React.forwardRef<
   HTMLInputElement,
   NumberInputPropsT
->(({ label = '', value, setValue, ...inputProps }: NumberInputPropsT, ref) => {
+>(({ label = "", value, setValue, ...inputProps }: NumberInputPropsT, ref) => {
   return (
     <div className="flex items-center">
       {label && (

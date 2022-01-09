@@ -6,10 +6,10 @@ import {
   UniformsUtils,
   Vector2,
   WebGLRenderTarget,
-} from 'three'
-import { Pass, FullScreenQuad } from '../postprocessing/Pass.js'
-import { CopyShader } from '../shaders/CopyShader.js'
-import { ConvolutionShader } from '../shaders/ConvolutionShader.js'
+} from "three"
+import { Pass, FullScreenQuad } from "../postprocessing/Pass.js"
+import { CopyShader } from "../shaders/CopyShader.js"
+import { ConvolutionShader } from "../shaders/ConvolutionShader.js"
 
 class BloomPass extends Pass {
   constructor(strength = 1, kernelSize = 25, sigma = 4, resolution = 256) {
@@ -24,20 +24,20 @@ class BloomPass extends Pass {
     }
 
     this.renderTargetX = new WebGLRenderTarget(resolution, resolution, pars)
-    this.renderTargetX.texture.name = 'BloomPass.x'
+    this.renderTargetX.texture.name = "BloomPass.x"
     this.renderTargetY = new WebGLRenderTarget(resolution, resolution, pars)
-    this.renderTargetY.texture.name = 'BloomPass.y'
+    this.renderTargetY.texture.name = "BloomPass.y"
 
     // copy material
 
     if (CopyShader === undefined)
-      console.error('THREE.BloomPass relies on CopyShader')
+      console.error("THREE.BloomPass relies on CopyShader")
 
     const copyShader = CopyShader
 
     this.copyUniforms = UniformsUtils.clone(copyShader.uniforms)
 
-    this.copyUniforms['opacity'].value = strength
+    this.copyUniforms["opacity"].value = strength
 
     this.materialCopy = new ShaderMaterial({
       uniforms: this.copyUniforms,
@@ -50,14 +50,14 @@ class BloomPass extends Pass {
     // convolution material
 
     if (ConvolutionShader === undefined)
-      console.error('THREE.BloomPass relies on ConvolutionShader')
+      console.error("THREE.BloomPass relies on ConvolutionShader")
 
     const convolutionShader = ConvolutionShader
 
     this.convolutionUniforms = UniformsUtils.clone(convolutionShader.uniforms)
 
-    this.convolutionUniforms['uImageIncrement'].value = BloomPass.blurX
-    this.convolutionUniforms['cKernel'].value =
+    this.convolutionUniforms["uImageIncrement"].value = BloomPass.blurX
+    this.convolutionUniforms["cKernel"].value =
       ConvolutionShader.buildKernel(sigma)
 
     this.materialConvolution = new ShaderMaterial({
@@ -82,8 +82,8 @@ class BloomPass extends Pass {
 
     this.fsQuad.material = this.materialConvolution
 
-    this.convolutionUniforms['tDiffuse'].value = readBuffer.texture
-    this.convolutionUniforms['uImageIncrement'].value = BloomPass.blurX
+    this.convolutionUniforms["tDiffuse"].value = readBuffer.texture
+    this.convolutionUniforms["uImageIncrement"].value = BloomPass.blurX
 
     renderer.setRenderTarget(this.renderTargetX)
     renderer.clear()
@@ -91,8 +91,8 @@ class BloomPass extends Pass {
 
     // Render quad with blured scene into texture (convolution pass 2)
 
-    this.convolutionUniforms['tDiffuse'].value = this.renderTargetX.texture
-    this.convolutionUniforms['uImageIncrement'].value = BloomPass.blurY
+    this.convolutionUniforms["tDiffuse"].value = this.renderTargetX.texture
+    this.convolutionUniforms["uImageIncrement"].value = BloomPass.blurY
 
     renderer.setRenderTarget(this.renderTargetY)
     renderer.clear()
@@ -102,7 +102,7 @@ class BloomPass extends Pass {
 
     this.fsQuad.material = this.materialCopy
 
-    this.copyUniforms['tDiffuse'].value = this.renderTargetY.texture
+    this.copyUniforms["tDiffuse"].value = this.renderTargetY.texture
 
     if (maskActive) renderer.state.buffers.stencil.setTest(true)
 

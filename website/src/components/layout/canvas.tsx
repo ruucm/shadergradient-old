@@ -1,16 +1,16 @@
-import { useStore } from '@/helpers/store'
-import { A11yUserPreferences } from '@react-three/a11y'
+import { useStore } from "@/helpers/store"
+import { A11yUserPreferences } from "@react-three/a11y"
 import {
   OrbitControls,
   Preload,
   useContextBridge,
   GizmoHelper,
   GizmoViewport,
-} from '@react-three/drei'
-import { Canvas } from '@react-three/fiber'
-import { useEffect, useRef } from 'react'
-import { FormContext } from '../../helpers/form-provider'
-import { useQueryState } from 'shadergradient'
+} from "@react-three/drei"
+import { Canvas } from "@react-three/fiber"
+import { useEffect, useRef } from "react"
+import { FormContext } from "../../helpers/form-provider"
+import { useQueryState } from "shadergradient"
 
 const LControl = () => {
   const dom = useStore((state) => state.dom)
@@ -18,7 +18,7 @@ const LControl = () => {
 
   useEffect(() => {
     if (control) {
-      dom.current.style['touch-action'] = 'none'
+      dom.current.style["touch-action"] = "none"
     }
   }, [dom, control])
   return (
@@ -38,17 +38,17 @@ const LCanvas = ({ children }) => {
   const ContextBridge = useContextBridge(FormContext)
 
   // performance
-  const [pixelDensity] = useQueryState('pixelDensity')
+  const [pixelDensity] = useQueryState("pixelDensity")
 
   //hide gizmoHelper on Embedmode
-  const [embedMode] = useQueryState('embedMode')
+  const [embedMode] = useQueryState("embedMode")
 
   return (
     <Canvas
       id="gradientCanvas"
       mode="concurrent"
       style={{
-        position: 'absolute',
+        position: "absolute",
         top: 0,
       }}
       camera={{
@@ -59,18 +59,18 @@ const LCanvas = ({ children }) => {
       flat={true} //ACESFilmicToneMapping
       onCreated={(state) => {
         state.events.connect(dom.current)
-        console.log('state.camera', state.camera)
+        console.log("state.camera", state.camera)
       }}
     >
       <LControl />
-      {embedMode != 'on' && (
+      {embedMode != "on" && (
         <GizmoHelper
           alignment="bottom-right" // widget alignment within scene
           margin={[65, 110]} // widget margins (X, Y)
           renderPriority={2}
         >
           <GizmoViewport
-            axisColors={['white', 'white', 'white']}
+            axisColors={["white", "white", "white"]}
             labelColor="grey"
             hideNegativeAxes
             // @ts-ignore

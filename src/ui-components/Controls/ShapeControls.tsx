@@ -1,6 +1,6 @@
-import { useQueryState } from '@/hooks/useQueryState'
-import * as React from 'react'
-import * as UI from '..'
+import { useQueryState } from "@/hooks/useQueryState"
+import * as React from "react"
+import * as UI from ".."
 
 type ShapeControlsPropsT = React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLDivElement>,
@@ -8,18 +8,18 @@ type ShapeControlsPropsT = React.DetailedHTMLProps<
 >
 
 export const ShapeControls: React.FC<ShapeControlsPropsT> = () => {
-  const [type, setType] = useQueryState('type')
-  const [animate, setAnimate] = useQueryState('animate')
-  const [uTime, setUTime] = useQueryState('uTime')
-  const [uSpeed, setUSpeed] = useQueryState('uSpeed')
-  const [uStrength, setUStrength] = useQueryState('uStrength')
-  const [uDensity, setUDensity] = useQueryState('uDensity')
-  const [positionX, setPositionX] = useQueryState('positionX')
-  const [positionY, setPositionY] = useQueryState('positionY')
-  const [positionZ, setPositionZ] = useQueryState('positionZ')
-  const [rotationX, setRotationX] = useQueryState('rotationX')
-  const [rotationY, setRotationY] = useQueryState('rotationY')
-  const [rotationZ, setRotationZ] = useQueryState('rotationZ')
+  const [type, setType] = useQueryState("type")
+  const [animate, setAnimate] = useQueryState("animate")
+  const [uTime, setUTime] = useQueryState("uTime")
+  const [uSpeed, setUSpeed] = useQueryState("uSpeed")
+  const [uStrength, setUStrength] = useQueryState("uStrength")
+  const [uDensity, setUDensity] = useQueryState("uDensity")
+  const [positionX, setPositionX] = useQueryState("positionX")
+  const [positionY, setPositionY] = useQueryState("positionY")
+  const [positionZ, setPositionZ] = useQueryState("positionZ")
+  const [rotationX, setRotationX] = useQueryState("rotationX")
+  const [rotationY, setRotationY] = useQueryState("rotationY")
+  const [rotationZ, setRotationZ] = useQueryState("rotationZ")
 
   return (
     <div className="flex flex-col gap-3">
@@ -28,21 +28,21 @@ export const ShapeControls: React.FC<ShapeControlsPropsT> = () => {
           name="type"
           value="plane"
           setValue={setType}
-          check={type === 'plane'}
+          check={type === "plane"}
           label="Plane"
         />
         <UI.Radio
           name="type"
           value="sphere"
           setValue={setType}
-          check={type === 'sphere'}
+          check={type === "sphere"}
           label="Sphere"
         />
         <UI.Radio
           name="type"
           value="waterPlane"
           setValue={setType}
-          check={type === 'waterPlane'}
+          check={type === "waterPlane"}
           label="Water"
         />
       </UI.InputPanel>
@@ -52,19 +52,19 @@ export const ShapeControls: React.FC<ShapeControlsPropsT> = () => {
           name="animate"
           value="on"
           setValue={setAnimate}
-          check={animate === 'on'}
+          check={animate === "on"}
           label="On"
         />
         <UI.Radio
           name="animate"
           value="off"
           setValue={setAnimate}
-          check={animate === 'off'}
+          check={animate === "off"}
           label="Off"
         />
       </UI.InputPanel>
 
-      {animate === 'off' && (
+      {animate === "off" && (
         <UI.InputPanel title="Movements">
           <UI.Slider
             defaultValue={uTime}
@@ -76,7 +76,7 @@ export const ShapeControls: React.FC<ShapeControlsPropsT> = () => {
         </UI.InputPanel>
       )}
 
-      {animate === 'on' && (
+      {animate === "on" && (
         <UI.InputPanel title="Speed">
           <UI.Slider
             defaultValue={uSpeed}

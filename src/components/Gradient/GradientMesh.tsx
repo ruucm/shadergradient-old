@@ -1,17 +1,17 @@
-import { useFrame } from '@react-three/fiber'
-import * as React from 'react'
-import { useRef, useEffect } from 'react'
-import './GradientMaterial'
-import * as THREE from 'three'
-import { animated } from '@react-spring/three'
-import { CubicBezierLine } from '@react-three/drei'
+import { useFrame } from "@react-three/fiber"
+import * as React from "react"
+import { useRef, useEffect } from "react"
+import "./GradientMaterial"
+import * as THREE from "three"
+import { animated } from "@react-spring/three"
+import { CubicBezierLine } from "@react-three/drei"
 
 const clock = new THREE.Clock()
 
 const meshCount = 200
 
 export function GradientMesh({
-  type = 'plane',
+  type = "plane",
   r3f,
   position,
   rotation,
@@ -47,7 +47,7 @@ export function GradientMesh({
   const lineProps: any = {
     midA: [0, 0, 0],
     midB: [0, 0, 0],
-    color: '#5CA4A9',
+    color: "#5CA4A9",
     lineWidth: 1,
   }
 
@@ -58,10 +58,10 @@ export function GradientMesh({
       rotation={rotation}
       scale={scale}
     >
-      {type === 'plane' && <planeGeometry args={[10, 10, 1, meshCount]} />}
+      {type === "plane" && <planeGeometry args={[10, 10, 1, meshCount]} />}
       {/* {type === 'sphere' && <icosahedronBufferGeometry args={[3, meshCount]} />} */}
-      {type === 'sphere' && <icosahedronBufferGeometry args={[1, 64]} />}
-      {type === 'waterPlane' && (
+      {type === "sphere" && <icosahedronBufferGeometry args={[1, 64]} />}
+      {type === "waterPlane" && (
         <planeGeometry args={[10, 10, meshCount, meshCount]} />
       )}
 

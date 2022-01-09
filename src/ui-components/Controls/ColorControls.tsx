@@ -1,6 +1,6 @@
-import * as React from 'react'
-import * as UI from '..'
-import { useQueryState } from '@/hooks/useQueryState'
+import * as React from "react"
+import * as UI from ".."
+import { useQueryState } from "@/hooks/useQueryState"
 
 type ColorControlsPropsT = React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLDivElement>,
@@ -8,9 +8,9 @@ type ColorControlsPropsT = React.DetailedHTMLProps<
 >
 
 export const ColorControls: React.FC<ColorControlsPropsT> = () => {
-  const [color1, setColor1] = useQueryState('color1')
-  const [color2, setColor2] = useQueryState('color2')
-  const [color3, setColor3] = useQueryState('color3')
+  const [color1, setColor1] = useQueryState("color1")
+  const [color2, setColor2] = useQueryState("color2")
+  const [color3, setColor3] = useQueryState("color3")
 
   return (
     <div className="flex flex-col gap-3">

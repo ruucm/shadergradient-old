@@ -1,6 +1,6 @@
-import { useStore } from '@/helpers/store'
-import { useEffect, useRef } from 'react'
-import Link from 'next/link'
+import { useStore } from "@/helpers/store"
+import { useEffect, useRef } from "react"
+import Link from "next/link"
 
 const Dom = ({ children }) => {
   const ref = useRef(null)
@@ -14,13 +14,13 @@ const Dom = ({ children }) => {
     >
       <ul
         style={{
-          position: 'fixed',
+          position: "fixed",
           top: 0,
           left: 0,
-          width: '100%',
+          width: "100%",
           opacity: 0.5,
-          background: '#fff',
-          display: 'none',
+          background: "#fff",
+          display: "none",
         }}
       >
         <Link href="/">Home</Link>

@@ -8,11 +8,11 @@ import {
   RGBAFormat,
   Vector2,
   WebGLRenderTarget,
-} from 'three'
-import { CopyShader } from '../shaders/CopyShader.js'
-import { ShaderPass } from '../postprocessing/ShaderPass.js'
-import { MaskPass } from '../postprocessing/MaskPass.js'
-import { ClearMaskPass } from '../postprocessing/MaskPass.js'
+} from "three"
+import { CopyShader } from "../shaders/CopyShader.js"
+import { ShaderPass } from "../postprocessing/ShaderPass.js"
+import { MaskPass } from "../postprocessing/MaskPass.js"
+import { ClearMaskPass } from "../postprocessing/MaskPass.js"
 
 class EffectComposer {
   constructor(renderer, renderTarget) {
@@ -35,7 +35,7 @@ class EffectComposer {
         this._height * this._pixelRatio,
         parameters
       )
-      renderTarget.texture.name = 'EffectComposer.rt1'
+      renderTarget.texture.name = "EffectComposer.rt1"
     } else {
       this._pixelRatio = 1
       this._width = renderTarget.width
@@ -44,7 +44,7 @@ class EffectComposer {
 
     this.renderTarget1 = renderTarget
     this.renderTarget2 = renderTarget.clone()
-    this.renderTarget2.texture.name = 'EffectComposer.rt2'
+    this.renderTarget2.texture.name = "EffectComposer.rt2"
 
     this.writeBuffer = this.renderTarget1
     this.readBuffer = this.renderTarget2
@@ -56,11 +56,11 @@ class EffectComposer {
     // dependencies
 
     if (CopyShader === undefined) {
-      console.error('THREE.EffectComposer relies on CopyShader')
+      console.error("THREE.EffectComposer relies on CopyShader")
     }
 
     if (ShaderPass === undefined) {
-      console.error('THREE.EffectComposer relies on ShaderPass')
+      console.error("THREE.EffectComposer relies on ShaderPass")
     }
 
     this.copyPass = new ShaderPass(CopyShader)
@@ -230,7 +230,7 @@ class Pass {
   setSize(/* width, height */) {}
 
   render(/* renderer, writeBuffer, readBuffer, deltaTime, maskActive */) {
-    console.error('THREE.Pass: .render() must be implemented in derived pass.')
+    console.error("THREE.Pass: .render() must be implemented in derived pass.")
   }
 }
 
@@ -242,10 +242,10 @@ const _camera = new OrthographicCamera(-1, 1, 1, -1, 0, 1)
 
 const _geometry = new BufferGeometry()
 _geometry.setAttribute(
-  'position',
+  "position",
   new Float32BufferAttribute([-1, 3, 0, -1, -1, 0, 3, -1, 0], 3)
 )
-_geometry.setAttribute('uv', new Float32BufferAttribute([0, 2, 0, 0, 2, 0], 2))
+_geometry.setAttribute("uv", new Float32BufferAttribute([0, 2, 0, 0, 2, 0], 2))
 
 class FullScreenQuad {
   constructor(material) {

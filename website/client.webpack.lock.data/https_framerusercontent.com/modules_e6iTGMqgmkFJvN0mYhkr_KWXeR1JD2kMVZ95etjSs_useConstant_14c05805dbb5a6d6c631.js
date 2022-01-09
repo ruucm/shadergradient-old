@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef } from "react"
 /**
  * Creates a constant value over the lifecycle of a component.
  *
@@ -16,8 +16,8 @@ import { useRef } from 'react'
 export const __FramerMetadata__ = {
   exports: {
     useConstant: {
-      type: 'function',
-      annotations: { framerContractVersion: '1' },
+      type: "function",
+      annotations: { framerContractVersion: "1" },
     },
   },
 }

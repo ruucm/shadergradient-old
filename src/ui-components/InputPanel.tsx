@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Spacing } from '.'
+import * as React from "react"
+import { Spacing } from "."
 
 type InputPanelPropsT = {
   title?: string
@@ -13,7 +13,7 @@ type InputPanelPropsT = {
 export const InputPanel: React.FC<InputPanelPropsT> = ({
   title,
   children,
-  gap = 'w-2',
+  gap = "w-2",
   ...rest
 }) => {
   return (

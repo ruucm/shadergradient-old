@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { useLoader, useThree } from '@react-three/fiber'
+import * as React from "react"
+import { useLoader, useThree } from "@react-three/fiber"
 import {
   CubeTexture,
   CubeTextureLoader,
@@ -7,11 +7,11 @@ import {
   PMREMGenerator,
   Scene,
   Loader,
-} from 'three'
-import { RGBELoader } from 'three-stdlib'
-import { useAsset } from 'use-asset'
+} from "three"
+import { RGBELoader } from "three-stdlib"
+import { useAsset } from "use-asset"
 
-import { presetsObj, PresetsType } from './environment-assets'
+import { presetsObj, PresetsType } from "./environment-assets"
 
 function getTexture(
   texture: Texture | CubeTexture,
@@ -26,7 +26,7 @@ function getTexture(
 }
 
 const CUBEMAP_ROOT =
-  'https://rawcdn.githack.com/pmndrs/drei-assets/aa3600359ba664d546d05821bcbca42013587df2'
+  "https://rawcdn.githack.com/pmndrs/drei-assets/aa3600359ba664d546d05821bcbca42013587df2"
 
 type Props = {
   background?: boolean
@@ -40,8 +40,8 @@ type Props = {
 
 export function Environment({
   background = false,
-  files = ['/px.png', '/nx.png', '/py.png', '/ny.png', '/pz.png', '/nz.png'],
-  path = '',
+  files = ["/px.png", "/nx.png", "/py.png", "/ny.png", "/pz.png", "/nz.png"],
+  path = "",
   preset = undefined,
   scene,
   extensions,
@@ -50,11 +50,11 @@ export function Environment({
   if (preset) {
     if (!(preset in presetsObj)) {
       throw new Error(
-        'Preset must be one of: ' + Object.keys(presetsObj).join(', ')
+        "Preset must be one of: " + Object.keys(presetsObj).join(", ")
       )
     }
     files = presetsObj[preset]
-    path = CUBEMAP_ROOT + '/hdri/'
+    path = CUBEMAP_ROOT + "/hdri/"
   }
   const defaultScene = useThree(({ scene }) => scene)
   const gl = useThree(({ gl }) => gl)

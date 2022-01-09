@@ -1,17 +1,17 @@
-import { useConstant } from 'https://framer.com/m/framer/useConstant.js@^1.0.0'
-const BASE62 = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
+import { useConstant } from "https://framer.com/m/framer/useConstant.js@^1.0.0"
+const BASE62 = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
 /**
  * Generates a random string of BASE62 characters.
  */ export function randomID(length = 5) {
   return Array(length)
     .fill(0)
     .map(() => BASE62[Math.floor(Math.random() * BASE62.length)])
-    .join('')
+    .join("")
 }
 export function useRandomID(length = 5) {
   return useConstant(() => randomID(length))
 }
-const defaultStorageKey = '$$FramerRandomID'
+const defaultStorageKey = "$$FramerRandomID"
 /**
  * `randomID` but cached in localStorage.
  */ export function useCachedRandomID(storageKey = defaultStorageKey) {
@@ -37,14 +37,14 @@ function getLocalStorage() {
 export const __FramerMetadata__ = {
   exports: {
     useRandomID: {
-      type: 'function',
-      annotations: { framerContractVersion: '1' },
+      type: "function",
+      annotations: { framerContractVersion: "1" },
     },
     useCachedRandomID: {
-      type: 'function',
-      annotations: { framerContractVersion: '1' },
+      type: "function",
+      annotations: { framerContractVersion: "1" },
     },
-    randomID: { type: 'function', annotations: { framerContractVersion: '1' } },
+    randomID: { type: "function", annotations: { framerContractVersion: "1" } },
   },
 }
 //# sourceMappingURL=./randomID.map
