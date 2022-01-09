@@ -44,6 +44,13 @@ export function GradientMesh({
     material.current.roughness = 1 - reflection
   }, [uTime, reflection])
 
+  const lineProps: any = {
+    midA: [0, 0, 0],
+    midB: [0, 0, 0],
+    color: '#5CA4A9',
+    lineWidth: 1,
+  }
+
   return (
     <animated.mesh
       ref={mesh}
@@ -58,32 +65,13 @@ export function GradientMesh({
         <planeGeometry args={[10, 10, meshCount, meshCount]} />
       )}
 
-      {coordinates && <>
-        <CubicBezierLine
-          start={[0, 0, 0]}               // Starting point
-          end={[10, 0, 0]}               // Ending point
-          midA={[0, 0, 0]}                // First control point
-          midB={[0, 0, 0]}                // Second control point
-          color="#5CA4A9"                   // Default
-          lineWidth={1}                   // In pixels (default)
-        />
-        <CubicBezierLine
-          start={[0, 0, 0]}               // Starting point
-          end={[0, 10, 0]}               // Ending point
-          midA={[0, 0, 0]}                // First control point
-          midB={[0, 0, 0]}                // Second control point
-          color="#5CA4A9"                   // Default
-          lineWidth={1}                   // In pixels (default)
-        />
-        <CubicBezierLine
-          start={[0, 0, 0]}               // Starting point
-          end={[0, 0, 10]}               // Ending point
-          midA={[0, 0, 0]}                // First control point
-          midB={[0, 0, 0]}                // Second control point
-          color="#5CA4A9"                   // Default
-          lineWidth={1}                   // In pixels (default)
-        />
-      </>}
+      {coordinates && (
+        <>
+          <CubicBezierLine start={[0, 0, 0]} end={[10, 0, 0]} {...lineProps} />
+          <CubicBezierLine start={[0, 0, 0]} end={[0, 10, 0]} {...lineProps} />
+          <CubicBezierLine start={[0, 0, 0]} end={[0, 0, 10]} {...lineProps} />
+        </>
+      )}
 
       {/* @ts-ignore */}
       <gradientMaterial
