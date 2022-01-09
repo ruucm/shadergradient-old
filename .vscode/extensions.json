@@ -4,7 +4,6 @@
   "recommendations": [
     "bradlc.vscode-tailwindcss",
     "dbaeumer.vscode-eslint",
-    "editorconfig.editorconfig",
     "slevesque.shader"
   ]
 }
