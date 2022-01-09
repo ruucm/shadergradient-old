@@ -25,7 +25,7 @@ export function GradientMesh({
   scale,
   vertexShader,
   fragmentShader,
-  coordinates,
+  coordinates
 }: any) {
   const mesh: any = useRef()
   const material: any = useRef()
@@ -48,7 +48,7 @@ export function GradientMesh({
     midA: [0, 0, 0],
     midB: [0, 0, 0],
     color: '#5CA4A9',
-    lineWidth: 1,
+    lineWidth: 1
   }
 
   return (
