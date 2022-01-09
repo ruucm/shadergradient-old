@@ -118,9 +118,7 @@ export function GradientScene({
   return (
     <Gradient
       // @ts-ignore
-      rotation={
-        type === 'sphere' ? [rotationX, rotationY, rotationZ] : animatedRotation
-      }
+      rotation={animatedRotation}
       // rotation={[rotationX, rotationY, rotationZ]}
       position={animatedPosition}
       scale={animatedScale}
