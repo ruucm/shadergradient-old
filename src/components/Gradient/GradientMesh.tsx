@@ -46,7 +46,7 @@ export function GradientMesh({
     <animated.mesh
       ref={mesh}
       position={position}
-      rotation={rotation} // rotate mesh to get more lights
+      rotation={rotation}
       scale={scale}
     >
       {type === 'plane' && <planeGeometry args={[10, 10, 1, meshCount]} />}
