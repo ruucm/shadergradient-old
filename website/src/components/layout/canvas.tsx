@@ -1,6 +1,12 @@
 import { useStore } from '@/helpers/store'
 import { A11yUserPreferences } from '@react-three/a11y'
-import { OrbitControls, Preload, useContextBridge } from '@react-three/drei'
+import {
+  OrbitControls,
+  Preload,
+  useContextBridge,
+  GizmoHelper,
+  GizmoViewport,
+} from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 import { useEffect, useRef } from 'react'
 import { FormContext } from '../../helpers/form-provider'
@@ -23,6 +29,7 @@ const LControl = () => {
       enablePan={false}
       enableZoom={false}
       enableRotate={false}
+      makeDefault={true}
     />
   )
 }
@@ -32,24 +39,6 @@ const LCanvas = ({ children }) => {
 
   // performance
   const [pixelDensity] = useQueryState('pixelDensity')
-
-  // useEffect(() => {
-  //   var noise = document.createElement('div')
-  //   noise.style.width = '100vw'
-  //   noise.style.height = '100vh'
-  //   noise.style.backgroundImage =
-  //     'url("https://smlweb-src.s3.ap-northeast-2.amazonaws.com/noise99.png")'
-  //   noise.style.backgroundRepeat = 'repeat'
-  //   noise.style.color = 'white'
-  //   noise.style.position = 'absolute'
-  //   noise.style.zIndex = '4'
-  //   noise.style.top = '0'
-  //   noise.style.left = '0'
-  //   noise.style.mixBlendMode = 'overlay'
-  //   // noise.innerHTML = 'Hello'
-
-  //   document.getElementById('gradientCanvas').appendChild(noise)
-  // }, [])
 
   return (
     <Canvas
@@ -71,6 +60,19 @@ const LCanvas = ({ children }) => {
       }}
     >
       <LControl />
+      <GizmoHelper
+        alignment='bottom-right' // widget alignment within scene
+        margin={[65, 110]} // widget margins (X, Y)
+        renderPriority={2}
+      >
+        <GizmoViewport
+          axisColors={['white', 'white', 'white']}
+          labelColor='grey'
+          hideNegativeAxes
+          axisHeadScale={0.8}
+        />
+        {/* alternative: <GizmoViewcube /> */}
+      </GizmoHelper>
       <A11yUserPreferences>
         <Preload all />
         <ContextBridge>{children}</ContextBridge>
