@@ -16,5 +16,5 @@ void main() {
   vec3 color3 = vec3(uC3r, uC3g, uC3b);
 
   gl_FragColor.rgb =
-      color1 * vNormal.x + color2 * vNormal.y + color3 * vNormal.z;
+      color1 * vNormal.x + color2 * vNormal.y;
 }

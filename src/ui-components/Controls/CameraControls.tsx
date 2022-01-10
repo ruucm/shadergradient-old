@@ -13,6 +13,9 @@ export const CameraControls: React.FC<CameraControlsPropsT> = () => {
   const [cameraPositionY, setCameraPositionY] = useQueryState("cameraPositionY")
   const [cameraPositionZ, setCameraPositionZ] = useQueryState("cameraPositionZ")
 
+  const [azimuthAngle, setAzimuthAngle] = useQueryState("azimuthAngle")
+  const [polarAngle, setPolarAngle] = useQueryState("polarAngle")
+
   return (
     <div className="flex flex-col gap-3">
       {/* Zoom */}
@@ -54,6 +57,22 @@ export const CameraControls: React.FC<CameraControlsPropsT> = () => {
           step={0.1}
           min={-5}
           max={5}
+        />
+      </UI.InputPanel>
+
+      {/* rotateTo (camera-controls) */}
+      <UI.InputPanel title="rotateTo">
+        <UI.NumberInput
+          label="azimuthAngle"
+          step={10}
+          value={azimuthAngle}
+          setValue={setAzimuthAngle}
+        />
+        <UI.NumberInput
+          label="polarAngle"
+          step={10}
+          value={polarAngle}
+          setValue={setPolarAngle}
         />
       </UI.InputPanel>
     </div>

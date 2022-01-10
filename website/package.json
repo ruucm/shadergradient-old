@@ -40,7 +40,8 @@
     "shadergradient": "0.0.56",
     "styled-components": "^5.3.0",
     "three": "^0.131.3",
-    "three-stdlib": "^2.4.0"
+    "three-stdlib": "^2.4.0",
+    "camera-controls": "^1.33.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.17",
