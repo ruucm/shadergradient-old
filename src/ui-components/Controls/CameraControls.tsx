@@ -72,6 +72,8 @@ export const CameraControls: React.FC<CameraControlsPropsT> = () => {
         <UI.NumberInput
           label="polarAngle"
           step={10}
+          min={0}
+          max={180}
           value={cPolarAngle}
           setValue={setCpolarAngle}
         />
