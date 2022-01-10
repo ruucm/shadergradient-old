@@ -27,7 +27,7 @@ export function GradientMesh({
   scale,
   vertexShader,
   fragmentShader,
-  coordinates,
+  axesHelper,
 }: any) {
   const mesh: any = useRef()
   const material: any = useRef()
@@ -66,7 +66,7 @@ export function GradientMesh({
         <planeGeometry args={[10, 10, meshCount, meshCount]} />
       )}
 
-      {coordinates && (
+      {axesHelper && (
         <>
           <CubicBezierLine
             start={[0, 0, 0]}

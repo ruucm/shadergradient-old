@@ -100,7 +100,7 @@ export function GradientScene({
   const [cameraPositionZ] = useQueryState("cameraPositionZ")
 
   const [embedMode] = useQueryState("embedMode")
-  const [coordinates] = useQueryState("coordinates")
+  const [axesHelper] = useQueryState("axesHelper")
 
   const responsiveCameraZoom = getResponsiveZoom(cameraZoom)
 
@@ -152,7 +152,7 @@ export function GradientScene({
       fragmentShader={
         type === "sphere" ? shaders[shader]?.fragmentShader : fragmentShaderGrad
       }
-      coordinates={coordinates === "on"}
+      axesHelper={axesHelper === "on"}
     />
   )
 }

@@ -35,7 +35,7 @@ export type GradientPropsT = {
   loadingCallback?: (percentage: number) => void
   vertexShader: string
   fragmentShader: string
-  coordinates?: boolean
+  axesHelper?: boolean
 }
 
 function LoadingBox() {
@@ -75,12 +75,8 @@ export const Gradient: React.FC<GradientPropsT> = ({
   loadingCallback,
   vertexShader,
   fragmentShader,
-  coordinates,
+  axesHelper,
 }) => {
-  const { camera }: { camera: Camera } = useThree()
-  camera.zoom = cameraZoom
-  camera.updateProjectionMatrix() // need to update camera's zoom
-
   useFrame((state) => {
     state.camera.position.lerp(
       vec.set(cameraPosition.x, cameraPosition.y, cameraPosition.z),
@@ -124,7 +120,7 @@ export const Gradient: React.FC<GradientPropsT> = ({
           reflection={reflection}
           vertexShader={vertexShader}
           fragmentShader={fragmentShader}
-          coordinates={coordinates}
+          axesHelper={axesHelper}
         />
 
         {/* <EffectComposer>
