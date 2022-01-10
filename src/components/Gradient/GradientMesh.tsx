@@ -10,6 +10,8 @@ const clock = new THREE.Clock()
 
 const meshCount = 200
 
+const axis = new THREE.Vector3(1, 0, 0).normalize()
+
 export function GradientMesh({
   type = "plane",
   r3f,
@@ -47,7 +49,6 @@ export function GradientMesh({
   const lineProps: any = {
     midA: [0, 0, 0],
     midB: [0, 0, 0],
-    color: "#5CA4A9",
     lineWidth: 1,
   }
 
@@ -67,9 +68,24 @@ export function GradientMesh({
 
       {coordinates && (
         <>
-          <CubicBezierLine start={[0, 0, 0]} end={[10, 0, 0]} {...lineProps} />
-          <CubicBezierLine start={[0, 0, 0]} end={[0, 10, 0]} {...lineProps} />
-          <CubicBezierLine start={[0, 0, 0]} end={[0, 0, 10]} {...lineProps} />
+          <CubicBezierLine
+            start={[0, 0, 0]}
+            end={[10, 0, 0]}
+            color="red"
+            {...lineProps}
+          />
+          <CubicBezierLine
+            start={[0, 0, 0]}
+            end={[0, 10, 0]}
+            color="green"
+            {...lineProps}
+          />
+          <CubicBezierLine
+            start={[0, 0, 0]}
+            end={[0, 0, 10]}
+            color="blue"
+            {...lineProps}
+          />
         </>
       )}
 
