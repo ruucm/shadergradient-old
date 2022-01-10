@@ -26,8 +26,9 @@ function Controls() {
 
   useFrame((state, delta) => ref.current.update(delta))
 
-  const [azimuthAngle] = useQueryState("azimuthAngle")
-  const [polarAngle] = useQueryState("polarAngle")
+  const [cAzimuthAngle] = useQueryState("cAzimuthAngle")
+  const [cPolarAngle] = useQueryState("cPolarAngle")
+  const [cDistance] = useQueryState("cDistance")
 
   useEffect(() => {
     if (ref) dom.current.style["touch-action"] = "none"
@@ -35,8 +36,11 @@ function Controls() {
 
   useEffect(() => {
     const control = ref.current
-    if (control) control.rotateTo(dToR(azimuthAngle), dToR(polarAngle), true)
-  }, [ref, azimuthAngle, polarAngle])
+    if (control) {
+      control.rotateTo(dToR(cAzimuthAngle), dToR(cPolarAngle), true)
+      control.dollyTo(cDistance, true)
+    }
+  }, [ref, cAzimuthAngle, cPolarAngle, cDistance])
 
   // @ts-ignore
   return <cameraControls ref={ref} args={[camera, gl.domElement]} />
@@ -56,7 +60,6 @@ const LCanvas = ({ children }) => {
     <Canvas
       id="gradientCanvas"
       mode="concurrent"
-      className="absolute top-0"
       camera={{
         fov: 45,
       }}
@@ -67,9 +70,9 @@ const LCanvas = ({ children }) => {
         state.events.connect(dom.current)
         console.log("state.camera", state.camera)
       }}
+      className="absolute top-0"
     >
       <Controls />
-      {/* <LControl /> */}
       {embedMode != "on" && (
         <GizmoHelper
           alignment="bottom-right" // widget alignment within scene

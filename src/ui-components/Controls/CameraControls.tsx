@@ -8,29 +8,30 @@ type CameraControlsPropsT = React.DetailedHTMLProps<
 >
 
 export const CameraControls: React.FC<CameraControlsPropsT> = () => {
-  const [cameraZoom, setCameraZoom] = useQueryState("cameraZoom")
+  // const [cameraZoom, setCameraZoom] = useQueryState("cameraZoom")
+  const [cDistance, setCdistance] = useQueryState("cDistance")
   const [cameraPositionX, setCameraPositionX] = useQueryState("cameraPositionX")
   const [cameraPositionY, setCameraPositionY] = useQueryState("cameraPositionY")
   const [cameraPositionZ, setCameraPositionZ] = useQueryState("cameraPositionZ")
 
-  const [azimuthAngle, setAzimuthAngle] = useQueryState("azimuthAngle")
-  const [polarAngle, setPolarAngle] = useQueryState("polarAngle")
+  const [cAzimuthAngle, setCazimuthAngle] = useQueryState("cAzimuthAngle")
+  const [cPolarAngle, setCpolarAngle] = useQueryState("cPolarAngle")
 
   return (
     <div className="flex flex-col gap-3">
       {/* Zoom */}
-      <UI.InputPanel title="Zoom">
+      <UI.InputPanel title="Distance">
         <UI.Slider
-          defaultValue={cameraZoom}
-          setValue={setCameraZoom}
+          defaultValue={cDistance}
+          setValue={setCdistance}
           step={0.1}
-          min={0.1}
-          max={5}
+          min={0}
+          max={20}
         />
       </UI.InputPanel>
 
       {/* Positions */}
-      <UI.InputPanel title="Position X">
+      {/* <UI.InputPanel title="Position X">
         <UI.Slider
           defaultValue={cameraPositionX}
           setValue={setCameraPositionX}
@@ -58,21 +59,21 @@ export const CameraControls: React.FC<CameraControlsPropsT> = () => {
           min={-5}
           max={5}
         />
-      </UI.InputPanel>
+      </UI.InputPanel> */}
 
       {/* rotateTo (camera-controls) */}
       <UI.InputPanel title="rotateTo">
         <UI.NumberInput
           label="azimuthAngle"
           step={10}
-          value={azimuthAngle}
-          setValue={setAzimuthAngle}
+          value={cAzimuthAngle}
+          setValue={setCazimuthAngle}
         />
         <UI.NumberInput
           label="polarAngle"
           step={10}
-          value={polarAngle}
-          setValue={setPolarAngle}
+          value={cPolarAngle}
+          setValue={setCpolarAngle}
         />
       </UI.InputPanel>
     </div>
