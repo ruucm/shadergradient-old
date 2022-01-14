@@ -53,12 +53,7 @@ export function GradientMesh({
   }
 
   return (
-    <animated.mesh
-      ref={mesh}
-      position={position}
-      rotation={rotation}
-      scale={scale}
-    >
+    <mesh ref={mesh} position={position} rotation={rotation} scale={scale}>
       {type === "plane" && <planeGeometry args={[10, 10, 1, meshCount]} />}
       {/* {type === 'sphere' && <icosahedronBufferGeometry args={[3, meshCount]} />} */}
       {type === "sphere" && <icosahedronBufferGeometry args={[1, 64]} />}
@@ -101,6 +96,6 @@ export function GradientMesh({
         fragmentShader={fragmentShader}
         // wireframe
       />
-    </animated.mesh>
+    </mesh>
   )
 }

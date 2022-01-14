@@ -14,6 +14,7 @@ import { useQueryState } from "shadergradient"
 import * as THREE from "three"
 import CameraControls from "camera-controls"
 import { dToR } from "@/utils"
+import { VRCanvas, Hands, DefaultXRControllers } from "@react-three/xr"
 
 CameraControls.install({ THREE })
 extend({ CameraControls })
@@ -57,7 +58,7 @@ const LCanvas = ({ children }) => {
   const [embedMode] = useQueryState("embedMode")
 
   return (
-    <Canvas
+    <VRCanvas
       id="gradientCanvas"
       mode="concurrent"
       camera={{
@@ -72,8 +73,11 @@ const LCanvas = ({ children }) => {
       }}
       className="absolute top-0"
     >
-      <Controls />
-      {embedMode != "on" && (
+      <Hands />
+      <DefaultXRControllers />
+      {/* <Controls /> */}
+
+      {/* {embedMode != "on" && (
         <GizmoHelper
           alignment="bottom-right" // widget alignment within scene
           margin={[65, 110]} // widget margins (X, Y)
@@ -86,15 +90,14 @@ const LCanvas = ({ children }) => {
             // @ts-ignore
             axisHeadScale={0.8}
           />
-          {/* alternative: <GizmoViewcube /> */}
         </GizmoHelper>
-      )}
+      )} */}
 
       <A11yUserPreferences>
         <Preload all />
         <ContextBridge>{children}</ContextBridge>
       </A11yUserPreferences>
-    </Canvas>
+    </VRCanvas>
   )
 }
 

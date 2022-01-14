@@ -4,8 +4,14 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 })
 
 const withOffline = require("next-offline")
+const withTM = require("next-transpile-modules")(
+  ["@react-three/xr", "@webxr-input-profiles/motion-controllers"],
+  { debug: true }
+)
 
 const nextConfig = {
+  experimental: { esmExternals: "loose" },
+
   webpack(config, { webpack, dev, isServer }) {
     config.plugins.push(
       new webpack.ProvidePlugin({
@@ -59,6 +65,7 @@ if (process.env.EXPORT !== "true") {
 
 module.exports = plugins(
   [
+    withTM,
     [
       withOffline,
       {

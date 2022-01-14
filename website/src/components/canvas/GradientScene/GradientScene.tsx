@@ -119,10 +119,10 @@ export function GradientScene({
   return (
     <Gradient
       // @ts-ignore
-      rotation={animatedRotation}
+      rotation={dToRArr(forceRot || [rotationX, rotationY, rotationZ])}
       // rotation={[rotationX, rotationY, rotationZ]}
-      position={animatedPosition}
-      scale={animatedScale}
+      position={forcePos || [positionX, positionY, positionZ]}
+      scale={forceScale}
       cameraPosition={
         forceCamPos || {
           x: cameraPositionX,

@@ -84,7 +84,7 @@ export const Gradient: React.FC<GradientPropsT> = ({
     )
   })
 
-  usePostProcessing({ on: postProcessing === "threejs", grain: grain === "on" })
+  // usePostProcessing({ on: postProcessing === "threejs", grain: grain === "on" })
 
   let controlledEnvironment = environment
   if (envPreset)
