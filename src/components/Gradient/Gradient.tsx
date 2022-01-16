@@ -1,12 +1,11 @@
-import { PerspectiveCamera } from "@react-three/drei"
-import { Camera, Euler, useFrame, useThree } from "@react-three/fiber"
-import * as React from "react"
-import { Suspense, useEffect, useState } from "react"
-import { usePostProcessing } from "../../hooks/use-post-processing"
-import { GradientMesh } from "./GradientMesh"
-import * as THREE from "three"
 import { Environment } from "@/lib/Environment"
 import { SpringValue } from "@react-spring/core"
+import { Euler, useFrame } from "@react-three/fiber"
+import * as React from "react"
+import { Suspense } from "react"
+import * as THREE from "three"
+import { usePostProcessing } from "../../hooks/use-post-processing"
+import { GradientMesh } from "./GradientMesh"
 
 export type GradientPropsT = {
   r3f?: boolean
@@ -38,14 +37,6 @@ export type GradientPropsT = {
   axesHelper?: boolean
 }
 
-function LoadingBox() {
-  return (
-    <mesh rotation={[0, 1, 1]}>
-      <boxBufferGeometry args={[1, 1, 1]} />
-      <meshPhysicalMaterial color="orange" />
-    </mesh>
-  )
-}
 const vec = new THREE.Vector3()
 
 export const Gradient: React.FC<GradientPropsT> = ({
