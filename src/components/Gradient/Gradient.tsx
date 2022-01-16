@@ -35,6 +35,7 @@ export type GradientPropsT = {
   vertexShader: string
   fragmentShader: string
   axesHelper?: boolean
+  wireframe?: boolean
 }
 
 const vec = new THREE.Vector3()
@@ -46,7 +47,7 @@ export const Gradient: React.FC<GradientPropsT> = ({
   environment = <Environment preset="lobby" background={true} />,
   lights = <ambientLight intensity={1} />,
   position = [0, 0, 0],
-  rotation = [(Math.PI / 360) * 90, 0, (Math.PI / 360) * 230],
+  rotation,
   scale,
   cameraPosition = { x: 0.4, y: -0.2, z: -5 },
   cameraRotation = { x: 0, y: 0, z: 0 },
@@ -67,6 +68,7 @@ export const Gradient: React.FC<GradientPropsT> = ({
   vertexShader,
   fragmentShader,
   axesHelper,
+  wireframe,
 }) => {
   useFrame((state) => {
     state.camera.position.lerp(
@@ -112,6 +114,7 @@ export const Gradient: React.FC<GradientPropsT> = ({
           vertexShader={vertexShader}
           fragmentShader={fragmentShader}
           axesHelper={axesHelper}
+          wireframe={wireframe}
         />
 
         {/* <EffectComposer>

@@ -22,6 +22,7 @@ export const PropertyControls: React.FC<Props> = ({
       {activeTab === "colors" && <UI.ColorControls />}
       {activeTab === "effects" && <UI.EffectControls />}
       {activeTab === "camera" && <UI.CameraControls />}
+      {activeTab === "tools" && <UI.Tools />}
     </div>
   )
 }

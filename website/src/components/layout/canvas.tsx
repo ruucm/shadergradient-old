@@ -53,8 +53,7 @@ const LCanvas = ({ children }) => {
   // performance
   const [pixelDensity] = useQueryState("pixelDensity")
 
-  //hide gizmoHelper on Embedmode
-  const [embedMode] = useQueryState("embedMode")
+  const [gizmoHelper] = useQueryState("gizmoHelper")
 
   return (
     <Canvas
@@ -73,7 +72,7 @@ const LCanvas = ({ children }) => {
       className="absolute top-0"
     >
       <Controls />
-      {embedMode != "on" && (
+      {gizmoHelper === "show" && (
         <GizmoHelper
           alignment="bottom-right" // widget alignment within scene
           margin={[65, 110]} // widget margins (X, Y)

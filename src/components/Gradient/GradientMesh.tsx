@@ -28,6 +28,7 @@ export function GradientMesh({
   vertexShader,
   fragmentShader,
   axesHelper,
+  wireframe,
 }: any) {
   const mesh: any = useRef()
   const material: any = useRef()
@@ -99,7 +100,7 @@ export function GradientMesh({
         meshType={type}
         vertexShader={vertexShader}
         fragmentShader={fragmentShader}
-        // wireframe
+        wireframe={wireframe}
       />
     </animated.mesh>
   )
