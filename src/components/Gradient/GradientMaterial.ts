@@ -30,12 +30,12 @@ const settings = {
   amplitude: 5.0,
 }
 
-var hex2rgb = (str: any) => {
+const hex2rgb = (str: any) => {
   // @ts-ignore
   return hex(str).map((x: any) => x / 255)
 }
 
-var light = {
+const light = {
   falloff: 0.15,
   radius: 5,
   position: [0, 0, 2],
@@ -45,12 +45,11 @@ var light = {
   ambient: [0.2, 0.1, 0.1],
 }
 
-var uniforms = {
+const uniforms = {
   uTime: { value: 0 },
   uSpeed: { value: settings.speed },
   uNoiseDensity: { value: settings.density },
   uNoiseStrength: { value: settings.strength },
-  uFrequency: { value: settings.frequency },
   uAmplitude: { value: settings.amplitude },
   uIntensity: { value: settings.intensity },
   type: { value: settings.type },
@@ -105,7 +104,6 @@ export class GradientMaterial extends THREE.MeshPhysicalMaterial {
         shader.uniforms.uNoiseDensity = uniforms.uNoiseDensity
         shader.uniforms.uNoiseStrength = uniforms.uNoiseStrength
         shader.uniforms.uIntensity = uniforms.uIntensity
-        shader.uniforms.uFrequency = uniforms.uFrequency
         shader.uniforms.uAmplitude = uniforms.uAmplitude
 
         shader.uniforms.uC1r = { value: formatColor(uC1?.r) }
