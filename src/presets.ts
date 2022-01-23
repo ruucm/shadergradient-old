@@ -2,17 +2,22 @@ export const PRESETS = [
   {
     title: "New Halo",
     color: "white",
-    url: "?animate=on&brightness=1.2&cameraPositionX=-0.5&cameraPositionY=3.4&cameraPositionZ=-5&cameraZoom=2.4&color1=%23ff5005&color2=%23a177ca&color3=%23d9a83f&embedMode=off&envPreset=city&grain=on&lightType=env&pixelDensity=1&positionX=0&positionY=0.9&positionZ=-0.9&reflection=0.1&rotationX=90&rotationY=0&rotationZ=230&type=plane&uSpeed=0.3&uDensity=1&uStrength=2.8&uTime=0.2",
+    url: "?animate=off&axesHelper=off&brightness=1.2&cAzimuthAngle=180&cDistance=1.7&cPolarAngle=90&cameraPositionX=0&cameraPositionY=0&cameraPositionZ=0&cameraZoom=1&color1=%23ff5005&color2=%23a177ca&color3=%23d9a83f&embedMode=off&envPreset=city&gizmoHelper=hide&grain=on&lightType=env&pixelDensity=1&positionX=0&positionY=0&positionZ=0&reflection=0.1&rotationX=45&rotationY=0&rotationZ=-120&type=plane&uDensity=3&uSpeed=0.1&uStrength=2.4&uTime=0&wireframe=false",
+  },
+  {
+    title: "New Halo (2)",
+    color: "white",
+    url: "?animate=on&axesHelper=off&brightness=1.2&cAzimuthAngle=180&cDistance=4.2&cPolarAngle=90&cameraPositionX=0&cameraPositionY=0&cameraPositionZ=0&cameraZoom=1&color1=%23ff5005&color2=%23779bca&color3=%23d9b03f&embedMode=off&envPreset=city&gizmoHelper=hide&grain=on&lightType=3d&pixelDensity=1&positionX=0&positionY=1.1&positionZ=0&reflection=0.1&rotationX=0&rotationY=0&rotationZ=-70&type=plane&uDensity=3&uSpeed=0.1&uStrength=1.5&uTime=0&wireframe=false",
   },
   {
     title: "Breeze",
     color: "white",
-    url: "?animate=on&brightness=1&cameraPositionX=0.4&cameraPositionY=3.2&cameraPositionZ=0&cameraZoom=2.4&color1=%235ce7ff&color2=%235ac5d3&color3=%23b9dcac&envPreset=city&grain=off&lightType=3d&reflection=0&rotationX=180&rotationY=50&rotationZ=0&type=waterPlane&uSpeed=0.2&uDensity=1&uStrength=2&uTime=0.2&pixelDensity=1&embedMode=off&positionX=0&positionY=0&positionZ=0",
+    url: "?animate=on&axesHelper=off&brightness=1&cAzimuthAngle=180&cDistance=2.2&cPolarAngle=140&cameraPositionX=0&cameraPositionY=0&cameraPositionZ=0&cameraZoom=1&color1=%236cd7ea&color2=%235ac5d3&color3=%23d4f2ca&embedMode=off&envPreset=city&gizmoHelper=hide&grain=off&lightType=3d&pixelDensity=1&positionX=0&positionY=1&positionZ=0&reflection=0.1&rotationX=0&rotationY=0&rotationZ=-90&type=waterPlane&uDensity=1.8&uSpeed=0.1&uStrength=2&uTime=8&wireframe=false&animate=on",
   },
   {
     title: "Halo Origin",
     color: "white",
-    url: "?animate=on&brightness=1.2&cameraPositionX=0.4&cameraPositionY=-0.2&cameraPositionZ=-5&cameraZoom=2.4&color1=#CC4C6E&color2=#1980FF&color3=#99B58F&envPreset=city&grain=on&lightType=env&reflection=0.1&rotationX=90&rotationY=0&rotationZ=230&type=plane&uSpeed=0.3&uDensity=1&uStrength=1.6&uTime=0.2&pixelDensity=1&embedMode=off&positionX=0&positionY=0&positionZ=0",
+    url: "?animate=on&axesHelper=off&brightness=1.2&cAzimuthAngle=180&cDistance=2&cPolarAngle=90&cameraPositionX=0&cameraPositionY=0&cameraPositionZ=0&cameraZoom=1&color1=%23CC4C6E&color2=%231980FF&color3=%2399B58F&embedMode=off&envPreset=city&gizmoHelper=hide&grain=on&lightType=env&pixelDensity=1&positionX=0&positionY=0&positionZ=0&reflection=0.1&rotationX=45&rotationY=0&rotationZ=115&type=plane&uDensity=3&uSpeed=0.1&uStrength=2.4&uTime=0&wireframe=false",
   },
   {
     title: "Dawn",
@@ -43,6 +48,11 @@ export const PRESETS = [
     title: "Chaos",
     color: "white",
     url: "?animate=on&brightness=1.2&cameraPositionX=2.4&cameraPositionY=1.8&cameraPositionZ=-3.5&cameraZoom=2.4&color1=%23cd4c9d&color2=%231980FF&color3=%2399B58F&envPreset=city&grain=on&lightType=env&reflection=0.8&rotationX=90&rotationY=10&rotationZ=410&type=sphere&uSpeed=1&uDensity=1&uStrength=0.8&uTime=0.2&pixelDensity=1&embedMode=off&positionX=0&positionY=0&positionZ=0",
+  },
+  {
+    title: "Santa",
+    color: "white",
+    url: "?animate=on&axesHelper=off&brightness=1.2&cAzimuthAngle=180&cDistance=4&cPolarAngle=90&cameraPositionX=0&cameraPositionY=0&cameraPositionZ=0&cameraZoom=1&color1=%23ff5005&color2=%2379ca77&color3=%23d9a83f&embedMode=off&envPreset=city&gizmoHelper=hide&grain=on&lightType=env&pixelDensity=1&positionX=0.7&positionY=1&positionZ=0&reflection=0.1&rotationX=25&rotationY=0&rotationZ=-120&type=plane&uDensity=3&uSpeed=0.1&uStrength=2.4&uTime=0&wireframe=false",
   },
   {
     title: "Cotton Candy",
@@ -103,5 +113,15 @@ export const PRESETS = [
     title: "Sunset",
     color: "white",
     url: "?animate=on&brightness=1.2&cameraPositionX=0.2&cameraPositionY=3.4&cameraPositionZ=-5&cameraZoom=2.9&color1=%23ff3300&color2=%23d0c3da&color3=%23d6d0c2&embedMode=off&envPreset=city&grain=off&lightType=env&pixelDensity=1&positionX=-0.7&positionY=2.1&positionZ=-0.9&reflection=0.1&rotationX=80&rotationY=-10&rotationZ=410&type=waterPlane&uSpeed=0.3&uDensity=1&uStrength=1.2&uTime=0.2",
+  },
+  {
+    title: "Template - Plane",
+    color: "white",
+    url: "?animate=on&axesHelper=on&brightness=1.2&cAzimuthAngle=0&cDistance=14.2&cPolarAngle=90&cameraPositionX=0&cameraPositionY=0&cameraPositionZ=0&cameraZoom=1&color1=%23ff0000&color2=%230100ff&color3=%2300ff00&embedMode=off&envPreset=city&gizmoHelper=show&grain=off&lightType=3d&pixelDensity=1&positionX=0&positionY=0&positionZ=0&reflection=0.1&rotationX=0&rotationY=0&rotationZ=0&type=plane&uDensity=1&uSpeed=0.1&uStrength=0.1&uTime=0.2&wireframe=false",
+  },
+  {
+    title: "Template - Sphere",
+    color: "white",
+    url: "?animate=on&axesHelper=on&brightness=1.2&cAzimuthAngle=0&cDistance=4&cPolarAngle=0&cameraPositionX=0&cameraPositionY=0&cameraPositionZ=0&cameraZoom=1&color1=%23ff0000&color2=%230100ff&color3=%2300ff00&embedMode=off&envPreset=city&gizmoHelper=show&grain=off&lightType=3d&pixelDensity=1&positionX=0&positionY=0&positionZ=0&reflection=0.1&rotationX=0&rotationY=0&rotationZ=0&shader=colorNormalMix&type=sphere&uDensity=1&uSpeed=0.1&uStrength=0.1&uTime=0.2&wireframe=false",
   },
 ]
