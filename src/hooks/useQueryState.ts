@@ -6,7 +6,7 @@ function updateHistory(path: string) {
   window.history.pushState(null, document.title, path)
 }
 
-export const useQueryState = (propName: any, defaultValue = null) => {
+export const useQueryState = (propName: any, defaultValue: any = null) => {
   const selector = useCallback(
     (state) =>
       typeof state[propName] !== "undefined" ? state[propName] : defaultValue,

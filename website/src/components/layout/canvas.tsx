@@ -53,7 +53,7 @@ const LCanvas = ({ children }) => {
   // performance
   const [pixelDensity] = useQueryState("pixelDensity")
 
-  const [gizmoHelper] = useQueryState("gizmoHelper")
+  const [gizmoHelper] = useQueryState("gizmoHelper", "show")
 
   return (
     <Canvas
