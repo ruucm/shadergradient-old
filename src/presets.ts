@@ -57,7 +57,7 @@ export const PRESETS = [
   {
     title: "Cotton Candy",
     color: "white",
-    url: "?animate=on&brightness=1.2&cameraPositionX=0.4&cameraPositionY=3.2&cameraPositionZ=0&cameraZoom=1.3&color1=%23ebedff&color2=%23dbf8ff&color3=%23f3f2f8&embedMode=off&envPreset=city&grain=off&lightType=3d&pixelDensity=1&positionX=0&positionY=0&positionZ=0&reflection=0&rotationX=180&rotationY=50&rotationZ=0&type=waterPlane&uSpeed=0.2&uDensity=1&uStrength=2&uTime=0.2",
+    url: "?animate=on&axesHelper=off&brightness=1.2&cAzimuthAngle=180&cDistance=3.8&cPolarAngle=120&cameraPositionX=0&cameraPositionY=0&cameraPositionZ=0&cameraZoom=1&color1=%23ebedff&color2=%23dbf8ff&color3=%23f3f2f8&embedMode=off&envPreset=city&gizmoHelper=hide&grain=off&lightType=3d&pixelDensity=1&positionX=0&positionY=1.3&positionZ=0&reflection=0.1&rotationX=0&rotationY=0&rotationZ=-90&type=waterPlane&uDensity=1&uSpeed=0.3&uStrength=3&uTime=0.2&wireframe=false",
   },
   {
     title: "Lemon",
