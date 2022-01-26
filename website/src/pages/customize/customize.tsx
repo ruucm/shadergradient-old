@@ -18,6 +18,8 @@ const DOM = () => {
   const current = useUIStore((state: any) => state.current)
   const setCurrent = useUIStore((state: any) => state.setCurrent)
   const loadingPercentage = useUIStore((state: any) => state.loadingPercentage)
+  const hoverState = useUIStore((state: any) => state.hoverState)
+  const setHoverState = useUIStore((state: any) => state.setHoverState)
 
   const [isMobile, setIsMobile] = React.useState(false)
   const [activeTab, setActiveTab] = useState('none')
@@ -61,6 +63,44 @@ const DOM = () => {
           <div className={styles.content}>
             <motion.div style={{ color: PRESETS[current].color }}>
               <Link href='/'> ← ShaderGradient</Link>
+              {/* Temp Test */}
+
+              <div style={{ display: 'flex', fontSize: 30 }}>
+                <div>current: {hoverState}</div>
+                <div
+                  style={{ padding: 6, background: 'black' }}
+                  onMouseEnter={() => {
+                    setHoverState(1)
+                  }}
+                  onMouseLeave={() => {
+                    setHoverState(0)
+                  }}
+                >
+                  1
+                </div>
+                <div
+                  style={{ padding: 6, background: 'black' }}
+                  onMouseEnter={() => {
+                    setHoverState(2)
+                  }}
+                  onMouseLeave={() => {
+                    setHoverState(0)
+                  }}
+                >
+                  2
+                </div>
+                <div
+                  style={{ padding: 6, background: 'black' }}
+                  onMouseEnter={() => {
+                    setHoverState(3)
+                  }}
+                  onMouseLeave={() => {
+                    setHoverState(0)
+                  }}
+                >
+                  3
+                </div>
+              </div>
             </motion.div>
           </div>
 

@@ -52,6 +52,8 @@ export function GradientScene({
   const setLoadingPercentage = useUIStore(
     (state: any) => state.setLoadingPercentage
   )
+  const hoverState = useUIStore((state: any) => state.hoverState)
+  const setHoverState = useUIStore((state: any) => state.setHoverState)
 
   useEffect(() => {
     let gradientURL = PRESETS[current].url
@@ -85,6 +87,7 @@ export function GradientScene({
   const [color1] = useQueryState('color1')
   const [color2] = useQueryState('color2')
   const [color3] = useQueryState('color3')
+  const hoverStateColor = getHoverColor(hoverState, [color1, color2, color3])
 
   // effects
   const [grain] = useQueryState('grain')
@@ -134,12 +137,13 @@ export function GradientScene({
       cameraRotation={{ x: 0, y: 0, z: 0 }}
       type={type}
       animate={animate === 'on'}
+      // cameraZoom={hoverState !== 0 ? 0.2 : responsiveCameraZoom}
       cameraZoom={forceZoom !== null ? forceZoom : responsiveCameraZoom}
       uTime={uTime}
       uStrength={uStrength}
       uDensity={uDensity}
       uSpeed={uSpeed}
-      colors={[color1, color2, color3]}
+      colors={hoverState === 0 ? [color1, color2, color3] : hoverStateColor}
       grain={grain}
       lightType={lightType}
       envPreset={envPreset}
@@ -162,4 +166,10 @@ function getResponsiveZoom(cameraZoom: number) {
 
   if (type === 'width') return cameraZoom * (window.innerWidth / 1440)
   else return cameraZoom * (window.innerHeight / 900)
+}
+
+function getHoverColor(hoverState: number, colors) {
+  if (hoverState === 1) return [colors[0], '#000000', '#000000']
+  else if (hoverState === 2) return ['#000000', colors[1], '#000000']
+  else if (hoverState === 3) return ['#000000', '#000000', colors[2]]
 }
