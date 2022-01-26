@@ -137,8 +137,8 @@ export function GradientScene({
       cameraRotation={{ x: 0, y: 0, z: 0 }}
       type={type}
       animate={animate === 'on'}
-      // cameraZoom={hoverState !== 0 ? 0.2 : responsiveCameraZoom}
-      cameraZoom={forceZoom !== null ? forceZoom : responsiveCameraZoom}
+      cameraZoom={hoverState !== 0 ? 0.2 : responsiveCameraZoom}
+      // cameraZoom={forceZoom !== null ? forceZoom : responsiveCameraZoom}
       uTime={uTime}
       uStrength={uStrength}
       uDensity={uDensity}
