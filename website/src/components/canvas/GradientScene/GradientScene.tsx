@@ -53,7 +53,6 @@ export function GradientScene({
     (state: any) => state.setLoadingPercentage
   )
   const hoverState = useUIStore((state: any) => state.hoverState)
-  const setHoverState = useUIStore((state: any) => state.setHoverState)
 
   useEffect(() => {
     let gradientURL = PRESETS[current].url
@@ -104,7 +103,7 @@ export function GradientScene({
 
   const [embedMode] = useQueryState('embedMode')
 
-  const responsiveCameraZoom = getResponsiveZoom(cameraZoom)
+  const responsiveCameraZoom = getResponsiveZoom(cameraZoom, hoverState)
 
   // shader
   const [shader] = useQueryState('shader')
@@ -137,8 +136,8 @@ export function GradientScene({
       cameraRotation={{ x: 0, y: 0, z: 0 }}
       type={type}
       animate={animate === 'on'}
-      cameraZoom={hoverState !== 0 ? 0.2 : responsiveCameraZoom}
-      // cameraZoom={forceZoom !== null ? forceZoom : responsiveCameraZoom}
+      // cameraZoom={hoverState !== 0 ? 0.2 : responsiveCameraZoom}
+      cameraZoom={forceZoom !== null ? forceZoom : responsiveCameraZoom}
       uTime={uTime}
       uStrength={uStrength}
       uDensity={uDensity}
@@ -161,8 +160,14 @@ export function GradientScene({
   )
 }
 
-function getResponsiveZoom(cameraZoom: number) {
+function getResponsiveZoom(cameraZoom: number, hoverState: number) {
   const type = window.innerWidth >= window.innerHeight ? 'width' : 'height'
+
+  // if (type === 'width' && hoverState === 0)
+  //   return cameraZoom * (window.innerWidth / 1440)
+  // else if (type === 'height' && hoverState === 0)
+  //   return cameraZoom * (window.innerHeight / 900)
+  // else if (hoverState !== 0) return 0.2
 
   if (type === 'width') return cameraZoom * (window.innerWidth / 1440)
   else return cameraZoom * (window.innerHeight / 900)
