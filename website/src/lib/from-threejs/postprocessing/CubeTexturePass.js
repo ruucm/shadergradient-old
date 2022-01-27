@@ -7,8 +7,8 @@ import {
   ShaderLib,
   ShaderMaterial,
   UniformsUtils,
-} from 'three'
-import { Pass } from '../postprocessing/Pass.js'
+} from "three"
+import { Pass } from "../postprocessing/Pass.js"
 
 class CubeTexturePass extends Pass {
   constructor(camera, envMap, opacity = 1) {
@@ -18,7 +18,7 @@ class CubeTexturePass extends Pass {
 
     this.needsSwap = false
 
-    this.cubeShader = ShaderLib['cube']
+    this.cubeShader = ShaderLib["cube"]
     this.cubeMesh = new Mesh(
       new BoxGeometry(10, 10, 10),
       new ShaderMaterial({
@@ -31,7 +31,7 @@ class CubeTexturePass extends Pass {
       })
     )
 
-    Object.defineProperty(this.cubeMesh.material, 'envMap', {
+    Object.defineProperty(this.cubeMesh.material, "envMap", {
       get: function () {
         return this.uniforms.envMap.value
       },

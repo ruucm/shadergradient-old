@@ -18,13 +18,13 @@ import {
   Vector2,
   WebGLRenderTarget,
   ZeroFactor,
-} from 'three'
-import { Pass, FullScreenQuad } from '../postprocessing/Pass.js'
-import { SAOShader } from '../shaders/SAOShader.js'
-import { DepthLimitedBlurShader } from '../shaders/DepthLimitedBlurShader.js'
-import { BlurShaderUtils } from '../shaders/DepthLimitedBlurShader.js'
-import { CopyShader } from '../shaders/CopyShader.js'
-import { UnpackDepthRGBAShader } from '../shaders/UnpackDepthRGBAShader.js'
+} from "three"
+import { Pass, FullScreenQuad } from "../postprocessing/Pass.js"
+import { SAOShader } from "../shaders/SAOShader.js"
+import { DepthLimitedBlurShader } from "../shaders/DepthLimitedBlurShader.js"
+import { BlurShaderUtils } from "../shaders/DepthLimitedBlurShader.js"
+import { CopyShader } from "../shaders/CopyShader.js"
+import { UnpackDepthRGBAShader } from "../shaders/UnpackDepthRGBAShader.js"
 
 /**
  * SAO implementation inspired from bhouston previous SAO work
@@ -105,7 +105,7 @@ class SAOPass extends Pass {
     this.normalMaterial.blending = NoBlending
 
     if (SAOShader === undefined) {
-      console.error('THREE.SAOPass relies on SAOShader')
+      console.error("THREE.SAOPass relies on SAOShader")
     }
 
     this.saoMaterial = new ShaderMaterial({
@@ -115,35 +115,35 @@ class SAOPass extends Pass {
       uniforms: UniformsUtils.clone(SAOShader.uniforms),
     })
     this.saoMaterial.extensions.derivatives = true
-    this.saoMaterial.defines['DEPTH_PACKING'] = this
+    this.saoMaterial.defines["DEPTH_PACKING"] = this
       .supportsDepthTextureExtension
       ? 0
       : 1
-    this.saoMaterial.defines['NORMAL_TEXTURE'] = this.supportsNormalTexture
+    this.saoMaterial.defines["NORMAL_TEXTURE"] = this.supportsNormalTexture
       ? 1
       : 0
-    this.saoMaterial.defines['PERSPECTIVE_CAMERA'] = this.camera
+    this.saoMaterial.defines["PERSPECTIVE_CAMERA"] = this.camera
       .isPerspectiveCamera
       ? 1
       : 0
-    this.saoMaterial.uniforms['tDepth'].value = this
+    this.saoMaterial.uniforms["tDepth"].value = this
       .supportsDepthTextureExtension
       ? depthTexture
       : this.depthRenderTarget.texture
-    this.saoMaterial.uniforms['tNormal'].value = this.normalRenderTarget.texture
-    this.saoMaterial.uniforms['size'].value.set(
+    this.saoMaterial.uniforms["tNormal"].value = this.normalRenderTarget.texture
+    this.saoMaterial.uniforms["size"].value.set(
       this.resolution.x,
       this.resolution.y
     )
-    this.saoMaterial.uniforms['cameraInverseProjectionMatrix'].value.copy(
+    this.saoMaterial.uniforms["cameraInverseProjectionMatrix"].value.copy(
       this.camera.projectionMatrixInverse
     )
-    this.saoMaterial.uniforms['cameraProjectionMatrix'].value =
+    this.saoMaterial.uniforms["cameraProjectionMatrix"].value =
       this.camera.projectionMatrix
     this.saoMaterial.blending = NoBlending
 
     if (DepthLimitedBlurShader === undefined) {
-      console.error('THREE.SAOPass relies on DepthLimitedBlurShader')
+      console.error("THREE.SAOPass relies on DepthLimitedBlurShader")
     }
 
     this.vBlurMaterial = new ShaderMaterial({
@@ -152,20 +152,20 @@ class SAOPass extends Pass {
       vertexShader: DepthLimitedBlurShader.vertexShader,
       fragmentShader: DepthLimitedBlurShader.fragmentShader,
     })
-    this.vBlurMaterial.defines['DEPTH_PACKING'] = this
+    this.vBlurMaterial.defines["DEPTH_PACKING"] = this
       .supportsDepthTextureExtension
       ? 0
       : 1
-    this.vBlurMaterial.defines['PERSPECTIVE_CAMERA'] = this.camera
+    this.vBlurMaterial.defines["PERSPECTIVE_CAMERA"] = this.camera
       .isPerspectiveCamera
       ? 1
       : 0
-    this.vBlurMaterial.uniforms['tDiffuse'].value = this.saoRenderTarget.texture
-    this.vBlurMaterial.uniforms['tDepth'].value = this
+    this.vBlurMaterial.uniforms["tDiffuse"].value = this.saoRenderTarget.texture
+    this.vBlurMaterial.uniforms["tDepth"].value = this
       .supportsDepthTextureExtension
       ? depthTexture
       : this.depthRenderTarget.texture
-    this.vBlurMaterial.uniforms['size'].value.set(
+    this.vBlurMaterial.uniforms["size"].value.set(
       this.resolution.x,
       this.resolution.y
     )
@@ -177,28 +177,28 @@ class SAOPass extends Pass {
       vertexShader: DepthLimitedBlurShader.vertexShader,
       fragmentShader: DepthLimitedBlurShader.fragmentShader,
     })
-    this.hBlurMaterial.defines['DEPTH_PACKING'] = this
+    this.hBlurMaterial.defines["DEPTH_PACKING"] = this
       .supportsDepthTextureExtension
       ? 0
       : 1
-    this.hBlurMaterial.defines['PERSPECTIVE_CAMERA'] = this.camera
+    this.hBlurMaterial.defines["PERSPECTIVE_CAMERA"] = this.camera
       .isPerspectiveCamera
       ? 1
       : 0
-    this.hBlurMaterial.uniforms['tDiffuse'].value =
+    this.hBlurMaterial.uniforms["tDiffuse"].value =
       this.blurIntermediateRenderTarget.texture
-    this.hBlurMaterial.uniforms['tDepth'].value = this
+    this.hBlurMaterial.uniforms["tDepth"].value = this
       .supportsDepthTextureExtension
       ? depthTexture
       : this.depthRenderTarget.texture
-    this.hBlurMaterial.uniforms['size'].value.set(
+    this.hBlurMaterial.uniforms["size"].value.set(
       this.resolution.x,
       this.resolution.y
     )
     this.hBlurMaterial.blending = NoBlending
 
     if (CopyShader === undefined) {
-      console.error('THREE.SAOPass relies on CopyShader')
+      console.error("THREE.SAOPass relies on CopyShader")
     }
 
     this.materialCopy = new ShaderMaterial({
@@ -219,7 +219,7 @@ class SAOPass extends Pass {
     this.materialCopy.blendEquationAlpha = AddEquation
 
     if (UnpackDepthRGBAShader === undefined) {
-      console.error('THREE.SAOPass relies on UnpackDepthRGBAShader')
+      console.error("THREE.SAOPass relies on UnpackDepthRGBAShader")
     }
 
     this.depthCopy = new ShaderMaterial({
@@ -236,7 +236,7 @@ class SAOPass extends Pass {
     // Rendering readBuffer first when rendering to screen
     if (this.renderToScreen) {
       this.materialCopy.blending = NoBlending
-      this.materialCopy.uniforms['tDiffuse'].value = readBuffer.texture
+      this.materialCopy.uniforms["tDiffuse"].value = readBuffer.texture
       this.materialCopy.needsUpdate = true
       this.renderPass(renderer, this.materialCopy, null)
     }
@@ -253,26 +253,26 @@ class SAOPass extends Pass {
     renderer.setRenderTarget(this.depthRenderTarget)
     renderer.clear()
 
-    this.saoMaterial.uniforms['bias'].value = this.params.saoBias
-    this.saoMaterial.uniforms['intensity'].value = this.params.saoIntensity
-    this.saoMaterial.uniforms['scale'].value = this.params.saoScale
-    this.saoMaterial.uniforms['kernelRadius'].value =
+    this.saoMaterial.uniforms["bias"].value = this.params.saoBias
+    this.saoMaterial.uniforms["intensity"].value = this.params.saoIntensity
+    this.saoMaterial.uniforms["scale"].value = this.params.saoScale
+    this.saoMaterial.uniforms["kernelRadius"].value =
       this.params.saoKernelRadius
-    this.saoMaterial.uniforms['minResolution'].value =
+    this.saoMaterial.uniforms["minResolution"].value =
       this.params.saoMinResolution
-    this.saoMaterial.uniforms['cameraNear'].value = this.camera.near
-    this.saoMaterial.uniforms['cameraFar'].value = this.camera.far
+    this.saoMaterial.uniforms["cameraNear"].value = this.camera.near
+    this.saoMaterial.uniforms["cameraFar"].value = this.camera.far
     // this.saoMaterial.uniforms['randomSeed'].value = Math.random();
 
     const depthCutoff =
       this.params.saoBlurDepthCutoff * (this.camera.far - this.camera.near)
-    this.vBlurMaterial.uniforms['depthCutoff'].value = depthCutoff
-    this.hBlurMaterial.uniforms['depthCutoff'].value = depthCutoff
+    this.vBlurMaterial.uniforms["depthCutoff"].value = depthCutoff
+    this.hBlurMaterial.uniforms["depthCutoff"].value = depthCutoff
 
-    this.vBlurMaterial.uniforms['cameraNear'].value = this.camera.near
-    this.vBlurMaterial.uniforms['cameraFar'].value = this.camera.far
-    this.hBlurMaterial.uniforms['cameraNear'].value = this.camera.near
-    this.hBlurMaterial.uniforms['cameraFar'].value = this.camera.far
+    this.vBlurMaterial.uniforms["cameraNear"].value = this.camera.near
+    this.vBlurMaterial.uniforms["cameraFar"].value = this.camera.far
+    this.hBlurMaterial.uniforms["cameraNear"].value = this.camera.near
+    this.hBlurMaterial.uniforms["cameraFar"].value = this.camera.far
 
     this.params.saoBlurRadius = Math.floor(this.params.saoBlurRadius)
     if (
@@ -355,21 +355,21 @@ class SAOPass extends Pass {
     // Setting up SAO rendering
     if (this.params.output === 3) {
       if (this.supportsDepthTextureExtension) {
-        this.materialCopy.uniforms['tDiffuse'].value =
+        this.materialCopy.uniforms["tDiffuse"].value =
           this.beautyRenderTarget.depthTexture
         this.materialCopy.needsUpdate = true
       } else {
-        this.depthCopy.uniforms['tDiffuse'].value =
+        this.depthCopy.uniforms["tDiffuse"].value =
           this.depthRenderTarget.texture
         this.depthCopy.needsUpdate = true
         outputMaterial = this.depthCopy
       }
     } else if (this.params.output === 4) {
-      this.materialCopy.uniforms['tDiffuse'].value =
+      this.materialCopy.uniforms["tDiffuse"].value =
         this.normalRenderTarget.texture
       this.materialCopy.needsUpdate = true
     } else {
-      this.materialCopy.uniforms['tDiffuse'].value =
+      this.materialCopy.uniforms["tDiffuse"].value =
         this.saoRenderTarget.texture
       this.materialCopy.needsUpdate = true
     }
@@ -456,18 +456,18 @@ class SAOPass extends Pass {
     this.normalRenderTarget.setSize(width, height)
     this.depthRenderTarget.setSize(width, height)
 
-    this.saoMaterial.uniforms['size'].value.set(width, height)
-    this.saoMaterial.uniforms['cameraInverseProjectionMatrix'].value.copy(
+    this.saoMaterial.uniforms["size"].value.set(width, height)
+    this.saoMaterial.uniforms["cameraInverseProjectionMatrix"].value.copy(
       this.camera.projectionMatrixInverse
     )
-    this.saoMaterial.uniforms['cameraProjectionMatrix'].value =
+    this.saoMaterial.uniforms["cameraProjectionMatrix"].value =
       this.camera.projectionMatrix
     this.saoMaterial.needsUpdate = true
 
-    this.vBlurMaterial.uniforms['size'].value.set(width, height)
+    this.vBlurMaterial.uniforms["size"].value.set(width, height)
     this.vBlurMaterial.needsUpdate = true
 
-    this.hBlurMaterial.uniforms['size'].value.set(width, height)
+    this.hBlurMaterial.uniforms["size"].value.set(width, height)
     this.hBlurMaterial.needsUpdate = true
   }
 }

@@ -3,7 +3,7 @@ import {
   Float32BufferAttribute,
   OrthographicCamera,
   Mesh,
-} from 'three'
+} from "three"
 
 class Pass {
   constructor() {
@@ -23,7 +23,7 @@ class Pass {
   setSize(/* width, height */) {}
 
   render(/* renderer, writeBuffer, readBuffer, deltaTime, maskActive */) {
-    console.error('THREE.Pass: .render() must be implemented in derived pass.')
+    console.error("THREE.Pass: .render() must be implemented in derived pass.")
   }
 }
 
@@ -35,10 +35,10 @@ const _camera = new OrthographicCamera(-1, 1, 1, -1, 0, 1)
 
 const _geometry = new BufferGeometry()
 _geometry.setAttribute(
-  'position',
+  "position",
   new Float32BufferAttribute([-1, 3, 0, -1, -1, 0, 3, -1, 0], 3)
 )
-_geometry.setAttribute('uv', new Float32BufferAttribute([0, 2, 0, 0, 2, 0], 2))
+_geometry.setAttribute("uv", new Float32BufferAttribute([0, 2, 0, 0, 2, 0], 2))
 
 class FullScreenQuad {
   constructor(material) {

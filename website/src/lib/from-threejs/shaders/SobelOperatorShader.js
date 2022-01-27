@@ -1,4 +1,4 @@
-import { Vector2 } from 'three'
+import { Vector2 } from "three"
 
 /**
  * Sobel Edge Detection (see https://youtu.be/uihBwtPIBxM)

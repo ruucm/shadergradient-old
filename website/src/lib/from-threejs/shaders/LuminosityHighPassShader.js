@@ -1,4 +1,4 @@
-import { Color } from 'three'
+import { Color } from "three"
 
 /**
  * Luminosity
@@ -6,7 +6,7 @@ import { Color } from 'three'
  */
 
 const LuminosityHighPassShader = {
-  shaderID: 'luminosityHighPass',
+  shaderID: "luminosityHighPass",
 
   uniforms: {
     tDiffuse: { value: null },

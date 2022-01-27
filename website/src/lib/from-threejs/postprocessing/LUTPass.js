@@ -1,4 +1,4 @@
-import { ShaderPass } from './ShaderPass.js'
+import { ShaderPass } from "./ShaderPass.js"
 
 const LUTShader = {
   defines: {
@@ -143,7 +143,7 @@ class LUTPass extends ShaderPass {
   constructor(options = {}) {
     super(LUTShader)
     this.lut = options.lut || null
-    this.intensity = 'intensity' in options ? options.intensity : 1
+    this.intensity = "intensity" in options ? options.intensity : 1
   }
 }
 

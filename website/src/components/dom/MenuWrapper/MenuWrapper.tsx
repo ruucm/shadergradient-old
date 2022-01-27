@@ -1,41 +1,41 @@
-import * as React from 'react'
-import { useAnimation, motion } from 'framer-motion'
-import cx from 'classnames'
+import * as React from "react"
+import { useAnimation, motion } from "framer-motion"
+import cx from "classnames"
 
 export function MenuWrapper({
-  mode = 'mobile',
+  mode = "mobile",
   setMode = void 0,
   children,
-  activeTab = 'none',
+  activeTab = "none",
   setActiveTab = void 0,
-  className = '',
+  className = "",
 }) {
   const menuAnim = useAnimation()
 
   React.useEffect(() => {
-    if (activeTab === 'none') {
+    if (activeTab === "none") {
       menuAnim.start({
-        top: '34px',
-        right: '-470px',
+        top: "34px",
+        right: "-470px",
         transition: { duration: 0.3 },
       })
     } else {
       menuAnim.start({
-        right: '34px',
+        right: "34px",
         transition: { duration: 0.3 },
       })
     }
   }, [activeTab])
 
   React.useEffect(() => {
-    if (mode === 'about') {
+    if (mode === "about") {
       menuAnim.start({
-        background: '#141414',
+        background: "#141414",
         transition: { duration: 0 },
       })
     } else {
       menuAnim.start({
-        background: '#ffffff',
+        background: "#ffffff",
         transition: { duration: 0 },
       })
     }
@@ -43,19 +43,19 @@ export function MenuWrapper({
 
   return (
     <motion.div
-      className={cx('absolute z-10 overflow-hidden rounded-md grid', className)}
+      className={cx("absolute z-10 overflow-hidden rounded-md grid", className)}
       style={{
-        width: '600px',
-        height: 'fit-content',
-        gridTemplateColumns: '130px 370px',
-        top: '34px',
-        right: '-470px',
+        width: "600px",
+        height: "fit-content",
+        gridTemplateColumns: "130px 370px",
+        top: "34px",
+        right: "-470px",
 
         boxShadow:
-          mode === 'mobile' || mode === 'web'
-            ? '-4px 4px 62px 0px rgba(0, 0, 0, 0.05)'
-            : 'none',
-        background: mode === 'about' ? '#141414' : 'white',
+          mode === "mobile" || mode === "web"
+            ? "-4px 4px 62px 0px rgba(0, 0, 0, 0.05)"
+            : "none",
+        background: mode === "about" ? "#141414" : "white",
       }}
       animate={menuAnim}
     >

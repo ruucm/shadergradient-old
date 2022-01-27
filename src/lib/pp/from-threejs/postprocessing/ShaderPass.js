@@ -1,11 +1,11 @@
-import { ShaderMaterial, UniformsUtils } from 'three'
-import { Pass, FullScreenQuad } from '../postprocessing/Pass.js'
+import { ShaderMaterial, UniformsUtils } from "three"
+import { Pass, FullScreenQuad } from "../postprocessing/Pass.js"
 
 class ShaderPass extends Pass {
   constructor(shader, textureID) {
     super()
 
-    this.textureID = textureID !== undefined ? textureID : 'tDiffuse'
+    this.textureID = textureID !== undefined ? textureID : "tDiffuse"
 
     if (shader instanceof ShaderMaterial) {
       this.uniforms = shader.uniforms

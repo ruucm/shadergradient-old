@@ -6,9 +6,9 @@ import {
   ShaderMaterial,
   UniformsUtils,
   WebGLRenderTarget,
-} from 'three'
-import { Pass, FullScreenQuad } from '../postprocessing/Pass.js'
-import { CopyShader } from '../shaders/CopyShader.js'
+} from "three"
+import { Pass, FullScreenQuad } from "../postprocessing/Pass.js"
+import { CopyShader } from "../shaders/CopyShader.js"
 
 /**
  *
@@ -36,7 +36,7 @@ class SSAARenderPass extends Pass {
     this._oldClearColor = new Color()
 
     if (CopyShader === undefined)
-      console.error('THREE.SSAARenderPass relies on CopyShader')
+      console.error("THREE.SSAARenderPass relies on CopyShader")
 
     const copyShader = CopyShader
     this.copyUniforms = UniformsUtils.clone(copyShader.uniforms)
@@ -73,7 +73,7 @@ class SSAARenderPass extends Pass {
         readBuffer.height,
         { minFilter: LinearFilter, magFilter: LinearFilter, format: RGBAFormat }
       )
-      this.sampleRenderTarget.texture.name = 'SSAARenderPass.sample'
+      this.sampleRenderTarget.texture.name = "SSAARenderPass.sample"
     }
 
     const jitterOffsets =
@@ -87,7 +87,7 @@ class SSAARenderPass extends Pass {
 
     const baseSampleWeight = 1.0 / jitterOffsets.length
     const roundingRange = 1 / 32
-    this.copyUniforms['tDiffuse'].value = this.sampleRenderTarget.texture
+    this.copyUniforms["tDiffuse"].value = this.sampleRenderTarget.texture
 
     const viewOffset = {
       fullWidth: readBuffer.width,
@@ -132,7 +132,7 @@ class SSAARenderPass extends Pass {
         sampleWeight += roundingRange * uniformCenteredDistribution
       }
 
-      this.copyUniforms['opacity'].value = sampleWeight
+      this.copyUniforms["opacity"].value = sampleWeight
       renderer.setClearColor(this.clearColor, this.clearAlpha)
       renderer.setRenderTarget(this.sampleRenderTarget)
       renderer.clear()

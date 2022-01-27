@@ -1,12 +1,12 @@
-import { formatColor, hexToRgb } from '@/utils'
-import { extend } from '@react-three/fiber'
-import * as THREE from 'three'
+import { formatColor, hexToRgb } from "@/utils"
+import { extend } from "@react-three/fiber"
+import * as THREE from "three"
 // var hex = require('hex-rgb')
 // import hex from 'hex-rgb'
 
 const settings = {
   meshCount: 50,
-  type: 'plane',
+  type: "plane",
   color1r: 0.8,
   color1g: 0.3,
   color1b: 0.43,
@@ -30,12 +30,12 @@ const settings = {
   amplitude: 5.0,
 }
 
-var hex2rgb = (str: any) => {
+const hex2rgb = (str: any) => {
   // @ts-ignore
   return hex(str).map((x: any) => x / 255)
 }
 
-var light = {
+const light = {
   falloff: 0.15,
   radius: 5,
   position: [0, 0, 2],
@@ -45,12 +45,11 @@ var light = {
   ambient: [0.2, 0.1, 0.1],
 }
 
-var uniforms = {
+const uniforms = {
   uTime: { value: 0 },
   uSpeed: { value: settings.speed },
   uNoiseDensity: { value: settings.density },
   uNoiseStrength: { value: settings.strength },
-  uFrequency: { value: settings.frequency },
   uAmplitude: { value: settings.amplitude },
   uIntensity: { value: settings.intensity },
   type: { value: settings.type },
@@ -69,8 +68,8 @@ var uniforms = {
   normalScale: { value: settings.normalScale },
   rotation: { value: settings.rotation },
   colors: { value: undefined },
-  vertexShader: '',
-  fragmentShader: '',
+  vertexShader: "",
+  fragmentShader: "",
 }
 
 export class GradientMaterial extends THREE.MeshPhysicalMaterial {
@@ -98,14 +97,13 @@ export class GradientMaterial extends THREE.MeshPhysicalMaterial {
 
         const meshType = this.userData.meshType
 
-        console.log('meshType', meshType)
+        console.log("meshType", meshType)
 
         shader.uniforms.uTime = uniforms.uTime
         shader.uniforms.uSpeed = uniforms.uSpeed
         shader.uniforms.uNoiseDensity = uniforms.uNoiseDensity
         shader.uniforms.uNoiseStrength = uniforms.uNoiseStrength
         shader.uniforms.uIntensity = uniforms.uIntensity
-        shader.uniforms.uFrequency = uniforms.uFrequency
         shader.uniforms.uAmplitude = uniforms.uAmplitude
 
         shader.uniforms.uC1r = { value: formatColor(uC1?.r) }
@@ -124,13 +122,13 @@ export class GradientMaterial extends THREE.MeshPhysicalMaterial {
         // material.normalScale = uniforms.normalScale;
         // console.log(material);
 
-        console.log('light', light)
+        console.log("light", light)
         shader.uniforms.light = { value: light }
 
         shader.vertexShader = this.userData.vertexShader
         shader.fragmentShader = this.userData.fragmentShader
 
-        console.log('shader', shader)
+        console.log("shader", shader)
       },
     })
   }

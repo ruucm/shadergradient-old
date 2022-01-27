@@ -1,4 +1,4 @@
-import { Vector2 } from '../../../build/three.module.js'
+import { Vector2 } from "../../../build/three.module.js"
 
 /**
  * WebGL port of Subpixel Morphological Antialiasing (SMAA) v2.8
@@ -8,7 +8,7 @@ import { Vector2 } from '../../../build/three.module.js'
 
 const SMAAEdgesShader = {
   defines: {
-    SMAA_THRESHOLD: '0.1',
+    SMAA_THRESHOLD: "0.1",
   },
 
   uniforms: {
@@ -107,10 +107,10 @@ const SMAAEdgesShader = {
 
 const SMAAWeightsShader = {
   defines: {
-    SMAA_MAX_SEARCH_STEPS: '8',
-    SMAA_AREATEX_MAX_DISTANCE: '16',
-    SMAA_AREATEX_PIXEL_SIZE: '( 1.0 / vec2( 160.0, 560.0 ) )',
-    SMAA_AREATEX_SUBTEX_SIZE: '( 1.0 / 7.0 )',
+    SMAA_MAX_SEARCH_STEPS: "8",
+    SMAA_AREATEX_MAX_DISTANCE: "16",
+    SMAA_AREATEX_PIXEL_SIZE: "( 1.0 / vec2( 160.0, 560.0 ) )",
+    SMAA_AREATEX_SUBTEX_SIZE: "( 1.0 / 7.0 )",
   },
 
   uniforms: {

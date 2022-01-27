@@ -1,56 +1,64 @@
-import { useStore } from '@/helpers/store'
-import { A11yUserPreferences } from '@react-three/a11y'
+import { useStore } from "@/helpers/store"
+import { A11yUserPreferences } from "@react-three/a11y"
 import {
   OrbitControls,
   Preload,
   useContextBridge,
   GizmoHelper,
   GizmoViewport,
-} from '@react-three/drei'
-import { Canvas } from '@react-three/fiber'
-import { useEffect, useRef } from 'react'
-import { FormContext } from '../../helpers/form-provider'
-import { useQueryState } from 'shadergradient'
+} from "@react-three/drei"
+import { Canvas, extend, useFrame, useThree } from "@react-three/fiber"
+import { useEffect, useRef } from "react"
+import { FormContext } from "../../helpers/form-provider"
+import { useQueryState } from "shadergradient"
+import * as THREE from "three"
+import CameraControls from "camera-controls"
+import { dToR } from "@/utils"
 
-const LControl = () => {
+CameraControls.install({ THREE })
+extend({ CameraControls })
+
+function Controls() {
+  const ref: any = useRef()
+  const camera = useThree((state) => state.camera)
+  const gl = useThree((state) => state.gl)
   const dom = useStore((state) => state.dom)
-  const control = useRef(null)
+
+  useFrame((state, delta) => ref.current.update(delta))
+
+  const [cAzimuthAngle] = useQueryState("cAzimuthAngle")
+  const [cPolarAngle] = useQueryState("cPolarAngle")
+  const [cDistance] = useQueryState("cDistance")
 
   useEffect(() => {
+    if (ref) dom.current.style["touch-action"] = "none"
+  }, [dom, ref])
+
+  useEffect(() => {
+    const control = ref.current
     if (control) {
-      dom.current.style['touch-action'] = 'none'
+      control.rotateTo(dToR(cAzimuthAngle), dToR(cPolarAngle), true)
+      control.dollyTo(cDistance, true)
     }
-  }, [dom, control])
-  return (
-    // @ts-ignore
-    <OrbitControls
-      ref={control}
-      domElement={dom.current}
-      enablePan={false}
-      enableZoom={false}
-      enableRotate={false}
-      makeDefault={true}
-    />
-  )
+  }, [ref, cAzimuthAngle, cPolarAngle, cDistance])
+
+  // @ts-ignore
+  return <cameraControls ref={ref} args={[camera, gl.domElement]} />
 }
+
 const LCanvas = ({ children }) => {
   const dom = useStore((state) => state.dom)
   const ContextBridge = useContextBridge(FormContext)
 
   // performance
-  const [pixelDensity] = useQueryState('pixelDensity')
+  const [pixelDensity] = useQueryState("pixelDensity")
 
-  //hide gizmoHelper on Embedmode
-  const [embedMode] = useQueryState('embedMode')
+  const [gizmoHelper] = useQueryState("gizmoHelper", "show")
 
   return (
     <Canvas
-      id='gradientCanvas'
-      mode='concurrent'
-      style={{
-        position: 'absolute',
-        top: 0,
-      }}
+      id="gradientCanvas"
+      mode="concurrent"
       camera={{
         fov: 45,
       }}
@@ -59,20 +67,22 @@ const LCanvas = ({ children }) => {
       flat={true} //ACESFilmicToneMapping
       onCreated={(state) => {
         state.events.connect(dom.current)
-        console.log('state.camera', state.camera)
+        console.log("state.camera", state.camera)
       }}
+      className="absolute top-0"
     >
-      <LControl />
-      {embedMode === true ? null : (
+      <Controls />
+      {gizmoHelper === "show" && (
         <GizmoHelper
-          alignment='bottom-right' // widget alignment within scene
+          alignment="bottom-right" // widget alignment within scene
           margin={[65, 110]} // widget margins (X, Y)
           renderPriority={2}
         >
           <GizmoViewport
-            axisColors={['white', 'white', 'white']}
-            labelColor='grey'
+            axisColors={["white", "white", "white"]}
+            labelColor="grey"
             hideNegativeAxes
+            // @ts-ignore
             axisHeadScale={0.8}
           />
           {/* alternative: <GizmoViewcube /> */}

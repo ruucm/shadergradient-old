@@ -1,5 +1,5 @@
-import * as React from 'react'
-import cx from 'classnames'
+import * as React from "react"
+import cx from "classnames"
 
 type ControlTypeTitlePropsT = {
   title?: string
@@ -18,8 +18,8 @@ export const ControlTypeTitle: React.FC<ControlTypeTitlePropsT> = ({
   return (
     <div
       className={cx(
-        'text-xl font-medium text-primary text-opacity-20 cursor-pointer',
-        active && 'text-opacity-100'
+        "text-xl font-medium text-primary text-opacity-20 cursor-pointer",
+        active && "text-opacity-100"
       )}
       onClick={onClick}
     >

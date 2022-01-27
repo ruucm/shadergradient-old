@@ -1,19 +1,19 @@
-import * as React from 'react'
-import { Environment, OrbitControls } from '@react-three/drei'
-import { Canvas } from '@react-three/fiber'
+import * as React from "react"
+import { Environment, OrbitControls } from "@react-three/drei"
+import { Canvas } from "@react-three/fiber"
 import {
   Gradient,
   updateGradientState,
   useQueryState,
   PRESETS,
-} from 'shadergradient'
+} from "shadergradient"
 
 export function GradientScene({ currentTheme }) {
   React.useEffect(() => {
     const searchParams = new URLSearchParams(PRESETS[currentTheme].url)
     searchParams.set(
-      'cameraZoom',
-      (Number(searchParams.get('cameraZoom')) * 2).toString()
+      "cameraZoom",
+      (Number(searchParams.get("cameraZoom")) * 2).toString()
     ) // x2 cameraZoom from the PRESET in figma plugin.
     const gradientURL = searchParams.toString()
 
@@ -21,44 +21,44 @@ export function GradientScene({ currentTheme }) {
   }, [currentTheme])
 
   // performance
-  const [pixelDensity] = useQueryState('pixelDensity')
+  const [pixelDensity] = useQueryState("pixelDensity")
 
   // shape
-  const [type] = useQueryState('type')
-  const [animate] = useQueryState('animate')
-  const [uTime] = useQueryState('uTime')
-  const [uSpeed] = useQueryState('uSpeed')
-  const [uStrength] = useQueryState('uStrength')
-  const [positionX] = useQueryState('positionX')
-  const [positionY] = useQueryState('positionY')
-  const [positionZ] = useQueryState('positionZ')
-  const [rotationX] = useQueryState('rotationX')
-  const [rotationY] = useQueryState('rotationY')
-  const [rotationZ] = useQueryState('rotationZ')
+  const [type] = useQueryState("type")
+  const [animate] = useQueryState("animate")
+  const [uTime] = useQueryState("uTime")
+  const [uSpeed] = useQueryState("uSpeed")
+  const [uStrength] = useQueryState("uStrength")
+  const [positionX] = useQueryState("positionX")
+  const [positionY] = useQueryState("positionY")
+  const [positionZ] = useQueryState("positionZ")
+  const [rotationX] = useQueryState("rotationX")
+  const [rotationY] = useQueryState("rotationY")
+  const [rotationZ] = useQueryState("rotationZ")
 
   // colors
-  const [color1] = useQueryState('color1')
-  const [color2] = useQueryState('color2')
-  const [color3] = useQueryState('color3')
+  const [color1] = useQueryState("color1")
+  const [color2] = useQueryState("color2")
+  const [color3] = useQueryState("color3")
 
   // effects
-  const [grain] = useQueryState('grain')
-  const [lightType] = useQueryState('lightType')
-  const [envPreset] = useQueryState('envPreset')
-  const [reflection] = useQueryState('reflection')
-  const [brightness] = useQueryState('brightness')
+  const [grain] = useQueryState("grain")
+  const [lightType] = useQueryState("lightType")
+  const [envPreset] = useQueryState("envPreset")
+  const [reflection] = useQueryState("reflection")
+  const [brightness] = useQueryState("brightness")
 
   // camera
-  const [cameraZoom] = useQueryState('cameraZoom')
-  const [cameraPositionX] = useQueryState('cameraPositionX')
-  const [cameraPositionY] = useQueryState('cameraPositionY')
-  const [cameraPositionZ] = useQueryState('cameraPositionZ')
+  const [cameraZoom] = useQueryState("cameraZoom")
+  const [cameraPositionX] = useQueryState("cameraPositionX")
+  const [cameraPositionY] = useQueryState("cameraPositionY")
+  const [cameraPositionZ] = useQueryState("cameraPositionZ")
 
   return (
     <Canvas
       style={{ height: 304 }}
       gl={{ preserveDrawingBuffer: true }} // to capture the canvas
-      id='r3f-canvas'
+      id="r3f-canvas"
       dpr={pixelDensity}
       linear={true} //sRGBEncoding
       flat={true} //ACESFilmicToneMapping
@@ -83,7 +83,7 @@ export function GradientScene({ currentTheme }) {
         // same as the website.
         cameraRotation={{ x: 0, y: 0, z: 0 }}
         type={type}
-        animate={animate === 'on'}
+        animate={animate === "on"}
         cameraZoom={cameraZoom}
         uTime={uTime}
         uStrength={uStrength}
@@ -94,7 +94,7 @@ export function GradientScene({ currentTheme }) {
         envPreset={envPreset}
         reflection={reflection}
         brightness={brightness}
-        postProcessing={'threejs'} // turn on postpocessing
+        postProcessing={"threejs"} // turn on postpocessing
       />
     </Canvas>
   )

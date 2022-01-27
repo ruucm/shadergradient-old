@@ -1,17 +1,16 @@
-import { PerspectiveCamera } from '@react-three/drei'
-import { Camera, Euler, useFrame, useThree } from '@react-three/fiber'
-import * as React from 'react'
-import { Suspense, useEffect, useState } from 'react'
-import { usePostProcessing } from '../../hooks/use-post-processing'
-import { GradientMesh } from './GradientMesh'
-import * as THREE from 'three'
-import { Environment } from '@/lib/Environment'
-import { SpringValue } from '@react-spring/core'
+import { Environment } from "@/lib/Environment"
+import { SpringValue } from "@react-spring/core"
+import { Euler, useFrame } from "@react-three/fiber"
+import * as React from "react"
+import { Suspense } from "react"
+import * as THREE from "three"
+import { usePostProcessing } from "../../hooks/use-post-processing"
+import { GradientMesh } from "./GradientMesh"
 
 export type GradientPropsT = {
   r3f?: boolean
-  type?: 'plane' | 'sphere' | 'waterPlane'
-  postProcessing?: 'threejs' | 'r3f'
+  type?: "plane" | "sphere" | "waterPlane"
+  postProcessing?: "threejs" | "r3f"
   environment?: any
   lights?: any
   position?: Euler | undefined
@@ -27,34 +26,28 @@ export type GradientPropsT = {
   uDensity?: number
   uSpeed?: number
   colors?: string[]
-  grain?: 'on' | 'off'
-  lightType?: 'env' | '3d'
-  envPreset?: 'city' | 'lobby' | 'dawn'
+  grain?: "on" | "off"
+  lightType?: "env" | "3d"
+  envPreset?: "city" | "lobby" | "dawn"
   reflection?: number
   brightness?: number
   loadingCallback?: (percentage: number) => void
   vertexShader: string
   fragmentShader: string
+  axesHelper?: boolean
+  wireframe?: boolean
 }
 
-function LoadingBox() {
-  return (
-    <mesh rotation={[0, 1, 1]}>
-      <boxBufferGeometry args={[1, 1, 1]} />
-      <meshPhysicalMaterial color='orange' />
-    </mesh>
-  )
-}
 const vec = new THREE.Vector3()
 
 export const Gradient: React.FC<GradientPropsT> = ({
   r3f,
-  type = 'plane',
-  postProcessing = 'threejs',
-  environment = <Environment preset='lobby' background={true} />,
+  type = "plane",
+  postProcessing = "threejs",
+  environment = <Environment preset="lobby" background={true} />,
   lights = <ambientLight intensity={1} />,
   position = [0, 0, 0],
-  rotation = [(Math.PI / 360) * 90, 0, (Math.PI / 360) * 230],
+  rotation,
   scale,
   cameraPosition = { x: 0.4, y: -0.2, z: -5 },
   cameraRotation = { x: 0, y: 0, z: 0 },
@@ -65,20 +58,18 @@ export const Gradient: React.FC<GradientPropsT> = ({
   uStrength = 1.6,
   uDensity = 1.0,
   uSpeed = 0.3,
-  colors = ['#CC4C6E', '#1980FF', '#99B58F'],
-  grain = 'on',
-  lightType = 'env',
-  envPreset = 'city',
+  colors = ["#CC4C6E", "#1980FF", "#99B58F"],
+  grain = "on",
+  lightType = "env",
+  envPreset = "city",
   reflection = 0.1,
   brightness = 1.2,
   loadingCallback,
   vertexShader,
   fragmentShader,
+  axesHelper,
+  wireframe,
 }) => {
-  const { camera }: { camera: Camera } = useThree()
-  camera.zoom = cameraZoom
-  camera.updateProjectionMatrix() // need to update camera's zoom
-
   useFrame((state) => {
     state.camera.position.lerp(
       vec.set(cameraPosition.x, cameraPosition.y, cameraPosition.z),
@@ -86,7 +77,7 @@ export const Gradient: React.FC<GradientPropsT> = ({
     )
   })
 
-  usePostProcessing({ on: postProcessing === 'threejs', grain: grain === 'on' })
+  usePostProcessing({ on: postProcessing === "threejs", grain: grain === "on" })
 
   let controlledEnvironment = environment
   if (envPreset)
@@ -104,8 +95,8 @@ export const Gradient: React.FC<GradientPropsT> = ({
 
   return (
     <>
-      <Suspense fallback='Load Failed'>
-        {lightType === 'env' ? controlledEnvironment : controlledLights}
+      <Suspense fallback="Load Failed">
+        {lightType === "env" ? controlledEnvironment : controlledLights}
 
         <GradientMesh
           key={colors.toString()}
@@ -122,6 +113,8 @@ export const Gradient: React.FC<GradientPropsT> = ({
           reflection={reflection}
           vertexShader={vertexShader}
           fragmentShader={fragmentShader}
+          axesHelper={axesHelper}
+          wireframe={wireframe}
         />
 
         {/* <EffectComposer>

@@ -1,5 +1,5 @@
-import { Color } from 'three'
-import { Pass } from '../postprocessing/Pass.js'
+import { Color } from "three"
+import { Pass } from "../postprocessing/Pass.js"
 
 class RenderPass extends Pass {
   constructor(scene, camera, overrideMaterial, clearColor, clearAlpha) {

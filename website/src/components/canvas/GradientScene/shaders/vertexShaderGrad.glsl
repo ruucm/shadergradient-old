@@ -20,7 +20,6 @@ uniform float uTime;
 uniform float uSpeed;
 uniform float uNoiseDensity;
 uniform float uNoiseStrength;
-uniform float uFrequency;
 
 #define STANDARD
 varying vec3 vViewPosition;
@@ -61,22 +60,12 @@ void main() {
 #endif
 #include <begin_vertex>
   float t = uTime * uSpeed;
-  float distortion =
-      pnoise3((normal + t) * uNoiseDensity, vec3(10.0)) * uNoiseStrength;
-
-  // Disturb each vertex along the direction of its normal
-  vec3 pos = position + (normal * distortion);
-
   // Create a sine wave from top to bottom of the sphere
-  // To increase the amount of waves, we'll use uFrequency
-  //   float angle = sin(uv.y * uFrequency + t) * uNoiseStrength;
-  float displacement = 0.75 * cnoise3(0.43 * position * uFrequency + t);
+  float distortion = 0.75 * cnoise3(0.43 * position * uNoiseDensity + t);
 
-  //   pos = rotateY(pos, angle);
-  pos = position + normal * displacement * uNoiseStrength;
+  vec3 pos = position + normal * distortion * uNoiseStrength;
   vPos = pos;
 
-  //--------add displacement------------
 
 #include <clipping_planes_vertex>
 #include <displacementmap_vertex>

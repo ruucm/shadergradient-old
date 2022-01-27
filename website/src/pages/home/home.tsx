@@ -1,25 +1,25 @@
-import { GradientScene } from '@/components/canvas/GradientScene'
-import { Loading } from '@/components/dom/Loading'
-import { MenuWrapper } from '@/components/dom/MenuWrapper'
-import { MotionLogo } from '@/components/dom/MotionLogo'
-import { PreviewSwitch } from '@/components/dom/PreviewSwitch'
-import { PreviewWrapper } from '@/components/dom/PreviewWrapper'
-import { links } from '@/consts'
-import { useUIStore } from '@/helpers/store'
-import { motion } from 'framer-motion'
-import Link from 'next/link'
-import React, { useEffect, useRef, useState } from 'react'
+import { GradientScene } from "@/components/canvas/GradientScene"
+import { Loading } from "@/components/dom/Loading"
+import { MenuWrapper } from "@/components/dom/MenuWrapper"
+import { MotionLogo } from "@/components/dom/MotionLogo"
+import { PreviewSwitch } from "@/components/dom/PreviewSwitch"
+import { PreviewWrapper } from "@/components/dom/PreviewWrapper"
+import { links } from "@/consts"
+import { useUIStore } from "@/helpers/store"
+import { motion } from "framer-motion"
+import Link from "next/link"
+import React, { useEffect, useRef, useState } from "react"
 import {
   SnapItem,
   SnapList,
   useDragToScroll,
   useScroll,
   useVisibleElements,
-} from 'react-snaplist-carousel'
-import { PRESETS } from 'shadergradient'
-import styles from './Home.module.scss'
-import { MenuItem } from './menu-item'
-import { MyItem } from './my-item'
+} from "react-snaplist-carousel"
+import { PRESETS } from "shadergradient"
+import styles from "./Home.module.scss"
+import { MenuItem } from "./menu-item"
+import { MyItem } from "./my-item"
 
 const DOM = ({ referer }) => {
   // for logo animation
@@ -35,7 +35,7 @@ const DOM = ({ referer }) => {
   const [isMobile, setIsMobile] = useState(false)
 
   const goToSnapItem = useScroll({ ref: snapList })
-  const itemGap = '40px'
+  const itemGap = "40px"
 
   const { isDragging } = useDragToScroll({ ref: snapList })
 
@@ -51,11 +51,11 @@ const DOM = ({ referer }) => {
   // create an event listener
   useEffect(() => {
     handleResize()
-    window.addEventListener('resize', handleResize)
-    setMode('full')
+    window.addEventListener("resize", handleResize)
+    setMode("full")
   }, [])
 
-  console.log('loadingPercentage', loadingPercentage)
+  console.log("loadingPercentage", loadingPercentage)
 
   return (
     <>
@@ -74,23 +74,23 @@ const DOM = ({ referer }) => {
       <motion.div
         className={styles.bodyWrapper}
         style={{
-          color: mode === 'full' ? PRESETS[current].color : '#FF430A',
-          display: 'block',
+          color: mode === "full" ? PRESETS[current].color : "#FF430A",
+          display: "block",
         }}
       >
         {/* Menu */}
         {isMobile === true ? null : (
           <MenuWrapper mode={mode}>
-            <div className='flex flex-col gap-0.2 p-3.5 '>
+            <div className="flex flex-col gap-0.2 p-3.5 ">
               <motion.div
-                className='text-xl font-medium text-primary'
+                className="text-xl font-medium text-primary"
                 initial={{ paddingLeft: 0 }}
                 whileHover={{
                   paddingLeft: 7,
                   transition: { duration: 0.3 },
                 }}
               >
-                <Link href='/about'>About →</Link>
+                <Link href="/about">About →</Link>
               </motion.div>
               {links.map((item, id) => (
                 <MenuItem key={id} title={item.title} link={item.link} />
@@ -104,8 +104,8 @@ const DOM = ({ referer }) => {
           <motion.div
             className={styles.title}
             animate={{
-              y: mode !== 'full' ? -290 : 0,
-              opacity: mode !== 'full' ? 0 : 1,
+              y: mode !== "full" ? -290 : 0,
+              opacity: mode !== "full" ? 0 : 1,
             }}
             transition={{ duration: 0.5 }}
           >
@@ -128,7 +128,7 @@ const DOM = ({ referer }) => {
                 y: 0,
                 transition: { delay: 0.5, duration: 1 },
               }}
-              style={{ fontSize: 13, width: '25vw', marginTop: '50px' }}
+              style={{ fontSize: 13, width: "25vw", marginTop: "50px" }}
             >
               Available as React component, Figma plugin, and Framer package
               (beta). Made with WebGL shaders.
@@ -146,8 +146,8 @@ const DOM = ({ referer }) => {
                   transition: { delay: 1.5, transition: 2 },
                 }}
               >
-                <Link href='/about'>→ about</Link>
-                <Link href='/customize'>→ customize</Link>
+                <Link href="/about">→ about</Link>
+                <Link href="/customize">→ customize</Link>
               </motion.div>
             ) : null}
           </motion.div>
@@ -156,7 +156,7 @@ const DOM = ({ referer }) => {
           <motion.div
             className={styles.slider}
             style={{
-              display: mode === 'about' ? 'none' : 'block',
+              display: mode === "about" ? "none" : "block",
             }}
             initial={{ opacity: 0, y: 30 }}
             animate={{
@@ -169,15 +169,15 @@ const DOM = ({ referer }) => {
               className={styles.sliderWrapper}
               style={{
                 borderBottom:
-                  mode === 'full'
-                    ? '2px solid ' + PRESETS[current].color
-                    : '2px solid #FF430A',
+                  mode === "full"
+                    ? "2px solid " + PRESETS[current].color
+                    : "2px solid #FF430A",
                 height: 60 * 1.6,
               }}
             >
               <SnapList
                 ref={snapList}
-                direction={isMobile ? 'vertical' : 'horizontal'}
+                direction={isMobile ? "vertical" : "horizontal"}
                 onScroll={(info) => {
                   console.log(info)
                 }}
@@ -187,10 +187,10 @@ const DOM = ({ referer }) => {
                     <SnapItem
                       key={index}
                       margin={{
-                        left: isMobile ? '0px' : itemGap,
-                        right: isMobile ? '0px' : itemGap,
+                        left: isMobile ? "0px" : itemGap,
+                        right: isMobile ? "0px" : itemGap,
                       }}
-                      snapAlign={isMobile ? 'end' : 'start'}
+                      snapAlign={isMobile ? "end" : "start"}
                     >
                       <MyItem
                         onClick={() => {
@@ -199,23 +199,23 @@ const DOM = ({ referer }) => {
                         }}
                         visible={current === index}
                         color={
-                          mode === 'full' ? PRESETS[current].color : '#FF430A'
+                          mode === "full" ? PRESETS[current].color : "#FF430A"
                         }
                         isMobile={isMobile}
                         btnOn={true}
                       >
-                        {index < 10 ? '0' + index.toString() : index.toString()}{' '}
+                        {index < 10 ? "0" + index.toString() : index.toString()}{" "}
                         {item.title}
                       </MyItem>
                     </SnapItem>
                   )
                 })}
                 <SnapItem
-                  margin={{ left: itemGap, right: '70vw' }}
-                  snapAlign='start'
+                  margin={{ left: itemGap, right: "70vw" }}
+                  snapAlign="start"
                 >
                   <button
-                    style={{ display: isMobile ? 'none' : 'block' }}
+                    style={{ display: isMobile ? "none" : "block" }}
                     onClick={() => {
                       goToSnapItem(0)
                     }}
@@ -248,7 +248,7 @@ export default Page
 export async function getServerSideProps(context) {
   return {
     props: {
-      title: 'Shader Gradient',
+      title: "Shader Gradient",
       referer: context.req.headers.referer,
     },
   }

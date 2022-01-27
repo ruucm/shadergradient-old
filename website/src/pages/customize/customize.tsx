@@ -1,16 +1,16 @@
-import { Footer } from '@/components/dom/Footer'
-import { GradientScene } from '@/components/canvas/GradientScene'
-import { PreviewWrapper } from '@/components/dom/PreviewWrapper'
-import { PreviewSwitch } from '@/components/dom/PreviewSwitch'
+import { Footer } from "@/components/dom/Footer"
+import { GradientScene } from "@/components/canvas/GradientScene"
+import { PreviewWrapper } from "@/components/dom/PreviewWrapper"
+import { PreviewSwitch } from "@/components/dom/PreviewSwitch"
 
-import { useUIStore } from '@/helpers/store'
-import { motion } from 'framer-motion'
-import Link from 'next/link'
-import React, { useState } from 'react'
-import { useQueryState, PRESETS } from 'shadergradient'
-import styles from '../home/Home.module.scss'
-import { MyItem } from '../home/my-item'
-import { Controls } from './comps/Controls'
+import { useUIStore } from "@/helpers/store"
+import { motion } from "framer-motion"
+import Link from "next/link"
+import React, { useState } from "react"
+import { useQueryState, PRESETS } from "shadergradient"
+import styles from "../home/Home.module.scss"
+import { MyItem } from "../home/my-item"
+import { Controls } from "./comps/Controls"
 
 const DOM = () => {
   const mode = useUIStore((state: any) => state.mode)
@@ -22,23 +22,23 @@ const DOM = () => {
   const setHoverState = useUIStore((state: any) => state.setHoverState)
 
   const [isMobile, setIsMobile] = React.useState(false)
-  const [activeTab, setActiveTab] = useState('none')
+  const [activeTab, setActiveTab] = useState("none")
 
   // for embeds
-  const [embedMode] = useQueryState('embedMode')
+  const [embedMode] = useQueryState("embedMode")
 
   //choose the screen size
   const handleResize = () => {
     if (window.innerWidth < 641) {
       setIsMobile(true)
-      setActiveTab('shape')
+      setActiveTab("shape")
     } else {
       setIsMobile(false)
     }
   }
   const appHeight = () => {
     const doc = document.documentElement
-    doc.style.setProperty('--app-height', `${window.innerHeight}px`)
+    doc.style.setProperty("--app-height", `${window.innerHeight}px`)
   }
 
   // create an event listener
@@ -46,16 +46,16 @@ const DOM = () => {
     handleResize()
     appHeight()
 
-    window.addEventListener('resize', handleResize)
-    window.addEventListener('resize', appHeight)
-    setMode('full')
+    window.addEventListener("resize", handleResize)
+    window.addEventListener("resize", appHeight)
+    setMode("full")
   }, [])
 
   React.useEffect(() => {
     PRESETS[current].title.substring(1, 2)
   }, [current])
 
-  if (embedMode === 'off')
+  if (embedMode === "off")
     return (
       <>
         <div className={styles.bodyWrapper}>
@@ -116,31 +116,31 @@ const DOM = () => {
           <div
             className={styles.slider}
             style={{
-              color: mode === 'full' ? PRESETS[current].color : '#FF430A',
-              top: isMobile ? '10vh' : null,
+              color: mode === "full" ? PRESETS[current].color : "#FF430A",
+              top: isMobile ? "10vh" : null,
             }}
           >
             <div
               className={styles.sliderWrapper}
               style={{
-                width: 'fit-content',
+                width: "fit-content",
               }}
             >
               {PRESETS.map((item, index) => {
                 return (
                   <div
                     key={index}
-                    style={{ display: current === index ? 'block' : 'none' }}
+                    style={{ display: current === index ? "block" : "none" }}
                   >
                     <MyItem
                       color={
-                        mode === 'full' ? PRESETS[current].color : '#FF430A'
+                        mode === "full" ? PRESETS[current].color : "#FF430A"
                       }
                       onClick={() => {}}
                       visible={current === index}
                       isMobile={isMobile}
                     >
-                      {index < 10 ? '0' + index.toString() : index.toString()}{' '}
+                      {index < 10 ? "0" + index.toString() : index.toString()}{" "}
                       {PRESETS[index].title}
                     </MyItem>
                   </div>
@@ -150,7 +150,7 @@ const DOM = () => {
                 <motion.div
                   className={styles.slideBtn}
                   whileHover={{
-                    backgroundColor: 'rgba(255,255,255,0.15)',
+                    backgroundColor: "rgba(255,255,255,0.15)",
                   }}
                   onClick={() => {
                     if (current !== 0) {
@@ -166,7 +166,7 @@ const DOM = () => {
                 <motion.div
                   className={styles.slideBtn}
                   whileHover={{
-                    backgroundColor: 'rgba(255,255,255,0.15)',
+                    backgroundColor: "rgba(255,255,255,0.15)",
                   }}
                   onClick={() => {
                     if (current !== PRESETS.length - 1) {
@@ -213,7 +213,7 @@ export default Page
 export async function getStaticProps() {
   return {
     props: {
-      title: 'Shader Gradient ─ Customize',
+      title: "Shader Gradient ─ Customize",
     },
   }
 }

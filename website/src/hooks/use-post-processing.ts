@@ -1,9 +1,9 @@
-import { useFrame, useThree } from '@react-three/fiber'
-import { useEffect, useMemo } from 'react'
-import { HalftonePass } from '@/lib/from-threejs/postprocessing/HalftonePass'
-import { BloomPass } from '@/lib/from-threejs/postprocessing/BloomPass'
-import { EffectComposer as EffectComposerImpl } from '@/lib/from-threejs/postprocessing/EffectComposer'
-import { RenderPass } from '@/lib/from-threejs/postprocessing/RenderPass'
+import { useFrame, useThree } from "@react-three/fiber"
+import { useEffect, useMemo } from "react"
+import { HalftonePass } from "@/lib/from-threejs/postprocessing/HalftonePass"
+import { BloomPass } from "@/lib/from-threejs/postprocessing/BloomPass"
+import { EffectComposer as EffectComposerImpl } from "@/lib/from-threejs/postprocessing/EffectComposer"
+import { RenderPass } from "@/lib/from-threejs/postprocessing/RenderPass"
 
 export function usePostProcessing({ on = false }) {
   const { gl, scene, camera, size } = useThree()

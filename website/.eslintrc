@@ -1,8 +1,0 @@
-{
-  "extends": ["next", "plugin:tailwind/recommended"],
-  "settings": {
-    "import/resolver": {
-      "typescript": {}
-    }
-  }
-}
