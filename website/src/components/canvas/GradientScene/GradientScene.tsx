@@ -105,7 +105,7 @@ export function GradientScene({
   const [axesHelper] = useQueryState("axesHelper")
   const [wireframe] = useQueryState("wireframe")
 
-  const responsiveCameraZoom = getResponsiveZoom(cameraZoom, hoverState)
+  const responsiveCameraZoom = getResponsiveZoom(cameraZoom)
 
   // shader
   const [shader] = useQueryState("shader")
@@ -119,9 +119,7 @@ export function GradientScene({
     animatedPosition: forcePos || [positionX, positionY, positionZ],
   })
 
-  const {animatedZoom} = useSpring({
-    animatedZoom: forceZoom || responsiveCameraZoom
-  })
+
 
   return (
     <Gradient
@@ -140,9 +138,7 @@ export function GradientScene({
       cameraRotation={{ x: 0, y: 0, z: 0 }}
       type={type}
       animate={animate === 'on'}
-      // cameraZoom={hoverState !== 0 ? 0.2 : responsiveCameraZoom}
-      // cameraZoom={forceZoom !== null ? forceZoom : responsiveCameraZoom}
-      cameraZoom={animatedZoom}
+      cameraZoom={forceZoom !== null ? forceZoom : responsiveCameraZoom}
       uTime={uTime}
       uStrength={uStrength}
       uDensity={uDensity}
@@ -167,17 +163,13 @@ export function GradientScene({
   )
 }
 
-function getResponsiveZoom(cameraZoom: number, hoverState: number) {
+function getResponsiveZoom(cameraZoom: number) {
   const type = window.innerWidth >= window.innerHeight ? 'width' : 'height'
 
-  if (type === 'width' && hoverState === 0)
-    return cameraZoom * (window.innerWidth / 1440)
-  else if (type === 'height' && hoverState === 0)
-    return cameraZoom * (window.innerHeight / 900)
-  else return 0.2
 
-  // if (type === 'width') return cameraZoom * (window.innerWidth / 1440)
-  // else return cameraZoom * (window.innerHeight / 900)
+
+  if (type === 'width') return cameraZoom * (window.innerWidth / 1440)
+  else return cameraZoom * (window.innerHeight / 900)
 }
 
 function getHoverColor(hoverState: number, colors) {

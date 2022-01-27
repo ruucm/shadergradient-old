@@ -196,7 +196,17 @@ const R3F = ({ r3f }) => {
   return (
     <>
       <GradientScene r3f />
-      <WireframeOverlay r3f/>
+    </>
+  )
+}
+
+const Overlay = ({r3f})=>{
+  const hoverState = useUIStore((state: any) => state.hoverState)
+
+  return(
+    <>
+    {hoverState !==0? <WireframeOverlay r3f/>
+: null}
     </>
   )
 }
@@ -206,6 +216,7 @@ const Page = () => {
     <>
       <DOM />
       <R3F r3f />
+      <Overlay r3f/>
     </>
   )
 }

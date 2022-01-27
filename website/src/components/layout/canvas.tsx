@@ -8,9 +8,11 @@ import {
   GizmoViewport,
 } from "@react-three/drei"
 import { Canvas, extend, useFrame, useThree } from "@react-three/fiber"
-import { useEffect, useRef } from "react"
+import { useEffect, useRef,  } from "react"
 import { FormContext } from "../../helpers/form-provider"
 import { useQueryState } from "shadergradient"
+import { useUIStore } from "@/helpers/store"
+
 import * as THREE from "three"
 import CameraControls from "camera-controls"
 import { dToR } from "@/utils"
@@ -26,6 +28,9 @@ function Controls() {
 
   useFrame((state, delta) => ref.current.update(delta))
 
+
+  const hoverState = useUIStore((state: any) => state.hoverState)
+
   const [cAzimuthAngle] = useQueryState("cAzimuthAngle")
   const [cPolarAngle] = useQueryState("cPolarAngle")
   const [cDistance] = useQueryState("cDistance")
@@ -36,11 +41,13 @@ function Controls() {
 
   useEffect(() => {
     const control = ref.current
-    if (control) {
+    if (control && hoverState === 0) {
       control.rotateTo(dToR(cAzimuthAngle), dToR(cPolarAngle), true)
       control.dollyTo(cDistance, true)
+    } else if(hoverState !==0){
+      control.dollyTo(30, true)
     }
-  }, [ref, cAzimuthAngle, cPolarAngle, cDistance])
+  }, [ref, cAzimuthAngle, cPolarAngle, cDistance, hoverState])
 
   // @ts-ignore
   return <cameraControls ref={ref} args={[camera, gl.domElement]} />
