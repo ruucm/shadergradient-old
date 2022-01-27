@@ -45,7 +45,7 @@ function Controls() {
       control.rotateTo(dToR(cAzimuthAngle), dToR(cPolarAngle), true)
       control.dollyTo(cDistance, true)
     } else if(hoverState !==0){
-      control.dollyTo(30, true)
+      // control.dollyTo(30, true)
     }
   }, [ref, cAzimuthAngle, cPolarAngle, cDistance, hoverState])
 
