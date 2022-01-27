@@ -1,6 +1,7 @@
 import { Footer } from "@/components/dom/Footer"
 import { GradientScene } from "@/components/canvas/GradientScene"
 import { PreviewWrapper } from "@/components/dom/PreviewWrapper"
+import { WireframeOverlay } from "@/components/canvas/GradientScene"
 import { PreviewSwitch } from "@/components/dom/PreviewSwitch"
 
 import { useUIStore } from "@/helpers/store"
@@ -195,6 +196,7 @@ const R3F = ({ r3f }) => {
   return (
     <>
       <GradientScene r3f />
+      <WireframeOverlay r3f/>
     </>
   )
 }
