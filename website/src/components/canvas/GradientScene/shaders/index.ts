@@ -7,6 +7,8 @@ import * as newLight from "./newLight"
 import * as spiral from "./spiral"
 import * as stripe from "./stripe"
 
+import * as sphereShader from "./sphereShader"
+
 export {
   test,
   test2,
@@ -16,4 +18,5 @@ export {
   newLight,
   spiral,
   stripe,
+  sphereShader,
 }
