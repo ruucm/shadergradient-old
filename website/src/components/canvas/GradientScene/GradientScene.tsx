@@ -74,6 +74,8 @@ export function GradientScene({
   const [uSpeed] = useQueryState("uSpeed")
   const [uStrength] = useQueryState("uStrength")
   const [uDensity] = useQueryState("uDensity")
+  const [uFrequency] = useQueryState("uFrequency")
+  const [uAmplitude] = useQueryState("uAmplitude")
   const [positionX] = useQueryState("positionX")
   const [positionY] = useQueryState("positionY")
   const [positionZ] = useQueryState("positionZ")
@@ -139,6 +141,8 @@ export function GradientScene({
       uTime={uTime}
       uStrength={uStrength}
       uDensity={uDensity}
+      uFrequency={uFrequency}
+      uAmplitude={uAmplitude}
       uSpeed={uSpeed}
       colors={[color1, color2, color3]}
       grain={grain}
