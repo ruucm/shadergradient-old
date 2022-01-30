@@ -50,6 +50,7 @@ const uniforms = {
   uSpeed: { value: settings.speed },
   uNoiseDensity: { value: settings.density },
   uNoiseStrength: { value: settings.strength },
+  uFrequency: { value: settings.frequency },
   uAmplitude: { value: settings.amplitude },
   uIntensity: { value: settings.intensity },
   type: { value: settings.type },
@@ -104,6 +105,7 @@ export class GradientMaterial extends THREE.MeshPhysicalMaterial {
         shader.uniforms.uNoiseDensity = uniforms.uNoiseDensity
         shader.uniforms.uNoiseStrength = uniforms.uNoiseStrength
         shader.uniforms.uIntensity = uniforms.uIntensity
+        shader.uniforms.uFrequency = uniforms.uFrequency
         shader.uniforms.uAmplitude = uniforms.uAmplitude
 
         shader.uniforms.uC1r = { value: formatColor(uC1?.r) }
