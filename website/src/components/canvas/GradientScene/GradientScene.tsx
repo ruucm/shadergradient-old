@@ -107,6 +107,7 @@ export function GradientScene({
 
   // shader
   const [shader] = useQueryState("shader")
+  const sceneShader = shader || "sphereShader"
 
   // force props
   const { animatedScale } = useSpring({ animatedScale: forceScale })
@@ -148,10 +149,14 @@ export function GradientScene({
       postProcessing={"threejs"} // turn on postpocessing
       loadingCallback={setLoadingPercentage}
       vertexShader={
-        type === "sphere" ? shaders[shader]?.vertexShader : vertexShaderGrad
+        type === "sphere"
+          ? shaders[sceneShader]?.vertexShader
+          : vertexShaderGrad
       }
       fragmentShader={
-        type === "sphere" ? shaders[shader]?.fragmentShader : fragmentShaderGrad
+        type === "sphere"
+          ? shaders[sceneShader]?.fragmentShader
+          : fragmentShaderGrad
       }
       axesHelper={axesHelper === "on"}
       wireframe={wireframe === "enable"}
