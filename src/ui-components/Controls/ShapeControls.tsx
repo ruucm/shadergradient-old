@@ -14,6 +14,8 @@ export const ShapeControls: React.FC<ShapeControlsPropsT> = () => {
   const [uSpeed, setUSpeed] = useQueryState("uSpeed")
   const [uStrength, setUStrength] = useQueryState("uStrength")
   const [uDensity, setUDensity] = useQueryState("uDensity")
+  const [uFrequency, setUFrequency] = useQueryState("uFrequency")
+  const [uAmplitude, setUAmplitude] = useQueryState("uAmplitude")
   const [positionX, setPositionX] = useQueryState("positionX")
   const [positionY, setPositionY] = useQueryState("positionY")
   const [positionZ, setPositionZ] = useQueryState("positionZ")
@@ -102,6 +104,35 @@ export const ShapeControls: React.FC<ShapeControlsPropsT> = () => {
         <UI.Slider
           defaultValue={uDensity}
           setValue={setUDensity}
+          step={0.1}
+          min={0}
+          max={7}
+        />
+      </UI.InputPanel>
+
+      <UI.InputPanel title="Noise Density">
+        <UI.Slider
+          defaultValue={uDensity}
+          setValue={setUDensity}
+          step={0.1}
+          min={0}
+          max={7}
+        />
+      </UI.InputPanel>
+
+      <UI.InputPanel title="uFrequency">
+        <UI.Slider
+          defaultValue={uFrequency}
+          setValue={setUFrequency}
+          step={0.1}
+          min={0}
+          max={7}
+        />
+      </UI.InputPanel>
+      <UI.InputPanel title="uAmplitude">
+        <UI.Slider
+          defaultValue={uAmplitude}
+          setValue={setUAmplitude}
           step={0.1}
           min={0}
           max={7}
