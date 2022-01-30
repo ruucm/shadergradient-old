@@ -63,8 +63,8 @@ void main() {
   float distortion =
       pnoise((normal + t) * uNoiseDensity, vec3(10.0)) * uNoiseStrength;
   vec3 pos = position + (normal * distortion);
-  // float angle = sin(uv.y * uFrequency + t) * uAmplitude;
-  // pos = rotateY(pos, angle);
+  float angle = sin(uv.y * uFrequency + t) * uAmplitude;
+  pos = rotateY(pos, angle);
 
   vPos = pos;
   vDistort = distortion;
