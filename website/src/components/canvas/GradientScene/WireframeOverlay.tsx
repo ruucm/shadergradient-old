@@ -13,6 +13,7 @@ import { initialCurrent } from "@/consts"
 import glsl from "glslify"
 import vertexShaderGrad from "./shaders/vertexShaderGrad.glsl"
 import fragmentShaderGrad from "./shaders/fragmentShaderGrad.glsl"
+import wireframeFragmentShader from "./shaders/wireframeFragmentShader.glsl"
 import * as shaders from "./shaders"
 
 const glslPragmas = `
@@ -83,9 +84,9 @@ export function WireframeOverlay({
   const [rotationZ] = useQueryState("rotationZ")
 
   // colors
-  const [color1] = useQueryState('color1')
-  const [color2] = useQueryState('color2')
-  const [color3] = useQueryState('color3')
+  const [color1] = useQueryState("color1")
+  const [color2] = useQueryState("color2")
+  const [color3] = useQueryState("color3")
 
   // effects
   const [grain] = useQueryState("grain")
@@ -118,11 +119,6 @@ export function WireframeOverlay({
     animatedPosition: forcePos || [positionX, positionY, positionZ],
   })
 
-  const {animatedZoom} = useSpring({
-    animatedZoom: forceZoom || responsiveCameraZoom
-  })
-
-
   return (
     <Gradient
       // @ts-ignore
@@ -139,20 +135,23 @@ export function WireframeOverlay({
       }
       cameraRotation={{ x: 0, y: 0, z: 0 }}
       type={type}
-      animate={animate === 'on'}
+      animate={animate === "on"}
       cameraZoom={forceZoom !== null ? forceZoom : responsiveCameraZoom}
-
       uTime={uTime}
       uStrength={uStrength}
       uDensity={uDensity}
       uSpeed={uSpeed}
-      colors={['#666666','#666666','#666666']}
-      grain={'off'}
-      lightType={'3d'}
+      colors={
+        hoverState !== 0
+          ? ["#ffffff", "#ffffff", "#ffffff"]
+          : ["#000000", "#000000", "#000000"]
+      }
+      grain={grain}
+      lightType={"3d"}
       envPreset={envPreset}
       reflection={reflection}
-      brightness={brightness}
-      postProcessing={"threejs"} // turn on postpocessing
+      brightness={0.2}
+      postProcessing={"r3f"} // turn on postpocessing
       loadingCallback={setLoadingPercentage}
       vertexShader={
         type === "sphere" ? shaders[shader]?.vertexShader : vertexShaderGrad
@@ -167,9 +166,8 @@ export function WireframeOverlay({
 }
 
 function getResponsiveZoom(cameraZoom: number) {
-  const type = window.innerWidth >= window.innerHeight ? 'width' : 'height'
+  const type = window.innerWidth >= window.innerHeight ? "width" : "height"
 
-  if (type === 'width') return cameraZoom * (window.innerWidth / 1440)
+  if (type === "width") return cameraZoom * (window.innerWidth / 1440)
   else return cameraZoom * (window.innerHeight / 900)
 }
-

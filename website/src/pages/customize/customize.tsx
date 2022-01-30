@@ -1,7 +1,7 @@
 import { Footer } from "@/components/dom/Footer"
 import { GradientScene } from "@/components/canvas/GradientScene"
 import { PreviewWrapper } from "@/components/dom/PreviewWrapper"
-import { WireframeOverlay } from "@/components/canvas/GradientScene"
+import { WireframeOverlay } from "@/components/canvas/GradientScene/WireframeOverlay"
 import { PreviewSwitch } from "@/components/dom/PreviewSwitch"
 
 import { useUIStore } from "@/helpers/store"
@@ -53,6 +53,10 @@ const DOM = () => {
   }, [])
 
   React.useEffect(() => {
+    console.log(hoverState)
+  }, [hoverState])
+
+  React.useEffect(() => {
     PRESETS[current].title.substring(1, 2)
   }, [current])
 
@@ -63,13 +67,13 @@ const DOM = () => {
           {/* Go Back */}
           <div className={styles.content}>
             <motion.div style={{ color: PRESETS[current].color }}>
-              <Link href='/'> ← ShaderGradient</Link>
+              <Link href="/"> ← ShaderGradient</Link>
               {/* Temp Test */}
 
-              <div style={{ display: 'flex', fontSize: 30 }}>
+              <div style={{ display: "flex", fontSize: 30 }}>
                 <div>current: {hoverState}</div>
                 <div
-                  style={{ padding: 6, background: 'black' }}
+                  style={{ padding: 6, background: "black" }}
                   onMouseEnter={() => {
                     setHoverState(1)
                   }}
@@ -80,7 +84,7 @@ const DOM = () => {
                   1
                 </div>
                 <div
-                  style={{ padding: 6, background: 'black' }}
+                  style={{ padding: 6, background: "black" }}
                   onMouseEnter={() => {
                     setHoverState(2)
                   }}
@@ -91,7 +95,7 @@ const DOM = () => {
                   2
                 </div>
                 <div
-                  style={{ padding: 6, background: 'black' }}
+                  style={{ padding: 6, background: "black" }}
                   onMouseEnter={() => {
                     setHoverState(3)
                   }}
@@ -137,7 +141,9 @@ const DOM = () => {
                       color={
                         mode === "full" ? PRESETS[current].color : "#FF430A"
                       }
-                      onClick={() => {}}
+                      onClick={() => {
+                        console.log()
+                      }}
                       visible={current === index}
                       isMobile={isMobile}
                     >
@@ -191,22 +197,22 @@ const DOM = () => {
   else return <></>
 }
 
+const Overlay = ({ r3f }) => {
+  const hoverState = useUIStore((state: any) => state.hoverState)
+  // return <>{hoverState !== 0 ? <WireframeOverlay r3f /> : null}</>
+  return (
+    <>
+      <WireframeOverlay r3f />
+    </>
+  )
+}
+
 // canvas components goes here
 const R3F = ({ r3f }) => {
   return (
     <>
       <GradientScene r3f />
-    </>
-  )
-}
-
-const Overlay = ({r3f})=>{
-  const hoverState = useUIStore((state: any) => state.hoverState)
-
-  return(
-    <>
-    {hoverState !==0? <WireframeOverlay r3f/>
-: null}
+      <Overlay r3f />
     </>
   )
 }
@@ -216,7 +222,6 @@ const Page = () => {
     <>
       <DOM />
       <R3F r3f />
-      <Overlay r3f/>
     </>
   )
 }

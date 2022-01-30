@@ -1,2 +1,2 @@
 export * from "./GradientScene"
-export * from './WireframeOverlay'
+export * from "./WireframeOverlay"
