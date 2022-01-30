@@ -89,7 +89,7 @@ void main() {
   // distanceToCenter로 중심점과의 거리를 구함.
 
   vec4 diffuseColor =
-      vec4(mix(color1, mix(color2, color3, smoothstep(-1.0, 1.0, vPos.y)),
+      vec4(mix(color3, mix(color2, color1, smoothstep(-1.0, 1.0, vPos.y)),
                distanceToCenter),
            1);
 
