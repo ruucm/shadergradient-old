@@ -51,8 +51,6 @@ For example
 yarn link shadergradient && npm link '/Users/ruucm/MyDocuments/Carving/blocks/shadergradient/node_modules/react' && npm link '/Users/ruucm/MyDocuments/Carving/blocks/shadergradient/node_modules/@react-three/fiber' && npm link '/Users/ruucm/MyDocuments/Carving/blocks/shadergradient/node_modules/@react-three/drei' && npm link '/Users/ruucm/MyDocuments/Carving/blocks/shadergradient/node_modules/postprocessing' && yarn dev
 ```
 
-## Next.js Example Project
+## ~~Next.js Example Project~~
 
 [Codesandbox](https://codesandbox.io/s/optimistic-benji-pw64i)
-
-This example project was bootstrapped with [`create-r3f-app`](https://github.com/RenaudROHLINGER/create-r3f-app)
