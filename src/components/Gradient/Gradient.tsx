@@ -41,11 +41,7 @@ export const Gradient: React.FC<any> = ({
   shader,
 }) => {
   let sceneShader = shaders.defaults
-  if (shader)
-    sceneShader = {
-      vertex: shaders[shader]?.vertexShader,
-      fragment: shaders[shader]?.fragmentShader,
-    }
+  if (shader) sceneShader = shaders[shader]
 
   useFrame((state) => {
     state.camera.position.lerp(
