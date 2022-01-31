@@ -5,8 +5,6 @@ import { Suspense } from 'react'
 import * as THREE from 'three'
 import { usePostProcessing } from '../../hooks/use-post-processing'
 import { GradientMesh } from './GradientMesh'
-import vertexShaderDefault from './shaders/vertexShaderDefault.glsl'
-import fragmentShaderDefault from './shaders/fragmentShaderDefault.glsl'
 import * as shaders from './shaders'
 
 const vec = new THREE.Vector3()
@@ -42,10 +40,7 @@ export const Gradient: React.FC<any> = ({
   wireframe,
   shader,
 }) => {
-  let sceneShader = {
-    vertex: vertexShaderDefault,
-    fragment: fragmentShaderDefault,
-  }
+  let sceneShader = shaders.defaults
   if (shader)
     sceneShader = {
       vertex: shaders[shader]?.vertexShader,
