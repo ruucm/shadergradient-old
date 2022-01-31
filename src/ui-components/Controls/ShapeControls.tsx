@@ -16,12 +16,6 @@ export const ShapeControls: React.FC<ShapeControlsPropsT> = () => {
   const [uDensity, setUDensity] = useQueryState('uDensity')
   const [uFrequency, setUFrequency] = useQueryState('uFrequency')
   const [uAmplitude, setUAmplitude] = useQueryState('uAmplitude')
-  const [positionX, setPositionX] = useQueryState('positionX')
-  const [positionY, setPositionY] = useQueryState('positionY')
-  const [positionZ, setPositionZ] = useQueryState('positionZ')
-  const [rotationX, setRotationX] = useQueryState('rotationX')
-  const [rotationY, setRotationY] = useQueryState('rotationY')
-  const [rotationZ, setRotationZ] = useQueryState('rotationZ')
 
   return (
     <div className='flex flex-col gap-3'>
@@ -126,48 +120,6 @@ export const ShapeControls: React.FC<ShapeControlsPropsT> = () => {
           step={0.1}
           min={0}
           max={7}
-        />
-      </UI.InputPanel>
-
-      <UI.InputPanel title='Position'>
-        <UI.NumberInput
-          label='x'
-          step={0.1}
-          value={positionX}
-          setValue={setPositionX}
-        />
-        <UI.NumberInput
-          label='y'
-          step={0.1}
-          value={positionY}
-          setValue={setPositionY}
-        />
-        <UI.NumberInput
-          label='z'
-          step={0.1}
-          value={positionZ}
-          setValue={setPositionZ}
-        />
-      </UI.InputPanel>
-
-      <UI.InputPanel title='Rotation'>
-        <UI.NumberInput
-          label='x'
-          step={10}
-          value={rotationX}
-          setValue={setRotationX}
-        />
-        <UI.NumberInput
-          label='y'
-          step={10}
-          value={rotationY}
-          setValue={setRotationY}
-        />
-        <UI.NumberInput
-          label='z'
-          step={10}
-          value={rotationZ}
-          setValue={setRotationZ}
         />
       </UI.InputPanel>
     </div>

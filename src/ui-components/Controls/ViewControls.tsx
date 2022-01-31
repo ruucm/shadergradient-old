@@ -2,12 +2,12 @@ import * as React from 'react'
 import * as UI from '..'
 import { useQueryState } from '@/hooks/useQueryState'
 
-type CameraControlsPropsT = React.DetailedHTMLProps<
+type ViewControlsPropsT = React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLDivElement>,
   HTMLDivElement
 >
 
-export const CameraControls: React.FC<CameraControlsPropsT> = () => {
+export const ViewControls: React.FC<ViewControlsPropsT> = () => {
   // const [cameraZoom, setCameraZoom] = useQueryState("cameraZoom")
   const [cDistance, setCdistance] = useQueryState('cDistance')
   const [cameraPositionX, setCameraPositionX] = useQueryState('cameraPositionX')
@@ -16,6 +16,13 @@ export const CameraControls: React.FC<CameraControlsPropsT> = () => {
 
   const [cAzimuthAngle, setCazimuthAngle] = useQueryState('cAzimuthAngle')
   const [cPolarAngle, setCpolarAngle] = useQueryState('cPolarAngle')
+
+  const [positionX, setPositionX] = useQueryState('positionX')
+  const [positionY, setPositionY] = useQueryState('positionY')
+  const [positionZ, setPositionZ] = useQueryState('positionZ')
+  const [rotationX, setRotationX] = useQueryState('rotationX')
+  const [rotationY, setRotationY] = useQueryState('rotationY')
+  const [rotationZ, setRotationZ] = useQueryState('rotationZ')
 
   return (
     <div className='flex flex-col gap-3'>
@@ -76,6 +83,49 @@ export const CameraControls: React.FC<CameraControlsPropsT> = () => {
           max={180}
           value={cPolarAngle}
           setValue={setCpolarAngle}
+        />
+      </UI.InputPanel>
+
+      {/* Object Controls */}
+      <UI.InputPanel title='Position'>
+        <UI.NumberInput
+          label='x'
+          step={0.1}
+          value={positionX}
+          setValue={setPositionX}
+        />
+        <UI.NumberInput
+          label='y'
+          step={0.1}
+          value={positionY}
+          setValue={setPositionY}
+        />
+        <UI.NumberInput
+          label='z'
+          step={0.1}
+          value={positionZ}
+          setValue={setPositionZ}
+        />
+      </UI.InputPanel>
+
+      <UI.InputPanel title='Rotation'>
+        <UI.NumberInput
+          label='x'
+          step={10}
+          value={rotationX}
+          setValue={setRotationX}
+        />
+        <UI.NumberInput
+          label='y'
+          step={10}
+          value={rotationY}
+          setValue={setRotationY}
+        />
+        <UI.NumberInput
+          label='z'
+          step={10}
+          value={rotationZ}
+          setValue={setRotationZ}
         />
       </UI.InputPanel>
     </div>

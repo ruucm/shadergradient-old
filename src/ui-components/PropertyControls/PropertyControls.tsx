@@ -21,7 +21,7 @@ export const PropertyControls: React.FC<Props> = ({
       {activeTab === 'shape' && <UI.ShapeControls />}
       {activeTab === 'colors' && <UI.ColorControls />}
       {activeTab === 'effects' && <UI.EffectControls />}
-      {activeTab === 'camera' && <UI.CameraControls />}
+      {activeTab === 'view' && <UI.ViewControls />}
       {activeTab === 'tools' && <UI.Tools />}
     </div>
   )
