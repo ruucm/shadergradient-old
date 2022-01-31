@@ -30,8 +30,8 @@ function App() {
 
   return (
     <div className='bg-white h-full'>
-      <LCanvas currentTheme={currentTheme}>
-        <GradientScene />
+      <LCanvas>
+        <GradientScene current={currentTheme} />
       </LCanvas>
       <div className='bg-controls-sub-panel text-white font-semibold text-sm flex justify-center items-center gap-3 py-1'>
         Theme
@@ -54,7 +54,7 @@ function App() {
         </div>
       </div>
       <Controls />
-      <div className='flex gap-0.5 p-3 absolute w-full bottom-0'>
+      <div className='flex gap-0.5 p-3 absolute w-full bottom-0 bg-white'>
         <UI.Button>Extract GIF</UI.Button>
         <UI.Button kind='secondary' onClick={insertCanvasAsImage}>
           Snapshot
