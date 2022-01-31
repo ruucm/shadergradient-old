@@ -4,10 +4,10 @@ import {
   useQueryState,
   updateGradientState,
   PRESETS,
+  dToRArr,
 } from '@shadergradient'
 import { useUIStore } from '@/helpers/store'
 import { useSpring } from '@react-spring/core'
-import { dToRArr } from '@/utils'
 import { initialCurrent } from '@/consts'
 import glsl from 'glslify'
 
