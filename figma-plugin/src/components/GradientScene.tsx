@@ -6,7 +6,7 @@ import {
   updateGradientState,
   useQueryState,
   PRESETS,
-} from 'shadergradient'
+} from '@shadergradient'
 
 export function GradientScene({ currentTheme }) {
   React.useEffect(() => {
