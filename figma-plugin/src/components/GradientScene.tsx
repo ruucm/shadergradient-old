@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { GradientWithQueries } from '../../../dist'
 import glsl from 'glslify'
+import { initialCurrent } from '../consts'
 
 // pre import for shaders
 export const glslPragmas = `
@@ -29,5 +30,7 @@ export const glslPragmas = `
 glsl`${glslPragmas}`
 
 export function GradientScene({ current }) {
-  return <GradientWithQueries current={current} />
+  return (
+    <GradientWithQueries current={current} initialCurrent={initialCurrent} />
+  )
 }

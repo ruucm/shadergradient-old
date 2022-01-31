@@ -1,3 +1,4 @@
+import { initialCurrent } from '@/consts'
 import { useUIStore } from '@/helpers/store'
 import { GradientWithQueries } from '@shadergradient'
 import glsl from 'glslify'
@@ -38,6 +39,7 @@ export function GradientScene(forceProps) {
     <GradientWithQueries
       {...forceProps}
       current={current}
+      initialCurrent={initialCurrent}
       setLoadingPercentage={setLoadingPercentage}
     />
   )
