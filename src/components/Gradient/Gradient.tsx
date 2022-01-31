@@ -5,8 +5,8 @@ import { Suspense } from 'react'
 import * as THREE from 'three'
 import { usePostProcessing } from '../../hooks/use-post-processing'
 import { GradientMesh } from './GradientMesh'
-import vertexShaderGrad from './shaders/vertexShaderGrad.glsl'
-import fragmentShaderGrad from './shaders/fragmentShaderGrad.glsl'
+import vertexShaderDefault from './shaders/vertexShaderDefault.glsl'
+import fragmentShaderDefault from './shaders/fragmentShaderDefault.glsl'
 import * as shaders from './shaders'
 
 const vec = new THREE.Vector3()
@@ -42,13 +42,15 @@ export const Gradient: React.FC<any> = ({
   wireframe,
   shader,
 }) => {
-  const sceneShader = shader || 'sphereShader'
-  const vertexShader =
-    type === 'sphere' ? shaders[sceneShader]?.vertexShader : vertexShaderGrad
-  const fragmentShader =
-    type === 'sphere'
-      ? shaders[sceneShader]?.fragmentShader
-      : fragmentShaderGrad
+  let sceneShader = {
+    vertex: vertexShaderDefault,
+    fragment: fragmentShaderDefault,
+  }
+  if (shader)
+    sceneShader = {
+      vertex: shaders[shader]?.vertexShader,
+      fragment: shaders[shader]?.fragmentShader,
+    }
 
   useFrame((state) => {
     state.camera.position.lerp(
@@ -93,8 +95,8 @@ export const Gradient: React.FC<any> = ({
           uSpeed={uSpeed}
           colors={colors}
           reflection={reflection}
-          vertexShader={vertexShader}
-          fragmentShader={fragmentShader}
+          vertexShader={sceneShader.vertex}
+          fragmentShader={sceneShader.fragment}
           axesHelper={axesHelper}
           wireframe={wireframe}
         />
