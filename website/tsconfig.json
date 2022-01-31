@@ -2,12 +2,8 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "src/*"
-      ],
-      "@shadergradient": [
-        "../dist"
-      ]
+      "@/*": ["src/*"],
+      "@shadergradient": ["../dist"]
     },
     "target": "es5",
     "lib": [

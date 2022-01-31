@@ -1,5 +1,9 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@shadergradient": ["../dist"]
+    },
     "target": "es6",
     "jsx": "react",
     "skipLibCheck": true,
