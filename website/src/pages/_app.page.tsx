@@ -2,13 +2,13 @@ import { useRouter } from 'next/router'
 import { useStore } from '@/helpers/store'
 import { useEffect } from 'react'
 import Header from '@/config'
-import Dom from '@/components/layout/dom'
+import Dom from '@/components/layout/Dom'
 import partition from '@/helpers/partition'
 import dynamic from 'next/dynamic'
 
 import '../../../ui-styles-compiled.css'
 
-const LCanvas = dynamic(() => import('@/components/layout/canvas'), {
+const LCanvas = dynamic(() => import('@/components/layout/LCanvas'), {
   ssr: false,
 })
 
