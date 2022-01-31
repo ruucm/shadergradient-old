@@ -1,12 +1,12 @@
-import * as React from "react"
-import { useState } from "react"
-import { UI, useQueryState } from "shadergradient"
+import * as React from 'react'
+import { useState } from 'react'
+import { UI, useQueryState } from 'shadergradient'
 
 export function Controls() {
-  const [activeTab, setActiveTab] = useState("shape")
-  const [embedMode] = useQueryState("embedMode")
+  const [activeTab, setActiveTab] = useState('shape')
+  const [embedMode] = useQueryState('embedMode')
 
-  if (embedMode === "off")
+  if (embedMode === 'off')
     return (
       <>
         <UI.ControlTypeTitles
