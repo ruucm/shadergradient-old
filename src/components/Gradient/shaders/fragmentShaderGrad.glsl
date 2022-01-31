@@ -94,7 +94,7 @@ void main() {
 #include <clipping_planes_fragment>
 
   vec4 diffuseColor = vec4(
-      mix(mix(color1, color3, smoothstep(-3.0, 3.0, vPos.x)), color2, vPos.z),
+      mix(mix(color1, color2, smoothstep(-3.0, 3.0, vPos.x)), color3, vPos.z),
       1);
   // diffuseColor는 오브젝트의 베이스 색상 (환경이나 빛이 고려되지 않은 본연의
   // 색)
