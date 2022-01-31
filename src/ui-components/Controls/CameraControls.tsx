@@ -64,13 +64,13 @@ export const CameraControls: React.FC<CameraControlsPropsT> = () => {
       {/* rotateTo (camera-controls) */}
       <UI.InputPanel title='rotateTo'>
         <UI.NumberInput
-          label='azimuthAngle'
+          label='azimuth'
           step={10}
           value={cAzimuthAngle}
           setValue={setCazimuthAngle}
         />
         <UI.NumberInput
-          label='polarAngle'
+          label='polar'
           step={10}
           min={0}
           max={180}
