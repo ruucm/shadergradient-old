@@ -1,4 +1,4 @@
-/// <reference path="../node_modules/@figma/plugin-typings/index.d.ts" />
+/// <reference path="../../node_modules/@figma/plugin-typings/index.d.ts" />
 
 figma.showUI(__html__, { width: 453, height: 842 })
 

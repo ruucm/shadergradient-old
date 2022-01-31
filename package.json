@@ -36,6 +36,7 @@
   },
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.16.4",
+    "@figma/plugin-typings": "^1.16.1",
     "@next/bundle-analyzer": "^11.1.2",
     "@react-three/drei": "^7.25.4",
     "@react-three/fiber": "^7.0.21",
@@ -52,6 +53,7 @@
     "babel-plugin-styled-components": "^2.0.2",
     "babel-runtime": "^6.26.0",
     "concurrently": "^6.2.1",
+    "css-loader": "^3.1.0",
     "eslint": "^7.32.0",
     "eslint-config-next": "^12.0.4",
     "eslint-config-prettier": "^8.3.0",
@@ -62,9 +64,12 @@
     "glsl-random": "^0.0.5",
     "glslify": "^7.1.1",
     "glslify-loader": "^2.0.0",
+    "html-webpack-inline-source-plugin": "0.0.10",
+    "html-webpack-plugin": "^3.2.0",
     "next": "^12.0.5",
     "next-compose-plugins": "^2.2.1",
     "next-offline": "^5.0.5",
+    "node-sass": "^6.0.1",
     "postcss": "^8.4.4",
     "postcss-cli": "^8.3.1",
     "prettier": "2.5.0",
@@ -76,19 +81,24 @@
     "rollup-plugin-postcss": "^4.0.1",
     "rollup-plugin-sass": "^1.2.4",
     "rollup-plugin-typescript2": "^0.30.0",
+    "sass-loader": "^10",
     "short-uuid": "^4.2.0",
+    "style-loader": "^0.23.1",
     "tailwindcss": "^2.2.19",
     "three": "^0.135.0",
     "three-stdlib": "^2.5.10",
+    "ts-loader": "^6.0.4",
     "typescript": "^4.5.5",
     "url-loader": "^4.1.1",
-    "webpack": "^5.64.4"
+    "webpack": "^4.38.0",
+    "webpack-cli": "^3.3.6"
   },
   "scripts": {
     "build": "rm -rf dist && rollup -c",
     "start": "concurrently --kill-others \"npm run package:start\" \"npm run ui:start\"",
     "package:start": "rollup -c -w",
-    "ui:start": "TAILWIND_MODE=watch postcss ui-styles.css -o ui-styles-compiled.css --watch",
+    "ui:start": "npx tailwindcss -i ui-styles.css -o ui-styles-compiled.css --watch",
+    "ui:start-postcss": "TAILWIND_MODE=watch postcss ui-styles.css -o ui-styles-compiled.css --watch",
     "lint": "yarn prettier && yarn eslint",
     "eslint": "next lint --fix --dir src",
     "prettier": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,md}\" \"website/**/*.{ts,tsx}\" \"figma-plugin/**/*.{ts,tsx}\"",
@@ -99,6 +109,7 @@
     "website:build": "next build website",
     "website:start": "next start website -p 3002",
     "website:export": "next export website",
-    "website:deploy": "npm run docs:build && npm run docs:export && cp -r .vercel website/out/.vercel && vercel --prod ./website/out"
+    "website:deploy": "npm run docs:build && npm run docs:export && cp -r .vercel website/out/.vercel && vercel --prod ./website/out",
+    "plugin:start": "webpack --config ./figma-plugin/webpack.config.js --mode development --watch"
   }
 }

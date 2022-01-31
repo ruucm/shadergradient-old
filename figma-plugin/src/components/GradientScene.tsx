@@ -1,12 +1,39 @@
 import * as React from 'react'
-import { Environment, OrbitControls } from '@react-three/drei'
-import { Canvas } from '@react-three/fiber'
+import { Canvas, extend, useFrame, useThree } from '@react-three/fiber'
 import {
   Gradient,
   updateGradientState,
   useQueryState,
   PRESETS,
-} from '@shadergradient'
+  dToR,
+} from '../../../dist'
+import CameraControls from 'camera-controls'
+import * as THREE from 'three'
+import { useEffect, useRef } from 'react'
+
+CameraControls.install({ THREE })
+extend({ CameraControls })
+
+function LControl() {
+  const ref: any = useRef()
+
+  useFrame((state, delta) => ref.current.update(delta))
+
+  const [cAzimuthAngle] = useQueryState('cAzimuthAngle')
+  const [cPolarAngle] = useQueryState('cPolarAngle')
+  const [cDistance] = useQueryState('cDistance')
+
+  useEffect(() => {
+    const control = ref.current
+    if (control) {
+      control.rotateTo(dToR(cAzimuthAngle), dToR(cPolarAngle), true)
+      control.dollyTo(cDistance, true)
+    }
+  }, [ref, cAzimuthAngle, cPolarAngle, cDistance])
+
+  // @ts-ignore
+  return <cameraControls ref={ref} args={[camera, gl.domElement]} />
+}
 
 export function GradientScene({ currentTheme }) {
   React.useEffect(() => {
@@ -63,11 +90,6 @@ export function GradientScene({ currentTheme }) {
       linear={true} //sRGBEncoding
       flat={true} //ACESFilmicToneMapping
     >
-      <OrbitControls
-        enablePan={false}
-        enableZoom={false}
-        enableRotate={false}
-      />
       <Gradient
         rotation={[
           (rotationX / 360) * Math.PI,

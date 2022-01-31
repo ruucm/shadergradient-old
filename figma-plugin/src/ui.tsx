@@ -1,6 +1,6 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-import { UI, PRESETS } from '@shadergradient'
+import { UI, PRESETS } from '../../dist'
 import '../../ui-styles-compiled.css'
 import { GradientScene } from './components/GradientScene'
 import { Controls } from './components/Controls'

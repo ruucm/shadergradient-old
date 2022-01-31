@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { useState } from 'react'
-import { UI, useQueryState } from '@shadergradient'
+import { UI, useQueryState } from '../../../dist'
 
 export function Controls() {
   const [activeTab, setActiveTab] = useState('shape')
