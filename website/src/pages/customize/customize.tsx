@@ -96,7 +96,7 @@ const DOM = () => {
                       color={
                         mode === "full" ? PRESETS[current].color : "#FF430A"
                       }
-                      onClick={() => {}}
+                      onClick={() => void 0}
                       visible={current === index}
                       isMobile={isMobile}
                     >

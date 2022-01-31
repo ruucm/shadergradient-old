@@ -23,8 +23,8 @@ function Layout({ dom }) {
 }
 
 const ForwardPropsToR3fComponent = ({ comp, pageProps }) => {
-  let r3fArr = []
-  let compArr = []
+  const r3fArr = []
+  const compArr = []
 
   try {
     Children.forEach(comp(pageProps).props.children, (child) => {
