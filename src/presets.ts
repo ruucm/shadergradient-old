@@ -24,11 +24,11 @@ export const PRESETS = [
   //   color: "black",
   //   url: "?animate=on&brightness=1&cameraPositionX=0.4&cameraPositionY=3.2&cameraPositionZ=0&cameraZoom=2.4&color1=%235ce7ff&color2=%231f2c2e&color3=%23b9dcac&embedMode=off&envPreset=dawn&grain=off&lightType=env&pixelDensity=1&positionX=0&positionY=0&positionZ=0&reflection=0&rotationX=180&rotationY=50&rotationZ=0&type=plane&uSpeed=0.2&uDensity=1&uStrength=2&uTime=0.2",
   // },
-  // {
-  //   title: "Aurora",
-  //   color: "white",
-  //   url: "?animate=on&brightness=1&cameraPositionX=0.4&cameraPositionY=3.2&cameraPositionZ=0&cameraZoom=2.4&color1=%235ce7ff&color2=%235ac5d3&color3=%23b9dcac&envPreset=city&grain=off&lightType=3d&reflection=0&rotationX=180&rotationY=50&rotationZ=0&type=waterPlane&uSpeed=0.3&uDensity=1&uStrength=2&uTime=0.2&pixelDensity=1&embedMode=off&positionX=0&positionY=0&positionZ=0",
-  // },
+  {
+    title: 'Aurora',
+    color: 'white',
+    url: '?animate=on&axesHelper=off&brightness=1.2&cAzimuthAngle=-20&cDistance=4.4&cPolarAngle=110&cameraPositionX=0&cameraPositionY=0&cameraPositionZ=0&cameraZoom=1&color1=%2300ffbf&color2=%23000000&color3=%230000ff&embedMode=off&envPreset=city&gizmoHelper=hide&grain=off&lightType=3d&pixelDensity=1&positionX=0&positionY=-1.6&positionZ=0&reflection=0.1&rotationX=0&rotationY=0&rotationZ=90&type=plane&uAmplitude=0&uDensity=2&uFrequency=0&uSpeed=0.1&uStrength=2&uTime=0.2&wireframe=false',
+  },
   // {
   //   title: "Tropical",
   //   color: "white",
