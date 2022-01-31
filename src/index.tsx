@@ -1,4 +1,5 @@
 export * from './components/Gradient'
+export * from './components/GradientWithQueries'
 export * as UI from './ui-components'
 export { useQueryState } from './hooks/useQueryState'
 export { updateGradientState } from './store'

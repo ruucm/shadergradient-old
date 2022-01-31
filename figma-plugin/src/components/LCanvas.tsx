@@ -37,20 +37,9 @@ function LControl() {
   return <cameraControls ref={ref} args={[camera, gl.domElement]} />
 }
 
-export function LCanvas({ currentTheme, children }) {
+export function LCanvas({ children }) {
   // performance
   const [pixelDensity] = useQueryState('pixelDensity')
-
-  React.useEffect(() => {
-    const searchParams = new URLSearchParams(PRESETS[currentTheme].url)
-    searchParams.set(
-      'cameraZoom',
-      (Number(searchParams.get('cameraZoom')) * 2).toString()
-    ) // x2 cameraZoom from the PRESET in figma plugin.
-    const gradientURL = searchParams.toString()
-
-    updateGradientState(gradientURL)
-  }, [currentTheme])
 
   return (
     <Canvas

@@ -1,78 +1,33 @@
 import * as React from 'react'
-import { Canvas, extend, useFrame, useThree } from '@react-three/fiber'
-import {
-  Gradient,
-  updateGradientState,
-  useQueryState,
-  PRESETS,
-  dToR,
-} from '../../../dist'
-import CameraControls from 'camera-controls'
-import * as THREE from 'three'
-import { useEffect, useRef } from 'react'
+import { GradientWithQueries } from '../../../dist'
+import glsl from 'glslify'
 
-export function GradientScene() {
-  // shape
-  const [type] = useQueryState('type')
-  const [animate] = useQueryState('animate')
-  const [uTime] = useQueryState('uTime')
-  const [uSpeed] = useQueryState('uSpeed')
-  const [uStrength] = useQueryState('uStrength')
-  const [positionX] = useQueryState('positionX')
-  const [positionY] = useQueryState('positionY')
-  const [positionZ] = useQueryState('positionZ')
-  const [rotationX] = useQueryState('rotationX')
-  const [rotationY] = useQueryState('rotationY')
-  const [rotationZ] = useQueryState('rotationZ')
+// pre import for shaders
+export const glslPragmas = `
+#pragma glslify: snoise2 = require(glsl-noise/simplex/2d)
+#pragma glslify: snoise3 = require(glsl-noise/simplex/3d)
+#pragma glslify: snoise2 = require(glsl-noise/simplex/2d) 
+#pragma glslify: snoise3 = require(glsl-noise/simplex/3d) 
+#pragma glslify: snoise4 = require(glsl-noise/simplex/4d) 
+#pragma glslify: cnoise2 = require(glsl-noise/classic/2d) 
+#pragma glslify: cnoise3 = require(glsl-noise/classic/3d) 
+#pragma glslify: cnoise4 = require(glsl-noise/classic/4d) 
+#pragma glslify: pnoise2 = require(glsl-noise/periodic/2d) 
+#pragma glslify: pnoise3 = require(glsl-noise/periodic/3d) 
+#pragma glslify: pnoise4 = require(glsl-noise/periodic/4d)
 
-  // colors
-  const [color1] = useQueryState('color1')
-  const [color2] = useQueryState('color2')
-  const [color3] = useQueryState('color3')
+#pragma glslify: halftone = require('glsl-halftone')
+#pragma glslify: cookTorranceSpec = require(glsl-specular-cook-torrance) 
 
-  // effects
-  const [grain] = useQueryState('grain')
-  const [lightType] = useQueryState('lightType')
-  const [envPreset] = useQueryState('envPreset')
-  const [reflection] = useQueryState('reflection')
-  const [brightness] = useQueryState('brightness')
+#pragma glslify: faceNormals = require('glsl-face-normal')
+#pragma glslify: perturb = require('glsl-perturb-normal')
+#pragma glslify: computeDiffuse = require('glsl-diffuse-oren-nayar')
+#pragma glslify: computeSpecular = require('glsl-specular-phong')
+#pragma glslify: toLinear = require('glsl-gamma/in')
+#pragma glslify: toGamma = require('glsl-gamma/out')
+`
+glsl`${glslPragmas}`
 
-  // camera
-  const [cameraZoom] = useQueryState('cameraZoom')
-  const [cameraPositionX] = useQueryState('cameraPositionX')
-  const [cameraPositionY] = useQueryState('cameraPositionY')
-  const [cameraPositionZ] = useQueryState('cameraPositionZ')
-
-  return (
-    <Gradient
-      rotation={[
-        (rotationX / 360) * Math.PI,
-        (rotationY / 360) * Math.PI,
-        (rotationZ / 360) * Math.PI,
-      ]}
-      position={[positionX, positionY, positionZ]}
-      cameraPosition={{
-        x: cameraPositionX,
-        y: cameraPositionY,
-        z: cameraPositionZ,
-      }}
-      // same as the website.
-      cameraRotation={{ x: 0, y: 0, z: 0 }}
-      type={type}
-      animate={animate === 'on'}
-      cameraZoom={cameraZoom}
-      uTime={uTime}
-      uStrength={uStrength}
-      uSpeed={uSpeed}
-      colors={[color1, color2, color3]}
-      grain={grain}
-      lightType={lightType}
-      envPreset={envPreset}
-      reflection={reflection}
-      brightness={brightness}
-      postProcessing={'threejs'} // turn on postpocessing
-    />
-  )
+export function GradientScene({ current }) {
+  return <GradientWithQueries current={current} />
 }
-
-GradientScene.defaultProps = {}
