@@ -1,48 +1,17 @@
 import { Environment } from '@/lib/Environment'
-import { SpringValue } from '@react-spring/core'
-import { Euler, useFrame } from '@react-three/fiber'
+import { useFrame } from '@react-three/fiber'
 import * as React from 'react'
 import { Suspense } from 'react'
 import * as THREE from 'three'
 import { usePostProcessing } from '../../hooks/use-post-processing'
 import { GradientMesh } from './GradientMesh'
-
-export type GradientPropsT = {
-  r3f?: boolean
-  type?: 'plane' | 'sphere' | 'waterPlane'
-  postProcessing?: 'threejs' | 'r3f'
-  environment?: any
-  lights?: any
-  position?: Euler | undefined
-  rotation?: Euler | SpringValue<number[]> | undefined
-  scale?: any
-  cameraPosition?: { x: number; y: number; z: number }
-  cameraRotation?: { x: number; y: number; z: number }
-  cameraQuaternion?: { x: number; y: number; z: number }
-  cameraZoom?: number
-  uTime?: number
-  animate?: boolean
-  uStrength?: number
-  uDensity?: number
-  uFrequency?: number
-  uAmplitude?: number
-  uSpeed?: number
-  colors?: string[]
-  grain?: 'on' | 'off'
-  lightType?: 'env' | '3d'
-  envPreset?: 'city' | 'lobby' | 'dawn'
-  reflection?: number
-  brightness?: number
-  loadingCallback?: (percentage: number) => void
-  vertexShader: string
-  fragmentShader: string
-  axesHelper?: boolean
-  wireframe?: boolean
-}
+import vertexShaderGrad from './shaders/vertexShaderGrad.glsl'
+import fragmentShaderGrad from './shaders/fragmentShaderGrad.glsl'
+import * as shaders from './shaders'
 
 const vec = new THREE.Vector3()
 
-export const Gradient: React.FC<GradientPropsT> = ({
+export const Gradient: React.FC<any> = ({
   r3f,
   type = 'plane',
   postProcessing = 'threejs',
@@ -69,11 +38,18 @@ export const Gradient: React.FC<GradientPropsT> = ({
   reflection = 0.1,
   brightness = 1.2,
   loadingCallback,
-  vertexShader,
-  fragmentShader,
   axesHelper,
   wireframe,
+  shader,
 }) => {
+  const sceneShader = shader || 'sphereShader'
+  const vertexShader =
+    type === 'sphere' ? shaders[sceneShader]?.vertexShader : vertexShaderGrad
+  const fragmentShader =
+    type === 'sphere'
+      ? shaders[sceneShader]?.fragmentShader
+      : fragmentShaderGrad
+
   useFrame((state) => {
     state.camera.position.lerp(
       vec.set(cameraPosition.x, cameraPosition.y, cameraPosition.z),

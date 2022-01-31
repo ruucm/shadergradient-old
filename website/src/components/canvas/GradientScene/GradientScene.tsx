@@ -9,13 +9,10 @@ import { useUIStore } from '@/helpers/store'
 import { useSpring } from '@react-spring/core'
 import { dToRArr } from '@/utils'
 import { initialCurrent } from '@/consts'
-
 import glsl from 'glslify'
-import vertexShaderGrad from './shaders/vertexShaderGrad.glsl'
-import fragmentShaderGrad from './shaders/fragmentShaderGrad.glsl'
-import * as shaders from './shaders'
 
-const glslPragmas = `
+// pre import for shaders
+export const glslPragmas = `
 #pragma glslify: snoise2 = require(glsl-noise/simplex/2d)
 #pragma glslify: snoise3 = require(glsl-noise/simplex/3d)
 #pragma glslify: snoise2 = require(glsl-noise/simplex/2d) 
@@ -108,7 +105,6 @@ export function GradientScene({
 
   // shader
   const [shader] = useQueryState('shader')
-  const sceneShader = shader || 'sphereShader'
 
   // force props
   const { animatedScale } = useSpring({ animatedScale: forceScale })
@@ -151,16 +147,7 @@ export function GradientScene({
       brightness={brightness}
       postProcessing={'threejs'} // turn on postpocessing
       loadingCallback={setLoadingPercentage}
-      vertexShader={
-        type === 'sphere'
-          ? shaders[sceneShader]?.vertexShader
-          : vertexShaderGrad
-      }
-      fragmentShader={
-        type === 'sphere'
-          ? shaders[sceneShader]?.fragmentShader
-          : fragmentShaderGrad
-      }
+      shader={shader}
       axesHelper={axesHelper === 'on'}
       wireframe={wireframe === 'enable'}
     />
