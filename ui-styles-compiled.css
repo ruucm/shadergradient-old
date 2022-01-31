@@ -796,6 +796,10 @@ html,
   height: 330px;
 }
 
+.max-h-\[330px\] {
+  max-height: 330px;
+}
+
 .min-h-\[336px\] {
   min-height: 336px;
 }
@@ -1173,6 +1177,10 @@ input[type='number'] {
 
   .md\:flex-col {
     flex-direction: column;
+  }
+
+  .md\:flex-wrap {
+    flex-wrap: wrap;
   }
 
   .md\:justify-start {
