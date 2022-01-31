@@ -109,7 +109,6 @@ export function Environment({
       useAsset.clear(map)
       texture.dispose()
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [texture, background, scene])
 
   return null
