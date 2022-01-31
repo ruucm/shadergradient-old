@@ -1,32 +1,19 @@
-import * as React from "react"
-import { useLoader, useThree } from "@react-three/fiber"
+import * as React from 'react'
+import { useLoader, useThree } from '@react-three/fiber'
 import {
-  CubeTexture,
+  FloatType,
+  EquirectangularReflectionMapping,
   CubeTextureLoader,
   Texture,
-  PMREMGenerator,
   Scene,
   Loader,
-} from "three"
-import { RGBELoader } from "three-stdlib"
-import { useAsset } from "use-asset"
+} from 'three'
+import { RGBELoader } from 'three-stdlib'
 
-import { presetsObj, PresetsType } from "./environment-assets"
-
-function getTexture(
-  texture: Texture | CubeTexture,
-  gen: PMREMGenerator,
-  isCubeMap: boolean
-) {
-  if (isCubeMap) {
-    gen.compileEquirectangularShader()
-    return gen.fromCubemap(texture as CubeTexture).texture
-  }
-  return gen.fromEquirectangular(texture).texture
-}
+import { presetsObj, PresetsType } from './environment-assets'
 
 const CUBEMAP_ROOT =
-  "https://rawcdn.githack.com/pmndrs/drei-assets/aa3600359ba664d546d05821bcbca42013587df2"
+  'https://rawcdn.githack.com/pmndrs/drei-assets/aa3600359ba664d546d05821bcbca42013587df2'
 
 type Props = {
   background?: boolean
@@ -40,8 +27,8 @@ type Props = {
 
 export function Environment({
   background = false,
-  files = ["/px.png", "/nx.png", "/py.png", "/ny.png", "/pz.png", "/nz.png"],
-  path = "",
+  files = ['/px.png', '/nx.png', '/py.png', '/ny.png', '/pz.png', '/nz.png'],
+  path = '',
   preset = undefined,
   scene,
   extensions,
@@ -50,14 +37,13 @@ export function Environment({
   if (preset) {
     if (!(preset in presetsObj)) {
       throw new Error(
-        "Preset must be one of: " + Object.keys(presetsObj).join(", ")
+        'Preset must be one of: ' + Object.keys(presetsObj).join(', ')
       )
     }
     files = presetsObj[preset]
-    path = CUBEMAP_ROOT + "/hdri/"
+    path = CUBEMAP_ROOT + '/hdri/'
   }
   const defaultScene = useThree(({ scene }) => scene)
-  const gl = useThree(({ gl }) => gl)
   const isCubeMap = Array.isArray(files)
   const loader = isCubeMap ? CubeTextureLoader : RGBELoader
   const loaderResult: Texture | Texture[] = useLoader(
@@ -66,26 +52,16 @@ export function Environment({
     isCubeMap ? [files] : files,
     (loader) => {
       loader.setPath(path)
+      // @ts-expect-error
+      loader.setDataType?.(FloatType)
       if (extensions) extensions(loader)
     },
     (xhr) => {
       if (loadingCallback) loadingCallback((xhr.loaded / xhr.total) * 100)
     }
   )
-  const map: Texture = isCubeMap ? loaderResult[0] : loaderResult
-
-  // PMREMGenerator takes its sweet time to generate the env-map,
-  // Let's make this part of suspense, or else it just yields a frame-skip
-  const texture = useAsset<Texture, [Texture]>(
-    () =>
-      new Promise((res) => {
-        const gen = new PMREMGenerator(gl)
-        const texture = getTexture(map, gen, isCubeMap) as Texture
-        gen.dispose()
-        res(texture)
-      }),
-    map
-  )
+  const texture: Texture = isCubeMap ? loaderResult[0] : loaderResult
+  texture.mapping = EquirectangularReflectionMapping
 
   React.useLayoutEffect(() => {
     const oldbg = scene ? scene.background : defaultScene.background
@@ -106,7 +82,6 @@ export function Environment({
         defaultScene.background = oldbg
       }
       // Environment textures are volatile, better dispose and uncache them
-      useAsset.clear(map)
       texture.dispose()
     }
   }, [texture, background, scene])

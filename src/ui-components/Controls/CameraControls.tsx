@@ -1,6 +1,6 @@
-import * as React from "react"
-import * as UI from ".."
-import { useQueryState } from "@/hooks/useQueryState"
+import * as React from 'react'
+import * as UI from '..'
+import { useQueryState } from '@/hooks/useQueryState'
 
 type CameraControlsPropsT = React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLDivElement>,
@@ -9,18 +9,18 @@ type CameraControlsPropsT = React.DetailedHTMLProps<
 
 export const CameraControls: React.FC<CameraControlsPropsT> = () => {
   // const [cameraZoom, setCameraZoom] = useQueryState("cameraZoom")
-  const [cDistance, setCdistance] = useQueryState("cDistance")
-  const [cameraPositionX, setCameraPositionX] = useQueryState("cameraPositionX")
-  const [cameraPositionY, setCameraPositionY] = useQueryState("cameraPositionY")
-  const [cameraPositionZ, setCameraPositionZ] = useQueryState("cameraPositionZ")
+  const [cDistance, setCdistance] = useQueryState('cDistance')
+  const [cameraPositionX, setCameraPositionX] = useQueryState('cameraPositionX')
+  const [cameraPositionY, setCameraPositionY] = useQueryState('cameraPositionY')
+  const [cameraPositionZ, setCameraPositionZ] = useQueryState('cameraPositionZ')
 
-  const [cAzimuthAngle, setCazimuthAngle] = useQueryState("cAzimuthAngle")
-  const [cPolarAngle, setCpolarAngle] = useQueryState("cPolarAngle")
+  const [cAzimuthAngle, setCazimuthAngle] = useQueryState('cAzimuthAngle')
+  const [cPolarAngle, setCpolarAngle] = useQueryState('cPolarAngle')
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className='flex flex-col gap-3'>
       {/* Zoom */}
-      <UI.InputPanel title="Distance">
+      <UI.InputPanel title='Distance'>
         <UI.Slider
           defaultValue={cDistance}
           setValue={setCdistance}
@@ -62,15 +62,15 @@ export const CameraControls: React.FC<CameraControlsPropsT> = () => {
       </UI.InputPanel> */}
 
       {/* rotateTo (camera-controls) */}
-      <UI.InputPanel title="rotateTo">
+      <UI.InputPanel title='rotateTo'>
         <UI.NumberInput
-          label="azimuthAngle"
+          label='azimuthAngle'
           step={10}
           value={cAzimuthAngle}
           setValue={setCazimuthAngle}
         />
         <UI.NumberInput
-          label="polarAngle"
+          label='polarAngle'
           step={10}
           min={0}
           max={180}

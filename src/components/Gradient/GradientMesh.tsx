@@ -1,10 +1,10 @@
-import { useFrame } from "@react-three/fiber"
-import * as React from "react"
-import { useRef, useEffect } from "react"
-import "./GradientMaterial"
-import * as THREE from "three"
-import { animated } from "@react-spring/three"
-import { CubicBezierLine } from "@react-three/drei"
+import { useFrame } from '@react-three/fiber'
+import * as React from 'react'
+import { useRef, useEffect } from 'react'
+import './GradientMaterial'
+import * as THREE from 'three'
+import { animated } from '@react-spring/three'
+import { CubicBezierLine } from '@react-three/drei'
 
 const clock = new THREE.Clock()
 
@@ -13,7 +13,7 @@ const meshCount = 200
 const axis = new THREE.Vector3(1, 0, 0).normalize()
 
 export function GradientMesh({
-  type = "plane",
+  type = 'plane',
   r3f,
   position,
   rotation,
@@ -62,10 +62,10 @@ export function GradientMesh({
       rotation={rotation}
       scale={scale}
     >
-      {type === "plane" && <planeGeometry args={[10, 10, 1, meshCount]} />}
+      {type === 'plane' && <planeGeometry args={[10, 10, 1, meshCount]} />}
       {/* {type === 'sphere' && <icosahedronBufferGeometry args={[3, meshCount]} />} */}
-      {type === "sphere" && <icosahedronBufferGeometry args={[1, 64]} />}
-      {type === "waterPlane" && (
+      {type === 'sphere' && <icosahedronBufferGeometry args={[1, 64]} />}
+      {type === 'waterPlane' && (
         <planeGeometry args={[10, 10, meshCount, meshCount]} />
       )}
 
@@ -74,19 +74,19 @@ export function GradientMesh({
           <CubicBezierLine
             start={[0, 0, 0]}
             end={[10, 0, 0]}
-            color="red"
+            color='red'
             {...lineProps}
           />
           <CubicBezierLine
             start={[0, 0, 0]}
             end={[0, 10, 0]}
-            color="green"
+            color='green'
             {...lineProps}
           />
           <CubicBezierLine
             start={[0, 0, 0]}
             end={[0, 0, 10]}
-            color="blue"
+            color='blue'
             {...lineProps}
           />
         </>

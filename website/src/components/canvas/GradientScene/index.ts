@@ -1,1 +1,1 @@
-export * from "./GradientScene"
+export * from './GradientScene'

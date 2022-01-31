@@ -16,11 +16,11 @@ import {
   WebGLRenderTarget,
   HalfFloatType,
   MeshStandardMaterial,
-} from "three"
-import { Pass, FullScreenQuad } from "../postprocessing/Pass.js"
-import { SSRrShader } from "../shaders/SSRrShader.js"
-import { SSRrDepthShader } from "../shaders/SSRrShader.js"
-import { CopyShader } from "../shaders/CopyShader.js"
+} from 'three'
+import { Pass, FullScreenQuad } from '../postprocessing/Pass.js'
+import { SSRrShader } from '../shaders/SSRrShader.js'
+import { SSRrDepthShader } from '../shaders/SSRrShader.js'
+import { CopyShader } from '../shaders/CopyShader.js'
 
 class SSRrPass extends Pass {
   constructor({ renderer, scene, camera, width, height, selects, encoding }) {
@@ -49,7 +49,7 @@ class SSRrPass extends Pass {
     this.selects = selects
 
     this._specular = SSRrShader.defines.SPECULAR
-    Object.defineProperty(this, "specular", {
+    Object.defineProperty(this, 'specular', {
       get() {
         return this._specular
       },
@@ -62,7 +62,7 @@ class SSRrPass extends Pass {
     })
 
     this._fillHole = SSRrShader.defines.FILL_HOLE
-    Object.defineProperty(this, "fillHole", {
+    Object.defineProperty(this, 'fillHole', {
       get() {
         return this._fillHole
       },
@@ -75,7 +75,7 @@ class SSRrPass extends Pass {
     })
 
     this._infiniteThick = SSRrShader.defines.INFINITE_THICK
-    Object.defineProperty(this, "infiniteThick", {
+    Object.defineProperty(this, 'infiniteThick', {
       get() {
         return this._infiniteThick
       },
@@ -152,7 +152,7 @@ class SSRrPass extends Pass {
     // ssrr material
 
     if (SSRrShader === undefined) {
-      console.error("THREE.SSRrPass: The pass relies on SSRrShader.")
+      console.error('THREE.SSRrPass: The pass relies on SSRrShader.')
     }
 
     this.ssrrMaterial = new ShaderMaterial({
@@ -167,26 +167,26 @@ class SSRrPass extends Pass {
       blending: NoBlending,
     })
 
-    this.ssrrMaterial.uniforms["tDiffuse"].value =
+    this.ssrrMaterial.uniforms['tDiffuse'].value =
       this.beautyRenderTarget.texture
-    this.ssrrMaterial.uniforms["tSpecular"].value =
+    this.ssrrMaterial.uniforms['tSpecular'].value =
       this.specularRenderTarget.texture
-    this.ssrrMaterial.uniforms["tNormalSelects"].value =
+    this.ssrrMaterial.uniforms['tNormalSelects'].value =
       this.normalSelectsRenderTarget.texture
     this.ssrrMaterial.needsUpdate = true
-    this.ssrrMaterial.uniforms["tRefractive"].value =
+    this.ssrrMaterial.uniforms['tRefractive'].value =
       this.refractiveRenderTarget.texture
-    this.ssrrMaterial.uniforms["tDepth"].value =
+    this.ssrrMaterial.uniforms['tDepth'].value =
       this.beautyRenderTarget.depthTexture
-    this.ssrrMaterial.uniforms["tDepthSelects"].value =
+    this.ssrrMaterial.uniforms['tDepthSelects'].value =
       this.normalSelectsRenderTarget.depthTexture
-    this.ssrrMaterial.uniforms["cameraNear"].value = this.camera.near
-    this.ssrrMaterial.uniforms["cameraFar"].value = this.camera.far
-    this.ssrrMaterial.uniforms["resolution"].value.set(this.width, this.height)
-    this.ssrrMaterial.uniforms["cameraProjectionMatrix"].value.copy(
+    this.ssrrMaterial.uniforms['cameraNear'].value = this.camera.near
+    this.ssrrMaterial.uniforms['cameraFar'].value = this.camera.far
+    this.ssrrMaterial.uniforms['resolution'].value.set(this.width, this.height)
+    this.ssrrMaterial.uniforms['cameraProjectionMatrix'].value.copy(
       this.camera.projectionMatrix
     )
-    this.ssrrMaterial.uniforms["cameraInverseProjectionMatrix"].value.copy(
+    this.ssrrMaterial.uniforms['cameraInverseProjectionMatrix'].value.copy(
       this.camera.projectionMatrixInverse
     )
 
@@ -198,18 +198,18 @@ class SSRrPass extends Pass {
     // refractiveOn material
 
     this.refractiveOnMaterial = new MeshBasicMaterial({
-      color: "white",
+      color: 'white',
     })
 
     // refractiveOff material
 
     this.refractiveOffMaterial = new MeshBasicMaterial({
-      color: "black",
+      color: 'black',
     })
 
     // specular material
     this.specularMaterial = new MeshStandardMaterial({
-      color: "black",
+      color: 'black',
       metalness: 0,
       roughness: 0.2,
     })
@@ -223,10 +223,10 @@ class SSRrPass extends Pass {
       fragmentShader: SSRrDepthShader.fragmentShader,
       blending: NoBlending,
     })
-    this.depthRenderMaterial.uniforms["tDepth"].value =
+    this.depthRenderMaterial.uniforms['tDepth'].value =
       this.beautyRenderTarget.depthTexture
-    this.depthRenderMaterial.uniforms["cameraNear"].value = this.camera.near
-    this.depthRenderMaterial.uniforms["cameraFar"].value = this.camera.far
+    this.depthRenderMaterial.uniforms['cameraNear'].value = this.camera.near
+    this.depthRenderMaterial.uniforms['cameraFar'].value = this.camera.far
 
     // material for rendering the content of a render target
 
@@ -334,10 +334,10 @@ class SSRrPass extends Pass {
 
     // render SSRr
 
-    this.ssrrMaterial.uniforms["ior"].value = this.ior
-    this.ssrrMaterial.uniforms["maxDistance"].value = this.maxDistance
-    this.ssrrMaterial.uniforms["surfDist"].value = this.surfDist
-    this.ssrrMaterial.uniforms["tSpecular"].value =
+    this.ssrrMaterial.uniforms['ior'].value = this.ior
+    this.ssrrMaterial.uniforms['maxDistance'].value = this.maxDistance
+    this.ssrrMaterial.uniforms['surfDist'].value = this.surfDist
+    this.ssrrMaterial.uniforms['tSpecular'].value =
       this.specularRenderTarget.texture
     this.renderPass(renderer, this.ssrrMaterial, this.ssrrRenderTarget)
 
@@ -345,7 +345,7 @@ class SSRrPass extends Pass {
 
     switch (this.output) {
       case SSRrPass.OUTPUT.Default:
-        this.copyMaterial.uniforms["tDiffuse"].value =
+        this.copyMaterial.uniforms['tDiffuse'].value =
           this.beautyRenderTarget.texture
         this.copyMaterial.blending = NoBlending
         this.renderPass(
@@ -354,7 +354,7 @@ class SSRrPass extends Pass {
           this.renderToScreen ? null : writeBuffer
         )
 
-        this.copyMaterial.uniforms["tDiffuse"].value =
+        this.copyMaterial.uniforms['tDiffuse'].value =
           this.ssrrRenderTarget.texture
         this.copyMaterial.blending = NormalBlending
         this.renderPass(
@@ -365,7 +365,7 @@ class SSRrPass extends Pass {
 
         break
       case SSRrPass.OUTPUT.SSRr:
-        this.copyMaterial.uniforms["tDiffuse"].value =
+        this.copyMaterial.uniforms['tDiffuse'].value =
           this.ssrrRenderTarget.texture
         this.copyMaterial.blending = NoBlending
         this.renderPass(
@@ -377,7 +377,7 @@ class SSRrPass extends Pass {
         break
 
       case SSRrPass.OUTPUT.Beauty:
-        this.copyMaterial.uniforms["tDiffuse"].value =
+        this.copyMaterial.uniforms['tDiffuse'].value =
           this.beautyRenderTarget.texture
         this.copyMaterial.blending = NoBlending
         this.renderPass(
@@ -389,7 +389,7 @@ class SSRrPass extends Pass {
         break
 
       case SSRrPass.OUTPUT.Depth:
-        this.depthRenderMaterial.uniforms["tDepth"].value =
+        this.depthRenderMaterial.uniforms['tDepth'].value =
           this.beautyRenderTarget.depthTexture
         this.renderPass(
           renderer,
@@ -400,7 +400,7 @@ class SSRrPass extends Pass {
         break
 
       case SSRrPass.OUTPUT.DepthSelects:
-        this.depthRenderMaterial.uniforms["tDepth"].value =
+        this.depthRenderMaterial.uniforms['tDepth'].value =
           this.normalSelectsRenderTarget.depthTexture
         this.renderPass(
           renderer,
@@ -411,7 +411,7 @@ class SSRrPass extends Pass {
         break
 
       case SSRrPass.OUTPUT.NormalSelects:
-        this.copyMaterial.uniforms["tDiffuse"].value =
+        this.copyMaterial.uniforms['tDiffuse'].value =
           this.normalSelectsRenderTarget.texture
         this.copyMaterial.blending = NoBlending
         this.renderPass(
@@ -423,7 +423,7 @@ class SSRrPass extends Pass {
         break
 
       case SSRrPass.OUTPUT.Refractive:
-        this.copyMaterial.uniforms["tDiffuse"].value =
+        this.copyMaterial.uniforms['tDiffuse'].value =
           this.refractiveRenderTarget.texture
         this.copyMaterial.blending = NoBlending
         this.renderPass(
@@ -435,7 +435,7 @@ class SSRrPass extends Pass {
         break
 
       case SSRrPass.OUTPUT.Specular:
-        this.copyMaterial.uniforms["tDiffuse"].value =
+        this.copyMaterial.uniforms['tDiffuse'].value =
           this.specularRenderTarget.texture
         this.copyMaterial.blending = NoBlending
         this.renderPass(
@@ -447,7 +447,7 @@ class SSRrPass extends Pass {
         break
 
       default:
-        console.warn("THREE.SSRrPass: Unknown output type.")
+        console.warn('THREE.SSRrPass: Unknown output type.')
     }
   }
 
@@ -576,11 +576,11 @@ class SSRrPass extends Pass {
     this.normalSelectsRenderTarget.setSize(width, height)
     this.refractiveRenderTarget.setSize(width, height)
 
-    this.ssrrMaterial.uniforms["resolution"].value.set(width, height)
-    this.ssrrMaterial.uniforms["cameraProjectionMatrix"].value.copy(
+    this.ssrrMaterial.uniforms['resolution'].value.set(width, height)
+    this.ssrrMaterial.uniforms['cameraProjectionMatrix'].value.copy(
       this.camera.projectionMatrix
     )
-    this.ssrrMaterial.uniforms["cameraInverseProjectionMatrix"].value.copy(
+    this.ssrrMaterial.uniforms['cameraInverseProjectionMatrix'].value.copy(
       this.camera.projectionMatrixInverse
     )
   }

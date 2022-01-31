@@ -1,5 +1,5 @@
-import { Color } from "three"
-import { Pass } from "../postprocessing/Pass.js"
+import { Color } from 'three'
+import { Pass } from '../postprocessing/Pass.js'
 
 class ClearPass extends Pass {
   constructor(clearColor, clearAlpha) {

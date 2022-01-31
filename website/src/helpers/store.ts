@@ -1,6 +1,6 @@
 // @ts-nocheck
-import { initialCurrent } from "@/consts"
-import create from "zustand"
+import { initialCurrent } from '@/consts'
+import create from 'zustand'
 
 export const useStore = create(() => {
   return {
@@ -11,7 +11,7 @@ export const useStore = create(() => {
 
 export const useUIStore = create((set) => ({
   current: initialCurrent,
-  mode: "full",
+  mode: 'full',
   loadingPercentage: 0,
   setMode: (data) => set((state: any) => ({ ...state, mode: data })),
   setCurrent: (data) => set((state: any) => ({ ...state, current: data })),

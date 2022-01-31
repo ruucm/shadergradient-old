@@ -9,10 +9,10 @@ import {
   Vector2,
   Vector3,
   WebGLRenderTarget,
-} from "three"
-import { Pass, FullScreenQuad } from "../postprocessing/Pass.js"
-import { CopyShader } from "../shaders/CopyShader.js"
-import { LuminosityHighPassShader } from "../shaders/LuminosityHighPassShader.js"
+} from 'three'
+import { Pass, FullScreenQuad } from '../postprocessing/Pass.js'
+import { CopyShader } from '../shaders/CopyShader.js'
+import { LuminosityHighPassShader } from '../shaders/LuminosityHighPassShader.js'
 
 /**
  * UnrealBloomPass is inspired by the bloom pass of Unreal Engine. It creates a
@@ -51,20 +51,20 @@ class UnrealBloomPass extends Pass {
     let resy = Math.round(this.resolution.y / 2)
 
     this.renderTargetBright = new WebGLRenderTarget(resx, resy, pars)
-    this.renderTargetBright.texture.name = "UnrealBloomPass.bright"
+    this.renderTargetBright.texture.name = 'UnrealBloomPass.bright'
     this.renderTargetBright.texture.generateMipmaps = false
 
     for (let i = 0; i < this.nMips; i++) {
       const renderTargetHorizonal = new WebGLRenderTarget(resx, resy, pars)
 
-      renderTargetHorizonal.texture.name = "UnrealBloomPass.h" + i
+      renderTargetHorizonal.texture.name = 'UnrealBloomPass.h' + i
       renderTargetHorizonal.texture.generateMipmaps = false
 
       this.renderTargetsHorizontal.push(renderTargetHorizonal)
 
       const renderTargetVertical = new WebGLRenderTarget(resx, resy, pars)
 
-      renderTargetVertical.texture.name = "UnrealBloomPass.v" + i
+      renderTargetVertical.texture.name = 'UnrealBloomPass.v' + i
       renderTargetVertical.texture.generateMipmaps = false
 
       this.renderTargetsVertical.push(renderTargetVertical)
@@ -77,13 +77,13 @@ class UnrealBloomPass extends Pass {
     // luminosity high pass material
 
     if (LuminosityHighPassShader === undefined)
-      console.error("THREE.UnrealBloomPass relies on LuminosityHighPassShader")
+      console.error('THREE.UnrealBloomPass relies on LuminosityHighPassShader')
 
     const highPassShader = LuminosityHighPassShader
     this.highPassUniforms = UniformsUtils.clone(highPassShader.uniforms)
 
-    this.highPassUniforms["luminosityThreshold"].value = threshold
-    this.highPassUniforms["smoothWidth"].value = 0.01
+    this.highPassUniforms['luminosityThreshold'].value = threshold
+    this.highPassUniforms['smoothWidth'].value = 0.01
 
     this.materialHighPassFilter = new ShaderMaterial({
       uniforms: this.highPassUniforms,
@@ -103,7 +103,7 @@ class UnrealBloomPass extends Pass {
         this.getSeperableBlurMaterial(kernelSizeArray[i])
       )
 
-      this.separableBlurMaterials[i].uniforms["texSize"].value = new Vector2(
+      this.separableBlurMaterials[i].uniforms['texSize'].value = new Vector2(
         resx,
         resy
       )
@@ -115,22 +115,22 @@ class UnrealBloomPass extends Pass {
 
     // Composite material
     this.compositeMaterial = this.getCompositeMaterial(this.nMips)
-    this.compositeMaterial.uniforms["blurTexture1"].value =
+    this.compositeMaterial.uniforms['blurTexture1'].value =
       this.renderTargetsVertical[0].texture
-    this.compositeMaterial.uniforms["blurTexture2"].value =
+    this.compositeMaterial.uniforms['blurTexture2'].value =
       this.renderTargetsVertical[1].texture
-    this.compositeMaterial.uniforms["blurTexture3"].value =
+    this.compositeMaterial.uniforms['blurTexture3'].value =
       this.renderTargetsVertical[2].texture
-    this.compositeMaterial.uniforms["blurTexture4"].value =
+    this.compositeMaterial.uniforms['blurTexture4'].value =
       this.renderTargetsVertical[3].texture
-    this.compositeMaterial.uniforms["blurTexture5"].value =
+    this.compositeMaterial.uniforms['blurTexture5'].value =
       this.renderTargetsVertical[4].texture
-    this.compositeMaterial.uniforms["bloomStrength"].value = strength
-    this.compositeMaterial.uniforms["bloomRadius"].value = 0.1
+    this.compositeMaterial.uniforms['bloomStrength'].value = strength
+    this.compositeMaterial.uniforms['bloomRadius'].value = 0.1
     this.compositeMaterial.needsUpdate = true
 
     const bloomFactors = [1.0, 0.8, 0.6, 0.4, 0.2]
-    this.compositeMaterial.uniforms["bloomFactors"].value = bloomFactors
+    this.compositeMaterial.uniforms['bloomFactors'].value = bloomFactors
     this.bloomTintColors = [
       new Vector3(1, 1, 1),
       new Vector3(1, 1, 1),
@@ -138,18 +138,18 @@ class UnrealBloomPass extends Pass {
       new Vector3(1, 1, 1),
       new Vector3(1, 1, 1),
     ]
-    this.compositeMaterial.uniforms["bloomTintColors"].value =
+    this.compositeMaterial.uniforms['bloomTintColors'].value =
       this.bloomTintColors
 
     // copy material
     if (CopyShader === undefined) {
-      console.error("THREE.UnrealBloomPass relies on CopyShader")
+      console.error('THREE.UnrealBloomPass relies on CopyShader')
     }
 
     const copyShader = CopyShader
 
     this.copyUniforms = UniformsUtils.clone(copyShader.uniforms)
-    this.copyUniforms["opacity"].value = 1.0
+    this.copyUniforms['opacity'].value = 1.0
 
     this.materialCopy = new ShaderMaterial({
       uniforms: this.copyUniforms,
@@ -194,7 +194,7 @@ class UnrealBloomPass extends Pass {
       this.renderTargetsHorizontal[i].setSize(resx, resy)
       this.renderTargetsVertical[i].setSize(resx, resy)
 
-      this.separableBlurMaterials[i].uniforms["texSize"].value = new Vector2(
+      this.separableBlurMaterials[i].uniforms['texSize'].value = new Vector2(
         resx,
         resy
       )
@@ -227,8 +227,8 @@ class UnrealBloomPass extends Pass {
 
     // 1. Extract Bright Areas
 
-    this.highPassUniforms["tDiffuse"].value = readBuffer.texture
-    this.highPassUniforms["luminosityThreshold"].value = this.threshold
+    this.highPassUniforms['tDiffuse'].value = readBuffer.texture
+    this.highPassUniforms['luminosityThreshold'].value = this.threshold
     this.fsQuad.material = this.materialHighPassFilter
 
     renderer.setRenderTarget(this.renderTargetBright)
@@ -242,17 +242,17 @@ class UnrealBloomPass extends Pass {
     for (let i = 0; i < this.nMips; i++) {
       this.fsQuad.material = this.separableBlurMaterials[i]
 
-      this.separableBlurMaterials[i].uniforms["colorTexture"].value =
+      this.separableBlurMaterials[i].uniforms['colorTexture'].value =
         inputRenderTarget.texture
-      this.separableBlurMaterials[i].uniforms["direction"].value =
+      this.separableBlurMaterials[i].uniforms['direction'].value =
         UnrealBloomPass.BlurDirectionX
       renderer.setRenderTarget(this.renderTargetsHorizontal[i])
       renderer.clear()
       this.fsQuad.render(renderer)
 
-      this.separableBlurMaterials[i].uniforms["colorTexture"].value =
+      this.separableBlurMaterials[i].uniforms['colorTexture'].value =
         this.renderTargetsHorizontal[i].texture
-      this.separableBlurMaterials[i].uniforms["direction"].value =
+      this.separableBlurMaterials[i].uniforms['direction'].value =
         UnrealBloomPass.BlurDirectionY
       renderer.setRenderTarget(this.renderTargetsVertical[i])
       renderer.clear()
@@ -264,9 +264,9 @@ class UnrealBloomPass extends Pass {
     // Composite All the mips
 
     this.fsQuad.material = this.compositeMaterial
-    this.compositeMaterial.uniforms["bloomStrength"].value = this.strength
-    this.compositeMaterial.uniforms["bloomRadius"].value = this.radius
-    this.compositeMaterial.uniforms["bloomTintColors"].value =
+    this.compositeMaterial.uniforms['bloomStrength'].value = this.strength
+    this.compositeMaterial.uniforms['bloomRadius'].value = this.radius
+    this.compositeMaterial.uniforms['bloomTintColors'].value =
       this.bloomTintColors
 
     renderer.setRenderTarget(this.renderTargetsHorizontal[0])
@@ -276,7 +276,7 @@ class UnrealBloomPass extends Pass {
     // Blend it additively over the input texture
 
     this.fsQuad.material = this.materialCopy
-    this.copyUniforms["tDiffuse"].value =
+    this.copyUniforms['tDiffuse'].value =
       this.renderTargetsHorizontal[0].texture
 
     if (maskActive) renderer.state.buffers.stencil.setTest(true)

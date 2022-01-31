@@ -1,24 +1,24 @@
-import { EventDispatcher, Uniform } from "three"
-import { BlendFunction } from "./BlendFunction"
+import { EventDispatcher, Uniform } from 'three'
+import { BlendFunction } from './BlendFunction'
 
-import addBlendFunction from "./glsl/add/shader.frag"
-import alphaBlendFunction from "./glsl/alpha/shader.frag"
-import averageBlendFunction from "./glsl/average/shader.frag"
-import colorBurnBlendFunction from "./glsl/color-burn/shader.frag"
-import colorDodgeBlendFunction from "./glsl/color-dodge/shader.frag"
-import darkenBlendFunction from "./glsl/darken/shader.frag"
-import differenceBlendFunction from "./glsl/difference/shader.frag"
-import exclusionBlendFunction from "./glsl/exclusion/shader.frag"
-import lightenBlendFunction from "./glsl/lighten/shader.frag"
-import multiplyBlendFunction from "./glsl/multiply/shader.frag"
-import divideBlendFunction from "./glsl/divide/shader.frag"
-import negationBlendFunction from "./glsl/negation/shader.frag"
-import normalBlendFunction from "./glsl/normal/shader.frag"
-import overlayBlendFunction from "./glsl/overlay/shader.frag"
-import reflectBlendFunction from "./glsl/reflect/shader.frag"
-import screenBlendFunction from "./glsl/screen/shader.frag"
-import softLightBlendFunction from "./glsl/soft-light/shader.frag"
-import subtractBlendFunction from "./glsl/subtract/shader.frag"
+import addBlendFunction from './glsl/add/shader.frag'
+import alphaBlendFunction from './glsl/alpha/shader.frag'
+import averageBlendFunction from './glsl/average/shader.frag'
+import colorBurnBlendFunction from './glsl/color-burn/shader.frag'
+import colorDodgeBlendFunction from './glsl/color-dodge/shader.frag'
+import darkenBlendFunction from './glsl/darken/shader.frag'
+import differenceBlendFunction from './glsl/difference/shader.frag'
+import exclusionBlendFunction from './glsl/exclusion/shader.frag'
+import lightenBlendFunction from './glsl/lighten/shader.frag'
+import multiplyBlendFunction from './glsl/multiply/shader.frag'
+import divideBlendFunction from './glsl/divide/shader.frag'
+import negationBlendFunction from './glsl/negation/shader.frag'
+import normalBlendFunction from './glsl/normal/shader.frag'
+import overlayBlendFunction from './glsl/overlay/shader.frag'
+import reflectBlendFunction from './glsl/reflect/shader.frag'
+import screenBlendFunction from './glsl/screen/shader.frag'
+import softLightBlendFunction from './glsl/soft-light/shader.frag'
+import subtractBlendFunction from './glsl/subtract/shader.frag'
 
 /**
  * A blend function shader code catalogue.
@@ -100,7 +100,7 @@ export class BlendMode extends EventDispatcher {
 
   setBlendFunction(blendFunction) {
     this.blendFunction = blendFunction
-    this.dispatchEvent({ type: "change" })
+    this.dispatchEvent({ type: 'change' })
   }
 
   /**

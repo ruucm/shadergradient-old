@@ -1,7 +1,7 @@
-import * as THREE from "three"
-import * as React from "react"
-import { useRef, useState } from "react"
-import { useFrame } from "@react-three/fiber"
+import * as THREE from 'three'
+import * as React from 'react'
+import { useRef, useState } from 'react'
+import { useFrame } from '@react-three/fiber'
 
 export const Box = ({ r3f }: any) => {
   // This reference will give us direct access to the THREE.Mesh object
@@ -22,7 +22,7 @@ export const Box = ({ r3f }: any) => {
       onPointerOut={(event) => setHover(false)}
     >
       <boxGeometry args={[1, 1, 1]} />
-      <meshBasicMaterial color={hovered ? "hotpink" : "orange"} />
+      <meshBasicMaterial color={hovered ? 'hotpink' : 'orange'} />
     </mesh>
   )
 }

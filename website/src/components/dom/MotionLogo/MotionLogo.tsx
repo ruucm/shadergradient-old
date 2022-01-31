@@ -1,9 +1,9 @@
-import { motion } from "framer-motion"
-import styles from "./MotionLogo.module.scss"
-import loadingAnimationData from "../../../media/threelineloading.json"
+import { motion } from 'framer-motion'
+import styles from './MotionLogo.module.scss'
+import loadingAnimationData from '../../../media/threelineloading.json'
 
-import Lottie from "react-lottie"
-import { initialCurrent } from "@/consts"
+import Lottie from 'react-lottie'
+import { initialCurrent } from '@/consts'
 
 export function MotionLogo({ color = true, current, loadingPercentage }) {
   const loadingOption = {
@@ -12,7 +12,7 @@ export function MotionLogo({ color = true, current, loadingPercentage }) {
     animationData: loadingAnimationData,
     // animationData: JSON.parse(JSON.stringify(loadingAnimationData)),
     rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
+      preserveAspectRatio: 'xMidYMid slice',
     },
   }
 

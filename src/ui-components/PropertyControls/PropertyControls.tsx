@@ -1,5 +1,5 @@
-import * as React from "react"
-import { UI } from "../.."
+import * as React from 'react'
+import { UI } from '../..'
 
 type Props = {
   // All other props
@@ -14,15 +14,15 @@ export const PropertyControls: React.FC<Props> = ({
   return (
     <div
       className={
-        "w-screen h-[fit-content] bg-controls-panel-mobile text-primary mx-auto p-3.5 md:bg-controls-panel md:w-[470px] md:h-full md:p-4"
+        'w-screen h-[fit-content] bg-controls-panel-mobile text-primary mx-auto p-3.5 md:bg-controls-panel md:w-[470px] md:h-full md:p-4'
       }
       // style={{ padding: activeTab === "none" ? 0 : null }}
     >
-      {activeTab === "shape" && <UI.ShapeControls />}
-      {activeTab === "colors" && <UI.ColorControls />}
-      {activeTab === "effects" && <UI.EffectControls />}
-      {activeTab === "camera" && <UI.CameraControls />}
-      {activeTab === "tools" && <UI.Tools />}
+      {activeTab === 'shape' && <UI.ShapeControls />}
+      {activeTab === 'colors' && <UI.ColorControls />}
+      {activeTab === 'effects' && <UI.EffectControls />}
+      {activeTab === 'camera' && <UI.CameraControls />}
+      {activeTab === 'tools' && <UI.Tools />}
     </div>
   )
 }

@@ -1,6 +1,6 @@
-import { ShaderMaterial, UniformsUtils } from "three"
-import { Pass, FullScreenQuad } from "../postprocessing/Pass.js"
-import { HalftoneShader } from "../shaders/HalftoneShader.js"
+import { ShaderMaterial, UniformsUtils } from 'three'
+import { Pass, FullScreenQuad } from '../postprocessing/Pass.js'
+import { HalftoneShader } from '../shaders/HalftoneShader.js'
 
 /**
  * RGB Halftone pass for three.js effects composer. Requires HalftoneShader.
@@ -11,7 +11,7 @@ class HalftonePass extends Pass {
     super()
 
     if (HalftoneShader === undefined) {
-      console.error("THREE.HalftonePass requires HalftoneShader")
+      console.error('THREE.HalftonePass requires HalftoneShader')
     }
 
     this.uniforms = UniformsUtils.clone(HalftoneShader.uniforms)
@@ -35,7 +35,7 @@ class HalftonePass extends Pass {
   }
 
   render(renderer, writeBuffer, readBuffer /*, deltaTime, maskActive*/) {
-    this.material.uniforms["tDiffuse"].value = readBuffer.texture
+    this.material.uniforms['tDiffuse'].value = readBuffer.texture
 
     if (this.renderToScreen) {
       renderer.setRenderTarget(null)

@@ -1,16 +1,16 @@
-import { Environment } from "@/lib/Environment"
-import { SpringValue } from "@react-spring/core"
-import { Euler, useFrame } from "@react-three/fiber"
-import * as React from "react"
-import { Suspense } from "react"
-import * as THREE from "three"
-import { usePostProcessing } from "../../hooks/use-post-processing"
-import { GradientMesh } from "./GradientMesh"
+import { Environment } from '@/lib/Environment'
+import { SpringValue } from '@react-spring/core'
+import { Euler, useFrame } from '@react-three/fiber'
+import * as React from 'react'
+import { Suspense } from 'react'
+import * as THREE from 'three'
+import { usePostProcessing } from '../../hooks/use-post-processing'
+import { GradientMesh } from './GradientMesh'
 
 export type GradientPropsT = {
   r3f?: boolean
-  type?: "plane" | "sphere" | "waterPlane"
-  postProcessing?: "threejs" | "r3f"
+  type?: 'plane' | 'sphere' | 'waterPlane'
+  postProcessing?: 'threejs' | 'r3f'
   environment?: any
   lights?: any
   position?: Euler | undefined
@@ -28,9 +28,9 @@ export type GradientPropsT = {
   uAmplitude?: number
   uSpeed?: number
   colors?: string[]
-  grain?: "on" | "off"
-  lightType?: "env" | "3d"
-  envPreset?: "city" | "lobby" | "dawn"
+  grain?: 'on' | 'off'
+  lightType?: 'env' | '3d'
+  envPreset?: 'city' | 'lobby' | 'dawn'
   reflection?: number
   brightness?: number
   loadingCallback?: (percentage: number) => void
@@ -44,9 +44,9 @@ const vec = new THREE.Vector3()
 
 export const Gradient: React.FC<GradientPropsT> = ({
   r3f,
-  type = "plane",
-  postProcessing = "threejs",
-  environment = <Environment preset="lobby" background={true} />,
+  type = 'plane',
+  postProcessing = 'threejs',
+  environment = <Environment preset='lobby' background={true} />,
   lights = <ambientLight intensity={1} />,
   position = [0, 0, 0],
   rotation,
@@ -62,10 +62,10 @@ export const Gradient: React.FC<GradientPropsT> = ({
   uFrequency,
   uAmplitude,
   uSpeed = 0.3,
-  colors = ["#CC4C6E", "#1980FF", "#99B58F"],
-  grain = "on",
-  lightType = "env",
-  envPreset = "city",
+  colors = ['#CC4C6E', '#1980FF', '#99B58F'],
+  grain = 'on',
+  lightType = 'env',
+  envPreset = 'city',
   reflection = 0.1,
   brightness = 1.2,
   loadingCallback,
@@ -81,7 +81,7 @@ export const Gradient: React.FC<GradientPropsT> = ({
     )
   })
 
-  usePostProcessing({ on: postProcessing === "threejs", grain: grain === "on" })
+  usePostProcessing({ on: postProcessing === 'threejs', grain: grain === 'on' })
 
   let controlledEnvironment = environment
   if (envPreset)
@@ -99,8 +99,8 @@ export const Gradient: React.FC<GradientPropsT> = ({
 
   return (
     <>
-      <Suspense fallback="Load Failed">
-        {lightType === "env" ? controlledEnvironment : controlledLights}
+      <Suspense fallback='Load Failed'>
+        {lightType === 'env' ? controlledEnvironment : controlledLights}
 
         <GradientMesh
           key={colors.toString()}

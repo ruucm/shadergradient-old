@@ -1,13 +1,13 @@
-import { ShaderMaterial, UniformsUtils } from "three"
-import { Pass, FullScreenQuad } from "../postprocessing/Pass.js"
-import { FilmShader } from "../shaders/FilmShader.js"
+import { ShaderMaterial, UniformsUtils } from 'three'
+import { Pass, FullScreenQuad } from '../postprocessing/Pass.js'
+import { FilmShader } from '../shaders/FilmShader.js'
 
 class FilmPass extends Pass {
   constructor(noiseIntensity, scanlinesIntensity, scanlinesCount, grayscale) {
     super()
 
     if (FilmShader === undefined)
-      console.error("THREE.FilmPass relies on FilmShader")
+      console.error('THREE.FilmPass relies on FilmShader')
 
     const shader = FilmShader
 
@@ -31,8 +31,8 @@ class FilmPass extends Pass {
   }
 
   render(renderer, writeBuffer, readBuffer, deltaTime /*, maskActive */) {
-    this.uniforms["tDiffuse"].value = readBuffer.texture
-    this.uniforms["time"].value += deltaTime
+    this.uniforms['tDiffuse'].value = readBuffer.texture
+    this.uniforms['time'].value += deltaTime
 
     if (this.renderToScreen) {
       renderer.setRenderTarget(null)

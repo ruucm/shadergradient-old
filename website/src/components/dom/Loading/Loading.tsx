@@ -1,13 +1,13 @@
-import { useState } from "react"
-import { motion, useAnimation, AnimatePresence } from "framer-motion"
-import styles from "./Loading.module.scss"
-import { useInterval } from "@/hooks/useInterval"
-import { initialCurrent, initialLoadingTime } from "@/consts"
+import { useState } from 'react'
+import { motion, useAnimation, AnimatePresence } from 'framer-motion'
+import styles from './Loading.module.scss'
+import { useInterval } from '@/hooks/useInterval'
+import { initialCurrent, initialLoadingTime } from '@/consts'
 
-const title = "ShaderGradient "
-const descript1 = "beautiful, "
-const descript2 = "customizable, "
-const descript3 = "and moving gradients"
+const title = 'ShaderGradient '
+const descript1 = 'beautiful, '
+const descript2 = 'customizable, '
+const descript3 = 'and moving gradients'
 
 const sentence = {
   hidden: { opacity: 1 },
@@ -28,13 +28,13 @@ const letters = {
   },
 }
 
-export function Loading({ current, loadingPercentage, referer }) {
+export function Loading({ current, loadingPercentage, referer = '' }) {
   const [time, setTime] = useState(0)
   useInterval(() => {
     setTime(time + 1)
   }, 1000)
 
-  const splitted = referer?.split("/") || []
+  const splitted = referer?.split('/') || []
   const isFirstLoad = !splitted[splitted.length - 1]
 
   return (
@@ -44,31 +44,31 @@ export function Loading({ current, loadingPercentage, referer }) {
         isFirstLoad && (
           <motion.div
             className={styles.loading}
-            exit={{ scale: 4, opacity: 0, filter: "blur(30px)" }}
+            exit={{ scale: 4, opacity: 0, filter: 'blur(30px)' }}
             transition={{ duration: 1 }}
           >
             {time > 0 && (
               <div className={styles.leftWrapper}>
                 <motion.div
                   className={styles.title}
-                  initial="hidden"
-                  animate="show"
+                  initial='hidden'
+                  animate='show'
                 >
                   <motion.h1
                     variants={sentence}
-                    initial="hidden"
-                    animate="visible"
+                    initial='hidden'
+                    animate='visible'
                     onAnimationComplete={(definition) => {
-                      console.log("Completed animating", definition)
+                      console.log('Completed animating', definition)
                     }}
                   >
-                    <div style={{ textAlign: "left" }}>
-                      {title.split("").map((char, index) => {
+                    <div style={{ textAlign: 'left' }}>
+                      {title.split('').map((char, index) => {
                         return (
                           <motion.span
-                            key={char + "-" + index}
+                            key={char + '-' + index}
                             variants={letters}
-                            style={{ display: "inline-block" }}
+                            style={{ display: 'inline-block' }}
                             transition={{ duration: 0.8 }}
                           >
                             {char}
@@ -76,12 +76,12 @@ export function Loading({ current, loadingPercentage, referer }) {
                         )
                       })}
                     </div>
-                    {descript1.split("").map((char, index) => {
+                    {descript1.split('').map((char, index) => {
                       return (
                         <motion.span
-                          key={char + "-" + index}
+                          key={char + '-' + index}
                           variants={letters}
-                          style={{ display: "inline-block" }}
+                          style={{ display: 'inline-block' }}
                           transition={{ duration: 0.8 }}
                         >
                           {char}
@@ -90,12 +90,12 @@ export function Loading({ current, loadingPercentage, referer }) {
                     })}
 
                     <br />
-                    {descript2.split("").map((char, index) => {
+                    {descript2.split('').map((char, index) => {
                       return (
                         <motion.span
-                          key={char + "-" + index}
+                          key={char + '-' + index}
                           variants={letters}
-                          style={{ display: "inline-block" }}
+                          style={{ display: 'inline-block' }}
                           transition={{ duration: 0.8 }}
                         >
                           {char}
@@ -103,18 +103,18 @@ export function Loading({ current, loadingPercentage, referer }) {
                       )
                     })}
                     <br />
-                    {descript3.split(" ").map((word, index) => (
-                      <span key={word + "-" + index}>
+                    {descript3.split(' ').map((word, index) => (
+                      <span key={word + '-' + index}>
                         <span
-                          key={word + "-" + index}
-                          style={{ display: "inline-block" }}
+                          key={word + '-' + index}
+                          style={{ display: 'inline-block' }}
                         >
-                          {word.split("").map((char, index) => (
+                          {word.split('').map((char, index) => (
                             <motion.span
-                              key={char + "-" + index}
+                              key={char + '-' + index}
                               variants={letters}
                               style={{
-                                display: "inline-block",
+                                display: 'inline-block',
                               }}
                               transition={{ duration: 0.8 }}
                             >

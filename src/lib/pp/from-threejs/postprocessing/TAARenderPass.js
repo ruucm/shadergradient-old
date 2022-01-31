@@ -1,5 +1,5 @@
-import { WebGLRenderTarget } from "three"
-import { SSAARenderPass } from "../postprocessing/SSAARenderPass.js"
+import { WebGLRenderTarget } from 'three'
+import { SSAARenderPass } from '../postprocessing/SSAARenderPass.js'
 
 /**
  *
@@ -37,7 +37,7 @@ class TAARenderPass extends SSAARenderPass {
         readBuffer.height,
         this.params
       )
-      this.sampleRenderTarget.texture.name = "TAARenderPass.sample"
+      this.sampleRenderTarget.texture.name = 'TAARenderPass.sample'
     }
 
     if (!this.holdRenderTarget) {
@@ -46,7 +46,7 @@ class TAARenderPass extends SSAARenderPass {
         readBuffer.height,
         this.params
       )
-      this.holdRenderTarget.texture.name = "TAARenderPass.hold"
+      this.holdRenderTarget.texture.name = 'TAARenderPass.hold'
     }
 
     if (this.accumulate && this.accumulateIndex === -1) {
@@ -64,8 +64,8 @@ class TAARenderPass extends SSAARenderPass {
       this.accumulateIndex >= 0 &&
       this.accumulateIndex < jitterOffsets.length
     ) {
-      this.copyUniforms["opacity"].value = sampleWeight
-      this.copyUniforms["tDiffuse"].value = writeBuffer.texture
+      this.copyUniforms['opacity'].value = sampleWeight
+      this.copyUniforms['tDiffuse'].value = writeBuffer.texture
 
       // render the scene multiple times, each slightly jitter offset from the last and accumulate the results.
       const numSamplesPerFrame = Math.pow(2, this.sampleLevel)
@@ -103,16 +103,16 @@ class TAARenderPass extends SSAARenderPass {
     const accumulationWeight = this.accumulateIndex * sampleWeight
 
     if (accumulationWeight > 0) {
-      this.copyUniforms["opacity"].value = 1.0
-      this.copyUniforms["tDiffuse"].value = this.sampleRenderTarget.texture
+      this.copyUniforms['opacity'].value = 1.0
+      this.copyUniforms['tDiffuse'].value = this.sampleRenderTarget.texture
       renderer.setRenderTarget(writeBuffer)
       renderer.clear()
       this.fsQuad.render(renderer)
     }
 
     if (accumulationWeight < 1.0) {
-      this.copyUniforms["opacity"].value = 1.0 - accumulationWeight
-      this.copyUniforms["tDiffuse"].value = this.holdRenderTarget.texture
+      this.copyUniforms['opacity'].value = 1.0 - accumulationWeight
+      this.copyUniforms['tDiffuse'].value = this.holdRenderTarget.texture
       renderer.setRenderTarget(writeBuffer)
       if (accumulationWeight === 0) renderer.clear()
       this.fsQuad.render(renderer)

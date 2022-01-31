@@ -1,21 +1,21 @@
-import { ShaderMaterial, UniformsUtils } from "three"
-import { Pass, FullScreenQuad } from "../postprocessing/Pass.js"
-import { DotScreenShader } from "../shaders/DotScreenShader.js"
+import { ShaderMaterial, UniformsUtils } from 'three'
+import { Pass, FullScreenQuad } from '../postprocessing/Pass.js'
+import { DotScreenShader } from '../shaders/DotScreenShader.js'
 
 class DotScreenPass extends Pass {
   constructor(center, angle, scale) {
     super()
 
     if (DotScreenShader === undefined)
-      console.error("THREE.DotScreenPass relies on DotScreenShader")
+      console.error('THREE.DotScreenPass relies on DotScreenShader')
 
     var shader = DotScreenShader
 
     this.uniforms = UniformsUtils.clone(shader.uniforms)
 
-    if (center !== undefined) this.uniforms["center"].value.copy(center)
-    if (angle !== undefined) this.uniforms["angle"].value = angle
-    if (scale !== undefined) this.uniforms["scale"].value = scale
+    if (center !== undefined) this.uniforms['center'].value.copy(center)
+    if (angle !== undefined) this.uniforms['angle'].value = angle
+    if (scale !== undefined) this.uniforms['scale'].value = scale
 
     this.material = new ShaderMaterial({
       uniforms: this.uniforms,
@@ -27,8 +27,8 @@ class DotScreenPass extends Pass {
   }
 
   render(renderer, writeBuffer, readBuffer /*, deltaTime, maskActive */) {
-    this.uniforms["tDiffuse"].value = readBuffer.texture
-    this.uniforms["tSize"].value.set(readBuffer.width, readBuffer.height)
+    this.uniforms['tDiffuse'].value = readBuffer.texture
+    this.uniforms['tSize'].value.set(readBuffer.width, readBuffer.height)
 
     if (this.renderToScreen) {
       renderer.setRenderTarget(null)

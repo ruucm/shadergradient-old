@@ -1,12 +1,12 @@
-import { formatColor, hexToRgb } from "@/utils"
-import { extend } from "@react-three/fiber"
-import * as THREE from "three"
+import { formatColor, hexToRgb } from '@/utils'
+import { extend } from '@react-three/fiber'
+import * as THREE from 'three'
 // var hex = require('hex-rgb')
 // import hex from 'hex-rgb'
 
 const settings = {
   meshCount: 50,
-  type: "plane",
+  type: 'plane',
   color1r: 0.8,
   color1g: 0.3,
   color1b: 0.43,
@@ -69,8 +69,8 @@ const uniforms = {
   normalScale: { value: settings.normalScale },
   rotation: { value: settings.rotation },
   colors: { value: undefined },
-  vertexShader: "",
-  fragmentShader: "",
+  vertexShader: '',
+  fragmentShader: '',
 }
 
 export class GradientMaterial extends THREE.MeshPhysicalMaterial {
@@ -98,7 +98,7 @@ export class GradientMaterial extends THREE.MeshPhysicalMaterial {
 
         const meshType = this.userData.meshType
 
-        console.log("meshType", meshType)
+        console.log('meshType', meshType)
 
         shader.uniforms.uTime = uniforms.uTime
         shader.uniforms.uSpeed = uniforms.uSpeed
@@ -124,13 +124,13 @@ export class GradientMaterial extends THREE.MeshPhysicalMaterial {
         // material.normalScale = uniforms.normalScale;
         // console.log(material);
 
-        console.log("light", light)
+        console.log('light', light)
         shader.uniforms.light = { value: light }
 
         shader.vertexShader = this.userData.vertexShader
         shader.fragmentShader = this.userData.fragmentShader
 
-        console.log("shader", shader)
+        console.log('shader', shader)
       },
     })
   }

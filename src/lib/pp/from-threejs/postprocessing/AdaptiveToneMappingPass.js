@@ -7,11 +7,11 @@ import {
   ShaderMaterial,
   UniformsUtils,
   WebGLRenderTarget,
-} from "three"
-import { Pass, FullScreenQuad } from "../postprocessing/Pass.js"
-import { CopyShader } from "../shaders/CopyShader.js"
-import { LuminosityShader } from "../shaders/LuminosityShader.js"
-import { ToneMapShader } from "../shaders/ToneMapShader.js"
+} from 'three'
+import { Pass, FullScreenQuad } from '../postprocessing/Pass.js'
+import { CopyShader } from '../shaders/CopyShader.js'
+import { LuminosityShader } from '../shaders/LuminosityShader.js'
+import { ToneMapShader } from '../shaders/ToneMapShader.js'
 
 /**
  * Generate a texture that represents the luminosity of the current scene, adapted over time
@@ -34,7 +34,7 @@ class AdaptiveToneMappingPass extends Pass {
     this.currentLuminanceRT = null
 
     if (CopyShader === undefined)
-      console.error("THREE.AdaptiveToneMappingPass relies on CopyShader")
+      console.error('THREE.AdaptiveToneMappingPass relies on CopyShader')
 
     const copyShader = CopyShader
 
@@ -49,7 +49,7 @@ class AdaptiveToneMappingPass extends Pass {
     })
 
     if (LuminosityShader === undefined)
-      console.error("THREE.AdaptiveToneMappingPass relies on LuminosityShader")
+      console.error('THREE.AdaptiveToneMappingPass relies on LuminosityShader')
 
     this.materialLuminance = new ShaderMaterial({
       uniforms: UniformsUtils.clone(LuminosityShader.uniforms),
@@ -114,7 +114,7 @@ class AdaptiveToneMappingPass extends Pass {
     })
 
     if (ToneMapShader === undefined)
-      console.error("THREE.AdaptiveToneMappingPass relies on ToneMapShader")
+      console.error('THREE.AdaptiveToneMappingPass relies on ToneMapShader')
 
     this.materialToneMap = new ShaderMaterial({
       uniforms: UniformsUtils.clone(ToneMapShader.uniforms),
@@ -201,7 +201,7 @@ class AdaptiveToneMappingPass extends Pass {
       this.resolution,
       pars
     )
-    this.luminanceRT.texture.name = "AdaptiveToneMappingPass.l"
+    this.luminanceRT.texture.name = 'AdaptiveToneMappingPass.l'
     this.luminanceRT.texture.generateMipmaps = false
 
     this.previousLuminanceRT = new WebGLRenderTarget(
@@ -209,7 +209,7 @@ class AdaptiveToneMappingPass extends Pass {
       this.resolution,
       pars
     )
-    this.previousLuminanceRT.texture.name = "AdaptiveToneMappingPass.pl"
+    this.previousLuminanceRT.texture.name = 'AdaptiveToneMappingPass.pl'
     this.previousLuminanceRT.texture.generateMipmaps = false
 
     // We only need mipmapping for the current luminosity because we want a down-sampled version to sample in our adaptive shader
@@ -220,10 +220,10 @@ class AdaptiveToneMappingPass extends Pass {
       this.resolution,
       pars
     )
-    this.currentLuminanceRT.texture.name = "AdaptiveToneMappingPass.cl"
+    this.currentLuminanceRT.texture.name = 'AdaptiveToneMappingPass.cl'
 
     if (this.adaptive) {
-      this.materialToneMap.defines["ADAPTED_LUMINANCE"] = ""
+      this.materialToneMap.defines['ADAPTED_LUMINANCE'] = ''
       this.materialToneMap.uniforms.luminanceMap.value =
         this.luminanceRT.texture
     }
@@ -241,12 +241,12 @@ class AdaptiveToneMappingPass extends Pass {
   setAdaptive(adaptive) {
     if (adaptive) {
       this.adaptive = true
-      this.materialToneMap.defines["ADAPTED_LUMINANCE"] = ""
+      this.materialToneMap.defines['ADAPTED_LUMINANCE'] = ''
       this.materialToneMap.uniforms.luminanceMap.value =
         this.luminanceRT.texture
     } else {
       this.adaptive = false
-      delete this.materialToneMap.defines["ADAPTED_LUMINANCE"]
+      delete this.materialToneMap.defines['ADAPTED_LUMINANCE']
       this.materialToneMap.uniforms.luminanceMap.value = null
     }
 

@@ -1,1 +1,1 @@
-export * from "./MenuWrapper"
+export * from './MenuWrapper'

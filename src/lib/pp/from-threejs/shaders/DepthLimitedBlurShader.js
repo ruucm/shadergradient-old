@@ -1,4 +1,4 @@
-import { Vector2 } from "../../../build/three.module.js"
+import { Vector2 } from '../../../build/three.module.js'
 
 /**
  * TODO
@@ -135,10 +135,10 @@ const BlurShaderUtils = {
   },
 
   configure: function (material, kernelRadius, stdDev, uvIncrement) {
-    material.defines["KERNEL_RADIUS"] = kernelRadius
-    material.uniforms["sampleUvOffsets"].value =
+    material.defines['KERNEL_RADIUS'] = kernelRadius
+    material.uniforms['sampleUvOffsets'].value =
       BlurShaderUtils.createSampleOffsets(kernelRadius, uvIncrement)
-    material.uniforms["sampleWeights"].value =
+    material.uniforms['sampleWeights'].value =
       BlurShaderUtils.createSampleWeights(kernelRadius, stdDev)
     material.needsUpdate = true
   },

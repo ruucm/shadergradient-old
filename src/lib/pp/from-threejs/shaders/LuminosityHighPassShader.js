@@ -1,4 +1,4 @@
-import { Color } from "../../../build/three.module.js"
+import { Color } from '../../../build/three.module.js'
 
 /**
  * Luminosity
@@ -6,7 +6,7 @@ import { Color } from "../../../build/three.module.js"
  */
 
 const LuminosityHighPassShader = {
-  shaderID: "luminosityHighPass",
+  shaderID: 'luminosityHighPass',
 
   uniforms: {
     tDiffuse: { value: null },

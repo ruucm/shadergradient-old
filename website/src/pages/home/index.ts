@@ -1,2 +1,1 @@
-export { default } from "./home"
-export { getServerSideProps } from "./home"
+export { default, getStaticProps } from './home'
