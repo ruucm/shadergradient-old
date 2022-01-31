@@ -88,7 +88,7 @@ export const Gradient: React.FC<GradientPropsT> = ({
     controlledEnvironment = (
       <Environment
         preset={envPreset}
-        background={false}
+        background={true}
         loadingCallback={loadingCallback}
       />
     )
