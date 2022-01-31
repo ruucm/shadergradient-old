@@ -2,11 +2,12 @@ import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import { UI, PRESETS } from '../../dist'
 import '../../ui-styles-compiled.css'
-import { GradientScene } from './components/GradientScene'
 import { Controls } from './components/Controls'
 import './global.css'
 import { useState } from 'react'
 import { initialCurrent } from './consts'
+import { LCanvas } from './components/LCanvas'
+import { GradientScene } from './components/GradientScene'
 
 function Arrow(props) {
   return (
@@ -29,7 +30,9 @@ function App() {
 
   return (
     <div className='bg-white h-full'>
-      <GradientScene currentTheme={currentTheme} />
+      <LCanvas currentTheme={currentTheme}>
+        <GradientScene />
+      </LCanvas>
       <div className='bg-controls-sub-panel text-white font-semibold text-sm flex justify-center items-center gap-3 py-1'>
         Theme
         <div className='bg-controls-sub-panel-button w-[150px] flex justify-between items-center p-1 rounded'>

@@ -11,45 +11,7 @@ import CameraControls from 'camera-controls'
 import * as THREE from 'three'
 import { useEffect, useRef } from 'react'
 
-CameraControls.install({ THREE })
-extend({ CameraControls })
-
-function LControl() {
-  const ref: any = useRef()
-
-  useFrame((state, delta) => ref.current.update(delta))
-
-  const [cAzimuthAngle] = useQueryState('cAzimuthAngle')
-  const [cPolarAngle] = useQueryState('cPolarAngle')
-  const [cDistance] = useQueryState('cDistance')
-
-  useEffect(() => {
-    const control = ref.current
-    if (control) {
-      control.rotateTo(dToR(cAzimuthAngle), dToR(cPolarAngle), true)
-      control.dollyTo(cDistance, true)
-    }
-  }, [ref, cAzimuthAngle, cPolarAngle, cDistance])
-
-  // @ts-ignore
-  return <cameraControls ref={ref} args={[camera, gl.domElement]} />
-}
-
-export function GradientScene({ currentTheme }) {
-  React.useEffect(() => {
-    const searchParams = new URLSearchParams(PRESETS[currentTheme].url)
-    searchParams.set(
-      'cameraZoom',
-      (Number(searchParams.get('cameraZoom')) * 2).toString()
-    ) // x2 cameraZoom from the PRESET in figma plugin.
-    const gradientURL = searchParams.toString()
-
-    updateGradientState(gradientURL)
-  }, [currentTheme])
-
-  // performance
-  const [pixelDensity] = useQueryState('pixelDensity')
-
+export function GradientScene() {
   // shape
   const [type] = useQueryState('type')
   const [animate] = useQueryState('animate')
@@ -82,43 +44,34 @@ export function GradientScene({ currentTheme }) {
   const [cameraPositionZ] = useQueryState('cameraPositionZ')
 
   return (
-    <Canvas
-      style={{ height: 304 }}
-      gl={{ preserveDrawingBuffer: true }} // to capture the canvas
-      id='r3f-canvas'
-      dpr={pixelDensity}
-      linear={true} //sRGBEncoding
-      flat={true} //ACESFilmicToneMapping
-    >
-      <Gradient
-        rotation={[
-          (rotationX / 360) * Math.PI,
-          (rotationY / 360) * Math.PI,
-          (rotationZ / 360) * Math.PI,
-        ]}
-        position={[positionX, positionY, positionZ]}
-        cameraPosition={{
-          x: cameraPositionX,
-          y: cameraPositionY,
-          z: cameraPositionZ,
-        }}
-        // same as the website.
-        cameraRotation={{ x: 0, y: 0, z: 0 }}
-        type={type}
-        animate={animate === 'on'}
-        cameraZoom={cameraZoom}
-        uTime={uTime}
-        uStrength={uStrength}
-        uSpeed={uSpeed}
-        colors={[color1, color2, color3]}
-        grain={grain}
-        lightType={lightType}
-        envPreset={envPreset}
-        reflection={reflection}
-        brightness={brightness}
-        postProcessing={'threejs'} // turn on postpocessing
-      />
-    </Canvas>
+    <Gradient
+      rotation={[
+        (rotationX / 360) * Math.PI,
+        (rotationY / 360) * Math.PI,
+        (rotationZ / 360) * Math.PI,
+      ]}
+      position={[positionX, positionY, positionZ]}
+      cameraPosition={{
+        x: cameraPositionX,
+        y: cameraPositionY,
+        z: cameraPositionZ,
+      }}
+      // same as the website.
+      cameraRotation={{ x: 0, y: 0, z: 0 }}
+      type={type}
+      animate={animate === 'on'}
+      cameraZoom={cameraZoom}
+      uTime={uTime}
+      uStrength={uStrength}
+      uSpeed={uSpeed}
+      colors={[color1, color2, color3]}
+      grain={grain}
+      lightType={lightType}
+      envPreset={envPreset}
+      reflection={reflection}
+      brightness={brightness}
+      postProcessing={'threejs'} // turn on postpocessing
+    />
   )
 }
 
