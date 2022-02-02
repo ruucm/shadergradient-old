@@ -1,4 +1,4 @@
-import { useStore } from '@/helpers/store'
+import { useStore, useUIStore } from '@/helpers/store'
 import { Preload, GizmoHelper, GizmoViewport } from '@react-three/drei'
 import { Canvas, extend, useFrame, useThree } from '@react-three/fiber'
 import { useEffect, useRef } from 'react'
@@ -20,6 +20,7 @@ function LControl() {
   const [cAzimuthAngle] = useQueryState('cAzimuthAngle')
   const [cPolarAngle] = useQueryState('cPolarAngle')
   const [cDistance] = useQueryState('cDistance')
+  const hoverState = useUIStore((state: any) => state.hoverState)
 
   useEffect(() => {
     if (ref) dom.current.style['touch-action'] = 'none'
@@ -27,11 +28,13 @@ function LControl() {
 
   useEffect(() => {
     const control = ref.current
-    if (control) {
+    if (control && hoverState === 0) {
       control.rotateTo(dToR(cAzimuthAngle), dToR(cPolarAngle), true)
       control.dollyTo(cDistance, true)
+    } else if (hoverState !== 0) {
+      control.dollyTo(30, true)
     }
-  }, [ref, cAzimuthAngle, cPolarAngle, cDistance])
+  }, [ref, cAzimuthAngle, cPolarAngle, cDistance, hoverState])
 
   // @ts-ignore
   return <cameraControls ref={ref} args={[camera, gl.domElement]} />

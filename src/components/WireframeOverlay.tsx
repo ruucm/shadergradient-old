@@ -9,7 +9,7 @@ import {
   useQueryState,
 } from '../'
 
-export function GradientWithQueries({
+export function WireframeOverlay({
   forceZoom = null,
   forceCamPos = null,
   forceRot = null,
@@ -54,7 +54,6 @@ export function GradientWithQueries({
   const [color1] = useQueryState('color1')
   const [color2] = useQueryState('color2')
   const [color3] = useQueryState('color3')
-  const hoverStateColor = getHoverColor(hoverState, [color1, color2, color3])
 
   // effects
   const [grain] = useQueryState('grain')
@@ -70,8 +69,6 @@ export function GradientWithQueries({
   const [cameraPositionZ] = useQueryState('cameraPositionZ')
 
   const [embedMode] = useQueryState('embedMode')
-  const [axesHelper] = useQueryState('axesHelper')
-  const [wireframe] = useQueryState('wireframe')
 
   // shader
   const [shader] = useQueryState('shader')
@@ -112,7 +109,11 @@ export function GradientWithQueries({
       uFrequency={uFrequency}
       uAmplitude={uAmplitude}
       uSpeed={uSpeed}
-      colors={hoverStateColor}
+      colors={
+        hoverState !== 0
+          ? ['#ffffff', '#ffffff', '#ffffff']
+          : ['#000000', '#000000', '#000000']
+      }
       grain={grain}
       lightType={lightType}
       envPreset={envPreset}
@@ -121,8 +122,8 @@ export function GradientWithQueries({
       postProcessing={'threejs'} // turn on postpocessing
       loadingCallback={setLoadingPercentage}
       shader={shader}
-      axesHelper={axesHelper === 'on'}
-      wireframe={wireframe === 'enable'}
+      axesHelper={false}
+      wireframe={true}
     />
   )
 }
@@ -135,11 +136,4 @@ function getResponsiveZoom(cameraZoom: number) {
     if (type === 'width') return cameraZoom * (window.innerWidth / 1440)
     else return cameraZoom * (window.innerHeight / 900)
   } else return cameraZoom
-}
-
-function getHoverColor(hoverState: number, colors: any) {
-  if (hoverState === 1) return [colors[0], '#000000', '#000000']
-  else if (hoverState === 2) return ['#000000', colors[1], '#000000']
-  else if (hoverState === 3) return ['#000000', '#000000', colors[2]]
-  else return [colors[0], colors[1], colors[2]]
 }
