@@ -102,7 +102,6 @@
     "lint": "yarn prettier && yarn eslint",
     "eslint": "next lint --fix --dir src",
     "prettier": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,md}\" \"website/**/*.{ts,tsx}\" \"figma-plugin/**/*.{ts,tsx}\"",
-    "dev": "next dev",
     "export": "EXPORT=true next build && EXPORT=true next export",
     "analyze": "ANALYZE=true next build",
     "website:dev": "next website -p 3002",
