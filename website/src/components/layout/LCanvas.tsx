@@ -21,6 +21,7 @@ function LControl() {
   const [cPolarAngle] = useQueryState('cPolarAngle')
   const [cDistance] = useQueryState('cDistance')
   const hoverState = usePropertyStore((state: any) => state.hoverState)
+  const toggleZoom = usePropertyStore((state: any) => state.toggleZoom)
 
   useEffect(() => {
     if (ref) dom.current.style['touch-action'] = 'none'
@@ -29,13 +30,13 @@ function LControl() {
   useEffect(() => {
     const control = ref.current
     console.log(control)
-    if (control && hoverState === 0) {
+    if (control && hoverState === 0 && toggleZoom === false) {
       control.rotateTo(dToR(cAzimuthAngle), dToR(cPolarAngle), true)
       control.dollyTo(cDistance, true)
-    } else if (hoverState !== 0) {
+    } else if (hoverState !== 0 || toggleZoom === true) {
       control.dollyTo(30, true)
     }
-  }, [ref, cAzimuthAngle, cPolarAngle, cDistance, hoverState])
+  }, [ref, cAzimuthAngle, cPolarAngle, cDistance, hoverState, toggleZoom])
 
   // @ts-ignore
   return <cameraControls ref={ref} args={[camera, gl.domElement]} />
@@ -46,7 +47,8 @@ const LCanvas = ({ children }) => {
 
   // performance
   const [pixelDensity] = useQueryState('pixelDensity')
-  const [gizmoHelper] = useQueryState('gizmoHelper', 'show')
+
+  const toggleAxis = usePropertyStore((state: any) => state.toggleAxis)
 
   return (
     <Canvas
@@ -62,15 +64,15 @@ const LCanvas = ({ children }) => {
       onCreated={(state) => state.events.connect(dom.current)}
     >
       <LControl />
-      {gizmoHelper === 'show' && (
+      {toggleAxis === true && (
         <GizmoHelper
           alignment='bottom-right' // widget alignment within scene
           margin={[65, 110]} // widget margins (X, Y)
           renderPriority={2}
         >
           <GizmoViewport
-            axisColors={['white', 'white', 'white']}
-            labelColor='grey'
+            axisColors={['green', 'red', 'blue']}
+            labelColor='white'
             hideNegativeAxes
             // @ts-ignore
             axisHeadScale={0.8}

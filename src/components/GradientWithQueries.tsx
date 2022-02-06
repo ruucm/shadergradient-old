@@ -6,6 +6,7 @@ import {
   Gradient,
   PRESETS,
   updateGradientState,
+  usePropertyStore,
   useQueryState,
 } from '../'
 
@@ -70,9 +71,9 @@ export function GradientWithQueries({
   const [cameraPositionZ] = useQueryState('cameraPositionZ')
 
   const [embedMode] = useQueryState('embedMode')
-  const [axesHelper] = useQueryState('axesHelper')
+  // const [axesHelper] = useQueryState('axesHelper')
   const [wireframe] = useQueryState('wireframe')
-
+  const toggleAxis = usePropertyStore((state: any) => state.toggleAxis)
   // shader
   const [shader] = useQueryState('shader')
 
@@ -121,7 +122,7 @@ export function GradientWithQueries({
       postProcessing={'threejs'} // turn on postpocessing
       loadingCallback={setLoadingPercentage}
       shader={shader}
-      axesHelper={axesHelper === 'on'}
+      axesHelper={toggleAxis}
       wireframe={wireframe === 'enable'}
       meshCount={192}
       visible={true}

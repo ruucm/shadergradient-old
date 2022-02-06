@@ -29,7 +29,7 @@ export const InputPanel: React.FC<InputPanelPropsT> = ({
   return (
     <div className='flex justify-between items-center gap-3.5' {...rest}>
       <span
-        className='font-semibold text-primary w-[35%]'
+        className='font-semibold text-primary w-[50%]'
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
       >

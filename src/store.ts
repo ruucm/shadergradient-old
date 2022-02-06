@@ -11,6 +11,8 @@ export const useGradientStore = create((set) => ({
 
 export const usePropertyStore = create((set) => ({
   hoverState: 0,
+  toggleZoom: false,
+  toggleAxis: false,
 }))
 
 export const updateGradientState = (querystate: any) => {

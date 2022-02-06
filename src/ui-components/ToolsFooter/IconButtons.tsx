@@ -8,6 +8,7 @@ import * as UI from '..'
 type ControlTypeTitlePropsT = {
   icon?: string
   content?: string
+  active?: boolean
 } & React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLDivElement>,
   HTMLDivElement
@@ -16,36 +17,41 @@ type ControlTypeTitlePropsT = {
 export const IconButtons: React.FC<ControlTypeTitlePropsT> = ({
   icon,
   content,
+  active,
   onClick,
   ...rest
 }) => {
-  const [hoverProp, setHoverProp] = React.useState(false)
+  const [isHovered, setIsHovered] = React.useState(false)
 
   return (
     <motion.div
-      className={cx('text-sm font-medium cursor-pointer')}
+      className={cx(
+        'text-sm font-medium cursor-pointer flex justify-center items-center'
+      )}
       style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: 20,
-        width: 36,
-        height: 36,
-        background: 'rgba(255,67,10,0)',
+        borderRadius: 15,
+        width: 30,
+        height: 30,
+        background: active ? 'rgba(255,67,10,1)' : 'rgba(255,67,10,0)',
       }}
       whileHover={{
         background: 'rgba(255,67,10,0.1)',
       }}
       onMouseEnter={() => {
-        setHoverProp(true)
+        setIsHovered(true)
       }}
       onMouseLeave={() => {
-        setHoverProp(false)
+        setIsHovered(false)
       }}
+      onClick={onClick}
     >
-      {/* @ts-ignore */}
-      <Feather name={icon} size={24} color='rgb(255,67,10)' />
-      {hoverProp && <UI.HoverBox content={content} />}
+      <Feather
+        /* @ts-ignore */
+        name={icon}
+        size={20}
+        color={active ? 'white' : 'rgb(255,67,10)'}
+      />
+      {isHovered && <UI.IconHoverBox content={content} />}
     </motion.div>
   )
 }

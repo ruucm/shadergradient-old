@@ -808,8 +808,8 @@ html,
   width: 12px;
 }
 
-.w-\[35\%\] {
-  width: 35%;
+.w-\[50\%\] {
+  width: 50%;
 }
 
 .w-full {
@@ -1184,7 +1184,7 @@ input[type='number'] {
     background-color: rgba(246, 248, 248, var(--tw-bg-opacity));
   }
 
-  .md\:p-3 {
-    padding: 16px;
+  .md\:p-4 {
+    padding: 26px;
   }
 }
