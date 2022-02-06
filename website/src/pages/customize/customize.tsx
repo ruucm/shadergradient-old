@@ -118,7 +118,6 @@ const DOM = () => {
                     } else {
                       setCurrent(PRESETS.length - 1)
                     }
-                    console.log(current)
                   }}
                 >
                   ↓
@@ -134,7 +133,6 @@ const DOM = () => {
                     } else {
                       setCurrent(0)
                     }
-                    console.log(current)
                   }}
                 >
                   ↑

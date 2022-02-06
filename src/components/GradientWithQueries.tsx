@@ -25,7 +25,6 @@ export function GradientWithQueries({
       gradientURL = window.location.search // use search params at the first load.
 
     updateGradientState(gradientURL)
-    console.log(PRESETS[current].url)
 
     document.documentElement.classList.add('cutomize')
     return () => {
