@@ -2,7 +2,7 @@ import { useStore } from '@/helpers/store'
 import { Preload, GizmoHelper, GizmoViewport } from '@react-three/drei'
 import { Canvas, extend, useFrame, useThree } from '@react-three/fiber'
 import { useEffect, useRef } from 'react'
-import { useQueryState, dToR } from '@shadergradient'
+import { useQueryState, dToR, canvasProps } from '@shadergradient'
 import * as THREE from 'three'
 import CameraControls from 'camera-controls'
 
@@ -47,15 +47,9 @@ const LCanvas = ({ children }) => {
   return (
     <Canvas
       id='gradientCanvas'
-      mode='concurrent'
-      camera={{
-        fov: 45,
-      }}
-      dpr={pixelDensity} //device pixel ratio - 1 default and fast, 2 detailed and slow
-      linear={true} //sRGBEncoding
-      flat={true} //ACESFilmicToneMapping
       className='absolute top-0'
       onCreated={(state) => state.events.connect(dom.current)}
+      {...canvasProps(pixelDensity)}
     >
       <LControl />
       {gizmoHelper === 'show' && (

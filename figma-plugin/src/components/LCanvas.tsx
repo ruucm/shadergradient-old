@@ -1,12 +1,6 @@
 import * as React from 'react'
 import { Canvas, extend, useFrame, useThree } from '@react-three/fiber'
-import {
-  Gradient,
-  updateGradientState,
-  useQueryState,
-  PRESETS,
-  dToR,
-} from '../../../dist'
+import { useQueryState, dToR, canvasProps } from '../../../dist'
 import CameraControls from 'camera-controls'
 import * as THREE from 'three'
 import { useEffect, useRef } from 'react'
@@ -46,9 +40,7 @@ export function LCanvas({ children }) {
       style={{ height: 304 }}
       gl={{ preserveDrawingBuffer: true }} // to capture the canvas
       id='r3f-canvas'
-      dpr={pixelDensity}
-      linear={true} //sRGBEncoding
-      flat={true} //ACESFilmicToneMapping
+      {...canvasProps(pixelDensity)}
     >
       <LControl />
       {children}
