@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
+import { isDev } from './consts'
 
 const Header = ({ title }) => {
   const router = useRouter()
@@ -15,7 +16,7 @@ const Header = ({ title }) => {
     <>
       <Head>
         {/* Recommended Meta Tags */}
-        <title>{meta.title}</title>
+        <title>{`${isDev ? '[DEV] ' : ''}${meta.title}`}</title>
         <meta name='robots' content='follow, index' />
         <meta content={meta.description} name='description' />
         <meta

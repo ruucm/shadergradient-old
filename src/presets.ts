@@ -47,7 +47,7 @@ export const PRESETS = [
   {
     title: 'Chaos',
     color: 'white',
-    url: '?animate=on&axesHelper=on&brightness=1.2&cAzimuthAngle=170&cDistance=2.2&cPolarAngle=110&cameraPositionX=0&cameraPositionY=0&cameraPositionZ=0&cameraZoom=1&color1=%23cd4c9d&color2=%231980FF&color3=%2399B58F&embedMode=off&envPreset=city&gizmoHelper=show&grain=on&lightType=env&pixelDensity=1&positionX=0&positionY=-0.5&positionZ=0&reflection=0.1&rotationX=0&rotationY=0&rotationZ=0&type=sphere&uDensity=2.2&uSpeed=0.5&uStrength=1&uTime=0.2&wireframe=false',
+    url: '?animate=on&axesHelper=on&brightness=1.2&cAzimuthAngle=170&cDistance=2.2&cPolarAngle=110&cameraPositionX=0&cameraPositionY=0&cameraPositionZ=0&cameraZoom=1&color1=%23cd4c9d&color2=%231980FF&color3=%2399B58F&embedMode=off&envPreset=city&gizmoHelper=hide&grain=on&lightType=env&pixelDensity=1&positionX=0&positionY=-0.5&positionZ=0&reflection=0.1&rotationX=0&rotationY=0&rotationZ=0&type=sphere&uDensity=2.2&uSpeed=0.5&uStrength=1&uTime=0.2&wireframe=false',
   },
   {
     title: 'Santa',
@@ -62,7 +62,7 @@ export const PRESETS = [
   {
     title: 'Lemon',
     color: 'white',
-    url: '?animate=0ff&brightness=1.2&cameraPositionX=0.4&cameraPositionY=3.2&cameraPositionZ=0&cameraZoom=0.6&color1=%2385FFBD&color2=%2384C18F&color3=%23FFFB7D&embedMode=off&envPreset=city&grain=off&lightType=3d&pixelDensity=1&positionX=0&positionY=0&positionZ=0&reflection=0&rotationX=160&rotationY=0&rotationZ=30&type=plane&uSpeed=0.05&uDensity=1&uStrength=0.5&uTime=0.2',
+    url: '?animate=0ff&brightness=1.2&cameraPositionX=0.4&cameraPositionY=3.2&cameraPositionZ=0&cameraZoom=0.6&color1=%2385FFBD&color2=%2384C18F&color3=%23FFFB7D&embedMode=off&envPreset=city&grain=off&lightType=3d&pixelDensity=1&positionX=0&positionY=0&positionZ=0&reflection=0&rotationX=160&rotationY=0&rotationZ=30&type=plane&uSpeed=0.05&uDensity=1&uStrength=0.5&uTime=0.2&gizmoHelper=hide',
   },
   {
     title: 'Newyork',
@@ -72,7 +72,7 @@ export const PRESETS = [
   {
     title: 'Velvet',
     color: 'white',
-    url: '?animate=0ff&brightness=1.2&cameraPositionX=0.4&cameraPositionY=3.2&cameraPositionZ=0&cameraZoom=0.7&color1=ff9a9e&color2=%231f5c2a&color3=fad0c4&embedMode=off&envPreset=city&grain=off&lightType=3d&pixelDensity=1&positionX=1.7&positionY=0.5&positionZ=-1.4&reflection=0&rotationX=160&rotationY=0&rotationZ=30&type=plane&uSpeed=0.05&uDensity=1&uStrength=2.6&uTime=0.2',
+    url: '?animate=0ff&brightness=1.2&cameraPositionX=0.4&cameraPositionY=3.2&cameraPositionZ=0&cameraZoom=0.7&color1=ff9a9e&color2=%231f5c2a&color3=fad0c4&embedMode=off&envPreset=city&grain=off&lightType=3d&pixelDensity=1&positionX=1.7&positionY=0.5&positionZ=-1.4&reflection=0&rotationX=160&rotationY=0&rotationZ=30&type=plane&uSpeed=0.05&uDensity=1&uStrength=2.6&uTime=0.2&gizmoHelper=hide',
   },
   // {
   //   title: "Blazing",
@@ -102,11 +102,11 @@ export const PRESETS = [
   {
     title: 'Template - Plane',
     color: 'white',
-    url: '?animate=on&axesHelper=on&brightness=1.2&cAzimuthAngle=0&cDistance=14.2&cPolarAngle=90&cameraPositionX=0&cameraPositionY=0&cameraPositionZ=0&cameraZoom=1&color1=%23ff0000&color2=%2300ff00&color3=%230000ff&embedMode=off&envPreset=city&gizmoHelper=show&grain=off&lightType=3d&pixelDensity=1&positionX=0&positionY=0&positionZ=0&reflection=0.1&rotationX=0&rotationY=0&rotationZ=0&type=plane&uDensity=2&uSpeed=0.1&uStrength=2&uTime=0.2&wireframe=false',
+    url: '?animate=on&axesHelper=on&brightness=1.2&cAzimuthAngle=0&cDistance=14.2&cPolarAngle=90&cameraPositionX=0&cameraPositionY=0&cameraPositionZ=0&cameraZoom=1&color1=%23ff0000&color2=%2300ff00&color3=%230000ff&embedMode=off&envPreset=city&grain=off&lightType=3d&pixelDensity=1&positionX=0&positionY=0&positionZ=0&reflection=0.1&rotationX=0&rotationY=0&rotationZ=0&type=plane&uDensity=2&uSpeed=0.1&uStrength=2&uTime=0.2&wireframe=false',
   },
   {
     title: 'Template - Sphere',
     color: 'white',
-    url: '?animate=on&axesHelper=on&brightness=1&cAzimuthAngle=180&cDistance=7.1&cPolarAngle=90&cameraPositionX=0&cameraPositionY=0&cameraPositionZ=0&cameraZoom=1&color1=%23ff0000&color2=%2300ff00&color3=%230700ff&embedMode=off&envPreset=city&gizmoHelper=show&grain=off&lightType=3d&pixelDensity=1&positionX=0&positionY=0&positionZ=0&reflection=0.1&rotationX=0&rotationY=0&rotationZ=0&shader=sphereShader&type=sphere&uDensity=1&uSpeed=0.1&uStrength=0.3&uTime=0&wireframe=false',
+    url: '?animate=on&axesHelper=on&brightness=1&cAzimuthAngle=180&cDistance=7.1&cPolarAngle=90&cameraPositionX=0&cameraPositionY=0&cameraPositionZ=0&cameraZoom=1&color1=%23ff0000&color2=%2300ff00&color3=%230700ff&embedMode=off&envPreset=city&grain=off&lightType=3d&pixelDensity=1&positionX=0&positionY=0&positionZ=0&reflection=0.1&rotationX=0&rotationY=0&rotationZ=0&type=sphere&uDensity=1&uSpeed=0.1&uStrength=0.3&uTime=0&wireframe=false',
   },
 ]

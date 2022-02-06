@@ -1,17 +1,26 @@
-#pragma glslify: pnoise = require(glsl-noise/periodic/3d)
+#pragma glslify: cnoise3 = require(glsl-noise/classic/3d) 
+#pragma glslify: pnoise3 = require(glsl-noise/periodic/3d)
+
+
+mat3 rotation3dY(float angle) {
+  float s = sin(angle);
+  float c = cos(angle);
+
+  return mat3(c, 0.0, -s, 0.0, 1.0, 0.0, s, 0.0, c);
+}
+
+vec3 rotateY(vec3 v, float angle) { return rotation3dY(angle) * v; }
 
 varying vec3 vNormal;
+varying float displacement;
+varying vec3 vPos;
+varying float vDistort;
+
 uniform float uTime;
 uniform float uSpeed;
 uniform float uNoiseDensity;
 uniform float uNoiseStrength;
-uniform float uFrequency;
-uniform float uAmplitude;
-varying vec3 vPos;
-varying float vDistort;
-varying vec2 vUv;
 
-// varying vec3 vViewPosition;
 #define STANDARD
 varying vec3 vViewPosition;
 #ifndef FLAT_SHADED
@@ -32,17 +41,8 @@ varying vec3 vBitangent;
 #include <uv2_pars_vertex>
 #include <uv_pars_vertex>
 
-
-// rotation
-mat3 rotation3dY(float angle) {
-  float s = sin(angle);
-  float c = cos(angle);
-  return mat3(c, 0.0, -s, 0.0, 1.0, 0.0, s, 0.0, c);
-}
-
-vec3 rotateY(vec3 v, float angle) { return rotation3dY(angle) * v; }
-
 void main() {
+
 #include <beginnormal_vertex>
 #include <color_vertex>
 #include <defaultnormal_vertex>
@@ -60,16 +60,12 @@ void main() {
 #endif
 #include <begin_vertex>
   float t = uTime * uSpeed;
-  float distortion =
-      pnoise((normal + t) * uNoiseDensity, vec3(10.0)) * uNoiseStrength;
-  vec3 pos = position + (normal * distortion);
-  float angle = sin(uv.y * uFrequency + t) * uAmplitude;
-  pos = rotateY(pos, angle);
+  // Create a sine wave from top to bottom of the sphere
+  float distortion = 0.75 * cnoise3(0.43 * position * uNoiseDensity + t);
 
+  vec3 pos = position + normal * distortion * uNoiseStrength;
   vPos = pos;
-  vDistort = distortion;
-  vNormal = normal;
-  vUv = uv;
+
 
 #include <clipping_planes_vertex>
 #include <displacementmap_vertex>

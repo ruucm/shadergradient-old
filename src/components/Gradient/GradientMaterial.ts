@@ -96,8 +96,6 @@ export class GradientMaterial extends THREE.MeshPhysicalMaterial {
 
         const meshType = this.userData.meshType
 
-        console.log('meshType', meshType)
-
         shader.uniforms.uTime = uniforms.uTime
         shader.uniforms.uSpeed = uniforms.uSpeed
         shader.uniforms.uNoiseDensity = uniforms.uNoiseDensity
@@ -120,15 +118,11 @@ export class GradientMaterial extends THREE.MeshPhysicalMaterial {
         // material.roughness = settings.roughness
         // material.metalness = settings.metalness;
         // material.normalScale = uniforms.normalScale;
-        // console.log(material);
 
-        console.log('light', light)
         shader.uniforms.light = { value: light }
 
         shader.vertexShader = this.userData.vertexShader
         shader.fragmentShader = this.userData.fragmentShader
-
-        console.log('shader', shader)
       },
     })
   }

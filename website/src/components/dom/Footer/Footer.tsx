@@ -3,8 +3,6 @@ import cx from 'classnames'
 import styles from '../../../pages/home/Home.module.scss'
 
 export function Footer(color) {
-  console.log(color)
-
   return (
     <div className={styles.footer} style={{ color: color.color }}>
       Made by <a href=''>→ Ruucm</a> and{' '}

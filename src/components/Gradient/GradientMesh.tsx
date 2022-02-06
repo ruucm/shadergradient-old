@@ -8,10 +8,6 @@ import { CubicBezierLine } from '@react-three/drei'
 
 const clock = new THREE.Clock()
 
-// const meshCount = 200
-
-const axis = new THREE.Vector3(1, 0, 0).normalize()
-
 export function GradientMesh({
   type = 'plane',
   r3f,
@@ -27,8 +23,7 @@ export function GradientMesh({
   colors,
   reflection,
   scale,
-  vertexShader,
-  fragmentShader,
+  sceneShader,
   axesHelper,
   wireframe,
   meshCount,
@@ -99,6 +94,7 @@ export function GradientMesh({
 
       {/* @ts-ignore */}
       <gradientMaterial
+        key={JSON.stringify(sceneShader, null, 0)}
         ref={material}
         colors={colors}
         uStrength={uStrength}
@@ -107,8 +103,8 @@ export function GradientMesh({
         uAmplitude={uAmplitude}
         uSpeed={uSpeed}
         meshType={type}
-        vertexShader={vertexShader}
-        fragmentShader={fragmentShader}
+        vertexShader={sceneShader.vertex}
+        fragmentShader={sceneShader.fragment}
         wireframe={wireframe}
       />
     </animated.mesh>

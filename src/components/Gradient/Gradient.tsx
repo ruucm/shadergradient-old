@@ -42,8 +42,8 @@ export const Gradient: React.FC<any> = ({
   shader,
   visible = true,
 }) => {
-  let sceneShader = shaders.defaults
-  if (shader) sceneShader = shaders[shader]
+  let sceneShader = shaders.defaults[type ?? 'plane'] // default type is plane
+  if (shader && shader !== 'defaults') sceneShader = shaders[shader]
 
   useFrame((state) => {
     state.camera.position.lerp(
@@ -88,8 +88,7 @@ export const Gradient: React.FC<any> = ({
           uSpeed={uSpeed}
           colors={colors}
           reflection={reflection}
-          vertexShader={sceneShader.vertex}
-          fragmentShader={sceneShader.fragment}
+          sceneShader={sceneShader}
           axesHelper={axesHelper}
           wireframe={wireframe}
           meshCount={meshCount}

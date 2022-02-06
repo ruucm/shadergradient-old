@@ -1,4 +1,3 @@
-import vertex from './vertex.glsl'
-import fragment from './fragment.glsl'
-
-export { vertex, fragment }
+export * as plane from './plane'
+export * as sphere from './sphere'
+export * as waterPlane from './waterPlane'

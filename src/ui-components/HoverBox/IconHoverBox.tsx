@@ -1,6 +1,6 @@
 import * as React from 'react'
 import cx from 'classnames'
-import { motion } from 'framer-motion'
+// import { motion } from 'framer-motion'
 
 type ControlTypeTitlePropsT = {
   content?: string
@@ -15,11 +15,11 @@ export const IconHoverBox: React.FC<ControlTypeTitlePropsT> = ({
   ...rest
 }) => {
   return (
-    <motion.div
+    <div
       className={cx('text-sm font-medium text-white')}
       style={{ position: 'absolute', marginLeft: -10, marginTop: 7 }}
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
+      // initial={{ opacity: 0, y: 10 }}
+      // animate={{ opacity: 1, y: 0 }}
     >
       <div
         style={{
@@ -46,6 +46,6 @@ export const IconHoverBox: React.FC<ControlTypeTitlePropsT> = ({
         ></div>
         {content}
       </div>
-    </motion.div>
+    </div>
   )
 }
