@@ -1,5 +1,6 @@
 import { Footer } from '@/components/dom/Footer'
 import { GradientScene } from '@/components/canvas/GradientScene'
+import { WireframeScene } from '@/components/canvas/WireframeScene'
 import { PreviewWrapper } from '@/components/dom/PreviewWrapper'
 import { PreviewSwitch } from '@/components/dom/PreviewSwitch'
 
@@ -16,6 +17,7 @@ const DOM = () => {
   const mode = useUIStore((state: any) => state.mode)
   const setMode = useUIStore((state: any) => state.setMode)
   const current = useUIStore((state: any) => state.current)
+
   const setCurrent = useUIStore((state: any) => state.setCurrent)
   const loadingPercentage = useUIStore((state: any) => state.loadingPercentage)
 
@@ -148,11 +150,21 @@ const DOM = () => {
   else return <></>
 }
 
+const Overlay = () => {
+  const hoverState = useUIStore((state: any) => state.hoverState)
+  return (
+    <>
+      <WireframeScene />
+    </>
+  )
+}
+
 // canvas components goes here
 const R3F = ({ r3f }) => {
   return (
     <>
       <GradientScene />
+      <Overlay />
     </>
   )
 }

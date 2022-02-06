@@ -7,7 +7,6 @@ import { animated } from '@react-spring/three'
 import { CubicBezierLine } from '@react-three/drei'
 
 const clock = new THREE.Clock()
-const meshCount = 200
 
 export function GradientMesh({
   type = 'plane',
@@ -27,6 +26,8 @@ export function GradientMesh({
   sceneShader,
   axesHelper,
   wireframe,
+  meshCount,
+  visible,
 }: any) {
   const mesh: any = useRef()
   const material: any = useRef()
@@ -57,10 +58,13 @@ export function GradientMesh({
       position={position}
       rotation={rotation}
       scale={scale}
+      visible={visible}
     >
       {type === 'plane' && <planeGeometry args={[10, 10, 1, meshCount]} />}
       {/* {type === 'sphere' && <icosahedronBufferGeometry args={[3, meshCount]} />} */}
-      {type === 'sphere' && <icosahedronBufferGeometry args={[1, 64]} />}
+      {type === 'sphere' && (
+        <icosahedronBufferGeometry args={[1, meshCount / 3]} />
+      )}
       {type === 'waterPlane' && (
         <planeGeometry args={[10, 10, meshCount, meshCount]} />
       )}

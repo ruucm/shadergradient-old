@@ -1,6 +1,6 @@
 import { initialCurrent } from '@/consts'
 import { useUIStore } from '@/helpers/store'
-import { GradientWithQueries, usePropertyStore } from '@shadergradient'
+import { WireframeOverlay, usePropertyStore } from '@shadergradient'
 import glsl from 'glslify'
 
 // pre import for shaders
@@ -29,16 +29,15 @@ export const glslPragmas = `
 `
 glsl`${glslPragmas}`
 
-export function GradientScene(forceProps) {
+export function WireframeScene(forceProps) {
   const current = useUIStore((state: any) => state.current)
+  const hoverState = usePropertyStore((state: any) => state.hoverState)
   const setLoadingPercentage = useUIStore(
     (state: any) => state.setLoadingPercentage
   )
 
-  const hoverState = usePropertyStore((state: any) => state.hoverState)
-
   return (
-    <GradientWithQueries
+    <WireframeOverlay
       {...forceProps}
       current={current}
       initialCurrent={initialCurrent}

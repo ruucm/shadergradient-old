@@ -17,6 +17,7 @@ export const ShapeControls: React.FC<ShapeControlsPropsT> = () => {
   const [uDensity, setUDensity] = useQueryState('uDensity')
   const [uFrequency, setUFrequency] = useQueryState('uFrequency')
   const [uAmplitude, setUAmplitude] = useQueryState('uAmplitude')
+  const [isHovered, setIsHovered] = React.useState('')
 
   return (
     <div className='flex flex-col gap-3'>
@@ -102,7 +103,18 @@ export const ShapeControls: React.FC<ShapeControlsPropsT> = () => {
         </UI.InputPanel>
       )}
 
-      <UI.InputPanel title='Noise Strength'>
+      <UI.InputPanel
+        title='Noise Strength'
+        info={true}
+        hoverContent='Control the height of the bumps'
+        isHovered={isHovered}
+        onMouseEnter={() => {
+          setIsHovered('Noise Strength')
+        }}
+        onMouseLeave={() => {
+          setIsHovered('')
+        }}
+      >
         <UI.Slider
           defaultValue={uStrength}
           setValue={setUStrength}
@@ -112,7 +124,18 @@ export const ShapeControls: React.FC<ShapeControlsPropsT> = () => {
         />
       </UI.InputPanel>
 
-      <UI.InputPanel title='Noise Density'>
+      <UI.InputPanel
+        title='Noise Density'
+        info={true}
+        hoverContent='Control the height of the bumps'
+        isHovered={isHovered}
+        onMouseEnter={() => {
+          setIsHovered('Noise Density')
+        }}
+        onMouseLeave={() => {
+          setIsHovered('')
+        }}
+      >
         <UI.Slider
           defaultValue={uDensity}
           setValue={setUDensity}

@@ -6,11 +6,10 @@ import {
   Gradient,
   PRESETS,
   updateGradientState,
-  usePropertyStore,
   useQueryState,
 } from '../'
 
-export function GradientWithQueries({
+export function WireframeOverlay({
   forceZoom = null,
   forceCamPos = null,
   forceRot = null,
@@ -19,7 +18,7 @@ export function GradientWithQueries({
   current,
   setLoadingPercentage = () => void 0,
   initialCurrent,
-  hoverState = 0,
+  hoverState,
 }: any) {
   useEffect(() => {
     let gradientURL = PRESETS[current].url
@@ -27,6 +26,7 @@ export function GradientWithQueries({
       gradientURL = window.location.search // use search params at the first load.
 
     updateGradientState(gradientURL)
+    console.log(PRESETS[current].url)
 
     document.documentElement.classList.add('cutomize')
     return () => {
@@ -50,12 +50,6 @@ export function GradientWithQueries({
   const [rotationY] = useQueryState('rotationY')
   const [rotationZ] = useQueryState('rotationZ')
 
-  // colors
-  const [color1] = useQueryState('color1')
-  const [color2] = useQueryState('color2')
-  const [color3] = useQueryState('color3')
-  const hoverStateColor = getHoverColor(hoverState, [color1, color2, color3])
-
   // effects
   const [grain] = useQueryState('grain')
   const [lightType] = useQueryState('lightType')
@@ -70,9 +64,7 @@ export function GradientWithQueries({
   const [cameraPositionZ] = useQueryState('cameraPositionZ')
 
   const [embedMode] = useQueryState('embedMode')
-  // const [axesHelper] = useQueryState('axesHelper')
-  const [wireframe] = useQueryState('wireframe')
-  const toggleAxis = usePropertyStore((state: any) => state.toggleAxis)
+
   // shader
   const [shader] = useQueryState('shader')
 
@@ -84,6 +76,9 @@ export function GradientWithQueries({
   const { animatedPosition } = useSpring({
     animatedPosition: forcePos || [positionX, positionY, positionZ],
   })
+
+  // for only website
+  const responsiveCameraZoom = getResponsiveZoom(cameraZoom)
 
   return (
     <Gradient
@@ -102,33 +97,36 @@ export function GradientWithQueries({
       cameraRotation={{ x: 0, y: 0, z: 0 }}
       type={type}
       animate={animate === 'on'}
-      cameraZoom={forceZoom !== null ? forceZoom : cameraZoom}
+      cameraZoom={forceZoom !== null ? forceZoom : responsiveCameraZoom}
       uTime={uTime}
       uStrength={uStrength}
       uDensity={uDensity}
       uFrequency={uFrequency}
       uAmplitude={uAmplitude}
       uSpeed={uSpeed}
-      colors={hoverStateColor}
+      colors={['#ffffff', '#ffffff', '#ffffff']}
       grain={grain}
-      lightType={lightType}
+      lightType={'3d'}
       envPreset={envPreset}
       reflection={reflection}
-      brightness={brightness}
-      postProcessing={'threejs'} // turn on postpocessing
+      brightness={0.1}
+      postProcessing={null} // turn on postpocessing
       loadingCallback={setLoadingPercentage}
       shader={shader}
-      axesHelper={toggleAxis}
-      wireframe={wireframe === 'enable'}
-      meshCount={192}
-      visible={true}
+      axesHelper={false}
+      wireframe={true}
+      meshCount={96}
+      visible={hoverState !== 0 ? true : false}
     />
   )
 }
 
-function getHoverColor(hoverState: number, colors: any) {
-  if (hoverState === 1) return [colors[0], '#000000', '#000000']
-  else if (hoverState === 2) return ['#000000', colors[1], '#000000']
-  else if (hoverState === 3) return ['#000000', '#000000', colors[2]]
-  else return [colors[0], colors[1], colors[2]]
+function getResponsiveZoom(cameraZoom: number) {
+  if (typeof window !== 'undefined') {
+    // browser code
+    const type = window.innerWidth >= window.innerHeight ? 'width' : 'height'
+
+    if (type === 'width') return cameraZoom * (window.innerWidth / 1440)
+    else return cameraZoom * (window.innerHeight / 900)
+  } else return cameraZoom
 }

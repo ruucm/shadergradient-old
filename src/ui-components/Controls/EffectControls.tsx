@@ -13,10 +13,22 @@ export const EffectControls: React.FC<EffectControlsPropsT> = () => {
   const [envPreset, setEnvPreset] = useQueryState('envPreset')
   const [reflection, setReflection] = useQueryState('reflection')
   const [brightness, setBrightness] = useQueryState('brightness')
+  const [isHovered, setIsHovered] = React.useState('')
 
   return (
     <div className='flex flex-col gap-3'>
-      <UI.InputPanel title='Grain'>
+      <UI.InputPanel
+        title='Grain'
+        info={true}
+        hoverContent='Grain effects can slow down the performance of the animation. '
+        isHovered={isHovered}
+        onMouseEnter={() => {
+          setIsHovered('Grain')
+        }}
+        onMouseLeave={() => {
+          setIsHovered('')
+        }}
+      >
         <UI.Radio
           name='grain'
           value='on'
@@ -33,7 +45,18 @@ export const EffectControls: React.FC<EffectControlsPropsT> = () => {
         />
       </UI.InputPanel>
 
-      <UI.InputPanel title='Light Type'>
+      <UI.InputPanel
+        title='Light Type'
+        info={true}
+        hoverContent='Environment lighting creates more dynamic lighting effects, e.g. reflections'
+        isHovered={isHovered}
+        onMouseEnter={() => {
+          setIsHovered('Light Type')
+        }}
+        onMouseLeave={() => {
+          setIsHovered('')
+        }}
+      >
         <UI.Radio
           name='lightType'
           value='env'

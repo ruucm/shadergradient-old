@@ -61,15 +61,6 @@ export const ControlTypeTitles: React.FC<ControlTypeTitlePropsT> = ({
         }}
       />
 
-      <UI.ControlTypeTitle
-        title='Tools'
-        active={activeTab === 'tools'}
-        onClick={(e) => {
-          e.stopPropagation() // ignore parent click
-
-          activeTab === 'tools' ? setActiveTab('none') : setActiveTab('tools')
-        }}
-      />
       {/* <PreviewSwitch mode={mode} setMode={setMode} display={!isMobile} /> */}
     </div>
   )

@@ -808,8 +808,8 @@ html,
   width: 12px;
 }
 
-.w-\[28\%\] {
-  width: 28%;
+.w-\[50\%\] {
+  width: 50%;
 }
 
 .w-full {
@@ -1022,12 +1022,12 @@ html,
   font-size: 1.25rem;
 }
 
-.text-base {
-  font-size: 1rem;
-}
-
 .text-sm {
   font-size: .875rem;
+}
+
+.text-base {
+  font-size: 1rem;
 }
 
 .font-medium {

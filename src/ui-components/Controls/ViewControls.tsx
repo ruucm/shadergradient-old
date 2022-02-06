@@ -23,7 +23,7 @@ export const ViewControls: React.FC<ViewControlsPropsT> = () => {
   const [rotationX, setRotationX] = useQueryState('rotationX')
   const [rotationY, setRotationY] = useQueryState('rotationY')
   const [rotationZ, setRotationZ] = useQueryState('rotationZ')
-
+  const [isHovered, setIsHovered] = React.useState('')
   return (
     <div className='flex flex-col gap-3'>
       {/* Zoom */}
@@ -69,7 +69,18 @@ export const ViewControls: React.FC<ViewControlsPropsT> = () => {
       </UI.InputPanel> */}
 
       {/* rotateTo (camera-controls) */}
-      <UI.InputPanel title='rotateTo'>
+      <UI.InputPanel
+        title='Camera Rotation'
+        info={true}
+        hoverContent='Azimuth as a latitude, Polar as a longtitude'
+        isHovered={isHovered}
+        onMouseEnter={() => {
+          setIsHovered('Camera Rotation')
+        }}
+        onMouseLeave={() => {
+          setIsHovered('')
+        }}
+      >
         <UI.NumberInput
           label='azimuth'
           step={10}
@@ -87,7 +98,7 @@ export const ViewControls: React.FC<ViewControlsPropsT> = () => {
       </UI.InputPanel>
 
       {/* Object Controls */}
-      <UI.InputPanel title='Position'>
+      <UI.InputPanel title='Object Position'>
         <UI.NumberInput
           label='x'
           step={0.1}
@@ -108,7 +119,7 @@ export const ViewControls: React.FC<ViewControlsPropsT> = () => {
         />
       </UI.InputPanel>
 
-      <UI.InputPanel title='Rotation'>
+      <UI.InputPanel title='Object Rotation'>
         <UI.NumberInput
           label='x'
           step={10}
@@ -128,6 +139,7 @@ export const ViewControls: React.FC<ViewControlsPropsT> = () => {
           setValue={setRotationZ}
         />
       </UI.InputPanel>
+      <UI.ToolsFooter />
     </div>
   )
 }

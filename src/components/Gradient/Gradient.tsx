@@ -18,6 +18,7 @@ export const Gradient: React.FC<any> = ({
   position = [0, 0, 0],
   rotation,
   scale,
+  meshCount = 200,
   cameraPosition = { x: 0.4, y: -0.2, z: -5 },
   cameraRotation = { x: 0, y: 0, z: 0 },
   cameraQuaternion = { x: 0, y: 0, z: 0 },
@@ -39,6 +40,7 @@ export const Gradient: React.FC<any> = ({
   axesHelper,
   wireframe,
   shader,
+  visible = true,
 }) => {
   let sceneShader = shaders.defaults[type ?? 'plane'] // default type is plane
   if (shader && shader !== 'defaults') sceneShader = shaders[shader]
@@ -89,6 +91,8 @@ export const Gradient: React.FC<any> = ({
           sceneShader={sceneShader}
           axesHelper={axesHelper}
           wireframe={wireframe}
+          meshCount={meshCount}
+          visible={visible}
         />
 
         {/* <EffectComposer>
