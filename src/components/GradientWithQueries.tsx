@@ -128,6 +128,8 @@ export function GradientWithQueries({
         meshCount={192}
         visible={true}
       />
+
+      {/* for wireframe */}
       <Gradient
         // @ts-ignore
         rotation={animatedRotation}

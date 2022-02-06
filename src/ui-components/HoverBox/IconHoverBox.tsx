@@ -17,34 +17,57 @@ export const IconHoverBox: React.FC<ControlTypeTitlePropsT> = ({
   return (
     <div
       className={cx('text-sm font-medium text-white')}
-      style={{ position: 'absolute', marginLeft: -10, marginTop: 7 }}
+      style={{
+        position: 'absolute',
+        display: 'flex',
+        justifyContent: 'center',
+        marginBottom: 80,
+      }}
       // initial={{ opacity: 0, y: 10 }}
       // animate={{ opacity: 1, y: 0 }}
     >
       <div
         style={{
-          position: 'relative',
-          background: 'rgba(255, 67, 10, 0.8)',
-          maxWidth: 230,
           width: 'fit-content',
           height: 'fit-content',
-          padding: 8,
-          borderRadius: 3,
         }}
       >
         <div
+          className={cx('bg-primary')}
           style={{
-            width: 17,
-            height: 17,
-            background: 'rgba(255, 67, 10, 0.8)',
-            transform: 'rotate(45deg)',
             position: 'absolute',
-            left: 9,
-            top: -7,
+            width: '100%',
+            height: '100%',
             borderRadius: 3,
+            opacity: 0.8,
+            zIndex: 0,
+            paddingTop: 22,
+            display: 'flex',
+            justifyContent: 'center',
           }}
-        ></div>
-        {content}
+        >
+          <div
+            className={cx('bg-primary')}
+            style={{
+              width: 17,
+              height: 17,
+              background: 'rgb(255, 67, 10)',
+              transform: 'rotate(45deg)',
+              margin: '0 auto',
+              borderRadius: 3,
+            }}
+          ></div>
+        </div>
+        <p
+          style={{
+            padding: 8,
+            zIndex: 20,
+            position: 'relative',
+            whiteSpace: 'nowrap',
+          }}
+        >
+          {content}
+        </p>
       </div>
     </div>
   )

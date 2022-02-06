@@ -122,6 +122,7 @@ export const EffectControls: React.FC<EffectControlsPropsT> = () => {
           />
         </UI.InputPanel>
       )}
+      <UI.ToolsFooter />
     </div>
   )
 }

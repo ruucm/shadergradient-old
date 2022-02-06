@@ -792,10 +792,6 @@ html,
   height: 16px;
 }
 
-.max-h-\[330px\] {
-  max-height: 330px;
-}
-
 .min-h-\[336px\] {
   min-height: 336px;
 }

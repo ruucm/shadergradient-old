@@ -17,43 +17,49 @@ export const HoverBox: React.FC<ControlTypeTitlePropsT> = ({
   return (
     <div
       className={cx('text-sm font-medium text-white')}
-      style={{ position: 'absolute', marginLeft: -10, marginTop: 10 }}
+      style={{
+        position: 'absolute',
+        marginLeft: -10,
+        marginTop: 10,
+      }}
       // initial={{ opacity: 0, y: 10 }}
       // animate={{ opacity: 1, y: 0 }}
     >
       <div
         style={{
-          position: 'relative',
           maxWidth: 230,
           width: 'fit-content',
           height: 'fit-content',
-          padding: 8,
         }}
       >
         <div
+          className={cx('bg-primary')}
           style={{
-            background: 'rgb(255, 67, 10)',
             position: 'absolute',
             width: '100%',
             height: '100%',
             borderRadius: 3,
             opacity: 0.8,
+            zIndex: 0,
           }}
         >
           <div
+            className={cx('bg-primary')}
             style={{
               width: 17,
               height: 17,
               background: 'rgb(255, 67, 10)',
               transform: 'rotate(45deg)',
               position: 'absolute',
-              left: 9,
+              left: 12,
               top: -7,
               borderRadius: 3,
             }}
           ></div>
         </div>
-        <p>{content}</p>
+        <p style={{ padding: 8, zIndex: 20, position: 'relative' }}>
+          {content}
+        </p>
       </div>
     </div>
   )

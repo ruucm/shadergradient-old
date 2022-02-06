@@ -70,12 +70,12 @@ export const ViewControls: React.FC<ViewControlsPropsT> = () => {
 
       {/* rotateTo (camera-controls) */}
       <UI.InputPanel
-        title='Camera Rotation'
+        title='Camera Angle'
         info={true}
         hoverContent='Azimuth as a latitude, Polar as a longtitude'
         isHovered={isHovered}
         onMouseEnter={() => {
-          setIsHovered('Camera Rotation')
+          setIsHovered('Camera Angle')
         }}
         onMouseLeave={() => {
           setIsHovered('')

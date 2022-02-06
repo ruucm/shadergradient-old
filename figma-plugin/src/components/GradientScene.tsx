@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { GradientWithQueries } from '../../../dist'
+import { GradientWithQueries, usePropertyStore } from '../../../dist'
 import glsl from 'glslify'
 import { initialCurrent } from '../consts'
 
@@ -30,7 +30,13 @@ export const glslPragmas = `
 glsl`${glslPragmas}`
 
 export function GradientScene({ current }) {
+  const hoverState = usePropertyStore((state: any) => state.hoverState)
+
   return (
-    <GradientWithQueries current={current} initialCurrent={initialCurrent} />
+    <GradientWithQueries
+      current={current}
+      initialCurrent={initialCurrent}
+      hoverState={hoverState}
+    />
   )
 }
