@@ -40,7 +40,7 @@ export const Gradient: React.FC<any> = ({
   wireframe,
   shader,
 }) => {
-  let sceneShader = shaders.defaults
+  let sceneShader = shaders.defaults[type ?? 'plane'] // default type is plane
   if (shader) sceneShader = shaders[shader]
 
   useFrame((state) => {
