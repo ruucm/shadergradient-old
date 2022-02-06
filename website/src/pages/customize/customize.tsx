@@ -17,11 +17,9 @@ const DOM = () => {
   const mode = useUIStore((state: any) => state.mode)
   const setMode = useUIStore((state: any) => state.setMode)
   const current = useUIStore((state: any) => state.current)
-  const hoverState = useUIStore((state: any) => state.hoverState)
 
   const setCurrent = useUIStore((state: any) => state.setCurrent)
   const loadingPercentage = useUIStore((state: any) => state.loadingPercentage)
-  const setHoverState = useUIStore((state: any) => state.setHoverState)
 
   const [isMobile, setIsMobile] = React.useState(false)
   const [activeTab, setActiveTab] = useState('none')
@@ -65,42 +63,6 @@ const DOM = () => {
           <div className={styles.content}>
             <motion.div style={{ color: PRESETS[current].color }}>
               <Link href='/'> ← ShaderGradient</Link>
-              <div style={{ display: 'flex', fontSize: 30 }}>
-                <div>current: {hoverState}</div>
-                <div
-                  style={{ padding: 6, background: 'black' }}
-                  onMouseEnter={() => {
-                    setHoverState(1)
-                  }}
-                  onMouseLeave={() => {
-                    setHoverState(0)
-                  }}
-                >
-                  1
-                </div>
-                <div
-                  style={{ padding: 6, background: 'black' }}
-                  onMouseEnter={() => {
-                    setHoverState(2)
-                  }}
-                  onMouseLeave={() => {
-                    setHoverState(0)
-                  }}
-                >
-                  2
-                </div>
-                <div
-                  style={{ padding: 6, background: 'black' }}
-                  onMouseEnter={() => {
-                    setHoverState(3)
-                  }}
-                  onMouseLeave={() => {
-                    setHoverState(0)
-                  }}
-                >
-                  3
-                </div>
-              </div>
             </motion.div>
           </div>
 
@@ -192,7 +154,11 @@ const DOM = () => {
 
 const Overlay = () => {
   const hoverState = useUIStore((state: any) => state.hoverState)
-  return <>{hoverState !== 0 ? <WireframeScene r3f /> : null}</>
+  return (
+    <>
+      <WireframeScene />
+    </>
+  )
 }
 
 // canvas components goes here
@@ -200,7 +166,7 @@ const R3F = ({ r3f }) => {
   return (
     <>
       <GradientScene />
-      {/* <Overlay /> */}
+      <Overlay />
     </>
   )
 }

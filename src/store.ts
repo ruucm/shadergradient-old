@@ -9,6 +9,10 @@ export const useGradientStore = create((set) => ({
   ...parseState(),
 }))
 
+export const usePropertyStore = create((set) => ({
+  hoverState: 0,
+}))
+
 export const updateGradientState = (querystate: any) => {
   const state = parseState(querystate)
   useGradientStore.setState(state, true)

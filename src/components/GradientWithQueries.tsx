@@ -123,6 +123,8 @@ export function GradientWithQueries({
       shader={shader}
       axesHelper={axesHelper === 'on'}
       wireframe={wireframe === 'enable'}
+      meshCount={192}
+      visible={true}
     />
   )
 }

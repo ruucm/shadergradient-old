@@ -19,6 +19,8 @@ export const Controls: React.FC<Props> = ({
 }) => {
   const mode = useUIStore((state: any) => state.mode)
   const setMode = useUIStore((state: any) => state.setMode)
+  const hoverState = useUIStore((state: any) => state.hoverState)
+  const setHoverState = useUIStore((state: any) => state.setHoverState)
 
   const ref = useRef(null)
   useOnClickOutside(ref, () => setActiveTab('none'))

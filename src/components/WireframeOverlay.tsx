@@ -18,7 +18,7 @@ export function WireframeOverlay({
   current,
   setLoadingPercentage = () => void 0,
   initialCurrent,
-  hoverState = 0,
+  hoverState,
 }: any) {
   useEffect(() => {
     let gradientURL = PRESETS[current].url
@@ -49,11 +49,6 @@ export function WireframeOverlay({
   const [rotationX] = useQueryState('rotationX')
   const [rotationY] = useQueryState('rotationY')
   const [rotationZ] = useQueryState('rotationZ')
-
-  // colors
-  const [color1] = useQueryState('color1')
-  const [color2] = useQueryState('color2')
-  const [color3] = useQueryState('color3')
 
   // effects
   const [grain] = useQueryState('grain')
@@ -109,21 +104,19 @@ export function WireframeOverlay({
       uFrequency={uFrequency}
       uAmplitude={uAmplitude}
       uSpeed={uSpeed}
-      colors={
-        hoverState !== 0
-          ? ['#ffffff', '#ffffff', '#ffffff']
-          : ['#000000', '#000000', '#000000']
-      }
+      colors={['#ffffff', '#ffffff', '#ffffff']}
       grain={grain}
-      lightType={lightType}
+      lightType={'3d'}
       envPreset={envPreset}
       reflection={reflection}
-      brightness={brightness}
-      postProcessing={'threejs'} // turn on postpocessing
+      brightness={0.1}
+      postProcessing={null} // turn on postpocessing
       loadingCallback={setLoadingPercentage}
       shader={shader}
       axesHelper={false}
       wireframe={true}
+      meshCount={96}
+      visible={hoverState !== 0 ? true : false}
     />
   )
 }

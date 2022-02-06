@@ -81,12 +81,10 @@ export class GradientMaterial extends THREE.MeshPhysicalMaterial {
       side: THREE.DoubleSide,
       clearcoat: 1.0,
       clearcoatRoughness: 0.5,
-
       normalScale: new THREE.Vector2(
         settings.normalScale,
         settings.normalScale
       ),
-
       // update the uniform values via userData
       userData: uniforms,
       // @ts-ignore
