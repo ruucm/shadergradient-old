@@ -7,10 +7,7 @@ import { animated } from '@react-spring/three'
 import { CubicBezierLine } from '@react-three/drei'
 
 const clock = new THREE.Clock()
-
 const meshCount = 200
-
-const axis = new THREE.Vector3(1, 0, 0).normalize()
 
 export function GradientMesh({
   type = 'plane',
@@ -27,8 +24,7 @@ export function GradientMesh({
   colors,
   reflection,
   scale,
-  vertexShader,
-  fragmentShader,
+  sceneShader,
   axesHelper,
   wireframe,
 }: any) {
@@ -102,8 +98,8 @@ export function GradientMesh({
         uAmplitude={uAmplitude}
         uSpeed={uSpeed}
         meshType={type}
-        vertexShader={vertexShader}
-        fragmentShader={fragmentShader}
+        vertexShader={sceneShader.vertex}
+        fragmentShader={sceneShader.fragment}
         wireframe={wireframe}
       />
     </animated.mesh>

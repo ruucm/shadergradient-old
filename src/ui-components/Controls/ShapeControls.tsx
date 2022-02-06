@@ -9,6 +9,7 @@ type ShapeControlsPropsT = React.DetailedHTMLProps<
 
 export const ShapeControls: React.FC<ShapeControlsPropsT> = () => {
   const [type, setType] = useQueryState('type')
+  const [shader, setShader] = useQueryState('shader')
   const [animate, setAnimate] = useQueryState('animate')
   const [uTime, setUTime] = useQueryState('uTime')
   const [uSpeed, setUSpeed] = useQueryState('uSpeed')
@@ -40,6 +41,23 @@ export const ShapeControls: React.FC<ShapeControlsPropsT> = () => {
           setValue={setType}
           check={type === 'waterPlane'}
           label='Water'
+        />
+      </UI.InputPanel>
+
+      <UI.InputPanel title='Shader'>
+        <UI.Radio
+          name='shader'
+          value='defaults'
+          setValue={setShader}
+          check={shader === 'defaults'}
+          label='Defaults'
+        />
+        <UI.Radio
+          name='shader'
+          value='snakeHalftone'
+          setValue={setShader}
+          check={shader === 'snakeHalftone'}
+          label='SnakeHalftone'
         />
       </UI.InputPanel>
 
@@ -106,7 +124,7 @@ export const ShapeControls: React.FC<ShapeControlsPropsT> = () => {
 
       <UI.InputPanel title='uFrequency'>
         <UI.Slider
-          defaultValue={uFrequency}
+          defaultValue={uFrequency || 0}
           setValue={setUFrequency}
           step={0.1}
           min={0}
@@ -115,7 +133,7 @@ export const ShapeControls: React.FC<ShapeControlsPropsT> = () => {
       </UI.InputPanel>
       <UI.InputPanel title='uAmplitude'>
         <UI.Slider
-          defaultValue={uAmplitude}
+          defaultValue={uAmplitude || 0}
           setValue={setUAmplitude}
           step={0.1}
           min={0}
