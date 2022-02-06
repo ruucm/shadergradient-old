@@ -82,9 +82,6 @@ export function GradientWithQueries({
     animatedPosition: forcePos || [positionX, positionY, positionZ],
   })
 
-  // for only website
-  const responsiveCameraZoom = getResponsiveZoom(cameraZoom)
-
   return (
     <Gradient
       // @ts-ignore
@@ -102,7 +99,7 @@ export function GradientWithQueries({
       cameraRotation={{ x: 0, y: 0, z: 0 }}
       type={type}
       animate={animate === 'on'}
-      cameraZoom={forceZoom !== null ? forceZoom : responsiveCameraZoom}
+      cameraZoom={forceZoom !== null ? forceZoom : cameraZoom}
       uTime={uTime}
       uStrength={uStrength}
       uDensity={uDensity}
@@ -122,14 +119,4 @@ export function GradientWithQueries({
       wireframe={wireframe === 'enable'}
     />
   )
-}
-
-function getResponsiveZoom(cameraZoom: number) {
-  if (typeof window !== 'undefined') {
-    // browser code
-    const type = window.innerWidth >= window.innerHeight ? 'width' : 'height'
-
-    if (type === 'width') return cameraZoom * (window.innerWidth / 1440)
-    else return cameraZoom * (window.innerHeight / 900)
-  } else return cameraZoom
 }
