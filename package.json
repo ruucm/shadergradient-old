@@ -8,7 +8,6 @@
     "node": ">=14"
   },
   "main": "dist/index.js",
-
   "scripts": {
     "build": "rm -rf dist && rollup -c",
     "start": "concurrently --kill-others \"npm run package:start\" \"npm run ui:start\"",
@@ -36,6 +35,7 @@
     "@react-three/postprocessing": "^2.0.5",
     "camera-controls": "^1.33.1",
     "classnames": "^2.3.1",
+    "framer-motion": "^6.2.4",
     "glsl-diffuse-oren-nayar": "^1.0.2",
     "glsl-face-normal": "^1.0.2",
     "glsl-gamma": "^2.0.0",
@@ -82,7 +82,6 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-tailwind": "^0.2.1",
     "file-loader": "^6.2.0",
-    "framer-motion": "^6.2.3",
     "glsl-random": "^0.0.5",
     "glslify": "^7.1.1",
     "glslify-loader": "^2.0.0",

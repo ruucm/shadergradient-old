@@ -2,7 +2,7 @@ import * as React from 'react'
 import cx from 'classnames'
 import { Feather } from './Feather'
 import * as Icons from 'react-feather'
-import { motion } from 'framer-motion'
+// import { motion } from 'framer-motion'
 import * as UI from '..'
 
 type ControlTypeTitlePropsT = {
@@ -24,7 +24,7 @@ export const IconButtons: React.FC<ControlTypeTitlePropsT> = ({
   const [isHovered, setIsHovered] = React.useState(false)
 
   return (
-    <motion.div
+    <div
       className={cx(
         'text-sm font-medium cursor-pointer flex justify-center items-center'
       )}
@@ -34,9 +34,9 @@ export const IconButtons: React.FC<ControlTypeTitlePropsT> = ({
         height: 30,
         background: active ? 'rgba(255,67,10,1)' : 'rgba(255,67,10,0)',
       }}
-      whileHover={{
-        background: 'rgba(255,67,10,0.1)',
-      }}
+      // whileHover={{
+      //   background: 'rgba(255,67,10,0.1)',
+      // }}
       onMouseEnter={() => {
         setIsHovered(true)
       }}
@@ -52,6 +52,6 @@ export const IconButtons: React.FC<ControlTypeTitlePropsT> = ({
         color={active ? 'white' : 'rgb(255,67,10)'}
       />
       {isHovered && <UI.IconHoverBox content={content} />}
-    </motion.div>
+    </div>
   )
 }
