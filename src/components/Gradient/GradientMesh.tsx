@@ -90,6 +90,7 @@ export function GradientMesh({
 
       {/* @ts-ignore */}
       <gradientMaterial
+        key={JSON.stringify(sceneShader, null, 0)}
         ref={material}
         colors={colors}
         uStrength={uStrength}
