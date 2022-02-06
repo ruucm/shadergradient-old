@@ -1,6 +1,5 @@
 import { Footer } from '@/components/dom/Footer'
 import { GradientScene } from '@/components/canvas/GradientScene'
-import { WireframeScene } from '@/components/canvas/WireframeScene'
 import { PreviewWrapper } from '@/components/dom/PreviewWrapper'
 import { PreviewSwitch } from '@/components/dom/PreviewSwitch'
 
@@ -152,21 +151,11 @@ const DOM = () => {
   else return <></>
 }
 
-const Overlay = () => {
-  const hoverState = useUIStore((state: any) => state.hoverState)
-  return (
-    <>
-      <WireframeScene />
-    </>
-  )
-}
-
 // canvas components goes here
 const R3F = ({ r3f }) => {
   return (
     <>
       <GradientScene />
-      <Overlay />
     </>
   )
 }

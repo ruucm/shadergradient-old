@@ -71,9 +71,9 @@ export function GradientWithQueries({
   const [cameraPositionZ] = useQueryState('cameraPositionZ')
 
   const [embedMode] = useQueryState('embedMode')
-  // const [axesHelper] = useQueryState('axesHelper')
   const [wireframe] = useQueryState('wireframe')
   const toggleAxis = usePropertyStore((state: any) => state.toggleAxis)
+
   // shader
   const [shader] = useQueryState('shader')
 
@@ -90,43 +90,82 @@ export function GradientWithQueries({
   const responsiveCameraZoom = getResponsiveZoom(cameraZoom)
 
   return (
-    <Gradient
-      // @ts-ignore
-      rotation={animatedRotation}
-      // rotation={[rotationX, rotationY, rotationZ]}
-      position={animatedPosition}
-      scale={animatedScale}
-      cameraPosition={
-        forceCamPos || {
-          x: cameraPositionX,
-          y: cameraPositionY,
-          z: cameraPositionZ,
+    <>
+      <Gradient
+        // @ts-ignore
+        rotation={animatedRotation}
+        // rotation={[rotationX, rotationY, rotationZ]}
+        position={animatedPosition}
+        scale={animatedScale}
+        cameraPosition={
+          forceCamPos || {
+            x: cameraPositionX,
+            y: cameraPositionY,
+            z: cameraPositionZ,
+          }
         }
-      }
-      cameraRotation={{ x: 0, y: 0, z: 0 }}
-      type={type}
-      animate={animate === 'on'}
-      cameraZoom={forceZoom !== null ? forceZoom : responsiveCameraZoom}
-      uTime={uTime}
-      uStrength={uStrength}
-      uDensity={uDensity}
-      uFrequency={uFrequency}
-      uAmplitude={uAmplitude}
-      uSpeed={uSpeed}
-      colors={hoverStateColor}
-      grain={grain}
-      lightType={lightType}
-      envPreset={envPreset}
-      reflection={reflection}
-      brightness={brightness}
-      postProcessing={'threejs'} // turn on postpocessing
-      loadingCallback={setLoadingPercentage}
-      shader={shader}
-      axesHelper={toggleAxis}
-      wireframe={wireframe === 'enable'}
-      meshCount={192}
-      visible={true}
-    />
+        cameraRotation={{ x: 0, y: 0, z: 0 }}
+        type={type}
+        animate={animate === 'on'}
+        cameraZoom={forceZoom !== null ? forceZoom : responsiveCameraZoom}
+        uTime={uTime}
+        uStrength={uStrength}
+        uDensity={uDensity}
+        uFrequency={uFrequency}
+        uAmplitude={uAmplitude}
+        uSpeed={uSpeed}
+        colors={hoverStateColor}
+        grain={grain}
+        lightType={lightType}
+        envPreset={envPreset}
+        reflection={reflection}
+        brightness={brightness}
+        postProcessing={'threejs'} // turn on postpocessing
+        loadingCallback={setLoadingPercentage}
+        shader={shader}
+        axesHelper={toggleAxis}
+        wireframe={wireframe === 'enable'}
+        meshCount={192}
+        visible={true}
+      />
+      <Gradient
+        // @ts-ignore
+        rotation={animatedRotation}
+        // rotation={[rotationX, rotationY, rotationZ]}
+        position={animatedPosition}
+        scale={animatedScale}
+        cameraPosition={
+          forceCamPos || {
+            x: cameraPositionX,
+            y: cameraPositionY,
+            z: cameraPositionZ,
+          }
+        }
+        cameraRotation={{ x: 0, y: 0, z: 0 }}
+        type={type}
+        animate={animate === 'on'}
+        cameraZoom={forceZoom !== null ? forceZoom : responsiveCameraZoom}
+        uTime={uTime}
+        uStrength={uStrength}
+        uDensity={uDensity}
+        uFrequency={uFrequency}
+        uAmplitude={uAmplitude}
+        uSpeed={uSpeed}
+        colors={['#ffffff', '#ffffff', '#ffffff']}
+        grain={grain}
+        lightType={'3d'}
+        envPreset={envPreset}
+        reflection={reflection}
+        brightness={0.1}
+        postProcessing={null} // turn on postpocessing
+        loadingCallback={setLoadingPercentage}
+        shader={shader}
+        axesHelper={false}
+        wireframe={true}
+        meshCount={96}
+        visible={hoverState !== 0 ? true : false}
+      />
+    </>
   )
 }
 
