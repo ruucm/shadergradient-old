@@ -4,7 +4,7 @@ import { MenuWrapper } from '@/components/dom/MenuWrapper'
 import { MotionLogo } from '@/components/dom/MotionLogo'
 import { PreviewSwitch } from '@/components/dom/PreviewSwitch'
 import { PreviewWrapper } from '@/components/dom/PreviewWrapper'
-import { links } from '@/consts'
+import { isDev, links } from '@/consts'
 import { useUIStore } from '@/helpers/store'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
@@ -56,11 +56,13 @@ const DOM = () => {
   console.log('loadingPercentage', loadingPercentage)
   return (
     <>
-      <Loading
-        current={current}
-        loadingPercentage={loadingPercentage}
-        // referer={referer}
-      />
+      {!isDev && (
+        <Loading
+          current={current}
+          loadingPercentage={loadingPercentage}
+          // referer={referer}
+        />
+      )}
       <MotionLogo
         color={false}
         current={current}
