@@ -70,7 +70,7 @@ const LCanvas = ({ children }) => {
           renderPriority={2}
         >
           <GizmoViewport
-            axisColors={['green', 'red', 'blue']}
+            axisColors={['red', 'green', 'blue']}
             labelColor='white'
             hideNegativeAxes
             // @ts-ignore
