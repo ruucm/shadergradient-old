@@ -1,5 +1,4 @@
 import * as defaults from './defaults' // testing color-normal-mix + halftone
-import * as spiral from './spiral'
 import * as sphereShader from './sphereShader'
 
 import * as test from './tests/test' // testing color-normal-mix + halftone
@@ -19,7 +18,6 @@ export {
   colorPosMix,
   twoColorMixWithDepth,
   newLight,
-  spiral,
   stripe,
   sphereShader,
   snakeHalftone,
