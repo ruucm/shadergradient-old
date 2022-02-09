@@ -33,25 +33,28 @@ function App() {
       <LCanvas>
         <GradientScene current={currentTheme} />
       </LCanvas>
-      <div className='bg-controls-sub-panel text-white font-semibold text-sm flex justify-center items-center gap-3 py-1'>
-        Theme
-        <div className='bg-controls-sub-panel-button w-[150px] flex justify-between items-center p-1 rounded'>
-          <Arrow
-            onClick={() => {
-              if (currentTheme === 0) setCurrentTheme(PRESETS.length - 1)
-              else setCurrentTheme(currentTheme - 1)
-            }}
-          />
-          {PRESETS[currentTheme].title}
-          <div className='rotate-180'>
+      <div className='bg-controls-sub-panel text-white font-semibold text-sm flex justify-between items-center p-1'>
+        <div className='flex justify-start gap-3 items-center'>
+          <p style={{ marginLeft: 16 }}>Theme</p>
+          <div className='bg-controls-sub-panel-button w-[150px] flex justify-between items-center p-1 rounded mx-2'>
             <Arrow
               onClick={() => {
-                if (currentTheme === PRESETS.length - 1) setCurrentTheme(0)
-                else setCurrentTheme(currentTheme + 1)
+                if (currentTheme === 0) setCurrentTheme(PRESETS.length - 1)
+                else setCurrentTheme(currentTheme - 1)
               }}
             />
+            {PRESETS[currentTheme].title}
+            <div className='rotate-180'>
+              <Arrow
+                onClick={() => {
+                  if (currentTheme === PRESETS.length - 1) setCurrentTheme(0)
+                  else setCurrentTheme(currentTheme + 1)
+                }}
+              />
+            </div>
           </div>
         </div>
+        <UI.ToolsBox darkMode={true} />
       </div>
       <Controls />
       <div className='flex gap-0.5 p-3 absolute w-full bottom-0 bg-white'>

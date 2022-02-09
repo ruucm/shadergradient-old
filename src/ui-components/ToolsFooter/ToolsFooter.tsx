@@ -12,21 +12,37 @@ type ControlTypeTitlePropsT = {
 
 export const ToolsFooter: React.FC<ControlTypeTitlePropsT> = ({
   title,
+
   ...rest
 }) => {
   const toggleZoom = usePropertyStore((state: any) => state.toggleZoom)
   const toggleAxis = usePropertyStore((state: any) => state.toggleAxis)
   const [copyUrlText, setCopyUrl] = React.useState('copy url')
+  const [isMobile, setIsMobile] = React.useState(false)
+
+  const handleResize = () => {
+    if (window.innerWidth < 641) {
+      setIsMobile(true)
+    } else {
+      setIsMobile(false)
+    }
+  }
+
+  React.useEffect(() => {
+    handleResize()
+    window.addEventListener('resize', handleResize)
+  }, [])
 
   return (
     <div
-      className={cx('text-sm font-medium flex justify-between')}
+      className={cx(
+        'text-sm font-medium justify-between absolute items-center'
+      )}
       style={{
+        display: isMobile ? 'none' : 'flex',
         borderTop: '1px solid #D9D9D9',
         color: '#D9D9D9',
-        alignItems: 'center',
         paddingTop: 5,
-        position: 'absolute',
         width: 'calc(100% - 26px * 2)',
         bottom: 0,
         marginBottom: 5,

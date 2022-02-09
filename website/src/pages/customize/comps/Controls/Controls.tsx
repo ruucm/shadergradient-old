@@ -50,20 +50,23 @@ export const Controls: React.FC<Props> = ({
     <div ref={ref}>
       {isMobile === true ? (
         <div className={styles.controlMobile}>
-          <motion.div
-            className={styles.hideBtn}
-            onClick={() => {
-              setActiveTab('none')
-            }}
-            animate={{
-              opacity: activeTab === 'none' ? 0 : 1,
-              marginTop: activeTab === 'none' ? '5px' : '-35px',
-              transition: { duration: 0.5 },
-            }}
-          >
-            <div>
-              <p>✕</p>
-            </div>
+          <motion.div className={styles.floating}>
+            <motion.div
+              className={styles.hideBtn}
+              onClick={() => {
+                setActiveTab('none')
+              }}
+              animate={{
+                opacity: activeTab === 'none' ? 0 : 1,
+                marginTop: activeTab === 'none' ? '5px' : '-35px',
+                transition: { duration: 0.5 },
+              }}
+            >
+              <div>
+                <p>✕</p>
+              </div>
+            </motion.div>
+            {/* <UI.ToolsBox darkMode={false} /> */}
           </motion.div>
           {children}
         </div>

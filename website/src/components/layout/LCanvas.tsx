@@ -39,7 +39,7 @@ function LControl() {
       control.rotateTo(dToR(cAzimuthAngle), dToR(cPolarAngle), true)
       control.dollyTo(cDistance, true)
     } else if (hoverState !== 0 || toggleZoom === true) {
-      control.dollyTo(30, true)
+      control.dollyTo(20, true)
     }
   }, [ref, cAzimuthAngle, cPolarAngle, cDistance, hoverState, toggleZoom])
 
@@ -70,13 +70,12 @@ const LCanvas = ({ children }) => {
           renderPriority={2}
         >
           <GizmoViewport
-            axisColors={['red', 'green', 'blue']}
-            labelColor='white'
+            axisColors={['white', 'white', 'white']}
+            labelColor='darkgrey'
             hideNegativeAxes
             // @ts-ignore
             axisHeadScale={0.8}
           />
-          {/* alternative: <GizmoViewcube /> */}
         </GizmoHelper>
       )}
 

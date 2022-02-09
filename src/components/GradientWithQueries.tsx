@@ -19,7 +19,6 @@ export function GradientWithQueries({
   current,
   setLoadingPercentage = () => void 0,
   initialCurrent,
-  hoverState = 0,
 }: any) {
   useEffect(() => {
     let gradientURL = PRESETS[current].url
@@ -34,6 +33,9 @@ export function GradientWithQueries({
       document.documentElement.classList.remove('cutomize')
     }
   }, [current])
+
+  const hoverState = usePropertyStore((state: any) => state.hoverState)
+  const toggleAxis = usePropertyStore((state: any) => state.toggleAxis)
 
   // shape
   const [type] = useQueryState('type')
@@ -72,7 +74,6 @@ export function GradientWithQueries({
 
   const [embedMode] = useQueryState('embedMode')
   const [wireframe] = useQueryState('wireframe')
-  const toggleAxis = usePropertyStore((state: any) => state.toggleAxis)
 
   // shader
   const [shader] = useQueryState('shader')
@@ -90,84 +91,44 @@ export function GradientWithQueries({
   const responsiveCameraZoom = getResponsiveZoom(cameraZoom)
 
   return (
-    <>
-      <Gradient
-        // @ts-ignore
-        rotation={animatedRotation}
-        // rotation={[rotationX, rotationY, rotationZ]}
-        position={animatedPosition}
-        scale={animatedScale}
-        cameraPosition={
-          forceCamPos || {
-            x: cameraPositionX,
-            y: cameraPositionY,
-            z: cameraPositionZ,
-          }
+    <Gradient
+      // @ts-ignore
+      rotation={animatedRotation}
+      // rotation={[rotationX, rotationY, rotationZ]}
+      position={animatedPosition}
+      scale={animatedScale}
+      cameraPosition={
+        forceCamPos || {
+          x: cameraPositionX,
+          y: cameraPositionY,
+          z: cameraPositionZ,
         }
-        cameraRotation={{ x: 0, y: 0, z: 0 }}
-        type={type}
-        animate={animate === 'on'}
-        cameraZoom={forceZoom !== null ? forceZoom : responsiveCameraZoom}
-        uTime={uTime}
-        uStrength={uStrength}
-        uDensity={uDensity}
-        uFrequency={uFrequency}
-        uAmplitude={uAmplitude}
-        uSpeed={uSpeed}
-        colors={hoverStateColor}
-        grain={grain}
-        lightType={lightType}
-        envPreset={envPreset}
-        reflection={reflection}
-        brightness={brightness}
-        postProcessing={'threejs'} // turn on postpocessing
-        loadingCallback={setLoadingPercentage}
-        shader={shader}
-        axesHelper={toggleAxis}
-        wireframe={wireframe === 'enable'}
-        meshCount={192}
-        visible={true}
-      />
-
-      {/* for wireframe */}
-      <Gradient
-        // @ts-ignore
-        rotation={animatedRotation}
-        // rotation={[rotationX, rotationY, rotationZ]}
-        position={animatedPosition}
-        scale={animatedScale}
-        cameraPosition={
-          forceCamPos || {
-            x: cameraPositionX,
-            y: cameraPositionY,
-            z: cameraPositionZ,
-          }
-        }
-        cameraRotation={{ x: 0, y: 0, z: 0 }}
-        type={type}
-        animate={animate === 'on'}
-        cameraZoom={forceZoom !== null ? forceZoom : responsiveCameraZoom}
-        uTime={uTime}
-        uStrength={uStrength}
-        uDensity={uDensity}
-        uFrequency={uFrequency}
-        uAmplitude={uAmplitude}
-        uSpeed={uSpeed}
-        colors={['#ffffff', '#ffffff', '#ffffff']}
-        grain={grain}
-        lightType={'3d'}
-        envPreset={envPreset}
-        reflection={reflection}
-        brightness={0.1}
-        postProcessing={null} // turn on postpocessing
-        loadingCallback={setLoadingPercentage}
-        shader={shader}
-        axesHelper={false}
-        wireframe={true}
-        meshCount={96}
-        visible={hoverState !== 0 ? true : false}
-      />
-    </>
+      }
+      cameraRotation={{ x: 0, y: 0, z: 0 }}
+      type={type}
+      animate={animate === 'on'}
+      cameraZoom={forceZoom !== null ? forceZoom : responsiveCameraZoom}
+      uTime={uTime}
+      uStrength={uStrength}
+      uDensity={uDensity}
+      uFrequency={uFrequency}
+      uAmplitude={uAmplitude}
+      uSpeed={uSpeed}
+      colors={hoverStateColor}
+      grain={grain}
+      lightType={lightType}
+      envPreset={envPreset}
+      reflection={reflection}
+      brightness={brightness}
+      postProcessing={'threejs'} // turn on postpocessing
+      loadingCallback={setLoadingPercentage}
+      shader={shader}
+      axesHelper={toggleAxis}
+      wireframe={wireframe === 'enable'}
+      meshCount={hoverState !== 0 ? 48 : 192}
+      visible={true}
+      hoverState={hoverState}
+    />
   )
 }
 
