@@ -67,20 +67,6 @@ export function GradientMesh({
     }
   }, [mesh.current])
 
-  useEffect(() => {
-    if (linemesh.current !== undefined && type === 'plane') {
-      linemesh.current.geometry.parameters.heightSegments = 64
-      linemesh.current.geometry.updateMatrix()
-    } else if (linemesh.current !== undefined && type === 'sphere') {
-      linemesh.current.geometry.parameters.detail = 16
-      linemesh.current.geomtery.updateMatrix()
-    } else if (linemesh.current !== undefined && type === 'waterPlane') {
-      linemesh.current.geometry.parameters.heightSegments = 64
-      linemesh.current.geometry.parameters.widthSegments = 64
-      linemesh.current.geometry.updateMatrix()
-    }
-  }, [type])
-
   const lineProps: any = {
     midA: [0, 0, 0],
     midB: [0, 0, 0],
