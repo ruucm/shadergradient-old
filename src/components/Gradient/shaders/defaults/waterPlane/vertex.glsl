@@ -43,22 +43,35 @@ varying vec3 vBitangent;
 
 void main() {
 
-#include <beginnormal_vertex>
-#include <color_vertex>
-#include <defaultnormal_vertex>
-#include <morphnormal_vertex>
-#include <skinbase_vertex>
-#include <skinnormal_vertex>
-#include <uv2_vertex>
-#include <uv_vertex>
-#ifndef FLAT_SHADED
-  vNormal = normalize(transformedNormal);
-#ifdef USE_TANGENT
-  vTangent = normalize(transformedTangent);
-  vBitangent = normalize(cross(vNormal, vTangent) * tangent.w);
-#endif
-#endif
-#include <begin_vertex>
+  #include <beginnormal_vertex>
+  #include <color_vertex>
+  #include <defaultnormal_vertex>
+  #include <morphnormal_vertex>
+  #include <skinbase_vertex>
+  #include <skinnormal_vertex>
+  #include <uv2_vertex>
+  #include <uv_vertex>
+  #ifndef FLAT_SHADED
+    vNormal = normalize(transformedNormal);
+  #ifdef USE_TANGENT
+    vTangent = normalize(transformedTangent);
+    vBitangent = normalize(cross(vNormal, vTangent) * tangent.w);
+  #endif
+  #endif
+  #include <begin_vertex>
+
+  #include <clipping_planes_vertex>
+  #include <displacementmap_vertex>
+  #include <logdepthbuf_vertex>
+  #include <morphtarget_vertex>
+  #include <project_vertex>
+  #include <skinning_vertex>
+    vViewPosition = -mvPosition.xyz;
+  #include <fog_vertex>
+  #include <shadowmap_vertex>
+  #include <worldpos_vertex>
+
+  //-------- start vertex ------------
   float t = uTime * uSpeed;
   // Create a sine wave from top to bottom of the sphere
   float distortion = 0.75 * cnoise3(0.43 * position * uNoiseDensity + t);
@@ -66,16 +79,5 @@ void main() {
   vec3 pos = position + normal * distortion * uNoiseStrength;
   vPos = pos;
 
-
-#include <clipping_planes_vertex>
-#include <displacementmap_vertex>
-#include <logdepthbuf_vertex>
-#include <morphtarget_vertex>
-#include <project_vertex>
-#include <skinning_vertex>
-  vViewPosition = -mvPosition.xyz;
-#include <fog_vertex>
-#include <shadowmap_vertex>
-#include <worldpos_vertex>
   gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.);
 }
