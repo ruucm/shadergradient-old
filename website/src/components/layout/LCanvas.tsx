@@ -25,6 +25,9 @@ function LControl() {
   const [cAzimuthAngle] = useQueryState('cAzimuthAngle')
   const [cPolarAngle] = useQueryState('cPolarAngle')
   const [cDistance] = useQueryState('cDistance')
+  const [cameraZoom] = useQueryState('cameraZoom')
+  const [type] = useQueryState('type')
+
   const hoverState = usePropertyStore((state: any) => state.hoverState)
   const toggleZoom = usePropertyStore((state: any) => state.toggleZoom)
 
@@ -37,11 +40,28 @@ function LControl() {
     console.log(control)
     if (control && hoverState === 0 && toggleZoom === false) {
       control.rotateTo(dToR(cAzimuthAngle), dToR(cPolarAngle), true)
-      control.dollyTo(cDistance, true)
+      if (type === 'sphere') control.zoomTo(cameraZoom, true)
+      else control.dollyTo(cDistance, true)
     } else if (hoverState !== 0 || toggleZoom === true) {
       control.dollyTo(20, true)
     }
-  }, [ref, cAzimuthAngle, cPolarAngle, cDistance, hoverState, toggleZoom])
+  }, [
+    ref,
+    cAzimuthAngle,
+    cPolarAngle,
+    cDistance,
+    cameraZoom,
+    hoverState,
+    toggleZoom,
+  ])
+
+  useEffect(() => {
+    const control = ref.current
+
+    // reset dolly & zoom for each types
+    if (type === 'sphere') control.dollyTo(10, true)
+    else control.zoomTo(1, true)
+  }, [type])
 
   // @ts-ignore
   return <cameraControls ref={ref} args={[camera, gl.domElement]} />
