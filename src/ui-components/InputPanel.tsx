@@ -40,8 +40,8 @@ export const InputPanel: React.FC<InputPanelPropsT> = ({
         >
           {info === true && <Info size={14} color='rgb(255,67,10)' />}
         </span>
-        {isHovered === title && hoverContent && (
-          <UI.HoverBox content={hoverContent} />
+        {hoverContent && (
+          <UI.HoverBox content={hoverContent} isHovered={isHovered === title} />
         )}
       </span>
       <div className='flex justify-between w-full'>
