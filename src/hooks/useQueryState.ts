@@ -50,7 +50,12 @@ export const useQueryState = (propName: any, defaultValue: any = null) => {
 
 function updateHistory(path: string) {
   window.history.pushState(
-    { prevUrl: window.location.href },
+    {
+      prevUrls: [
+        ...(window.history.state.prevUrls || []),
+        window.location.origin + path,
+      ],
+    },
     document.title,
     path
   )

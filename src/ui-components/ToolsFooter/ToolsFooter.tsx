@@ -53,7 +53,19 @@ export const ToolsFooter: React.FC<ControlTypeTitlePropsT> = ({
         <UI.IconButtons
           icon='CornerUpLeft'
           content='undo'
-          onClick={() => updateGradientState(window.history.state.prevUrl)}
+          onClick={() => {
+            const prevUrls = window.history.state.prevUrls || []
+
+            if (prevUrls.length > 1) {
+              prevUrls.pop() // remove current url
+
+              const lastURL = prevUrls[prevUrls.length - 1]
+              updateGradientState(lastURL)
+
+              prevUrls.pop() // remove the updated url(lastURL)
+              window.history.pushState({ prevUrls }, document.title, '') // sync the prevUrls
+            } else alert('no history')
+          }}
         />
         <UI.IconButtons
           icon='Box'
