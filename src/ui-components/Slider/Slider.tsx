@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 type SliderPropsT = {
   defaultValue: number
   setValue: any
+  saveValue?: any
   step: number
   min: number
   max: number
@@ -15,7 +16,10 @@ type SliderPropsT = {
 >
 
 export const Slider = React.forwardRef<HTMLInputElement, SliderPropsT>(
-  ({ defaultValue, setValue, step, min, max }: SliderPropsT, ref) => {
+  (
+    { defaultValue, setValue, saveValue, step, min, max }: SliderPropsT,
+    ref
+  ) => {
     const [sharedValue, setSharedValue] = useState<any>(defaultValue)
 
     useEffect(() => {
@@ -41,6 +45,10 @@ export const Slider = React.forwardRef<HTMLInputElement, SliderPropsT>(
           min={min}
           max={max}
           onChange={(value, index) => setSharedValue(value)}
+          onAfterChange={() => {
+            console.log('onAfterChange')
+            saveValue(sharedValue)
+          }}
           // styles
           className='bg-primary h-slider w-full'
           marks={[(min + max) / 2]}

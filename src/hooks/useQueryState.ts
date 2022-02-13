@@ -27,17 +27,23 @@ export const useQueryState = (propName: any, defaultValue: any = null) => {
           newVal = parseFloat(newVal.toFixed(2))
         }
 
-        // defer update of URL
-        setTimeout(() => {
-          const query = useGradientStore.getState()
-          updateHistory(
-            qs.stringifyUrl(
-              // @ts-ignore
-              { url: window.location.pathname, query },
-              { skipNull: true, arrayFormat: 'index' }
-            )
+        return newVal
+      })
+    },
+    [_setGlobalValue]
+  )
+
+  const saveQueryValue = useCallback(
+    (newVal) => {
+      _setGlobalValue((currentState: any) => {
+        const query = useGradientStore.getState()
+        updateHistory(
+          qs.stringifyUrl(
+            // @ts-ignore
+            { url: window.location.pathname, query },
+            { skipNull: true, arrayFormat: 'index' }
           )
-        }, 0)
+        )
 
         return newVal
       })
@@ -45,7 +51,7 @@ export const useQueryState = (propName: any, defaultValue: any = null) => {
     [_setGlobalValue]
   )
 
-  return [globalValue, setQueryValue]
+  return [globalValue, setQueryValue, saveQueryValue]
 }
 
 function updateHistory(path: string) {

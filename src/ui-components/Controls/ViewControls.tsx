@@ -8,8 +8,9 @@ type ViewControlsPropsT = React.DetailedHTMLProps<
 >
 
 export const ViewControls: React.FC<ViewControlsPropsT> = () => {
-  const [cDistance, setCdistance] = useQueryState('cDistance')
-  const [cameraZoom, setCameraZoom] = useQueryState('cameraZoom')
+  const [cDistance, setCdistance, saveCdistance] = useQueryState('cDistance')
+  const [cameraZoom, setCameraZoom, saveCameraZoom] =
+    useQueryState('cameraZoom')
 
   const [cameraPositionX, setCameraPositionX] = useQueryState('cameraPositionX')
   const [cameraPositionY, setCameraPositionY] = useQueryState('cameraPositionY')
@@ -37,6 +38,7 @@ export const ViewControls: React.FC<ViewControlsPropsT> = () => {
           <UI.Slider
             defaultValue={cDistance}
             setValue={setCdistance}
+            saveValue={saveCdistance}
             step={0.1}
             min={0}
             max={20}
@@ -48,6 +50,7 @@ export const ViewControls: React.FC<ViewControlsPropsT> = () => {
           <UI.Slider
             defaultValue={cameraZoom}
             setValue={setCameraZoom}
+            saveValue={saveCameraZoom}
             step={0.1}
             min={0.1}
             max={30}
