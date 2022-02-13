@@ -200,7 +200,7 @@
 }
 
 .controlMobile div:nth-of-type(1) {
-  background: white;
+  // background: white;
 }
 
 // .loading {
@@ -291,6 +291,7 @@
     display: flex;
     justify-content: center;
     flex-flow: wrap;
+    // height: 100vh;
   }
 
   .modalWrapper {

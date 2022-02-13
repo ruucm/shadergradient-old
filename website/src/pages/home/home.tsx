@@ -170,7 +170,7 @@ const DOM = () => {
                   mode === 'full'
                     ? '2px solid ' + PRESETS[current].color
                     : '2px solid #FF430A',
-                height: 60 * 1.6,
+                height: isMobile ? 'fit-content' : 60 * 1.6,
               }}
             >
               <SnapList
