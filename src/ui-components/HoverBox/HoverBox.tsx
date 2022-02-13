@@ -22,6 +22,7 @@ export const HoverBox: React.FC<ControlTypeTitlePropsT> = ({
       style={{
         position: 'absolute',
         marginLeft: -10,
+        zIndex: 20,
         visibility: isHovered ? 'visible' : 'hidden',
 
         marginTop: isHovered ? 10 : 0,
