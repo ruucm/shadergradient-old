@@ -2,14 +2,6 @@ import { useCallback } from 'react'
 import * as qs from 'query-string'
 import { useGradientStore } from '../store'
 
-function updateHistory(path: string) {
-  window.history.pushState(
-    { prevUrl: window.location.href },
-    document.title,
-    path
-  )
-}
-
 export const useQueryState = (propName: any, defaultValue: any = null) => {
   const selector = useCallback(
     (state) =>
@@ -54,6 +46,14 @@ export const useQueryState = (propName: any, defaultValue: any = null) => {
   )
 
   return [globalValue, setQueryValue]
+}
+
+function updateHistory(path: string) {
+  window.history.pushState(
+    { prevUrl: window.location.href },
+    document.title,
+    path
+  )
 }
 
 export default useQueryState
