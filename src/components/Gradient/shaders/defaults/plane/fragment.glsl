@@ -84,14 +84,13 @@ varying vec3 color3;
 void main() {
 
   //-------- basic gradient ------------
-
   vec3 color1 = vec3(uC1r, uC1g, uC1b);
   vec3 color2 = vec3(uC2r, uC2g, uC2b);
   vec3 color3 = vec3(uC3r, uC3g, uC3b);
   float clearcoat = 1.0;
   float clearcoatRoughness = 0.5;
 
-#include <clipping_planes_fragment>
+  #include <clipping_planes_fragment>
 
   vec4 diffuseColor = vec4(
       mix(mix(color1, color2, smoothstep(-3.0, 3.0, vPos.x)), color3, vPos.z),
@@ -116,43 +115,50 @@ void main() {
   // 분배한다.
 
   //-------- materiality ------------
-
   ReflectedLight reflectedLight =
       ReflectedLight(vec3(0.0), vec3(0.0), vec3(0.0), vec3(0.0));
   vec3 totalEmissiveRadiance = emissive;
-#ifdef TRANSMISSION
-  float totalTransmission = transmission;
-#endif
-#include <logdepthbuf_fragment>
-#include <map_fragment>
-#include <color_fragment>
-#include <alphamap_fragment>
-#include <alphatest_fragment>
-#include <roughnessmap_fragment>
-#include <metalnessmap_fragment>
-#include <normal_fragment_begin>
-#include <normal_fragment_maps>
-#include <clearcoat_normal_fragment_begin>
-#include <clearcoat_normal_fragment_maps>
-#include <emissivemap_fragment>
-// #include <transmissionmap_fragment>
-#include <lights_physical_fragment>
-#include <lights_fragment_begin>
-#include <lights_fragment_maps>
-#include <lights_fragment_end>
-#include <aomap_fragment>
-  vec3 outgoingLight =
-      reflectedLight.directDiffuse + reflectedLight.indirectDiffuse +
-      reflectedLight.directSpecular + reflectedLight.indirectSpecular;
-  //위에서 정의한 diffuseColor에 환경이나 반사값들을 반영한 값.
 
-#ifdef TRANSMISSION
-  diffuseColor.a *=
-      mix(saturate(1. - totalTransmission +
-                   linearToRelativeLuminance(reflectedLight.directSpecular +
-                                             reflectedLight.indirectSpecular)),
-          1.0, metalness);
-#endif
+  #ifdef TRANSMISSION
+    float totalTransmission = transmission;
+  #endif
+  #include <logdepthbuf_fragment>
+  #include <map_fragment>
+  #include <color_fragment>
+  #include <alphamap_fragment>
+  #include <alphatest_fragment>
+  #include <roughnessmap_fragment>
+  #include <metalnessmap_fragment>
+  #include <normal_fragment_begin>
+  #include <normal_fragment_maps>
+  #include <clearcoat_normal_fragment_begin>
+  #include <clearcoat_normal_fragment_maps>
+  #include <emissivemap_fragment>
+  // #include <transmissionmap_fragment>
+  #include <lights_physical_fragment>
+  #include <lights_fragment_begin>
+  #include <lights_fragment_maps>
+  #include <lights_fragment_end>
+  #include <aomap_fragment>
+    vec3 outgoingLight =
+        reflectedLight.directDiffuse + reflectedLight.indirectDiffuse +
+        reflectedLight.directSpecular + reflectedLight.indirectSpecular;
+    //위에서 정의한 diffuseColor에 환경이나 반사값들을 반영한 값.
+  #ifdef TRANSMISSION
+    diffuseColor.a *=
+        mix(saturate(1. - totalTransmission +
+                    linearToRelativeLuminance(reflectedLight.directSpecular +
+                                              reflectedLight.indirectSpecular)),
+            1.0, metalness);
+  #endif
+
+
+  #include <tonemapping_fragment>
+  #include <encodings_fragment>
+  #include <fog_fragment>
+  #include <premultiplied_alpha_fragment>
+  #include <dithering_fragment>
+
 
   gl_FragColor = vec4(outgoingLight, diffuseColor.a);
   // gl_FragColor가 fragment shader를 통해 나타나는 최종값으로, diffuseColor에서
@@ -160,10 +166,4 @@ void main() {
   // gl_FragColor = vec4(mix(mix(color1, color3, smoothstep(-3.0, 3.0,vPos.x)),
   // color2, vNormal.z), 1.0); 위처럼 최종값을 그라디언트 값 자체를 넣으면 환경
   // 영향없는 그라디언트만 표현됨.
-
-#include <tonemapping_fragment>
-#include <encodings_fragment>
-#include <fog_fragment>
-#include <premultiplied_alpha_fragment>
-#include <dithering_fragment>
 }
