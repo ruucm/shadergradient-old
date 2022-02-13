@@ -21,6 +21,7 @@ export const IconHoverBox: React.FC<ControlTypeTitlePropsT> = ({
       style={{
         position: 'absolute',
         display: 'flex',
+        visibility: isHovered ? 'visible' : 'hidden',
         justifyContent: 'center',
         marginBottom: isHovered ? 85 : 75,
         transitionDuration: '0.3s',

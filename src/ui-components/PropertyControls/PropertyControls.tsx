@@ -16,7 +16,6 @@ export const PropertyControls: React.FC<Props> = ({
       className={
         'w-screen h-[fit-content] overflow-y-scroll bg-controls-panel-mobile text-primary mx-auto p-3.5 md:bg-controls-panel md:w-[470px] md:h-full md:p-4 relative'
       }
-      // style={{ padding: activeTab === "none" ? 0 : null }}
     >
       {activeTab === 'shape' && <UI.ShapeControls />}
       {activeTab === 'colors' && <UI.ColorControls />}

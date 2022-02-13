@@ -120,7 +120,7 @@ export function GradientMesh({
           colors={colors}
           uStrength={uStrength}
           uDensity={uDensity}
-          uFrequency={uFrequency}
+          uFrequency={5.5}
           uAmplitude={uAmplitude}
           uSpeed={uSpeed}
           meshType={type}

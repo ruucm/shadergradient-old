@@ -44,24 +44,23 @@ export const ShapeControls: React.FC<ShapeControlsPropsT> = () => {
           label='Water'
         />
       </UI.InputPanel>
-      {type === 'sphere' && (
-        <UI.InputPanel title='Shader'>
-          <UI.Radio
-            name='shader'
-            value='defaults'
-            setValue={setShader}
-            check={shader === 'defaults'}
-            label='Defaults'
-          />
-          <UI.Radio
-            name='shader'
-            value='snakeHalftone'
-            setValue={setShader}
-            check={shader === 'snakeHalftone'}
-            label='SnakeHalftone'
-          />
-        </UI.InputPanel>
-      )}
+
+      <UI.InputPanel title='Shader'>
+        <UI.Radio
+          name='shader'
+          value='defaults'
+          setValue={setShader}
+          check={shader === 'defaults'}
+          label='Defaults'
+        />
+        <UI.Radio
+          name='shader'
+          value='snakeHalftone'
+          setValue={setShader}
+          check={shader === 'snakeHalftone'}
+          label='SnakeHalftone'
+        />
+      </UI.InputPanel>
 
       <UI.InputPanel title='Animate'>
         <UI.Radio
@@ -145,19 +144,9 @@ export const ShapeControls: React.FC<ShapeControlsPropsT> = () => {
           max={7}
         />
       </UI.InputPanel>
+
       {type === 'sphere' && (
-        <UI.InputPanel title='uFrequency'>
-          <UI.Slider
-            defaultValue={uFrequency || 0}
-            setValue={setUFrequency}
-            step={0.1}
-            min={0}
-            max={7}
-          />
-        </UI.InputPanel>
-      )}
-      {type === 'sphere' && (
-        <UI.InputPanel title='uAmplitude'>
+        <UI.InputPanel title='Spiral'>
           <UI.Slider
             defaultValue={uAmplitude || 0}
             setValue={setUAmplitude}
@@ -167,6 +156,7 @@ export const ShapeControls: React.FC<ShapeControlsPropsT> = () => {
           />
         </UI.InputPanel>
       )}
+      <UI.ToolsFooter />
     </div>
   )
 }
