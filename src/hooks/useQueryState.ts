@@ -3,7 +3,11 @@ import * as qs from 'query-string'
 import { useGradientStore } from '../store'
 
 function updateHistory(path: string) {
-  window.history.pushState(null, document.title, path)
+  window.history.pushState(
+    { prevUrl: window.location.href },
+    document.title,
+    path
+  )
 }
 
 export const useQueryState = (propName: any, defaultValue: any = null) => {

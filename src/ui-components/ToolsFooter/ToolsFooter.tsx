@@ -1,7 +1,7 @@
 import * as React from 'react'
 import cx from 'classnames'
 import * as UI from '..'
-import { usePropertyStore } from '../../store'
+import { updateGradientState, usePropertyStore } from '../../store'
 
 type ControlTypeTitlePropsT = {
   title?: string
@@ -50,7 +50,11 @@ export const ToolsFooter: React.FC<ControlTypeTitlePropsT> = ({
     >
       <p>Tools</p>
       <div className={cx('flex')} style={{ gap: 6 }}>
-        <UI.IconButtons icon='CornerUpLeft' content='undo' />
+        <UI.IconButtons
+          icon='CornerUpLeft'
+          content='undo'
+          onClick={() => updateGradientState(window.history.state.prevUrl)}
+        />
         <UI.IconButtons
           icon='Box'
           content='3d axis'
