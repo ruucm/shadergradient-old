@@ -8,6 +8,7 @@ import * as twoColorMixWithDepth from './tests/twoColorMixWithDepth'
 import * as newLight from './tests/newLight'
 import * as stripe from './tests/stripe'
 import * as snakeHalftone from './tests/snakeHalftone'
+import * as noise from './tests/noise'
 
 export {
   defaults,
@@ -19,4 +20,5 @@ export {
   newLight,
   stripe,
   snakeHalftone,
+  noise,
 }
