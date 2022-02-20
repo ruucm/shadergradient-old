@@ -42,12 +42,12 @@ export const PRESETS = [
   {
     title: 'Mystery',
     color: 'white',
-    url: '?animate=on&axesHelper=off&brightness=1&cAzimuthAngle=90&cDistance=1.6&cPolarAngle=0&cameraPositionX=0&cameraPositionY=0&cameraPositionZ=0&cameraZoom=1&color1=%233531f6&color2=%23cbbfe8&color3=%23ff6f00&embedMode=off&envPreset=city&gizmoHelper=hide&grain=off&lightType=3d&pixelDensity=1&positionX=0&positionY=0&positionZ=0&reflection=0.1&rotationX=-30&rotationY=0&rotationZ=-120&type=sphere&uDensity=1.9&uSpeed=0.1&uStrength=0.2&uTime=0.2&wireframe=false',
+    url: '?animate=on&axesHelper=off&brightness=1&cAzimuthAngle=90&cDistance=1.6&cPolarAngle=0&cameraPositionX=0&cameraPositionY=0&cameraPositionZ=0&cameraZoom=9.4&color1=%233531f6&color2=%23cbbfe8&color3=%23ff6f00&embedMode=off&envPreset=city&gizmoHelper=hide&grain=off&lightType=3d&pixelDensity=1&positionX=0&positionY=0&positionZ=0&reflection=0.1&rotationX=-30&rotationY=0&rotationZ=-120&type=sphere&uDensity=1.9&uSpeed=0.1&uStrength=0.2&uTime=0.2&wireframe=false',
   },
   {
     title: 'Chaos',
     color: 'white',
-    url: '?animate=on&axesHelper=on&brightness=1.2&cAzimuthAngle=170&cDistance=2.2&cPolarAngle=110&cameraPositionX=0&cameraPositionY=0&cameraPositionZ=0&cameraZoom=1&color1=%23cd4c9d&color2=%231980FF&color3=%2399B58F&embedMode=off&envPreset=city&gizmoHelper=hide&grain=on&lightType=env&pixelDensity=1&positionX=0&positionY=-0.5&positionZ=0&reflection=0.1&rotationX=0&rotationY=0&rotationZ=0&type=sphere&uDensity=2.2&uSpeed=0.5&uStrength=1&uTime=0.2&wireframe=false',
+    url: '?animate=on&axesHelper=on&brightness=1.2&cAzimuthAngle=170&cDistance=2.2&cPolarAngle=110&cameraPositionX=0&cameraPositionY=0&cameraPositionZ=0&cameraZoom=12&color1=%23cd4c9d&color2=%231980FF&color3=%2399B58F&embedMode=off&envPreset=city&gizmoHelper=hide&grain=on&lightType=env&pixelDensity=1&positionX=0&positionY=-0.5&positionZ=0&reflection=0.1&rotationX=0&rotationY=0&rotationZ=0&type=sphere&uDensity=2.2&uSpeed=0.5&uStrength=1&uTime=0.2&wireframe=false',
   },
   {
     title: 'Santa',
