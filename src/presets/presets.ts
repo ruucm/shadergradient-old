@@ -26,7 +26,7 @@ export const PRESETS = [
   {
     title: 'Aurora',
     color: 'white',
-    url: '?animate=on&axesHelper=off&brightness=1.2&cAzimuthAngle=-20&cDistance=4.4&cPolarAngle=110&cameraPositionX=0&cameraPositionY=0&cameraPositionZ=0&cameraZoom=1&color1=%2300ffbf&color2=%23000000&color3=%230000ff&embedMode=off&envPreset=city&gizmoHelper=hide&grain=off&lightType=3d&pixelDensity=1&positionX=0&positionY=-1.6&positionZ=0&reflection=0.1&rotationX=0&rotationY=0&rotationZ=90&type=plane&uAmplitude=0&uDensity=2&uFrequency=0&uSpeed=0.1&uStrength=2&uTime=0.2&wireframe=false',
+    url: '?animate=on&axesHelper=off&brightness=1.2&cAzimuthAngle=-20&cDistance=4.4&cPolarAngle=110&cameraPositionX=0&cameraPositionY=0&cameraPositionZ=0&cameraZoom=1&color1=%2300ffbf&color2=%23000000&color3=%23ff6a00&embedMode=off&envPreset=city&gizmoHelper=hide&grain=off&lightType=3d&pixelDensity=1&positionX=0&positionY=-1.6&positionZ=0&reflection=0.1&rotationX=0&rotationY=0&rotationZ=90&type=plane&uAmplitude=0&uDensity=2&uFrequency=0&uSpeed=0.1&uStrength=2&uTime=0.2&wireframe=false',
   },
   {
     title: 'Midnight',
