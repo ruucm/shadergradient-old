@@ -24,6 +24,11 @@ export const ruucmCurations = [
     color: 'white',
     url: '?animate=on&axesHelper=on&brightness=1.2&cAzimuthAngle=0&cDistance=7.1&cPolarAngle=140&cameraPositionX=0&cameraPositionY=0&cameraPositionZ=0&cameraZoom=15.1&color1=%23ffffff&color2=%23ffbb00&color3=%230700ff&embedMode=off&envPreset=city&grain=off&lightType=3d&pixelDensity=1&positionX=0&positionY=0&positionZ=0&reflection=0.1&rotationX=0&rotationY=0&rotationZ=0&type=sphere&uAmplitude=1.4&uDensity=1.1&uSpeed=0.1&uStrength=1&uTime=0&wireframe=false',
   },
+  {
+    title: 'Surf Board',
+    color: 'white',
+    url: '?animate=on&axesHelper=on&brightness=1.2&cAzimuthAngle=50&cDistance=7.1&cPolarAngle=140&cameraPositionX=0&cameraPositionY=0&cameraPositionZ=0&cameraZoom=20&color1=%23ffffff&color2=%2300ff2a&color3=%230700ff&embedMode=off&envPreset=city&grain=off&lightType=3d&pixelDensity=1&positionX=0&positionY=0&positionZ=0&reflection=0.1&rotationX=0&rotationY=0&rotationZ=0&type=sphere&uAmplitude=1.4&uDensity=1.7&uSpeed=0.1&uStrength=1&uTime=0&wireframe=false',
+  },
   // {
   //   title: 'Velvet',
   //   color: 'white',
