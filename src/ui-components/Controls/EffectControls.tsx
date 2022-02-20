@@ -46,12 +46,12 @@ export const EffectControls: React.FC<EffectControlsPropsT> = () => {
       </UI.InputPanel>
 
       <UI.InputPanel
-        title='Light Type'
+        title='Environment'
         info={true}
         hoverContent='Environment lighting creates more dynamic lighting effects, e.g. reflections'
         isHovered={isHovered}
         onMouseEnter={() => {
-          setIsHovered('Light Type')
+          setIsHovered('Environment')
         }}
         onMouseLeave={() => {
           setIsHovered('')
@@ -62,14 +62,14 @@ export const EffectControls: React.FC<EffectControlsPropsT> = () => {
           value='env'
           setValue={setLightType}
           check={lightType === 'env'}
-          label='Environment'
+          label='On'
         />
         <UI.Radio
           name='lightType'
           value='3d'
           setValue={setLightType}
           check={lightType === '3d'}
-          label='3d lighting'
+          label='Off'
         />
       </UI.InputPanel>
 

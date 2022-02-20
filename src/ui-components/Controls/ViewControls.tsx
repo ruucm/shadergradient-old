@@ -90,7 +90,7 @@ export const ViewControls: React.FC<ViewControlsPropsT> = () => {
       <UI.InputPanel
         title='Camera Angle'
         info={true}
-        hoverContent='Azimuth as a latitude, Polar as a longtitude'
+        hoverContent='Imagine a globe. Azimuth moves the camera in the direction of latitude, and polar, in the direction of longtitude'
         isHovered={isHovered}
         onMouseEnter={() => {
           setIsHovered('Camera Angle')

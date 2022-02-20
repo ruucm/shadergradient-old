@@ -32,9 +32,11 @@
 
 @media (max-width: 640px) {
   .leftWrapper {
+    width: 90vw;
     .title {
       // top: 1.3em;
       // left: 1.5em;
+
       h1 {
         font-size: 35px;
         margin-left: 0em;

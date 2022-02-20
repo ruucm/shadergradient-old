@@ -1,8 +1,6 @@
 import * as React from 'react'
 import cx from 'classnames'
 import { Feather } from './Feather'
-import * as Icons from 'react-feather'
-// import { motion } from 'framer-motion'
 import * as UI from '..'
 
 type ControlTypeTitlePropsT = {
@@ -22,21 +20,27 @@ export const IconButtons: React.FC<ControlTypeTitlePropsT> = ({
   ...rest
 }) => {
   const [isHovered, setIsHovered] = React.useState(false)
-
+  const backgroundOpacity = (active: any, isHovered: boolean) => {
+    if (active === true) {
+      return 1
+    } else if (isHovered === true && active !== true) {
+      return 0.1
+    } else return 0
+  }
   return (
     <div
       className={cx(
-        'text-sm font-medium cursor-pointer flex justify-center items-center'
+        'text-sm font-medium cursor-pointer flex justify-center items-center',
+        active && 'bg-primary'
       )}
       style={{
         borderRadius: 15,
         width: 30,
         height: 30,
-        background: active ? 'rgba(255,67,10,1)' : 'rgba(255,67,10,0)',
+        transitionDuration: '0.3s',
+        background:
+          'rgba(255,67,10,' + backgroundOpacity(active, isHovered) + ')',
       }}
-      // whileHover={{
-      //   background: 'rgba(255,67,10,0.1)',
-      // }}
       onMouseEnter={() => {
         setIsHovered(true)
       }}
@@ -51,7 +55,7 @@ export const IconButtons: React.FC<ControlTypeTitlePropsT> = ({
         size={20}
         color={active ? 'white' : 'rgb(255,67,10)'}
       />
-      {isHovered && <UI.IconHoverBox content={content} />}
+      <UI.IconHoverBox content={content} isHovered={isHovered} />
     </div>
   )
 }

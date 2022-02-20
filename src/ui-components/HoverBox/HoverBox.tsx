@@ -4,6 +4,7 @@ import cx from 'classnames'
 
 type ControlTypeTitlePropsT = {
   content?: string
+  isHovered?: boolean
 } & React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLDivElement>,
   HTMLDivElement
@@ -12,6 +13,7 @@ type ControlTypeTitlePropsT = {
 export const HoverBox: React.FC<ControlTypeTitlePropsT> = ({
   content,
   onClick,
+  isHovered,
   ...rest
 }) => {
   return (
@@ -20,10 +22,13 @@ export const HoverBox: React.FC<ControlTypeTitlePropsT> = ({
       style={{
         position: 'absolute',
         marginLeft: -10,
-        marginTop: 10,
+        zIndex: 20,
+        visibility: isHovered ? 'visible' : 'hidden',
+
+        marginTop: isHovered ? 10 : 0,
+        transitionDuration: '0.3s',
+        opacity: isHovered ? 1 : 0,
       }}
-      // initial={{ opacity: 0, y: 10 }}
-      // animate={{ opacity: 1, y: 0 }}
     >
       <div
         style={{

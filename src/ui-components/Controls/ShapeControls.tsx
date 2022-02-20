@@ -134,7 +134,7 @@ export const ShapeControls: React.FC<ShapeControlsPropsT> = () => {
       <UI.InputPanel
         title='Noise Density'
         info={true}
-        hoverContent='Control the height of the bumps'
+        hoverContent='Control the frequency of the bumps'
         isHovered={isHovered}
         onMouseEnter={() => {
           setIsHovered('Noise Density')
@@ -152,24 +152,18 @@ export const ShapeControls: React.FC<ShapeControlsPropsT> = () => {
         />
       </UI.InputPanel>
 
-      <UI.InputPanel title='uFrequency'>
-        <UI.Slider
-          defaultValue={uFrequency || 0}
-          setValue={setUFrequency}
-          step={0.1}
-          min={0}
-          max={7}
-        />
-      </UI.InputPanel>
-      <UI.InputPanel title='uAmplitude'>
-        <UI.Slider
-          defaultValue={uAmplitude || 0}
-          setValue={setUAmplitude}
-          step={0.1}
-          min={0}
-          max={7}
-        />
-      </UI.InputPanel>
+      {type === 'sphere' && (
+        <UI.InputPanel title='Spiral'>
+          <UI.Slider
+            defaultValue={uAmplitude || 0}
+            setValue={setUAmplitude}
+            step={0.1}
+            min={0}
+            max={7}
+          />
+        </UI.InputPanel>
+      )}
+      <UI.ToolsFooter />
     </div>
   )
 }
