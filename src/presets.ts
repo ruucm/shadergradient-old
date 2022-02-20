@@ -52,12 +52,12 @@ export const PRESETS = [
   {
     title: 'Santa',
     color: 'white',
-    url: '?animate=on&axesHelper=off&brightness=1.2&cAzimuthAngle=180&cDistance=4&cPolarAngle=90&cameraPositionX=0&cameraPositionY=0&cameraPositionZ=0&cameraZoom=1&color1=%23ff5005&color2=%2379ca77&color3=%23d9a83f&embedMode=off&envPreset=city&gizmoHelper=hide&grain=on&lightType=env&pixelDensity=1&positionX=0.7&positionY=1&positionZ=0&reflection=0.1&rotationX=25&rotationY=0&rotationZ=-120&type=plane&uDensity=3&uSpeed=0.1&uStrength=2.4&uTime=0&wireframe=false',
+    url: '?animate=on&axesHelper=off&brightness=1.2&cAzimuthAngle=180&cDistance=4&cPolarAngle=90&cameraPositionX=0&cameraPositionY=0&cameraPositionZ=0&cameraZoom=1&color1=%23ff5005&color3=%2379ca77&color2=%23d9a83f&embedMode=off&envPreset=city&gizmoHelper=hide&grain=on&lightType=env&pixelDensity=1&positionX=0.7&positionY=1&positionZ=0&reflection=0.1&rotationX=25&rotationY=0&rotationZ=-120&type=plane&uDensity=3&uSpeed=0.1&uStrength=2.4&uTime=0&wireframe=false',
   },
   {
     title: 'Cotton Candy',
     color: 'white',
-    url: '?animate=on&axesHelper=off&brightness=1.2&cAzimuthAngle=180&cDistance=3.8&cPolarAngle=120&cameraPositionX=0&cameraPositionY=0&cameraPositionZ=0&cameraZoom=1&color1=%23ebedff&color2=%23dbf8ff&color3=%23f3f2f8&embedMode=off&envPreset=city&gizmoHelper=hide&grain=off&lightType=3d&pixelDensity=1&positionX=0&positionY=1.3&positionZ=0&reflection=0.1&rotationX=0&rotationY=0&rotationZ=-90&type=waterPlane&uDensity=1&uSpeed=0.3&uStrength=3&uTime=0.2&wireframe=false',
+    url: '?animate=on&axesHelper=off&brightness=1.2&cAzimuthAngle=180&cDistance=3.8&cPolarAngle=120&cameraPositionX=0&cameraPositionY=0&cameraPositionZ=0&cameraZoom=1&color1=%23ebedff&color3=%23dbf8ff&color2=%23f3f2f8&embedMode=off&envPreset=city&gizmoHelper=hide&grain=off&lightType=3d&pixelDensity=1&positionX=0&positionY=1.3&positionZ=0&reflection=0.1&rotationX=0&rotationY=0&rotationZ=-90&type=waterPlane&uDensity=1&uSpeed=0.3&uStrength=3&uTime=0.2&wireframe=false',
   },
   {
     title: 'Lemon',
@@ -67,7 +67,7 @@ export const PRESETS = [
   {
     title: 'Newyork',
     color: 'white',
-    url: '?animate=on&axesHelper=off&brightness=1.2&cAzimuthAngle=180&cDistance=3.3&cPolarAngle=120&cameraPositionX=0&cameraPositionY=0&cameraPositionZ=0&cameraZoom=1&color1=%23ace0f9&color2=%2399c5ff&color3=%23fff1eb&embedMode=off&envPreset=city&gizmoHelper=hide&grain=off&lightType=3d&pixelDensity=1&positionX=0&positionY=0&positionZ=0&reflection=0.1&rotationX=0&rotationY=0&rotationZ=-70&type=plane&uDensity=2.8&uSpeed=0.1&uStrength=0.9&uTime=0.2&wireframe=false',
+    url: '?animate=on&axesHelper=off&brightness=1.2&cAzimuthAngle=180&cDistance=3.3&cPolarAngle=120&cameraPositionX=0&cameraPositionY=0&cameraPositionZ=0&cameraZoom=1&color1=%23ace0f9&color3=%2399c5ff&color2=%23fff1eb&embedMode=off&envPreset=city&gizmoHelper=hide&grain=off&lightType=3d&pixelDensity=1&positionX=0&positionY=0&positionZ=0&reflection=0.1&rotationX=0&rotationY=0&rotationZ=-70&type=plane&uDensity=2.8&uSpeed=0.1&uStrength=0.9&uTime=0.2&wireframe=false',
   },
   {
     title: 'Velvet',
