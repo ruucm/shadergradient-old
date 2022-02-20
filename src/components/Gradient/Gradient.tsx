@@ -59,7 +59,8 @@ export const Gradient: React.FC<any> = ({
   if (envPreset)
     controlledEnvironment = (
       <Environment
-        preset={envPreset}
+        // preset={envPreset}
+        files={`https://www.shadergradient.com/hdr/${envPreset}.hdr`} // use instead of preset, cause rawCdn is not stable on many requests.
         background={true}
         loadingCallback={loadingCallback}
       />
