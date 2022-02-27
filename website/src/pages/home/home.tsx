@@ -77,14 +77,14 @@ const DOM = () => {
           display: 'block',
         }}
       >
-        <motion.div
+        {/* <motion.div
           style={{
             width: '100vw',
             height: '100vh',
             background: 'rgb(255, 67, 10)',
             display: loadingPercentage < 100 ? 'block' : 'none',
           }}
-        />
+        /> */}
         {/* Menu */}
         {isMobile === true ? null : (
           <MenuWrapper mode={mode}>
