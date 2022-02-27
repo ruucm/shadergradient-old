@@ -25,6 +25,8 @@ import { MyItem } from './my-item'
 const DOM = () => {
   const mode = useUIStore((state: any) => state.mode)
   const setMode = useUIStore((state: any) => state.setMode)
+  const load = useUIStore((state: any) => state.load)
+  const setLoad = useUIStore((state: any) => state.setLoad)
   const current = useUIStore((state: any) => state.current)
   const loadingPercentage = useUIStore((state: any) => state.loadingPercentage)
   const setCurrent = useUIStore((state: any) => state.setCurrent)
@@ -32,7 +34,7 @@ const DOM = () => {
   const snapList = useRef(null)
 
   const [isMobile, setIsMobile] = useState(false)
-
+  // const [load, setLoad] = useState(false)
   // const goToSnapItem = useScroll({ ref: snapList })
   const itemGap = '40px'
 
@@ -46,6 +48,14 @@ const DOM = () => {
       setIsMobile(false)
     }
   }
+
+  useEffect(() => {
+    if (loadingPercentage === 100) {
+      setTimeout(() => {
+        setLoad(true)
+      }, 1000)
+    }
+  }, [loadingPercentage])
 
   // create an event listener
   useEffect(() => {
@@ -77,14 +87,16 @@ const DOM = () => {
           display: 'block',
         }}
       >
-        {/* <motion.div
+        <motion.div
           style={{
             width: '100vw',
             height: '100vh',
             background: 'rgb(255, 67, 10)',
-            display: loadingPercentage < 100 ? 'block' : 'none',
           }}
-        /> */}
+          animate={{
+            opacity: load === false ? 1 : 0,
+          }}
+        />
         {/* Menu */}
         {isMobile === true ? null : (
           <MenuWrapper mode={mode}>
@@ -174,7 +186,7 @@ const DOM = () => {
               opacity: 1,
               y: 0,
               display: 'block',
-              transition: { delay: 3, transition: 1 },
+              transition: { delay: 2, transition: 1 },
             }}
           >
             <div
