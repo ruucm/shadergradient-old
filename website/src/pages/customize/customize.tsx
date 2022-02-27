@@ -100,9 +100,11 @@ const DOM = () => {
                       onClick={() => void 0}
                       visible={current === index}
                       isMobile={isMobile}
+                      index={index}
                     >
-                      {index < 10 ? '0' + index.toString() : index.toString()}{' '}
-                      {PRESETS[index].title}
+                      {index < 10
+                        ? '0' + index.toString() + ' ' + PRESETS[index].title
+                        : index.toString() + ' ' + PRESETS[index].title}
                     </MyItem>
                   </div>
                 )
