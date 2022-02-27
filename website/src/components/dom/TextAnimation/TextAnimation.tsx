@@ -12,6 +12,7 @@ const letterVariants = {
   before: {
     opacity: 0,
     y: 20,
+    rotate: -10,
     transition: {
       type: 'spring',
       damping: 12,
@@ -21,6 +22,7 @@ const letterVariants = {
   after: {
     opacity: 1,
     y: 0,
+    rotate: 0,
     transition: {
       type: 'spring',
       damping: 12,

@@ -36,7 +36,7 @@ export const MyItem = ({
         content={children.toString()}
         fontSize={isMobile ? 30 : 60}
         color={color}
-        delay={3500 + index * 300}
+        delay={index * 500}
       />
     </motion.div>
     <motion.div
