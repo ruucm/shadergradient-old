@@ -20,6 +20,11 @@ export const ruucmCurations = [
     url: '?animate=on&axesHelper=on&brightness=1.6&cAzimuthAngle=60&cDistance=7.1&cPolarAngle=60&cameraPositionX=0&cameraPositionY=0&cameraPositionZ=0&cameraZoom=12.5&color1=%23ff7a33&color2=%2333a0ff&color3=%23ffc53d&embedMode=off&envPreset=city&grain=off&http%3A%2F%2Flocalhost%3A3002%2Fcustomize%3Fanimate=on&lightType=3d&pixelDensity=1&positionX=0&positionY=0.35&positionZ=0&reflection=0.1&rotationX=0&rotationY=0&rotationZ=0&shader=defaults&type=sphere&uAmplitude=0&uDensity=1&uSpeed=0.1&uStrength=0.4&uTime=0&wireframe=false',
   },
   {
+    title: 'Universe',
+    color: 'white',
+    url: '?animate=on&axesHelper=on&brightness=1.3&cAzimuthAngle=180&cDistance=3.9&cPolarAngle=125&cameraPositionX=0&cameraPositionY=0&cameraPositionZ=0&cameraZoom=1&color1=%235606FF&color2=%23FE8989&color3=%23000000&embedMode=off&envPreset=city&grain=off&lightType=3d&pixelDensity=1&positionX=-0.5&positionY=-0.3&positionZ=0&reflection=0.1&rotationX=0&rotationY=0&rotationZ=235&type=waterPlane&uAmplitude=0&uDensity=1.1&uSpeed=0.1&uStrength=2.4&uTime=0.2&wireframe=false',
+  },
+  {
     title: 'Viola orientalis',
     color: 'white',
     url: '?animate=on&axesHelper=on&brightness=1.2&cAzimuthAngle=0&cDistance=7.1&cPolarAngle=140&cameraPositionX=0&cameraPositionY=0&cameraPositionZ=0&cameraZoom=15.1&color1=%23ffffff&color2=%23ffbb00&color3=%230700ff&embedMode=off&envPreset=city&grain=off&lightType=3d&pixelDensity=1&positionX=0&positionY=0&positionZ=0&reflection=0.1&rotationX=0&rotationY=0&rotationZ=0&type=sphere&uAmplitude=1.4&uDensity=1.1&uSpeed=0.1&uStrength=1&uTime=0&wireframe=false',

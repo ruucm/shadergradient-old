@@ -1,8 +1,10 @@
+import { mainCurations } from './mainCurations'
 import { ruucmCurations } from './ruucmCurations'
 import { smCurationCandidate } from './smCurations'
 import { templates } from './templates'
 
 export const PRESETS = [
+  ...mainCurations,
   {
     title: 'New Halo',
     color: 'white',
