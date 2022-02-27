@@ -8,8 +8,9 @@ type ViewControlsPropsT = React.DetailedHTMLProps<
 >
 
 export const ViewControls: React.FC<ViewControlsPropsT> = () => {
-  // const [cameraZoom, setCameraZoom] = useQueryState("cameraZoom")
   const [cDistance, setCdistance] = useQueryState('cDistance')
+  const [cameraZoom, setCameraZoom] = useQueryState('cameraZoom')
+
   const [cameraPositionX, setCameraPositionX] = useQueryState('cameraPositionX')
   const [cameraPositionY, setCameraPositionY] = useQueryState('cameraPositionY')
   const [cameraPositionZ, setCameraPositionZ] = useQueryState('cameraPositionZ')
@@ -24,18 +25,35 @@ export const ViewControls: React.FC<ViewControlsPropsT> = () => {
   const [rotationY, setRotationY] = useQueryState('rotationY')
   const [rotationZ, setRotationZ] = useQueryState('rotationZ')
   const [isHovered, setIsHovered] = React.useState('')
+
+  const [type] = useQueryState('type')
+
   return (
     <div className='flex flex-col gap-3'>
       {/* Zoom */}
-      <UI.InputPanel title='Distance'>
-        <UI.Slider
-          defaultValue={cDistance}
-          setValue={setCdistance}
-          step={0.1}
-          min={0}
-          max={20}
-        />
-      </UI.InputPanel>
+
+      {type !== 'sphere' && (
+        <UI.InputPanel title='Distance'>
+          <UI.Slider
+            defaultValue={cDistance}
+            setValue={setCdistance}
+            step={0.1}
+            min={0}
+            max={20}
+          />
+        </UI.InputPanel>
+      )}
+      {type === 'sphere' && (
+        <UI.InputPanel title='Zoom'>
+          <UI.Slider
+            defaultValue={cameraZoom}
+            setValue={setCameraZoom}
+            step={0.1}
+            min={0.1}
+            max={30}
+          />
+        </UI.InputPanel>
+      )}
 
       {/* Positions */}
       {/* <UI.InputPanel title="Position X">

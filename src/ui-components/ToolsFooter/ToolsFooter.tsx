@@ -1,7 +1,7 @@
 import * as React from 'react'
 import cx from 'classnames'
 import * as UI from '..'
-import { usePropertyStore } from '../../store'
+import { updateGradientState, usePropertyStore } from '../../store'
 
 type ControlTypeTitlePropsT = {
   title?: string
@@ -50,7 +50,23 @@ export const ToolsFooter: React.FC<ControlTypeTitlePropsT> = ({
     >
       <p>Tools</p>
       <div className={cx('flex')} style={{ gap: 6 }}>
-        <UI.IconButtons icon='CornerUpLeft' content='undo' />
+        <UI.IconButtons
+          icon='CornerUpLeft'
+          content='undo'
+          onClick={() => {
+            const prevUrls = window.history.state.prevUrls || []
+
+            if (prevUrls.length > 1) {
+              prevUrls.pop() // remove current url
+
+              const lastURL = prevUrls[prevUrls.length - 1]
+              updateGradientState(lastURL)
+
+              prevUrls.pop() // remove the updated url(lastURL)
+              window.history.pushState({ prevUrls }, document.title, '') // sync the prevUrls
+            } else alert('no history')
+          }}
+        />
         <UI.IconButtons
           icon='Box'
           content='3d axis'

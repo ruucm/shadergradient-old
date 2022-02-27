@@ -15,6 +15,7 @@ varying vec3 vNormal;
 varying float displacement;
 varying vec3 vPos;
 varying float vDistort;
+varying vec2 vUv;
 
 uniform float uTime;
 uniform float uSpeed;
@@ -72,6 +73,8 @@ void main() {
   #include <worldpos_vertex>
 
   //-------- start vertex ------------
+  vUv = uv;
+
   float t = uTime * uSpeed;
   // Create a sine wave from top to bottom of the sphere
   float distortion = 0.75 * cnoise3(0.43 * position * uNoiseDensity + t);

@@ -244,17 +244,11 @@ const DOM = () => {
   )
 }
 
-// canvas components goes here
-const R3F = () => {
-  return <GradientScene />
-}
-
 const Page = () => {
   return (
     <>
       <DOM />
-      {/* @ts-ignore */}
-      <R3F r3f />
+      <GradientScene r3f />
     </>
   )
 }
