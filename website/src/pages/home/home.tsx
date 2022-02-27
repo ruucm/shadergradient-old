@@ -21,7 +21,9 @@ import styles from './Home.module.scss'
 import { MenuItem } from './menu-item'
 import { MyItem } from './my-item'
 
-const DOM = () => {
+const DOM = ({ referer }) => {
+  // for logo animation
+
   const mode = useUIStore((state: any) => state.mode)
   const setMode = useUIStore((state: any) => state.setMode)
   const current = useUIStore((state: any) => state.current)
@@ -32,10 +34,10 @@ const DOM = () => {
 
   const [isMobile, setIsMobile] = useState(false)
 
-  // const goToSnapItem = useScroll({ ref: snapList })
+  const goToSnapItem = useScroll({ ref: snapList })
   const itemGap = '40px'
 
-  // const { isDragging } = useDragToScroll({ ref: snapList })
+  const { isDragging } = useDragToScroll({ ref: snapList })
 
   //choose the screen size
   const handleResize = () => {
@@ -54,12 +56,14 @@ const DOM = () => {
   }, [])
 
   console.log('loadingPercentage', loadingPercentage)
+
   return (
     <>
+      {/* Loadings */}
       <Loading
         current={current}
         loadingPercentage={loadingPercentage}
-        // referer={referer}
+        referer={referer}
       />
       <MotionLogo
         color={false}
@@ -190,7 +194,7 @@ const DOM = () => {
                     >
                       <MyItem
                         onClick={() => {
-                          // goToSnapItem(index)
+                          goToSnapItem(index)
                           setCurrent(index)
                         }}
                         visible={current === index}
@@ -213,7 +217,7 @@ const DOM = () => {
                   <button
                     style={{ display: isMobile ? 'none' : 'block' }}
                     onClick={() => {
-                      // goToSnapItem(0)
+                      goToSnapItem(0)
                     }}
                   >
                     ←
@@ -224,32 +228,28 @@ const DOM = () => {
           </motion.div>
         </div>
       </motion.div>
+
       <PreviewWrapper mode={mode} setMode={setMode} />
     </>
   )
 }
 
-// canvas components goes here
-const R3F = () => {
-  return <GradientScene />
-}
-
-const Page = () => {
+const Page = ({ referer }) => {
   return (
     <>
-      <DOM />
-      {/* @ts-ignore */}
-      <R3F r3f />
+      <DOM referer={referer} />
+      <GradientScene r3f />
     </>
   )
 }
 
 export default Page
 
-export async function getStaticProps() {
+export async function getServerSideProps(context) {
   return {
     props: {
-      title: 'Index',
+      title: 'Shader Gradient',
+      referer: context.req.headers.referer,
     },
   }
 }

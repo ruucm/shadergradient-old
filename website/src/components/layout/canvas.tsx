@@ -1,7 +1,15 @@
 import { useStore } from '@/helpers/store'
-import { Preload, GizmoHelper, GizmoViewport } from '@react-three/drei'
+import { A11yUserPreferences } from '@react-three/a11y'
+import {
+  OrbitControls,
+  Preload,
+  useContextBridge,
+  GizmoHelper,
+  GizmoViewport,
+} from '@react-three/drei'
 import { Canvas, extend, useFrame, useThree } from '@react-three/fiber'
 import { useEffect, useRef } from 'react'
+import { FormContext } from '../../helpers/form-provider'
 import { useQueryState } from '@shadergradient'
 import * as THREE from 'three'
 import CameraControls from 'camera-controls'
@@ -10,7 +18,7 @@ import { dToR } from '@/utils'
 CameraControls.install({ THREE })
 extend({ CameraControls })
 
-function LControl() {
+function Controls() {
   const ref: any = useRef()
   const camera = useThree((state) => state.camera)
   const gl = useThree((state) => state.gl)
@@ -40,9 +48,11 @@ function LControl() {
 
 const LCanvas = ({ children }) => {
   const dom = useStore((state) => state.dom)
+  const ContextBridge = useContextBridge(FormContext)
 
   // performance
   const [pixelDensity] = useQueryState('pixelDensity')
+
   const [gizmoHelper] = useQueryState('gizmoHelper', 'show')
 
   return (
@@ -55,10 +65,13 @@ const LCanvas = ({ children }) => {
       dpr={pixelDensity} //device pixel ratio - 1 default and fast, 2 detailed and slow
       linear={true} //sRGBEncoding
       flat={true} //ACESFilmicToneMapping
+      onCreated={(state) => {
+        state.events.connect(dom.current)
+        console.log('state.camera', state.camera)
+      }}
       className='absolute top-0'
-      onCreated={(state) => state.events.connect(dom.current)}
     >
-      <LControl />
+      <Controls />
       {gizmoHelper === 'show' && (
         <GizmoHelper
           alignment='bottom-right' // widget alignment within scene
@@ -76,8 +89,10 @@ const LCanvas = ({ children }) => {
         </GizmoHelper>
       )}
 
-      <Preload all />
-      {children}
+      <A11yUserPreferences>
+        <Preload all />
+        <ContextBridge>{children}</ContextBridge>
+      </A11yUserPreferences>
     </Canvas>
   )
 }
