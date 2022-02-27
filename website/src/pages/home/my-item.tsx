@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import { TextAnimation } from '@/components/dom/TextAnimation'
 
 export const MyItem = ({
   onClick,
@@ -8,28 +9,35 @@ export const MyItem = ({
   color,
   isMobile = false,
   btnOn = false,
+  index,
 }) => (
   <div style={{ position: 'relative', overflow: 'visible' }}>
     <motion.div
       style={{
         width: isMobile ? '100vw' : 'fit-content',
-        fontSize: isMobile ? 30 : 60,
+        // fontSize: isMobile ? 30 : 60,
         borderBottom:
           visible && !isMobile ? '4px solid ' + color : '0px solid black',
         cursor: visible ? 'default' : 'pointer',
         textAlign: 'center',
       }}
       whileHover={{
-        opacity: 0.6,
+        opacity: 1,
+        y: !visible ? -5 : 0,
       }}
       onClick={onClick}
-      initial={{ opacity: 0 }}
+      // initial={{ opacity: 0 }}
       animate={{
-        opacity: visible ? 1 : 0.3,
-        transition: { duration: 0.5 },
+        opacity: visible ? 1 : 0.4,
+        // transition: { duration: 0.5, delay: index * 0.1 },
       }}
     >
-      {children}
+      <TextAnimation
+        content={children.toString()}
+        fontSize={isMobile ? 30 : 60}
+        color={color}
+        delay={3500 + index * 300}
+      />
     </motion.div>
     <motion.div
       initial={{ x: 0 }}

@@ -4,6 +4,7 @@ import { MenuWrapper } from '@/components/dom/MenuWrapper'
 import { MotionLogo } from '@/components/dom/MotionLogo'
 import { PreviewSwitch } from '@/components/dom/PreviewSwitch'
 import { PreviewWrapper } from '@/components/dom/PreviewWrapper'
+import { TextAnimation } from '@/components/dom/TextAnimation'
 import { isDev, links } from '@/consts'
 import { useUIStore } from '@/helpers/store'
 import { motion } from 'framer-motion'
@@ -107,8 +108,19 @@ const DOM = () => {
             }}
             transition={{ duration: 0.5 }}
           >
-            <motion.h1 style={{ opacity: 1, y: 0 }}>ShaderGradient</motion.h1>
-            <motion.h2
+            <TextAnimation
+              content='ShaderGradient'
+              delay={0}
+              color='white'
+              fontSize={60}
+            />
+            <TextAnimation
+              content='beautiful, customizable, and moving gradients for your digital products'
+              delay={800}
+              color='white'
+              fontSize={20}
+            />
+            {/* <motion.h2
               initial={{ opacity: 0, y: 30 }}
               animate={{
                 opacity: 1,
@@ -118,7 +130,7 @@ const DOM = () => {
             >
               beautiful, customizable, and moving gradients for your digital
               products
-            </motion.h2>
+            </motion.h2> */}
             <motion.p
               initial={{ opacity: 0, y: 30 }}
               animate={{
@@ -160,7 +172,7 @@ const DOM = () => {
             animate={{
               opacity: 1,
               y: 0,
-              transition: { delay: 1, transition: 2 },
+              transition: { delay: 3, transition: 1 },
             }}
           >
             <div
@@ -198,9 +210,11 @@ const DOM = () => {
                         }
                         isMobile={isMobile}
                         btnOn={true}
+                        index={index}
                       >
-                        {index < 10 ? '0' + index.toString() : index.toString()}{' '}
-                        {item.title}
+                        {index < 10
+                          ? '0' + index.toString() + ' ' + item.title
+                          : index.toString() + ' ' + item.title}
                       </MyItem>
                     </SnapItem>
                   )
