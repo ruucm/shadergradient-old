@@ -4,6 +4,7 @@ import { MenuWrapper } from '@/components/dom/MenuWrapper'
 import { MotionLogo } from '@/components/dom/MotionLogo'
 import { PreviewSwitch } from '@/components/dom/PreviewSwitch'
 import { PreviewWrapper } from '@/components/dom/PreviewWrapper'
+import { TextAnimation } from '@/components/dom/TextAnimation'
 import { isDev, links } from '@/consts'
 import { useUIStore } from '@/helpers/store'
 import { motion } from 'framer-motion'
@@ -76,6 +77,14 @@ const DOM = () => {
           display: 'block',
         }}
       >
+        {/* <motion.div
+          style={{
+            width: '100vw',
+            height: '100vh',
+            background: 'rgb(255, 67, 10)',
+            display: loadingPercentage < 100 ? 'block' : 'none',
+          }}
+        /> */}
         {/* Menu */}
         {isMobile === true ? null : (
           <MenuWrapper mode={mode}>
@@ -107,30 +116,34 @@ const DOM = () => {
             }}
             transition={{ duration: 0.5 }}
           >
-            <motion.h1 style={{ opacity: 1, y: 0 }}>ShaderGradient</motion.h1>
-            <motion.h2
-              initial={{ opacity: 0, y: 30 }}
-              animate={{
-                opacity: 1,
-                y: 0,
-                transition: { duration: 1 },
-              }}
-            >
-              beautiful, customizable, and moving gradients for your digital
-              products
-            </motion.h2>
+            <TextAnimation
+              content='ShaderGradient'
+              delay={0}
+              color='white'
+              fontSize={60}
+            />
+            <TextAnimation
+              content='beautiful, customizable, and moving gradients for your digital products'
+              delay={800}
+              color='white'
+              fontSize={20}
+            />
+
             <motion.p
               initial={{ opacity: 0, y: 30 }}
               animate={{
                 opacity: 1,
                 y: 0,
-                transition: { delay: 0.5, duration: 1 },
+                transition: { delay: 1, duration: 1 },
               }}
               style={{ fontSize: 13, width: '25vw', marginTop: '50px' }}
             >
-              Available as React component, Figma plugin, and Framer package
+              {/* Available as React component, Figma plugin, and Framer package
               (beta). Made with WebGL shaders.
-              <br /> Fully supported on Chrome.
+              <br /> Fully supported on Chrome. */}
+              Bring liveliness to your products from your favorite design tools,
+              like Figma and Framer. Also availalbe as a React component.
+              Creative coding is not only for the genius developers.
             </motion.p>
 
             {isMobile === true ? (
@@ -156,11 +169,12 @@ const DOM = () => {
             style={{
               display: mode === 'about' ? 'none' : 'block',
             }}
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 30, display: 'none' }}
             animate={{
               opacity: 1,
               y: 0,
-              transition: { delay: 1, transition: 2 },
+              display: 'block',
+              transition: { delay: 3, transition: 1 },
             }}
           >
             <div
@@ -198,9 +212,11 @@ const DOM = () => {
                         }
                         isMobile={isMobile}
                         btnOn={true}
+                        index={index}
                       >
-                        {index < 10 ? '0' + index.toString() : index.toString()}{' '}
-                        {item.title}
+                        {index < 10
+                          ? '0' + index.toString() + ' ' + item.title
+                          : index.toString() + ' ' + item.title}
                       </MyItem>
                     </SnapItem>
                   )

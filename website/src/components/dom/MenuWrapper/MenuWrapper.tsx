@@ -57,6 +57,8 @@ export function MenuWrapper({
             : 'none',
         background: mode === 'about' ? '#141414' : 'white',
       }}
+      initial={{ right: '-600px' }}
+      transition={{ type: 'spring', damping: 12, stiffness: 200, delay: 2 }}
       animate={menuAnim}
     >
       {children}
