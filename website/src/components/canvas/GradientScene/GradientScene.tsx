@@ -2,6 +2,7 @@ import { initialCurrent } from '@/consts'
 import { useUIStore } from '@/helpers/store'
 import { GradientWithQueries, usePropertyStore } from '@shadergradient'
 import glsl from 'glslify'
+import { useEffect } from 'react'
 
 // pre import for shaders
 export const glslPragmas = `
@@ -29,13 +30,19 @@ export const glslPragmas = `
 `
 glsl`${glslPragmas}`
 
-export function GradientScene(forceProps) {
+export function GradientScene({ aboutPage, ...forceProps }) {
   const current = useUIStore((state: any) => state.current)
   const setLoadingPercentage = useUIStore(
     (state: any) => state.setLoadingPercentage
   )
 
   const hoverState = usePropertyStore((state: any) => state.hoverState)
+
+  // zoom out (toogleZoom) on aboutPage
+  useEffect(() => {
+    if (aboutPage) usePropertyStore.setState({ toggleZoom: true })
+    else usePropertyStore.setState({ toggleZoom: false })
+  }, [aboutPage])
 
   return (
     <GradientWithQueries
