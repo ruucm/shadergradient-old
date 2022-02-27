@@ -112,25 +112,17 @@ const DOM = () => {
   )
 }
 
-const R3F = () => {
+const Page = () => {
   return (
     <>
+      <DOM />
       <GradientScene
+        r3f
         forceCamPos={{ x: 0.4, y: -0.2, z: -5 }} // default Halo's camPos
         forcePos={[0, 0.3, 0]}
         forceRot={[70, 0, 260]}
         forceScale={0.1}
       />
-    </>
-  )
-}
-
-const Page = () => {
-  return (
-    <>
-      <DOM />
-      {/* @ts-ignore */}
-      <R3F r3f />
     </>
   )
 }
