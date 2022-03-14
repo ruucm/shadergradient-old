@@ -30,7 +30,7 @@ export const glslPragmas = `
 `
 glsl`${glslPragmas}`
 
-export function GradientScene({ aboutPage, ...forceProps }) {
+export function GradientScene({ aboutPage = false, ...forceProps }) {
   const current = useUIStore((state: any) => state.current)
   const setLoadingPercentage = useUIStore(
     (state: any) => state.setLoadingPercentage
