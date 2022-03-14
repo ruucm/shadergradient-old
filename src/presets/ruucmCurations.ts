@@ -17,6 +17,11 @@ export const ruucmCurations = [
   {
     title: 'Coral',
     color: 'white',
+    url: '?animate=on&axesHelper=on&brightness=1.2&cAzimuthAngle=0&cDistance=5.3&cPolarAngle=90&cameraPositionX=0&cameraPositionY=0&cameraPositionZ=0&cameraZoom=1&color1=%23936676&color2=%237c9dde&color3=%23AA6352&embedMode=off&envPreset=city&grain=off&http%3A%2F%2Flocalhost%3A3002%2Fcustomize%3Fanimate=on&lightType=3d&pixelDensity=1&positionX=0&positionY=0&positionZ=0&reflection=0.1&rotationX=170&rotationY=0&rotationZ=0&shader=defaults&type=waterPlane&uAmplitude=0&uDensity=2&uSpeed=0.1&uStrength=3.5&uTime=0.2&wireframe=false',
+  },
+  {
+    title: 'Cora 2',
+    color: 'white',
     url: '?animate=on&axesHelper=on&brightness=1.6&cAzimuthAngle=60&cDistance=7.1&cPolarAngle=60&cameraPositionX=0&cameraPositionY=0&cameraPositionZ=0&cameraZoom=12.5&color1=%23ff7a33&color2=%2333a0ff&color3=%23ffc53d&embedMode=off&envPreset=city&grain=off&http%3A%2F%2Flocalhost%3A3002%2Fcustomize%3Fanimate=on&lightType=3d&pixelDensity=1&positionX=0&positionY=0.35&positionZ=0&reflection=0.1&rotationX=0&rotationY=0&rotationZ=0&shader=defaults&type=sphere&uAmplitude=0&uDensity=1&uSpeed=0.1&uStrength=0.4&uTime=0&wireframe=false',
   },
   {
@@ -33,6 +38,11 @@ export const ruucmCurations = [
     title: 'Surf Board',
     color: 'white',
     url: '?animate=on&axesHelper=on&brightness=1.2&cAzimuthAngle=50&cDistance=7.1&cPolarAngle=140&cameraPositionX=0&cameraPositionY=0&cameraPositionZ=0&cameraZoom=20&color1=%23ffffff&color2=%2300ff2a&color3=%230700ff&embedMode=off&envPreset=city&grain=off&lightType=3d&pixelDensity=1&positionX=0&positionY=0&positionZ=0&reflection=0.1&rotationX=0&rotationY=0&rotationZ=0&type=sphere&uAmplitude=1.4&uDensity=1.7&uSpeed=0.1&uStrength=1&uTime=0&wireframe=false',
+  },
+  {
+    title: 'Vinegar',
+    color: 'white',
+    url: '?animate=on&axesHelper=on&brightness=1.2&cAzimuthAngle=0&cDistance=4.5&cPolarAngle=90&cameraPositionX=0&cameraPositionY=0&cameraPositionZ=0&cameraZoom=1&color1=%23fffcf0&color2=%23fff5cc&color3=%23FFDB50&embedMode=off&envPreset=city&grain=off&lightType=3d&pixelDensity=1&positionX=0&positionY=0.9&positionZ=0&reflection=0.1&rotationX=-15&rotationY=0&rotationZ=-40&type=waterPlane&uDensity=1&uSpeed=0.1&uStrength=2.6&uTime=0.2&wireframe=false',
   },
   // {
   //   title: 'Velvet',
