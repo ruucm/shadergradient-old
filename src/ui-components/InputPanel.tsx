@@ -28,15 +28,13 @@ export const InputPanel: React.FC<InputPanelPropsT> = ({
 }) => {
   return (
     <div className='flex justify-between items-center gap-3.5' {...rest}>
-      <span
-        className='font-semibold text-primary w-[50%]'
-        onMouseEnter={onMouseEnter}
-        onMouseLeave={onMouseLeave}
-      >
+      <span className='font-semibold text-primary w-[50%]'>
         {title}{' '}
         <span
           className='cursor-pointer'
           style={{ display: 'inline-block', opacity: 0.6 }}
+          onMouseEnter={onMouseEnter}
+          onMouseLeave={onMouseLeave}
         >
           {info === true && <Info size={14} color='rgb(255,67,10)' />}
         </span>
