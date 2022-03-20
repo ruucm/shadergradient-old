@@ -49,6 +49,11 @@ export const ruucmCurations = [
     color: 'white',
     url: '?animate=on&axesHelper=on&brightness=1.2&cAzimuthAngle=0&cDistance=4.5&cPolarAngle=90&cameraPositionX=0&cameraPositionY=0&cameraPositionZ=0&cameraZoom=1&color1=%23fffcf0&color2=%23fff5cc&color3=%23FFDB50&embedMode=off&envPreset=city&grain=off&lightType=3d&pixelDensity=1&positionX=0&positionY=0.9&positionZ=0&reflection=0.1&rotationX=-15&rotationY=0&rotationZ=-40&type=waterPlane&uDensity=1&uSpeed=0.1&uStrength=2.6&uTime=0.2&wireframe=false',
   },
+  {
+    title: 'Mountains',
+    color: 'white',
+    url: '?animate=on&axesHelper=off&brightness=1&cAzimuthAngle=180&cDistance=7&cPolarAngle=140&cameraPositionX=0&cameraPositionY=0&cameraPositionZ=0&cameraZoom=1&color1=%23224424&color2=%2363ee6c&color3=%23489d4d&embedMode=off&envPreset=city&gizmoHelper=hide&grain=off&http%3A%2F%2Flocalhost%3A3002%2Fcustomize%3Fanimate=on&lightType=3d&pixelDensity=1&positionX=0&positionY=1&positionZ=0&reflection=0.1&rotationX=0&rotationY=0&rotationZ=-90&type=waterPlane&uDensity=2&uSpeed=0.1&uStrength=2&uTime=8&wireframe=false',
+  },
   // {
   //   title: 'Velvet',
   //   color: 'white',
