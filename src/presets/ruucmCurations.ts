@@ -15,6 +15,11 @@ export const ruucmCurations = [
     url: '?animate=on&axesHelper=on&brightness=1.3&cAzimuthAngle=130&cDistance=14.2&cPolarAngle=70&cameraPositionX=0&cameraPositionY=0&cameraPositionZ=0&cameraZoom=13.4&color1=%23ffcccc&color2=%23ccffcc&color3=%23ccccff&embedMode=off&envPreset=city&grain=off&lightType=3d&pixelDensity=1&positionX=0&positionY=0&positionZ=0&reflection=0.1&rotationX=0&rotationY=0&rotationZ=0&shader=defaults&type=sphere&uAmplitude=1.5&uDensity=0.6&uSpeed=0.4&uStrength=0.6&uTime=0.2&wireframe=false',
   },
   {
+    title: 'Ocean',
+    color: 'white',
+    url: '?animate=on&axesHelper=off&brightness=1.1&cAzimuthAngle=180&cDistance=6.3&cPolarAngle=138&cameraPositionX=0&cameraPositionY=0&cameraPositionZ=0&cameraZoom=1&color1=%23255ad4&color2=%2358eef9&color3=%233260cd&embedMode=off&envPreset=city&gizmoHelper=hide&grain=off&http%3A%2F%2Flocalhost%3A3002%2Fcustomize%3Fanimate=on&lightType=3d&pixelDensity=1&positionX=0&positionY=1&positionZ=0&reflection=0.1&rotationX=0&rotationY=0&rotationZ=90&shader=noise&type=waterPlane&uDensity=1.6&uSpeed=0.2&uStrength=1.3&uTime=8&wireframe=false',
+  },
+  {
     title: 'Coral',
     color: 'white',
     url: '?animate=on&axesHelper=on&brightness=1.2&cAzimuthAngle=0&cDistance=5.3&cPolarAngle=90&cameraPositionX=0&cameraPositionY=0&cameraPositionZ=0&cameraZoom=1&color1=%23936676&color2=%237c9dde&color3=%23AA6352&embedMode=off&envPreset=city&grain=off&http%3A%2F%2Flocalhost%3A3002%2Fcustomize%3Fanimate=on&lightType=3d&pixelDensity=1&positionX=0&positionY=0&positionZ=0&reflection=0.1&rotationX=170&rotationY=0&rotationZ=0&shader=defaults&type=waterPlane&uAmplitude=0&uDensity=2&uSpeed=0.1&uStrength=3.5&uTime=0.2&wireframe=false',
