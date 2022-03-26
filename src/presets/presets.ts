@@ -4,8 +4,8 @@ import { smCurationCandidate } from './smCurations'
 import { templates } from './templates'
 
 export const PRESETS = [
-  ...ruucmMainCurations,
-  ...ruucmCurations,
-  // ...smCurationCandidate,
-  ...templates,
+  ...smCurationCandidate,
+  // ...ruucmMainCurations,
+  // ...ruucmCurations,
+  // ...templates,
 ]

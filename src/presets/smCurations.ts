@@ -1,14 +1,15 @@
 export const smCurationCandidate = [
   {
+    title: 'Halo',
+    color: 'white',
+    url: '?animate=on&axesHelper=off&brightness=1.2&cAzimuthAngle=180&cDistance=3.6&cPolarAngle=90&cameraPositionX=0&cameraPositionY=0&cameraPositionZ=0&cameraZoom=1&color1=%23ff5005&color2=%23dbba95&color3=%23d0bce1&embedMode=off&envPreset=city&gizmoHelper=hide&grain=on&lightType=3d&pixelDensity=1&positionX=-1.4&positionY=0&positionZ=0&reflection=0.1&rotationX=0&rotationY=10&rotationZ=50&shader=defaults&type=plane&uDensity=1.3&uSpeed=0.6&uStrength=4&uTime=0&wireframe=false',
+  },
+  {
     title: 'Mono',
     color: 'white',
     url: '?animate=on&axesHelper=off&brightness=1&cAzimuthAngle=180&cDistance=3.6&cPolarAngle=80&cameraPositionX=0&cameraPositionY=0&cameraPositionZ=0&cameraZoom=1&color1=%2372727e&color2=%23a3a8a8&color3=%230c0d0d&embedMode=off&envPreset=city&gizmoHelper=hide&grain=on&lightType=3d&pixelDensity=1&positionX=0&positionY=0&positionZ=0&reflection=0.1&rotationX=0&rotationY=0&rotationZ=-60&shader=defaults&type=plane&uAmplitude=0&uDensity=2.6&uFrequency=0&uSpeed=0.1&uStrength=2.1&uTime=8&wireframe=false',
   },
-  {
-    title: 'Halo',
-    color: 'white',
-    url: '?animate=on&axesHelper=off&brightness=1.2&cAzimuthAngle=180&cDistance=5.8&cPolarAngle=70&cameraPositionX=0&cameraPositionY=0&cameraPositionZ=0&cameraZoom=1&color1=%23ff5005&color2=%23d9a83f&color3=%233f9ed9&embedMode=off&envPreset=city&gizmoHelper=hide&grain=on&lightType=env&pixelDensity=1&positionX=0&positionY=0.7&positionZ=0&reflection=0.1&rotationX=45&rotationY=0&rotationZ=-120&type=plane&uAmplitude=0&uDensity=1.2&uFrequency=0&uSpeed=0.1&uStrength=2.4&uTime=0&wireframe=false',
-  },
+
   {
     title: 'Pensive',
     color: 'white',
@@ -44,5 +45,15 @@ export const smCurationCandidate = [
     title: 'Spring Breeze',
     color: 'white',
     url: '?animate=on&axesHelper=off&brightness=1.2&cAzimuthAngle=0&cDistance=3.4&cPolarAngle=0&cameraPositionX=0&cameraPositionY=0&cameraPositionZ=0&cameraZoom=1&color1=%23d3a7c5&color2=%23ff570f&color3=%23ff3c1a&embedMode=off&envPreset=city&gizmoHelper=hide&grain=off&lightType=env&pixelDensity=1&positionX=0&positionY=0&positionZ=0&reflection=0.7&rotationX=90&rotationY=0&rotationZ=130&shader=defaults&type=waterPlane&uAmplitude=0&uDensity=1.9&uFrequency=0&uSpeed=0.4&uStrength=2&uTime=0.2&wireframe=false',
+  },
+  {
+    title: 'Into Blue',
+    color: 'white',
+    url: '?animate=on&axesHelper=off&brightness=1&cAzimuthAngle=180&cDistance=3.6&cPolarAngle=80&cameraPositionX=0&cameraPositionY=0&cameraPositionZ=0&cameraZoom=9.1&color1=%23acacd7&color2=%236563ee&color3=%23f7f7f7&embedMode=off&envPreset=city&gizmoHelper=hide&grain=on&lightType=3d&pixelDensity=1&positionX=0&positionY=0&positionZ=0&reflection=0.1&rotationX=0&rotationY=0&rotationZ=-60&shader=defaults&type=sphere&uAmplitude=0&uDensity=2.6&uFrequency=0&uSpeed=0.1&uStrength=1.5&uTime=8&wireframe=false',
+  },
+  {
+    title: 'Nighty night',
+    color: 'white',
+    url: '?animate=on&axesHelper=off&brightness=1&cAzimuthAngle=180&cDistance=2.8&cPolarAngle=80&cameraPositionX=0&cameraPositionY=0&cameraPositionZ=0&cameraZoom=9.1&color1=%23606080&color2=%238d7dca&color3=%23212121&embedMode=off&envPreset=city&gizmoHelper=hide&grain=on&lightType=3d&pixelDensity=1&positionX=0&positionY=0&positionZ=0&reflection=0.1&rotationX=50&rotationY=0&rotationZ=-60&shader=defaults&type=waterPlane&uAmplitude=0&uDensity=1.5&uFrequency=0&uSpeed=0.5&uStrength=1.5&uTime=8&wireframe=false',
   },
 ]
