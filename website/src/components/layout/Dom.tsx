@@ -1,5 +1,6 @@
 import { useStore } from '@/helpers/store'
 import { useEffect, useRef } from 'react'
+import { BackgroundGradient } from '@shadergradient'
 
 const Dom = ({ children }) => {
   const ref = useRef(null)
@@ -8,12 +9,15 @@ const Dom = ({ children }) => {
   }, [])
 
   return (
-    <div
-      className='absolute top-0 left-0 z-10 w-screen h-screen overflow-hidden dom'
-      ref={ref}
-    >
-      {children}
-    </div>
+    <>
+      <div
+        className='absolute top-0 left-0 z-10 w-screen h-screen overflow-hidden dom'
+        ref={ref}
+      >
+        {children}
+      </div>
+      <BackgroundGradient />
+    </>
   )
 }
 
