@@ -111,8 +111,6 @@ export function GradientMesh({
             />
           </>
         )}
-
-        {/* @ts-ignore */}
         <gradientMaterial
           key={JSON.stringify(sceneShader, null, 0)}
           ref={material}
@@ -138,7 +136,6 @@ export function GradientMesh({
           /* @ts-ignore */
           geometry={mesh.current.geometry}
         >
-          {/* @ts-ignore */}
           <lineMaterial
             key={JSON.stringify(sceneShader, null, 0)}
             ref={linematerial}
