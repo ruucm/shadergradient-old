@@ -133,7 +133,6 @@ export function GradientMesh({
           position={mesh.current.position}
           rotation={mesh.current.rotation}
           visible={hoverState !== 0 ? true : false}
-          /* @ts-ignore */
           geometry={mesh.current.geometry}
         >
           <lineMaterial
