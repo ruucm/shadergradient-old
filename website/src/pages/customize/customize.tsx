@@ -1,16 +1,15 @@
-import { Footer } from '@/components/dom/Footer'
-import { GradientScene } from '@/components/canvas/GradientScene'
-import { PreviewWrapper } from '@/components/dom/PreviewWrapper'
-import { PreviewSwitch } from '@/components/dom/PreviewSwitch'
-
-import { useUIStore } from '@/helpers/store'
-import { motion } from 'framer-motion'
-import Link from 'next/link'
 import React, { useState } from 'react'
 import { useQueryState, PRESETS } from '@shadergradient'
+import { motion } from 'framer-motion'
+import Link from 'next/link'
 import styles from '../home/Home.module.scss'
 import { MyItem } from '../home/my-item'
 import { Controls } from './comps/Controls'
+import { GradientScene } from '@/components/canvas/GradientScene'
+import { Footer } from '@/components/dom/Footer'
+import { PreviewSwitch } from '@/components/dom/PreviewSwitch'
+import { PreviewWrapper } from '@/components/dom/PreviewWrapper'
+import { useUIStore } from '@/helpers/store'
 
 const DOM = () => {
   const mode = useUIStore((state: any) => state.mode)

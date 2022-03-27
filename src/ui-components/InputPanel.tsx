@@ -1,7 +1,7 @@
 import * as React from 'react'
-import { Spacing } from '.'
 import { Info } from 'react-feather'
 import { UI } from '..'
+import { Spacing } from '.'
 
 type InputPanelPropsT = {
   title?: string

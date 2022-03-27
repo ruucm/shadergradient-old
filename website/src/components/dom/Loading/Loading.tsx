@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { motion, useAnimation, AnimatePresence } from 'framer-motion'
 import styles from './Loading.module.scss'
-import { useInterval } from '@/hooks/useInterval'
 import { initialCurrent, initialLoadingTime } from '@/consts'
+import { useInterval } from '@/hooks/useInterval'
 
 const title = 'ShaderGradient '
 const descript1 = 'beautiful, '

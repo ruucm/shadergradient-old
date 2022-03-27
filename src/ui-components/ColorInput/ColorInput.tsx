@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { Spacing } from '../Spacing'
 import { useEffect, useState } from 'react'
+import { Spacing } from '../Spacing'
 
 type ColorInputPropsT = {
   label?: string

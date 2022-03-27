@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { UI } from '../..'
 import cx from 'classnames'
+import { UI } from '../..'
 
 type Props = {
   // All other props

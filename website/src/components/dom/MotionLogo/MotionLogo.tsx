@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion'
-import styles from './MotionLogo.module.scss'
-import loadingAnimationData from '../../../media/threelineloading.json'
-
 import Lottie from 'react-lottie'
+import loadingAnimationData from '../../../media/threelineloading.json'
+import styles from './MotionLogo.module.scss'
+
 import { initialCurrent } from '@/consts'
 
 export function MotionLogo({ color = true, current, loadingPercentage }) {

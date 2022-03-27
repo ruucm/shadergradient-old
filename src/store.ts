@@ -1,5 +1,5 @@
-import create from 'zustand'
 import * as qs from 'query-string'
+import create from 'zustand'
 
 // without embedMode
 // it renders without the dom & other gradient controls at first, and add it after the first updateGradientState() excuted.

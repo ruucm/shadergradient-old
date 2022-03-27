@@ -1,6 +1,6 @@
-import { formatColor, hexToRgb } from '@/utils'
 import { extend } from '@react-three/fiber'
 import * as THREE from 'three'
+import { formatColor, hexToRgb } from '@/utils'
 // var hex = require('hex-rgb')
 // import hex from 'hex-rgb'
 

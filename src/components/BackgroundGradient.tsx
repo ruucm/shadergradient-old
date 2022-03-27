@@ -1,5 +1,5 @@
-import useQueryState from '@/hooks/useQueryState'
 import * as React from 'react'
+import useQueryState from '@/hooks/useQueryState'
 
 export function BackgroundGradient() {
   const [bgColor1] = useQueryState('bgColor1')

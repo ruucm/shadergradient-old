@@ -1,15 +1,15 @@
-import { useStore, useUIStore } from '@/helpers/store'
+import { useEffect, useRef } from 'react'
 import { Preload, GizmoHelper, GizmoViewport } from '@react-three/drei'
 import { Canvas, extend, useFrame, useThree } from '@react-three/fiber'
-import { useEffect, useRef } from 'react'
 import {
   useQueryState,
   dToR,
   canvasProps,
   usePropertyStore,
 } from '@shadergradient'
-import * as THREE from 'three'
 import CameraControls from 'camera-controls'
+import * as THREE from 'three'
+import { useStore, useUIStore } from '@/helpers/store'
 
 CameraControls.install({ THREE })
 extend({ CameraControls })

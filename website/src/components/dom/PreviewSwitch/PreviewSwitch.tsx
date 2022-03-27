@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { motion } from 'framer-motion'
 import cx from 'classnames'
+import { motion } from 'framer-motion'
 
 export function PreviewSwitch({
   mode = 'mobile',

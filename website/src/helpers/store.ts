@@ -1,6 +1,6 @@
 // @ts-nocheck
-import { initialCurrent } from '@/consts'
 import create from 'zustand'
+import { initialCurrent } from '@/consts'
 
 export const useStore = create(() => {
   return {

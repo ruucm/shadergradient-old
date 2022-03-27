@@ -1,6 +1,6 @@
 // custom pages/404.jsx !! Do not remove please or it will break build
-import Link from 'next/link'
 import React from 'react'
+import Link from 'next/link'
 import { GradientScene } from '@/components/canvas/GradientScene'
 
 const DOM = () => {

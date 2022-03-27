@@ -1,10 +1,10 @@
-import { useFrame } from '@react-three/fiber'
 import * as React from 'react'
-import { useRef, useEffect } from 'react'
-import './materials'
-import * as THREE from 'three'
+import { useEffect, useRef } from 'react'
 import { animated } from '@react-spring/three'
 import { CubicBezierLine } from '@react-three/drei'
+import { useFrame } from '@react-three/fiber'
+import * as THREE from 'three'
+import './materials'
 
 const clock = new THREE.Clock()
 

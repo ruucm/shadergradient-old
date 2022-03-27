@@ -1,8 +1,8 @@
-import { initialCurrent } from '@/consts'
-import { useUIStore } from '@/helpers/store'
+import { useEffect } from 'react'
 import { GradientWithQueries, usePropertyStore } from '@shadergradient'
 import glsl from 'glslify'
-import { useEffect } from 'react'
+import { initialCurrent } from '@/consts'
+import { useUIStore } from '@/helpers/store'
 
 // pre import for shaders
 export const glslPragmas = `

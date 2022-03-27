@@ -1,6 +1,6 @@
-import { useStore } from '@/helpers/store'
-import { useFrame } from '@react-three/fiber'
 import { useRef, useState } from 'react'
+import { useFrame } from '@react-three/fiber'
+import { useStore } from '@/helpers/store'
 
 const BoxComponent = ({ route }) => {
   const router = useStore((s) => s.router)

@@ -1,11 +1,11 @@
-import { Environment } from '@/lib/Environment'
-import { useFrame } from '@react-three/fiber'
 import * as React from 'react'
 import { Suspense } from 'react'
+import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 import { usePostProcessing } from '../../hooks/use-post-processing'
 import { GradientMesh } from './GradientMesh'
 import * as shaders from './shaders'
+import { Environment } from '@/lib/Environment'
 
 const vec = new THREE.Vector3()
 
