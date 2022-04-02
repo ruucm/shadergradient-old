@@ -1,8 +1,7 @@
 import * as React from 'react'
 import { Preload, GizmoHelper, GizmoViewport } from '@react-three/drei'
-import { Canvas, extend } from '@react-three/fiber'
-import CameraControls from 'camera-controls'
-import * as THREE from 'three'
+import { Canvas } from '@react-three/fiber'
+
 import {
   useQueryState,
   canvasProps,
@@ -10,9 +9,6 @@ import {
   useDomStore,
 } from '../../'
 import { LControl } from './LControl'
-
-CameraControls.install({ THREE })
-extend({ CameraControls })
 
 export const LCanvas = ({ children, ...rest }) => {
   const dom = useDomStore((state) => state.dom)
