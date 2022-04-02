@@ -36,8 +36,6 @@ export function GradientScene({ aboutPage = false, ...forceProps }) {
     (state: any) => state.setLoadingPercentage
   )
 
-  const hoverState = usePropertyStore((state: any) => state.hoverState)
-
   // zoom out (toogleZoom) on aboutPage
   useEffect(() => {
     if (aboutPage) usePropertyStore.setState({ toggleZoom: true })
@@ -50,7 +48,6 @@ export function GradientScene({ aboutPage = false, ...forceProps }) {
       current={current}
       initialCurrent={initialCurrent}
       setLoadingPercentage={setLoadingPercentage}
-      hoverState={hoverState}
     />
   )
 }
