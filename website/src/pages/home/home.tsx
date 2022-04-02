@@ -2,13 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { PRESETS } from '@shadergradient'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import {
-  SnapItem,
-  SnapList,
-  useDragToScroll,
-  useScroll,
-  useVisibleElements,
-} from 'react-snaplist-carousel'
+import { SnapItem, SnapList } from 'react-snaplist-carousel'
 import styles from './Home.module.scss'
 import { MenuItem } from './menu-item'
 import { MyItem } from './my-item'

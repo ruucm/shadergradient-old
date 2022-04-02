@@ -7,7 +7,6 @@ import { MyItem } from '../home/my-item'
 import { Controls } from './comps/Controls'
 import { GradientScene } from '@/components/canvas/GradientScene'
 import { Footer } from '@/components/dom/Footer'
-import { PreviewSwitch } from '@/components/dom/PreviewSwitch'
 import { PreviewWrapper } from '@/components/dom/PreviewWrapper'
 import { useUIStore } from '@/helpers/store'
 

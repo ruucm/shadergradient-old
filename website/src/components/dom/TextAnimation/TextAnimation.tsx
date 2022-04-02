@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, useAnimation, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import styles from '../Loading/Loading.module.scss'
 
 const letterContainerVariants = {
   before: { transition: { staggerChildren: 0.015 } },

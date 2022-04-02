@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { motion, useAnimation, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import styles from './Loading.module.scss'
 import { initialCurrent, initialLoadingTime } from '@/consts'
 import { useInterval } from '@/hooks/useInterval'

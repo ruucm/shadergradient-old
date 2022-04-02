@@ -1,7 +1,6 @@
 import * as React from 'react'
 import { useEffect } from 'react'
 import {
-  dToRArr,
   Gradient,
   PRESETS,
   updateGradientState,
