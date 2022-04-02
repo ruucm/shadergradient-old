@@ -1,9 +1,8 @@
+import { initialCurrent } from '@shadergradient'
 import { motion } from 'framer-motion'
 import Lottie from 'react-lottie'
 import loadingAnimationData from '../../../media/threelineloading.json'
 import styles from './MotionLogo.module.scss'
-
-import { initialCurrent } from '@/consts'
 
 export function MotionLogo({ color = true, activePreset, loadingPercentage }) {
   const loadingOption = {
