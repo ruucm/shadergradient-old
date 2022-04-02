@@ -1,9 +1,9 @@
 import { useRef, useState } from 'react'
 import { useFrame } from '@react-three/fiber'
-import { useStore } from '@/helpers/store'
+import { useCanvasStore } from '@shadergradient'
 
 const BoxComponent = ({ route }) => {
-  const router = useStore((s) => s.router)
+  const router = useCanvasStore((s) => s.router)
   // This reference will give us direct access to the THREE.Mesh object
   const mesh = useRef(null)
   // Set up state for the hovered and active state

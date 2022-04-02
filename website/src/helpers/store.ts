@@ -2,13 +2,6 @@
 import create from 'zustand'
 import { initialCurrent } from '@/consts'
 
-export const useStore = create(() => {
-  return {
-    router: null,
-    dom: null,
-  }
-})
-
 export const useUIStore = create((set) => ({
   current: initialCurrent,
   mode: 'full',

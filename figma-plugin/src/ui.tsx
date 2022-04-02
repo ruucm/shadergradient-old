@@ -1,12 +1,11 @@
 import * as React from 'react'
 import { useState } from 'react'
 import * as ReactDOM from 'react-dom'
-import { UI, PRESETS } from '../../dist'
+import { UI, PRESETS, LCanvas } from '../../dist'
 import '../../ui-styles-compiled.css'
 import { Controls } from './components/Controls'
 import './global.css'
 import { GradientScene } from './components/GradientScene'
-import { LCanvas } from './components/LCanvas'
 import { initialCurrent } from './consts'
 
 function Arrow(props) {
@@ -30,7 +29,11 @@ function App() {
 
   return (
     <div className='bg-white h-full'>
-      <LCanvas>
+      <LCanvas
+        style={{ height: 304 }} // custom height (for figma screen)
+        gl={{ preserveDrawingBuffer: true }} // to capture the canvas
+        onCreated={() => void 0} // remove default onCreated method
+      >
         <GradientScene current={currentTheme} />
       </LCanvas>
       <div className='bg-controls-sub-panel text-white font-semibold text-sm flex justify-between items-center p-1'>
@@ -78,7 +81,7 @@ async function captureCanvas() {
   return new Promise((resolve, reject) => {
     const image = new Image()
 
-    const r3fCanvas = document.getElementById('r3f-canvas')
+    const r3fCanvas = document.getElementById('gradientCanvas')
       .children[0] as HTMLCanvasElement
 
     const dataURL = r3fCanvas.toDataURL('image/png', 1.0) // full quality

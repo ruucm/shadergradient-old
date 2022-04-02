@@ -28,3 +28,10 @@ function parseState(search = defaultPreset) {
     arrayFormat: 'index',
   })
 }
+
+export const useCanvasStore = create(() => {
+  return {
+    router: null,
+    dom: null,
+  }
+})
