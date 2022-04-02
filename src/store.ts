@@ -29,9 +29,6 @@ function parseState(search = defaultPreset) {
   })
 }
 
-export const useCanvasStore = create(() => {
-  return {
-    router: null,
-    dom: null,
-  }
+export const useDomStore = create(() => {
+  return { dom: null }
 })

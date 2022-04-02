@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { useCanvasStore } from '@shadergradient'
+import { useDomStore } from '@shadergradient'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import Dom from '@/components/layout/Dom'
@@ -27,7 +27,7 @@ function App({ Component, pageProps = { title: 'index' } }) {
   const router = useRouter()
 
   useEffect(() => {
-    useCanvasStore.setState({ router })
+    useDomStore.setState({ router })
   }, [router])
 
   const child = Component(pageProps).props.children

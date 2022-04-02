@@ -9,7 +9,7 @@ import {
   dToR,
   canvasProps,
   usePropertyStore,
-  useCanvasStore,
+  useDomStore,
 } from '..'
 
 CameraControls.install({ THREE })
@@ -63,7 +63,7 @@ function LControl() {
 }
 
 export const LCanvas = ({ children, ...rest }) => {
-  const dom = useCanvasStore((state) => state.dom)
+  const dom = useDomStore((state) => state.dom)
 
   // performance
   const [pixelDensity] = useQueryState('pixelDensity')
