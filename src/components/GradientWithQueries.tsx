@@ -7,15 +7,17 @@ import {
   usePropertyStore,
   useQueryState,
 } from '../'
+import { gradientWithQueryT } from '@/types'
 
-export function GradientWithQueries({
-  forceCamPos = null,
-  forcePos = null,
-  forceScale = 1,
+export const GradientWithQueries: React.FC<gradientWithQueryT> = ({
   current,
   setLoadingPercentage = () => void 0,
   initialCurrent,
-}: any) {
+
+  forceCamPos = null,
+  forcePos = null,
+  forceScale = 1,
+}) => {
   useEffect(() => {
     let gradientURL = PRESETS[current].url
     if (current === initialCurrent && window.location.search)

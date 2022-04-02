@@ -29,8 +29,6 @@ export interface gradientMeshT {
 
   // hover effect
   hoverState?: number
-
-  // [x: string]: any
 }
 
 export interface gradientT extends gradientMeshT {
@@ -47,6 +45,14 @@ export interface gradientT extends gradientMeshT {
   grain?: 'on' | 'off'
 
   loadingCallback?: (percentage: number) => void
+}
+
+export type gradientWithQueryT = {
+  forcePos?: Vector3
+  forceCamPos?: { x: number; y: number; z: number }
+  forceScale?: number
+
+  [x: string]: any
 }
 
 export const defaultProps: { GradientMesh: gradientMeshT } = {
