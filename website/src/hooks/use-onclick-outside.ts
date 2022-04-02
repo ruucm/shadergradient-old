@@ -4,7 +4,7 @@ export function useOnClickOutside(ref: any, handler: any) {
   useEffect(() => {
     const listener = (event: any) => {
       // Do nothing if clicking ref's element or descendent elements
-      if (!ref.activePreset || ref.activePreset.contains(event.target)) {
+      if (!ref.current || ref.current.contains(event.target)) {
         return
       }
 
