@@ -1,6 +1,6 @@
-import { formatColor, hexToRgb } from '@/utils'
 import { extend } from '@react-three/fiber'
 import * as THREE from 'three'
+import { formatColor, hexToRgb } from '@/utils'
 // var hex = require('hex-rgb')
 // import hex from 'hex-rgb'
 
@@ -39,7 +39,8 @@ const light = {
   falloff: 0.15,
   radius: 5,
   position: [0, 0, 2],
-
+  // color: 'rgb(255, 200, 104)',
+  // ambient: 'rgb(10, 4, 11)',
   color: [1, 1, 1],
   ambient: [0.2, 0.1, 0.1],
 }
@@ -72,11 +73,18 @@ const uniforms = {
   fragmentShader: '',
 }
 
-export class LineMaterial extends THREE.LineBasicMaterial {
+export class GradientMaterial extends THREE.MeshPhysicalMaterial {
   constructor() {
     super({
+      roughness: settings.roughness,
+      metalness: settings.metalness,
       side: THREE.DoubleSide,
-      color: '#ffffff',
+      clearcoat: 1.0,
+      clearcoatRoughness: 0.5,
+      normalScale: new THREE.Vector2(
+        settings.normalScale,
+        settings.normalScale
+      ),
       // update the uniform values via userData
       userData: uniforms,
       // @ts-ignore
@@ -107,11 +115,14 @@ export class LineMaterial extends THREE.LineBasicMaterial {
         shader.uniforms.uC3b = { value: formatColor(uC3?.b) }
         shader.uniforms.rotation = uniforms.rotation
         shader.uniforms.meshCount = uniforms.meshCount
+        // material.roughness = settings.roughness
+        // material.metalness = settings.metalness;
+        // material.normalScale = uniforms.normalScale;
 
         shader.uniforms.light = { value: light }
 
         shader.vertexShader = this.userData.vertexShader
-        // shader.fragmentShader = this.userData.fragmentShader
+        shader.fragmentShader = this.userData.fragmentShader
       },
     })
   }
@@ -203,4 +214,4 @@ export class LineMaterial extends THREE.LineBasicMaterial {
   }
 }
 
-extend({ LineMaterial })
+extend({ GradientMaterial })

@@ -1,13 +1,13 @@
+import { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
+import Link from 'next/link'
+import styles from '../home/Home.module.scss'
+import { MenuItem } from '../home/menu-item'
 import { GradientScene } from '@/components/canvas/GradientScene'
 import { MenuWrapper } from '@/components/dom/MenuWrapper'
 import { PreviewSwitch } from '@/components/dom/PreviewSwitch'
 import { links } from '@/consts'
 import { useUIStore } from '@/helpers/store'
-import { motion } from 'framer-motion'
-import Link from 'next/link'
-import { useEffect, useState } from 'react'
-import styles from '../home/Home.module.scss'
-import { MenuItem } from '../home/menu-item'
 
 const DOM = () => {
   const mode = useUIStore((state: any) => state.mode)

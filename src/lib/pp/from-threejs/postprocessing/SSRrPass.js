@@ -18,9 +18,9 @@ import {
   MeshStandardMaterial,
 } from 'three'
 import { Pass, FullScreenQuad } from '../postprocessing/Pass.js'
+import { CopyShader } from '../shaders/CopyShader.js'
 import { SSRrShader } from '../shaders/SSRrShader.js'
 import { SSRrDepthShader } from '../shaders/SSRrShader.js'
-import { CopyShader } from '../shaders/CopyShader.js'
 
 class SSRrPass extends Pass {
   constructor({ renderer, scene, camera, width, height, selects, encoding }) {

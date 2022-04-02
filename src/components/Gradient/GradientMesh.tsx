@@ -1,11 +1,10 @@
-import { useFrame } from '@react-three/fiber'
 import * as React from 'react'
-import { useRef, useEffect } from 'react'
-import './GradientMaterial'
-import './LineMaterial'
-import * as THREE from 'three'
+import { useEffect, useRef } from 'react'
 import { animated } from '@react-spring/three'
-import { CubicBezierLine } from '@react-three/drei'
+import { useFrame } from '@react-three/fiber'
+import * as THREE from 'three'
+import './materials'
+import { AxesHelper } from './comps/AxesHelper'
 
 const clock = new THREE.Clock()
 
@@ -67,12 +66,6 @@ export function GradientMesh({
     }
   }, [mesh.current])
 
-  const lineProps: any = {
-    midA: [0, 0, 0],
-    midB: [0, 0, 0],
-    lineWidth: 1,
-  }
-
   return (
     <group>
       <animated.mesh
@@ -90,30 +83,7 @@ export function GradientMesh({
           <planeGeometry args={[10, 10, meshCount, meshCount]} />
         )}
 
-        {axesHelper && (
-          <>
-            <CubicBezierLine
-              start={[0, 0, 0]}
-              end={[10, 0, 0]}
-              color='red'
-              {...lineProps}
-            />
-            <CubicBezierLine
-              start={[0, 0, 0]}
-              end={[0, 10, 0]}
-              color='green'
-              {...lineProps}
-            />
-            <CubicBezierLine
-              start={[0, 0, 0]}
-              end={[0, 0, 10]}
-              color='blue'
-              {...lineProps}
-            />
-          </>
-        )}
-
-        {/* @ts-ignore */}
+        {axesHelper && <AxesHelper />}
         <gradientMaterial
           key={JSON.stringify(sceneShader, null, 0)}
           ref={material}
@@ -136,10 +106,8 @@ export function GradientMesh({
           position={mesh.current.position}
           rotation={mesh.current.rotation}
           visible={hoverState !== 0 ? true : false}
-          /* @ts-ignore */
           geometry={mesh.current.geometry}
         >
-          {/* @ts-ignore */}
           <lineMaterial
             key={JSON.stringify(sceneShader, null, 0)}
             ref={linematerial}

@@ -20,10 +20,10 @@ import {
   ZeroFactor,
 } from 'three'
 import { Pass, FullScreenQuad } from '../postprocessing/Pass.js'
-import { SAOShader } from '../shaders/SAOShader.js'
+import { CopyShader } from '../shaders/CopyShader.js'
 import { DepthLimitedBlurShader } from '../shaders/DepthLimitedBlurShader.js'
 import { BlurShaderUtils } from '../shaders/DepthLimitedBlurShader.js'
-import { CopyShader } from '../shaders/CopyShader.js'
+import { SAOShader } from '../shaders/SAOShader.js'
 import { UnpackDepthRGBAShader } from '../shaders/UnpackDepthRGBAShader.js'
 
 /**

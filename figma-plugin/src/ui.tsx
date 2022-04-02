@@ -1,13 +1,13 @@
 import * as React from 'react'
+import { useState } from 'react'
 import * as ReactDOM from 'react-dom'
 import { UI, PRESETS } from '../../dist'
 import '../../ui-styles-compiled.css'
 import { Controls } from './components/Controls'
 import './global.css'
-import { useState } from 'react'
-import { initialCurrent } from './consts'
-import { LCanvas } from './components/LCanvas'
 import { GradientScene } from './components/GradientScene'
+import { LCanvas } from './components/LCanvas'
+import { initialCurrent } from './consts'
 
 function Arrow(props) {
   return (

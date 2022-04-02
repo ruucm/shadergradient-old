@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { GradientWithQueries, usePropertyStore } from '../../../dist'
 import glsl from 'glslify'
+import { GradientWithQueries, usePropertyStore } from '../../../dist'
 import { initialCurrent } from '../consts'
 
 // pre import for shaders

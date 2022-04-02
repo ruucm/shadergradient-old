@@ -1,7 +1,7 @@
 import * as React from 'react'
 import cx from 'classnames'
-import { Feather } from './Feather'
 import * as UI from '..'
+import { Feather } from './Feather'
 
 type ControlTypeTitlePropsT = {
   icon?: string

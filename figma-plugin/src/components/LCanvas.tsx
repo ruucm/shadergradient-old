@@ -1,15 +1,15 @@
 import * as React from 'react'
-import { Canvas, extend, useFrame, useThree } from '@react-three/fiber'
+import { useEffect, useRef } from 'react'
 import { GizmoHelper, GizmoViewport } from '@react-three/drei'
+import { Canvas, extend, useFrame, useThree } from '@react-three/fiber'
+import CameraControls from 'camera-controls'
+import * as THREE from 'three'
 import {
   useQueryState,
   dToR,
   canvasProps,
   usePropertyStore,
 } from '../../../dist'
-import CameraControls from 'camera-controls'
-import * as THREE from 'three'
-import { useEffect, useRef } from 'react'
 
 CameraControls.install({ THREE })
 extend({ CameraControls })

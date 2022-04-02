@@ -1,11 +1,11 @@
-import { Environment } from '@/lib/Environment'
-import { useFrame } from '@react-three/fiber'
 import * as React from 'react'
 import { Suspense } from 'react'
+import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 import { usePostProcessing } from '../../hooks/use-post-processing'
 import { GradientMesh } from './GradientMesh'
 import * as shaders from './shaders'
+import { Environment } from '@/lib/Environment'
 
 const vec = new THREE.Vector3()
 
@@ -97,32 +97,6 @@ export const Gradient: React.FC<any> = ({
           visible={visible}
           hoverState={hoverState}
         />
-
-        {/* <GradientMesh
-          key={colors.toString()}
-          type={type}
-          position={position}
-          rotation={rotation}
-          scale={scale}
-          animate={animate}
-          uTime={uTime}
-          uStrength={uStrength}
-          uDensity={uDensity}
-          uFrequency={uFrequency}
-          uAmplitude={uAmplitude}
-          uSpeed={uSpeed}
-          colors={['#ffff00', '#ffff00', '#ffff00']}
-          reflection={reflection}
-          sceneShader={sceneShader}
-          axesHelper={axesHelper}
-          wireframe={true}
-          meshCount={48}
-          visible={hoverState !== 0 ? true : false}
-        /> */}
-
-        {/* <EffectComposer>
-        <Noise opacity={0.3} />
-      </EffectComposer> */}
       </Suspense>
     </>
   )

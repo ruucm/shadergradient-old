@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { useAnimation, motion } from 'framer-motion'
 import cx from 'classnames'
+import { useAnimation, motion } from 'framer-motion'
 
 export function MenuWrapper({
   mode = 'mobile',

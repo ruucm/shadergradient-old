@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { UI } from '../..'
 import cx from 'classnames'
+import { UI } from '../..'
 
 type Props = {
   // All other props
@@ -25,6 +25,7 @@ export const PropertyControls: React.FC<Props> = ({
       {activeTab === 'colors' && <UI.ColorControls />}
       {activeTab === 'effects' && <UI.EffectControls />}
       {activeTab === 'view' && <UI.ViewControls />}
+      {activeTab === 'background' && <UI.BackgroundControls />}
     </div>
   )
 }

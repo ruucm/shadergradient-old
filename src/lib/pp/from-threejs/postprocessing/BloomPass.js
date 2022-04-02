@@ -8,8 +8,8 @@ import {
   WebGLRenderTarget,
 } from 'three'
 import { Pass, FullScreenQuad } from '../postprocessing/Pass.js'
-import { CopyShader } from '../shaders/CopyShader.js'
 import { ConvolutionShader } from '../shaders/ConvolutionShader.js'
+import { CopyShader } from '../shaders/CopyShader.js'
 
 class BloomPass extends Pass {
   constructor(strength = 1, kernelSize = 25, sigma = 4, resolution = 256) {

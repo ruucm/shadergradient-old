@@ -1,3 +1,17 @@
+import React, { useEffect, useRef, useState } from 'react'
+import { PRESETS } from '@shadergradient'
+import { motion } from 'framer-motion'
+import Link from 'next/link'
+import {
+  SnapItem,
+  SnapList,
+  useDragToScroll,
+  useScroll,
+  useVisibleElements,
+} from 'react-snaplist-carousel'
+import styles from './Home.module.scss'
+import { MenuItem } from './menu-item'
+import { MyItem } from './my-item'
 import { GradientScene } from '@/components/canvas/GradientScene'
 import { Loading } from '@/components/dom/Loading'
 import { MenuWrapper } from '@/components/dom/MenuWrapper'
@@ -7,20 +21,6 @@ import { PreviewWrapper } from '@/components/dom/PreviewWrapper'
 import { TextAnimation } from '@/components/dom/TextAnimation'
 import { isDev, links } from '@/consts'
 import { useUIStore } from '@/helpers/store'
-import { motion } from 'framer-motion'
-import Link from 'next/link'
-import React, { useEffect, useRef, useState } from 'react'
-import {
-  SnapItem,
-  SnapList,
-  useDragToScroll,
-  useScroll,
-  useVisibleElements,
-} from 'react-snaplist-carousel'
-import { PRESETS } from '@shadergradient'
-import styles from './Home.module.scss'
-import { MenuItem } from './menu-item'
-import { MyItem } from './my-item'
 
 const DOM = () => {
   const mode = useUIStore((state: any) => state.mode)

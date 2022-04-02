@@ -1,7 +1,7 @@
 import * as React from 'react'
 import * as UI from '..'
-import { useQueryState } from '@/hooks/useQueryState'
 import { usePropertyStore } from '../../store'
+import { useQueryState } from '@/hooks/useQueryState'
 
 type ColorControlsPropsT = {
   hoverState?: number
