@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useQueryState, PRESETS } from '@shadergradient'
+import { useQueryState, PRESETS, useUIStore } from '@shadergradient'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import styles from '../home/Home.module.scss'
@@ -8,7 +8,6 @@ import { Controls } from './comps/Controls'
 import { GradientScene } from '@/components/canvas/GradientScene'
 import { Footer } from '@/components/dom/Footer'
 import { PreviewWrapper } from '@/components/dom/PreviewWrapper'
-import { useUIStore } from '@/helpers/store'
 
 const DOM = () => {
   const mode = useUIStore((state: any) => state.mode)

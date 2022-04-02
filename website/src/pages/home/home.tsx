@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { PRESETS } from '@shadergradient'
+import { PRESETS, useUIStore } from '@shadergradient'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { SnapItem, SnapList } from 'react-snaplist-carousel'
@@ -14,7 +14,6 @@ import { PreviewSwitch } from '@/components/dom/PreviewSwitch'
 import { PreviewWrapper } from '@/components/dom/PreviewWrapper'
 import { TextAnimation } from '@/components/dom/TextAnimation'
 import { isDev, links } from '@/consts'
-import { useUIStore } from '@/helpers/store'
 
 const DOM = () => {
   const mode = useUIStore((state: any) => state.mode)

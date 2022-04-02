@@ -4,6 +4,7 @@ export { useQueryState } from './hooks/useQueryState'
 export * from './store'
 export * from './presets'
 export * from './utils'
+export * from './consts'
 
 export const canvasProps = (pixelDensity: number) => ({
   mode: 'concurrent' as 'legacy' | 'blocking' | 'concurrent',
