@@ -32,7 +32,7 @@ function App() {
         gl={{ preserveDrawingBuffer: true }} // to capture the canvas
         onCreated={() => void 0} // remove default onCreated method
       >
-        <GradientScene current={activePreset} />
+        <GradientScene />
       </LCanvas>
       <div className='bg-controls-sub-panel text-white font-semibold text-sm flex justify-between items-center p-1'>
         <div className='flex justify-start gap-3 items-center'>
