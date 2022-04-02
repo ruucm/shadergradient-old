@@ -1,7 +1,4 @@
-import { useEffect } from 'react'
-import { useDomStore } from '@shadergradient'
 import dynamic from 'next/dynamic'
-import { useRouter } from 'next/router'
 import Dom from '@/components/layout/Dom'
 import Header from '@/config'
 import partition from '@/helpers/partition'
@@ -24,12 +21,6 @@ const Balance = ({ child }) => {
 }
 
 function App({ Component, pageProps = { title: 'index' } }) {
-  const router = useRouter()
-
-  useEffect(() => {
-    useDomStore.setState({ router })
-  }, [router])
-
   const child = Component(pageProps).props.children
 
   return (
