@@ -60,8 +60,6 @@ export function GradientMesh({
     if (linemesh.current !== undefined && mesh.current !== undefined) {
       linemesh.current.rotation = mesh.current.rotation
       linemesh.current.position = mesh.current.position
-      console.log(mesh.current)
-      console.log(linemesh.current)
     }
   }, [mesh.current])
 
