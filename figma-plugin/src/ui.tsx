@@ -6,7 +6,7 @@ import '../../ui-styles-compiled.css'
 import { Controls } from './components/Controls'
 import './global.css'
 import { GradientScene } from './components/GradientScene'
-import { initialCurrent } from './consts'
+import { initialActivePreset } from './consts'
 
 function Arrow(props) {
   return (
@@ -24,7 +24,7 @@ function Arrow(props) {
 }
 
 function App() {
-  const [currentTheme, setCurrentTheme] = useState(initialCurrent)
+  const [currentTheme, setCurrentTheme] = useState(initialActivePreset)
   console.log('currentTheme', currentTheme)
 
   return (

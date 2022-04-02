@@ -1,7 +1,7 @@
 import * as qs from 'query-string'
 import create from 'zustand'
 import { combine } from 'zustand/middleware'
-import { initialCurrent } from './consts'
+import { initialActivePreset } from './consts'
 
 // without embedMode
 // it renders without the dom & other gradient controls at first, and add it after the first updateGradientState() excuted.
@@ -37,7 +37,7 @@ export const useDomStore = create(() => {
 
 export const useUIStore = create(
   combine(
-    { activePreset: initialCurrent, mode: 'full', loadingPercentage: 0 },
+    { activePreset: initialActivePreset, mode: 'full', loadingPercentage: 0 },
     (set) => ({
       setActivePreset: (by: number) => set((state) => ({ activePreset: by })),
       setMode: (data: any) => set((state) => ({ ...state, mode: data })),

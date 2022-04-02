@@ -1,4 +1,4 @@
-import { initialCurrent } from '@shadergradient'
+import { initialActivePreset } from '@shadergradient'
 import { motion } from 'framer-motion'
 import Lottie from 'react-lottie'
 import loadingAnimationData from '../../../media/threelineloading.json'
@@ -15,7 +15,7 @@ export function MotionLogo({ color = true, activePreset, loadingPercentage }) {
     },
   }
 
-  if (activePreset !== initialCurrent && loadingPercentage < 100)
+  if (activePreset !== initialActivePreset && loadingPercentage < 100)
     return (
       <div className={styles.loadingSpinner}>
         <motion.div className={styles.logoWrapper}>

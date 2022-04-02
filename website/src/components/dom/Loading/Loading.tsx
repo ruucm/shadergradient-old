@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { initialCurrent } from '@shadergradient'
+import { initialActivePreset } from '@shadergradient'
 import { motion, AnimatePresence } from 'framer-motion'
 import styles from './Loading.module.scss'
 import { initialLoadingTime } from '@/consts'
@@ -40,7 +40,7 @@ export function Loading({ activePreset, loadingPercentage, referer = '' }) {
 
   return (
     <AnimatePresence>
-      {activePreset === initialCurrent &&
+      {activePreset === initialActivePreset &&
         (loadingPercentage < 100 || time < initialLoadingTime) &&
         isFirstLoad && (
           <motion.div

@@ -12,7 +12,7 @@ import { gradientWithQueryT } from '@/types'
 export const GradientWithQueries: React.FC<gradientWithQueryT> = ({
   activePreset,
   setLoadingPercentage = () => void 0,
-  initialCurrent,
+  initialActivePreset,
 
   forceCamPos = null,
   forcePos = null,
@@ -20,7 +20,7 @@ export const GradientWithQueries: React.FC<gradientWithQueryT> = ({
 }) => {
   useEffect(() => {
     let gradientURL = PRESETS[activePreset].url
-    if (activePreset === initialCurrent && window.location.search)
+    if (activePreset === initialActivePreset && window.location.search)
       gradientURL = window.location.search // use search params at the first load.
 
     updateGradientState(gradientURL)

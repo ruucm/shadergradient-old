@@ -1,1 +1,1 @@
-export const initialCurrent = 0
+export const initialActivePreset = 0
