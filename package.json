@@ -82,6 +82,7 @@
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-tailwind": "^0.2.1",
+    "eslint-plugin-unused-imports": "^2.0.0",
     "file-loader": "^6.2.0",
     "glsl-random": "^0.0.5",
     "glslify": "^7.1.1",
