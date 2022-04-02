@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 import {
   GradientWithQueries,
-  initialActivePreset,
   usePropertyStore,
   useUIStore,
 } from '@shadergradient'
@@ -49,7 +48,6 @@ export function GradientScene({ aboutPage = false, ...forceProps }) {
     <GradientWithQueries
       {...forceProps}
       activePreset={activePreset}
-      initialActivePreset={initialActivePreset}
       setLoadingPercentage={setLoadingPercentage}
     />
   )

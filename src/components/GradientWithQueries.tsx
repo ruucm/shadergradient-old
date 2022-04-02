@@ -2,6 +2,7 @@ import * as React from 'react'
 import { useEffect } from 'react'
 import {
   Gradient,
+  initialActivePreset,
   PRESETS,
   updateGradientState,
   usePropertyStore,
@@ -12,7 +13,6 @@ import { gradientWithQueryT } from '@/types'
 export const GradientWithQueries: React.FC<gradientWithQueryT> = ({
   activePreset,
   setLoadingPercentage = () => void 0,
-  initialActivePreset,
 
   forceCamPos = null,
   forcePos = null,
