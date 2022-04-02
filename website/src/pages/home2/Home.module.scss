@@ -1,0 +1,51 @@
+.contentWrapper{
+    width:100vw;
+    height:100vw;
+}
+
+.header{
+    width:100vw;
+    height:8vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content{
+    width:100vw;
+    height:84vh;
+}
+
+.footer{
+    width:100vw;
+    height:8vh;
+}
+
+
+.presetTitleWrapper{
+    margin-top:15vh;
+}
+
+.paragraph {
+    margin-top: 2vh;
+    font-size: 14px;
+    text-align: center;
+    line-height: 1.35;
+    }
+
+    .customizeBtnWrapper{
+        margin-top:10vh;
+    width:100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    }
+    
+    .customizeBtn{
+    padding: 2px 5px;
+    width: fit-content;
+    cursor:pointer;
+    font-size: 20px;
+    }
+    

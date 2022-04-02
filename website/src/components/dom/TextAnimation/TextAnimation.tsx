@@ -38,6 +38,7 @@ export function TextAnimation({
   content,
   delay,
   width = null,
+  font = null,
 }) {
   //   const splitted = referer?.split('/') || []
   const [ref, inView] = useInView()
@@ -60,6 +61,7 @@ export function TextAnimation({
             position: 'relative',
             wordBreak: 'break-word',
             width: width,
+            fontFamily: font,
           }}
         >
           <motion.h1
@@ -67,7 +69,7 @@ export function TextAnimation({
             ref={ref}
             initial={'before'}
             animate={controls}
-            transition={{ delay: delay }}
+            // transition={{ delay: delay }}
           >
             <div
               style={{ textAlign: 'left', fontSize: fontSize, color: color }}
