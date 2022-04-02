@@ -41,7 +41,7 @@ export function TextAnimation({
   //   const splitted = referer?.split('/') || []
   const [ref, inView] = useInView()
   const controls = useAnimation()
-  const [currentInView, setCurrentInView] = useState(false)
+  const [activePresetInView, setActivePresetInView] = useState(false)
   useEffect(() => {
     if (inView) {
       controls.start('after')
@@ -49,11 +49,11 @@ export function TextAnimation({
   }, [controls, inView])
 
   setTimeout(() => {
-    setCurrentInView(true)
+    setActivePresetInView(true)
   }, delay)
   return (
     <AnimatePresence>
-      {currentInView && (
+      {activePresetInView && (
         <motion.div
           style={{
             position: 'relative',

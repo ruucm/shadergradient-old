@@ -12,9 +12,9 @@ import { PreviewWrapper } from '@/components/dom/PreviewWrapper'
 const DOM = () => {
   const mode = useUIStore((state: any) => state.mode)
   const setMode = useUIStore((state: any) => state.setMode)
-  const current = useUIStore((state: any) => state.current)
+  const activePreset = useUIStore((state: any) => state.activePreset)
 
-  const setCurrent = useUIStore((state: any) => state.setCurrent)
+  const setActivePreset = useUIStore((state: any) => state.setActivePreset)
   const loadingPercentage = useUIStore((state: any) => state.loadingPercentage)
 
   const [isMobile, setIsMobile] = React.useState(false)
@@ -48,8 +48,8 @@ const DOM = () => {
   }, [])
 
   React.useEffect(() => {
-    PRESETS[current].title.substring(1, 2)
-  }, [current])
+    PRESETS[activePreset].title.substring(1, 2)
+  }, [activePreset])
 
   if (embedMode === 'off')
     return (
@@ -57,7 +57,7 @@ const DOM = () => {
         <div className={styles.bodyWrapper}>
           {/* Go Back */}
           <div className={styles.content}>
-            <motion.div style={{ color: PRESETS[current].color }}>
+            <motion.div style={{ color: PRESETS[activePreset].color }}>
               <Link href='/'> ← ShaderGradient</Link>
             </motion.div>
           </div>
@@ -74,7 +74,7 @@ const DOM = () => {
           <div
             className={styles.slider}
             style={{
-              color: mode === 'full' ? PRESETS[current].color : '#FF430A',
+              color: mode === 'full' ? PRESETS[activePreset].color : '#FF430A',
               top: isMobile ? '10vh' : null,
             }}
           >
@@ -88,14 +88,18 @@ const DOM = () => {
                 return (
                   <div
                     key={index}
-                    style={{ display: current === index ? 'block' : 'none' }}
+                    style={{
+                      display: activePreset === index ? 'block' : 'none',
+                    }}
                   >
                     <MyItem
                       color={
-                        mode === 'full' ? PRESETS[current].color : '#FF430A'
+                        mode === 'full'
+                          ? PRESETS[activePreset].color
+                          : '#FF430A'
                       }
                       onClick={() => void 0}
-                      visible={current === index}
+                      visible={activePreset === index}
                       isMobile={isMobile}
                       index={index}
                     >
@@ -113,10 +117,10 @@ const DOM = () => {
                     backgroundColor: 'rgba(255,255,255,0.15)',
                   }}
                   onClick={() => {
-                    if (current !== 0) {
-                      setCurrent(current - 1)
+                    if (activePreset !== 0) {
+                      setActivePreset(activePreset - 1)
                     } else {
-                      setCurrent(PRESETS.length - 1)
+                      setActivePreset(PRESETS.length - 1)
                     }
                   }}
                 >
@@ -128,10 +132,10 @@ const DOM = () => {
                     backgroundColor: 'rgba(255,255,255,0.15)',
                   }}
                   onClick={() => {
-                    if (current !== PRESETS.length - 1) {
-                      setCurrent(current + 1)
+                    if (activePreset !== PRESETS.length - 1) {
+                      setActivePreset(activePreset + 1)
                     } else {
-                      setCurrent(0)
+                      setActivePreset(0)
                     }
                   }}
                 >
@@ -141,7 +145,7 @@ const DOM = () => {
             </div>
           </div>
 
-          <Footer color={PRESETS[current].color} />
+          <Footer color={PRESETS[activePreset].color} />
         </div>
       </>
     )

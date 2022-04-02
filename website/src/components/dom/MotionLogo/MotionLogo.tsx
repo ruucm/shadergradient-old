@@ -5,7 +5,7 @@ import styles from './MotionLogo.module.scss'
 
 import { initialCurrent } from '@/consts'
 
-export function MotionLogo({ color = true, current, loadingPercentage }) {
+export function MotionLogo({ color = true, activePreset, loadingPercentage }) {
   const loadingOption = {
     loop: true,
     autoplay: true,
@@ -16,7 +16,7 @@ export function MotionLogo({ color = true, current, loadingPercentage }) {
     },
   }
 
-  if (current !== initialCurrent && loadingPercentage < 100)
+  if (activePreset !== initialCurrent && loadingPercentage < 100)
     return (
       <div className={styles.loadingSpinner}>
         <motion.div className={styles.logoWrapper}>

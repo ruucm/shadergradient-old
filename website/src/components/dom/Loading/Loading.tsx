@@ -28,7 +28,7 @@ const letters = {
   },
 }
 
-export function Loading({ current, loadingPercentage, referer = '' }) {
+export function Loading({ activePreset, loadingPercentage, referer = '' }) {
   const [time, setTime] = useState(0)
   useInterval(() => {
     setTime(time + 1)
@@ -39,7 +39,7 @@ export function Loading({ current, loadingPercentage, referer = '' }) {
 
   return (
     <AnimatePresence>
-      {current === initialCurrent &&
+      {activePreset === initialCurrent &&
         (loadingPercentage < 100 || time < initialLoadingTime) &&
         isFirstLoad && (
           <motion.div

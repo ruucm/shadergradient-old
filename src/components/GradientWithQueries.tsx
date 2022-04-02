@@ -10,7 +10,7 @@ import {
 import { gradientWithQueryT } from '@/types'
 
 export const GradientWithQueries: React.FC<gradientWithQueryT> = ({
-  current,
+  activePreset,
   setLoadingPercentage = () => void 0,
   initialCurrent,
 
@@ -19,8 +19,8 @@ export const GradientWithQueries: React.FC<gradientWithQueryT> = ({
   forceScale = 1,
 }) => {
   useEffect(() => {
-    let gradientURL = PRESETS[current].url
-    if (current === initialCurrent && window.location.search)
+    let gradientURL = PRESETS[activePreset].url
+    if (activePreset === initialCurrent && window.location.search)
       gradientURL = window.location.search // use search params at the first load.
 
     updateGradientState(gradientURL)
@@ -29,7 +29,7 @@ export const GradientWithQueries: React.FC<gradientWithQueryT> = ({
     return () => {
       document.documentElement.classList.remove('cutomize')
     }
-  }, [current])
+  }, [activePreset])
 
   const hoverState = usePropertyStore((state: any) => state.hoverState)
   const toggleAxis = usePropertyStore((state: any) => state.toggleAxis)

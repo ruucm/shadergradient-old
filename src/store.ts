@@ -37,9 +37,9 @@ export const useDomStore = create(() => {
 
 export const useUIStore = create(
   combine(
-    { current: initialCurrent, mode: 'full', loadingPercentage: 0 },
+    { activePreset: initialCurrent, mode: 'full', loadingPercentage: 0 },
     (set) => ({
-      setCurrent: (by: number) => set((state) => ({ current: by })),
+      setActivePreset: (by: number) => set((state) => ({ activePreset: by })),
       setMode: (data: any) => set((state) => ({ ...state, mode: data })),
       setLoadingPercentage: (data: any) =>
         set((state) => ({ ...state, loadingPercentage: data })),

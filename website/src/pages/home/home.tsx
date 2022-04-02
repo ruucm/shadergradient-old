@@ -16,11 +16,11 @@ import { TextAnimation } from '@/components/dom/TextAnimation'
 import { isDev, links } from '@/consts'
 
 const DOM = () => {
-  const mode = useUIStore((state: any) => state.mode)
-  const setMode = useUIStore((state: any) => state.setMode)
-  const current = useUIStore((state: any) => state.current)
-  const loadingPercentage = useUIStore((state: any) => state.loadingPercentage)
-  const setCurrent = useUIStore((state: any) => state.setCurrent)
+  const mode = useUIStore((state) => state.mode)
+  const setMode = useUIStore((state) => state.setMode)
+  const activePreset = useUIStore((state) => state.activePreset)
+  const setActivePreset = useUIStore((state) => state.setActivePreset)
+  const loadingPercentage = useUIStore((state) => state.loadingPercentage)
 
   const snapList = useRef(null)
 
@@ -52,21 +52,21 @@ const DOM = () => {
     <>
       {!isDev && (
         <Loading
-          current={current}
+          activePreset={activePreset}
           loadingPercentage={loadingPercentage}
           // referer={referer}
         />
       )}
       <MotionLogo
         color={false}
-        current={current}
+        activePreset={activePreset}
         loadingPercentage={loadingPercentage}
       />
       {/* Home */}
       <motion.div
         className={styles.bodyWrapper}
         style={{
-          color: mode === 'full' ? PRESETS[current].color : '#FF430A',
+          color: mode === 'full' ? PRESETS[activePreset].color : '#FF430A',
           display: 'block',
         }}
       >
@@ -142,7 +142,7 @@ const DOM = () => {
             {isMobile === true ? (
               <motion.div
                 className={styles.mobileOnly}
-                style={{ color: PRESETS[current].color }}
+                style={{ color: PRESETS[activePreset].color }}
                 initial={{ opacity: 0, y: 30 }}
                 animate={{
                   opacity: 1,
@@ -175,7 +175,7 @@ const DOM = () => {
               style={{
                 borderBottom:
                   mode === 'full'
-                    ? '2px solid ' + PRESETS[current].color
+                    ? '2px solid ' + PRESETS[activePreset].color
                     : '2px solid #FF430A',
                 height: isMobile ? 'fit-content' : 60 * 1.6,
               }}
@@ -197,11 +197,13 @@ const DOM = () => {
                       <MyItem
                         onClick={() => {
                           // goToSnapItem(index)
-                          setCurrent(index)
+                          setActivePreset(index)
                         }}
-                        visible={current === index}
+                        visible={activePreset === index}
                         color={
-                          mode === 'full' ? PRESETS[current].color : '#FF430A'
+                          mode === 'full'
+                            ? PRESETS[activePreset].color
+                            : '#FF430A'
                         }
                         isMobile={isMobile}
                         btnOn={true}
