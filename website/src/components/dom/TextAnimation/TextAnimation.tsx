@@ -47,6 +47,8 @@ export function TextAnimation({
   useEffect(() => {
     if (inView) {
       controls.start('after')
+    } else {
+      controls.start('before')
     }
   }, [controls, inView])
 
@@ -55,53 +57,49 @@ export function TextAnimation({
   }, delay)
   return (
     <AnimatePresence>
-      {currentInView && (
-        <motion.div
-          style={{
-            position: 'relative',
-            wordBreak: 'break-word',
-            width: width,
-            fontFamily: font,
-          }}
+      <motion.div
+        style={{
+          position: 'relative',
+          wordBreak: 'break-word',
+          width: width,
+          fontFamily: font,
+        }}
+      >
+        <motion.h1
+          variants={letterContainerVariants}
+          ref={ref}
+          initial={'before'}
+          animate={controls}
+          // transition={{ delay: delay }}
         >
-          <motion.h1
-            variants={letterContainerVariants}
-            ref={ref}
-            initial={'before'}
-            animate={controls}
-            // transition={{ delay: delay }}
-          >
-            <div
-              style={{ textAlign: 'left', fontSize: fontSize, color: color }}
-            >
-              {content.split(' ').map((word: string, wordI: number) => (
-                <div
-                  key={`word-${word}-${wordI}`}
-                  style={{
-                    display: 'inline-block',
-                  }}
-                >
-                  {Array.from(word).map((letter, index) => (
-                    <motion.span
-                      key={`${index}-${letter}`}
-                      style={{
-                        position: 'relative',
-                        display: 'inline-block',
-                        width: 'auto',
-                      }} // Position elements
-                      variants={letterVariants}
-                      transition={{ duration: 0.5 }}
-                    >
-                      {letter === ' ' ? '\u00A0' : letter}
-                    </motion.span>
-                  ))}
-                  {'\u00A0'}
-                </div>
-              ))}
-            </div>
-          </motion.h1>
-        </motion.div>
-      )}
+          <div style={{ textAlign: 'left', fontSize: fontSize, color: color }}>
+            {content.split(' ').map((word: string, wordI: number) => (
+              <div
+                key={`word-${word}-${wordI}`}
+                style={{
+                  display: 'inline-block',
+                }}
+              >
+                {Array.from(word).map((letter, index) => (
+                  <motion.span
+                    key={`${index}-${letter}`}
+                    style={{
+                      position: 'relative',
+                      display: 'inline-block',
+                      width: 'auto',
+                    }} // Position elements
+                    variants={letterVariants}
+                    transition={{ duration: 0.5 }}
+                  >
+                    {letter === ' ' ? '\u00A0' : letter}
+                  </motion.span>
+                ))}
+                {'\u00A0'}
+              </div>
+            ))}
+          </div>
+        </motion.h1>
+      </motion.div>
     </AnimatePresence>
   )
 }
