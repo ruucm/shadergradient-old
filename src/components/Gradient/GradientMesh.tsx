@@ -4,35 +4,40 @@ import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 import './materials'
 import { AxesHelper } from './comps/AxesHelper'
+import { defaultProps, gradientMeshT } from '@/types'
 
 const clock = new THREE.Clock()
 
-export function GradientMesh({
-  type = 'plane',
-  r3f,
+export const GradientMesh: React.FC<gradientMeshT> = ({
+  type,
   position,
   rotation,
-  animate,
+  scale,
+
   uTime,
   uStrength,
   uDensity,
   uFrequency,
   uAmplitude,
   uSpeed,
-  colors,
   reflection,
-  scale,
+
+  wireframe,
+  colors,
+
+  animate,
+  visible,
+
   sceneShader,
   axesHelper,
-  wireframe,
-  meshCount,
-  visible,
   hoverState,
-}: any) {
+}) => {
   const mesh: any = useRef()
   const linemesh: any = useRef()
   const material: any = useRef()
   const linematerial: any = useRef()
+
+  const meshCount = hoverState !== 0 ? 48 : 192
 
   // Subscribe this component to the render-loop, rotate the mesh every frame
   useFrame((state, delta) => {
@@ -123,3 +128,5 @@ export function GradientMesh({
     </group>
   )
 }
+
+GradientMesh.defaultProps = defaultProps.GradientMesh

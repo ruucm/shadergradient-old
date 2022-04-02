@@ -9,9 +9,7 @@ import {
 } from '../'
 
 export function GradientWithQueries({
-  forceZoom = null,
   forceCamPos = null,
-  forceRot = null,
   forcePos = null,
   forceScale = 1,
   current,
@@ -64,19 +62,14 @@ export function GradientWithQueries({
   const [brightness] = useQueryState('brightness')
 
   // camera
-  const [cameraZoom] = useQueryState('cameraZoom')
   const [cameraPositionX] = useQueryState('cameraPositionX')
   const [cameraPositionY] = useQueryState('cameraPositionY')
   const [cameraPositionZ] = useQueryState('cameraPositionZ')
 
-  const [embedMode] = useQueryState('embedMode')
   const [wireframe] = useQueryState('wireframe')
 
   // shader
   const [shader] = useQueryState('shader')
-
-  // for only website
-  const responsiveCameraZoom = getResponsiveZoom(cameraZoom)
 
   return (
     <Gradient
@@ -90,10 +83,8 @@ export function GradientWithQueries({
           z: cameraPositionZ,
         }
       }
-      cameraRotation={{ x: 0, y: 0, z: 0 }}
       type={type}
       animate={animate === 'on'}
-      cameraZoom={forceZoom !== null ? forceZoom : responsiveCameraZoom}
       uTime={uTime}
       uStrength={uStrength}
       uDensity={uDensity}
@@ -106,12 +97,10 @@ export function GradientWithQueries({
       envPreset={envPreset}
       reflection={reflection}
       brightness={brightness}
-      postProcessing={'threejs'} // turn on postpocessing
       loadingCallback={setLoadingPercentage}
       shader={shader}
       axesHelper={toggleAxis}
       wireframe={wireframe === 'enable'}
-      meshCount={hoverState !== 0 ? 48 : 192}
       visible={true}
       hoverState={hoverState}
     />
