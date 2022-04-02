@@ -1,10 +1,11 @@
 import { useEffect, useRef } from 'react'
+import { useFrame } from '@react-three/fiber'
 import { dToR, usePropertyStore, useQueryState } from '../../'
 
 export function useCameraAnimation() {
   const ref: any = useRef()
 
-  // useFrame((state, delta) => ref.current.update(delta))
+  useFrame((state, delta) => ref.current.update(delta)) // sync r3f delta with 'camera-controls'
 
   const [cAzimuthAngle] = useQueryState('cAzimuthAngle')
   const [cPolarAngle] = useQueryState('cPolarAngle')
