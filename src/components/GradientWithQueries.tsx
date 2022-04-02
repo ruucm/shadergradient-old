@@ -1,6 +1,5 @@
 import * as React from 'react'
 import { useEffect } from 'react'
-import { useSpring } from '@react-spring/core'
 import {
   dToRArr,
   Gradient,
@@ -78,25 +77,14 @@ export function GradientWithQueries({
   // shader
   const [shader] = useQueryState('shader')
 
-  // force props
-  const { animatedScale } = useSpring({ animatedScale: forceScale })
-  const { animatedRotation } = useSpring({
-    animatedRotation: dToRArr(forceRot || [rotationX, rotationY, rotationZ]),
-  })
-  const { animatedPosition } = useSpring({
-    animatedPosition: forcePos || [positionX, positionY, positionZ],
-  })
-
   // for only website
   const responsiveCameraZoom = getResponsiveZoom(cameraZoom)
 
   return (
     <Gradient
-      // @ts-ignore
-      rotation={animatedRotation}
-      // rotation={[rotationX, rotationY, rotationZ]}
-      position={animatedPosition}
-      scale={animatedScale}
+      rotation={[rotationX, rotationY, rotationZ]}
+      position={forcePos || [positionX, positionY, positionZ]}
+      scale={forceScale}
       cameraPosition={
         forceCamPos || {
           x: cameraPositionX,

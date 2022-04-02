@@ -1,6 +1,5 @@
 import * as React from 'react'
 import { useEffect, useRef } from 'react'
-import { animated } from '@react-spring/three'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 import './materials'
@@ -68,7 +67,7 @@ export function GradientMesh({
 
   return (
     <group>
-      <animated.mesh
+      <mesh
         ref={mesh}
         position={position}
         rotation={rotation}
@@ -98,7 +97,7 @@ export function GradientMesh({
           fragmentShader={sceneShader.fragment}
           wireframe={wireframe}
         />
-      </animated.mesh>
+      </mesh>
       {mesh.current !== undefined && (
         <lineSegments
           ref={linemesh}
