@@ -37,7 +37,6 @@ function LControl() {
 
   useEffect(() => {
     const control = ref.current
-    console.log(control)
     if (control && hoverState === 0 && toggleZoom === false) {
       control.rotateTo(dToR(cAzimuthAngle), dToR(cPolarAngle), true)
       if (type === 'sphere') control.zoomTo(cameraZoom, true)
