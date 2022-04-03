@@ -66,7 +66,7 @@ export function TextHover({
           position: 'relative',
           wordBreak: 'break-word',
           width: width,
-          fontFamily: font,
+          fontFamily: '"Inter", san-serif',
           cursor: 'pointer',
         }}
       >
