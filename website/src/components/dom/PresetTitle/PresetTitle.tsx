@@ -5,7 +5,13 @@ import { TextAnimation } from '../TextAnimation'
 import styles from './PresetTitle.module.scss'
 import { useUIStore } from '@/helpers/store'
 
-export function PresetTitle({ color, title, description, index }) {
+export function PresetTitle({
+  color,
+  title,
+  description,
+  index,
+  size = 'big',
+}) {
   const current = useUIStore((state: any) => state.current)
   const setCurrent = useUIStore((state: any) => state.setCurrent)
 
@@ -19,12 +25,14 @@ export function PresetTitle({ color, title, description, index }) {
           delay={0}
           font='Lora'
           color={color}
-          fontSize={120}
+          fontSize={size === 'big' ? 120 : 50}
           content={title}
         />
         <div className={styles.slideBtns} style={{ color: color }}>
           <motion.div
             className={styles.slideBtn}
+            initial={{ opacity: 0, y: -5 }}
+            animate={{ opacity: 1, y: 0 }}
             whileHover={{
               backgroundColor: 'rgba(255,255,255,0.15)',
             }}
@@ -43,6 +51,8 @@ export function PresetTitle({ color, title, description, index }) {
             whileHover={{
               backgroundColor: 'rgba(255,255,255,0.15)',
             }}
+            initial={{ opacity: 0, y: 5 }}
+            animate={{ opacity: 1, y: 0 }}
             onClick={() => {
               if (current !== PRESETS.length - 1) {
                 setCurrent(current + 1)

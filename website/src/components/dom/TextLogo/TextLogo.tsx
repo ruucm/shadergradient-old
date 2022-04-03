@@ -1,5 +1,6 @@
 import * as React from 'react'
 import Link from 'next/link'
+import { TextHover } from '../TextAnimation'
 
 export function TextLogo({ color = 'white', size = 20 }) {
   return (
@@ -13,19 +14,20 @@ export function TextLogo({ color = 'white', size = 20 }) {
       }}
     >
       <Link href='/home2'>
-        <h2
+        <div
           style={{
-            color: color,
-            fontSize: size,
-            fontWeight: 400,
+            width: 'fit-content',
             padding: '2px 5px',
-            margin: 0,
-            cursor: 'pointer',
             borderBottom: '2px solid ' + color,
           }}
         >
-          ShaderGradient
-        </h2>
+          <TextHover
+            fontSize={size}
+            color={color}
+            content='ShaderGradient'
+            delay={0}
+          />
+        </div>
       </Link>
     </div>
   )

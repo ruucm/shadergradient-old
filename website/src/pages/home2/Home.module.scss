@@ -1,6 +1,10 @@
 .contentWrapper{
     width:100vw;
-    height:100vw;
+    height:100vh;
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .header{
@@ -18,7 +22,13 @@
 
 .footer{
     width:100vw;
-    height:8vh;
+    padding: 0 2vw;
+    height:10vh;
+    position: absolute;
+    bottom:0;
+    display: flex;
+    justify-content: right;
+    align-items: center;
 }
 
 
@@ -27,14 +37,14 @@
 }
 
 .paragraph {
-    margin-top: 2vh;
+    margin-top: 3vh;
     font-size: 14px;
     text-align: center;
-    line-height: 1.35;
+    line-height: 1.4;
     }
 
     .customizeBtnWrapper{
-        margin-top:10vh;
+    margin-top:10vh;
     width:100vw;
     display: flex;
     justify-content: center;
@@ -44,6 +54,7 @@
     
     .customizeBtn{
     padding: 2px 5px;
+    margin:0;
     width: fit-content;
     cursor:pointer;
     font-size: 20px;

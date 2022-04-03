@@ -3,7 +3,7 @@ import { PRESETS } from '@shadergradient'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 
-import styles from './Home.module.scss'
+import styles from '../home2/Home.module.scss'
 import { GradientScene } from '@/components/canvas/GradientScene'
 import { Links } from '@/components/dom/Links'
 import { PresetTitle } from '@/components/dom/PresetTitle'
@@ -48,6 +48,7 @@ const DOM = () => {
         <div className={styles.header}>
           <TextLogo
             color={mode !== 'full' ? '#FF430A' : PRESETS[current].color}
+            size={15}
           />
         </div>
         <div className={styles.content}>
@@ -64,39 +65,11 @@ const DOM = () => {
                       : index.toString() + ' ' + item.title
                   }
                   description={''}
+                  size='small'
                 ></PresetTitle>
               )
             })}
           </div>
-
-          <div
-            className={styles.paragraph}
-            style={{ color: PRESETS[current].color }}
-          >
-            All visuals are created with ShaderGradient,
-            <br /> a new way of creating beautiful, moving gradients. <br />
-            It's made with lines of codes, so you can create your own with just
-            a few clicks.
-          </div>
-          <div className={styles.customizeBtnWrapper}>
-            <Link href='/customize2'>
-              <motion.div
-                className={styles.customizeBtn}
-                style={{
-                  color: PRESETS[current].color,
-                  borderBottom: '2px solid ' + PRESETS[current].color,
-                }}
-              >
-                <TextHover
-                  fontSize={20}
-                  color={PRESETS[current].color}
-                  content='Try it by yourself →'
-                  delay={0}
-                />
-              </motion.div>
-            </Link>
-          </div>
-          <Links color={PRESETS[current].color} />
         </div>
         <div className={styles.footer}>
           <PreviewBtn
@@ -124,7 +97,7 @@ export default Page
 export async function getStaticProps() {
   return {
     props: {
-      title: 'ShaderGradient',
+      title: 'ShaderGradient - customize',
     },
   }
 }
