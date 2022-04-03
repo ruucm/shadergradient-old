@@ -1,5 +1,4 @@
 #pragma glslify: cnoise3 = require(glsl-noise/classic/3d) 
-#pragma glslify: pnoise3 = require(glsl-noise/periodic/3d)
 
 
 mat3 rotation3dY(float angle) {
