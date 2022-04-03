@@ -1,10 +1,15 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-import { UI, PRESETS, LCanvas, useUIStore } from '../../dist'
+import {
+  UI,
+  PRESETS,
+  LCanvas,
+  useUIStore,
+  GradientWithQueries,
+} from '../../dist'
 import '../../ui-styles-compiled.css'
 import { Controls } from './components/Controls'
 import './global.css'
-import { GradientScene } from './components/GradientScene'
 
 function Arrow(props) {
   return (
@@ -32,7 +37,7 @@ function App() {
         gl={{ preserveDrawingBuffer: true }} // to capture the canvas
         onCreated={() => void 0} // remove default onCreated method
       >
-        <GradientScene />
+        <GradientWithQueries />
       </LCanvas>
       <div className='bg-controls-sub-panel text-white font-semibold text-sm flex justify-between items-center p-1'>
         <div className='flex justify-start gap-3 items-center'>

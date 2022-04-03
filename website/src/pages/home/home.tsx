@@ -1,12 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { PRESETS, useUIStore } from '@shadergradient'
+import { PRESETS, useUIStore, GradientWithQueries } from '@shadergradient'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { SnapItem, SnapList } from 'react-snaplist-carousel'
 import styles from './Home.module.scss'
 import { MenuItem } from './menu-item'
 import { MyItem } from './my-item'
-import { GradientScene } from '@/components/canvas/GradientScene'
 import { Loading } from '@/components/dom/Loading'
 import { MenuWrapper } from '@/components/dom/MenuWrapper'
 import { MotionLogo } from '@/components/dom/MotionLogo'
@@ -243,7 +242,7 @@ const Page = () => {
   return (
     <>
       <DOM />
-      <GradientScene r3f />
+      <GradientWithQueries r3f />
     </>
   )
 }

@@ -48,11 +48,11 @@ export interface gradientT extends gradientMeshT {
 }
 
 export type gradientWithQueryT = {
+  toggleZoom?: boolean
+
   forcePos?: Vector3
   forceCamPos?: { x: number; y: number; z: number }
   forceScale?: number
-
-  toggleZoom?: boolean
 }
 
 export const defaultProps: { GradientMesh: gradientMeshT } = {

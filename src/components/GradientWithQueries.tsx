@@ -15,10 +15,11 @@ import { gradientWithQueryT } from '@/types'
  * Query(Web) wrapper for the Gradient component
  */
 export const GradientWithQueries: React.FC<gradientWithQueryT> = ({
+  toggleZoom = false,
+
   forceCamPos = null,
   forcePos = null,
   forceScale = 1,
-  toggleZoom,
 }) => {
   const activePreset = useUIStore((state: any) => state.activePreset)
   const setLoadingPercentage = useUIStore(
