@@ -1,5 +1,4 @@
-import { useEffect } from 'react'
-import { GradientWithQueries, usePropertyStore } from '@shadergradient'
+import { GradientWithQueries } from '@shadergradient'
 import glsl from 'glslify'
 
 // pre import for shaders
@@ -29,11 +28,5 @@ export const glslPragmas = `
 glsl`${glslPragmas}`
 
 export function GradientScene({ aboutPage = false, ...forceProps }) {
-  // zoom out (toogleZoom) on aboutPage
-  useEffect(() => {
-    if (aboutPage) usePropertyStore.setState({ toggleZoom: true })
-    else usePropertyStore.setState({ toggleZoom: false })
-  }, [aboutPage])
-
-  return <GradientWithQueries {...forceProps} />
+  return <GradientWithQueries toggleZoom={aboutPage} {...forceProps} />
 }

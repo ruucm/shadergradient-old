@@ -11,10 +11,14 @@ import {
 } from '../'
 import { gradientWithQueryT } from '@/types'
 
+/**
+ * Query(Web) wrapper for the Gradient component
+ */
 export const GradientWithQueries: React.FC<gradientWithQueryT> = ({
   forceCamPos = null,
   forcePos = null,
   forceScale = 1,
+  toggleZoom,
 }) => {
   const activePreset = useUIStore((state: any) => state.activePreset)
   const setLoadingPercentage = useUIStore(
@@ -32,6 +36,9 @@ export const GradientWithQueries: React.FC<gradientWithQueryT> = ({
       document.documentElement.classList.remove('cutomize')
     }
   }, [activePreset])
+
+  // zoom out (toogleZoom) on aboutPage
+  useEffect(() => usePropertyStore.setState({ toggleZoom }), [toggleZoom])
 
   const hoverState = usePropertyStore((state: any) => state.hoverState)
   const toggleAxis = usePropertyStore((state: any) => state.toggleAxis)
