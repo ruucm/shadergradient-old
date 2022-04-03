@@ -23,7 +23,7 @@ export function PresetTitle({
       >
         <TextAnimation
           delay={0}
-          font='Lora'
+          font='"Lora", serif'
           color={color}
           fontSize={size === 'big' ? 120 : 50}
           content={title}
