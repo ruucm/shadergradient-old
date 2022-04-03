@@ -13,8 +13,6 @@ export const links = [
   },
 ]
 
-export const initialCurrent = 0
-
 export const initialLoadingTime = 6
 
 export const isDev = process.env.NODE_ENV !== 'production'

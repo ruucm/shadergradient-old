@@ -25,6 +25,6 @@ export function hexToRgb(hex: string) {
 export function dToR(d: number) {
   return (d / 180) * Math.PI
 }
-export function dToRArr(degrees: number[]) {
+export function dToRArr(degrees) {
   return degrees.map((d) => dToR(d))
 }

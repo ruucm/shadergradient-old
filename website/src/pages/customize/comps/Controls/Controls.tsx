@@ -1,10 +1,9 @@
 import React, { useRef } from 'react'
-import { UI } from '@shadergradient'
+import { UI, useUIStore } from '@shadergradient'
 import { motion } from 'framer-motion'
 import styles from './Controls.module.scss'
 import { MenuWrapper } from '@/components/dom/MenuWrapper'
 import { PreviewSwitch } from '@/components/dom/PreviewSwitch'
-import { useUIStore } from '@/helpers/store'
 import { useOnClickOutside } from '@/hooks/use-onclick-outside'
 
 type Props = {
