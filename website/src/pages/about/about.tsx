@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react'
-import { GradientWithQueries, useUIStore } from '@shadergradient'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import styles from '../home/Home.module.scss'
 import { MenuItem } from '../home/menu-item'
+import { GradientScene } from '@/components/canvas/GradientScene'
 import { MenuWrapper } from '@/components/dom/MenuWrapper'
 import { PreviewSwitch } from '@/components/dom/PreviewSwitch'
 import { links } from '@/consts'
+import { useUIStore } from '@/helpers/store'
 
 const DOM = () => {
   const mode = useUIStore((state: any) => state.mode)
@@ -115,7 +116,7 @@ const Page = () => {
   return (
     <>
       <DOM />
-      <GradientWithQueries r3f toggleZoom />
+      <GradientScene r3f aboutPage />
     </>
   )
 }

@@ -1,45 +1,38 @@
 import * as React from 'react'
 import { useEffect } from 'react'
+import { useSpring } from '@react-spring/core'
 import {
+  dToRArr,
   Gradient,
-  initialActivePreset,
   PRESETS,
   updateGradientState,
   usePropertyStore,
   useQueryState,
-  useUIStore,
 } from '../'
-import { gradientWithQueryT } from '@/types'
 
-/**
- * Query(Web) wrapper for the Gradient component
- */
-export const GradientWithQueries: React.FC<gradientWithQueryT> = ({
-  toggleZoom = false,
-
+export function GradientWithQueries({
+  forceZoom = null,
   forceCamPos = null,
+  forceRot = null,
   forcePos = null,
   forceScale = 1,
-}) => {
-  const activePreset = useUIStore((state: any) => state.activePreset)
-  const setLoadingPercentage = useUIStore(
-    (state: any) => state.setLoadingPercentage
-  )
+  current,
+  setLoadingPercentage = () => void 0,
+  initialCurrent,
+}: any) {
   useEffect(() => {
-    let gradientURL = PRESETS[activePreset].url
-    if (activePreset === initialActivePreset && window.location.search)
+    let gradientURL = PRESETS[current].url
+    if (current === initialCurrent && window.location.search)
       gradientURL = window.location.search // use search params at the first load.
 
     updateGradientState(gradientURL)
+    console.log(PRESETS[current].url)
 
     document.documentElement.classList.add('cutomize')
     return () => {
       document.documentElement.classList.remove('cutomize')
     }
-  }, [activePreset])
-
-  // zoom out (toogleZoom) on aboutPage
-  useEffect(() => usePropertyStore.setState({ toggleZoom }), [toggleZoom])
+  }, [current])
 
   const hoverState = usePropertyStore((state: any) => state.hoverState)
   const toggleAxis = usePropertyStore((state: any) => state.toggleAxis)
@@ -74,20 +67,36 @@ export const GradientWithQueries: React.FC<gradientWithQueryT> = ({
   const [brightness] = useQueryState('brightness')
 
   // camera
+  const [cameraZoom] = useQueryState('cameraZoom')
   const [cameraPositionX] = useQueryState('cameraPositionX')
   const [cameraPositionY] = useQueryState('cameraPositionY')
   const [cameraPositionZ] = useQueryState('cameraPositionZ')
 
+  const [embedMode] = useQueryState('embedMode')
   const [wireframe] = useQueryState('wireframe')
 
   // shader
   const [shader] = useQueryState('shader')
 
+  // force props
+  const { animatedScale } = useSpring({ animatedScale: forceScale })
+  const { animatedRotation } = useSpring({
+    animatedRotation: dToRArr(forceRot || [rotationX, rotationY, rotationZ]),
+  })
+  const { animatedPosition } = useSpring({
+    animatedPosition: forcePos || [positionX, positionY, positionZ],
+  })
+
+  // for only website
+  const responsiveCameraZoom = getResponsiveZoom(cameraZoom)
+
   return (
     <Gradient
-      rotation={[rotationX, rotationY, rotationZ]}
-      position={forcePos || [positionX, positionY, positionZ]}
-      scale={forceScale}
+      // @ts-ignore
+      rotation={animatedRotation}
+      // rotation={[rotationX, rotationY, rotationZ]}
+      position={animatedPosition}
+      scale={animatedScale}
       cameraPosition={
         forceCamPos || {
           x: cameraPositionX,
@@ -95,8 +104,10 @@ export const GradientWithQueries: React.FC<gradientWithQueryT> = ({
           z: cameraPositionZ,
         }
       }
+      cameraRotation={{ x: 0, y: 0, z: 0 }}
       type={type}
       animate={animate === 'on'}
+      cameraZoom={forceZoom !== null ? forceZoom : responsiveCameraZoom}
       uTime={uTime}
       uStrength={uStrength}
       uDensity={uDensity}
@@ -109,10 +120,12 @@ export const GradientWithQueries: React.FC<gradientWithQueryT> = ({
       envPreset={envPreset}
       reflection={reflection}
       brightness={brightness}
+      postProcessing={'threejs'} // turn on postpocessing
       loadingCallback={setLoadingPercentage}
       shader={shader}
       axesHelper={toggleAxis}
       wireframe={wireframe === 'enable'}
+      meshCount={hoverState !== 0 ? 48 : 192}
       visible={true}
       hoverState={hoverState}
     />

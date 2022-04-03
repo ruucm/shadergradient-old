@@ -1,11 +1,11 @@
 import { useEffect, useRef } from 'react'
 import { BackgroundGradient } from '@shadergradient'
-import { useDomStore } from '@shadergradient'
+import { useStore } from '@/helpers/store'
 
 const Dom = ({ children }) => {
   const ref = useRef(null)
   useEffect(() => {
-    useDomStore.setState({ dom: ref })
+    useStore.setState({ dom: ref })
   }, [])
 
   return (

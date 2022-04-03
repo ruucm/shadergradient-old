@@ -4,8 +4,7 @@
   "plugins": [
     "@typescript-eslint",
     "prettier",
-    "import",
-    "unused-imports"
+    "import"
   ],
   "extends": [
     "eslint:recommended",
@@ -13,7 +12,6 @@
     "prettier"
   ],
   "rules": {
-    // auto arrange importing orders
     "import/order": [
       "error",
       {
@@ -31,18 +29,6 @@
           }
         ],
         "pathGroupsExcludedImportTypes": ["builtin"]
-      }
-    ],
-    // remove unused imports
-    "no-unused-vars": "off",
-    "unused-imports/no-unused-imports": "error",
-    "unused-imports/no-unused-vars": [
-      "warn",
-      {
-        "vars": "all",
-        "varsIgnorePattern": "^_",
-        "args": "after-used",
-        "argsIgnorePattern": "^_"
       }
     ],
     "prettier/prettier": 2,

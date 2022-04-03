@@ -10,7 +10,6 @@ declare global {
       >
       lineMaterial: any
       gradientMaterial: any
-      cameraControls: any
     }
   }
 }

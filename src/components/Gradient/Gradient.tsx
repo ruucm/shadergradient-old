@@ -3,51 +3,45 @@ import { Suspense } from 'react'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 import { usePostProcessing } from '../../hooks/use-post-processing'
-import { GradientMesh } from './comps/GradientMesh'
+import { GradientMesh } from './GradientMesh'
 import * as shaders from './shaders'
 import { Environment } from '@/lib/Environment'
-import { gradientT } from '@/types'
 
 const vec = new THREE.Vector3()
 
-export const Gradient: React.FC<gradientT> = ({
-  // gradientMeshT
-  type,
-  position,
+export const Gradient: React.FC<any> = ({
+  r3f,
+  type = 'plane',
+  postProcessing = 'threejs',
+  environment = <Environment preset='lobby' background={true} />,
+  lights = <ambientLight intensity={1} />,
+  position = [0, 0, 0],
   rotation,
   scale,
-
-  uTime,
-  uStrength,
-  uDensity,
+  meshCount = 200,
+  cameraPosition = { x: 0.4, y: -0.2, z: -5 },
+  cameraRotation = { x: 0, y: 0, z: 0 },
+  cameraQuaternion = { x: 0, y: 0, z: 0 },
+  cameraZoom = 2.4,
+  uTime = 0.2,
+  animate = true,
+  uStrength = 1.6,
+  uDensity = 1.0,
   uFrequency,
   uAmplitude,
-  uSpeed,
-  reflection,
-
-  wireframe,
-  colors,
-
-  animate,
-  visible,
-
-  axesHelper,
-  hoverState,
-
-  // gradientT
-  shader,
-  cameraPosition = { x: 0.4, y: -0.2, z: -5 }, // could be replaced by 'camera-controls'
-
-  lightType = 'env',
-  lights = <ambientLight intensity={1} />,
-  brightness = 1.2,
-
-  environment = <Environment preset='lobby' background={true} />,
-  envPreset = 'city',
-
+  uSpeed = 0.3,
+  colors = ['#CC4C6E', '#1980FF', '#99B58F'],
   grain = 'on',
-
+  lightType = 'env',
+  envPreset = 'city',
+  reflection = 0.1,
+  brightness = 1.2,
   loadingCallback,
+  axesHelper,
+  wireframe,
+  shader,
+  visible = true,
+  hoverState = 0,
 }) => {
   let sceneShader = shaders.defaults[type ?? 'plane'] // default type is plane
   if (shader && shader !== 'defaults') sceneShader = shaders[shader]
@@ -59,7 +53,7 @@ export const Gradient: React.FC<gradientT> = ({
     )
   })
 
-  usePostProcessing({ on: true, grain: grain === 'on' })
+  usePostProcessing({ on: postProcessing === 'threejs', grain: grain === 'on' })
 
   let controlledEnvironment = environment
   if (envPreset)
@@ -99,6 +93,7 @@ export const Gradient: React.FC<gradientT> = ({
           sceneShader={sceneShader}
           axesHelper={axesHelper}
           wireframe={wireframe}
+          meshCount={meshCount}
           visible={visible}
           hoverState={hoverState}
         />

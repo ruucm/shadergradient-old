@@ -1,10 +1,12 @@
-export * from './components'
+export * from './components/Gradient'
+export * from './components/GradientWithQueries'
+export * from './components/BackgroundGradient'
 export * as UI from './ui-components'
 export { useQueryState } from './hooks/useQueryState'
-export * from './store'
+export { updateGradientState } from './store'
+export { usePropertyStore } from './store'
 export * from './presets'
 export * from './utils'
-export * from './consts'
 
 export const canvasProps = (pixelDensity: number) => ({
   mode: 'concurrent' as 'legacy' | 'blocking' | 'concurrent',

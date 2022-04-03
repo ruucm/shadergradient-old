@@ -1,11 +1,18 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { PRESETS, useUIStore, GradientWithQueries } from '@shadergradient'
+import { PRESETS } from '@shadergradient'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { SnapItem, SnapList } from 'react-snaplist-carousel'
+import {
+  SnapItem,
+  SnapList,
+  useDragToScroll,
+  useScroll,
+  useVisibleElements,
+} from 'react-snaplist-carousel'
 import styles from './Home.module.scss'
 import { MenuItem } from './menu-item'
 import { MyItem } from './my-item'
+import { GradientScene } from '@/components/canvas/GradientScene'
 import { Loading } from '@/components/dom/Loading'
 import { MenuWrapper } from '@/components/dom/MenuWrapper'
 import { MotionLogo } from '@/components/dom/MotionLogo'
@@ -13,13 +20,14 @@ import { PreviewSwitch } from '@/components/dom/PreviewSwitch'
 import { PreviewWrapper } from '@/components/dom/PreviewWrapper'
 import { TextAnimation } from '@/components/dom/TextAnimation'
 import { isDev, links } from '@/consts'
+import { useUIStore } from '@/helpers/store'
 
 const DOM = () => {
-  const mode = useUIStore((state) => state.mode)
-  const setMode = useUIStore((state) => state.setMode)
-  const activePreset = useUIStore((state) => state.activePreset)
-  const setActivePreset = useUIStore((state) => state.setActivePreset)
-  const loadingPercentage = useUIStore((state) => state.loadingPercentage)
+  const mode = useUIStore((state: any) => state.mode)
+  const setMode = useUIStore((state: any) => state.setMode)
+  const current = useUIStore((state: any) => state.current)
+  const loadingPercentage = useUIStore((state: any) => state.loadingPercentage)
+  const setCurrent = useUIStore((state: any) => state.setCurrent)
 
   const snapList = useRef(null)
 
@@ -51,21 +59,21 @@ const DOM = () => {
     <>
       {!isDev && (
         <Loading
-          activePreset={activePreset}
+          current={current}
           loadingPercentage={loadingPercentage}
           // referer={referer}
         />
       )}
       <MotionLogo
         color={false}
-        activePreset={activePreset}
+        current={current}
         loadingPercentage={loadingPercentage}
       />
       {/* Home */}
       <motion.div
         className={styles.bodyWrapper}
         style={{
-          color: mode === 'full' ? PRESETS[activePreset].color : '#FF430A',
+          color: mode === 'full' ? PRESETS[current].color : '#FF430A',
           display: 'block',
         }}
       >
@@ -141,7 +149,7 @@ const DOM = () => {
             {isMobile === true ? (
               <motion.div
                 className={styles.mobileOnly}
-                style={{ color: PRESETS[activePreset].color }}
+                style={{ color: PRESETS[current].color }}
                 initial={{ opacity: 0, y: 30 }}
                 animate={{
                   opacity: 1,
@@ -174,7 +182,7 @@ const DOM = () => {
               style={{
                 borderBottom:
                   mode === 'full'
-                    ? '2px solid ' + PRESETS[activePreset].color
+                    ? '2px solid ' + PRESETS[current].color
                     : '2px solid #FF430A',
                 height: isMobile ? 'fit-content' : 60 * 1.6,
               }}
@@ -196,13 +204,11 @@ const DOM = () => {
                       <MyItem
                         onClick={() => {
                           // goToSnapItem(index)
-                          setActivePreset(index)
+                          setCurrent(index)
                         }}
-                        visible={activePreset === index}
+                        visible={current === index}
                         color={
-                          mode === 'full'
-                            ? PRESETS[activePreset].color
-                            : '#FF430A'
+                          mode === 'full' ? PRESETS[current].color : '#FF430A'
                         }
                         isMobile={isMobile}
                         btnOn={true}
@@ -242,7 +248,7 @@ const Page = () => {
   return (
     <>
       <DOM />
-      <GradientWithQueries r3f />
+      <GradientScene r3f />
     </>
   )
 }

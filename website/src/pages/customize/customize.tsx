@@ -1,24 +1,22 @@
 import React, { useState } from 'react'
-import {
-  useQueryState,
-  PRESETS,
-  useUIStore,
-  GradientWithQueries,
-} from '@shadergradient'
+import { useQueryState, PRESETS } from '@shadergradient'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import styles from '../home/Home.module.scss'
 import { MyItem } from '../home/my-item'
 import { Controls } from './comps/Controls'
+import { GradientScene } from '@/components/canvas/GradientScene'
 import { Footer } from '@/components/dom/Footer'
+import { PreviewSwitch } from '@/components/dom/PreviewSwitch'
 import { PreviewWrapper } from '@/components/dom/PreviewWrapper'
+import { useUIStore } from '@/helpers/store'
 
 const DOM = () => {
   const mode = useUIStore((state: any) => state.mode)
   const setMode = useUIStore((state: any) => state.setMode)
-  const activePreset = useUIStore((state: any) => state.activePreset)
+  const current = useUIStore((state: any) => state.current)
 
-  const setActivePreset = useUIStore((state: any) => state.setActivePreset)
+  const setCurrent = useUIStore((state: any) => state.setCurrent)
   const loadingPercentage = useUIStore((state: any) => state.loadingPercentage)
 
   const [isMobile, setIsMobile] = React.useState(false)
@@ -52,8 +50,8 @@ const DOM = () => {
   }, [])
 
   React.useEffect(() => {
-    PRESETS[activePreset].title.substring(1, 2)
-  }, [activePreset])
+    PRESETS[current].title.substring(1, 2)
+  }, [current])
 
   if (embedMode === 'off')
     return (
@@ -61,7 +59,7 @@ const DOM = () => {
         <div className={styles.bodyWrapper}>
           {/* Go Back */}
           <div className={styles.content}>
-            <motion.div style={{ color: PRESETS[activePreset].color }}>
+            <motion.div style={{ color: PRESETS[current].color }}>
               <Link href='/'> ← ShaderGradient</Link>
             </motion.div>
           </div>
@@ -78,7 +76,7 @@ const DOM = () => {
           <div
             className={styles.slider}
             style={{
-              color: mode === 'full' ? PRESETS[activePreset].color : '#FF430A',
+              color: mode === 'full' ? PRESETS[current].color : '#FF430A',
               top: isMobile ? '10vh' : null,
             }}
           >
@@ -92,18 +90,14 @@ const DOM = () => {
                 return (
                   <div
                     key={index}
-                    style={{
-                      display: activePreset === index ? 'block' : 'none',
-                    }}
+                    style={{ display: current === index ? 'block' : 'none' }}
                   >
                     <MyItem
                       color={
-                        mode === 'full'
-                          ? PRESETS[activePreset].color
-                          : '#FF430A'
+                        mode === 'full' ? PRESETS[current].color : '#FF430A'
                       }
                       onClick={() => void 0}
-                      visible={activePreset === index}
+                      visible={current === index}
                       isMobile={isMobile}
                       index={index}
                     >
@@ -121,10 +115,10 @@ const DOM = () => {
                     backgroundColor: 'rgba(255,255,255,0.15)',
                   }}
                   onClick={() => {
-                    if (activePreset !== 0) {
-                      setActivePreset(activePreset - 1)
+                    if (current !== 0) {
+                      setCurrent(current - 1)
                     } else {
-                      setActivePreset(PRESETS.length - 1)
+                      setCurrent(PRESETS.length - 1)
                     }
                   }}
                 >
@@ -136,10 +130,10 @@ const DOM = () => {
                     backgroundColor: 'rgba(255,255,255,0.15)',
                   }}
                   onClick={() => {
-                    if (activePreset !== PRESETS.length - 1) {
-                      setActivePreset(activePreset + 1)
+                    if (current !== PRESETS.length - 1) {
+                      setCurrent(current + 1)
                     } else {
-                      setActivePreset(0)
+                      setCurrent(0)
                     }
                   }}
                 >
@@ -149,7 +143,7 @@ const DOM = () => {
             </div>
           </div>
 
-          <Footer color={PRESETS[activePreset].color} />
+          <Footer color={PRESETS[current].color} />
         </div>
       </>
     )
@@ -160,7 +154,7 @@ const DOM = () => {
 const R3F = ({ r3f }) => {
   return (
     <>
-      <GradientWithQueries />
+      <GradientScene />
     </>
   )
 }

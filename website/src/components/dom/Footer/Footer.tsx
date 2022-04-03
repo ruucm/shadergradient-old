@@ -1,4 +1,5 @@
 import * as React from 'react'
+import cx from 'classnames'
 import styles from '../../../pages/home/Home.module.scss'
 
 export function Footer(color) {

@@ -4,42 +4,36 @@ import { animated } from '@react-spring/three'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 import './materials'
-import { AxesHelper } from '../AxesHelper'
-import { useShapeAnimation } from './useShapeAnimation'
-import { defaultProps, gradientMeshT } from '@/types'
+import { AxesHelper } from './comps/AxesHelper'
 
 const clock = new THREE.Clock()
 
-export const GradientMesh: React.FC<gradientMeshT> = ({
-  type,
+export function GradientMesh({
+  type = 'plane',
+  r3f,
   position,
   rotation,
-  scale,
-
+  animate,
   uTime,
   uStrength,
   uDensity,
   uFrequency,
   uAmplitude,
   uSpeed,
-  reflection,
-
-  wireframe,
   colors,
-
-  animate,
-  visible,
-
+  reflection,
+  scale,
   sceneShader,
   axesHelper,
+  wireframe,
+  meshCount,
+  visible,
   hoverState,
-}) => {
+}: any) {
   const mesh: any = useRef()
   const linemesh: any = useRef()
   const material: any = useRef()
   const linematerial: any = useRef()
-
-  const meshCount = hoverState !== 0 ? 48 : 192
 
   // Subscribe this component to the render-loop, rotate the mesh every frame
   useFrame((state, delta) => {
@@ -67,20 +61,17 @@ export const GradientMesh: React.FC<gradientMeshT> = ({
     if (linemesh.current !== undefined && mesh.current !== undefined) {
       linemesh.current.rotation = mesh.current.rotation
       linemesh.current.position = mesh.current.position
+      console.log(mesh.current)
+      console.log(linemesh.current)
     }
   }, [mesh.current])
-
-  const { animatedPosition, animatedRotation } = useShapeAnimation({
-    position,
-    rotation,
-  })
 
   return (
     <group>
       <animated.mesh
         ref={mesh}
-        position={animatedPosition}
-        rotation={animatedRotation}
+        position={position}
+        rotation={rotation}
         scale={scale}
         visible={visible}
       >
@@ -135,5 +126,3 @@ export const GradientMesh: React.FC<gradientMeshT> = ({
     </group>
   )
 }
-
-GradientMesh.defaultProps = defaultProps.GradientMesh
