@@ -79,7 +79,6 @@ export const GradientMesh: React.FC<gradientMeshT> = ({
     <group>
       <animated.mesh
         ref={mesh}
-        // @ts-ignore
         position={animatedPosition}
         rotation={animatedRotation}
         scale={scale}
