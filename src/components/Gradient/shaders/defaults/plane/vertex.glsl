@@ -1,6 +1,5 @@
 #pragma glslify: cnoise3 = require(glsl-noise/classic/3d) 
 
-
 mat3 rotation3dY(float angle) {
   float s = sin(angle);
   float c = cos(angle);
