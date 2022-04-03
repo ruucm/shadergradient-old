@@ -7,17 +7,19 @@ import {
   updateGradientState,
   usePropertyStore,
   useQueryState,
+  useUIStore,
 } from '../'
 import { gradientWithQueryT } from '@/types'
 
 export const GradientWithQueries: React.FC<gradientWithQueryT> = ({
-  activePreset,
-  setLoadingPercentage = () => void 0,
-
   forceCamPos = null,
   forcePos = null,
   forceScale = 1,
 }) => {
+  const activePreset = useUIStore((state: any) => state.activePreset)
+  const setLoadingPercentage = useUIStore(
+    (state: any) => state.setLoadingPercentage
+  )
   useEffect(() => {
     let gradientURL = PRESETS[activePreset].url
     if (activePreset === initialActivePreset && window.location.search)

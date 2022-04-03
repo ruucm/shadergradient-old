@@ -51,8 +51,6 @@ export type gradientWithQueryT = {
   forcePos?: Vector3
   forceCamPos?: { x: number; y: number; z: number }
   forceScale?: number
-
-  [x: string]: any
 }
 
 export const defaultProps: { GradientMesh: gradientMeshT } = {
