@@ -5,11 +5,9 @@ import Link from 'next/link'
 
 import styles from '../home2/Home.module.scss'
 import { GradientScene } from '@/components/canvas/GradientScene'
-import { Links } from '@/components/dom/Links'
 import { PresetTitle } from '@/components/dom/PresetTitle'
 import { PreviewBtn } from '@/components/dom/PreviewBtn'
 import { PreviewWrapper } from '@/components/dom/PreviewBtn/PreviewWrapper'
-import { TextAnimation, TextHover } from '@/components/dom/TextAnimation'
 import { TextLogo } from '@/components/dom/TextLogo'
 
 import { useUIStore } from '@/helpers/store'
