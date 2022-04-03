@@ -5,7 +5,7 @@ import { animated } from '@react-spring/three'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 import './materials'
-import { AxesHelper } from './comps/AxesHelper'
+import { AxesHelper } from '../AxesHelper'
 import { defaultProps, gradientMeshT } from '@/types'
 import { dToRArr } from '@/utils'
 
