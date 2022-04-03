@@ -1,10 +1,13 @@
 import * as React from 'react'
 import { useEffect, useRef } from 'react'
+import { useSpring } from '@react-spring/core'
+import { animated } from '@react-spring/three'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 import './materials'
 import { AxesHelper } from './comps/AxesHelper'
 import { defaultProps, gradientMeshT } from '@/types'
+import { dToRArr } from '@/utils'
 
 const clock = new THREE.Clock()
 
@@ -68,12 +71,18 @@ export const GradientMesh: React.FC<gradientMeshT> = ({
     }
   }, [mesh.current])
 
+  const { animatedPosition } = useSpring({ animatedPosition: position })
+  const { animatedRotation } = useSpring({
+    animatedRotation: dToRArr(rotation),
+  })
+
   return (
     <group>
-      <mesh
+      <animated.mesh
         ref={mesh}
-        position={position}
-        rotation={rotation}
+        // @ts-ignore
+        position={animatedPosition}
+        rotation={animatedRotation}
         scale={scale}
         visible={visible}
       >
@@ -100,7 +109,7 @@ export const GradientMesh: React.FC<gradientMeshT> = ({
           fragmentShader={sceneShader.fragment}
           wireframe={wireframe}
         />
-      </mesh>
+      </animated.mesh>
       {mesh.current !== undefined && (
         <lineSegments
           ref={linemesh}
