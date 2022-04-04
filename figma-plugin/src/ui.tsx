@@ -1,13 +1,15 @@
 import * as React from 'react'
-import { useState } from 'react'
 import * as ReactDOM from 'react-dom'
-import { UI, PRESETS } from '../../dist'
+import {
+  UI,
+  PRESETS,
+  LCanvas,
+  useUIStore,
+  GradientWithQueries,
+} from '../../dist'
 import '../../ui-styles-compiled.css'
 import { Controls } from './components/Controls'
 import './global.css'
-import { GradientScene } from './components/GradientScene'
-import { LCanvas } from './components/LCanvas'
-import { initialCurrent } from './consts'
 
 function Arrow(props) {
   return (
@@ -25,13 +27,17 @@ function Arrow(props) {
 }
 
 function App() {
-  const [currentTheme, setCurrentTheme] = useState(initialCurrent)
-  console.log('currentTheme', currentTheme)
+  const activePreset = useUIStore((state) => state.activePreset)
+  const setActivePreset = useUIStore((state) => state.setActivePreset)
 
   return (
     <div className='bg-white h-full'>
-      <LCanvas>
-        <GradientScene current={currentTheme} />
+      <LCanvas
+        style={{ height: 304 }} // custom height (for figma screen)
+        gl={{ preserveDrawingBuffer: true }} // to capture the canvas
+        onCreated={() => void 0} // remove default onCreated method
+      >
+        <GradientWithQueries />
       </LCanvas>
       <div className='bg-controls-sub-panel text-white font-semibold text-sm flex justify-between items-center p-1'>
         <div className='flex justify-start gap-3 items-center'>
@@ -39,16 +45,16 @@ function App() {
           <div className='bg-controls-sub-panel-button w-[150px] flex justify-between items-center p-1 rounded mx-2'>
             <Arrow
               onClick={() => {
-                if (currentTheme === 0) setCurrentTheme(PRESETS.length - 1)
-                else setCurrentTheme(currentTheme - 1)
+                if (activePreset === 0) setActivePreset(PRESETS.length - 1)
+                else setActivePreset(activePreset - 1)
               }}
             />
-            {PRESETS[currentTheme].title}
+            {PRESETS[activePreset].title}
             <div className='rotate-180'>
               <Arrow
                 onClick={() => {
-                  if (currentTheme === PRESETS.length - 1) setCurrentTheme(0)
-                  else setCurrentTheme(currentTheme + 1)
+                  if (activePreset === PRESETS.length - 1) setActivePreset(0)
+                  else setActivePreset(activePreset + 1)
                 }}
               />
             </div>
@@ -78,7 +84,7 @@ async function captureCanvas() {
   return new Promise((resolve, reject) => {
     const image = new Image()
 
-    const r3fCanvas = document.getElementById('r3f-canvas')
+    const r3fCanvas = document.getElementById('gradientCanvas')
       .children[0] as HTMLCanvasElement
 
     const dataURL = r3fCanvas.toDataURL('image/png', 1.0) // full quality

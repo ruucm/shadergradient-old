@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, useAnimation, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import styles from '../Loading/Loading.module.scss'
 
 const letterContainerVariants = {
   before: { transition: { staggerChildren: 0.015 } },
@@ -43,7 +42,7 @@ export function TextAnimation({
   //   const splitted = referer?.split('/') || []
   const [ref, inView] = useInView()
   const controls = useAnimation()
-  const [currentInView, setCurrentInView] = useState(false)
+  const [activePresetInView, setActivePresetInView] = useState(false)
   useEffect(() => {
     if (inView) {
       controls.start('after')
@@ -53,24 +52,17 @@ export function TextAnimation({
   }, [controls, inView])
 
   setTimeout(() => {
-    setCurrentInView(true)
+    setActivePresetInView(true)
   }, delay)
   return (
     <AnimatePresence>
-      <motion.div
-        style={{
-          position: 'relative',
-          wordBreak: 'break-word',
-          width: width,
-          fontFamily: font,
-        }}
-      >
-        <motion.h1
-          variants={letterContainerVariants}
-          ref={ref}
-          initial={'before'}
-          animate={controls}
-          // transition={{ delay: delay }}
+      {activePresetInView && (
+        <motion.div
+          style={{
+            position: 'relative',
+            wordBreak: 'break-word',
+            width: width,
+          }}
         >
           <div style={{ textAlign: 'left', fontSize: fontSize, color: color }}>
             {content.split(' ').map((word: string, wordI: number) => (
@@ -98,8 +90,6 @@ export function TextAnimation({
               </div>
             ))}
           </div>
-        </motion.h1>
       </motion.div>
-    </AnimatePresence>
-  )
-}
+  )}
+</AnimatePresence>)}

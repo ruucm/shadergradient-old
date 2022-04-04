@@ -1,7 +1,7 @@
 // custom pages/404.jsx !! Do not remove please or it will break build
 import React from 'react'
+import { GradientWithQueries } from '@shadergradient'
 import Link from 'next/link'
-import { GradientScene } from '@/components/canvas/GradientScene'
 
 const DOM = () => {
   return (
@@ -43,14 +43,12 @@ const DOM = () => {
 
 const R3F = () => {
   return (
-    <>
-      <GradientScene
-        forceZoom={1}
-        forceCamPos={{ x: -4, y: 1, z: 8 }}
-        forceRot={[40, 0, 150]}
-        forcePos={[-4, 0.5, 0]}
-      />
-    </>
+    <GradientWithQueries
+      forceZoom={1}
+      forceCamPos={{ x: -4, y: 1, z: 8 }}
+      forceRot={[40, 0, 150]}
+      forcePos={[-4, 0.5, 0]}
+    />
   )
 }
 

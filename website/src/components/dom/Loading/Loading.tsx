@@ -1,7 +1,8 @@
 import { useState } from 'react'
-import { motion, useAnimation, AnimatePresence } from 'framer-motion'
+import { initialActivePreset } from '@shadergradient'
+import { motion, AnimatePresence } from 'framer-motion'
 import styles from './Loading.module.scss'
-import { initialCurrent, initialLoadingTime } from '@/consts'
+import { initialLoadingTime } from '@/consts'
 import { useInterval } from '@/hooks/useInterval'
 
 const title = 'ShaderGradient '
@@ -28,7 +29,7 @@ const letters = {
   },
 }
 
-export function Loading({ current, loadingPercentage, referer = '' }) {
+export function Loading({ activePreset, loadingPercentage, referer = '' }) {
   const [time, setTime] = useState(0)
   useInterval(() => {
     setTime(time + 1)
@@ -39,7 +40,7 @@ export function Loading({ current, loadingPercentage, referer = '' }) {
 
   return (
     <AnimatePresence>
-      {current === initialCurrent &&
+      {activePreset === initialActivePreset &&
         (loadingPercentage < 100 || time < initialLoadingTime) &&
         isFirstLoad && (
           <motion.div
