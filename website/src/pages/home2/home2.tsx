@@ -1,26 +1,22 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { PRESETS } from '@shadergradient'
+import React, { useEffect, useState } from 'react'
+import { PRESETS, useUIStore, GradientWithQueries } from '@shadergradient'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 
 import styles from './Home.module.scss'
-import { GradientScene } from '@/components/canvas/GradientScene'
 import { Links } from '@/components/dom/Links'
 import { PresetTitle } from '@/components/dom/PresetTitle'
 import { PreviewBtn } from '@/components/dom/PreviewBtn'
 import { PreviewWrapper } from '@/components/dom/PreviewBtn/PreviewWrapper'
-import { TextAnimation, TextHover } from '@/components/dom/TextAnimation'
+import { TextHover } from '@/components/dom/TextAnimation'
 import { TextLogo } from '@/components/dom/TextLogo'
-
-import { useUIStore } from '@/helpers/store'
 
 const DOM = () => {
   const mode = useUIStore((state: any) => state.mode)
   const setMode = useUIStore((state: any) => state.setMode)
-  const current = useUIStore((state: any) => state.current)
   const loadingPercentage = useUIStore((state: any) => state.loadingPercentage)
-  const setCurrent = useUIStore((state: any) => state.setCurrent)
-
+  const activePreset = useUIStore((state) => state.activePreset)
+  const setActivePreset = useUIStore((state) => state.setActivePreset)
   const [isMobile, setIsMobile] = useState(false)
 
   //choose the screen size
@@ -47,7 +43,7 @@ const DOM = () => {
       <div className={styles.contentWrapper}>
         <div className={styles.header}>
           <TextLogo
-            color={mode !== 'full' ? '#FF430A' : PRESETS[current].color}
+            color={mode !== 'full' ? '#FF430A' : PRESETS[activePreset].color}
           />
         </div>
         <div className={styles.content}>
@@ -71,7 +67,7 @@ const DOM = () => {
 
           <div
             className={styles.paragraph}
-            style={{ color: PRESETS[current].color }}
+            style={{ color: PRESETS[activePreset].color }}
           >
             All visuals are created with ShaderGradient,
             <br /> a new way of creating beautiful, moving gradients. <br />
@@ -83,26 +79,26 @@ const DOM = () => {
               <motion.div
                 className={styles.customizeBtn}
                 style={{
-                  color: PRESETS[current].color,
-                  borderBottom: '2px solid ' + PRESETS[current].color,
+                  color: PRESETS[activePreset].color,
+                  borderBottom: '2px solid ' + PRESETS[activePreset].color,
                 }}
               >
                 <TextHover
                   fontSize={20}
-                  color={PRESETS[current].color}
+                  color={PRESETS[activePreset].color}
                   content='Try it by yourself →'
                   delay={0}
                 />
               </motion.div>
             </Link>
           </div>
-          <Links color={PRESETS[current].color} />
+          <Links color={PRESETS[activePreset].color} />
         </div>
         <div className={styles.footer}>
           <PreviewBtn
             mode={mode}
             setMode={setMode}
-            color={mode !== 'full' ? '#FF430A' : PRESETS[current].color}
+            color={mode !== 'full' ? '#FF430A' : PRESETS[activePreset].color}
           />
         </div>
       </div>
@@ -114,7 +110,7 @@ const Page = () => {
   return (
     <>
       <DOM />
-      <GradientScene r3f />
+      <GradientWithQueries r3f />
     </>
   )
 }

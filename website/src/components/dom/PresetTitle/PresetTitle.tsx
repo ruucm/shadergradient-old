@@ -1,9 +1,9 @@
 import * as React from 'react'
-import { PRESETS } from '@shadergradient'
+import { PRESETS, useUIStore } from '@shadergradient'
 import { motion } from 'framer-motion'
 import { TextAnimation } from '../TextAnimation'
 import styles from './PresetTitle.module.scss'
-import { useUIStore } from '@/helpers/store'
+// import { useUIStore } from '@/helpers/store'
 
 export function PresetTitle({
   color,
@@ -12,14 +12,14 @@ export function PresetTitle({
   index,
   size = 'big',
 }) {
-  const current = useUIStore((state: any) => state.current)
-  const setCurrent = useUIStore((state: any) => state.setCurrent)
+  const activePreset = useUIStore((state) => state.activePreset)
+  const setActivePreset = useUIStore((state) => state.setActivePreset)
 
   return (
     <div className={styles.presetWrapper} style={{}}>
       <div
         className={styles.presetTitle}
-        style={{ display: index === current ? 'flex' : 'none' }}
+        style={{ display: index === activePreset ? 'flex' : 'none' }}
       >
         <TextAnimation
           delay={0}
@@ -37,10 +37,10 @@ export function PresetTitle({
               backgroundColor: 'rgba(255,255,255,0.15)',
             }}
             onClick={() => {
-              if (current !== 0) {
-                setCurrent(current - 1)
+              if (activePreset !== 0) {
+                setActivePreset(activePreset - 1)
               } else {
-                setCurrent(PRESETS.length - 1)
+                setActivePreset(PRESETS.length - 1)
               }
             }}
           >
@@ -54,10 +54,10 @@ export function PresetTitle({
             initial={{ opacity: 0, y: 5 }}
             animate={{ opacity: 1, y: 0 }}
             onClick={() => {
-              if (current !== PRESETS.length - 1) {
-                setCurrent(current + 1)
+              if (activePreset !== PRESETS.length - 1) {
+                setActivePreset(activePreset + 1)
               } else {
-                setCurrent(0)
+                setActivePreset(0)
               }
             }}
           >
