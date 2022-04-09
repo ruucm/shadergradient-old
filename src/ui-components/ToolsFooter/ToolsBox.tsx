@@ -23,14 +23,14 @@ export const ToolsBox: React.FC<ControlTypeTitlePropsT> = ({
   return (
     <div
       className={cx(
-        'flex bg-controls-panel items-center justify-center',
+        'flex items-center justify-center',
         darkMode && 'bg-controls-sub-panel'
       )}
       style={{
         gap: 6,
         width: 'fit-content',
         height: 'fit-content',
-        padding: 8,
+        padding: 14,
         borderRadius: 40,
       }}
     >

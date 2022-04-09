@@ -163,7 +163,6 @@ export const ShapeControls: React.FC<ShapeControlsPropsT> = () => {
           />
         </UI.InputPanel>
       )}
-      <UI.ToolsFooter />
     </div>
   )
 }

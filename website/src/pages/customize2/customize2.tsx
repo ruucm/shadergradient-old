@@ -3,20 +3,21 @@ import { PRESETS } from '@shadergradient'
 
 import { useUIStore, GradientWithQueries } from '@shadergradient'
 import styles from '../home2/Home.module.scss'
+import { Controls } from './comps/Controls'
+import { AboutBtn } from '@/components/dom/AboutBtn'
 import { PresetTitle } from '@/components/dom/PresetTitle'
 import { PreviewBtn } from '@/components/dom/PreviewBtn'
 import { PreviewWrapper } from '@/components/dom/PreviewBtn/PreviewWrapper'
 import { TextLogo } from '@/components/dom/TextLogo'
-// import { useUIStore } from '@/helpers/store'
 
 const DOM = () => {
   const mode = useUIStore((state: any) => state.mode)
   const setMode = useUIStore((state: any) => state.setMode)
-  // const current = useUIStore((state: any) => state.current)
   const loadingPercentage = useUIStore((state: any) => state.loadingPercentage)
   const activePreset = useUIStore((state) => state.activePreset)
   const setActivePreset = useUIStore((state) => state.setActivePreset)
   const [isMobile, setIsMobile] = useState(false)
+  const [activeTab, setActiveTab] = useState('none')
 
   //choose the screen size
   const handleResize = () => {
@@ -45,6 +46,9 @@ const DOM = () => {
             color={mode !== 'full' ? '#FF430A' : PRESETS[activePreset].color}
             size={15}
           />
+          <AboutBtn
+            color={mode !== 'full' ? '#FF430A' : PRESETS[activePreset].color}
+          />
         </div>
         <div className={styles.content}>
           <div className={styles.presetTitleWrapper}>
@@ -65,7 +69,13 @@ const DOM = () => {
               )
             })}
           </div>
+          <Controls
+            isMobile={isMobile}
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
+          />
         </div>
+
         <div className={styles.footer}>
           <PreviewBtn
             mode={mode}

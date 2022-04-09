@@ -16,7 +16,10 @@ export const ColorControls: React.FC<ColorControlsPropsT> = () => {
   const [color2, setColor2] = useQueryState('color2')
   const [color3, setColor3] = useQueryState('color3')
   const hoverState = usePropertyStore((state: any) => state.hoverState)
-
+  const [bgColor1, setBgColor1] = useQueryState('bgColor1')
+  const [bgColor2, setBgColor2] = useQueryState('bgColor2')
+  const [isHovered, setIsHovered] = React.useState('')
+  const [bg, setBg] = React.useState(false)
   return (
     <div className='flex flex-col gap-3'>
       <UI.InputPanel
@@ -55,7 +58,44 @@ export const ColorControls: React.FC<ColorControlsPropsT> = () => {
       >
         <UI.ColorInput defaultValue={color3} setValue={setColor3} />
       </UI.InputPanel>
-      <UI.ToolsFooter />
+
+      <UI.InputPanel
+        title='Custom Background'
+        info={true}
+        hoverContent='Choose custom color for the background'
+        isHovered={isHovered}
+        onMouseEnter={() => {
+          setIsHovered('Custom Background')
+        }}
+        onMouseLeave={() => {
+          setIsHovered('')
+        }}
+      >
+        <UI.Radio
+          name='grain'
+          value='on'
+          setValue={setBg}
+          check={bgColor1 !== null && bgColor2 !== null}
+          label='On'
+        />
+        <UI.Radio
+          name='grain'
+          value='off'
+          setValue={setBg}
+          check={bgColor1 === null && bgColor2 === null}
+          label='Off'
+        />
+      </UI.InputPanel>
+      {bg && (
+        <>
+          <UI.InputPanel title='Bg Color 1' info={true}>
+            <UI.ColorInput defaultValue={bgColor1} setValue={setBgColor1} />
+          </UI.InputPanel>
+          <UI.InputPanel title='Bg Color 2' info={true}>
+            <UI.ColorInput defaultValue={bgColor2} setValue={setBgColor2} />
+          </UI.InputPanel>
+        </>
+      )}
     </div>
   )
 }

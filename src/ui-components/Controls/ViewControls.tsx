@@ -157,7 +157,6 @@ export const ViewControls: React.FC<ViewControlsPropsT> = () => {
           setValue={setRotationZ}
         />
       </UI.InputPanel>
-      <UI.ToolsFooter />
     </div>
   )
 }

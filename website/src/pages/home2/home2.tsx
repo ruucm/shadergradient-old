@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 
 import styles from './Home.module.scss'
+import { AboutBtn } from '@/components/dom/AboutBtn'
 import { Links } from '@/components/dom/Links'
 import { PresetTitle } from '@/components/dom/PresetTitle'
 import { PreviewBtn } from '@/components/dom/PreviewBtn'
@@ -43,6 +44,9 @@ const DOM = () => {
       <div className={styles.contentWrapper}>
         <div className={styles.header}>
           <TextLogo
+            color={mode !== 'full' ? '#FF430A' : PRESETS[activePreset].color}
+          />
+          <AboutBtn
             color={mode !== 'full' ? '#FF430A' : PRESETS[activePreset].color}
           />
         </div>

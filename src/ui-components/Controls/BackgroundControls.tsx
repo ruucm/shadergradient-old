@@ -22,7 +22,6 @@ export const BackgroundControls: React.FC<BackgroundControlsPropsT> = () => {
       <UI.InputPanel title='Bg Color 2' info={true}>
         <UI.ColorInput defaultValue={bgColor2} setValue={setBgColor2} />
       </UI.InputPanel>
-      <UI.ToolsFooter />
     </div>
   )
 }

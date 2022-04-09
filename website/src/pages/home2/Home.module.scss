@@ -1,5 +1,4 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Lora:wght@500&display=swap');
 
 .contentWrapper{
     width:100vw;
@@ -24,11 +23,12 @@
 }
 
 .footer{
-    width:100vw;
+    width:fit-content;
     padding: 0 2vw;
     height:10vh;
     position: absolute;
     bottom:0;
+    right:0;
     display: flex;
     justify-content: right;
     align-items: center;
