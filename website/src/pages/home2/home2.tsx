@@ -67,7 +67,8 @@ const DOM = () => {
                       : index.toString() + ' ' + item.title
                   }
                   description={''}
-                  size='big'
+                  isMobile={isMobile}
+                  size={isMobile === true ? 'small' : 'big'}
                 ></PresetTitle>
               )
             })}

@@ -16,10 +16,11 @@ import { gradientWithQueryT } from '@/types'
  */
 export const GradientWithQueries: React.FC<gradientWithQueryT> = ({
   toggleZoom = false,
-
+  forceRot = null,
   forceCamPos = null,
   forcePos = null,
   forceScale = 1,
+  forceGrain = null,
 }) => {
   const activePreset = useUIStore((state: any) => state.activePreset)
   const setLoadingPercentage = useUIStore(
@@ -85,7 +86,7 @@ export const GradientWithQueries: React.FC<gradientWithQueryT> = ({
 
   return (
     <Gradient
-      rotation={[rotationX, rotationY, rotationZ]}
+      rotation={forceRot || [rotationX, rotationY, rotationZ]}
       position={forcePos || [positionX, positionY, positionZ]}
       scale={forceScale}
       cameraPosition={
@@ -104,7 +105,7 @@ export const GradientWithQueries: React.FC<gradientWithQueryT> = ({
       uAmplitude={uAmplitude}
       uSpeed={uSpeed}
       colors={hoverStateColor}
-      grain={grain}
+      grain={forceGrain || grain}
       lightType={lightType}
       envPreset={envPreset}
       reflection={reflection}

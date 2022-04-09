@@ -35,7 +35,7 @@ export const Controls: React.FC<Props> = ({
       <UI.PropertyControls activeTab={activeTab} setActiveTab={setActiveTab} />
 
       {isMobile && (
-        <UI.ControlTabTitles
+        <UI.ControlTypeTitles
           activeTab={activeTab}
           setActiveTab={setActiveTab}
         />

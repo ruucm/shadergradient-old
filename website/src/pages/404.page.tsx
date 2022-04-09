@@ -26,20 +26,21 @@ const DOM = () => {
 const R3F = () => {
   return (
     <GradientWithQueries
-      forceZoom={1}
-      forceCamPos={{ x: -4, y: 1, z: 8 }}
-      forceRot={[40, 0, 150]}
-      forcePos={[-4, 0.5, 0]}
+      forceCamPos={{ x: 0, y: 1, z: 0 }}
+      forceRot={[50, 0, 50]}
+      forcePos={[0, -0.7, 0]}
+      forceScale={0.3}
+      forceGrain={'off'}
     />
   )
 }
 
 export default function Error() {
   return (
-    <div>
+    <>
       <DOM />
       {/* @ts-ignore */}
       <R3F r3f />
-    </div>
+    </>
   )
 }

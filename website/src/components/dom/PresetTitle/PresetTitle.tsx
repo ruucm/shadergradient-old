@@ -11,15 +11,19 @@ export function PresetTitle({
   description,
   index,
   size = 'big',
+  isMobile = false,
 }) {
   const activePreset = useUIStore((state) => state.activePreset)
   const setActivePreset = useUIStore((state) => state.setActivePreset)
 
   return (
-    <div className={styles.presetWrapper} style={{}}>
+    <div className={styles.presetWrapper}>
       <div
         className={styles.presetTitle}
-        style={{ display: index === activePreset ? 'flex' : 'none' }}
+        style={{
+          display: index === activePreset ? 'flex' : 'none',
+          flexDirection: isMobile === true ? 'column' : 'row',
+        }}
       >
         <TextAnimation
           delay={0}
@@ -31,7 +35,7 @@ export function PresetTitle({
         <div className={styles.slideBtns} style={{ color: color }}>
           <motion.div
             className={styles.slideBtn}
-            initial={{ opacity: 0, y: -5 }}
+            initial={{ opacity: 0, y: -15 }}
             animate={{ opacity: 1, y: 0 }}
             whileHover={{
               backgroundColor: 'rgba(255,255,255,0.15)',
@@ -51,7 +55,7 @@ export function PresetTitle({
             whileHover={{
               backgroundColor: 'rgba(255,255,255,0.15)',
             }}
-            initial={{ opacity: 0, y: 5 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             onClick={() => {
               if (activePreset !== PRESETS.length - 1) {
