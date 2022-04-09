@@ -51,7 +51,10 @@ const DOM = () => {
           />
         </div>
         <div className={styles.content}>
-          <div className={styles.presetTitleWrapper}>
+          <div
+            className={styles.presetTitleWrapper}
+            style={{ display: mode === 'full' ? 'block' : 'none' }}
+          >
             {PRESETS.map((item, index) => {
               return (
                 <PresetTitle

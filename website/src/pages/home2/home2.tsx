@@ -50,7 +50,10 @@ const DOM = () => {
             color={mode !== 'full' ? '#FF430A' : PRESETS[activePreset].color}
           />
         </div>
-        <div className={styles.content}>
+        <div
+          className={styles.content}
+          style={{ display: mode === 'full' ? 'block' : 'none' }}
+        >
           <div className={styles.presetTitleWrapper}>
             {PRESETS.map((item, index) => {
               return (
@@ -64,6 +67,7 @@ const DOM = () => {
                       : index.toString() + ' ' + item.title
                   }
                   description={''}
+                  size='big'
                 ></PresetTitle>
               )
             })}

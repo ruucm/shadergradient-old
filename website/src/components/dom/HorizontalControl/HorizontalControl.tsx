@@ -49,7 +49,7 @@ export function HorizontalControl({
           flexDirection: 'column',
           boxShadow:
             mode === 'mobile' || mode === 'web'
-              ? '-4px 4px 62px 0px rgba(0, 0, 0, 0.05)'
+              ? '0px 0px 20px 0px rgba(0, 0, 0, 0.1)'
               : 'none',
           background: mode === 'about' ? '#141414' : 'white',
         }}
