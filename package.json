@@ -26,7 +26,7 @@
     "website:deploy": "npm run docs:build && npm run docs:export && cp -r .vercel website/out/.vercel && vercel --prod ./website/out",
     "plugin:start": "webpack --config ./figma-plugin/webpack.config.js --mode development --watch",
     "plugin:build": "webpack --config ./figma-plugin/webpack.config.js --mode production",
-    "framer:serve": "yarn; node framer-package/esmbuild/esmbuild serve ./framer-package/src 8000"
+    "framer:serve": "yarn; node framer-package/esmbuild/esmbuild serve ./framer-package/src 8001"
   },
   "dependencies": {
     "@react-spring/core": "^9.3.0",
