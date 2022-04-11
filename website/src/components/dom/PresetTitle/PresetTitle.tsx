@@ -23,6 +23,7 @@ export function PresetTitle({
         style={{
           display: index === activePreset ? 'flex' : 'none',
           flexDirection: isMobile === true ? 'column' : 'row',
+          gap: isMobile === true ? 0 : 25,
         }}
       >
         <TextAnimation
@@ -32,7 +33,10 @@ export function PresetTitle({
           fontSize={size === 'big' ? 120 : 50}
           content={title}
         />
-        <div className={styles.slideBtns} style={{ color: color }}>
+        <div
+          className={styles.slideBtns}
+          style={{ color: color, fontSize: isMobile ? 22 : 30 }}
+        >
           <motion.div
             className={styles.slideBtn}
             initial={{ opacity: 0, y: -15 }}
@@ -47,6 +51,7 @@ export function PresetTitle({
                 setActivePreset(PRESETS.length - 1)
               }
             }}
+            style={{ width: isMobile ? 35 : 40, height: isMobile ? 35 : 40 }}
           >
             ↓
           </motion.div>
@@ -64,6 +69,7 @@ export function PresetTitle({
                 setActivePreset(0)
               }
             }}
+            style={{ width: isMobile ? 35 : 40, height: isMobile ? 35 : 40 }}
           >
             ↑
           </motion.div>

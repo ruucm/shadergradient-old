@@ -2,8 +2,7 @@ import React, { useRef } from 'react'
 import { UI, useUIStore } from '@shadergradient'
 import { motion } from 'framer-motion'
 import styles from './Controls.module.scss'
-import { MenuWrapper } from '@/components/dom/MenuWrapper'
-import { PreviewSwitch } from '@/components/dom/PreviewSwitch'
+import { HorizontalControl } from '@/components/dom/HorizontalControl'
 import { useOnClickOutside } from '@/hooks/use-onclick-outside'
 
 type Props = {
@@ -25,17 +24,16 @@ export const Controls: React.FC<Props> = ({
   const children = (
     <>
       {!isMobile && (
-        <UI.ControlTypeTitles
-          activeTab={activeTab}
-          setActiveTab={setActiveTab}
-        />
-      )}
-      <UI.PropertyControls activeTab={activeTab} setActiveTab={setActiveTab} />
-      {!isMobile && (
-        <div className='absolute left-3.5 bottom-3.5'>
-          <PreviewSwitch mode={mode} setMode={setMode} />
+        <div style={{ width: '100%', display: 'flex', alignItems: 'center' }}>
+          <UI.ControlTabTitles
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
+          />
+          <UI.ToolsBox darkMode={false} />
         </div>
       )}
+      <UI.PropertyControls activeTab={activeTab} setActiveTab={setActiveTab} />
+
       {isMobile && (
         <UI.ControlTypeTitles
           activeTab={activeTab}
@@ -70,15 +68,14 @@ export const Controls: React.FC<Props> = ({
           {children}
         </div>
       ) : (
-        <MenuWrapper
+        <HorizontalControl
           mode={mode}
           setMode={setMode}
           activeTab={activeTab}
           setActiveTab={setActiveTab}
-          className='min-h-[336px]' // shape control's height
         >
           {children}
-        </MenuWrapper>
+        </HorizontalControl>
       )}
     </div>
   )

@@ -1,7 +1,7 @@
 // custom pages/404.jsx !! Do not remove please or it will break build
 import React from 'react'
 import { GradientWithQueries } from '@shadergradient'
-import styles from '../pages/home2/Home.module.scss'
+import styles from '../pages/home/Home.module.scss'
 import { TextLogo } from '@/components/dom/TextLogo'
 
 const DOM = () => {

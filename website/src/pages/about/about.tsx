@@ -1,17 +1,17 @@
 import { useEffect, useState } from 'react'
 import { GradientWithQueries, useUIStore } from '@shadergradient'
+import { PRESETS } from '@shadergradient'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import styles from '../home/Home.module.scss'
-import { MenuItem } from '../home/menu-item'
-import { MenuWrapper } from '@/components/dom/MenuWrapper'
-import { PreviewSwitch } from '@/components/dom/PreviewSwitch'
-import { links } from '@/consts'
+import { AboutBtn } from '@/components/dom/AboutBtn'
+import { TextLogo } from '@/components/dom/TextLogo'
 
 const DOM = () => {
   const mode = useUIStore((state: any) => state.mode)
   const setMode = useUIStore((state: any) => state.setMode)
   const [isMobile, setIsMobile] = useState(false)
+  const activePreset = useUIStore((state) => state.activePreset)
 
   //choose the screen size
   const handleResize = () => {
@@ -32,42 +32,15 @@ const DOM = () => {
 
   return (
     <>
-      {isMobile === true ? (
-        <div
-          className={styles.mobileOnly}
-          style={{ color: '#ff430a', paddingLeft: '2em' }}
-          onClick={() => {
-            setMode('full')
-          }}
-        >
-          <Link href='/'>← Main</Link>
+      <div className={styles.contentWrapper}>
+        <div className={styles.header}>
+          <TextLogo color='#FF430A' size={15} />
+          <AboutBtn
+            inAbout={true}
+            color={mode !== 'full' ? '#FF430A' : PRESETS[activePreset].color}
+          />
         </div>
-      ) : (
-        <MenuWrapper mode={mode} setMode={setMode}>
-          <div className='flex flex-col gap-0.2 p-3.5'>
-            <motion.div
-              className='font-medium text-primary text-xl'
-              initial={{ paddingLeft: 0 }}
-              whileHover={{
-                paddingLeft: 7,
-                transition: { duration: 0.3 },
-              }}
-              style={{
-                color: 'white',
-                fontWeight: 500,
-              }}
-            >
-              <Link href='/'>← Main</Link>
-            </motion.div>
-            {links.map((item, id) => (
-              <MenuItem key={id} title={item.title} link={item.link} />
-            ))}
-            <div style={{ opacity: 0, pointerEvents: 'none' }}>
-              <PreviewSwitch mode={mode} />
-            </div>
-          </div>
-        </MenuWrapper>
-      )}
+      </div>
       <div className={styles.modalWrapper}>
         <motion.div className={styles.aboutModal}>
           <div className={styles.title}>
@@ -100,7 +73,7 @@ const DOM = () => {
               initial={{ opacity: 0 }}
             >
               Made by two creatives,
-              <br /> <a href=''>→ Ruucm</a> &{' '}
+              <br /> <a href=''>→ Ruucm</a>{' '}
               <a href='https://seungmee-lee.com'>→ stone.skipper</a> with 17
               Sunday afternoons.
             </motion.h1>

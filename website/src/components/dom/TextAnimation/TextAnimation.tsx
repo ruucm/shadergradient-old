@@ -94,7 +94,8 @@ export function TextAnimation({
                       {letter === ' ' ? '\u00A0' : letter}
                     </motion.span>
                   ))}
-                  {'\u00A0'}
+                  {/* remove the last spacing */}
+                  {wordI !== content.split(' ').length - 1 ? '\u00A0' : null}
                 </div>
               ))}
             </div>

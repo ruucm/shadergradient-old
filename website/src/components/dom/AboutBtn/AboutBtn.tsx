@@ -31,7 +31,7 @@ export function AboutBtn({ inAbout = false, color = 'white' }) {
           <p> back</p>
         </div>
       ) : (
-        <Link href='/about2'>
+        <Link href='/about'>
           <div style={{ display: 'flex' }}>
             <p>about </p>
             <p style={{ transform: 'rotate(45deg)' }}>↑</p>

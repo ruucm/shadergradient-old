@@ -13,7 +13,7 @@ export function TextLogo({ color = 'white', size = 20 }) {
         alignItems: 'center',
       }}
     >
-      <Link href='/home2'>
+      <Link href='/'>
         <div
           style={{
             width: 'fit-content',
