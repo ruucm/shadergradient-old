@@ -10,7 +10,7 @@ export function PresetTitle({
   title,
   description,
   index,
-  size = 'big',
+  fontSize = 120,
   isMobile = false,
 }) {
   const activePreset = useUIStore((state) => state.activePreset)
@@ -22,20 +22,24 @@ export function PresetTitle({
         className={styles.presetTitle}
         style={{
           display: index === activePreset ? 'flex' : 'none',
-          flexDirection: isMobile === true ? 'column' : 'row',
-          gap: isMobile === true ? 0 : 25,
+          gap: 25,
         }}
       >
         <TextAnimation
           delay={0}
           font='"Lora", serif'
           color={color}
-          fontSize={size === 'big' ? 120 : 50}
-          content={title}
+          fontSize={fontSize}
+          //default 120, for mobile title 80, for customize 50
+          content={isMobile === true ? title.substring(2) : title}
         />
         <div
           className={styles.slideBtns}
-          style={{ color: color, fontSize: isMobile ? 22 : 30 }}
+          style={{
+            color: color,
+            fontSize: isMobile === true ? 22 : 30,
+            transform: isMobile === true ? 'rotate(90deg)' : null,
+          }}
         >
           <motion.div
             className={styles.slideBtn}
@@ -69,7 +73,10 @@ export function PresetTitle({
                 setActivePreset(0)
               }
             }}
-            style={{ width: isMobile ? 35 : 40, height: isMobile ? 35 : 40 }}
+            style={{
+              width: isMobile === true ? 35 : 40,
+              height: isMobile === true ? 35 : 40,
+            }}
           >
             ↑
           </motion.div>

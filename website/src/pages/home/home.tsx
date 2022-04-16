@@ -44,6 +44,7 @@ const DOM = () => {
         <div className={styles.header}>
           <TextLogo
             color={mode !== 'full' ? '#FF430A' : PRESETS[activePreset].color}
+            size={isMobile === true ? 15 : 20}
           />
           <AboutBtn
             color={mode !== 'full' ? '#FF430A' : PRESETS[activePreset].color}
@@ -67,7 +68,7 @@ const DOM = () => {
                   }
                   description={''}
                   isMobile={isMobile}
-                  size={isMobile === true ? 'small' : 'big'}
+                  fontSize={isMobile ? 90 : 120}
                 ></PresetTitle>
               )
             })}
@@ -82,26 +83,28 @@ const DOM = () => {
             It's made with lines of codes, so you can create your own with just
             a few clicks.
           </div>
-          <div className={styles.customizeBtnWrapper}>
-            <Link href='/customize'>
-              <motion.div
-                className={styles.customizeBtn}
-                style={{
-                  color: PRESETS[activePreset].color,
-                  borderBottom: '2px solid ' + PRESETS[activePreset].color,
-                }}
-              >
-                <TextHover
-                  fontSize={20}
-                  color={PRESETS[activePreset].color}
-                  content={'Try it by yourself →'}
-                  delay={0}
-                />
-              </motion.div>
-            </Link>
-          </div>
-          <Links color={PRESETS[activePreset].color} />
         </div>
+        <div className={styles.customizeBtnWrapper}>
+          <Link href='/customize'>
+            <motion.div
+              className={styles.customizeBtn}
+              style={{
+                color: PRESETS[activePreset].color,
+                borderBottom: '2px solid ' + PRESETS[activePreset].color,
+              }}
+            >
+              <TextHover
+                fontSize={isMobile === true ? 15 : 20}
+                color={PRESETS[activePreset].color}
+                content={'Try it by yourself →'}
+                delay={0}
+              />
+            </motion.div>
+          </Link>
+        </div>
+        {isMobile === true ? null : (
+          <Links color={PRESETS[activePreset].color} />
+        )}
         {isMobile === true ? null : (
           <div className={styles.footer}>
             <PreviewBtn

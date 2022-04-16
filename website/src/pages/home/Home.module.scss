@@ -7,6 +7,13 @@
     position: absolute;
     top: 0;
     left: 0;
+    @media (max-width: 640px) {
+        display:flex;
+        top:5vh;
+        height:90vh;
+        justify-content: space-between;
+        flex-direction: column;
+    }
 }
 
 .header{
@@ -19,7 +26,10 @@
 
 .content{
     width:100vw;
-    height:84vh;
+    height:fit-content;
+    @media (max-width: 640px) {
+        transform: rotate(90deg);
+    }
 }
 
 .footer{
@@ -52,7 +62,6 @@
     @media (max-width: 640px) {
         .paragraph{
             font-size:12px;
-            width:70%;
             margin:6vh auto;  
         }
     }
@@ -63,7 +72,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    
+    @media (max-width: 640px) {
+margin:0;    }
     }
     
     .customizeBtn{
